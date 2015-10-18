@@ -1,0 +1,103 @@
+                 BCPL Cintcode for Windows CE 2.0
+
+The files in this directory can be used to build the BCPL Cintcode
+system for Windows CE 2.0. They have be tested on an HP 620LX handheld
+machine. The ceBCPL.exe is a built version for the HP 620LX (an SH3
+machine).
+
+To use them you need to have installed Windows CE Services and have an
+HP620LX running Windows 2.0. If you wish to recompile the system you
+will also need Visual C++5.0 and the Windows CE Embedded Toolkit for
+Visual C++5.0. Unfortuately these are no longer available from
+Microsof(even though my HP620LX is only 7 years old).
+
+After possibly editing Makefile (in BCPL\cintcode\sysasm\shWinCE),
+just type (on the Windows machine):
+
+nmake
+
+This will rebuild ceBCPL.exe and copy it to your handheld machine.
+
+Next, you will need to copy the most of the content of the directories
+BCPL\cintcode and BCPL\bcplprogs into the handheld machine. These must
+be placed in \BCPL\cintcode and \BCPL\bcplprogs. The most important
+directories are:
+
+\BCPL\cintcode\cin             -- compiled commands
+\BCPL\cintcode\cin\syscin      -- compiled resident system
+\BCPL\cintcode\g               -- header files
+\BCPL\cintcode\com             -- BCPL source of the commands
+\BCPL\cintcode\sysb            -- BCPL source of the cintcode system
+\BCPL\cintcode\b               -- a script to invoke the compiler
+
+Note that the HP620LX is a little ended machine and so little ended
+versions of the Cintcode files are needed.  These are the same as the
+Linux or Windows versions and so no special action is necessary.
+
+It is convenient to update the CE registry so that double clicking on
+files with extensions .b and .h files invoke the Pocket Word
+editor. To do this you will need a registry editor such as RegEdit.exe
+which is freely available. I added the following:
+
+HKEY_CLASSES_ROOT\.b                      (default) "txtfile"
+HKEY_CLASSES_ROOT\.h                      (default) "txtfile"
+
+I also found it convenient to set the default font for Pocket Word to
+be Courier New, size 8, Bold. This can be done by clicking on
+
+Format -> Font... 
+
+and selecting 
+
+Font: Courier New
+Size: 8
+Font Style: Bold
+
+then clicking: Set as Default.
+
+The Makefile causes ceBCPL.exe to be placed in the root directory of
+the handheld machine. It is convenient to place a Shortcut to it on
+the desktop. To do this, find ceBCPL.exe and select it, then click on
+
+File -> Send To -> Deskto as Shortcut
+
+Double clicking the ceBCPL icon will start the BCPL Cintcode system.
+When using it for the first time it is a good idea to recompile all the
+BCPL code by executing the following two commands:
+
+prefix bcpl/cintcode
+c compall
+
+To try out some of the demonstration programs in bcpl/bcplprogs type:
+
+prefix bcpl/bcplprogs/demos
+c b primes
+primes
+c b queens
+queens
+
+prefix bcpl/bcplprogs/graphics
+c b gr
+gr
+c b lander
+lander
+
+These last examples demonstrate a very simple graphics package that
+allows a BCPL program to draw lines and points in 8-bit colour.
+If you watch the lander program run for long enough, you will see
+the spacecraft make a perfect landing.
+
+Technical note.
+
+The system is implemented in Visual C and all the system dependent
+source file are in BCPL\cintcode\sysasm\shWinCE. However, cintmain.c
+cinterp.c, kblib.c, nrastlib.c and cinterp.h are the same as for the
+standard BCPL distribution. The implementation uses a interpreter
+written is SH3 assembly language. The gives a substantial speed
+up. For instance, after preloading the BCPL compiler, it can compile
+itself in 8.87 seconds using the fast interpreter but 29.49 seconds
+with the interpreter written in C. The C version does have a few more
+built-in debugging aids.
+
+Martin Richards
+6 April 2005

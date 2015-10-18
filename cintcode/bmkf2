@@ -1,0 +1,35 @@
+
+cin/x<file>.o <= com/<file>.b
+<<
+echo "making cin/x<file>.o"
+>>
+
+
+aaa1 <= aaa2 aaa3
+<<
+echo "Making aaa1 from aaa2"
+type aaa2 to aaa1
+>>
+
+aaa2 <= aaa4
+<<
+echo "Making aaa2 from aaa4"
+type aaa4 to aaa2
+>>
+
+aaa3 <= aaa4 aaa1
+<<
+echo "Making aaa3 from aaa4 and aaa1"
+type aaa4 to aaa3
+>>
+
+clean <=
+<<
+delete aaa1
+delete aaa2
+delete aaa3
+>>
+
+
+
+

@@ -1,0 +1,82 @@
+Suggest scheme for ASCII input on the GP2X
+
+ASCII character can be 'typed' as though input from a keyboard using
+the buttons on the GP2X machine. The encoding is as follows.
+
+Five bit offsets in the range 0 to 31 are input using the Left and
+Right shoulder buttons with the Left button representing zero. These
+values are offsets in the current 'page' of 32 character from the
+ASCII character set. Page 0 corresponds to character codes 0 to 31,
+Page 1 to codes 32 to 63, page 2 to codes 64 to 91 and page 3 to
+codes 92 to 127. The charcters of the currently selected page are
+displayed on the bottom line of the screen. Pressing the A button
+toggles through these four pages. If the current page is number 2 the
+bottom line will be:
+
+@ABCDEFG HIJKLMNO PQRSTUVW XYZ["]^_
+
+and pressing the sequence LLLLR (=00001) will select the character
+'A'.  As the Ls and Rs are pressed the corresponding subset of
+characters are highlighted. After four Ls and Rs have been pressed
+only two characters will remain highlighted. Pressin L will select the
+left one and R will select the other. The A, B, X and Y buttons are
+short cuts as follows:
+
+A    Increment the current page number
+B    Enter a BACKSPACE, or backstep one position in the LR sequence
+X    Enter a SPACE character
+Y    Enter a NEWLINE character
+
+Characters in the range 127 to 255 are selected by pressing the VOL-
+button. This toggles the senior bit of the next character selected and
+only applies to the next input character.
+
+The screen shows several lines of about 56 chracters typically showing
+the most recent text written to the screen. However, there is a buffer
+holding the last 100000 or so characters written and it is possible to
+scroll back over this virtual screen of recent output using the
+joystick.
+
+
+
+Summary
+
+                   111111 11112222 22222233   Offset value
+        01234567 89012345 67890123 45678901
+
+        LLLLLLLL LLLLLLLL RRRRRRRR RRRRRRRR   Five bit encoding
+        LLLLLLLL RRRRRRRR LLLLLLLL RRRRRRRR
+        LLLLRRRR LLLLRRRR LLLLRRRR LLLLRRRR
+        LLRRLLRR LLRRLLRR LLRRLLRR LLRRLLRR
+        LRLRLRLR LRLRLRLR LRLRLRLR LRLRLRLR
+
+page 0:        <control characters>           The character pages
+page 1:  !"#$%&' ()*+,-./ 01234567 89:;<=>?
+page 2: @ABCDEFG HIJKLMNO PQRSTUVW XYZ[\]^_
+page 3: `abcdefg hijklmno pqrstuvw xyz{|}~
+
+button A     Increment page number            The shortcuts
+button B     Backspace
+button X     Space
+button Y     Newline
+
+button Vol-  Add 128 to next chacter code
+
+Pressing and holding L and R together toggles turns this mode of input
+on and off.
+
+Tips
+
+Decimal digits are entered from page 1 by pressing R followed by the
+four bits digit number.
+
+Letters are encoded by their numbers 1 to 26 encoded in five bits,
+with upper case letters in page 2 and lower case letters in page 3.
+
+These and the other codes can be learnt by looking at the bottom line
+of the screen.
+
+
+
+
+Martin Richards (c) 23 June 2006

@@ -1,0 +1,131 @@
+ARM GAS  arm/demo.s 			page 1
+
+
+   1              	@ This test the ARM assembler
+   2              	@ Use:   make demo.txt
+   3              		
+   4              	@ Linkage:
+   5              	@   On entry rl   is the return address
+   6              	@            r0   is the first argument
+   7              	@            r1   is the second argument
+   8              	@            etc
+   9              	@
+  10              	@   r4 - r13 must be preserved
+  11              	@
+  12              	@   result in r0
+  13              	
+  14              	.global callstart
+  15              	.global dosys
+  16              	
+  17              	ra .req r4
+  18              	rb .req r5
+  19              	rc .req r6
+  20              	rp .req r10
+  21              	rg .req r11
+  22              	
+  23              		
+  24              	.text
+  25              	.align 2
+  26              	
+  27              	demo:
+  28 0000 3F40A0E3 	 mov R4,#63
+  29 0004 3E40E0E3 	 mov R4,#-63
+  30 0008 0540A0E1 	 mov r4,r5
+  31 000c 6540A0E1 	 mov r4,r5,rrx
+  32 0010 8543A0E1 	 mov r4,r5,lsl #7
+  33 0014 A543A0E1 	 mov r4,r5,lsr #7
+  34 0018 C543A0E1 	 mov r4,r5,asr #7
+  35 001c E543A0E1 	 mov r4,r5,ror #7
+  36 0020 1546A0E1 	 mov r4,r5,lsl r6
+  37 0024 3546A0E1 	 mov r4,r5,lsr r6
+  38 0028 5546A0E1 	 mov r4,r5,asr r6
+  39 002c 7546A0E1 	 mov r4,r5,ror r6
+  40              	
+  41 0030 3F4085E2 	 add r4,r5,#63
+  42 0034 3F40A5E2 	 adc r4,r5,#63
+  43 0038 3F4045E2 	 sub r4,r5,#63
+  44 003c 3F4065E2 	 rsb r4,r5,#63
+  45 0040 3F40E5E2 	 rsc r4,r5,#63
+  46 0044 3F4005E2 	 and r4,r5,#63
+  47 0048 3F4025E2 	 eor r4,r5,#63
+  48 004c 3F4085E3 	 orr r4,r5,#63
+  49 0050 3F40C5E3 	 bic r4,r5,#63
+  50              	
+  51 0054 3F0054E3 	 cmp r4,#63
+  52 0058 3F0074E3 	 cmn r4,#63
+  53 005c 3F0014E3 	 tst r4,#63
+  54 0060 3F0034E3 	 teq r4,#63
+  55              	
+  56 0064 FEFFFFEA 	 b demo
+  57 0068 FEFFFFEB 	 bl demo
+ARM GAS  arm/demo.s 			page 2
+
+
+  58 006c 14FF2FE1 	 bx r4
+  59              		
+  60 0070 070094E8 	 ldmia r4,{r0-r2}
+  61 0074 070094E9 	 ldmib r4,{r0-r2}
+  62 0078 070014E8 	 ldmda r4,{r0-r2}
+  63 007c 070014E9 	 ldmdb r4,{r0-r2}
+  64              	
+  65 0080 0700B4E8 	 ldmia r4!,{r0-r2}
+  66 0084 0700B4E9 	 ldmib r4!,{r0-r2}
+  67 0088 070034E8 	 ldmda r4!,{r0-r2}
+  68 008c 070034E9 	 ldmdb r4!,{r0-r2}
+  69              	
+  70 0090 070084E8 	 stmia r4,{r0-r2}
+  71 0094 070084E9 	 stmib r4,{r0-r2}
+  72 0098 070004E8 	 stmda r4,{r0-r2}
+  73 009c 070004E9 	 stmdb r4,{r0-r2}
+  74              	
+  75 00a0 0700A4E8 	 stmia r4!,{r0-r2}
+  76 00a4 0700A4E9 	 stmib r4!,{r0-r2}
+  77 00a8 070024E8 	 stmda r4!,{r0-r2}
+  78 00ac 070024E9 	 stmdb r4!,{r0-r2}
+  79              	
+  80 00b0 3F4095E5 	 ldr r4,[r5, #+63]
+  81 00b4 3F4015E5 	 ldr r4,[r5, #-63]
+  82 00b8 064095E7 	 ldr r4,[r5, +r6]
+  83 00bc 064015E7 	 ldr r4,[r5, -r6]
+  84 00c0 664095E7 	 ldr r4,[r5, +r6, rrx]
+  85 00c4 664015E7 	 ldr r4,[r5, -r6, rrx]
+  86 00c8 864395E7 	 ldr r4,[r5, +r6, lsl #7]
+  87 00cc 864315E7 	 ldr r4,[r5, -r6, lsl #7]
+  88 00d0 A64395E7 	 ldr r4,[r5, +r6, lsr #7]
+  89 00d4 A64315E7 	 ldr r4,[r5, -r6, lsr #7]
+  90 00d8 C64395E7 	 ldr r4,[r5, +r6, asr #7]
+  91 00dc C64315E7 	 ldr r4,[r5, -r6, asr #7]
+  92 00e0 E64395E7 	 ldr r4,[r5, +r6, ror #7]
+  93 00e4 E64315E7 	 ldr r4,[r5, -r6, ror #7]
+  94              	
+  95 00e8 FF47D5E1 	 ldrsh r4,[r5, #+127]
+  96 00ec FF4755E1 	 ldrsh r4,[r5, #-127]
+  97 00f0 FF47F5E1 	 ldrsh r4,[r5, #+127]!
+  98 00f4 FF47D5E0 	 ldrsh r4,[r5], #+127
+  99 00f8 F64095E1 	 ldrsh r4,[r5, +r6]
+ 100 00fc F64015E1 	 ldrsh r4,[r5, -r6]
+ 101 0100 F640B5E1 	 ldrsh r4,[r5, +r6]!
+ 102 0104 F64095E0 	 ldrsh r4,[r5], +r6
+ 103 0108 F64015E0 	 ldrsh r4,[r5], -r6
+ 104              	
+ 105 010c DF47D5E1 	 ldrsb r4,[r5, #+127]
+ 106 0110 DF4755E1 	 ldrsb r4,[r5, #-127]
+ 107 0114 BF47D5E1 	 ldrh  r4,[r5, #+127]
+ 108 0118 BF47C5E1 	 strh  r4,[r5, #+127]
+ 109              	
+ 110 011c 954006E1 	 swp  r4,r5, [r6]
+ 111 0120 954046E1 	 swpb r4,r5, [r6]
+ 112              	
+ 113 0124 950604E0 	 mul  r4,r5,r6
+ 114 0128 958624E0 	 mla  r4,r5,r6,r8
+ARM GAS  arm/demo.s 			page 3
+
+
+ 115              	
+ 116 012c 9648C5E0 	 smull  r4,r5,r6,r8
+ 117 0130 9648E5E0 	 smlal  r4,r5,r6,r8
+ 118 0134 964885E0 	 umull  r4,r5,r6,r8
+ 119 0138 9648A5E0 	 umlal  r4,r5,r6,r8
+ 120              	
+ 121 013c 3F0000EF 	 swi    #63
+ 122              		

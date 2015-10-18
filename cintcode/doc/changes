@@ -1,0 +1,567 @@
+BCPL CINTCODE SYSTEM
+
+RECENT CHANGES
+
+08/10/14
+Modified bcplfe.b to use Ocode statements RES and RSTack in the
+compilation of switches to allow bcpl2sial to generate sial code that
+is easier to optimise. For example, see sial-686.b (which is still
+under development).
+
+14/08/14
+Added floating point constants and the operators FIX, FLOAT, #ABS, #*,
+#/, #+, #-, #=, #~=, #>= and #< to the standard language (but not
+operators like +:= and #+:=). IEEE floating point formats are
+used. 32-bit floating point constants require compilation under 32-bit
+cintcode. 64-bit floating point constants require compilation under
+64-bit cintcode. Certain floating point operations were already
+available by calls of the form: sys(Sys_flt, op,...).  Conditional
+expressions are now allowed in MANIFEST expressions as are the
+operators: =, ~=, <, >, <=, >=, #=, #~=, #<, #>, #<= and #>=.
+Corresponding changes have been made to bcplcgcin, bcplcgsial, procode
+and sial-sasm. Work is in progress on sial-386 and sial-arm, so native
+code versions of BCPL should be available (soonish) for both the Pentium Pro
+and ARM architectures.
+
+31/05/13
+The 32-bit and 64-bit Cintcode systems have been coalesced. They now
+use the same compilers with the target bit length specified by the
+option t32 or t64. The BCPL source files (including boot, blib, dlib,
+etc) are the same for both systems. The 64-bit version is built by the
+command: make sys64, and the 32-bit version is built by: make or make
+sys. In due course the floating point sys functions in the 64-bit
+version will used 64-bit floating point numbers. The command commands
+b, bc, bs, bcb, bcl, bsb, bsl, b64, bc64, bs64, bcb64, bcl64, bsb64
+and bsl64 can be used on both the 32-bit and 64-bit versions. They
+generate 32-bit cintcode unless 64 appears in the name. The command
+command compall compiles all the BCPL code for the 32-bit version, and
+compall64 does the same for the 64-bit version.
+
+13/05/13
+The code generation of SWITCHON has been substantially modified to
+improve it and remove a serious bug concerning cases with constants
+close to minint.
+In due course the 32-bit and 64-bit codegenerators will be coalesced.
+The options t32 and t64 will specify the word length of the target
+code. 32-bit code will run under cintsys and 64-bit code will run under
+cintsys64.
+
+14/11/11
+In the Makefile, -lm is now the last argument of the linking step
+for both cintsys and cintpos. Without this change the floating point
+library functions are not resolved when running under Ubuntu Linux.
+
+07/02/11
+Changed the format of BCPL filenames to use '/' (or '\') as separators of file
+name components. Such names are converted to target system names before
+use. The targets are UNIXNAMES for Linux style, WINNAMES for Windows style and
+VMSNAMES for VMS style. Separators in path list can be ether semicolons or
+colons, except under Window when only semicolons are allowed.
+
+09/02/11
+Changed both Cintsys and Cintpos to use unix style filenames rather
+than target machine style names. Thus components of a file name are
+separated by '/'s (but '\'s are also allowed). Directory filenames
+used by pathinput are now separated by semicolons, although colons are
+allowed for systems not running under window.
+
+The bmake command has be added recently. See the BCPL Cintsys and
+Cintpos User Guide for details.
+
+30/07/10
+The latest release of Cintcode BCPL includes an extended BCPL to
+Cintcode compiler called xbcpl which implements several extension to
+the language found in other implementations. These include (non
+manifest) floating point constants and the operators FLOAT, FIX, #ABS,
+#+, #-, #*, #/, #=, #~=, #<, #>, #<= and #>=.  Assignments of the
+form:
+
+E,...,E op:= E,...,E
+
+are allowed where op absent or is any of the following operators
+
+!, #*, #/, #+ #-, *, /, MOD, +, -, <<, >>, &, |, EQV and XOR.
+
+#*, #/, #+ #- are only allowed if the destination of the assignment is
+a full word, is not of the form E%E, or S OF E with a field length not
+equivalent to a full BCPL word.
+
+The sequencing operator <> is allowed. It behaves like semicolon but
+is more binding than DO, THEN, ELSE, RETEAT, REPEATWHILE and
+REPEATUNTIL.
+
+Three new Cintcode function codes have been added. There are:
+
+FLTOP op         To implement the floating point operations
+SELLD len sh     To load the value of a field into A
+SELST op len sh  To update a field as in SLCT 9:3:1 OF p +:= 1
+
+The Cintcode compiled by the old BCPL compiler is compatible
+with the new extended interpreter.
+
+To see what xbcpl can do look at BCPL/cintcode/com/xcmpltest.b.
+
+The new extensions are not yet available in the rastering version
+(rastsys) of the system. 
+
+25/05/10
+Minor modifications to make installation under Linux, Cygwin and
+Windows easier. This included the creation of the directory
+BCPL/cintcode/os containing directories linux, cygwin, windows and
+gp2x.
+
+09/04/10
+CLI #-comments now skip up to but not including the next newline or
+semicolon.
+Changed the units of time to be msecs instead of the system dependent
+ticks. Tickspersecond has been removed and the datstamp format changed to:
+datv!0 = days  since 1 Jan 1970
+datv!1 = secs  since midnight
+datv!2 = msecs since start of current second
+sys(Sys_delay, msecs) performs a delay in msecs (not ticks).
+The cli prompt is now written using
+writef(promptstring, cputime, taskid, hours, mins, secs, msecs)
+Try the command: prompt "%+%+%z2:%z2:%z2.%z3> "
+
+20/10/09
+Corrected bug in com/bcplfe.b in performget relating to sourcefile
+names and numbers.
+
+10/07/09
+Stopped '.' terminating GET streams so that GET streams can contain
+several sections separated by dots. BEWARE: this is an incompatible
+change, since the first section of a GET stream has in the past been
+used as a header.
+Re-organised the compiler into g/bcplfecg.h, bcplfe.b and bcplcgcin.b,
+and reallocating most of the compiler globals.
+
+08/05/09
+Increased the default treesize to 200000 in the BCPL compiler.
+
+12/01/09
+Replaced dot by underscores in all global and manifest names. So
+string.to.number is now string_to_number
+
+15/05/08
+Recently added the MC package which seems to work under Linux, Cygwin
+and Windows. See BCPL/bcplprogs/mc and Chapter 9 of the BCPL Manual.
+Continued development of the Sound package
+(BCPL/cintcode/sysc/coundfn.c) which is beginning to work. It really
+needs to run under BCPL Cintcode under Windows since Linux does not
+have the drivers for Roland piano, SonicCell or the USB ribbon
+microphone that I have.  This has caused me to improve the Windows
+version of the BCPL Cintcode system. This probably means that the
+Cygwin version will eventually become unnecessary when I port Cintpos
+to Windows.
+
+03/07/07
+Modified the treatment of *# escapes in string and character constants
+to allow both UTF8 and GB2312 encoding. Added compiler options UTF8
+and GB2312 to set the default encoding. *#U and *#G in a string and
+character constant temporarily set the encoding to UTF8 and GB2312,
+respectively, overriding the default setting. In GB2312 mode, *#dddd
+contains up to 4 decimal digits. See the BCPL manual.
+Added codewrch to write extended characters using UTF8 or
+GB2312. Added %# substitution item in writef to invoke it. Note that
+*xU, *xG, *#hhhh, *##hhhhhhhh and *#dddd escapes have been added to
+BCPL string and character constants.
+
+
+27/06/07
+Added the Unicode escape sequences *#hhhh and *##hhhhhhhh to string
+and character constants. Within string they are converted to the
+corresponding UTF8 sequence of bytes and within a character constant
+they yield the corresponding Unicode integer. See the last few tests
+in com/cmpltest.b
+
+21/03/07
+Mended bug in writef concerned with the implementation
+of %9.2d
+
+24/01/07
+Extended writef to allow the field width to be given immediately
+after the percent in a substitution item (a la printf in C).
+Eg %12i means %iB, etc.
+Also added a substitution item to allow printing of scaled decimal
+numbers. For example:
+
+writef("%9.2d",  1234567)  writes   12345.67
+writef("%9.2d", -1234567)  writes  -12345.67
+writef("%9.0d",  1234567)  writes    1234567
+writef("%9d",    1234567)  writes    1234567
+
+Also made minor changes to standalone debug.
+
+21/11/06
+Force sardch to treat RUBOUT (ie the backspace key) to return Backspace (=8)
+not rubout (=127). Add sys(Sys_delay, ticks) and tickspersecond to delay
+for a given number of ticks using sleep and usleep.
+
+14/11/06
+Corrected an error in sysasm/linux/cintasm.S concerning the detection
+of the Cintcode PC going negative for machine in which machine addresses
+can be negative.
+
+Corrected other minor bugs concerning the forLINUXAMD64 version.
+
+10/11/06
+Added the -slow option to force using the slow interpreter (interpret) all
+the time. This is useful if there seems to be a bug in cinterp or fasterp.
+Updated the programs com/dumpsys.b and com/dumpdebug.b to help analyse
+analyse compacted dumps of the Cintcode memory (typically in DUMP.mem).
+
+08/11/06
+Added the -d option to set the dump flag in the rootnode (equivalent to calling
+the command: dumpmem on). This will cause the entire Cintcode memory to be
+dumped to DUMP.mem in a compacted form if the Cintcode system returns with a
+non zero return code. The file DUMP.mem can be printed in a readable form using
+the dumpsys command (always assuming you have a working BCPL system).
+
+07/11/06
+Added the -f, -v and -V options to assist people solving installation
+problems. They trace the behaviour of the system, particularly during
+the bootstrapping process. If you are having a problem getting BCPL
+to work, study the output generated by:
+
+cintsys -f -V
+
+The option -v generates a simple trace of the bootstrapping
+process. It should produce output similar to the following:
+
+solestreet$ cintsys -v
+Boot tracing level is set to 1
+Cintcode memory (upb=4000000) allocated
+Boot's stack allocated at 211
+Boot's global vector allocated at 727
+Rootnode allocated at 100
+syscin/boot loaded successfully
+syscin/blib loaded successfully
+syscin/syslib loaded successfully
+syscin/dlib loaded successfully
+cintsys calling the interpreter
+CLI stack allocated at 8249
+CLI global vector allocated at 8665
+
+BCPL Cintcode System (7 Nov 2006)
+boot about to call the interpreter recursively
+It should start executing the boot function: startcli
+boot: about to call sys(Sys_interpret,...)
+startcli: can now use normal stream i/o
+startcli: trying to load syscin/cli
+startcli: loaded syscin/cli successfully
+startcli: now entering the cli
+cli: now entering the main CLI loop
+0> 
+
+
+The option -V is similar to -v but also includes some Cintcode
+instruction level tracing.
+
+The -f option traces the use of pathinput and in particular it use of
+environment variables such as BCPLPATH. It helps to solve problems
+caused by incorrect setting of the environment variables. Try calling:
+
+cintsys -f
+
+then
+
+bcpl com/bcpl.b to junk
+
+to see the location of successfully opened files.
+
+06/11/06
+Made systematic changes to the C code to make it satisfy the -pedantic
+option of gcc, ie to make the source code ANSI standard. this mainly
+involve replacing // comments, but also the removal of one signedness
+warning and a warning about converting a pointer into a function.
+
+20/06/06
+Modified the Makefile to allow the system to be cross-compiled
+for the GP2X handheld Linux gaming machine.
+Renamed most files to use lower case letters to ease some problems
+with windows machines. 
+
+10/04/06
+Made rdch under native BCPL read the argument line characters
+before reading character from stdin, for compatibility with
+cintsys BCPL.
+
+18/01/06
+Based on Dave Lewis's suggestion,
+in outputsection(), add:
+   IF objline1%0 DO writef("%s*n", objline1)
+where objline1 is the first line of file OBJLINE1 if it can be found
+in the current directory or in the HDRS directory. This will typically
+put a line such as:
+#!/usr/local/bin/cintsys -c
+as the first line of the compiled object module. This line is ignored
+by the CLI but may be useful under Linux. If OBJLINE1 cannot be found
+no such line is inserted at the start of the object module.
+
+30/8/05
+Defined the function default_hdrs() near the start to allow easy change
+from cintsys to cintpos versions of the compiler.
+ 
+27/7/05
+Modified sysc/cinterp.c so that it produces an object file functionally
+equivalent to the hand written assembly language interpreters
+available for some architectures. This option is set by #defining
+FASTyes when compiling cinterp.c
+
+22/6/05
+Added the empty command SKIP and let empty blocks be equivalent to
+SKIP. Empty section brackets are now also allowed after MANIFEST,
+STATIC and GLOBAL.  These changes make program development marginally
+easier.
+
+17/6/04
+Made GET first look in the current directory.
+Added argument HDRS to allow the environment variable specifying
+the headers directory to be changed. The default is BCPLHDRS.
+
+23/4/04
+Update the standard BCPL compiler with all the Cintpos extensions
+including cross referencing and 11 character names.
+Make GET directives use the BCPLHDRS environment variable.
+
+22/4/04
+Made changes to the native code version of BCPL.
+
+11/6/02
+Changed square brackets to mean subscription with same precedence
+and function calls.
+
+18/3/02
+Use HDRPATH and BCPLPATH in GET directives.
+
+14/1/02
+Added XREF option to output name information during compilation.
+
+14/8/01
+Added SLCT and OF (synonym ::) operators, making no change to
+Cintcode. SLCT size:shift:offset is a manifest constant
+encoding a bit field relative to a pointer. 
+(SLCT size:shift:offset) OF p  selects the field. OF can be used
+on both the left anf right hand side of and assigment, but not
+as the operand of @. SLCT and : have precedence zero, and OF has
+the same precedence as dyadic !.
+
+15/1/01 bcpl.b
+Complain if global number is larger than 65535.
+
+10/7/00 BLIB.b bcplprogs/demos/objdemo.b
+Changed the definition of mkobj to take up to 11 initialisation
+arguments. See bcplprogs/demos/objdemo.b
+
+22/6/00 cintmain BLIB.b
+Made a correction to muldiv to stop it looping on #x8000000
+This Cintcode instruction MDIV is now not invoked since it
+sometimes causes a floating point(!!) exception on a Pentium.
+
+5/4/00 cintmain.c sys/shWinCE/cintmain.c
+
+Implemented the -h, -m and -k command options.
+Try "cinterp -h" to see what they do.
+
+4/4/00 com/map.b
+
+Removed a bug in the map command.
+
+21/2/00 sys/shWinCE/cintasm.src
+
+Corrected bug concerning the MDIV instruction.
+
+14/12/99  bcpl.b
+
+Made / * ... * /  comments nest.
+Allow the constants in MANIFEST, STATIC and GLOBAL declarations 
+to be optional. If absent the value is one greater than the
+previous value. Unless specified the first value is zero, so
+MANIFEST { a; b=10; c } declares a, b and c to be 0, 10 and 11,
+respectively.
+
+7/12/99 Makefile cinterp.h and kblib.c
+
+Included a Windows 96/98/NT version of the system using the
+GNU Cygnus C compiler, assembler and make command. To run this
+version GNU Cygnus C must be installed first. It can be obtained
+(free) from http://sourceware.cygnus.com/cygwin/
+
+9/6/99  bcpl.b
+
+Made changes to buffer OCODE in memory. When bcpl is called
+without the TO argument it writes numeric ocode to the file OCODE.
+Lex treats CR (13) correctly to improve convenience when running
+under Windows and WindowsCE.
+
+30/3/99 BLIB and libhdr
+
+Added two extra arguments to mkobj that are passed to the call
+of the InitObj method. Added manifest definitions of InitObj and 
+CloseObj in libhdr.
+
+26/2/99  bcpl.b cintmain.c
+
+Added BIN option to the compiler to generate a binary (rather than
+hex) hunk format for the compiled code. This is primarily for the
+Windows CE version of the cintcode system where compactness is
+particularly important. There is a related change to loadseg in
+cintmain.c to allow it to load either form of hunk.
+
+17/11/98 bcpl.b
+
+Changed the default workspacesize to 40000 and added the SIZE keyword
+to allow the user to specify this size.
+
+9/11/98  bcpl.b
+
+Made GET directives search the current working directory
+then directories given by the shell variable BCPLPATH, if set.
+It uses the BLIB function pathfindinput.
+
+6/11/98  cintmain.c, libhdr, BLIB.b, bcpl.b
+
+Implemented changes to replace sys(14,name) by
+sys(14,name,pathname). If pathname is 0 or the specified shell
+variable is unset, there should be no noticeable difference. The new
+version searches for the file in the current working directory, then
+the directories given by the shell variable pathname until
+successfully opened.  It is designed to work on both Windows and
+unix. If the shell variable BCPLPATH is set it specifies a path used
+by loadseg (ie the initial loading of SYSLIB, BOOT, BLIB, CLI and CLI
+commands) as well as for header files and files processed by the c
+command.
+
+15/12/96 bcpl.b
+
+Correct a bug in cellwithname
+
+5/11/98  cintmain.c
+
+The comment character in object modules has changed from
+semicolon(';') to hash ('#').
+
+16/8/96  bcpl.b
+
+Added one line to readnumber to allow underscores in numbers anywhere after
+the first digit.
+
+1/8/96   sbcpl.b cvsial386.b and the directory native
+
+Made available a simple native version of BCPL for 386/486/Pentium
+under Linux. It runs about 10 times faster than the Cintcode system on
+non I/O bound tests.
+
+12/6/96  cintmain.c, cinterp.c, cinterp.h
+
+Move the definition of INT32pt, WD, UWD, PT, BP, SBP, HP and SHP to
+cinterp.h, and define SIGNEDCHAR in cinterp.h to solve a problem with
+char being unsigned on some implementations.
+
+7/6/96   bcpl.b BLIB.b libhdr bcplprogs/objdemo.b
+
+Added the construct E#(E1, E2,..., En) to the language.  It is a
+sugaring for ((!E1)!E)(E1, E2,..., En) to make Object Oriented style
+of programming more convenient.  Add mkobj(upb, fns) to BLIB.b. See
+bcplprogs/objdemo.b
+
+31/5/96  cintmain.c
+
+Added handler for SIGINT to restore tty settings
+
+30/4/96  cintmain.c
+
+Added call of fflush(fp) to case 13: in dosys, with corresponding
+changes to libhdr and BLIB.b (added flush())
+
+24/12/95 bcpl.b
+
+Improve the efficiency of cellwithname in TRN (using the hash chain
+link in name node). Improve the efficiency of outputsection in CG by
+introducting wrhex2 and wrword_at
+
+24/11/95 cintmain.c
+
+Improve the efficiency of the calls of fread and fwrite.  Reduce the
+size of chbuf from 1024 to 256
+
+25/10/95 cintmain.c
+
+Use ANSI clock() instead of ftime(), adding TICKS_PER_MS.
+Change #define names to forMAC, forMIPS, forSUN4 etc
+Add and set external tallyv
+
+18/10/95 cintmain.c
+
+Remove compatibility with non protected mode MSDOS (now
+using Borland C version 4.0).
+
+24/7/95  bcpl.b
+
+Remove bug in atbinfo, define addinfo_b change some global numbers.
+Implement constant folding in TRN.
+
+13/7/95  bcpl.b
+
+Allowed { and } to represent untagged section brackets.
+
+24/9/93  cintmain.c
+
+Replace word by INT32
+Put in code for DEC Alpha and Sun-4 machines
+The #define is now in the Makefile
+Change to Ansi C conventions
+Other minor modifications in main and dosys
+
+22/6/93  cintmain.c
+
+Remove aptovec
+
+22/6/93  bcpl.b
+
+Reverse order in SWB and have a minimum of 7 cases to allow faster
+interpreter.
+
+2/6/93  bcpl.b
+
+Change code for SWB to use heap like binary tree.
+
+24/5/93  cintmain.c
+
+Allow ';' comments in object modules (mainly for SYSLIB)
+
+19/5/93  bcpl.b
+
+Put in code to compile BTC and XPBYT instructions
+
+23/4/93  bcpl.b
+
+Allow the codegenerator to compiler the S instruction.
+
+21/12/92  bcpl.b
+
+Cure bug in compilation of (b -> f, g)(1,2,3)
+
+24/11/92  bcpl.b
+
+Cure bug in compilation of a, b := s%0 > 0, s%1 = '!'
+
+23/7/92  bcpl.b
+
+Rename nextlab as newlab, load as loadval in the CG
+Put back simpler hashing function in lookupword
+Remove rdargs fudge
+Remove S2 compiler option
+Cure bug concerning closure of gostream when equal to stdout
+Remove commented section separators
+
+
+Martin Richards
+     (mr@cl.cam.ac.uk, http://www.cl.cam.ac.uk/users/mr)
+University Computer Laboratory
+New Museums Site                  
+Pembroke Street
+Cambridge
+UK
+
+

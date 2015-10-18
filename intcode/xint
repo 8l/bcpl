@@ -1,0 +1,4 @@
+#!/home/mr/distribution/BCPL/cintcode/cintsys -s
+.k file/a,opt
+echo "interp syslib.int blib.int dlib.int <file>.int <opt>"
+interp syslib.int blib.int dlib.int <file>.int <opt>

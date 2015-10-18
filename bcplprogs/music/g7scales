@@ -1,0 +1,267 @@
+  1:  4b Ab Major Scale, 2 octaves, Slurred
+  2:  4b Ab Major Scale, 2 octaves, Legato
+  3:  4b Ab Major Scale, 2 octaves, Staccato
+  4:  3# A  Major Scale, 2 octaves, Slurred
+  5:  3# A  Major Scale, 2 octaves, Legato
+  6:  3# A  Major Scale, 2 octaves, Staccato
+  7:  3# A  Major Scale, 2 octaves, high, Slurred
+  8:  3# A  Major Scale, 2 octaves, high, Legato
+  9:  3# A  Major Scale, 2 octaves, high, Staccato
+ 10:  2b Bb Major Scale, 2 octaves, Slurred
+ 11:  2b Bb Major Scale, 2 octaves, Legato
+ 12:  2b Bb Major Scale, 2 octaves, Staccato
+ 13:  2b Bb Major Scale, 2 octaves, high, Slurred
+ 14:  2b Bb Major Scale, 2 octaves, high, Legato
+ 15:  2b Bb Major Scale, 2 octaves, high, Staccato
+ 16:  5# B  Major Scale, 2 octaves, Slurred
+ 17:  5# B  Major Scale, 2 octaves, Legato
+ 18:  5# B  Major Scale, 2 octaves, Staccato
+ 19:     C  Major Scale, 2 octaves, Slurred
+ 20:     C  Major Scale, 2 octaves, Legato
+ 21:     C  Major Scale, 2 octaves, Staccato
+ 22:  5b Db Major Scale, 2 octaves, Slurred
+ 23:  5b Db Major Scale, 2 octaves, Legato
+ 24:  5b Db Major Scale, 2 octaves, Staccato
+ 25:  2# D  Major Scale, 2 octaves, Slurred
+ 26:  2# D  Major Scale, 2 octaves, Legato
+ 27:  2# D  Major Scale, 2 octaves, Staccato
+ 28:  3b Eb Major Scale, 2 octaves, Slurred
+ 29:  3b Eb Major Scale, 2 octaves, Legato
+ 30:  3b Eb Major Scale, 2 octaves, Staccato
+ 31:  4# E  Major Scale, 2 octaves, Slurred
+ 32:  4# E  Major Scale, 2 octaves, Legato
+ 33:  4# E  Major Scale, 2 octaves, Staccato
+ 34:  6# F# Major Scale, 2 octaves, Slurred
+ 35:  6# F# Major Scale, 2 octaves, Legato
+ 36:  6# F# Major Scale, 2 octaves, Staccato
+ 37:  1# G  Major Scale, 2 octaves, Slurred
+ 38:  1# G  Major Scale, 2 octaves, Legato
+ 39:  1# G  Major Scale, 2 octaves, Staccato
+ 40:  1# G  Major Scale, 2 octaves, Slurred
+ 41:  1# G  Major Scale, 2 octaves, Legato
+ 42:  1# G  Major Scale, 2 octaves, Staccato
+ 43:     A  Melodic Minor Scale, 2 octaves, Slurred
+ 44:     A  Melodic Minor Scale, 2 octaves, Legato
+ 45:     A  Melodic Minor Scale, 2 octaves, Staccato
+ 46:     A  Melodic Minor Scale, 2 octaves, high, Slurred
+ 47:     A  Melodic Minor Scale, 2 octaves, high, Legato
+ 48:     A  Melodic Minor Scale, 2 octaves, high, Staccato
+ 49:     A  Harmonic Minor Scale, 2 octaves, Slurred
+ 50:     A  Harmonic Minor Scale, 2 octaves, Legato
+ 51:     A  Harmonic Minor Scale, 2 octaves, Staccato
+ 52:     A  Harmonic Minor Scale, 2 octaves, high, Slurred
+ 53:     A  Harmonic Minor Scale, 2 octaves, high, Legato
+ 54:     A  Harmonic Minor Scale, 2 octaves, high, Staccato
+ 55:  5b Bb Melodic Minor Scale, 2 octaves, Slurred
+ 56:  5b Bb Melodic Minor Scale, 2 octaves, Legato
+ 57:  5b Bb Melodic Minor Scale, 2 octaves, Staccato
+ 58:  5b Bb Melodic Minor Scale, 2 octaves, high, Slurred
+ 59:  5b Bb Melodic Minor Scale, 2 octaves, high, Legato
+ 60:  5b Bb Melodic Minor Scale, 2 octaves, high, Staccato
+ 61:  5b Bb Harmonic Minor Scale, 2 octaves, Slurred
+ 62:  5b Bb Harmonic Minor Scale, 2 octaves, Legato
+ 63:  5b Bb Harmonic Minor Scale, 2 octaves, Staccato
+ 64:  5b Bb Harmonic Minor Scale, 2 octaves, high, Slurred
+ 65:  5b Bb Harmonic Minor Scale, 2 octaves, high, Legato
+ 66:  5b Bb Harmonic Minor Scale, 2 octaves, high, Staccato
+ 67:  2# B  Melodic Minor Scale, 2 octaves, Slurred
+ 68:  2# B  Melodic Minor Scale, 2 octaves, Legato
+ 69:  2# B  Melodic Minor Scale, 2 octaves, Staccato
+ 70:  2# B  Harmonic Minor Scale, 2 octaves, Slurred
+ 71:  2# B  Harmonic Minor Scale, 2 octaves, Legato
+ 72:  2# B  Harmonic Minor Scale, 2 octaves, Staccato
+ 73:  3b C  Melodic Minor Scale, 2 octaves, Slurred
+ 74:  3b C  Melodic Minor Scale, 2 octaves, Legato
+ 75:  3b C  Melodic Minor Scale, 2 octaves, Staccato
+ 76:  3b C  Harmonic Minor Scale, 2 octaves, Slurred
+ 77:  3b C  Harmonic Minor Scale, 2 octaves, Legato
+ 78:  3b C  Harmonic Minor Scale, 2 octaves, Staccato
+ 79:  4# C# Melodic Minor Scale, 2 octaves, Slurred
+ 80:  4# C# Melodic Minor Scale, 2 octaves, Legato
+ 81:  4# C# Melodic Minor Scale, 2 octaves, Staccato
+ 82:  4# C# Harmonic Minor Scale, 2 octaves, Slurred
+ 83:  4# C# Harmonic Minor Scale, 2 octaves, Legato
+ 84:  4# C# Harmonic Minor Scale, 2 octaves, Staccato
+ 85:  1b D  Melodic Minor Scale, 2 octaves, Slurred
+ 86:  1b D  Melodic Minor Scale, 2 octaves, Legato
+ 87:  1b D  Melodic Minor Scale, 2 octaves, Staccato
+ 88:  1b D  Harmonic Minor Scale, 2 octaves, Slurred
+ 89:  1b D  Harmonic Minor Scale, 2 octaves, Legato
+ 90:  1b D  Harmonic Minor Scale, 2 octaves, Staccato
+ 91:  6b Eb Melodic Minor Scale, 2 octaves, Slurred
+ 92:  6b Eb Melodic Minor Scale, 2 octaves, Legato
+ 93:  6b Eb Melodic Minor Scale, 2 octaves, Staccato
+ 94:  6b Eb Harmonic Minor Scale, 2 octaves, Slurred
+ 95:  6b Eb Harmonic Minor Scale, 2 octaves, Legato
+ 96:  6b Eb Harmonic Minor Scale, 2 octaves, Staccato
+ 97:  1# E  Melodic Minor Scale, 2 octaves, Slurred
+ 98:  1# E  Melodic Minor Scale, 2 octaves, Legato
+ 99:  1# E  Melodic Minor Scale, 2 octaves, Staccato
+100:  1# E  Harmonic Minor Scale, 2 octaves, Slurred
+101:  1# E  Harmonic Minor Scale, 2 octaves, Legato
+102:  1# E  Harmonic Minor Scale, 2 octaves, Staccato
+103:  4b F  Melodic Minor Scale, 2 octaves, Slurred
+104:  4b F  Melodic Minor Scale, 2 octaves, Legato
+105:  4b F  Melodic Minor Scale, 2 octaves, Staccato
+106:  4b F  Harmonic Minor Scale, 2 octaves, Slurred
+107:  4b F  Harmonic Minor Scale, 2 octaves, Legato
+108:  4b F  Harmonic Minor Scale, 2 octaves, Staccato
+109:  3# F# Melodic Minor Scale, 2 octaves, Slurred
+110:  3# F# Melodic Minor Scale, 2 octaves, Legato
+111:  3# F# Melodic Minor Scale, 2 octaves, Staccato
+112:  3# F# Harmonic Minor Scale, 2 octaves, Slurred
+113:  3# F# Harmonic Minor Scale, 2 octaves, Legato
+114:  3# F# Harmonic Minor Scale, 2 octaves, Staccato
+115:  2b G  Melodic Minor Scale, 2 octaves, Slurred
+116:  2b G  Melodic Minor Scale, 2 octaves, Legato
+117:  2b G  Melodic Minor Scale, 2 octaves, Staccato
+118:  2b G  Harmonic Minor Scale, 2 octaves, Slurred
+119:  2b G  Harmonic Minor Scale, 2 octaves, Legato
+120:  2b G  Harmonic Minor Scale, 2 octaves, Staccato
+121:  5# G# Melodic Minor Scale, 2 octaves, Slurred
+122:  5# G# Melodic Minor Scale, 2 octaves, Legato
+123:  5# G# Melodic Minor Scale, 2 octaves, Staccato
+124:        Chromatic scale starting on C, 2 octaves, Slurred
+125:        Chromatic scale starting on C, 2 octaves, Legato
+126:        Chromatic scale starting on C, 2 octaves, Staccato
+127:        Chromatic scale starting on C#, 2 octaves, Slurred
+128:        Chromatic scale starting on C#, 2 octaves, Legato
+129:        Chromatic scale starting on C#, 2 octaves, Staccato
+130:        Chromatic scale starting on D, 2 octaves, Slurred
+131:        Chromatic scale starting on D, 2 octaves, Legato
+132:        Chromatic scale starting on D, 2 octaves, Staccato
+133:        Chromatic scale starting on D#, 2 octaves, Slurred
+134:        Chromatic scale starting on D#, 2 octaves, Legato
+135:        Chromatic scale starting on D#, 2 octaves, Staccato
+136:        Chromatic scale starting on E, 2 octaves, Slurred
+137:        Chromatic scale starting on E, 2 octaves, Legato
+138:        Chromatic scale starting on E, 2 octaves, Staccato
+139:        Chromatic scale starting on F, 2 octaves, Slurred
+140:        Chromatic scale starting on F, 2 octaves, Legato
+141:        Chromatic scale starting on F, 2 octaves, Staccato
+142:        Chromatic scale starting on F#, 2 octaves, Slurred
+143:        Chromatic scale starting on F#, 2 octaves, Legato
+144:        Chromatic scale starting on F#, 2 octaves, Staccato
+145:        Chromatic scale starting on G, 2 octaves, Slurred
+146:        Chromatic scale starting on G, 2 octaves, Legato
+147:        Chromatic scale starting on G, 2 octaves, Staccato
+148:        Chromatic scale starting on G#, 2 octaves, Slurred
+149:        Chromatic scale starting on G#, 2 octaves, Legato
+150:        Chromatic scale starting on G#, 2 octaves, Staccato
+151:        Chromatic scale starting on A, 2 octaves, Slurred
+152:        Chromatic scale starting on A, 2 octaves, Legato
+153:        Chromatic scale starting on A, 2 octaves, Staccato
+154:        Chromatic scale starting on A, 2 octaves, high, Slurred
+155:        Chromatic scale starting on A, 2 octaves, high, Legato
+156:        Chromatic scale starting on A, 2 octaves, high, Staccato
+157:        Chromatic scale starting on Bb, 2 octaves, Slurred
+158:        Chromatic scale starting on Bb, 2 octaves, Legato
+159:        Chromatic scale starting on Bb, 2 octaves, Staccato
+160:        Chromatic scale starting on Bb, 2 octaves, high, Slurred
+161:        Chromatic scale starting on Bb, 2 octaves, high, Legato
+162:        Chromatic scale starting on Bb, 2 octaves, high, Staccato
+163:        Chromatic scale starting on B, 2 octaves, Slurred
+164:        Chromatic scale starting on B, 2 octaves, Legato
+165:        Chromatic scale starting on B, 2 octaves, Staccato
+166:  4b Ab Major Arpeggio, 2 octaves, Slurred
+167:  4b Ab Major Arpeggio, 2 octaves, Legato
+168:  4b Ab Major Arpeggio, 2 octaves, Staccato
+169:  3# A  Major Arpeggio, 2 octaves, Slurred
+170:  3# A  Major Arpeggio, 2 octaves, Legato
+171:  3# A  Major Arpeggio, 2 octaves, Staccato
+172:  3# A  Major Arpeggio, 2 octaves, high, Slurred
+173:  3# A  Major Arpeggio, 2 octaves, high, Legato
+174:  3# A  Major Arpeggio, 2 octaves, high, Staccato
+175:  2b Bb Major Arpeggio, 2 octaves, Slurred
+176:  2b Bb Major Arpeggio, 2 octaves, Legato
+177:  2b Bb Major Arpeggio, 2 octaves, Staccato
+178:  2b Bb Major Arpeggio, 2 octaves, high, Slurred
+179:  2b Bb Major Arpeggio, 2 octaves, high, Legato
+180:  2b Bb Major Arpeggio, 2 octaves, high, Staccato
+181:  5# B  Major Arpeggio, 2 octaves, Slurred
+182:  5# B  Major Arpeggio, 2 octaves, Legato
+183:  5# B  Major Arpeggio, 2 octaves, Staccato
+184:     C  Major Arpeggio, 2 octaves, Slurred
+185:     C  Major Arpeggio, 2 octaves, Legato
+186:     C  Major Arpeggio, 2 octaves, Staccato
+187:  5b Db Major Arpeggio, 2 octaves, Slurred
+188:  5b Db Major Arpeggio, 2 octaves, Legato
+189:  5b Db Major Arpeggio, 2 octaves, Staccato
+190:  2# D  Major Arpeggio, 2 octaves, Slurred
+191:  2# D  Major Arpeggio, 2 octaves, Legato
+192:  2# D  Major Arpeggio, 2 octaves, Staccato
+193:  3b Eb Major Arpeggio, 2 octaves, Slurred
+194:  3b Eb Major Arpeggio, 2 octaves, Legato
+195:  3b Eb Major Arpeggio, 2 octaves, Staccato
+196:  4# E  Major Arpeggio, 2 octaves, Slurred
+197:  4# E  Major Arpeggio, 2 octaves, Legato
+198:  4# E  Major Arpeggio, 2 octaves, Staccato
+199:  6# F# Major Arpeggio, 2 octaves, Slurred
+200:  6# F# Major Arpeggio, 2 octaves, Legato
+201:  6# F# Major Arpeggio, 2 octaves, Staccato
+202:  1# G  Major Arpeggio, 2 octaves, Slurred
+203:  1# G  Major Arpeggio, 2 octaves, Legato
+204:  1# G  Major Arpeggio, 2 octaves, Staccato
+205:  1# G  Major Arpeggio, 2 octaves, Slurred
+206:  1# G  Major Arpeggio, 2 octaves, Legato
+207:  1# G  Major Arpeggio, 2 octaves, Staccato
+208:     A  Minor Arpeggio, 2 octaves, Slurred
+209:     A  Minor Arpeggio, 2 octaves, Legato
+210:     A  Minor Arpeggio, 2 octaves, Staccato
+211:     A  Minor Arpeggio, 2 octaves, high, Slurred
+212:     A  Minor Arpeggio, 2 octaves, high, Legato
+213:     A  Minor Arpeggio, 2 octaves, high, Staccato
+214:  5b Bb Minor Arpeggio, 2 octaves, Slurred
+215:  5b Bb Minor Arpeggio, 2 octaves, Legato
+216:  5b Bb Minor Arpeggio, 2 octaves, Staccato
+217:  5b Bb Minor Arpeggio, 2 octaves, high, Slurred
+218:  5b Bb Minor Arpeggio, 2 octaves, high, Legato
+219:  5b Bb Minor Arpeggio, 2 octaves, high, Staccato
+220:  2# B  Minor Arpeggio, 2 octaves, Slurred
+221:  2# B  Minor Arpeggio, 2 octaves, Legato
+222:  2# B  Minor Arpeggio, 2 octaves, Staccato
+223:  3b C  Minor Arpeggio, 2 octaves, Slurred
+224:  3b C  Minor Arpeggio, 2 octaves, Legato
+225:  3b C  Minor Arpeggio, 2 octaves, Staccato
+226:  4# C# Minor Arpeggio, 2 octaves, Slurred
+227:  4# C# Minor Arpeggio, 2 octaves, Legato
+228:  4# C# Minor Arpeggio, 2 octaves, Staccato
+229:  1b D  Minor Arpeggio, 2 octaves, Slurred
+230:  1b D  Minor Arpeggio, 2 octaves, Legato
+231:  1b D  Minor Arpeggio, 2 octaves, Staccato
+232:  6b Eb Minor Arpeggio, 2 octaves, Slurred
+233:  6b Eb Minor Arpeggio, 2 octaves, Legato
+234:  6b Eb Minor Arpeggio, 2 octaves, Staccato
+235:  1# E  Minor Arpeggio, 2 octaves, Slurred
+236:  1# E  Minor Arpeggio, 2 octaves, Legato
+237:  1# E  Minor Arpeggio, 2 octaves, Staccato
+238:  4b F  Minor Arpeggio, 2 octaves, Slurred
+239:  4b F  Minor Arpeggio, 2 octaves, Legato
+240:  4b F  Minor Arpeggio, 2 octaves, Staccato
+241:  3# F# Minor Arpeggio, 2 octaves, Slurred
+242:  3# F# Minor Arpeggio, 2 octaves, Legato
+243:  3# F# Minor Arpeggio, 2 octaves, Staccato
+244:  2b G  Minor Arpeggio, 2 octaves, Slurred
+245:  2b G  Minor Arpeggio, 2 octaves, Legato
+246:  2b G  Minor Arpeggio, 2 octaves, Staccato
+247:  5# G# Minor Arpeggio, 2 octaves, Slurred
+248:  5# G# Minor Arpeggio, 2 octaves, Legato
+249:  5# G# Minor Arpeggio, 2 octaves, Staccato
+250:  5# B  Dominant seventh, 2 octaves, Slurred
+251:  5# B  Dominant seventh, 2 octaves, Legato
+252:  5# B  Dominant seventh, 2 octaves, Staccato
+253:     C  Dominant seventh, 2 octaves, Slurred
+254:     C  Dominant seventh, 2 octaves, Legato
+255:     C  Dominant seventh, 2 octaves, Staccato
+256:  5b Db Dominant seventh, 2 octaves, Slurred
+257:  5b Db Dominant seventh, 2 octaves, Legato
+258:  5b Db Dominant seventh, 2 octaves, Staccato
+259:  2# D  Dominant seventh, 2 octaves, Slurred
+260:  2# D  Dominant seventh, 2 octaves, Legato
+261:  2# D  Dominant seventh, 2 octaves, Staccato
+262:        Diminished seventh starting on Ab, 2 octaves, Slurred
+263:        Diminished seventh starting on Ab, 2 octaves, Legato
+264:        Diminished seventh starting on Ab, 2 octaves, Staccato
+265:        Diminished seventh starting on C, 2 octaves, Slurred
+266:        Diminished seventh starting on C, 2 octaves, Legato
+267:        Diminished seventh starting on C, 2 octaves, Staccato

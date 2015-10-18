@@ -1,0 +1,6984 @@
+	.arch armv6
+	.eabi_attribute 27, 3
+	.eabi_attribute 28, 1
+	.fpu vfp
+	.eabi_attribute 20, 1
+	.eabi_attribute 21, 1
+	.eabi_attribute 23, 3
+	.eabi_attribute 24, 1
+	.eabi_attribute 25, 1
+	.eabi_attribute 26, 2
+	.eabi_attribute 30, 2
+	.eabi_attribute 18, 4
+	.file	"cintsys.c"
+	.text
+	.align	2
+	.global	mcprf
+	.type	mcprf, %function
+mcprf:
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 0, uses_anonymous_args = 0
+	stmfd	sp!, {r3, lr}
+	bl	printf
+	mov	r0, #0
+	ldmfd	sp!, {r3, pc}
+	.size	mcprf, .-mcprf
+	.align	2
+	.global	sysGraphics
+	.type	sysGraphics, %function
+sysGraphics:
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 0, uses_anonymous_args = 0
+	@ link register save eliminated.
+	mov	r0, #0
+	bx	lr
+	.size	sysGraphics, .-sysGraphics
+	.align	2
+	.global	badimplementation
+	.type	badimplementation, %function
+badimplementation:
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 0, uses_anonymous_args = 0
+	@ link register save eliminated.
+	mov	r0, #0
+	bx	lr
+	.size	badimplementation, .-badimplementation
+	.align	2
+	.global	initfpvec
+	.type	initfpvec, %function
+initfpvec:
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 0, uses_anonymous_args = 0
+	@ link register save eliminated.
+	mov	r0, #0
+	bx	lr
+	.size	initfpvec, .-initfpvec
+	.align	2
+	.global	newfno
+	.type	newfno, %function
+newfno:
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 0, uses_anonymous_args = 0
+	@ link register save eliminated.
+	bx	lr
+	.size	newfno, .-newfno
+	.align	2
+	.global	freefno
+	.type	freefno, %function
+freefno:
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 0, uses_anonymous_args = 0
+	@ link register save eliminated.
+	bx	lr
+	.size	freefno, .-freefno
+	.align	2
+	.global	findfp
+	.type	findfp, %function
+findfp:
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 0, uses_anonymous_args = 0
+	@ link register save eliminated.
+	bx	lr
+	.size	findfp, .-findfp
+	.align	2
+	.global	inbuf_next
+	.type	inbuf_next, %function
+inbuf_next:
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 0, uses_anonymous_args = 0
+	@ link register save eliminated.
+	ldr	r3, .L11
+	ldr	r2, [r3, #0]
+	ldr	r1, [r3, #4]
+	ldrb	r0, [r1, r2]	@ zero_extendqisi2
+	cmp	r0, #0
+	addne	r2, r2, #1
+	strne	r2, [r3, #0]
+	mvneq	r0, #0
+	bx	lr
+.L12:
+	.align	2
+.L11:
+	.word	.LANCHOR0
+	.size	inbuf_next, .-inbuf_next
+	.align	2
+	.global	prepend_stdin
+	.type	prepend_stdin, %function
+prepend_stdin:
+	@ args = 0, pretend = 0, frame = 8
+	@ frame_needed = 0, uses_anonymous_args = 0
+	stmfd	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+	mov	r4, r1
+	cmp	r0, #0
+	addne	r1, r1, #1
+	rsb	r5, r3, r1
+	cmp	r5, #1
+	sub	sp, sp, #12
+	mov	r7, r3
+	mov	sl, r2
+	mov	fp, r0
+	beq	.L13
+	cmp	r0, #0
+	moveq	r9, r0
+	beq	.L15
+	bl	strlen
+	mov	r9, r0
+.L15:
+	add	r6, r7, #1
+	cmp	r4, r6
+	ble	.L16
+	add	r3, sl, r7, asl #2
+	mov	r8, r6
+.L17:
+	ldr	r0, [r3, #4]!
+	add	r8, r8, #1
+	str	r3, [sp, #4]
+	bl	strlen
+	cmp	r8, r4
+	ldr	r3, [sp, #4]
+	add	r9, r9, r0
+	bne	.L17
+.L16:
+	add	r0, r9, r5
+	bl	malloc
+	ldr	r8, .L28
+	cmp	r0, #0
+	mov	r5, r0
+	str	r0, [r8, #4]
+	beq	.L27
+	mov	r3, #0
+	cmp	fp, #0
+	strb	r3, [r0, #0]
+	beq	.L19
+	mov	r1, fp
+	bl	strcat
+.L19:
+	cmp	r4, r6
+	ble	.L20
+	add	r7, sl, r7, asl #2
+	b	.L23
+.L21:
+	mov	r0, r5
+	ldr	r1, [r7, #4]!
+	add	r6, r6, #1
+	bl	strcat
+	cmp	r6, r4
+	ldr	r5, [r8, #4]
+	beq	.L20
+.L23:
+	ldrb	r3, [r5, #0]	@ zero_extendqisi2
+	cmp	r3, #0
+	beq	.L21
+	mov	r0, r5
+	bl	strlen
+	ldr	r1, .L28+4
+	mov	r2, #2
+	add	r6, r6, #1
+	add	r0, r5, r0
+	bl	memcpy
+	ldr	r5, [r8, #4]
+	ldr	r1, [r7, #4]!
+	mov	r0, r5
+	bl	strcat
+	cmp	r6, r4
+	ldr	r5, [r8, #4]
+	bne	.L23
+.L20:
+	mov	r0, r5
+	bl	strlen
+	ldr	r1, .L28+8
+	mov	r2, #2
+	add	r0, r5, r0
+	add	sp, sp, #12
+	ldmfd	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+	b	memcpy
+.L13:
+	add	sp, sp, #12
+	ldmfd	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
+.L27:
+	ldr	r0, .L28+12
+	bl	perror
+	mvn	r0, #0
+	bl	exit
+.L29:
+	.align	2
+.L28:
+	.word	.LANCHOR0
+	.word	.LC1
+	.word	.LC2
+	.word	.LC0
+	.size	prepend_stdin, .-prepend_stdin
+	.align	2
+	.global	concatsegs
+	.type	concatsegs, %function
+concatsegs:
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 0, uses_anonymous_args = 0
+	@ link register save eliminated.
+	cmp	r0, #0
+	cmpne	r1, #0
+	beq	.L33
+	ldr	r2, .L35
+	mov	r3, r0
+	ldr	r2, [r2, #0]
+.L32:
+	add	ip, r2, r3, asl #2
+	ldr	r3, [r2, r3, asl #2]
+	cmp	r3, #0
+	bne	.L32
+	str	r1, [ip, #0]
+	bx	lr
+.L33:
+	mov	r0, #0
+	bx	lr
+.L36:
+	.align	2
+.L35:
+	.word	W
+	.size	concatsegs, .-concatsegs
+	.align	2
+	.global	rdhex
+	.type	rdhex, %function
+rdhex:
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 0, uses_anonymous_args = 0
+	stmfd	sp!, {r3, r4, r5, lr}
+	mov	r4, r0
+.L42:
+	mov	r0, r4
+	bl	fgetc
+	mov	r3, r0
+	b	.L38
+.L39:
+	bl	fgetc
+	mov	r3, r0
+.L38:
+	cmp	r3, #32
+	cmpne	r3, #10
+	mov	r0, r4
+	movne	r2, #0
+	moveq	r2, #1
+	beq	.L39
+	cmp	r3, #13
+	beq	.L39
+	cmp	r3, #35
+	bne	.L51
+.L49:
+	mov	r0, r4
+	bl	fgetc
+	cmp	r0, #10
+	cmnne	r0, #1
+	beq	.L42
+	b	.L49
+.L51:
+	mov	r5, r2
+	b	.L41
+.L46:
+	mov	r0, r4
+	orr	r5, r1, r5, asl #4
+	bl	fgetc
+	mov	r3, r0
+.L41:
+	sub	r1, r3, #48
+	cmp	r1, #9
+	sub	r0, r3, #65
+	movhi	r1, #100
+	sub	r2, r3, #97
+	cmp	r0, #5
+	subls	r1, r3, #55
+	cmp	r2, #5
+	subls	r1, r3, #87
+	bls	.L46
+	cmp	r1, #100
+	bne	.L46
+	cmn	r3, #1
+	movne	r0, r5
+	moveq	r0, r3
+	ldmfd	sp!, {r3, r4, r5, pc}
+	.size	rdhex, .-rdhex
+	.align	2
+	.global	globin
+	.type	globin, %function
+globin:
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 0, uses_anonymous_args = 0
+	@ link register save eliminated.
+	ldr	r3, .L61
+	stmfd	sp!, {r4, r5, r6, r7, r8}
+	cmp	r0, #0
+	ldr	r4, [r3, #0]
+	ldr	r8, [r4, r1, asl #2]
+	beq	.L53
+	add	r6, r0, #1
+	mov	r7, r0
+	ldr	ip, [r4, r6, asl #2]
+	add	ip, r0, ip
+	ldr	r3, [r4, ip, asl #2]
+	cmp	r8, r3
+	movge	r6, r6, asl #2
+	blt	.L59
+.L54:
+	sub	r3, ip, #1
+	sub	r2, ip, #2
+	ldr	r3, [r4, r3, asl #2]
+	cmp	r3, #0
+	beq	.L55
+	add	ip, r4, ip, asl #2
+.L56:
+	ldr	r5, [r4, r2, asl #2]
+	sub	ip, ip, #8
+	add	r5, r1, r5
+	add	r3, r6, r3
+	str	r3, [r4, r5, asl #2]
+	ldr	r3, [ip, #-4]
+	sub	r2, r2, #2
+	cmp	r3, #0
+	bne	.L56
+.L55:
+	ldr	r7, [r4, r7, asl #2]
+	cmp	r7, #0
+	beq	.L53
+	add	r6, r7, #1
+	ldr	ip, [r4, r6, asl #2]
+	mov	r6, r6, asl #2
+	add	ip, r7, ip
+	ldr	r3, [r4, ip, asl #2]
+	cmp	r8, r3
+	bge	.L54
+.L59:
+	mov	r0, #0
+.L53:
+	ldmfd	sp!, {r4, r5, r6, r7, r8}
+	bx	lr
+.L62:
+	.align	2
+.L61:
+	.word	W
+	.size	globin, .-globin
+	.align	2
+	.global	getvec
+	.type	getvec, %function
+getvec:
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 0, uses_anonymous_args = 0
+	@ link register save eliminated.
+	ldr	r3, .L77
+	stmfd	sp!, {r4, r5, r6, r7, r8, r9, sl}
+	add	r6, r0, #11
+	ldr	r1, [r3, #0]
+	bic	r6, r6, #1
+	mov	r2, #0
+	ldr	r3, [r1, #0]
+	and	ip, r3, #1
+	b	.L74
+.L75:
+	cmp	r3, #0
+	beq	.L66
+	add	r2, r2, r3
+	ldr	r3, [r1, r2, asl #2]
+	and	ip, r3, #1
+.L74:
+	cmp	ip, #0
+	add	r5, r1, r2, asl #2
+	beq	.L75
+	mov	r4, r2
+.L68:
+	sub	r3, r3, #1
+	add	r4, r4, r3
+	ldr	r3, [r1, r4, asl #2]
+	ands	ip, r3, #1
+	bne	.L68
+	rsb	r7, r2, r4
+	cmp	r6, r7
+	movgt	r2, r4
+	bgt	.L74
+.L76:
+	add	r3, r6, r2
+	cmp	r3, r4
+	movne	r4, r3
+	rsbne	r3, r6, r7
+	addne	r3, r3, #1
+	strne	r3, [r1, r4, asl #2]
+	sub	r9, r4, #9
+	str	r6, [r5, #0]
+	ldr	r5, .L77+4
+	sub	sl, r4, #8
+	str	r5, [r1, r9, asl #2]
+	ldr	r5, .L77+8
+	ldr	r3, .L77+12
+	str	r5, [r1, sl, asl #2]
+	sub	r8, r4, #7
+	sub	r7, r4, #6
+	ldr	r5, .L77+16
+	sub	ip, r4, #5
+	str	r5, [r1, r8, asl #2]
+	str	r0, [r1, r7, asl #2]
+	ldr	r6, [r3, #0]
+	sub	r5, r4, #4
+	str	r6, [r1, ip, asl #2]
+	ldr	r6, [r3, #4]
+	sub	ip, r4, #3
+	str	r6, [r1, r5, asl #2]
+	ldr	r5, [r3, #8]
+	str	r5, [r1, ip, asl #2]
+	sub	ip, r4, #2
+	ldr	r3, [r3, #12]
+	sub	r4, r4, #1
+	str	r3, [r1, ip, asl #2]
+	ldr	r3, .L77+20
+	str	r2, [r1, r4, asl #2]
+	ldr	r4, [r3, #0]
+	ldr	r3, .L77+24
+	ldr	ip, [r3, #0]
+	add	r3, r2, #1
+	cmp	r0, r4
+	addle	r0, ip, r0
+	addgt	r0, ip, r4
+	ldr	r2, [r1, r0, asl #2]
+	add	r2, r2, #1
+	str	r2, [r1, r0, asl #2]
+.L66:
+	mov	r0, r3
+	ldmfd	sp!, {r4, r5, r6, r7, r8, r9, sl}
+	bx	lr
+.L78:
+	.align	2
+.L77:
+	.word	W
+	.word	-858993460
+	.word	1431655765
+	.word	taskname
+	.word	-1431655766
+	.word	vecstatsvupb
+	.word	vecstatsvec
+	.size	getvec, .-getvec
+	.align	2
+	.global	freevec
+	.type	freevec, %function
+freevec:
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 0, uses_anonymous_args = 0
+	cmp	r0, #0
+	stmfd	sp!, {r3, r4, r5, r6, r7, r8, r9, sl, fp, lr}
+	beq	.L86
+	ldr	r5, .L89
+	sub	r4, r0, #1
+	ldr	r3, [r5, #0]
+	mov	r8, r4, asl #2
+	add	r2, r3, r8
+	ldr	r6, [r3, r4, asl #2]
+	tst	r6, #1
+	bne	.L87
+	add	r7, r4, r6
+	sub	sl, r7, #1
+	sub	r9, r7, #7
+	ldr	r1, [r3, sl, asl #2]
+	cmp	r1, r4
+	subne	fp, r7, #8
+	movne	r9, r9, asl #2
+	movne	fp, fp, asl #2
+	beq	.L88
+.L83:
+	mov	r1, r4
+	ldr	r0, .L89+4
+	bl	printf
+	mov	r1, r6
+	ldr	r0, .L89+8
+	bl	printf
+	ldr	r3, [r5, #0]
+	ldr	r0, .L89+12
+	sub	r7, r7, #6
+	ldr	r1, [r3, fp]
+	bl	printf
+	ldr	r3, [r5, #0]
+	ldr	r0, .L89+16
+	ldr	r1, [r3, r9]
+	bl	printf
+	ldr	r3, [r5, #0]
+	ldr	r0, .L89+20
+	ldr	r1, [r3, r7, asl #2]
+	bl	printf
+	ldr	r3, [r5, #0]
+	ldr	r0, .L89+24
+	mov	r7, r7, asl #2
+	ldr	r1, [r3, sl, asl #2]
+	bl	printf
+	ldr	r0, .L89+28
+	mov	r1, r4
+	bl	printf
+	ldr	r3, [r5, #0]
+	mov	r0, #0
+	add	r2, r3, r8
+	ldr	r6, [r3, r4, asl #2]
+.L85:
+	orr	r6, r6, #1
+	str	r6, [r2, #0]
+	ldr	r1, .L89+32
+	ldr	r2, .L89+36
+	ldr	ip, [r3, r7]
+	ldr	r1, [r1, #0]
+	ldr	r2, [r2, #0]
+	cmp	ip, r2
+	addle	r2, r1, ip
+	addgt	r2, r1, r2
+	ldr	r1, [r3, r2, asl #2]
+	sub	r1, r1, #1
+	str	r1, [r3, r2, asl #2]
+	ldmfd	sp!, {r3, r4, r5, r6, r7, r8, r9, sl, fp, pc}
+.L88:
+	ldr	r0, [r3, r9, asl #2]
+	ldr	r1, .L89+40
+	sub	fp, r7, #8
+	cmp	r0, r1
+	mov	r9, r9, asl #2
+	movne	fp, fp, asl #2
+	bne	.L83
+	ldr	r1, [r3, fp, asl #2]
+	ldr	r0, .L89+44
+	mov	fp, fp, asl #2
+	cmp	r1, r0
+	subeq	r7, r7, #6
+	mvneq	r0, #0
+	moveq	r7, r7, asl #2
+	bne	.L83
+	b	.L85
+.L87:
+	ldr	r0, .L89+48
+	mov	r1, r4
+	bl	printf
+	mov	r0, #0
+	ldmfd	sp!, {r3, r4, r5, r6, r7, r8, r9, sl, fp, pc}
+.L86:
+	mvn	r0, #0
+	ldmfd	sp!, {r3, r4, r5, r6, r7, r8, r9, sl, fp, pc}
+.L90:
+	.align	2
+.L89:
+	.word	W
+	.word	.LC4
+	.word	.LC5
+	.word	.LC6
+	.word	.LC7
+	.word	.LC8
+	.word	.LC9
+	.word	.LC10
+	.word	vecstatsvec
+	.word	vecstatsvupb
+	.word	-1431655766
+	.word	1431655765
+	.word	.LC3
+	.size	freevec, .-freevec
+	.align	2
+	.global	unloadseg
+	.type	unloadseg, %function
+unloadseg:
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 0, uses_anonymous_args = 0
+	stmfd	sp!, {r3, r4, r5, lr}
+	subs	r3, r0, #0
+	ldmeqfd	sp!, {r3, r4, r5, pc}
+	ldr	r5, .L95
+.L93:
+	ldr	r2, [r5, #0]
+	mov	r0, r3
+	ldr	r4, [r2, r3, asl #2]
+	bl	freevec
+	subs	r3, r4, #0
+	bne	.L93
+	ldmfd	sp!, {r3, r4, r5, pc}
+.L96:
+	.align	2
+.L95:
+	.word	W
+	.size	unloadseg, .-unloadseg
+	.align	2
+	.global	loadsegfp
+	.type	loadsegfp, %function
+loadsegfp:
+	@ args = 0, pretend = 0, frame = 24
+	@ frame_needed = 0, uses_anonymous_args = 0
+	stmfd	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+	mov	r7, #0
+	ldr	r8, .L123
+	ldr	sl, .L123+4
+	ldr	r6, .L123+8
+	sub	sp, sp, #28
+	mov	r5, r0
+	mov	r4, r7
+.L121:
+	mov	r0, r5
+	bl	rdhex
+	cmp	r0, #1000
+	beq	.L102
+	bgt	.L104
+	cmn	r0, #1
+	beq	.L101
+.L100:
+	cmp	r4, #0
+	beq	.L101
+	ldr	r5, .L123+8
+	mov	r0, r4
+.L105:
+	ldr	r3, [r5, #0]
+	ldr	r4, [r3, r4, asl #2]
+	bl	freevec
+	subs	r0, r4, #0
+	bne	.L105
+.L101:
+	mov	r0, r4
+	add	sp, sp, #28
+	ldmfd	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
+.L104:
+	cmp	r0, r8
+	beq	.L121
+	cmp	r0, sl
+	bne	.L100
+	add	r0, sp, #20
+	mov	r1, #4
+	mov	r2, #1
+	mov	r3, r5
+	bl	fread
+	cmp	r0, #4
+	cmpne	r0, #1
+	moveq	fp, #0
+	movne	fp, #1
+	bne	.L100
+	ldr	r0, [sp, #20]
+	bl	getvec
+	subs	r9, r0, #0
+	beq	.L100
+	ldr	r3, [r6, #0]
+	add	r0, r9, #1
+	mov	r1, #4
+	str	fp, [r3, r9, asl #2]
+	add	r0, r3, r0, asl #2
+	ldr	r2, [sp, #20]
+	mov	r3, r5
+	bl	fread
+	ldr	r3, [sp, #20]
+	cmp	r0, r3
+	beq	.L111
+	cmp	r0, r3, asl #2
+	bne	.L100
+.L111:
+	cmp	r4, #0
+	moveq	r7, r9
+	moveq	r4, r7
+	ldrne	r3, [r6, #0]
+	strne	r9, [r3, r7, asl #2]
+	movne	r7, r9
+	b	.L121
+.L102:
+	mov	r0, r5
+	bl	rdhex
+	str	r0, [sp, #8]
+	bl	getvec
+	cmp	r0, #0
+	str	r0, [sp, #12]
+	beq	.L100
+	ldr	r1, [sp, #8]
+	ldr	r3, [r6, #0]
+	cmp	r1, #0
+	ldr	r1, [sp, #12]
+	mov	r2, #0
+	str	r2, [r3, r1, asl #2]
+	ble	.L108
+	add	r9, r1, #1
+	mov	fp, #1
+	mov	r9, r9, asl #2
+	b	.L109
+.L122:
+	ldr	r3, [r6, #0]
+.L109:
+	mov	r0, r5
+	str	r3, [sp, #4]
+	bl	rdhex
+	ldr	r2, [sp, #8]
+	ldr	r3, [sp, #4]
+	add	fp, fp, #1
+	cmp	r2, fp
+	str	r0, [r3, r9]
+	add	r9, r9, #4
+	bge	.L122
+.L108:
+	cmp	r4, #0
+	beq	.L114
+	ldr	r3, [r6, #0]
+	ldr	r1, [sp, #12]
+	str	r1, [r3, r7, asl #2]
+	mov	r7, r1
+	b	.L121
+.L114:
+	ldr	r7, [sp, #12]
+	mov	r4, r7
+	b	.L121
+.L124:
+	.align	2
+.L123:
+	.word	1002
+	.word	3000
+	.word	W
+	.size	loadsegfp, .-loadsegfp
+	.global	__aeabi_ldivmod
+	.align	2
+	.global	muldiv
+	.type	muldiv, %function
+muldiv:
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 0, uses_anonymous_args = 0
+	subs	ip, r2, #0
+	stmfd	sp!, {r3, r4, r5, r6, r7, lr}
+	smull	r6, r7, r0, r1
+	moveq	r4, #1
+	moveq	r5, #0
+	beq	.L126
+	mov	r5, ip, asr #31
+	mov	r2, ip
+	mov	r0, r6
+	mov	r1, r7
+	mov	r3, r5
+	mov	r4, ip
+	bl	__aeabi_ldivmod
+	mov	ip, r2
+.L126:
+	ldr	lr, .L128
+	mov	r0, r6
+	mov	r1, r7
+	mov	r2, r4
+	mov	r3, r5
+	str	ip, [lr, #0]
+	bl	__aeabi_ldivmod
+	ldmfd	sp!, {r3, r4, r5, r6, r7, pc}
+.L129:
+	.align	2
+.L128:
+	.word	result2
+	.size	muldiv, .-muldiv
+	.global	__aeabi_uidiv
+	.global	__aeabi_uidivmod
+	.align	2
+	.global	muldiv1
+	.type	muldiv1, %function
+muldiv1:
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 0, uses_anonymous_args = 0
+	cmp	r2, #0
+	stmfd	sp!, {r3, r4, r5, r6, r7, r8, sl, lr}
+	movne	r6, r2
+	moveq	r6, #1
+	subs	r4, r0, #0
+	movlt	r7, #0
+	movge	r7, #1
+	movlt	r3, #1
+	movge	r3, #0
+	rsblt	r4, r4, #0
+	cmp	r1, #0
+	mov	r8, r3
+	rsblt	sl, r1, #0
+	movlt	r8, r7
+	movge	sl, r1
+	movlt	r7, r3
+	cmp	r6, #0
+	rsblt	r6, r6, #0
+	movge	r7, r8
+	cmp	r4, #0
+	beq	.L145
+	mov	r1, r6
+	mov	r0, sl
+	bl	__aeabi_uidiv
+	mov	r1, r6
+	mov	r5, r0
+	mov	r0, sl
+	bl	__aeabi_uidivmod
+	mov	r3, #0
+	mov	r0, r3
+.L141:
+	tst	r4, #1
+	beq	.L139
+	add	r3, r3, r1
+	cmp	r6, r3
+	add	r0, r0, r5
+	addls	r0, r0, #1
+	rsbls	r3, r6, r3
+.L139:
+	mov	r1, r1, asl #1
+	cmp	r6, r1
+	mov	r4, r4, lsr #1
+	mov	r5, r5, asl #1
+	addls	r5, r5, #1
+	rsbls	r1, r6, r1
+	cmp	r4, #0
+	bne	.L141
+.L138:
+	ldr	r2, .L147
+	cmp	r8, #0
+	rsbne	r3, r3, #0
+	cmp	r7, #0
+	str	r3, [r2, #0]
+	rsbne	r0, r0, #0
+	ldmfd	sp!, {r3, r4, r5, r6, r7, r8, sl, pc}
+.L145:
+	mov	r0, r4
+	mov	r3, r4
+	b	.L138
+.L148:
+	.align	2
+.L147:
+	.word	result2
+	.size	muldiv1, .-muldiv1
+	.align	2
+	.global	relfilename
+	.type	relfilename, %function
+relfilename:
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 0, uses_anonymous_args = 0
+	@ link register save eliminated.
+	ldrb	r3, [r0, #0]	@ zero_extendqisi2
+	cmp	r3, #47
+	cmpne	r3, #92
+	bne	.L151
+	b	.L156
+.L153:
+	cmp	r3, #58
+	beq	.L155
+.L151:
+	ldrb	r3, [r0], #1	@ zero_extendqisi2
+	cmp	r3, #0
+	bne	.L153
+	mov	r0, #1
+	bx	lr
+.L156:
+	mov	r0, #0
+	bx	lr
+.L155:
+	mov	r0, #0
+	bx	lr
+	.size	relfilename, .-relfilename
+	.align	2
+	.global	msecdelay
+	.type	msecdelay, %function
+msecdelay:
+	@ args = 0, pretend = 0, frame = 24
+	@ frame_needed = 0, uses_anonymous_args = 0
+	stmfd	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+	sub	sp, sp, #36
+	mov	r6, r0
+	ldr	r7, .L164
+	add	r0, sp, #12
+	bl	ftime
+	ldrsh	r1, [sp, #18]
+	ldr	ip, [r7, #0]
+	ldr	r2, .L164+4
+	mov	r3, #0
+	rsb	r0, r1, r1, asl #4
+	ldr	r1, [ip, #532]
+	mov	r0, r0, asl #2
+	mov	r4, r0
+	mov	r5, r0, asr #31
+	rsb	r1, r1, r1, asl #4
+	ldr	r0, [sp, #12]
+	mov	r1, r1, asl #2
+	rsbs	r4, r4, r0
+	rsc	r5, r5, r0, asr #31
+	adds	r4, r4, r1
+	adc	r5, r5, r1, asr #31
+	mov	r0, r4
+	mov	r1, r5
+	bl	__aeabi_ldivmod
+	ldr	r2, .L164+4
+	mov	r3, #0
+	mov	r1, r5
+	mov	r9, #0
+	add	fp, sp, #24
+	mov	sl, r0
+	mov	r0, r4
+	bl	__aeabi_ldivmod
+	ldrh	r8, [sp, #16]
+	ldr	r3, .L164+8
+	add	r6, r6, r8
+	mov	r8, #1000
+	mla	r8, r8, r2, r6
+	mov	r6, #1000
+	cmp	r8, r3
+	addgt	r8, r8, #-100663296
+	addgt	r8, r8, #14221312
+	addgt	sl, sl, #1
+	addgt	r8, r8, #41984
+	b	.L162
+.L163:
+	cmp	r4, #900
+	movge	r4, #900
+	str	r9, [sp, #24]
+	mul	r4, r6, r4
+	str	fp, [sp, #0]
+	str	r4, [sp, #28]
+	bl	select
+.L162:
+	add	r0, sp, #12
+	bl	ftime
+	ldrsh	r0, [sp, #18]
+	ldr	r1, [r7, #0]
+	ldr	r2, .L164+4
+	mov	r3, #0
+	rsb	r0, r0, r0, asl #4
+	ldr	r1, [r1, #532]
+	mov	r0, r0, asl #2
+	mov	r4, r0
+	mov	r5, r0, asr #31
+	rsb	r1, r1, r1, asl #4
+	ldr	r0, [sp, #12]
+	mov	r1, r1, asl #2
+	rsbs	r4, r4, r0
+	rsc	r5, r5, r0, asr #31
+	adds	r4, r4, r1
+	adc	r5, r5, r1, asr #31
+	mov	r0, r4
+	mov	r1, r5
+	bl	__aeabi_ldivmod
+	ldrh	r3, [sp, #16]
+	mov	r0, r4
+	mov	r1, r5
+	mla	r4, r6, r2, r3
+	ldr	r2, .L164+4
+	mov	r3, #0
+	bl	__aeabi_ldivmod
+	mov	r1, #0
+	rsb	r4, r4, r8
+	mov	r2, r1
+	mov	r3, r1
+	rsb	ip, r0, sl
+	cmp	ip, r1
+	addgt	r4, r4, #85983232
+	addgt	r4, r4, #413696
+	addgt	r4, r4, #3072
+	cmp	r4, #0
+	mov	r0, #1024
+	bgt	.L163
+	add	sp, sp, #36
+	ldmfd	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
+.L165:
+	.align	2
+.L164:
+	.word	W
+	.word	86400
+	.word	86399999
+	.size	msecdelay, .-msecdelay
+	.align	2
+	.global	doflt
+	.type	doflt, %function
+doflt:
+	@ args = 0, pretend = 0, frame = 16
+	@ frame_needed = 0, uses_anonymous_args = 0
+	stmfd	sp!, {r4, r5, lr}
+	mov	ip, r2
+	sub	sp, sp, #20
+	mov	r4, r0
+	mov	r5, r1
+	cmp	r0, #44
+	ldrls	pc, [pc, r0, asl #2]
+	b	.L167
+.L211:
+	.word	.L283
+	.word	.L169
+	.word	.L170
+	.word	.L171
+	.word	.L172
+	.word	.L245
+	.word	.L174
+	.word	.L175
+	.word	.L176
+	.word	.L177
+	.word	.L245
+	.word	.L179
+	.word	.L180
+	.word	.L181
+	.word	.L182
+	.word	.L183
+	.word	.L184
+	.word	.L185
+	.word	.L167
+	.word	.L167
+	.word	.L186
+	.word	.L187
+	.word	.L188
+	.word	.L189
+	.word	.L190
+	.word	.L191
+	.word	.L192
+	.word	.L193
+	.word	.L194
+	.word	.L195
+	.word	.L196
+	.word	.L197
+	.word	.L198
+	.word	.L199
+	.word	.L200
+	.word	.L201
+	.word	.L202
+	.word	.L203
+	.word	.L204
+	.word	.L205
+	.word	.L206
+	.word	.L207
+	.word	.L208
+	.word	.L209
+	.word	.L210
+.L245:
+	mov	r0, r1
+.L178:
+	add	sp, sp, #20
+	ldmfd	sp!, {r4, r5, pc}
+.L167:
+	ldr	r0, .L289+56
+	mov	r1, r4
+	mov	r2, r5
+	mov	r3, ip
+	bl	printf
+.L283:
+	mvn	r0, #0
+	b	.L178
+.L169:
+	fmsr	s13, r1	@ int
+	cmp	r2, #5
+	fsitod	d7, s13
+	ble	.L212
+	fldd	d6, .L289
+.L267:
+	sub	ip, ip, #5
+	cmp	ip, #5
+	fmuld	d7, d7, d6
+	bgt	.L267
+.L212:
+	cmp	ip, #0
+	ble	.L214
+	fldd	d6, .L289+8
+.L264:
+	subs	ip, ip, #1
+	fmuld	d7, d7, d6
+	bne	.L264
+.L219:
+	fcvtsd	s13, d7
+	fmrs	r0, s13
+	b	.L178
+.L202:
+	fmsr	s15, r1
+	fmsr	s13, r2
+	fcvtds	d0, s15
+	fcvtds	d1, s13
+	bl	pow
+	fcvtsd	s14, d0
+	fmrs	r0, s14
+	b	.L178
+.L198:
+	fmsr	s14, r1
+	mov	r0, r2
+	fcvtds	d0, s14
+	bl	ldexp
+	fcvtsd	s15, d0
+	fmrs	r0, s15
+	b	.L178
+.L197:
+	fmsr	s15, r1
+	add	r0, sp, #12
+	fcvtds	d0, s15
+	bl	frexp
+	ldr	r3, .L289+60
+	ldr	r2, [sp, #12]
+	str	r2, [r3, #0]
+	fcvtsd	s13, d0
+	fmrs	r0, s13
+	b	.L178
+.L196:
+	fmsr	s13, r1
+	fcvtds	d0, s13
+	bl	exp
+	fcvtsd	s14, d0
+	fmrs	r0, s14
+	b	.L178
+.L195:
+	fmsr	s0, r1
+	bl	tanhf
+	fmrs	r0, s0	@ int
+	b	.L178
+.L200:
+	fmsr	s0, r1
+	bl	log10f
+	fmrs	r0, s0	@ int
+	b	.L178
+.L199:
+	fmsr	s0, r1
+	bl	logf
+	fmrs	r0, s0	@ int
+	b	.L178
+.L201:
+	fmsr	s13, r1
+	mov	r0, sp
+	fcvtds	d0, s13
+	bl	modf
+	fldd	d7, [sp, #0]
+	ldr	r3, .L289+60
+	ftosizd	s13, d7
+	fsts	s13, [r3, #0]	@ int
+	fcvtsd	s14, d0
+	fmrs	r0, s14
+	b	.L178
+.L204:
+	fmsr	s0, r1
+	bl	ceilf
+	fmrs	r0, s0	@ int
+	b	.L178
+.L203:
+	fmsr	s15, r1
+	fsqrts	s0, s15
+	fcmps	s0, s0
+	fmstat
+	bne	.L287
+.L244:
+	fmrs	r0, s0	@ int
+	b	.L178
+.L194:
+	fmsr	s14, r1
+	fcvtds	d0, s14
+	bl	sinh
+	fcvtsd	s15, d0
+	fmrs	r0, s15
+	b	.L178
+.L193:
+	fmsr	s15, r1
+	fcvtds	d0, s15
+	bl	cosh
+	fcvtsd	s13, d0
+	fmrs	r0, s13
+	b	.L178
+.L192:
+	fmsr	s0, r1
+	bl	tanf
+	fmrs	r0, s0	@ int
+	b	.L178
+.L191:
+	fmsr	s0, r1
+	bl	sinf
+	fmrs	r0, s0	@ int
+	b	.L178
+.L190:
+	fmsr	s0, r1
+	bl	cosf
+	fmrs	r0, s0	@ int
+	b	.L178
+.L189:
+	fmsr	s15, r1
+	fmsr	s13, r2
+	fcvtds	d0, s15
+	fcvtds	d1, s13
+	bl	atan2
+	fcvtsd	s14, d0
+	fmrs	r0, s14
+	b	.L178
+.L210:
+	fmsr	s15, r2
+	fmsr	s13, r1
+	fmsr	s14, r3
+	fmuls	s15, s15, s15
+	fmacs	s15, s13, s13
+	fmacs	s15, s14, s14
+	fsqrts	s0, s15
+	fcmps	s0, s0
+	fmstat
+	beq	.L244
+	fcpys	s0, s15
+	bl	sqrtf
+	fmrs	r0, s0	@ int
+	b	.L178
+.L172:
+	fmsr	s14, r1
+.L286:
+	fcmpezs	s14
+	fcvtds	d7, s14
+	fldd	d6, .L289+16
+	fmstat
+	fsubdmi	d7, d7, d6
+	fadddpl	d7, d7, d6
+	ftosizd	s13, d7
+	fmrs	r0, s13	@ int
+	b	.L178
+.L209:
+	fmsr	s14, r2
+	fmsr	s15, r1
+	fmuls	s0, s14, s14
+	fmacs	s0, s15, s15
+	fsqrts	s15, s0
+	fcmps	s15, s15
+	fmstat
+	bne	.L288
+	fmrs	r0, s15	@ int
+	b	.L178
+.L208:
+	fmsr	s14, r1	@ int
+	fmsr	s13, r2
+	fsitos	s15, s14
+	fmuls	s14, s15, s13
+	b	.L286
+.L207:
+	fmsr	s13, r2	@ int
+	fsitos	s14, s13
+	fmsr	s13, r1	@ int
+	fsitos	s15, s13
+	fdivs	s13, s14, s15
+	fmrs	r0, s13
+	b	.L178
+.L206:
+	fmsr	s13, r1
+	fmsr	s14, r2
+	fcvtds	d0, s13
+	fcvtds	d1, s14
+	bl	fmod
+	fcvtsd	s15, d0
+	fmrs	r0, s15
+	b	.L178
+.L205:
+	fmsr	s0, r1
+	bl	floorf
+	fmrs	r0, s0	@ int
+	b	.L178
+.L171:
+	fmsr	s15, r1	@ int
+	fsitos	s15, s15
+	fmrs	r0, s15
+	b	.L178
+.L170:
+	fmsr	s13, r1
+	mov	r3, #0
+	fcvtds	d7, s13
+	fldd	d6, .L289
+	fcmpezd	d7
+	fmstat
+	fnegdmi	d7, d7
+	movmi	ip, #1
+	movpl	ip, #0
+	fcmped	d7, d6
+	fmstat
+	blt	.L223
+.L225:
+	fdivd	d7, d7, d6
+	add	r3, r3, #5
+	fcmped	d7, d6
+	fmstat
+	bge	.L225
+.L223:
+	fldd	d5, .L289+24
+	fcmped	d7, d5
+	fmstat
+	blt	.L226
+	fldd	d6, .L289+8
+.L270:
+	fdivd	d7, d7, d6
+	add	r3, r3, #1
+	fcmped	d7, d5
+	fmstat
+	bge	.L270
+.L226:
+	fldd	d5, .L289+32
+	fcmpd	d7, d5
+	fmstat
+	movhi	r2, #1
+	bhi	.L229
+	fldd	d6, .L289
+.L269:
+	fmuld	d7, d7, d6
+	sub	r3, r3, #5
+	cmn	r3, #400
+	movlt	r2, #0
+	movge	r2, #1
+	fcmped	d7, d5
+	fmstat
+	movhi	r1, #0
+	andls	r1, r2, #1
+	cmp	r1, #0
+	bne	.L269
+.L229:
+	fldd	d5, .L289+40
+	fcmped	d7, d5
+	fmstat
+	movpl	r2, #0
+	andmi	r2, r2, #1
+	cmp	r2, #0
+	beq	.L231
+	fldd	d6, .L289+8
+.L268:
+	fmuld	d7, d7, d6
+	sub	r3, r3, #1
+	cmn	r3, #400
+	movlt	r2, #0
+	movge	r2, #1
+	fcmped	d7, d5
+	fmstat
+	movpl	r2, #0
+	andmi	r2, r2, #1
+	cmp	r2, #0
+	bne	.L268
+.L231:
+	cmn	r3, #400
+	ldr	r2, .L289+60
+	flddge	d6, .L289+16
+	flddge	d5, .L289+48
+	movlt	r3, #0
+	subge	r3, r3, #9
+	fmacdge	d6, d7, d5
+	movlt	r0, r3
+	str	r3, [r2, #0]
+	ftosizdge	s14, d6
+	fmrsge	r0, s14	@ int
+	cmp	ip, #0
+	rsbne	r0, r0, #0
+	b	.L178
+.L290:
+	.align	3
+.L289:
+	.word	0
+	.word	1090021888
+	.word	0
+	.word	1076101120
+	.word	0
+	.word	1071644672
+	.word	0
+	.word	1072693248
+	.word	-1998362383
+	.word	1055193269
+	.word	-1717986918
+	.word	1069128089
+	.word	0
+	.word	1104006501
+	.word	.LC11
+	.word	result2
+.L175:
+	fmsr	s15, r1
+	fmsr	s13, r2
+	fdivs	s14, s15, s13
+	fmrs	r0, s14
+	b	.L178
+.L186:
+	fmsr	s0, r1
+	bl	acosf
+	fmrs	r0, s0	@ int
+	b	.L178
+.L185:
+	fmsr	s13, r1
+	fmsr	s14, r2
+	fcmpes	s13, s14
+	fmstat
+	mvnge	r0, #0
+	movlt	r0, #0
+	b	.L178
+.L184:
+	fmsr	s14, r1
+	fmsr	s15, r2
+	fcmpes	s14, s15
+	fmstat
+	mvnls	r0, #0
+	movhi	r0, #0
+	b	.L178
+.L183:
+	fmsr	s15, r1
+	fmsr	s13, r2
+	fcmpes	s15, s13
+	fmstat
+	mvngt	r0, #0
+	movle	r0, #0
+	b	.L178
+.L182:
+	fmsr	s13, r1
+	fmsr	s14, r2
+	fcmpes	s13, s14
+	fmstat
+	mvnmi	r0, #0
+	movpl	r0, #0
+	b	.L178
+.L181:
+	fmsr	s14, r1
+	fmsr	s15, r2
+	fcmps	s14, s15
+	fmstat
+	moveq	r0, #0
+	mvnne	r0, #0
+	b	.L178
+.L180:
+	fmsr	s15, r1
+	fmsr	s13, r2
+	fcmps	s15, s13
+	fmstat
+	movne	r0, #0
+	mvneq	r0, #0
+	b	.L178
+.L179:
+	eor	r0, r1, #-2147483648
+	b	.L178
+.L188:
+	fmsr	s0, r1
+	bl	atanf
+	fmrs	r0, s0	@ int
+	b	.L178
+.L187:
+	fmsr	s0, r1
+	bl	asinf
+	fmrs	r0, s0	@ int
+	b	.L178
+.L177:
+	fmsr	s13, r1
+	fmsr	s14, r2
+	fsubs	s13, s13, s14
+	fmrs	r0, s13
+	b	.L178
+.L176:
+	fmsr	s14, r1
+	fmsr	s15, r2
+	fadds	s14, s14, s15
+	fmrs	r0, s14
+	b	.L178
+.L174:
+	fmsr	s15, r1
+	fmsr	s13, r2
+	fmuls	s14, s15, s13
+	fmrs	r0, s14
+	b	.L178
+.L214:
+	cmn	ip, #5
+	bge	.L217
+	fldd	d6, .L291
+.L266:
+	add	ip, ip, #5
+	cmn	ip, #5
+	fdivd	d7, d7, d6
+	blt	.L266
+.L217:
+	cmp	ip, #0
+	beq	.L219
+	fldd	d6, .L291+8
+.L265:
+	adds	ip, ip, #1
+	fdivd	d7, d7, d6
+	bne	.L265
+	b	.L219
+.L288:
+	bl	sqrtf
+	fcpys	s15, s0
+	fmrs	r0, s15	@ int
+	b	.L178
+.L287:
+	fmsr	s0, r1
+	bl	sqrtf
+	fmrs	r0, s0	@ int
+	b	.L178
+.L292:
+	.align	3
+.L291:
+	.word	0
+	.word	1090021888
+	.word	0
+	.word	1076101120
+	.size	doflt, .-doflt
+	.align	2
+	.global	timestamp
+	.type	timestamp, %function
+timestamp:
+	@ args = 0, pretend = 0, frame = 16
+	@ frame_needed = 0, uses_anonymous_args = 0
+	stmfd	sp!, {r4, r5, r6, r7, lr}
+	sub	sp, sp, #20
+	mov	r4, r0
+	add	r0, sp, #4
+	bl	ftime
+	ldr	r3, .L294
+	ldrsh	r1, [sp, #10]
+	ldr	r2, .L294+4
+	ldr	ip, [r3, #0]
+	mov	r3, #0
+	rsb	r0, r1, r1, asl #4
+	ldr	r1, [ip, #532]
+	mov	r0, r0, asl #2
+	mov	r6, r0
+	mov	r7, r0, asr #31
+	rsb	r1, r1, r1, asl #4
+	ldr	r0, [sp, #4]
+	mov	r1, r1, asl #2
+	rsbs	r6, r6, r0
+	rsc	r7, r7, r0, asr #31
+	adds	r6, r6, r1
+	adc	r7, r7, r1, asr #31
+	mov	r0, r6
+	mov	r1, r7
+	bl	__aeabi_ldivmod
+	mov	r1, r7
+	ldr	r2, .L294+4
+	mov	r3, #0
+	ldrh	r5, [sp, #8]
+	str	r0, [r4, #0]
+	mov	r0, r6
+	bl	__aeabi_ldivmod
+	mov	r3, #1000
+	mvn	r0, #0
+	str	r0, [r4, #8]
+	mla	r5, r3, r2, r5
+	str	r5, [r4, #4]
+	add	sp, sp, #20
+	ldmfd	sp!, {r4, r5, r6, r7, pc}
+.L295:
+	.align	2
+.L294:
+	.word	W
+	.word	86400
+	.size	timestamp, .-timestamp
+	.align	2
+	.global	vmsfname
+	.type	vmsfname, %function
+vmsfname:
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 0, uses_anonymous_args = 0
+	@ link register save eliminated.
+	stmfd	sp!, {r4, r5, r6, r7, r8, sl}
+	mov	r3, r0
+	ldrb	r0, [r0, #0]	@ zero_extendqisi2
+	cmp	r0, #0
+	beq	.L320
+	cmp	r0, #58
+	mov	ip, #0
+	bne	.L299
+	b	.L298
+.L336:
+	cmp	r2, #58
+	beq	.L298
+.L299:
+	add	ip, ip, #1
+	ldrb	r2, [r3, ip]	@ zero_extendqisi2
+	cmp	r2, #0
+	bne	.L336
+	mov	r6, r2
+	mov	r7, r3
+	mov	r4, r0
+.L338:
+	mov	r2, r6
+	mov	ip, r6
+	mvn	r5, #0
+.L307:
+	cmp	r4, #47
+	moveq	r5, ip
+	add	ip, ip, #1
+	ldrb	r4, [r3, ip]	@ zero_extendqisi2
+	cmp	r4, #0
+	bne	.L307
+	cmp	r0, #47
+	add	r0, r2, #1
+	beq	.L339
+	cmn	r5, #1
+	beq	.L327
+	mov	ip, #91
+	strb	ip, [r1, r6]
+	ldrb	ip, [r7, #0]	@ zero_extendqisi2
+	cmp	ip, #46
+	beq	.L340
+.L311:
+	mov	ip, #46
+	strb	ip, [r1, r0]
+	add	r4, r2, #2
+	b	.L317
+.L312:
+	cmp	ip, #47
+	beq	.L341
+	cmp	ip, #0
+	strb	ip, [r1, r4]
+	beq	.L316
+.L319:
+	add	r2, r2, #1
+	add	r4, r4, #1
+.L317:
+	ldrb	ip, [r3, r2]	@ zero_extendqisi2
+	cmp	ip, #46
+	bne	.L312
+	add	r0, r3, r2
+	ldrb	r0, [r0, #1]	@ zero_extendqisi2
+	cmp	r0, #46
+	moveq	ip, #45
+	addeq	r2, r2, #1
+	strb	ip, [r1, r4]
+	b	.L319
+.L341:
+	cmp	r2, r5
+	movne	r0, #46
+	moveq	r0, #93
+	strb	r0, [r1, r4]
+	b	.L319
+.L316:
+	mov	r0, r1
+	ldmfd	sp!, {r4, r5, r6, r7, r8, sl}
+	bx	lr
+.L298:
+	add	r4, r1, #4
+	add	r0, r3, #4
+	cmp	r1, r0
+	cmpls	r3, r4
+	orr	r2, r1, r3
+	movls	r0, #0
+	movhi	r0, #1
+	bic	sl, ip, ip, asr #31
+	tst	r2, #3
+	movne	r2, #0
+	moveq	r2, #1
+	add	sl, sl, #1
+	cmp	sl, #3
+	movls	r2, #0
+	andhi	r2, r2, #1
+	and	r0, r0, r2
+	mov	r8, sl, lsr #2
+	eor	r0, r0, #1
+	cmp	r8, #0
+	orreq	r0, r0, #1
+	cmp	r0, #0
+	mov	r4, r8, asl #2
+	bne	.L322
+	mov	r6, r3
+	mov	r5, r1
+.L301:
+	ldr	r7, [r6], #4
+	add	r0, r0, #1
+	cmp	r0, r8
+	str	r7, [r5], #4
+	bcc	.L301
+	cmp	sl, r4
+	beq	.L302
+.L331:
+	ldrb	r0, [r3, r4]	@ zero_extendqisi2
+	strb	r0, [r1, r4]
+	add	r4, r4, #1
+	cmp	ip, r4
+	bge	.L331
+.L302:
+	ldrb	r0, [r3, sl]	@ zero_extendqisi2
+	mov	r6, sl
+	add	r7, r3, sl
+	cmp	r0, #0
+	mov	r4, r0
+	moveq	r2, sl
+	mvneq	r5, #0
+	bne	.L338
+.L327:
+	mov	r4, r2
+	b	.L317
+.L339:
+	cmp	r5, r2
+	movne	r2, #91
+	strneb	r2, [r1, r6]
+	movne	r4, r0
+	moveq	r4, r5
+	mov	r2, r0
+	b	.L317
+.L340:
+	add	r6, r3, r6
+	ldrb	ip, [r6, #1]	@ zero_extendqisi2
+	cmp	ip, #46
+	moveq	r4, r0
+	bne	.L311
+	b	.L317
+.L320:
+	mov	r2, r0
+	mvn	r5, #0
+	mov	r4, r2
+	b	.L317
+.L322:
+	mov	r4, #0
+	b	.L331
+	.size	vmsfname, .-vmsfname
+	.align	2
+	.global	winfname
+	.type	winfname, %function
+winfname:
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 0, uses_anonymous_args = 0
+	@ link register save eliminated.
+	ldrb	r3, [r0], #1	@ zero_extendqisi2
+	add	r2, r1, #1
+	mov	ip, #92
+	cmp	r3, #47
+	beq	.L344
+.L347:
+	cmp	r3, #0
+	strb	r3, [r2, #-1]
+	beq	.L346
+	add	r2, r2, #1
+.L348:
+	ldrb	r3, [r0], #1	@ zero_extendqisi2
+	cmp	r3, #47
+	bne	.L347
+.L344:
+	strb	ip, [r2, #-1]
+	add	r2, r2, #1
+	b	.L348
+.L346:
+	mov	r0, r1
+	bx	lr
+	.size	winfname, .-winfname
+	.align	2
+	.global	unixfname
+	.type	unixfname, %function
+unixfname:
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 0, uses_anonymous_args = 0
+	@ link register save eliminated.
+	ldrb	r3, [r0], #1	@ zero_extendqisi2
+	add	r2, r1, #1
+	mov	ip, #47
+	cmp	r3, #92
+	beq	.L351
+.L354:
+	cmp	r3, #0
+	strb	r3, [r2, #-1]
+	beq	.L353
+	add	r2, r2, #1
+.L355:
+	ldrb	r3, [r0], #1	@ zero_extendqisi2
+	cmp	r3, #92
+	bne	.L354
+.L351:
+	strb	ip, [r2, #-1]
+	add	r2, r2, #1
+	b	.L355
+.L353:
+	mov	r0, r1
+	bx	lr
+	.size	unixfname, .-unixfname
+	.align	2
+	.global	prepend_prefix
+	.type	prepend_prefix, %function
+prepend_prefix:
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 0, uses_anonymous_args = 0
+	@ link register save eliminated.
+	ldr	r3, .L370
+	stmfd	sp!, {r4, r5, r6, r7, r8, sl}
+	ldr	ip, [r3, #0]
+	ldrb	r4, [ip, #0]	@ zero_extendqisi2
+	cmp	r4, #0
+	bne	.L369
+.L357:
+	ldmfd	sp!, {r4, r5, r6, r7, r8, sl}
+	bx	lr
+.L369:
+	ldrb	r3, [r0, #0]	@ zero_extendqisi2
+	cmp	r3, #47
+	cmpne	r3, #92
+	movne	r2, r0
+	bne	.L358
+	b	.L357
+.L359:
+	cmp	r3, #58
+	beq	.L357
+.L358:
+	ldrb	r3, [r2], #1	@ zero_extendqisi2
+	cmp	r3, #0
+	bne	.L359
+	add	r8, ip, #1
+	orr	r2, r1, r8
+	tst	r2, #3
+	movne	r2, #0
+	moveq	r2, #1
+	add	r5, ip, #5
+	add	r6, r1, #4
+	cmp	r4, #3
+	movls	r2, #0
+	andhi	r2, r2, #1
+	cmp	r8, r6
+	cmpls	r1, r5
+	movls	r5, #0
+	movhi	r5, #1
+	and	r5, r2, r5
+	mov	r7, r4, lsr #2
+	eor	r5, r5, #1
+	cmp	r7, #0
+	orreq	r5, r5, #1
+	cmp	r5, #0
+	sub	r6, r4, #1
+	mov	sl, r7, asl #2
+	bne	.L365
+	sub	ip, ip, #3
+	mov	r2, r1
+	mov	r3, r5
+.L361:
+	ldr	r5, [ip, #4]!
+	add	r3, r3, #1
+	cmp	r3, r7
+	str	r5, [r2], #4
+	bcc	.L361
+	cmp	r4, sl
+	mov	r5, sl
+	add	r8, r8, sl
+	rsb	r6, sl, r6
+	beq	.L362
+.L360:
+	mov	r2, r8
+	mvn	r3, #0
+	add	r5, r1, r5
+.L363:
+	ldrb	ip, [r2], #1	@ zero_extendqisi2
+	add	r3, r3, #1
+	cmp	r3, r6
+	strb	ip, [r5, r3]
+	bne	.L363
+.L362:
+	mov	r3, r1
+	mov	r2, #47
+	strb	r2, [r3, r4]!
+.L364:
+	ldrb	r2, [r0], #1	@ zero_extendqisi2
+	cmp	r2, #0
+	strb	r2, [r3, #1]
+	add	r3, r3, #1
+	bne	.L364
+	mov	r0, r1
+	b	.L357
+.L365:
+	mov	r5, r3
+	b	.L360
+.L371:
+	.align	2
+.L370:
+	.word	prefixbp
+	.size	prepend_prefix, .-prepend_prefix
+	.align	2
+	.global	osfname
+	.type	osfname, %function
+osfname:
+	@ args = 0, pretend = 0, frame = 256
+	@ frame_needed = 0, uses_anonymous_args = 0
+	stmfd	sp!, {r4, r5, lr}
+	sub	sp, sp, #260
+	mov	r4, r1
+	mov	r1, sp
+	mov	r5, r0
+	bl	prepend_prefix
+	add	r2, r4, #1
+	mov	r1, #47
+	ldrb	r3, [r0], #1	@ zero_extendqisi2
+	cmp	r3, #92
+	beq	.L374
+.L380:
+	cmp	r3, #0
+	strb	r3, [r2, #-1]
+	beq	.L379
+	add	r2, r2, #1
+.L381:
+	ldrb	r3, [r0], #1	@ zero_extendqisi2
+	cmp	r3, #92
+	bne	.L380
+.L374:
+	strb	r1, [r2, #-1]
+	add	r2, r2, #1
+	b	.L381
+.L379:
+	cmp	r4, #0
+	beq	.L382
+	ldr	r3, .L383
+	ldr	r3, [r3, #8]
+	cmp	r3, #0
+	beq	.L377
+	ldr	r0, .L383+4
+	mov	r1, r5
+	mov	r2, r4
+	bl	printf
+.L377:
+	mov	r0, r4
+	add	sp, sp, #260
+	ldmfd	sp!, {r4, r5, pc}
+.L382:
+	ldr	r0, .L383+8
+	bl	printf
+	ldr	r0, .L383+12
+	bl	puts
+	b	.L377
+.L384:
+	.align	2
+.L383:
+	.word	.LANCHOR0
+	.word	.LC14
+	.word	.LC12
+	.word	.LC13
+	.size	osfname, .-osfname
+	.align	2
+	.type	pathinput.part.3, %function
+pathinput.part.3:
+	@ args = 0, pretend = 0, frame = 512
+	@ frame_needed = 0, uses_anonymous_args = 0
+	stmfd	sp!, {r4, r5, r6, r7, r8, lr}
+	mov	r6, r0
+	sub	sp, sp, #512
+	mov	r0, r1
+	mov	r7, r1
+	bl	getenv
+	ldr	r5, .L425
+	ldr	r3, [r5, #8]
+	cmp	r3, #0
+	mov	r4, r0
+	bne	.L421
+.L386:
+	cmp	r4, #0
+	add	r7, sp, #256
+	beq	.L388
+.L417:
+	ldrb	r0, [r4], #1	@ zero_extendqisi2
+	cmp	r0, #59
+	beq	.L417
+	cmp	r0, #58
+	beq	.L417
+	cmp	r0, #0
+	beq	.L388
+	add	r1, sp, #0
+	mov	r2, r4
+	b	.L389
+.L391:
+	cmp	r3, #59
+	mov	r4, r2
+	beq	.L390
+	cmp	r3, #58
+	beq	.L390
+	mov	r0, r3
+.L389:
+	strb	r0, [r1], #1
+	mov	r4, r2
+	ldrb	r3, [r2], #1	@ zero_extendqisi2
+	mov	ip, r1
+	cmp	r3, #0
+	bne	.L391
+.L390:
+	cmp	r0, #92
+	cmpne	r0, #47
+	movne	ip, r1
+	mov	r2, r6
+	movne	r3, #47
+	strneb	r3, [ip], #1
+.L393:
+	ldrb	r3, [r2], #1	@ zero_extendqisi2
+	cmp	r3, #0
+	strb	r3, [ip], #1
+	bne	.L393
+	mov	r1, r7
+	add	r0, sp, #0
+	bl	prepend_prefix
+	ldr	r2, .L425+4
+	mov	r1, #47
+.L418:
+	ldrb	r3, [r0], #1	@ zero_extendqisi2
+	cmp	r3, #92
+	beq	.L395
+	cmp	r3, #0
+	strb	r3, [r2, #0]
+	add	r2, r2, #1
+	bne	.L418
+	ldr	r3, [r5, #8]
+	cmp	r3, #0
+	beq	.L397
+	ldr	r0, .L425+8
+	add	r1, sp, #0
+	ldr	r2, .L425+4
+	bl	printf
+.L397:
+	ldr	r0, .L425+4
+	ldr	r1, .L425+12
+	bl	fopen
+	ldr	r3, [r5, #8]
+	cmp	r3, #0
+	mov	r8, r0
+	bne	.L422
+	cmp	r0, #0
+	bne	.L400
+.L401:
+	cmp	r4, #0
+	bne	.L417
+.L388:
+	mov	r1, r7
+	mov	r0, r6
+	bl	prepend_prefix
+	ldr	r2, .L425+4
+	mov	r1, #47
+.L419:
+	ldrb	r3, [r0], #1	@ zero_extendqisi2
+	cmp	r3, #92
+	beq	.L406
+	cmp	r3, #0
+	strb	r3, [r2, #0]
+	add	r2, r2, #1
+	bne	.L419
+	ldr	r3, [r5, #8]
+	cmp	r3, #0
+	bne	.L423
+	ldr	r0, .L425+4
+	ldr	r1, .L425+12
+	bl	fopen
+	ldr	r3, [r5, #8]
+	cmp	r3, #0
+	mov	r8, r0
+	beq	.L400
+.L424:
+	ldr	r0, .L425+16
+	mov	r1, r6
+	bl	printf
+	cmp	r8, #0
+	bne	.L420
+	ldr	r0, .L425+20
+	bl	puts
+	b	.L400
+.L395:
+	strb	r1, [r2], #1
+	b	.L418
+.L422:
+	ldr	r0, .L425+24
+	add	r1, sp, #0
+	bl	printf
+	cmp	r8, #0
+	beq	.L399
+.L420:
+	ldr	r0, .L425+28
+	bl	puts
+.L400:
+	mov	r0, r8
+	add	sp, sp, #512
+	ldmfd	sp!, {r4, r5, r6, r7, r8, pc}
+.L406:
+	strb	r1, [r2], #1
+	b	.L419
+.L421:
+	mov	r1, r6
+	ldr	r0, .L425+32
+	bl	printf
+	mov	r1, r7
+	ldr	r0, .L425+36
+	bl	printf
+	mov	r1, r4
+	ldr	r0, .L425+40
+	bl	printf
+	b	.L386
+.L399:
+	ldr	r0, .L425+20
+	bl	puts
+	b	.L401
+.L423:
+	mov	r1, r6
+	ldr	r2, .L425+4
+	ldr	r0, .L425+8
+	bl	printf
+	ldr	r0, .L425+4
+	ldr	r1, .L425+12
+	bl	fopen
+	ldr	r3, [r5, #8]
+	cmp	r3, #0
+	mov	r8, r0
+	beq	.L400
+	b	.L424
+.L426:
+	.align	2
+.L425:
+	.word	.LANCHOR0
+	.word	.LANCHOR0+12
+	.word	.LC14
+	.word	.LC18
+	.word	.LC22
+	.word	.LC21
+	.word	.LC19
+	.word	.LC20
+	.word	.LC15
+	.word	.LC16
+	.word	.LC17
+	.size	pathinput.part.3, .-pathinput.part.3
+	.align	2
+	.global	pathinput
+	.type	pathinput, %function
+pathinput:
+	@ args = 0, pretend = 0, frame = 256
+	@ frame_needed = 0, uses_anonymous_args = 0
+	cmp	r1, #0
+	stmfd	sp!, {r4, r5, r6, lr}
+	mov	r4, r0
+	sub	sp, sp, #256
+	beq	.L428
+	ldrb	r3, [r0, #0]	@ zero_extendqisi2
+	cmp	r3, #47
+	cmpne	r3, #92
+	movne	r2, r0
+	bne	.L429
+	b	.L428
+.L430:
+	cmp	r3, #58
+	beq	.L428
+.L429:
+	ldrb	r3, [r2], #1	@ zero_extendqisi2
+	cmp	r3, #0
+	bne	.L430
+	mov	r0, r4
+	bl	pathinput.part.3
+	mov	r6, r0
+.L436:
+	mov	r0, r6
+	add	sp, sp, #256
+	ldmfd	sp!, {r4, r5, r6, pc}
+.L428:
+	mov	r1, sp
+	mov	r0, r4
+	bl	prepend_prefix
+	ldr	r2, .L443
+	mov	r1, #47
+.L440:
+	ldrb	r3, [r0], #1	@ zero_extendqisi2
+	cmp	r3, #92
+	beq	.L433
+	cmp	r3, #0
+	strb	r3, [r2, #0]
+	add	r2, r2, #1
+	bne	.L440
+	ldr	r5, .L443+4
+	ldr	r3, [r5, #8]
+	cmp	r3, #0
+	bne	.L441
+	ldr	r0, .L443
+	ldr	r1, .L443+8
+	bl	fopen
+	ldr	r3, [r5, #8]
+	cmp	r3, #0
+	mov	r6, r0
+	beq	.L436
+.L442:
+	mov	r1, r4
+	ldr	r0, .L443+12
+	bl	printf
+	cmp	r6, #0
+	ldrne	r0, .L443+16
+	ldreq	r0, .L443+20
+	bl	puts
+	b	.L436
+.L433:
+	strb	r1, [r2], #1
+	b	.L440
+.L441:
+	mov	r1, r4
+	add	r2, r5, #12
+	ldr	r0, .L443+24
+	bl	printf
+	ldr	r0, .L443
+	ldr	r1, .L443+8
+	bl	fopen
+	ldr	r3, [r5, #8]
+	cmp	r3, #0
+	mov	r6, r0
+	beq	.L436
+	b	.L442
+.L444:
+	.align	2
+.L443:
+	.word	.LANCHOR0+12
+	.word	.LANCHOR0
+	.word	.LC18
+	.word	.LC22
+	.word	.LC20
+	.word	.LC21
+	.word	.LC14
+	.size	pathinput, .-pathinput
+	.align	2
+	.global	loadseg
+	.type	loadseg, %function
+loadseg:
+	@ args = 0, pretend = 0, frame = 256
+	@ frame_needed = 0, uses_anonymous_args = 0
+	stmfd	sp!, {r4, r5, r6, r7, r8, sl, lr}
+	mov	r1, #0
+	sub	sp, sp, #260
+	mov	r4, r0
+	bl	pathinput
+	subs	r6, r0, #0
+	beq	.L446
+	bl	loadsegfp
+	mov	r5, r0
+	mov	r0, r6
+	bl	fclose
+	cmp	r5, #0
+	bne	.L447
+.L446:
+	ldr	r3, .L460
+	ldr	r3, [r3, #0]
+	ldr	r1, [r3, #544]
+	cmp	r1, #0
+	mov	r2, r1, asl #2
+	add	r5, r3, r2
+	ldrb	ip, [r3, r1, asl #2]	@ zero_extendqisi2
+	beq	.L448
+	cmp	ip, #0
+	moveq	ip, sp
+	beq	.L449
+	add	r0, r5, #1
+	tst	r0, #3
+	movne	lr, #0
+	moveq	lr, #1
+	add	r7, r5, #5
+	mov	r1, sp
+	add	r6, sp, #4
+	cmp	ip, #3
+	movls	lr, #0
+	andhi	lr, lr, #1
+	cmp	r0, r6
+	cmpls	r1, r7
+	movls	r0, #0
+	movhi	r0, #1
+	and	r0, lr, r0
+	mov	r7, ip, lsr #2
+	eor	r0, r0, #1
+	cmp	r7, #0
+	orreq	r0, r0, #1
+	cmp	r0, #0
+	add	r8, r2, #1
+	sub	sl, ip, #1
+	mov	r2, r7, asl #2
+	bne	.L456
+	sub	r5, r5, #3
+	mov	lr, sp
+.L451:
+	ldr	r6, [r5, #4]!
+	add	r0, r0, #1
+	cmp	r7, r0
+	str	r6, [lr], #4
+	bhi	.L451
+	cmp	ip, r2
+	add	r8, r8, r2
+	add	lr, r1, r2
+	rsb	sl, r2, sl
+	beq	.L452
+.L450:
+	add	r5, sl, #1
+	mov	r2, #0
+	add	r3, r3, r8
+.L453:
+	ldrb	r0, [r3, r2]	@ zero_extendqisi2
+	strb	r0, [lr, r2]
+	add	r2, r2, #1
+	cmp	r2, r5
+	bne	.L453
+.L452:
+	add	ip, r1, ip
+.L449:
+	mov	r1, sp
+	mov	r3, #0
+	strb	r3, [ip, #0]
+.L448:
+	mov	r0, r4
+	bl	pathinput
+	subs	r4, r0, #0
+	moveq	r5, r4
+	beq	.L447
+	bl	loadsegfp
+	mov	r5, r0
+	mov	r0, r4
+	bl	fclose
+.L447:
+	mov	r0, r5
+	add	sp, sp, #260
+	ldmfd	sp!, {r4, r5, r6, r7, r8, sl, pc}
+.L456:
+	mov	lr, sp
+	b	.L450
+.L461:
+	.align	2
+.L460:
+	.word	W
+	.size	loadseg, .-loadseg
+	.align	2
+	.global	c2b_str
+	.type	c2b_str, %function
+c2b_str:
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 0, uses_anonymous_args = 0
+	@ link register save eliminated.
+	ldr	r2, .L467
+	ldrb	r3, [r0, #0]	@ zero_extendqisi2
+	stmfd	sp!, {r4, r5}
+	ldr	r5, [r2, #0]
+	cmp	r3, #0
+	add	ip, r5, r1, asl #2
+	moveq	r2, r3
+	beq	.L463
+	mov	r2, #0
+.L464:
+	strb	r3, [ip, #1]!
+	ldrb	r3, [r0, #1]!	@ zero_extendqisi2
+	add	r2, r2, #1
+	adds	r4, r3, #0
+	movne	r4, #1
+	cmp	r2, #63
+	movgt	r4, #0
+	cmp	r4, #0
+	bne	.L464
+	uxtb	r2, r2
+.L463:
+	strb	r2, [r5, r1, asl #2]
+	ldmfd	sp!, {r4, r5}
+	bx	lr
+.L468:
+	.align	2
+.L467:
+	.word	W
+	.size	c2b_str, .-c2b_str
+	.align	2
+	.global	b2c_str
+	.type	b2c_str, %function
+b2c_str:
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 0, uses_anonymous_args = 0
+	@ link register save eliminated.
+	ldr	r3, .L477
+	cmp	r0, #0
+	stmfd	sp!, {r4, r5}
+	moveq	r1, r0
+	ldr	r2, [r3, #0]
+	mov	r4, r0, asl #2
+	ldrb	r5, [r2, r0, asl #2]	@ zero_extendqisi2
+	beq	.L470
+	cmp	r5, #0
+	moveq	ip, r1
+	beq	.L471
+	add	r4, r4, #1
+	add	r5, r1, r5
+	mov	ip, r1
+	b	.L473
+.L476:
+	ldr	r2, [r3, #0]
+.L473:
+	ldrb	r2, [r2, r4]	@ zero_extendqisi2
+	add	r4, r4, #1
+	strb	r2, [ip], #1
+	cmp	ip, r5
+	bne	.L476
+.L471:
+	mov	r3, #0
+	strb	r3, [ip, #0]
+.L470:
+	mov	r0, r1
+	ldmfd	sp!, {r4, r5}
+	bx	lr
+.L478:
+	.align	2
+.L477:
+	.word	W
+	.size	b2c_str, .-b2c_str
+	.align	2
+	.global	syscin2b_str
+	.type	syscin2b_str, %function
+syscin2b_str:
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 0, uses_anonymous_args = 0
+	@ link register save eliminated.
+	ldr	r2, .L485
+	stmfd	sp!, {r4, r5, r6}
+	mov	ip, #0
+	ldr	r2, [r2, #0]
+	ldr	r3, .L485+4
+	add	r6, r2, r1, asl #2
+	mov	r5, r6
+	mov	r4, #115
+.L480:
+	strb	r4, [r5, #1]!
+	ldrb	r4, [r3, #1]!	@ zero_extendqisi2
+	add	ip, ip, #1
+	cmp	r4, #0
+	bne	.L480
+	ldrb	r3, [r0, #0]	@ zero_extendqisi2
+	cmp	r3, #0
+	beq	.L481
+.L482:
+	add	ip, ip, #1
+	strb	r3, [r6, ip]
+	ldrb	r3, [r0, #1]!	@ zero_extendqisi2
+	cmp	r3, #0
+	bne	.L482
+.L481:
+	strb	ip, [r2, r1, asl #2]
+	mov	r0, r1
+	ldmfd	sp!, {r4, r5, r6}
+	bx	lr
+.L486:
+	.align	2
+.L485:
+	.word	W
+	.word	.LC23
+	.size	syscin2b_str, .-syscin2b_str
+	.align	2
+	.global	catstr2c_str
+	.type	catstr2c_str, %function
+catstr2c_str:
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 0, uses_anonymous_args = 0
+	@ link register save eliminated.
+	subs	r3, r0, #0
+	stmfd	sp!, {r4, r5, r6}
+	moveq	r5, r2
+	beq	.L488
+	ldrb	ip, [r3, #0]	@ zero_extendqisi2
+	cmp	ip, #0
+	beq	.L493
+	mov	r4, r2
+	mov	r6, r3
+.L490:
+	strb	ip, [r4], #1
+	ldrb	ip, [r6, #1]!	@ zero_extendqisi2
+	mov	r5, r4
+	add	r3, r3, #1
+	cmp	ip, #0
+	bne	.L490
+	cmp	r3, #0
+	beq	.L488
+.L489:
+	ldrb	r3, [r1, #0]	@ zero_extendqisi2
+	cmp	r3, #0
+	beq	.L488
+	mov	ip, r5
+.L491:
+	strb	r3, [ip], #1
+	ldrb	r3, [r1, #1]!	@ zero_extendqisi2
+	mov	r5, ip
+	cmp	r3, #0
+	bne	.L491
+.L488:
+	mov	r3, #0
+	strb	r3, [r5, #0]
+	mov	r0, r2
+	ldmfd	sp!, {r4, r5, r6}
+	bx	lr
+.L493:
+	mov	r5, r2
+	b	.L489
+	.size	catstr2c_str, .-catstr2c_str
+	.align	2
+	.global	wrcode
+	.type	wrcode, %function
+wrcode:
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 0, uses_anonymous_args = 0
+	stmfd	sp!, {r3, r4, r5, r6, r7, r8, sl, lr}
+	and	r3, r1, #31
+	sub	r3, r3, #1
+	cmp	r3, #30
+	mov	r1, r1, asr #5
+	and	r1, r1, #7
+	mov	sl, r2
+	ldrls	r2, .L501
+	add	r1, r1, r1, asl #1
+	ldrhi	r8, .L501+4
+	mov	r5, r1, asl #1
+	ldrls	r8, [r2, r3, asl #2]
+	ldr	r7, .L501+8
+	mov	r4, r0
+	add	r6, r5, #5
+.L498:
+	ldrb	r0, [r8, r5]	@ zero_extendqisi2
+	ldr	r1, [r7, #0]
+	add	r5, r5, #1
+	bl	_IO_putc
+	cmp	r5, r6
+	ble	.L498
+	ldr	r0, .L501+12
+	bl	printf
+	mov	r0, r4
+	mov	r1, sl
+	bl	printf
+	mov	r0, #10
+	ldmfd	sp!, {r3, r4, r5, r6, r7, r8, sl, lr}
+	b	putchar
+.L502:
+	.align	2
+.L501:
+	.word	.LANCHOR1
+	.word	.LC24
+	.word	stdout
+	.word	.LC25
+	.size	wrcode, .-wrcode
+	.align	2
+	.global	wrfcode
+	.type	wrfcode, %function
+wrfcode:
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 0, uses_anonymous_args = 0
+	stmfd	sp!, {r3, r4, r5, r6, r7, lr}
+	and	r3, r0, #31
+	sub	r3, r3, #1
+	cmp	r3, #30
+	mov	r4, r0, asr #5
+	and	r4, r4, #7
+	ldrls	r2, .L508
+	add	r4, r4, r4, asl #1
+	ldrhi	r7, .L508+4
+	mov	r4, r4, asl #1
+	ldrls	r7, [r2, r3, asl #2]
+	ldr	r6, .L508+8
+	add	r5, r4, #5
+.L505:
+	ldrb	r0, [r7, r4]	@ zero_extendqisi2
+	ldr	r1, [r6, #0]
+	add	r4, r4, #1
+	bl	_IO_putc
+	cmp	r4, r5
+	ble	.L505
+	ldmfd	sp!, {r3, r4, r5, r6, r7, pc}
+.L509:
+	.align	2
+.L508:
+	.word	.LANCHOR1
+	.word	.LC24
+	.word	stdout
+	.size	wrfcode, .-wrfcode
+	.align	2
+	.global	trval
+	.type	trval, %function
+trval:
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 0, uses_anonymous_args = 0
+	@ link register save eliminated.
+	mov	r1, r0
+	ldr	r2, .L515
+	mov	r0, r0, lsr #16
+	uxth	r3, r1
+	cmp	r2, r0, asl #16
+	movne	r2, #0
+	moveq	r2, #1
+	cmp	r3, #1000
+	movgt	r2, #0
+	andle	r2, r2, #1
+	cmp	r2, #0
+	bne	.L513
+	ldr	r3, .L515+4
+	ldr	r2, .L515+8
+	add	r3, r1, r3
+	cmp	r3, r2
+	bls	.L514
+	ldr	r0, .L515+12
+	b	printf
+.L514:
+	ldr	r0, .L515+16
+	b	printf
+.L513:
+	ldr	r0, .L515+20
+	mov	r1, r3
+	b	printf
+.L516:
+	.align	2
+.L515:
+	.word	-1886453760
+	.word	10000000
+	.word	20000000
+	.word	.LC28
+	.word	.LC27
+	.word	.LC26
+	.size	trval, .-trval
+	.align	2
+	.global	trace
+	.type	trace, %function
+trace:
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 0, uses_anonymous_args = 0
+	stmfd	sp!, {r4, r5, r6, r7, r8, lr}
+	mov	r4, r2
+	mov	r5, r0
+	ldr	r0, .L530
+	mov	r6, r1
+	mov	r7, r3
+	bl	printf
+	ldr	r3, .L530+4
+	mov	r2, r4, lsr #16
+	uxth	r1, r4
+	cmp	r3, r2, asl #16
+	movne	r3, #0
+	moveq	r3, #1
+	cmp	r1, #1000
+	movgt	r3, #0
+	andle	r3, r3, #1
+	cmp	r3, #0
+	bne	.L528
+	ldr	r3, .L530+8
+	ldr	r2, .L530+12
+	add	r3, r4, r3
+	cmp	r3, r2
+	movls	r1, r4
+	ldrls	r0, .L530+16
+	ldrhi	r0, .L530+20
+	movhi	r1, r4
+	bl	printf
+.L519:
+	ldr	r0, .L530+24
+	bl	printf
+	ldr	r3, .L530+4
+	mov	r2, r7, lsr #16
+	uxth	r1, r7
+	cmp	r3, r2, asl #16
+	movne	r3, #0
+	moveq	r3, #1
+	cmp	r1, #1000
+	movgt	r3, #0
+	andle	r3, r3, #1
+	cmp	r3, #0
+	bne	.L529
+	ldr	r3, .L530+8
+	ldr	r2, .L530+12
+	add	r3, r7, r3
+	cmp	r3, r2
+	movls	r1, r7
+	ldrls	r0, .L530+16
+	ldrhi	r0, .L530+20
+	movhi	r1, r7
+	bl	printf
+.L522:
+	mov	r1, r6
+	ldr	r0, .L530+28
+	bl	printf
+	mov	r1, r5
+	ldr	r0, .L530+32
+	bl	printf
+	ldr	r3, .L530+36
+	ldr	r6, .L530+40
+	ldr	r3, [r3, #0]
+	ldrb	r4, [r3, r5]!	@ zero_extendqisi2
+	and	r2, r4, #31
+	sub	r2, r2, #1
+	cmp	r2, #30
+	mov	r4, r4, asr #5
+	ldrb	r8, [r3, #1]	@ zero_extendqisi2
+	ldrls	r3, .L530+44
+	add	r4, r4, r4, asl #1
+	ldrhi	r7, .L530+48
+	mov	r4, r4, asl #1
+	ldrls	r7, [r3, r2, asl #2]
+	add	r5, r4, #5
+.L525:
+	ldrb	r0, [r7, r4]	@ zero_extendqisi2
+	ldr	r1, [r6, #0]
+	add	r4, r4, #1
+	bl	_IO_putc
+	cmp	r5, r4
+	bge	.L525
+	ldr	r0, .L530+52
+	bl	printf
+	mov	r1, r8
+	ldr	r0, .L530+56
+	bl	printf
+	mov	r0, #10
+	bl	putchar
+	ldr	r3, .L530+40
+	mov	r0, #13
+	ldr	r1, [r3, #0]
+	ldmfd	sp!, {r4, r5, r6, r7, r8, lr}
+	b	_IO_putc
+.L528:
+	ldr	r0, .L530+60
+	bl	printf
+	b	.L519
+.L529:
+	ldr	r0, .L530+60
+	bl	printf
+	b	.L522
+.L531:
+	.align	2
+.L530:
+	.word	.LC29
+	.word	-1886453760
+	.word	10000000
+	.word	20000000
+	.word	.LC27
+	.word	.LC28
+	.word	.LC30
+	.word	.LC31
+	.word	.LC32
+	.word	W
+	.word	stdout
+	.word	.LANCHOR1
+	.word	.LC24
+	.word	.LC25
+	.word	.LC33
+	.word	.LC26
+	.size	trace, .-trace
+	.align	2
+	.global	dumpmem
+	.type	dumpmem, %function
+dumpmem:
+	@ args = 0, pretend = 0, frame = 24
+	@ frame_needed = 0, uses_anonymous_args = 0
+	stmfd	sp!, {r4, r5, r6, r7, r8, sl, lr}
+	sub	sp, sp, #28
+	mov	r8, r1
+	mov	r4, r0
+	ldr	r1, .L551
+	ldr	r0, .L551+4
+	mov	r5, r2
+	str	r8, [sp, #16]
+	bl	fopen
+	subs	sl, r0, #0
+	beq	.L532
+	ldr	r2, .L551+8
+	ldr	r6, .L551+12
+	str	r5, [r4, #512]
+	ldr	r1, [r2, #0]
+	ldr	r2, .L551+16
+	ldr	r3, [r6, #0]
+	add	r0, sp, #4
+	ldr	r2, [r2, #0]
+	rsb	r1, r3, r1
+	rsb	r3, r3, r2
+	ldr	r2, .L551+20
+	mov	r1, r1, asr #2
+	mov	r3, r3, asr #2
+	ldr	r2, [r2, #0]
+	str	r1, [r4, #516]
+	str	r3, [r4, #520]
+	str	r2, [r4, #524]
+	bl	ftime
+	ldrsh	ip, [sp, #10]
+	ldr	r5, [r6, #0]
+	ldr	r2, .L551+24
+	mov	r3, #0
+	rsb	lr, ip, ip, asl #4
+	ldr	ip, [r5, #532]
+	mov	lr, lr, asl #2
+	mov	r0, lr
+	rsb	ip, ip, ip, asl #4
+	mov	r1, lr, asr #31
+	ldr	lr, [sp, #4]
+	rsbs	r6, r0, lr
+	rsc	r7, r1, lr, asr #31
+	mov	r1, ip, asl #2
+	adds	r6, r6, r1
+	adc	r7, r7, r1, asr #31
+	mov	r0, r6
+	mov	r1, r7
+	bl	__aeabi_ldivmod
+	ldr	r2, .L551+24
+	mov	r3, #0
+	mov	r1, r7
+	ldrh	r5, [sp, #8]
+	str	r0, [r4, #560]
+	mov	r0, r6
+	bl	__aeabi_ldivmod
+	mov	ip, #1000
+	mvn	r3, #0
+	str	r3, [r4, #568]
+	add	r0, sp, #16
+	mov	r1, #4
+	mov	r3, sl
+	mla	r5, ip, r2, r5
+	mov	r2, #1
+	str	r5, [r4, #564]
+	bl	fwrite
+	cmp	r0, #1
+	beq	.L548
+.L534:
+	mov	r0, sl
+	bl	fclose
+.L533:
+.L532:
+	add	sp, sp, #28
+	ldmfd	sp!, {r4, r5, r6, r7, r8, sl, pc}
+.L548:
+	cmp	r8, #0
+	movge	r6, #0
+	movge	r7, r6
+	blt	.L534
+.L535:
+	ldr	r2, [r4, r6, asl #2]
+	add	r3, r4, r6, asl #2
+	mov	r5, r6
+	str	r2, [sp, #20]
+.L536:
+	ldr	r1, [r3, #4]!
+	add	r5, r5, #1
+	cmp	r2, r1
+	beq	.L538
+	cmp	r8, r5
+	blt	.L537
+	rsb	r3, r6, r5
+	cmp	r3, #199
+	ble	.L539
+.L537:
+	rsb	r3, r7, r6
+	cmp	r3, #0
+	str	r3, [sp, #16]
+	bne	.L549
+.L540:
+	rsb	r6, r5, r6
+	cmp	r6, #0
+	str	r6, [sp, #16]
+	bne	.L550
+.L541:
+	cmp	r8, r5
+	blt	.L534
+	mov	r7, r5
+.L539:
+	mov	r6, r5
+	b	.L535
+.L538:
+	cmp	r8, r5
+	bge	.L536
+	rsb	r3, r7, r6
+	cmp	r3, #0
+	str	r3, [sp, #16]
+	beq	.L540
+.L549:
+	add	r0, sp, #16
+	mov	r1, #4
+	mov	r2, #1
+	mov	r3, sl
+	bl	fwrite
+	cmp	r0, #1
+	bne	.L534
+	mov	r3, sl
+	add	r0, r4, r7, asl #2
+	mov	r1, #4
+	ldr	r2, [sp, #16]
+	bl	fwrite
+	ldr	r3, [sp, #16]
+	cmp	r0, r3
+	bne	.L534
+	rsb	r6, r5, r6
+	cmp	r6, #0
+	str	r6, [sp, #16]
+	beq	.L541
+.L550:
+	mov	r2, #1
+	add	r0, sp, #16
+	mov	r1, #4
+	mov	r3, sl
+	bl	fwrite
+	cmp	r0, #1
+	mov	r2, r0
+	bne	.L534
+	add	r0, sp, #20
+	mov	r1, #4
+	mov	r3, sl
+	bl	fwrite
+	cmp	r0, #1
+	beq	.L541
+	b	.L534
+.L552:
+	.align	2
+.L551:
+	.word	.LC35
+	.word	.LC34
+	.word	lastWp
+	.word	W
+	.word	lastWg
+	.word	lastst
+	.word	86400
+	.size	dumpmem, .-dumpmem
+	.section	.text.startup,"ax",%progbits
+	.align	2
+	.global	main
+	.type	main, %function
+main:
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 0, uses_anonymous_args = 0
+	ldr	r3, .L653
+	stmfd	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+	mov	r2, #0
+	ldr	r5, .L653+4
+	str	r2, [r3, #0]
+	str	r2, [r3, #4]
+	str	r2, [r3, #8]
+	str	r2, [r3, #12]
+	ldr	r3, .L653+8
+	mov	r7, r1
+	ldr	r1, .L653+12
+	str	r3, [r5, #0]
+	ldr	r3, .L653+16
+	ldr	r2, .L653+20
+	str	r3, [r1, #0]
+	ldr	r3, .L653+24
+	sub	sp, sp, #12
+	str	r3, [r2, #0]
+	mov	r8, r0
+	bl	getpid
+	ldr	r4, .L653+28
+	cmp	r8, #1
+	str	r0, [r4, #268]
+	ble	.L554
+	mov	r6, #1
+	b	.L575
+.L638:
+	ldrb	r3, [sl, #1]	@ zero_extendqisi2
+	cmp	r3, #109
+	bne	.L556
+	ldrb	r1, [sl, #2]	@ zero_extendqisi2
+	cmp	r1, #0
+	bne	.L555
+	add	r6, r6, #1
+	mov	r2, #10
+	ldr	r0, [r7, r6, asl #2]
+	bl	strtol
+	str	r0, [r5, #0]
+.L557:
+	add	r6, r6, #1
+	cmp	r8, r6
+	ble	.L554
+.L575:
+	ldr	sl, [r7, r6, asl #2]
+	ldrb	r9, [sl, #0]	@ zero_extendqisi2
+	subs	fp, r9, #45
+	beq	.L638
+.L555:
+	mov	r0, sl
+	ldr	r1, .L653+32
+	bl	strcmp
+	cmp	r0, #0
+	bne	.L558
+	add	r6, r6, #1
+	ldr	ip, .L653+36
+	ldr	r3, [r7, r6, asl #2]
+	add	r6, r6, #1
+	cmp	r8, r6
+	str	r3, [ip, #0]
+	bgt	.L575
+.L554:
+	ldr	r1, [r4, #284]
+	cmp	r1, #0
+	ble	.L576
+	ldr	r0, .L653+40
+	bl	printf
+.L576:
+	ldr	r2, [r5, #0]
+	ldr	r3, .L653+44
+	cmp	r2, r3
+	ble	.L577
+	ldr	r1, .L653+12
+	ldr	r3, [r1, #0]
+	cmp	r3, #0
+	blt	.L577
+	ldr	r3, [r4, #284]
+	cmp	r3, #0
+	bne	.L639
+.L579:
+	ldr	r3, .L653+12
+	ldr	ip, .L653+20
+	ldr	r6, [r5, #0]
+	ldr	r2, [r3, #0]
+	ldr	r3, [ip, #0]
+	add	r6, r6, r2
+	mov	r0, #30
+	add	r6, r6, r3
+	bl	sysconf
+	ldr	r3, [r4, #288]
+	add	r6, r6, #7
+	cmp	r3, #0
+	mov	r6, r6, asl #2
+	mov	r1, r0
+	bne	.L640
+.L581:
+	mov	ip, #0
+	mov	r1, r6
+	mov	r3, #34
+	mov	r0, ip
+	mov	r2, #7
+	str	ip, [sp, #0]
+	str	ip, [sp, #4]
+	bl	mmap
+	ldr	r6, .L653+48
+	ldr	r3, [r4, #288]
+	cmp	r3, #0
+	str	r0, [r6, #0]
+	bne	.L641
+.L582:
+	ldr	r7, [r6, #0]
+	cmp	r7, #0
+	beq	.L642
+	ldr	r3, .L653+48
+	add	r2, r7, #7
+	bic	r2, r2, #7
+	str	r2, [r3, #0]
+	ldr	r3, .L653+52
+	ldr	r1, [r5, #0]
+	mov	r0, #3
+	str	r2, [r3, #0]
+	ldr	r3, .L653+56
+	cmp	r1, #0
+	str	r2, [r3, #0]
+	ldr	r3, .L653+60
+	str	r0, [r3, #0]
+	ble	.L584
+	ldr	r0, .L653+64
+	mov	r3, #0
+.L585:
+	str	r0, [r2], #4
+	ldr	r1, [r5, #0]
+	add	r3, r3, #1
+	cmp	r1, r3
+	bgt	.L585
+.L584:
+	ldr	r3, [r4, #284]
+	cmp	r3, #0
+	ble	.L586
+	ldr	r0, .L653+68
+	bl	printf
+.L586:
+	ldr	ip, [r6, #0]
+	ldr	r3, [r5, #0]
+	mov	r0, #0
+	add	r3, r3, #1
+	str	r3, [ip, #0]
+	ldr	r3, [r5, #0]
+	ldr	lr, .L653+12
+	ldr	r7, .L653+72
+	str	r0, [ip, r3, asl #2]
+	ldr	r3, [r5, #0]
+	ldr	r2, [lr, #0]
+	add	r3, r3, #1
+	ldr	lr, .L653+76
+	add	r1, ip, r3, asl #2
+	str	r3, [r7, #0]
+	str	r0, [r4, #292]
+	str	r1, [lr, #0]
+	str	r2, [ip, r3, asl #2]
+	ldr	r3, .L653+12
+	ldr	r2, [r3, #0]
+	cmp	r2, r0
+	ble	.L587
+	mov	r3, #1
+.L588:
+	ldr	lr, .L653+12
+	str	r0, [r1, #4]!
+	add	r3, r3, #1
+	ldr	r2, [lr, #0]
+	cmp	r2, r3
+	bge	.L588
+.L587:
+	ldr	r3, [r7, #0]
+	ldr	fp, .L653+80
+	add	r3, r2, r3
+	ldr	r2, .L653+20
+	add	r3, r3, #1
+	str	r3, [fp, #0]
+	ldr	r1, [r2, #0]
+	add	r2, ip, r3, asl #2
+	ldr	r3, .L653+84
+	cmp	r1, #0
+	str	r2, [r3, #0]
+	blt	.L589
+	mov	r3, #0
+	mov	r0, r3
+.L590:
+	ldr	ip, .L653+20
+	str	r0, [r2], #4
+	add	r3, r3, #1
+	ldr	r1, [ip, #0]
+	cmp	r1, r3
+	bge	.L590
+.L589:
+	mov	r0, #88
+	bl	getvec
+	mov	r0, #100
+	bl	getvec
+	add	r1, r0, #1
+	cmp	r1, #100
+	beq	.L591
+	ldr	r0, .L653+88
+	mov	r2, #100
+	bl	printf
+.L591:
+	mov	r0, #80
+	bl	getvec
+	ldr	r2, [r6, #0]
+	mov	r3, #0
+	mov	r1, r3
+	add	ip, r0, #64
+	add	r9, r0, #16
+	add	sl, r0, #32
+	add	r8, r0, #48
+	str	r0, [r4, #296]
+	ldr	r0, .L653+92
+	add	lr, r2, ip, asl #2
+	str	r9, [r4, #300]
+	str	sl, [r4, #304]
+	str	r8, [r4, #308]
+	str	ip, [r4, #312]
+	str	lr, [r0, #0]
+.L592:
+	ldr	r0, [r4, #296]
+	ldr	r9, .L653+28
+	add	r0, r3, r0
+	add	r3, r3, #1
+	cmp	r3, #81
+	str	r1, [r2, r0, asl #2]
+	bne	.L592
+	ldr	sl, .L653+36
+	ldr	r1, [r9, #296]
+	ldr	r0, .L653+96
+	bl	c2b_str
+	ldr	r1, [r9, #300]
+	ldr	r0, [sl, #0]
+	bl	c2b_str
+	ldr	r8, .L653+100
+	ldr	r1, [r9, #304]
+	ldr	r0, .L653+104
+	bl	c2b_str
+	ldr	r1, [r9, #308]
+	ldr	r0, .L653+108
+	bl	c2b_str
+	mov	r0, r8
+	bl	getvec
+	ldr	r9, .L653+112
+	ldr	r1, [r6, #0]
+	mov	r3, #1
+	mov	ip, #0
+	str	r0, [r9, #0]
+	str	r8, [r1, r0, asl #2]
+.L593:
+	ldr	r2, [r9, #0]
+	add	r2, r3, r2
+	add	r3, r3, #1
+	cmp	r3, #512
+	str	ip, [r1, r2, asl #2]
+	bne	.L593
+	ldr	r3, [r4, #8]
+	cmp	r3, #0
+	bne	.L643
+.L594:
+	ldr	r0, .L653+116
+	bl	getvec
+	ldr	sl, .L653+120
+	ldr	r8, .L653+124
+	str	r0, [sl, #0]
+	mov	r0, #1000
+	bl	getvec
+	ldr	r3, [r4, #284]
+	mov	r2, #0
+	cmp	r3, #0
+	ldr	r3, .L653+128
+	str	r2, [r3, #0]
+	str	r0, [r8, #0]
+	ble	.L595
+	ldr	r0, .L653+132
+	ldr	r1, [sl, #0]
+	bl	printf
+.L595:
+	ldr	r2, [r6, #0]
+	ldr	ip, [sl, #0]
+	ldr	r0, .L653+136
+	ldr	r1, .L653+140
+	mov	r3, #1
+	mov	lr, #500
+	str	lr, [r2, ip, asl #2]
+.L596:
+	ldr	ip, [sl, #0]
+	add	ip, r3, ip
+	add	r3, r3, #1
+	cmp	r3, r1
+	str	r0, [r2, ip, asl #2]
+	bne	.L596
+	ldr	r3, [r4, #284]
+	cmp	r3, #0
+	ble	.L597
+	ldr	r0, .L653+144
+	ldr	r1, [r8, #0]
+	bl	printf
+.L597:
+	ldr	r0, [r6, #0]
+	ldr	lr, .L653+148
+	mov	r3, #0
+.L598:
+	ldr	r2, [r8, #0]
+	add	r1, r3, #-1895825408
+	add	r2, r3, r2
+	add	r3, r3, #1
+	add	r1, r1, #9371648
+	cmp	r3, lr
+	ldr	ip, .L653+124
+	str	r1, [r0, r2, asl #2]
+	bne	.L598
+	ldr	r3, [ip, #0]
+	mov	r1, #1000
+	add	r2, r0, #396
+	str	r1, [r0, r3, asl #2]
+	ldr	ip, [ip, #0]
+	mov	r3, #51
+	add	ip, ip, #9
+	mov	r1, #0
+	mov	lr, #100
+	str	lr, [r0, ip, asl #2]
+.L599:
+	subs	r3, r3, #1
+	str	r1, [r2, #4]!
+	bne	.L599
+	ldr	r2, [r4, #284]
+	ldr	lr, .L653+20
+	ldr	r7, [r7, #0]
+	ldr	fp, [fp, #0]
+	cmp	r2, #0
+	str	r2, [r0, #556]
+	ldr	r2, .L653+152
+	str	r7, [r0, #420]
+	str	fp, [r0, #488]
+	ldr	r7, [r4, #272]
+	ldr	fp, [lr, #0]
+	ldr	ip, [r4, #300]
+	ldr	r1, [r4, #304]
+	ldr	r9, [r9, #0]
+	str	r3, [r0, #452]
+	ldr	lr, [r5, #0]
+	str	r3, [r0, #416]
+	str	r3, [r0, #576]
+	str	r2, [r0, #580]
+	str	r3, [r0, #584]
+	ldr	r2, [r4, #296]
+	ldr	r3, [r4, #308]
+	str	lr, [r0, #456]
+	str	fp, [r0, #492]
+	str	r7, [r0, #500]
+	str	r0, [r0, #572]
+	str	r2, [r0, #540]
+	str	ip, [r0, #544]
+	str	r1, [r0, #548]
+	str	r3, [r0, #552]
+	str	r9, [r0, #536]
+	ble	.L600
+	ldr	r0, .L653+156
+	mov	r1, #100
+	bl	printf
+.L600:
+	ldr	r3, [r4, #284]
+	cmp	r3, #0
+	ble	.L601
+	ldr	r0, .L653+160
+	bl	puts
+.L601:
+	ldr	r0, .L653+164
+	bl	loadseg
+	cmp	r0, #0
+	bne	.L602
+	ldr	r0, .L653+168
+	bl	puts
+	ldr	r0, .L653+172
+	bl	puts
+	ldr	r0, .L653+176
+	bl	puts
+	ldr	r0, .L653+180
+	bl	puts
+	ldr	r0, .L653+184
+	bl	puts
+	ldr	r0, .L653+188
+	bl	puts
+	mov	r0, #20
+	b	.L574
+.L556:
+	cmp	r3, #116
+	bne	.L555
+	ldrb	r1, [sl, #2]	@ zero_extendqisi2
+	cmp	r1, #0
+	bne	.L555
+	add	r6, r6, #1
+	mov	r2, #10
+	ldr	r0, [r7, r6, asl #2]
+	bl	strtol
+	ldr	r3, .L653+12
+	str	r0, [r3, #0]
+	b	.L557
+.L558:
+	cmp	fp, #0
+	beq	.L644
+.L559:
+	mov	r0, sl
+	ldr	r1, .L653+192
+	bl	strcmp
+	cmp	r0, #0
+	moveq	r2, #1
+	streq	r2, [r4, #276]
+	beq	.L557
+	cmp	fp, #0
+	bne	.L562
+	ldrb	r3, [sl, #1]	@ zero_extendqisi2
+	cmp	r3, #115
+	bne	.L563
+	ldrb	r3, [sl, #2]	@ zero_extendqisi2
+	cmp	r3, #0
+	beq	.L645
+.L565:
+	cmp	r9, #45
+	bne	.L572
+	ldrb	r3, [sl, #1]	@ zero_extendqisi2
+	cmp	r3, #99
+	bne	.L567
+.L637:
+	ldrb	r3, [sl, #2]	@ zero_extendqisi2
+	cmp	r3, #0
+	beq	.L646
+.L570:
+	ldrb	r3, [sl, #1]	@ zero_extendqisi2
+	cmp	r3, #104
+	bne	.L572
+	ldrb	r3, [sl, #2]	@ zero_extendqisi2
+	cmp	r3, #0
+	beq	.L573
+	b	.L572
+.L563:
+	cmp	r3, #45
+	bne	.L565
+	ldrb	r3, [sl, #2]	@ zero_extendqisi2
+	cmp	r3, #0
+	moveq	r3, #1
+	streq	r3, [r4, #280]
+	ldreqb	r9, [sl, #0]	@ zero_extendqisi2
+	b	.L565
+.L644:
+	ldrb	r3, [sl, #1]	@ zero_extendqisi2
+	cmp	r3, #102
+	bne	.L560
+	ldrb	r3, [sl, #2]	@ zero_extendqisi2
+	cmp	r3, #0
+	moveq	lr, #1
+	streq	lr, [r4, #8]
+	beq	.L557
+	b	.L559
+.L560:
+	cmp	r3, #100
+	bne	.L559
+	ldrb	r3, [sl, #2]	@ zero_extendqisi2
+	cmp	r3, #0
+	moveq	r1, #1
+	streq	r1, [r4, #272]
+	beq	.L557
+	b	.L559
+.L577:
+	ldr	r0, .L653+196
+	bl	puts
+	mov	r0, #10
+.L574:
+	add	sp, sp, #12
+	ldmfd	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
+.L562:
+	cmp	r9, #45
+	beq	.L570
+.L572:
+	ldr	r0, .L653+200
+	mov	r1, sl
+	bl	printf
+.L573:
+	ldr	r0, .L653+204
+	bl	puts
+	ldr	r0, .L653+208
+	bl	puts
+	ldr	r0, .L653+212
+	bl	puts
+	ldr	r0, .L653+216
+	bl	puts
+	ldr	r0, .L653+220
+	bl	puts
+	ldr	r0, .L653+224
+	bl	puts
+	ldr	r0, .L653+228
+	bl	puts
+	ldr	r0, .L653+232
+	bl	puts
+	ldr	r0, .L653+236
+	bl	puts
+	ldr	r0, .L653+240
+	bl	puts
+	ldr	r0, .L653+244
+	bl	puts
+	ldr	r0, .L653+248
+	bl	puts
+	ldr	r0, .L653+252
+	bl	puts
+	ldr	r0, .L653+256
+	bl	puts
+	mov	r0, #0
+	b	.L574
+.L567:
+	cmp	r3, #45
+	beq	.L637
+	cmp	r3, #118
+	bne	.L570
+	ldrb	r3, [sl, #2]	@ zero_extendqisi2
+	cmp	r3, #0
+	moveq	ip, #1
+	streq	ip, [r4, #284]
+	beq	.L557
+	cmp	r3, #118
+	bne	.L570
+	ldrb	r3, [sl, #3]	@ zero_extendqisi2
+	cmp	r3, #0
+	bne	.L570
+	mov	lr, #2
+	str	lr, [r4, #284]
+	b	.L557
+.L602:
+	ldr	r1, [r8, #0]
+	ldr	r7, [r6, #0]
+	bl	globin
+	ldr	r3, [r6, #0]
+	str	r0, [r7, #468]
+	ldr	r3, [r3, #468]
+	cmp	r3, #0
+	beq	.L647
+	ldr	r3, [r4, #284]
+	cmp	r3, #0
+	ble	.L604
+	ldr	r0, .L653+260
+	bl	puts
+.L604:
+	ldr	r0, .L653+264
+	bl	loadseg
+	subs	r7, r0, #0
+	beq	.L648
+	ldr	r3, [r4, #284]
+	cmp	r3, #0
+	ble	.L606
+	ldr	r0, .L653+268
+	bl	puts
+.L606:
+	ldr	r0, .L653+272
+	bl	loadseg
+	mov	r1, r0
+	mov	r0, r7
+	bl	concatsegs
+	subs	r7, r0, #0
+	beq	.L649
+	ldr	r3, [r4, #284]
+	cmp	r3, #0
+	ble	.L608
+	ldr	r0, .L653+276
+	bl	puts
+.L608:
+	ldr	r0, .L653+280
+	bl	loadseg
+	mov	r1, r0
+	mov	r0, r7
+	bl	concatsegs
+	subs	r7, r0, #0
+	beq	.L650
+	ldr	r3, [r4, #284]
+	cmp	r3, #0
+	ble	.L610
+	ldr	r0, .L653+284
+	bl	puts
+.L610:
+	mov	r0, r7
+	ldr	r1, [r8, #0]
+	ldr	r9, [r6, #0]
+	bl	globin
+	ldr	r3, [r6, #0]
+	ldr	r7, .L653+124
+	str	r0, [r9, #476]
+	ldr	r3, [r3, #476]
+	cmp	r3, #0
+	bne	.L611
+	ldr	r0, .L653+288
+	bl	puts
+	mov	r0, #20
+	b	.L574
+.L641:
+	mov	r1, r0
+	mov	r2, r1
+	ldr	r0, .L653+292
+	bl	printf
+	b	.L582
+.L640:
+	ldr	r0, .L653+296
+	bl	printf
+	b	.L581
+.L639:
+	ldr	r0, .L653+300
+	bl	puts
+	ldr	r3, .L653+304
+	ldr	r0, .L653+308
+	mov	r1, r3
+	ldr	r6, [r3, #0]
+	mov	r2, r6
+	uxtb	r6, r6
+	bl	printf
+	cmp	r6, #65
+	ldr	r0, .L653+312
+	beq	.L580
+	bl	printf
+.L616:
+	mov	r0, #10
+	bl	putchar
+	mov	r1, #4
+	ldr	r0, .L653+316
+	bl	printf
+	mov	r1, #4
+	ldr	r0, .L653+320
+	bl	printf
+	mov	r1, #4
+	ldr	r0, .L653+324
+	bl	printf
+	mov	r1, #4
+	ldr	r0, .L653+328
+	bl	printf
+	ldr	r1, .L653+332
+	ldr	r0, .L653+336
+	bl	printf
+	ldr	r1, .L653+340
+	ldr	r0, .L653+344
+	bl	printf
+	b	.L579
+.L643:
+	ldr	r0, .L653+96
+	bl	getenv
+	ldr	r1, .L653+96
+	mov	r8, r0
+	ldr	r0, .L653+348
+	bl	printf
+	mov	r1, r8
+	ldr	r0, .L653+352
+	bl	printf
+	ldr	r0, [sl, #0]
+	bl	getenv
+	ldr	r1, [sl, #0]
+	mov	r8, r0
+	ldr	r0, .L653+348
+	bl	printf
+	mov	r1, r8
+	ldr	r0, .L653+352
+	bl	printf
+	ldr	r0, .L653+104
+	bl	getenv
+	ldr	r1, .L653+104
+	mov	r8, r0
+	ldr	r0, .L653+348
+	bl	printf
+	mov	r1, r8
+	ldr	r0, .L653+352
+	bl	printf
+	ldr	r0, .L653+108
+	bl	getenv
+	ldr	r1, .L653+108
+	mov	r8, r0
+	ldr	r0, .L653+348
+	bl	printf
+	mov	r1, r8
+	ldr	r0, .L653+352
+	bl	printf
+	b	.L594
+.L646:
+	mov	r0, #0
+	mov	r1, r8
+	mov	r2, r7
+	mov	r3, r6
+	bl	prepend_stdin
+	b	.L554
+.L647:
+	ldr	r0, .L653+356
+	bl	puts
+	mov	r0, #20
+	b	.L574
+.L645:
+	add	r3, r6, #1
+	ldr	r3, [r7, r3, asl #2]
+	cmp	r3, #0
+	beq	.L651
+	ldr	r0, .L653+360
+	mov	r1, r8
+	mov	r2, r7
+	mov	r3, r6
+	bl	prepend_stdin
+	b	.L554
+.L580:
+	bl	printf
+	ldr	r0, .L653+364
+	bl	printf
+	b	.L616
+.L648:
+	ldr	r0, .L653+368
+	bl	puts
+	mov	r0, #20
+	b	.L574
+.L642:
+	ldr	r0, .L653+372
+	bl	puts
+	mov	r0, r7
+	b	.L574
+.L649:
+	ldr	r0, .L653+376
+	bl	puts
+	mov	r0, #20
+	b	.L574
+.L650:
+	ldr	r0, .L653+380
+	bl	puts
+	mov	r0, #20
+	b	.L574
+.L611:
+	ldr	r1, .L653+384
+	mov	r0, #2
+	bl	signal
+	ldr	r3, .L653+388
+	ldr	r1, .L653+392
+	str	r0, [r3, #0]
+	mov	r0, #11
+	bl	signal
+	ldr	r3, .L653+48
+	ldr	r2, [r7, #0]
+	ldr	r3, [r3, #0]
+	add	r1, r2, #3
+	ldr	ip, [r3, r1, asl #2]
+	add	r1, r2, #7
+	str	ip, [r3, #464]
+	ldr	ip, .L653+396
+	mov	r2, #0
+	str	r0, [ip, #0]
+	str	r2, [r3, r1, asl #2]
+	ldr	r1, [r7, #0]
+	add	r1, r1, #8
+	str	r2, [r3, r1, asl #2]
+	ldr	r1, [r7, #0]
+	ldr	ip, [sl, #0]
+	add	r0, r1, #1
+	mov	r1, r1, asl #2
+	str	r1, [r3, #60]
+	mov	ip, ip, asl #2
+	mov	r1, #2
+	str	r2, [r3, #44]
+	str	r2, [r3, #48]
+	str	r2, [r3, #52]
+	str	ip, [r3, #56]
+	str	r1, [r3, #64]
+	ldr	r1, [r3, r0, asl #2]
+	mvn	r0, #0
+	str	r0, [r3, #72]
+	str	r1, [r3, #68]
+	str	r2, [r3, #76]
+	bl	init_keyb
+	ldr	r3, [r4, #284]
+	cmp	r3, #0
+	ble	.L612
+	ldr	r0, .L653+400
+	bl	puts
+.L612:
+	ldr	r3, [r4, #284]
+	cmp	r3, #1
+	ble	.L613
+	ldr	r0, .L653+404
+	bl	puts
+	ldr	r3, .L653+28
+	mov	r2, #1
+	str	r2, [r3, #288]
+.L613:
+	mov	r0, #11
+	ldr	r1, [r6, #0]
+	bl	interpret
+	ldr	r3, [r4, #284]
+	cmp	r3, #0
+	mov	r7, r0
+	ble	.L614
+	ldr	r0, .L653+408
+	mov	r1, r7
+	bl	printf
+.L614:
+	bl	close_keyb
+	cmp	r7, #0
+	bne	.L652
+.L615:
+	mov	r0, #10
+	bl	putchar
+	ldr	r2, [r8, #0]
+	ldr	r3, [r6, #0]
+	add	r2, r2, #137
+	ldr	r0, [r3, r2, asl #2]
+	b	.L574
+.L651:
+	ldr	r3, .L653+412
+	ldr	r0, .L653+416
+	mov	r1, #1
+	mov	r2, #25
+	ldr	r3, [r3, #0]
+	bl	fwrite
+	mvn	r0, #0
+	bl	exit
+.L652:
+	ldr	r0, .L653+420
+	mov	r1, r7
+	bl	printf
+	ldr	r0, [r6, #0]
+	ldr	r3, [r0, #500]
+	cmp	r3, #0
+	beq	.L615
+	ldr	r1, [r5, #0]
+	mov	r2, #3
+	bl	dumpmem
+	ldr	r0, .L653+424
+	bl	puts
+	b	.L615
+.L654:
+	.align	2
+.L653:
+	.word	taskname
+	.word	memupb
+	.word	4000000
+	.word	tallyupb
+	.word	1000000
+	.word	vecstatsvupb
+	.word	20000
+	.word	.LANCHOR0
+	.word	.LC36
+	.word	.LANCHOR2
+	.word	.LC55
+	.word	49999
+	.word	W
+	.word	lastWp
+	.word	lastWg
+	.word	lastst
+	.word	-559038242
+	.word	.LC72
+	.word	tallyvec
+	.word	tallyv
+	.word	vecstatsvec
+	.word	vecstatsv
+	.word	.LC73
+	.word	prefixbp
+	.word	.LC74
+	.word	511
+	.word	.LC75
+	.word	.LC76
+	.word	dcountv
+	.word	506
+	.word	stackbase
+	.word	globbase
+	.word	result2
+	.word	.LC78
+	.word	-1412623820
+	.word	507
+	.word	.LC79
+	.word	1001
+	.word	mcprf
+	.word	.LC80
+	.word	.LC81
+	.word	.LC82
+	.word	.LC83
+	.word	.LC84
+	.word	.LC85
+	.word	.LC86
+	.word	.LC87
+	.word	.LC88
+	.word	.LC37
+	.word	.LC56
+	.word	.LC40
+	.word	.LC41
+	.word	.LC42
+	.word	.LC43
+	.word	.LC44
+	.word	.LC45
+	.word	.LC46
+	.word	.LC47
+	.word	.LC48
+	.word	.LC49
+	.word	.LC50
+	.word	.LC51
+	.word	.LC52
+	.word	.LC53
+	.word	.LC54
+	.word	.LC90
+	.word	.LC91
+	.word	.LC93
+	.word	.LC94
+	.word	.LC96
+	.word	.LC97
+	.word	.LC99
+	.word	.LC100
+	.word	.LC70
+	.word	.LC69
+	.word	.LC57
+	.word	.LC58
+	.word	.LC59
+	.word	.LC60
+	.word	.LC61
+	.word	.LC62
+	.word	.LC63
+	.word	.LC64
+	.word	.LC66
+	.word	.LC65
+	.word	.LC68
+	.word	.LC67
+	.word	.LC77
+	.word	.LC17
+	.word	.LC89
+	.word	.LC39
+	.word	.LC106
+	.word	.LC92
+	.word	.LC71
+	.word	.LC95
+	.word	.LC98
+	.word	inthandler
+	.word	old_inthandler
+	.word	segvhandler
+	.word	old_segvhandler
+	.word	.LC101
+	.word	.LC102
+	.word	.LC103
+	.word	stderr
+	.word	.LC38
+	.word	.LC104
+	.word	.LC105
+	.size	main, .-main
+	.text
+	.align	2
+	.global	segvhandler
+	.type	segvhandler, %function
+segvhandler:
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 0, uses_anonymous_args = 0
+	stmfd	sp!, {r4, lr}
+	ldr	r4, .L658
+	ldr	r0, .L658+4
+	bl	puts
+	ldr	r1, [r4, #0]
+	mov	r0, #11
+	bl	signal
+	str	r0, [r4, #0]
+	bl	close_keyb
+	ldr	r0, .L658+8
+	bl	puts
+	ldr	r3, .L658+12
+	ldr	r3, [r3, #0]
+	ldr	r2, [r3, #500]
+	cmp	r2, #0
+	bne	.L657
+.L656:
+	mov	r0, #0
+	bl	exit
+.L657:
+	ldr	r2, .L658+16
+	mov	r0, r3
+	ldr	r1, [r2, #0]
+	ldr	r2, .L658+20
+	rsb	r1, r3, r1
+	ldr	r2, [r2, #0]
+	mov	r1, r1, asr #2
+	rsb	r2, r3, r2
+	str	r1, [r3, #516]
+	mov	r2, r2, asr #2
+	str	r2, [r3, #520]
+	ldr	r3, .L658+24
+	mov	r2, #2
+	ldr	r1, [r3, #0]
+	bl	dumpmem
+	ldr	r0, .L658+28
+	bl	puts
+	b	.L656
+.L659:
+	.align	2
+.L658:
+	.word	old_segvhandler
+	.word	.LC107
+	.word	.LC108
+	.word	W
+	.word	lastWp
+	.word	lastWg
+	.word	memupb
+	.word	.LC109
+	.size	segvhandler, .-segvhandler
+	.align	2
+	.global	inthandler
+	.type	inthandler, %function
+inthandler:
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 0, uses_anonymous_args = 0
+	stmfd	sp!, {r4, lr}
+	ldr	r4, .L663
+	ldr	r0, .L663+4
+	bl	puts
+	ldr	r1, [r4, #0]
+	mov	r0, #2
+	bl	signal
+	str	r0, [r4, #0]
+	bl	close_keyb
+	ldr	r0, .L663+8
+	bl	puts
+	ldr	r3, .L663+12
+	ldr	r3, [r3, #0]
+	ldr	r2, [r3, #500]
+	cmp	r2, #0
+	bne	.L662
+.L661:
+	mov	r0, #0
+	bl	exit
+.L662:
+	ldr	r2, .L663+16
+	mov	r0, r3
+	ldr	r1, [r2, #0]
+	ldr	r2, .L663+20
+	rsb	r1, r3, r1
+	ldr	r2, [r2, #0]
+	mov	r1, r1, asr #2
+	rsb	r2, r3, r2
+	str	r1, [r3, #516]
+	mov	r2, r2, asr #2
+	str	r2, [r3, #520]
+	ldr	r3, .L663+24
+	mov	r2, #1
+	ldr	r1, [r3, #0]
+	bl	dumpmem
+	ldr	r0, .L663+28
+	bl	puts
+	b	.L661
+.L664:
+	.align	2
+.L663:
+	.word	old_inthandler
+	.word	.LC110
+	.word	.LC108
+	.word	W
+	.word	lastWp
+	.word	lastWg
+	.word	memupb
+	.word	.LC111
+	.size	inthandler, .-inthandler
+	.align	2
+	.global	trpush
+	.type	trpush, %function
+trpush:
+	@ args = 0, pretend = 0, frame = 16
+	@ frame_needed = 0, uses_anonymous_args = 0
+	stmfd	sp!, {r4, r5, r6, r7, r8, r9, lr}
+	mov	r6, r0
+	ldr	r4, .L667
+	sub	sp, sp, #20
+	ldr	r3, [r4, #4]
+	cmp	r3, #0
+	blt	.L665
+	add	r0, sp, #4
+	bl	ftime
+	ldr	r3, .L667+4
+	ldrsh	r1, [sp, #10]
+	ldr	r5, [r4, #4]
+	ldr	ip, [r3, #0]
+	rsb	r0, r1, r1, asl #4
+	ldr	r1, [ip, #532]
+	mov	r0, r0, asl #2
+	mov	r2, r0
+	rsb	r1, r1, r1, asl #4
+	mov	r3, r0, asr #31
+	ldr	r0, [sp, #4]
+	mov	ip, r5, asl #20
+	rsbs	r2, r2, r0
+	rsc	r3, r3, r0, asr #31
+	mov	r0, r1, asl #2
+	adds	r8, r2, r0
+	adc	r9, r3, r0, asr #31
+	mov	r1, r9
+	mov	r0, r8
+	ldr	r2, .L667+8
+	mov	r3, #0
+	mov	r7, ip, lsr #20
+	bl	__aeabi_ldivmod
+	ldrh	r0, [sp, #8]
+	mov	ip, #1000
+	add	r1, r5, #1
+	ldr	r3, .L667+12
+	mov	r1, r1, asl #20
+	add	r5, r5, #2
+	str	r5, [r4, #4]
+	mla	r0, ip, r2, r0
+	ldr	ip, .L667+16
+	mov	r2, r0, asr #31
+	smull	r9, ip, ip, r0
+	rsb	ip, r2, ip, asr #14
+	ldr	r2, .L667+20
+	mul	ip, r2, ip
+	rsb	r0, ip, r0
+	add	r0, r0, #1711276032
+	str	r0, [r3, r7, asl #2]
+	str	r6, [r3, r1, lsr #18]
+.L665:
+	add	sp, sp, #20
+	ldmfd	sp!, {r4, r5, r6, r7, r8, r9, pc}
+.L668:
+	.align	2
+.L667:
+	.word	.LANCHOR2
+	.word	W
+	.word	86400
+	.word	trvec
+	.word	1172812403
+	.word	60000
+	.size	trpush, .-trpush
+	.align	2
+	.global	settrcount
+	.type	settrcount, %function
+settrcount:
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 0, uses_anonymous_args = 0
+	@ link register save eliminated.
+	ldr	r3, .L670
+	ldr	r2, [r3, #4]
+	str	r0, [r3, #4]
+	mov	r0, r2
+	bx	lr
+.L671:
+	.align	2
+.L670:
+	.word	.LANCHOR2
+	.size	settrcount, .-settrcount
+	.align	2
+	.global	gettrval
+	.type	gettrval, %function
+gettrval:
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 0, uses_anonymous_args = 0
+	@ link register save eliminated.
+	ldr	r3, .L673
+	mov	r0, r0, asl #20
+	ldr	r0, [r3, r0, lsr #18]
+	bx	lr
+.L674:
+	.align	2
+.L673:
+	.word	trvec
+	.size	gettrval, .-gettrval
+	.align	2
+	.global	incdcount
+	.type	incdcount, %function
+incdcount:
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 0, uses_anonymous_args = 0
+	@ link register save eliminated.
+	ldr	r3, .L679
+	cmp	r0, #0
+	mvnle	r0, #0
+	ldr	r3, [r3, #0]
+	ldr	r2, [r3, #536]
+	bxle	lr
+	ldr	r1, [r3, r2, asl #2]
+	cmp	r0, r1
+	addle	r2, r2, r0
+	mvngt	r0, #0
+	ldrle	r0, [r3, r2, asl #2]
+	addle	r0, r0, #1
+	strle	r0, [r3, r2, asl #2]
+	bx	lr
+.L680:
+	.align	2
+.L679:
+	.word	W
+	.size	incdcount, .-incdcount
+	.align	2
+	.global	soundfn
+	.type	soundfn, %function
+soundfn:
+	@ args = 0, pretend = 0, frame = 16
+	@ frame_needed = 0, uses_anonymous_args = 0
+	ldr	r3, [r0, #0]
+	stmfd	sp!, {r4, r5, r6, r7, r8, r9, sl, lr}
+	sub	r3, r3, #1
+	sub	sp, sp, #16
+	mov	r4, r0
+	cmp	r3, #16
+	ldrls	pc, [pc, r3, asl #2]
+	b	.L724
+.L698:
+	.word	.L683
+	.word	.L724
+	.word	.L724
+	.word	.L690
+	.word	.L697
+	.word	.L686
+	.word	.L696
+	.word	.L697
+	.word	.L689
+	.word	.L690
+	.word	.L697
+	.word	.L692
+	.word	.L693
+	.word	.L694
+	.word	.L695
+	.word	.L696
+	.word	.L697
+.L697:
+	ldr	r0, [r0, #4]
+	bl	close
+	mov	r5, r0
+.L682:
+	mov	r0, r5
+	add	sp, sp, #16
+	ldmfd	sp!, {r4, r5, r6, r7, r8, r9, sl, pc}
+.L690:
+	ldr	r3, .L745
+	ldmib	r0, {r0, r1}
+	ldr	r2, [r4, #12]
+	ldr	r3, [r3, #0]
+	add	r1, r3, r1, asl #2
+	bl	read
+	mov	r5, r0
+	b	.L682
+.L696:
+	ldr	r3, .L745
+	ldmib	r0, {r0, r1}
+	ldr	r2, [r4, #12]
+	ldr	r3, [r3, #0]
+	add	r1, r3, r1, asl #2
+	bl	write
+	mov	r5, r0
+	b	.L682
+.L686:
+	ldr	r2, .L745
+	ldr	r3, [r0, #4]
+	ldr	r7, [r2, #0]
+	mov	r8, r3, asl #2
+	cmp	r3, #0
+	add	r0, r7, r8
+	ldrb	r6, [r7, r3, asl #2]	@ zero_extendqisi2
+	moveq	r0, r3
+	beq	.L706
+	cmp	r6, #0
+	ldreq	r2, .L745+4
+	beq	.L707
+	add	r3, r0, #1
+	ldr	r2, .L745+4
+	tst	r3, #3
+	movne	r1, #0
+	moveq	r1, #1
+	add	lr, r0, #5
+	add	ip, r2, #4
+	cmp	r6, #3
+	movls	r1, #0
+	andhi	r1, r1, #1
+	cmp	ip, r3
+	cmpcs	lr, r2
+	movcs	r3, #0
+	movcc	r3, #1
+	and	r3, r1, r3
+	mov	lr, r6, lsr #2
+	eor	r3, r3, #1
+	cmp	lr, #0
+	orreq	r3, r3, #1
+	cmp	r3, #0
+	add	r8, r8, #1
+	sub	r9, r6, #1
+	mov	sl, lr, asl #2
+	bne	.L730
+	sub	r0, r0, #3
+	mov	r1, r2
+.L709:
+	ldr	ip, [r0, #4]!
+	add	r3, r3, #1
+	cmp	r3, lr
+	str	ip, [r1], #4
+	bcc	.L709
+	cmp	r6, sl
+	add	r8, r8, sl
+	add	r0, r2, sl
+	rsb	r9, sl, r9
+	beq	.L710
+.L708:
+	add	lr, r9, #1
+	mov	r3, #0
+	add	ip, r7, r8
+.L711:
+	ldrb	r1, [ip, r3]	@ zero_extendqisi2
+	strb	r1, [r0, r3]
+	add	r3, r3, #1
+	cmp	r3, lr
+	bne	.L711
+.L710:
+	add	r2, r2, r6
+.L707:
+	ldr	r0, .L745+4
+	mov	r3, #0
+	strb	r3, [r2, #0]
+.L706:
+	ldr	ip, [r4, #8]
+	ldr	r2, [r4, #12]
+	ldr	r3, [r4, #16]
+	ldr	r1, .L745+8
+	stmib	sp, {r2, ip}
+	str	r3, [sp, #0]
+	bl	osfname
+	mov	r1, #1
+	mov	r2, #0
+	bl	open
+	ldr	r1, .L745+12
+	add	r2, sp, #8
+	mov	r6, r0
+	bl	ioctl
+	cmn	r0, #1
+	beq	.L705
+	ldr	r2, [r4, #8]
+	ldr	r3, [sp, #8]
+	cmp	r2, r3
+	bne	.L705
+	mov	r0, r6
+	ldr	r1, .L745+16
+	add	r2, sp, #4
+	bl	ioctl
+	cmn	r0, #1
+	beq	.L705
+	ldr	r2, [r4, #12]
+	ldr	r3, [sp, #4]
+	cmp	r2, r3
+	bne	.L705
+	mov	r0, r6
+	ldr	r1, .L745+20
+	mov	r2, sp
+	bl	ioctl
+	cmn	r0, #1
+	movne	r5, r6
+	bne	.L682
+.L705:
+	mov	r0, r5
+	bl	close
+	mvn	r5, #0
+	b	.L682
+.L724:
+	mvn	r5, #0
+	b	.L682
+.L694:
+	ldmib	r0, {r0, ip}
+	ldr	r3, [r4, #12]
+	add	r1, sp, #12
+	mov	r2, #2
+	strb	ip, [sp, #12]
+	strb	r3, [sp, #13]
+	bl	write
+	mov	r5, r0
+	b	.L682
+.L683:
+	ldr	r3, .L745
+	ldr	r0, [r0, #4]
+	ldr	r8, [r3, #0]
+	mov	r1, r0, asl #2
+	cmp	r0, #0
+	add	ip, r8, r1
+	ldrb	r6, [r8, r0, asl #2]	@ zero_extendqisi2
+	beq	.L699
+	cmp	r6, #0
+	ldr	r2, .L745+4
+	beq	.L700
+	add	r0, ip, #5
+	cmp	r0, r2
+	add	r3, ip, #1
+	movcs	r0, #0
+	movcc	r0, #1
+	add	lr, r2, #4
+	cmp	r3, lr
+	orrhi	r0, r0, #1
+	tst	r3, #3
+	movne	r3, #0
+	moveq	r3, #1
+	cmp	r6, #3
+	movls	r3, #0
+	andhi	r3, r3, #1
+	and	r3, r0, r3
+	mov	r5, r6, lsr #2
+	eor	r3, r3, #1
+	cmp	r5, #0
+	orreq	r3, r3, #1
+	cmp	r3, #0
+	add	r1, r1, #1
+	sub	sl, r6, #1
+	mov	r7, r5, asl #2
+	bne	.L727
+	sub	ip, ip, #3
+	mov	r0, r2
+.L702:
+	ldr	lr, [ip, #4]!
+	add	r3, r3, #1
+	cmp	r5, r3
+	str	lr, [r0], #4
+	bhi	.L702
+	cmp	r7, r6
+	add	r1, r1, r7
+	add	r3, r2, r7
+	rsb	sl, r7, sl
+	beq	.L703
+.L701:
+	add	ip, r3, sl
+	add	r1, r8, r1
+	add	ip, ip, #1
+.L704:
+	ldrb	r0, [r1], #1	@ zero_extendqisi2
+	strb	r0, [r3], #1
+	cmp	r3, ip
+	bne	.L704
+.L703:
+	add	r2, r2, r6
+.L700:
+	ldr	r0, .L745+4
+	mov	r3, #0
+	strb	r3, [r2, #0]
+.L699:
+	ldr	r3, [r4, #16]
+	ldr	r2, [r4, #12]
+	ldr	ip, [r4, #8]
+	ldr	r1, .L745+8
+	stmib	sp, {r2, r3}
+	str	ip, [sp, #0]
+	bl	osfname
+	mov	r1, #0
+	mov	r2, r1
+	bl	open
+	ldr	r1, .L745+12
+	mov	r2, sp
+	mov	r5, r0
+	bl	ioctl
+	cmn	r0, #1
+	beq	.L705
+	ldr	r2, [r4, #8]
+	ldr	r3, [sp, #0]
+	cmp	r2, r3
+	bne	.L705
+	mov	r0, r5
+	ldr	r1, .L745+16
+	add	r2, sp, #4
+	bl	ioctl
+	cmn	r0, #1
+	beq	.L705
+	ldr	r2, [r4, #12]
+	ldr	r3, [sp, #4]
+	cmp	r2, r3
+	bne	.L705
+	mov	r0, r5
+	ldr	r1, .L745+20
+	add	r2, sp, #8
+	bl	ioctl
+	cmn	r0, #1
+	bne	.L682
+	b	.L705
+.L693:
+	ldmib	r0, {r0, r3}
+	add	r1, sp, #16
+	mov	r2, #1
+	strb	r3, [r1, #-4]!
+	bl	write
+	mov	r5, r0
+	b	.L682
+.L689:
+	ldr	r2, .L745
+	ldr	r3, [r0, #4]
+	ldr	r6, [r2, #0]
+	mov	r7, r3, asl #2
+	cmp	r3, #0
+	add	r0, r6, r7
+	ldrb	r4, [r6, r3, asl #2]	@ zero_extendqisi2
+	moveq	r0, r3
+	beq	.L712
+	cmp	r4, #0
+	ldreq	r2, .L745+4
+	beq	.L713
+	add	r3, r0, #1
+	ldr	r2, .L745+4
+	tst	r3, #3
+	movne	r1, #0
+	moveq	r1, #1
+	add	lr, r0, #5
+	add	ip, r2, #4
+	cmp	r4, #3
+	movls	r1, #0
+	andhi	r1, r1, #1
+	cmp	ip, r3
+	cmpcs	lr, r2
+	movcs	r3, #0
+	movcc	r3, #1
+	and	r3, r1, r3
+	mov	lr, r4, lsr #2
+	eor	r3, r3, #1
+	cmp	lr, #0
+	orreq	r3, r3, #1
+	cmp	r3, #0
+	add	r7, r7, #1
+	sub	r8, r4, #1
+	mov	r5, lr, asl #2
+	bne	.L733
+	sub	r0, r0, #3
+	mov	r1, r2
+.L715:
+	ldr	ip, [r0, #4]!
+	add	r3, r3, #1
+	cmp	r3, lr
+	str	ip, [r1], #4
+	bcc	.L715
+	cmp	r4, r5
+	add	r7, r7, r5
+	add	r0, r2, r5
+	rsb	r8, r5, r8
+	beq	.L716
+.L714:
+	add	lr, r8, #1
+	mov	r3, #0
+	add	ip, r6, r7
+.L717:
+	ldrb	r1, [ip, r3]	@ zero_extendqisi2
+	strb	r1, [r0, r3]
+	add	r3, r3, #1
+	cmp	r3, lr
+	bne	.L717
+.L716:
+	add	r2, r2, r4
+.L713:
+	ldr	r0, .L745+4
+	mov	r3, #0
+	strb	r3, [r2, #0]
+.L712:
+	ldr	r1, .L745+8
+	bl	osfname
+	mov	r1, #0
+	mov	r2, r1
+	bl	open
+	mov	r5, r0
+	b	.L682
+.L695:
+	ldmib	r0, {r0, lr}
+	ldr	ip, [r4, #12]
+	ldr	r3, [r4, #16]
+	add	r1, sp, #12
+	mov	r2, #3
+	strb	lr, [sp, #12]
+	strb	ip, [sp, #13]
+	strb	r3, [sp, #14]
+	bl	write
+	mov	r5, r0
+	b	.L682
+.L692:
+	ldr	r2, .L745
+	ldr	r3, [r0, #4]
+	ldr	r6, [r2, #0]
+	mov	r7, r3, asl #2
+	cmp	r3, #0
+	add	r0, r6, r7
+	ldrb	r4, [r6, r3, asl #2]	@ zero_extendqisi2
+	moveq	r0, r3
+	beq	.L718
+	cmp	r4, #0
+	ldreq	r2, .L745+4
+	beq	.L719
+	add	r3, r0, #1
+	ldr	r2, .L745+4
+	tst	r3, #3
+	movne	r1, #0
+	moveq	r1, #1
+	add	lr, r0, #5
+	add	ip, r2, #4
+	cmp	r4, #3
+	movls	r1, #0
+	andhi	r1, r1, #1
+	cmp	ip, r3
+	cmpcs	lr, r2
+	movcs	r3, #0
+	movcc	r3, #1
+	and	r3, r1, r3
+	mov	lr, r4, lsr #2
+	eor	r3, r3, #1
+	cmp	lr, #0
+	orreq	r3, r3, #1
+	cmp	r3, #0
+	add	r7, r7, #1
+	sub	r8, r4, #1
+	mov	r5, lr, asl #2
+	bne	.L736
+	sub	r0, r0, #3
+	mov	r1, r2
+.L721:
+	ldr	ip, [r0, #4]!
+	add	r3, r3, #1
+	cmp	r3, lr
+	str	ip, [r1], #4
+	bcc	.L721
+	cmp	r4, r5
+	add	r7, r7, r5
+	add	r0, r2, r5
+	rsb	r8, r5, r8
+	beq	.L722
+.L720:
+	add	lr, r8, #1
+	mov	r3, #0
+	add	ip, r6, r7
+.L723:
+	ldrb	r1, [ip, r3]	@ zero_extendqisi2
+	strb	r1, [r0, r3]
+	add	r3, r3, #1
+	cmp	r3, lr
+	bne	.L723
+.L722:
+	add	r2, r2, r4
+.L719:
+	ldr	r0, .L745+4
+	mov	r3, #0
+	strb	r3, [r2, #0]
+.L718:
+	ldr	r1, .L745+8
+	bl	osfname
+	mov	r1, #1
+	mov	r2, #0
+	bl	open
+	mov	r5, r0
+	b	.L682
+.L736:
+	mov	r0, r2
+	b	.L720
+.L733:
+	mov	r0, r2
+	b	.L714
+.L727:
+	mov	r3, r2
+	b	.L701
+.L730:
+	mov	r0, r2
+	b	.L708
+.L746:
+	.align	2
+.L745:
+	.word	W
+	.word	.LANCHOR0+316
+	.word	.LANCHOR0+572
+	.word	-1073459195
+	.word	-1073459194
+	.word	-1073459198
+	.size	soundfn, .-soundfn
+	.global	__aeabi_idiv
+	.global	__aeabi_idivmod
+	.align	2
+	.global	dosys
+	.type	dosys, %function
+dosys:
+	@ args = 0, pretend = 0, frame = 352
+	@ frame_needed = 0, uses_anonymous_args = 0
+	stmfd	sp!, {r4, r5, r6, r7, r8, r9, sl, lr}
+	add	r7, r0, #3
+	ldr	r6, .L1014
+	mov	r5, r1
+	sub	sp, sp, #352
+	ldr	r4, [r6, #0]
+	mov	r8, r0
+	ldr	r1, [r4, r7, asl #2]
+	sub	r3, r1, #4
+	cmp	r3, #131
+	ldrls	pc, [pc, r3, asl #2]
+	b	.L748
+.L803:
+	.word	.L749
+	.word	.L748
+	.word	.L750
+	.word	.L751
+	.word	.L748
+	.word	.L748
+	.word	.L752
+	.word	.L753
+	.word	.L754
+	.word	.L755
+	.word	.L756
+	.word	.L757
+	.word	.L758
+	.word	.L759
+	.word	.L760
+	.word	.L761
+	.word	.L748
+	.word	.L762
+	.word	.L763
+	.word	.L764
+	.word	.L765
+	.word	.L766
+	.word	.L767
+	.word	.L748
+	.word	.L768
+	.word	.L769
+	.word	.L770
+	.word	.L771
+	.word	.L772
+	.word	.L773
+	.word	.L971
+	.word	.L927
+	.word	.L971
+	.word	.L971
+	.word	.L776
+	.word	.L777
+	.word	.L971
+	.word	.L971
+	.word	.L971
+	.word	.L971
+	.word	.L778
+	.word	.L748
+	.word	.L779
+	.word	.L780
+	.word	.L781
+	.word	.L782
+	.word	.L783
+	.word	.L784
+	.word	.L785
+	.word	.L786
+	.word	.L787
+	.word	.L788
+	.word	.L789
+	.word	.L790
+	.word	.L791
+	.word	.L792
+	.word	.L793
+	.word	.L794
+	.word	.L795
+	.word	.L796
+	.word	.L797
+	.word	.L798
+	.word	.L799
+	.word	.L800
+	.word	.L801
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L748
+	.word	.L802
+.L750:
+	add	r8, r0, #4
+	ldr	r3, [r4, r8, asl #2]
+	cmp	r3, #0
+	beq	.L804
+	ldr	r3, .L1014+4
+	ldr	r6, .L1014+104
+	ldr	r3, [r3, #0]
+	cmp	r3, #0
+	str	r3, [r6, #292]
+	ble	.L971
+	ldr	r2, .L1014+8
+	mov	r3, #1
+	mov	r0, #0
+	ldr	r2, [r2, #0]
+.L805:
+	str	r0, [r2, #4]!
+	ldr	r1, [r6, #292]
+	add	r3, r3, #1
+	cmp	r1, r3
+	bge	.L805
+.L971:
+	mov	r7, #0
+.L775:
+	mov	r0, r7
+	add	sp, sp, #352
+	ldmfd	sp!, {r4, r5, r6, r7, r8, r9, sl, pc}
+.L927:
+	mvn	r7, #0
+	b	.L775
+.L802:
+	mov	r0, #0
+	bl	time
+	add	r3, sp, #352
+	add	r8, r8, #4
+	mov	r7, #0
+	str	r0, [r3, #-4]!
+	mov	r0, r3
+	bl	gmtime
+	ldr	r3, [r6, #0]
+	ldr	r2, [r3, r8, asl #2]
+	ldr	r1, [r0, #20]
+	add	r1, r1, #1888
+	add	r1, r1, #12
+	str	r1, [r3, r2, asl #2]
+	ldr	r1, [r0, #16]
+	add	r3, r3, r2, asl #2
+	add	r2, r1, #1
+	str	r2, [r3, #4]
+	ldr	r2, [r0, #12]
+	str	r2, [r3, #8]
+	ldr	r2, [r0, #8]
+	str	r2, [r3, #12]
+	ldr	r2, [r0, #4]
+	str	r2, [r3, #16]
+	ldr	r2, [r0, #0]
+	str	r2, [r3, #20]
+	b	.L775
+.L755:
+	add	r2, r0, #5
+	add	r3, r0, #4
+	ldr	r0, [r4, r2, asl #2]
+	ldr	r5, [r4, r3, asl #2]
+	add	r8, r8, #6
+	mov	r1, #1
+	ldr	r2, [r4, r8, asl #2]
+	mov	r3, r5
+	add	r0, r4, r0, asl #2
+	bl	fwrite
+	mov	r7, r0
+	mov	r0, r5
+	bl	fflush
+	b	.L775
+.L754:
+	add	r2, r0, #4
+	add	r3, r0, #5
+	ldr	r5, [r4, r2, asl #2]
+	ldr	r7, [r4, r3, asl #2]
+	add	r8, r0, #6
+	mov	r0, r5
+	ldr	r4, [r4, r8, asl #2]
+	bl	clearerr
+	ldr	r0, [r6, #0]
+	mov	r7, r7, asl #2
+	mov	r1, #1
+	mov	r2, r4
+	mov	r3, r5
+	add	r0, r0, r7
+	bl	fread
+	mov	r7, r0
+	mov	r0, r5
+	bl	ferror
+	cmp	r0, #0
+	beq	.L775
+	ldr	r0, .L1014+12
+	bl	perror
+	mvn	r7, #0
+	b	.L775
+.L753:
+	ldr	r5, .L1014+16
+	add	r8, r0, #4
+	mov	r7, #0
+	ldr	r1, [r5, #0]
+	ldrb	r0, [r4, r8, asl #2]	@ zero_extendqisi2
+	bl	_IO_putc
+	ldr	r0, [r5, #0]
+	bl	fflush
+	b	.L775
+.L752:
+	ldr	r4, .L1014+104
+	ldr	r0, [r4, #4]
+	cmp	r0, #0
+	beq	.L808
+	ldr	r3, [r4, #0]
+	ldrb	r7, [r0, r3]	@ zero_extendqisi2
+	cmp	r7, #0
+	addne	r3, r3, #1
+	strne	r3, [r4, #0]
+	bne	.L775
+	ldr	r3, [r4, #280]
+	cmp	r3, #0
+	beq	.L927
+	bl	free
+	str	r7, [r4, #4]
+.L808:
+	bl	Readch
+	ldr	r4, .L1014+16
+	cmp	r0, #127
+	mov	r7, r0
+	beq	.L810
+	cmp	r0, #0
+	bge	.L1001
+.L811:
+	ldr	r0, [r4, #0]
+	bl	fflush
+	b	.L775
+.L773:
+	ldr	r3, .L1014+104
+	ldr	r7, [r3, #312]
+	b	.L775
+.L772:
+	add	r8, r0, #4
+	ldr	r6, .L1014+104
+	ldr	r2, [r4, r8, asl #2]
+	ldr	r3, [r6, #312]
+	ldrb	r5, [r4, r2, asl #2]	@ zero_extendqisi2
+	add	r2, r4, r2, asl #2
+	cmp	r5, #63
+	bgt	.L971
+	add	r4, r4, r3, asl #2
+	orr	r3, r2, r4
+	tst	r3, #3
+	movne	r1, #0
+	moveq	r1, #1
+	add	sl, r5, #1
+	add	r3, r4, #4
+	add	r0, r2, #4
+	cmp	sl, #3
+	movls	r1, #0
+	andhi	r1, r1, #1
+	cmp	r2, r3
+	cmpls	r4, r0
+	movls	r3, #0
+	movhi	r3, #1
+	and	r3, r1, r3
+	mov	r7, sl, lsr #2
+	eor	r3, r3, #1
+	cmp	r7, #0
+	orreq	r3, r3, #1
+	cmp	r3, #0
+	mov	r8, r7, asl #2
+	bne	.L967
+	mov	r0, r2
+	mov	r1, r4
+.L907:
+	ldr	ip, [r0], #4
+	add	r3, r3, #1
+	cmp	r3, r7
+	str	ip, [r1], #4
+	bcc	.L907
+	cmp	sl, r8
+	mov	r3, r8
+	add	r2, r2, r8
+	add	r4, r4, r8
+	beq	.L908
+.L909:
+	ldrb	r1, [r2], #1	@ zero_extendqisi2
+	add	r3, r3, #1
+	cmp	r5, r3
+	strb	r1, [r4], #1
+	bge	.L909
+.L908:
+	ldr	r7, [r6, #312]
+	b	.L775
+.L784:
+	bl	getpid
+	mov	r7, r0
+	b	.L775
+.L783:
+	add	r8, r0, #4
+	ldr	r2, [r4, r8, asl #2]
+	ldrb	r3, [r4, r2, asl #2]	@ zero_extendqisi2
+	mov	r7, r2, asl #2
+	add	ip, r4, r7
+	cmp	r3, #0
+	moveq	r5, sp
+	beq	.L910
+	add	r2, ip, #1
+	tst	r2, #3
+	movne	r1, #0
+	moveq	r1, #1
+	mov	r5, sp
+	add	lr, ip, #5
+	add	r0, sp, #4
+	cmp	r3, #3
+	movls	r1, #0
+	andhi	r1, r1, #1
+	cmp	r2, r0
+	cmpls	r5, lr
+	movls	r2, #0
+	movhi	r2, #1
+	and	r1, r1, r2
+	mov	r6, r3, lsr #2
+	eor	r1, r1, #1
+	cmp	r6, #0
+	orreq	r1, r1, #1
+	cmp	r1, #0
+	mov	r2, r6, asl #2
+	bne	.L970
+	sub	ip, ip, #3
+	mov	r0, sp
+.L912:
+	ldr	lr, [ip, #4]!
+	add	r1, r1, #1
+	cmp	r1, r6
+	str	lr, [r0], #4
+	bcc	.L912
+	cmp	r3, r2
+	beq	.L910
+.L911:
+	add	r7, r7, r2
+	add	r4, r4, r7
+.L914:
+	ldrb	r1, [r4, #1]!	@ zero_extendqisi2
+	strb	r1, [r5, r2]
+	add	r2, r2, #1
+	cmp	r3, r2
+	bgt	.L914
+.L910:
+	add	r0, sp, #352
+	add	r3, r0, r3
+	mov	r2, #0
+	mov	r0, sp
+	strb	r2, [r3, #-352]
+	bl	system
+	mov	r7, r0
+	b	.L775
+.L798:
+	add	r8, r0, #4
+	ldr	r2, [r4, #536]
+	ldr	r3, [r4, r8, asl #2]
+	cmp	r3, #0
+	ble	.L927
+	ldr	r1, [r4, r2, asl #2]
+	cmp	r3, r1
+	bgt	.L927
+	add	r3, r3, r2
+	ldr	r7, [r4, r3, asl #2]
+	add	r7, r7, #1
+	str	r7, [r4, r3, asl #2]
+	b	.L775
+.L800:
+	add	r0, r0, #4
+	add	r1, r4, r5, asl #2
+	add	r0, r4, r0, asl #2
+	mov	r2, r4
+	bl	glfn
+	mov	r7, r0
+	b	.L775
+.L777:
+	add	r8, r0, #4
+	add	r5, r5, #10
+	ldr	r0, [r4, r8, asl #2]
+	bl	ftell
+	mov	r7, r0
+	bl	__errno_location
+	ldr	r3, [r6, #0]
+	ldr	r2, [r0, #0]
+	str	r2, [r3, r5, asl #2]
+	b	.L775
+.L763:
+	add	r8, r0, #4
+	ldr	r0, [r4, r8, asl #2]
+	bl	freevec
+	mov	r7, r0
+	b	.L775
+.L762:
+	ldr	r2, [r4, #412]
+	cmp	r2, #0
+	beq	.L886
+	add	r2, r2, #19
+	ldr	r3, .L1014+100
+	add	r1, r4, r2, asl #2
+	ldr	r2, [r4, r2, asl #2]
+	str	r2, [r3, #0]
+	ldr	r2, [r1, #4]
+	str	r2, [r3, #4]
+	ldr	r2, [r1, #8]
+	str	r2, [r3, #8]
+	ldr	r1, [r1, #12]
+.L922:
+	add	r8, r8, #4
+	str	r1, [r3, #12]
+	ldr	r0, [r4, r8, asl #2]
+	bl	getvec
+	mov	r7, r0
+	b	.L775
+.L761:
+	add	r8, r0, #4
+	ldr	r3, [r4, r8, asl #2]
+	cmp	r3, #0
+	mov	r7, r3, asl #2
+	add	r0, r4, r7
+	ldrb	r5, [r4, r3, asl #2]	@ zero_extendqisi2
+	moveq	r4, r3
+	beq	.L835
+	cmp	r5, #0
+	ldreq	r2, .L1014+80
+	beq	.L836
+	add	r3, r0, #1
+	ldr	r2, .L1014+80
+	tst	r3, #3
+	movne	r1, #0
+	moveq	r1, #1
+	add	lr, r0, #5
+	add	ip, r2, #4
+	cmp	r5, #3
+	movls	r1, #0
+	andhi	r1, r1, #1
+	cmp	ip, r3
+	cmpcs	lr, r2
+	movcs	r3, #0
+	movcc	r3, #1
+	and	r3, r1, r3
+	mov	lr, r5, lsr #2
+	eor	r3, r3, #1
+	cmp	lr, #0
+	orreq	r3, r3, #1
+	cmp	r3, #0
+	add	r7, r7, #1
+	sub	r8, r5, #1
+	mov	r6, lr, asl #2
+	bne	.L941
+	sub	r0, r0, #3
+	mov	r1, r2
+.L838:
+	ldr	ip, [r0, #4]!
+	add	r3, r3, #1
+	cmp	r3, lr
+	str	ip, [r1], #4
+	bcc	.L838
+	cmp	r5, r6
+	add	r7, r7, r6
+	add	r0, r2, r6
+	rsb	r8, r6, r8
+	beq	.L839
+.L837:
+	add	ip, r8, #1
+	mov	r3, #0
+	add	r4, r4, r7
+.L840:
+	ldrb	r1, [r4, r3]	@ zero_extendqisi2
+	strb	r1, [r0, r3]
+	add	r3, r3, #1
+	cmp	r3, ip
+	bne	.L840
+.L839:
+	add	r2, r2, r5
+.L836:
+	ldr	r4, .L1014+80
+	mov	r3, #0
+	strb	r3, [r2, #0]
+.L835:
+	mov	r1, sp
+	mov	r0, r4
+	bl	prepend_prefix
+	ldr	r2, .L1014+88
+	mov	r1, #47
+.L1003:
+	ldrb	r3, [r0], #1	@ zero_extendqisi2
+	cmp	r3, #92
+	beq	.L842
+	cmp	r3, #0
+	strb	r3, [r2, #0]
+	add	r2, r2, #1
+	bne	.L1003
+	ldr	r2, .L1014+104
+	ldr	r3, [r2, #8]
+	cmp	r3, #0
+	beq	.L844
+	ldr	r0, .L1014+84
+	mov	r1, r4
+	add	r2, r2, #12
+	bl	printf
+.L844:
+	ldr	r0, .L1014+88
+	ldr	r1, .L1014+20
+	bl	fopen
+	mov	r7, r0
+	b	.L775
+.L760:
+	add	r3, r0, #4
+	ldr	r7, [r4, r3, asl #2]
+	cmp	r7, #0
+	mov	r1, r7, asl #2
+	add	r0, r4, r1
+	ldrb	r5, [r4, r7, asl #2]	@ zero_extendqisi2
+	beq	.L866
+	cmp	r5, #0
+	ldreq	r2, .L1014+80
+	beq	.L867
+	add	r3, r0, #1
+	ldr	r2, .L1014+80
+	tst	r3, #3
+	movne	ip, #0
+	moveq	ip, #1
+	add	r6, r0, #5
+	add	lr, r2, #4
+	cmp	r5, #3
+	movls	ip, #0
+	andhi	ip, ip, #1
+	cmp	lr, r3
+	cmpcs	r6, r2
+	movcs	r3, #0
+	movcc	r3, #1
+	and	r3, ip, r3
+	mov	lr, r5, lsr #2
+	eor	r3, r3, #1
+	cmp	lr, #0
+	orreq	r3, r3, #1
+	cmp	r3, #0
+	add	r7, r1, #1
+	sub	sl, r5, #1
+	mov	r6, lr, asl #2
+	bne	.L953
+	sub	r0, r0, #3
+	mov	r1, r2
+.L869:
+	ldr	ip, [r0, #4]!
+	add	r3, r3, #1
+	cmp	r3, lr
+	str	ip, [r1], #4
+	bcc	.L869
+	cmp	r5, r6
+	add	r7, r7, r6
+	add	r0, r2, r6
+	rsb	sl, r6, sl
+	beq	.L870
+.L868:
+	add	lr, sl, #1
+	mov	r3, #0
+	add	ip, r4, r7
+.L871:
+	ldrb	r1, [ip, r3]	@ zero_extendqisi2
+	strb	r1, [r0, r3]
+	add	r3, r3, #1
+	cmp	r3, lr
+	bne	.L871
+.L870:
+	add	r2, r2, r5
+.L867:
+	ldr	r7, .L1014+80
+	mov	r3, #0
+	strb	r3, [r2, #0]
+.L866:
+	add	r8, r8, #5
+	ldr	r3, [r4, r8, asl #2]
+	cmp	r3, #0
+	mov	r8, r3, asl #2
+	add	r1, r4, r8
+	ldrb	r5, [r4, r3, asl #2]	@ zero_extendqisi2
+	moveq	r4, r3
+	beq	.L872
+	cmp	r5, #0
+	ldreq	ip, .L1014+24
+	beq	.L873
+	add	r3, r1, #1
+	ldr	ip, .L1014+24
+	tst	r3, #3
+	movne	r2, #0
+	moveq	r2, #1
+	add	lr, r1, #5
+	add	r0, ip, #4
+	cmp	r5, #3
+	movls	r2, #0
+	andhi	r2, r2, #1
+	cmp	r0, r3
+	cmpcs	lr, ip
+	movcs	r3, #0
+	movcc	r3, #1
+	and	r3, r2, r3
+	mov	lr, r5, lsr #2
+	eor	r3, r3, #1
+	cmp	lr, #0
+	orreq	r3, r3, #1
+	cmp	r3, #0
+	add	r8, r8, #1
+	sub	sl, r5, #1
+	mov	r6, lr, asl #2
+	bne	.L956
+	sub	r1, r1, #3
+	mov	r2, ip
+.L875:
+	ldr	r0, [r1, #4]!
+	add	r3, r3, #1
+	cmp	r3, lr
+	str	r0, [r2], #4
+	bcc	.L875
+	cmp	r5, r6
+	add	r8, r8, r6
+	add	r1, ip, r6
+	rsb	sl, r6, sl
+	beq	.L876
+.L874:
+	add	r0, sl, #1
+	mov	r3, #0
+	add	r4, r4, r8
+.L877:
+	ldrb	r2, [r4, r3]	@ zero_extendqisi2
+	strb	r2, [r1, r3]
+	add	r3, r3, #1
+	cmp	r3, r0
+	bne	.L877
+.L876:
+	add	ip, ip, r5
+.L873:
+	ldr	r4, .L1014+24
+	mov	r3, #0
+	strb	r3, [ip, #0]
+.L872:
+	mov	r1, sp
+	mov	r0, r7
+	bl	prepend_prefix
+	ldr	r2, .L1014+28
+	mov	r5, sp
+	mov	r1, #47
+.L1006:
+	ldrb	r3, [r0], #1	@ zero_extendqisi2
+	cmp	r3, #92
+	beq	.L879
+	cmp	r3, #0
+	strb	r3, [r2, #0]
+	add	r2, r2, #1
+	bne	.L1006
+	ldr	r6, .L1014+104
+	ldr	r3, [r6, #8]
+	cmp	r3, #0
+	beq	.L881
+	ldr	r0, .L1014+84
+	mov	r1, r7
+	add	r2, r6, #828
+	bl	printf
+.L881:
+	mov	r1, sp
+	mov	r0, r4
+	bl	prepend_prefix
+	ldr	r2, .L1014+88
+	mov	r1, #47
+.L1007:
+	ldrb	r3, [r0], #1	@ zero_extendqisi2
+	cmp	r3, #92
+	beq	.L883
+	cmp	r3, #0
+	strb	r3, [r2, #0]
+	add	r2, r2, #1
+	bne	.L1007
+	ldr	r3, [r6, #8]
+	cmp	r3, #0
+	beq	.L885
+	ldr	r0, .L1014+84
+	mov	r1, r4
+	ldr	r2, .L1014+88
+	bl	printf
+.L885:
+	ldr	r0, .L1014+88
+	bl	unlink
+	ldr	r0, .L1014+28
+	sub	r1, r0, #816
+	bl	rename
+	rsbs	r7, r0, #1
+	movcc	r7, #0
+	b	.L775
+.L765:
+	add	r8, r0, #4
+	mov	r1, r5
+	ldr	r0, [r4, r8, asl #2]
+	bl	globin
+	mov	r7, r0
+	b	.L775
+.L764:
+	add	r8, r0, #4
+	ldr	r5, [r4, #412]
+	ldr	r3, [r4, r8, asl #2]
+	cmp	r3, #0
+	mov	r8, r3, asl #2
+	add	r1, r4, r8
+	ldrb	r6, [r4, r3, asl #2]	@ zero_extendqisi2
+	moveq	r0, r3
+	beq	.L887
+	cmp	r6, #0
+	ldreq	ip, .L1014+24
+	beq	.L888
+	add	r3, r1, #1
+	ldr	ip, .L1014+24
+	tst	r3, #3
+	movne	r2, #0
+	moveq	r2, #1
+	add	lr, r1, #5
+	add	r0, ip, #4
+	cmp	r6, #3
+	movls	r2, #0
+	andhi	r2, r2, #1
+	cmp	r0, r3
+	cmpcs	lr, ip
+	movcs	r3, #0
+	movcc	r3, #1
+	and	r3, r2, r3
+	mov	lr, r6, lsr #2
+	eor	r3, r3, #1
+	cmp	lr, #0
+	orreq	r3, r3, #1
+	cmp	r3, #0
+	add	r8, r8, #1
+	sub	sl, r6, #1
+	mov	r7, lr, asl #2
+	bne	.L959
+	sub	r1, r1, #3
+	mov	r2, ip
+.L890:
+	ldr	r0, [r1, #4]!
+	add	r3, r3, #1
+	cmp	r3, lr
+	str	r0, [r2], #4
+	bcc	.L890
+	cmp	r6, r7
+	add	r8, r8, r7
+	add	r1, ip, r7
+	rsb	sl, r7, sl
+	beq	.L891
+.L889:
+	add	lr, sl, #1
+	mov	r3, #0
+	add	r0, r4, r8
+.L892:
+	ldrb	r2, [r0, r3]	@ zero_extendqisi2
+	strb	r2, [r1, r3]
+	add	r3, r3, #1
+	cmp	r3, lr
+	bne	.L892
+.L891:
+	add	ip, ip, r6
+.L888:
+	ldr	r0, .L1014+24
+	mov	r3, #0
+	strb	r3, [ip, #0]
+.L887:
+	cmp	r5, #0
+	beq	.L893
+	add	r5, r5, #19
+	ldr	r3, .L1014+100
+	ldr	r1, [r4, r5, asl #2]
+	add	r2, r4, r5, asl #2
+	str	r1, [r3, #0]
+	ldr	r1, [r2, #4]
+	str	r1, [r3, #4]
+	ldr	r1, [r2, #8]
+	str	r1, [r3, #8]
+	ldr	r2, [r2, #12]
+.L923:
+	str	r2, [r3, #12]
+	bl	loadseg
+	mov	r7, r0
+	b	.L775
+.L776:
+	add	r3, r0, #4
+	add	r8, r0, #5
+	mov	r2, #0
+	ldr	r0, [r4, r3, asl #2]
+	ldr	r1, [r4, r8, asl #2]
+	bl	fseek
+	add	r5, r5, #10
+	mov	r4, r0
+	bl	__errno_location
+	ldr	r3, [r6, #0]
+	cmp	r4, #0
+	movne	r7, #0
+	mvneq	r7, #0
+	ldr	r2, [r0, #0]
+	str	r2, [r3, r5, asl #2]
+	b	.L775
+.L801:
+	add	r0, r0, #4
+	add	r1, r4, r5, asl #2
+	add	r0, r4, r0, asl #2
+	mov	r2, r4
+	bl	extfn
+	mov	r7, r0
+	b	.L775
+.L799:
+	add	r0, r0, #4
+	add	r1, r4, r5, asl #2
+	add	r0, r4, r0, asl #2
+	mov	r2, r4
+	bl	sdlfn
+	mov	r7, r0
+	b	.L775
+.L757:
+	add	r8, r0, #4
+	ldr	r3, [r4, r8, asl #2]
+	cmp	r3, #0
+	mov	r7, r3, asl #2
+	add	r0, r4, r7
+	ldrb	r5, [r4, r3, asl #2]	@ zero_extendqisi2
+	moveq	r4, r3
+	beq	.L825
+	cmp	r5, #0
+	ldreq	r2, .L1014+80
+	beq	.L826
+	add	r3, r0, #1
+	ldr	r2, .L1014+80
+	tst	r3, #3
+	movne	r1, #0
+	moveq	r1, #1
+	add	lr, r0, #5
+	add	ip, r2, #4
+	cmp	r5, #3
+	movls	r1, #0
+	andhi	r1, r1, #1
+	cmp	ip, r3
+	cmpcs	lr, r2
+	movcs	r3, #0
+	movcc	r3, #1
+	and	r3, r1, r3
+	mov	lr, r5, lsr #2
+	eor	r3, r3, #1
+	cmp	lr, #0
+	orreq	r3, r3, #1
+	cmp	r3, #0
+	add	r7, r7, #1
+	sub	r8, r5, #1
+	mov	r6, lr, asl #2
+	bne	.L937
+	sub	r0, r0, #3
+	mov	r1, r2
+.L828:
+	ldr	ip, [r0, #4]!
+	add	r3, r3, #1
+	cmp	r3, lr
+	str	ip, [r1], #4
+	bcc	.L828
+	cmp	r5, r6
+	add	r7, r7, r6
+	add	r0, r2, r6
+	rsb	r8, r6, r8
+	beq	.L829
+.L827:
+	add	ip, r8, #1
+	mov	r3, #0
+	add	r4, r4, r7
+.L830:
+	ldrb	r1, [r4, r3]	@ zero_extendqisi2
+	strb	r1, [r0, r3]
+	add	r3, r3, #1
+	cmp	r3, ip
+	bne	.L830
+.L829:
+	add	r2, r2, r5
+.L826:
+	ldr	r4, .L1014+80
+	mov	r3, #0
+	strb	r3, [r2, #0]
+.L825:
+	mov	r1, sp
+	mov	r0, r4
+	bl	prepend_prefix
+	ldr	r2, .L1014+88
+	mov	r1, #47
+.L1002:
+	ldrb	r3, [r0], #1	@ zero_extendqisi2
+	cmp	r3, #92
+	beq	.L832
+	cmp	r3, #0
+	strb	r3, [r2, #0]
+	add	r2, r2, #1
+	bne	.L1002
+	ldr	r2, .L1014+104
+	ldr	r3, [r2, #8]
+	cmp	r3, #0
+	beq	.L834
+	ldr	r0, .L1014+84
+	mov	r1, r4
+	add	r2, r2, #12
+	bl	printf
+.L834:
+	ldr	r0, .L1014+88
+	ldr	r1, .L1014+32
+	bl	fopen
+	mov	r7, r0
+	b	.L775
+.L756:
+	add	r3, r0, #4
+	ldr	r3, [r4, r3, asl #2]
+	cmp	r3, #0
+	mov	r7, r3, asl #2
+	add	r0, r4, r7
+	ldrb	r5, [r4, r3, asl #2]	@ zero_extendqisi2
+	moveq	r0, r3
+	beq	.L813
+	cmp	r5, #0
+	ldreq	r2, .L1014+80
+	beq	.L814
+	add	r3, r0, #1
+	ldr	r2, .L1014+80
+	tst	r3, #3
+	movne	r1, #0
+	moveq	r1, #1
+	add	lr, r0, #5
+	add	ip, r2, #4
+	cmp	r5, #3
+	movls	r1, #0
+	andhi	r1, r1, #1
+	cmp	ip, r3
+	cmpcs	lr, r2
+	movcs	r3, #0
+	movcc	r3, #1
+	and	r3, r1, r3
+	mov	lr, r5, lsr #2
+	eor	r3, r3, #1
+	cmp	lr, #0
+	orreq	r3, r3, #1
+	cmp	r3, #0
+	add	r7, r7, #1
+	sub	sl, r5, #1
+	mov	r6, lr, asl #2
+	bne	.L930
+	sub	r0, r0, #3
+	mov	r1, r2
+.L816:
+	ldr	ip, [r0, #4]!
+	add	r3, r3, #1
+	cmp	r3, lr
+	str	ip, [r1], #4
+	bcc	.L816
+	cmp	r5, r6
+	add	r7, r7, r6
+	add	r0, r2, r6
+	rsb	sl, r6, sl
+	beq	.L817
+.L815:
+	add	lr, sl, #1
+	mov	r3, #0
+	add	ip, r4, r7
+.L818:
+	ldrb	r1, [ip, r3]	@ zero_extendqisi2
+	strb	r1, [r0, r3]
+	add	r3, r3, #1
+	cmp	r3, lr
+	bne	.L818
+.L817:
+	add	r2, r2, r5
+.L814:
+	ldr	r0, .L1014+80
+	mov	r3, #0
+	strb	r3, [r2, #0]
+.L813:
+	add	r8, r8, #5
+	ldr	r3, [r4, r8, asl #2]
+	cmp	r3, #0
+	mov	r8, r3, asl #2
+	add	r1, r4, r8
+	ldrb	r6, [r4, r3, asl #2]	@ zero_extendqisi2
+	moveq	r1, r3
+	beq	.L819
+	cmp	r6, #0
+	ldreq	ip, .L1014+24
+	beq	.L820
+	add	r3, r1, #1
+	ldr	ip, .L1014+24
+	tst	r3, #3
+	movne	r2, #0
+	moveq	r2, #1
+	add	r5, r1, #5
+	add	lr, ip, #4
+	cmp	r6, #3
+	movls	r2, #0
+	andhi	r2, r2, #1
+	cmp	lr, r3
+	cmpcs	r5, ip
+	movcs	r3, #0
+	movcc	r3, #1
+	and	r3, r2, r3
+	mov	r5, r6, lsr #2
+	eor	r3, r3, #1
+	cmp	r5, #0
+	orreq	r3, r3, #1
+	cmp	r3, #0
+	add	r8, r8, #1
+	sub	sl, r6, #1
+	mov	r7, r5, asl #2
+	bne	.L933
+	sub	r1, r1, #3
+	mov	r2, ip
+.L822:
+	ldr	lr, [r1, #4]!
+	add	r3, r3, #1
+	cmp	r3, r5
+	str	lr, [r2], #4
+	bcc	.L822
+	cmp	r7, r6
+	add	r8, r8, r7
+	add	r1, ip, r7
+	rsb	sl, r7, sl
+	beq	.L823
+.L821:
+	add	lr, sl, #1
+	mov	r3, #0
+	add	r4, r4, r8
+.L824:
+	ldrb	r2, [r4, r3]	@ zero_extendqisi2
+	strb	r2, [r1, r3]
+	add	r3, r3, #1
+	cmp	r3, lr
+	bne	.L824
+.L823:
+	add	ip, ip, r6
+.L820:
+	ldr	r1, .L1014+24
+	mov	r3, #0
+	strb	r3, [ip, #0]
+.L819:
+	bl	pathinput
+	mov	r7, r0
+	b	.L775
+.L788:
+	add	r3, r0, #4
+	add	r8, r0, #5
+	ldr	r3, [r4, r3, asl #2]
+	ldr	r2, [r4, r8, asl #2]
+	ldr	r7, [r4, r3, asl #2]
+	add	r7, r7, r2
+	str	r7, [r4, r3, asl #2]
+	b	.L775
+.L1015:
+	.align	2
+.L1014:
+	.word	W
+	.word	tallyupb
+	.word	tallyv
+	.word	.LC113
+	.word	stdout
+	.word	.LC114
+	.word	.LANCHOR0+572
+	.word	.LANCHOR0+828
+	.word	.LC35
+	.word	.LC112
+	.word	.LANCHOR2
+	.word	1172812403
+	.word	60000
+	.word	trvec
+	.word	memupb
+	.word	.LC117
+	.word	.LC115
+	.word	.LC116
+	.word	-346
+	.word	-348
+	.word	.LANCHOR0+316
+	.word	.LC14
+	.word	.LANCHOR0+12
+	.word	result2
+	.word	1000000
+	.word	taskname
+	.word	.LANCHOR0
+	.word	86400
+.L787:
+	mov	r7, #5
+	b	.L775
+.L792:
+	add	r0, r0, #4
+	add	r1, r4, r5, asl #2
+	add	r0, r4, r0, asl #2
+	bl	callc
+	mov	r7, r0
+	b	.L775
+.L791:
+	add	r0, r0, #4
+	add	r1, r4, r5, asl #2
+	add	r0, r4, r0, asl #2
+	bl	soundfn
+	mov	r7, r0
+	b	.L775
+.L790:
+	add	r8, r0, #4
+	mov	r7, #0
+	ldr	r0, [r4, r8, asl #2]
+	bl	msecdelay
+	b	.L775
+.L789:
+	mvn	r7, #2
+	b	.L775
+.L751:
+	add	r8, r0, #4
+	mov	r1, r4
+	ldr	r0, [r4, r8, asl #2]
+	add	r3, r0, #7
+	ldr	r3, [r4, r3, asl #2]
+	cmp	r3, #0
+	bge	.L806
+	ldr	r3, .L1014+104
+	ldr	r3, [r3, #276]
+	cmp	r3, #0
+	beq	.L807
+.L806:
+	bl	interpret
+	mov	r7, r0
+	b	.L775
+.L749:
+	add	r8, r0, #4
+	ldr	r3, .L1014+104
+	ldr	r2, [r4, r8, asl #2]
+	mov	r7, #0
+	str	r2, [r3, #288]
+	b	.L775
+.L748:
+	ldr	r0, .L1014+36
+	bl	printf
+	ldr	r3, [r6, #0]
+	ldr	r7, [r3, r7, asl #2]
+	b	.L775
+.L796:
+	add	r2, r0, #5
+	add	r3, r0, #6
+	add	r1, r0, #4
+	add	r8, r0, #7
+	ldr	r0, [r4, r1, asl #2]
+	ldr	r1, [r4, r2, asl #2]
+	ldr	r2, [r4, r3, asl #2]
+	ldr	r3, [r4, r8, asl #2]
+	bl	doflt
+.L1011:
+	ldr	r2, .L1014+92
+	ldr	r3, [r6, #0]
+	add	r5, r5, #10
+	ldr	r2, [r2, #0]
+	str	r2, [r3, r5, asl #2]
+.L1012:
+	mov	r7, r0
+	b	.L775
+.L759:
+	add	r8, r0, #4
+	ldr	r3, [r4, r8, asl #2]
+	cmp	r3, #0
+	mov	r7, r3, asl #2
+	add	r0, r4, r7
+	ldrb	r5, [r4, r3, asl #2]	@ zero_extendqisi2
+	moveq	r4, r3
+	beq	.L856
+	cmp	r5, #0
+	ldreq	r2, .L1014+80
+	beq	.L857
+	add	r3, r0, #1
+	ldr	r2, .L1014+80
+	tst	r3, #3
+	movne	r1, #0
+	moveq	r1, #1
+	add	lr, r0, #5
+	add	ip, r2, #4
+	cmp	r5, #3
+	movls	r1, #0
+	andhi	r1, r1, #1
+	cmp	ip, r3
+	cmpcs	lr, r2
+	movcs	r3, #0
+	movcc	r3, #1
+	and	r3, r1, r3
+	mov	lr, r5, lsr #2
+	eor	r3, r3, #1
+	cmp	lr, #0
+	orreq	r3, r3, #1
+	cmp	r3, #0
+	add	r7, r7, #1
+	sub	r8, r5, #1
+	mov	r6, lr, asl #2
+	bne	.L950
+	sub	r0, r0, #3
+	mov	r1, r2
+.L859:
+	ldr	ip, [r0, #4]!
+	add	r3, r3, #1
+	cmp	r3, lr
+	str	ip, [r1], #4
+	bcc	.L859
+	cmp	r5, r6
+	add	r7, r7, r6
+	add	r0, r2, r6
+	rsb	r8, r6, r8
+	beq	.L860
+.L858:
+	add	ip, r8, #1
+	mov	r3, #0
+	add	r4, r4, r7
+.L861:
+	ldrb	r1, [r4, r3]	@ zero_extendqisi2
+	strb	r1, [r0, r3]
+	add	r3, r3, #1
+	cmp	r3, ip
+	bne	.L861
+.L860:
+	add	r2, r2, r5
+.L857:
+	ldr	r4, .L1014+80
+	mov	r3, #0
+	strb	r3, [r2, #0]
+.L856:
+	mov	r1, sp
+	mov	r0, r4
+	bl	prepend_prefix
+	ldr	r2, .L1014+88
+	mov	r1, #47
+.L1005:
+	ldrb	r3, [r0], #1	@ zero_extendqisi2
+	cmp	r3, #92
+	beq	.L863
+	cmp	r3, #0
+	strb	r3, [r2, #0]
+	add	r2, r2, #1
+	bne	.L1005
+	ldr	r2, .L1014+104
+	ldr	r3, [r2, #8]
+	cmp	r3, #0
+	beq	.L865
+	ldr	r0, .L1014+84
+	mov	r1, r4
+	add	r2, r2, #12
+	bl	printf
+.L865:
+	ldr	r0, .L1014+88
+	bl	unlink
+	rsbs	r7, r0, #1
+	movcc	r7, #0
+	b	.L775
+.L758:
+	add	r8, r0, #4
+	ldr	r0, [r4, r8, asl #2]
+	bl	fclose
+	cmp	r0, #0
+	movne	r7, #0
+	mvneq	r7, #0
+	b	.L775
+.L769:
+	add	r3, r0, #4
+	add	r8, r0, #5
+	ldr	r0, [r4, r3, asl #2]
+	ldr	r1, [r4, r8, asl #2]
+	bl	setraster
+	mov	r7, r0
+	b	.L775
+.L768:
+	bl	intflag
+	cmp	r0, #0
+	moveq	r7, r0
+	mvnne	r7, #0
+	b	.L775
+.L794:
+	add	r8, r0, #4
+	ldr	r3, .L1014+40
+	ldr	r2, [r4, r8, asl #2]
+	ldr	r7, [r3, #4]
+	str	r2, [r3, #4]
+	b	.L775
+.L793:
+	ldr	r5, .L1014+40
+	add	r8, r0, #4
+	ldr	r3, [r5, #4]
+	ldr	sl, [r4, r8, asl #2]
+	cmp	r3, #0
+	blt	.L971
+	mov	r0, sp
+	bl	ftime
+	ldr	r2, .L1014+72
+	add	r1, sp, #352
+	ldr	r3, [r6, #0]
+	ldrsh	r0, [r1, r2]
+	ldr	ip, .L1014+76
+	ldr	r1, [r3, #532]
+	ldr	r4, [r5, #4]
+	rsb	r0, r0, r0, asl #4
+	rsb	r1, r1, r1, asl #4
+	mov	r0, r0, asl #2
+	mov	r2, r0
+	mov	r0, r1, asl #2
+	ldr	r1, [sp, #0]
+	mov	r3, r2, asr #31
+	rsbs	r2, r2, r1
+	rsc	r3, r3, r1, asr #31
+	adds	r6, r2, r0
+	adc	r7, r3, r0, asr #31
+	mov	r1, r7
+	add	r7, sp, #352
+	mov	r0, r6
+	ldr	r2, .L1014+108
+	mov	r3, #0
+	ldrh	r6, [r7, ip]
+	bl	__aeabi_ldivmod
+	mov	r0, #1000
+	ldr	ip, .L1014+44
+	mov	r8, r4, asl #20
+	add	r1, r4, #1
+	ldr	r3, .L1014+52
+	mov	r8, r8, lsr #20
+	mov	r1, r1, asl #20
+	add	r4, r4, #2
+	str	r4, [r5, #4]
+	mov	r7, #0
+	mla	r2, r0, r2, r6
+	smull	r0, ip, ip, r2
+	mov	r0, r2, asr #31
+	rsb	r0, r0, ip, asr #14
+	ldr	ip, .L1014+48
+	mul	r0, ip, r0
+	rsb	r2, r0, r2
+	add	r2, r2, #1711276032
+	str	r2, [r3, r8, asl #2]
+	str	sl, [r3, r1, lsr #18]
+	b	.L775
+.L795:
+	add	r8, r0, #4
+	ldr	r3, .L1014+52
+	ldr	r2, [r4, r8, asl #2]
+	mov	r2, r2, asl #20
+	ldr	r7, [r3, r2, lsr #18]
+	b	.L775
+.L786:
+	add	r3, r0, #4
+	add	r2, r0, #6
+	ldr	r3, [r4, r3, asl #2]
+	add	r1, r0, #5
+	add	r8, r0, #7
+	add	r3, r4, r3, asl #2
+	ldr	r0, [r4, r1, asl #2]
+	ldr	r1, [r4, r2, asl #2]
+	ldr	r2, [r4, r8, asl #2]
+	blx	r3
+	mov	r7, r0
+	b	.L775
+.L785:
+	ldr	r3, .L1014+56
+	mov	r0, r4
+	add	r4, r8, #4
+	ldr	r1, [r3, #0]
+	ldr	r2, [r0, r4, asl #2]
+	bl	dumpmem
+	ldr	r3, [r6, #0]
+	ldr	r0, .L1014+60
+	mov	r7, #0
+	ldr	r1, [r3, r4, asl #2]
+	bl	printf
+	b	.L775
+.L782:
+	add	r3, r0, #4
+	add	r8, r0, #5
+	ldr	r3, [r4, r3, asl #2]
+	ldr	r2, [r4, r8, asl #2]
+	mov	r7, #0
+	str	r2, [r4, r3, asl #2]
+	b	.L775
+.L781:
+	add	r8, r0, #4
+	ldr	r3, [r4, r8, asl #2]
+	ldr	r7, [r4, r3, asl #2]
+	b	.L775
+.L780:
+	add	r8, r0, #4
+	ldr	r3, [r4, r8, asl #2]
+	cmp	r3, #0
+	mov	r7, r3, asl #2
+	add	r0, r4, r7
+	ldrb	r5, [r4, r3, asl #2]	@ zero_extendqisi2
+	moveq	r4, r3
+	beq	.L845
+	cmp	r5, #0
+	ldreq	r2, .L1014+80
+	beq	.L846
+	add	r3, r0, #1
+	ldr	r2, .L1014+80
+	tst	r3, #3
+	movne	r1, #0
+	moveq	r1, #1
+	add	lr, r0, #5
+	add	ip, r2, #4
+	cmp	r5, #3
+	movls	r1, #0
+	andhi	r1, r1, #1
+	cmp	ip, r3
+	cmpcs	lr, r2
+	movcs	r3, #0
+	movcc	r3, #1
+	and	r3, r1, r3
+	mov	lr, r5, lsr #2
+	eor	r3, r3, #1
+	cmp	lr, #0
+	orreq	r3, r3, #1
+	cmp	r3, #0
+	add	r7, r7, #1
+	sub	r8, r5, #1
+	mov	r6, lr, asl #2
+	bne	.L945
+	sub	r0, r0, #3
+	mov	r1, r2
+.L848:
+	ldr	ip, [r0, #4]!
+	add	r3, r3, #1
+	cmp	r3, lr
+	str	ip, [r1], #4
+	bcc	.L848
+	cmp	r5, r6
+	add	r7, r7, r6
+	add	r0, r2, r6
+	rsb	r8, r6, r8
+	beq	.L849
+.L847:
+	add	ip, r8, #1
+	mov	r3, #0
+	add	r4, r4, r7
+.L850:
+	ldrb	r1, [r4, r3]	@ zero_extendqisi2
+	strb	r1, [r0, r3]
+	add	r3, r3, #1
+	cmp	r3, ip
+	bne	.L850
+.L849:
+	add	r2, r2, r5
+.L846:
+	ldr	r4, .L1014+80
+	mov	r3, #0
+	strb	r3, [r2, #0]
+.L845:
+	mov	r1, sp
+	mov	r0, r4
+	bl	prepend_prefix
+	ldr	r2, .L1014+88
+	mov	r1, #47
+.L1004:
+	ldrb	r3, [r0], #1	@ zero_extendqisi2
+	cmp	r3, #92
+	beq	.L852
+	cmp	r3, #0
+	strb	r3, [r2, #0]
+	add	r2, r2, #1
+	bne	.L1004
+	ldr	r2, .L1014+104
+	ldr	r3, [r2, #8]
+	cmp	r3, #0
+	beq	.L854
+	ldr	r0, .L1014+84
+	mov	r1, r4
+	add	r2, r2, #12
+	bl	printf
+.L854:
+	ldr	r0, .L1014+88
+	ldr	r1, .L1014+64
+	bl	fopen
+	subs	r7, r0, #0
+	bne	.L775
+	mov	r0, r4
+	ldr	r1, .L1014+68
+	bl	fopen
+	subs	r7, r0, #0
+	b	.L775
+.L779:
+	add	r8, r0, #4
+	ldr	r4, [r4, r8, asl #2]
+	mov	r0, r4
+	bl	ftell
+	mov	r2, #2
+	mov	r1, #0
+	mov	r5, r0
+	mov	r0, r4
+	bl	fseek
+	mov	r0, r4
+	bl	ftell
+	mov	r1, r5
+	mov	r2, #0
+	mov	r7, r0
+	mov	r0, r4
+	bl	fseek
+	cmp	r0, #0
+	mvnne	r7, #0
+	b	.L775
+.L778:
+	add	r8, r0, #4
+	mov	r0, sp
+	ldr	r7, [r4, r8, asl #2]
+	bl	ftime
+	ldr	r2, .L1014+72
+	add	r0, sp, #352
+	ldr	r3, [r6, #0]
+	ldrsh	lr, [r0, r2]
+	ldr	r2, .L1014+108
+	ldr	ip, [r3, #532]
+	mov	r3, #0
+	rsb	lr, lr, lr, asl #4
+	rsb	ip, ip, ip, asl #4
+	mov	lr, lr, asl #2
+	mov	r0, lr
+	mov	r1, lr, asr #31
+	ldr	lr, [sp, #0]
+	mov	ip, ip, asl #2
+	rsbs	r0, r0, lr
+	rsc	r1, r1, lr, asr #31
+	adds	r8, r0, ip
+	adc	r9, r1, ip, asr #31
+	ldr	ip, .L1014+76
+	add	lr, sp, #352
+	mov	r0, r8
+	mov	r1, r9
+	ldrh	r6, [lr, ip]
+	bl	__aeabi_ldivmod
+	ldr	r2, .L1014+108
+	mov	r3, #0
+	mov	r1, r9
+	add	r5, r4, r7, asl #2
+	str	r0, [r4, r7, asl #2]
+	mov	r0, r8
+	bl	__aeabi_ldivmod
+	mov	r3, #1000
+	mvn	r7, #0
+	str	r7, [r5, #8]
+	mla	r3, r3, r2, r6
+	str	r3, [r5, #4]
+	b	.L775
+.L797:
+	bl	pollReadch
+	mov	r7, r0
+	b	.L775
+.L767:
+	add	r3, r0, #5
+	add	r8, r0, #6
+	add	r2, r0, #4
+	ldr	r1, [r4, r3, asl #2]
+	ldr	r0, [r4, r2, asl #2]
+	ldr	r2, [r4, r8, asl #2]
+	bl	muldiv1
+	b	.L1011
+.L766:
+	add	r8, r0, #4
+	ldr	r0, [r4, r8, asl #2]
+	cmp	r0, #0
+	bne	.L1008
+	b	.L1012
+.L1013:
+	ldr	r4, [r6, #0]
+.L1008:
+	ldr	r7, [r4, r0, asl #2]
+	bl	freevec
+	subs	r0, r7, #0
+	bne	.L1013
+	b	.L775
+.L771:
+	add	r3, r0, #4
+	ldr	r5, [r4, r3, asl #2]
+	cmp	r5, #0
+	mov	r1, r5, asl #2
+	add	r0, r4, r1
+	ldrb	r7, [r4, r5, asl #2]	@ zero_extendqisi2
+	beq	.L895
+	cmp	r7, #0
+	ldreq	r2, .L1014+80
+	beq	.L896
+	add	r3, r0, #1
+	ldr	r2, .L1014+80
+	tst	r3, #3
+	movne	ip, #0
+	moveq	ip, #1
+	add	r5, r0, #5
+	add	lr, r2, #4
+	cmp	r7, #3
+	movls	ip, #0
+	andhi	ip, ip, #1
+	cmp	lr, r3
+	cmpcs	r5, r2
+	movcs	r3, #0
+	movcc	r3, #1
+	and	r3, ip, r3
+	mov	lr, r7, lsr #2
+	eor	r3, r3, #1
+	cmp	lr, #0
+	orreq	r3, r3, #1
+	cmp	r3, #0
+	add	r5, r1, #1
+	sub	r9, r7, #1
+	mov	sl, lr, asl #2
+	bne	.L965
+	sub	r0, r0, #3
+	mov	r1, r2
+.L898:
+	ldr	ip, [r0, #4]!
+	add	r3, r3, #1
+	cmp	r3, lr
+	str	ip, [r1], #4
+	bcc	.L898
+	cmp	r7, sl
+	add	r5, r5, sl
+	add	r0, r2, sl
+	rsb	r9, sl, r9
+	beq	.L899
+.L897:
+	add	lr, r9, #1
+	mov	r3, #0
+	add	ip, r4, r5
+.L900:
+	ldrb	r1, [ip, r3]	@ zero_extendqisi2
+	strb	r1, [r0, r3]
+	add	r3, r3, #1
+	cmp	r3, lr
+	bne	.L900
+.L899:
+	add	r2, r2, r7
+.L896:
+	ldr	r5, .L1014+80
+	mov	r3, #0
+	strb	r3, [r2, #0]
+.L895:
+	add	r8, r8, #5
+	mov	r1, sp
+	mov	r0, r5
+	ldr	r4, [r4, r8, asl #2]
+	bl	prepend_prefix
+	ldr	r2, .L1014+88
+	mov	r1, #47
+.L1009:
+	ldrb	r3, [r0], #1	@ zero_extendqisi2
+	cmp	r3, #92
+	beq	.L902
+	cmp	r3, #0
+	strb	r3, [r2, #0]
+	add	r2, r2, #1
+	bne	.L1009
+	ldr	r2, .L1014+104
+	ldr	r3, [r2, #8]
+	cmp	r3, #0
+	beq	.L904
+	ldr	r0, .L1014+84
+	mov	r1, r5
+	add	r2, r2, #12
+	bl	printf
+.L904:
+	mov	r0, #3
+	ldr	r1, .L1014+88
+	add	r2, sp, #256
+	bl	__xstat
+	cmp	r0, #0
+	beq	.L905
+	ldr	r3, [r6, #0]
+	add	r0, r4, #1
+	mov	r2, #0
+	add	r1, r4, #2
+	str	r2, [r3, r4, asl #2]
+	mov	r7, r2
+	str	r2, [r3, r0, asl #2]
+	mvn	r2, #0
+	str	r2, [r3, r1, asl #2]
+	b	.L775
+.L770:
+	bl	clock
+	mov	r4, #1000
+	ldr	r2, .L1014+96
+	mov	r3, #0
+	smull	r4, r5, r0, r4
+	mov	r0, r4
+	mov	r1, r5
+	bl	__aeabi_ldivmod
+	ldr	r3, .L1014+92
+	mov	r0, r4
+	mov	r1, r5
+	str	r2, [r3, #0]
+	ldr	r2, .L1014+96
+	mov	r3, #0
+	bl	__aeabi_ldivmod
+	mov	r7, r0
+	b	.L775
+.L852:
+	strb	r1, [r2], #1
+	b	.L1004
+.L879:
+	strb	r1, [r2], #1
+	b	.L1006
+.L883:
+	strb	r1, [r2], #1
+	b	.L1007
+.L832:
+	strb	r1, [r2], #1
+	b	.L1002
+.L842:
+	strb	r1, [r2], #1
+	b	.L1003
+.L902:
+	strb	r1, [r2], #1
+	b	.L1009
+.L863:
+	strb	r1, [r2], #1
+	b	.L1005
+.L886:
+	ldr	r3, .L1014+100
+	mov	r1, r2
+	str	r2, [r3, #0]
+	str	r2, [r3, #4]
+	str	r2, [r3, #8]
+	b	.L922
+.L893:
+	ldr	r3, .L1014+100
+	mov	r2, r5
+	str	r5, [r3, #0]
+	str	r5, [r3, #4]
+	str	r5, [r3, #8]
+	b	.L923
+.L804:
+	ldr	r2, .L1014+104
+	mov	r7, r3
+	str	r3, [r2, #292]
+	b	.L775
+.L807:
+	bl	cintasm
+	mov	r7, r0
+	b	.L775
+.L810:
+	mov	r0, #8
+	ldr	r1, [r4, #0]
+	mov	r7, r0
+	bl	_IO_putc
+	b	.L811
+.L1001:
+	ldr	r1, [r4, #0]
+	bl	_IO_putc
+	cmp	r7, #13
+	bne	.L811
+	mov	r0, #10
+	ldr	r1, [r4, #0]
+	bl	_IO_putc
+	mov	r7, #10
+	b	.L811
+.L905:
+	ldr	r7, [sp, #320]
+	ldr	r1, .L1014+108
+	mov	r0, r7
+	bl	__aeabi_idiv
+	ldr	r5, [r6, #0]
+	ldr	r1, .L1014+108
+	add	r6, r4, #1
+	str	r0, [r5, r4, asl #2]
+	mov	r0, r7
+	bl	__aeabi_idivmod
+	mov	r2, #1000
+	add	r4, r4, #2
+	mvn	r3, #0
+	mov	r7, r3
+	mul	r2, r2, r1
+	str	r2, [r5, r6, asl #2]
+	str	r3, [r5, r4, asl #2]
+	b	.L775
+.L941:
+	mov	r0, r2
+	b	.L837
+.L959:
+	mov	r1, ip
+	b	.L889
+.L950:
+	mov	r0, r2
+	b	.L858
+.L970:
+	mov	r2, #0
+	b	.L911
+.L953:
+	mov	r0, r2
+	b	.L868
+.L965:
+	mov	r0, r2
+	b	.L897
+.L933:
+	mov	r1, ip
+	b	.L821
+.L945:
+	mov	r0, r2
+	b	.L847
+.L937:
+	mov	r0, r2
+	b	.L827
+.L930:
+	mov	r0, r2
+	b	.L815
+.L967:
+	mov	r3, #0
+	b	.L909
+.L956:
+	mov	r1, ip
+	b	.L874
+	.size	dosys, .-dosys
+	.global	reattach_stdin
+	.global	inbuf
+	.comm	old_segvhandler,4,4
+	.comm	old_inthandler,4,4
+	.global	mainpid
+	.comm	taskname,16,4
+	.comm	dcountv,4,4
+	.comm	vecstatsv,4,4
+	.comm	vecstatsvec,4,4
+	.comm	vecstatsvupb,4,4
+	.global	tallylim
+	.comm	tallyv,4,4
+	.comm	tallyvec,4,4
+	.comm	tallyupb,4,4
+	.comm	memupb,4,4
+	.global	boottrace
+	.global	slowflag
+	.global	dumpflag
+	.global	filetracing
+	.global	tracing
+	.comm	result2,4,4
+	.comm	globbase,4,4
+	.comm	stackbase,4,4
+	.comm	prefixbp,4,4
+	.global	prefixstr
+	.global	scriptsvarstr
+	.global	hdrsvarstr
+	.global	pathvarstr
+	.global	rootvarstr
+	.comm	lastst,4,4
+	.comm	lastWg,4,4
+	.comm	lastWp,4,4
+	.comm	W,4,4
+	.comm	trvec,16384,4
+	.global	trcount
+	.section	.rodata
+	.align	2
+.LANCHOR1 = . + 0
+	.type	CSWTCH.316, %object
+	.size	CSWTCH.316, 124
+CSWTCH.316:
+	.word	.LC119
+	.word	.LC120
+	.word	.LC121
+	.word	.LC122
+	.word	.LC123
+	.word	.LC124
+	.word	.LC125
+	.word	.LC126
+	.word	.LC127
+	.word	.LC128
+	.word	.LC129
+	.word	.LC130
+	.word	.LC131
+	.word	.LC132
+	.word	.LC133
+	.word	.LC134
+	.word	.LC135
+	.word	.LC136
+	.word	.LC137
+	.word	.LC138
+	.word	.LC139
+	.word	.LC140
+	.word	.LC141
+	.word	.LC142
+	.word	.LC143
+	.word	.LC144
+	.word	.LC145
+	.word	.LC146
+	.word	.LC147
+	.word	.LC148
+	.word	.LC149
+	.data
+	.align	2
+.LANCHOR2 = . + 0
+	.type	pathvar, %object
+	.size	pathvar, 4
+pathvar:
+	.word	.LC118
+	.type	trcount, %object
+	.size	trcount, 4
+trcount:
+	.word	-1
+	.section	.rodata.str1.4,"aMS",%progbits,1
+	.align	2
+.LC0:
+	.ascii	"malloc\000"
+	.space	1
+.LC1:
+	.ascii	" \000"
+	.space	2
+.LC2:
+	.ascii	"\012\000"
+	.space	2
+.LC3:
+	.ascii	"\012#### freevec: block at %d already free\012\000"
+	.space	3
+.LC4:
+	.ascii	"\012#### freevec: block at %d \000"
+.LC5:
+	.ascii	"size %d corrupted\000"
+	.space	2
+.LC6:
+	.ascii	"\012#### freevec: last 4 words %8X \000"
+	.space	3
+.LC7:
+	.ascii	"%8X \000"
+	.space	3
+.LC8:
+	.ascii	"%6d \000"
+	.space	3
+.LC9:
+	.ascii	"%7d\012\000"
+	.space	3
+.LC10:
+	.ascii	"#### freevec: should be    55555555 AAAAAAAA requpb"
+	.ascii	" %7d\012\012\000"
+	.space	2
+.LC11:
+	.ascii	"doflt(%d, %d, %d...) not implemented\012\000"
+	.space	2
+.LC12:
+	.ascii	"Configuration error: \000"
+	.space	2
+.LC13:
+	.ascii	"One of UNIXNAMES, WINNAMES or VMSNAMES must be set\000"
+	.space	1
+.LC14:
+	.ascii	"osfname: %s => %s\012\000"
+	.space	1
+.LC15:
+	.ascii	"pathinput: attempting to open %s\000"
+	.space	3
+.LC16:
+	.ascii	" using\012  %s\000"
+.LC17:
+	.ascii	" = %s\012\000"
+	.space	1
+.LC18:
+	.ascii	"rb\000"
+	.space	1
+.LC19:
+	.ascii	"Trying: %s - \000"
+	.space	2
+.LC20:
+	.ascii	"found\000"
+	.space	2
+.LC21:
+	.ascii	"not found\000"
+	.space	2
+.LC22:
+	.ascii	"Trying: %s in the current directory - \000"
+	.space	1
+.LC23:
+	.ascii	"syscin/\000"
+.LC24:
+	.ascii	"     -     K   LLP     L    LP    SP    AP     A\000"
+	.space	3
+.LC25:
+	.ascii	"  \000"
+	.space	1
+.LC26:
+	.ascii	"     #G%03d# \000"
+	.space	2
+.LC27:
+	.ascii	" %10d \000"
+	.space	1
+.LC28:
+	.ascii	" #x%8X \000"
+.LC29:
+	.ascii	"A=\000"
+	.space	1
+.LC30:
+	.ascii	"B=\000"
+	.space	1
+.LC31:
+	.ascii	"P=%5d \000"
+	.space	1
+.LC32:
+	.ascii	"%9d: \000"
+	.space	2
+.LC33:
+	.ascii	"(%3d)\000"
+	.space	2
+.LC34:
+	.ascii	"DUMP.mem\000"
+	.space	3
+.LC35:
+	.ascii	"wb\000"
+	.space	1
+.LC36:
+	.ascii	"-cin\000"
+	.space	3
+.LC37:
+	.ascii	"-slow\000"
+	.space	2
+.LC38:
+	.ascii	"missing parameter for -s\012\000"
+	.space	2
+.LC39:
+	.ascii	"c\000"
+	.space	2
+.LC40:
+	.ascii	"Unknown command option: %s\012\000"
+.LC41:
+	.ascii	"\012Valid arguments:\012\000"
+	.space	1
+.LC42:
+	.ascii	"-h            Output this help information\000"
+	.space	1
+.LC43:
+	.ascii	"-m n          Set Cintcode memory size to n words\000"
+	.space	2
+.LC44:
+	.ascii	"-t n          Set Tally vector size to n words\000"
+	.space	1
+.LC45:
+	.ascii	"-c args       Pass args to interpreter as standard "
+	.ascii	"input (executable bytecode)\000"
+	.space	1
+.LC46:
+	.ascii	"-- args       Pass args to interpreter standard inp"
+	.ascii	"ut, then re-attach stdin\000"
+.LC47:
+	.ascii	"-s file args  Invoke command interpreter on file wi"
+	.ascii	"th args (executable scripts)\000"
+.LC48:
+	.ascii	"-cin name     Set the pathvar environment variable "
+	.ascii	"name\000"
+.LC49:
+	.ascii	"-f            Trace the use of environment variable"
+	.ascii	"s in pathinput\000"
+	.space	2
+.LC50:
+	.ascii	"-v            Trace the bootstrapping process\000"
+	.space	2
+.LC51:
+	.ascii	"-v -v         As -v, but also include some Cincode "
+	.ascii	"level tracing\000"
+	.space	3
+.LC52:
+	.ascii	"-d            Cause a dump of the Cintcode memory t"
+	.ascii	"o DUMP.mem\000"
+	.space	2
+.LC53:
+	.ascii	"              if a fault/error is encountered\000"
+	.space	2
+.LC54:
+	.ascii	"-slow         Force the slow interpreter to always "
+	.ascii	"be selected\000"
+	.space	1
+.LC55:
+	.ascii	"Boot tracing level is set to %d\012\000"
+	.space	3
+.LC56:
+	.ascii	"Bad -m or -t size\000"
+	.space	2
+.LC57:
+	.ascii	"\012cintsys 06 Sep 2014  13:49\012\000"
+	.space	3
+.LC58:
+	.ascii	"ABCD1234\000"
+	.space	3
+.LC59:
+	.ascii	"bytestr=%s word 0 = %8X\012\000"
+	.space	3
+.LC60:
+	.ascii	"BIGENDER is not defined\000"
+.LC61:
+	.ascii	"sizeof(int)        = %d\012\000"
+	.space	3
+.LC62:
+	.ascii	"sizeof(long)       = %d\012\000"
+	.space	3
+.LC63:
+	.ascii	"sizeof(BCPLWORD)   = %d\012\000"
+	.space	3
+.LC64:
+	.ascii	"sizeof(BCPLWORD *) = %d\012\000"
+	.space	3
+.LC65:
+	.ascii	"FormD is \"%s\"\012\000"
+	.space	1
+.LC66:
+	.ascii	"d\000"
+	.space	2
+.LC67:
+	.ascii	"FormX is \"%s\"\012\000"
+	.space	1
+.LC68:
+	.ascii	"X\000"
+	.space	2
+.LC69:
+	.ascii	"Allocating Cintcode memory using mmap, pagesize=%d\012"
+	.ascii	"\000"
+.LC70:
+	.ascii	"W=%d %8x\012\000"
+	.space	2
+.LC71:
+	.ascii	"Insufficient memory for memvec\000"
+	.space	1
+.LC72:
+	.ascii	"Cintcode memory (upb=%d) allocated\012\000"
+.LC73:
+	.ascii	"The root node was at %d not at %d\012\000"
+	.space	1
+.LC74:
+	.ascii	"BCPLROOT\000"
+	.space	3
+.LC75:
+	.ascii	"BCPLHDRS\000"
+	.space	3
+.LC76:
+	.ascii	"BCPLSCRIPTS\000"
+.LC77:
+	.ascii	"Environment variable %s\000"
+.LC78:
+	.ascii	"Boot's stack allocated at %d\012\000"
+	.space	2
+.LC79:
+	.ascii	"Boot's global vector allocated at %d\012\000"
+	.space	2
+.LC80:
+	.ascii	"Rootnode allocated at %d\012\000"
+	.space	2
+.LC81:
+	.ascii	"Loading all resident programs and libraries\000"
+.LC82:
+	.ascii	"syscin/boot\000"
+.LC83:
+	.ascii	"\012Unable to find syscin/boot\000"
+.LC84:
+	.ascii	"This is probably caused by incorrect settings of\000"
+	.space	3
+.LC85:
+	.ascii	"environment variables such as BCPLROOT and BCPLPATH"
+	.ascii	"\000"
+.LC86:
+	.ascii	"Try entering cintsys using the command\000"
+	.space	1
+.LC87:
+	.ascii	"\012cintsys -f -v\012\000"
+.LC88:
+	.ascii	"to see what is happening\000"
+	.space	3
+.LC89:
+	.ascii	"Can't globin boot\000"
+	.space	2
+.LC90:
+	.ascii	"syscin/boot loaded successfully\000"
+.LC91:
+	.ascii	"syscin/blib\000"
+.LC92:
+	.ascii	"Can't load syscin/blib\000"
+	.space	1
+.LC93:
+	.ascii	"syscin/blib loaded successfully\000"
+.LC94:
+	.ascii	"syscin/syslib\000"
+	.space	2
+.LC95:
+	.ascii	"Can't load syscin/syslib\000"
+	.space	3
+.LC96:
+	.ascii	"syscin/syslib loaded successfully\000"
+	.space	2
+.LC97:
+	.ascii	"syscin/dlib\000"
+.LC98:
+	.ascii	"Can't load syscin/dlib\000"
+	.space	1
+.LC99:
+	.ascii	"syscin/dlib loaded successfully\000"
+.LC100:
+	.ascii	"Can't globin {blib,syslib,dlib}\000"
+.LC101:
+	.ascii	"Calling the interpreter\000"
+.LC102:
+	.ascii	"Turning instruction tracing on\000"
+	.space	1
+.LC103:
+	.ascii	"interpreter returned control to cintsys, res=%d\012"
+	.ascii	"\000"
+	.space	3
+.LC104:
+	.ascii	"\012Execution finished, return code %d\012\000"
+	.space	3
+.LC105:
+	.ascii	"\012Cintpos memory dumped to DUMP.mem, context=3\000"
+	.space	2
+.LC106:
+	.ascii	" but the host machine is a big ender\000"
+	.space	3
+.LC107:
+	.ascii	"\012SIGSEGV received\000"
+	.space	2
+.LC108:
+	.ascii	"\012Leaving Cintsys\000"
+	.space	3
+.LC109:
+	.ascii	"\012Memory dumped to DUMP.mem, context=2\000"
+	.space	2
+.LC110:
+	.ascii	"\012SIGINT received\000"
+	.space	3
+.LC111:
+	.ascii	"\012Memory dumped to DUMP.mem, context=1\000"
+	.space	2
+.LC112:
+	.ascii	"\012Bad sys number: %d\012\000"
+	.space	3
+.LC113:
+	.ascii	"sys_read\000"
+	.space	3
+.LC114:
+	.ascii	"ab\000"
+	.space	1
+.LC115:
+	.ascii	"rb+\000"
+.LC116:
+	.ascii	"wb+\000"
+.LC117:
+	.ascii	"\012Memory dumped to DUMP.mem, context=%d\012\000"
+.LC118:
+	.ascii	"BCPLPATH\000"
+	.space	3
+.LC119:
+	.ascii	" FLTOP    KH  LLPH    LH   LPH   SPH   APH    AH\000"
+	.space	3
+.LC120:
+	.ascii	"   BRK    KW  LLPW    LW   LPW   SPW   APW    AW\000"
+	.space	3
+.LC121:
+	.ascii	"    K3   K3G  K3G1  K3GH   LP3   SP3   AP3  L0P3\000"
+	.space	3
+.LC122:
+	.ascii	"    K4   K4G  K4G1  K4GH   LP4   SP4   AP4  L0P4\000"
+	.space	3
+.LC123:
+	.ascii	"    K5   K5G  K5G1  K5GH   LP5   SP5   AP5  L0P5\000"
+	.space	3
+.LC124:
+	.ascii	"    K6   K6G  K6G1  K6GH   LP6   SP6   AP6  L0P6\000"
+	.space	3
+.LC125:
+	.ascii	"    K7   K7G  K7G1  K7GH   LP7   SP7   AP7  L0P7\000"
+	.space	3
+.LC126:
+	.ascii	"    K8   K8G  K8G1  K8GH   LP8   SP8   AP8  L0P8\000"
+	.space	3
+.LC127:
+	.ascii	"    K9   K9G  K9G1  K9GH   LP9   SP9   AP9  L0P9\000"
+	.space	3
+.LC128:
+	.ascii	"   K10  K10G K10G1 K10GH  LP10  SP10  AP10 L0P10\000"
+	.space	3
+.LC129:
+	.ascii	"   K11  K11G K11G1 K11GH  LP11  SP11  AP11 L0P11\000"
+	.space	3
+.LC130:
+	.ascii	"    LF   S0G  S0G1  S0GH  LP12  SP12  AP12 L0P12\000"
+	.space	3
+.LC131:
+	.ascii	"   LF$   L0G  L0G1  L0GH  LP13  SP13 XPBYT     S\000"
+	.space	3
+.LC132:
+	.ascii	"    LM   L1G  L1G1  L1GH  LP14  SP14   LMH    SH\000"
+	.space	3
+.LC133:
+	.ascii	"   LM1   L2G  L2G1  L2GH  LP15  SP15   BTC  MDIV\000"
+	.space	3
+.LC134:
+	.ascii	"    L0    LG   LG1   LGH  LP16  SP16   NOP CHGCO\000"
+	.space	3
+.LC135:
+	.ascii	"    L1    SG   SG1   SGH   SYS    S1    A1   NEG\000"
+	.space	3
+.LC136:
+	.ascii	"    L2   LLG  LLG1  LLGH   SWB    S2    A2   NOT\000"
+	.space	3
+.LC137:
+	.ascii	"    L3    AG   AG1   AGH   SWL    S3    A3  L1P3\000"
+	.space	3
+.LC138:
+	.ascii	"    L4   MUL   ADD    RV    ST    S4    A4  L1P4\000"
+	.space	3
+.LC139:
+	.ascii	"    L5   DIV   SUB   RV1   ST1   XCH    A5  L1P5\000"
+	.space	3
+.LC140:
+	.ascii	"    L6   REM   LSH   RV2   ST2  GBYT  RVP3  L1P6\000"
+	.space	3
+.LC141:
+	.ascii	"    L7   XOR   RSH   RV3   ST3  PBYT  RVP4  L2P3\000"
+	.space	3
+.LC142:
+	.ascii	"    L8    SL   AND   RV4  STP3   ATC  RVP5  L2P4\000"
+	.space	3
+.LC143:
+	.ascii	"    L9   SL$    OR   RV5  STP4   ATB  RVP6  L2P5\000"
+	.space	3
+.LC144:
+	.ascii	"   L10    LL   LLL   RV6  STP5     J  RVP7  L3P3\000"
+	.space	3
+.LC145:
+	.ascii	"  FHOP   LL$  LLL$   RTN  GOTO    J$ ST0P3  L3P4\000"
+	.space	3
+.LC146:
+	.ascii	"   JEQ   JNE   JLS   JGR   JLE   JGE ST0P4  L4P3\000"
+	.space	3
+.LC147:
+	.ascii	"  JEQ$  JNE$  JLS$  JGR$  JLE$  JGE$ ST1P3  L4P4\000"
+	.space	3
+.LC148:
+	.ascii	"  JEQ0  JNE0  JLS0  JGR0  JLE0  JGE0 ST1P4 SELLD\000"
+	.space	3
+.LC149:
+	.ascii	" JEQ0$ JNE0$ JLS0$ JGR0$ JLE0$ JGE0$    MW SELST\000"
+	.bss
+	.align	2
+.LANCHOR0 = . + 0
+	.type	idx.5404, %object
+	.size	idx.5404, 4
+idx.5404:
+	.space	4
+	.type	inbuf, %object
+	.size	inbuf, 4
+inbuf:
+	.space	4
+	.type	filetracing, %object
+	.size	filetracing, 4
+filetracing:
+	.space	4
+	.type	chbuf4, %object
+	.size	chbuf4, 256
+chbuf4:
+	.space	256
+	.type	mainpid, %object
+	.size	mainpid, 4
+mainpid:
+	.space	4
+	.type	dumpflag, %object
+	.size	dumpflag, 4
+dumpflag:
+	.space	4
+	.type	slowflag, %object
+	.size	slowflag, 4
+slowflag:
+	.space	4
+	.type	reattach_stdin, %object
+	.size	reattach_stdin, 4
+reattach_stdin:
+	.space	4
+	.type	boottrace, %object
+	.size	boottrace, 4
+boottrace:
+	.space	4
+	.type	tracing, %object
+	.size	tracing, 4
+tracing:
+	.space	4
+	.type	tallylim, %object
+	.size	tallylim, 4
+tallylim:
+	.space	4
+	.type	rootvarstr, %object
+	.size	rootvarstr, 4
+rootvarstr:
+	.space	4
+	.type	pathvarstr, %object
+	.size	pathvarstr, 4
+pathvarstr:
+	.space	4
+	.type	hdrsvarstr, %object
+	.size	hdrsvarstr, 4
+hdrsvarstr:
+	.space	4
+	.type	scriptsvarstr, %object
+	.size	scriptsvarstr, 4
+scriptsvarstr:
+	.space	4
+	.type	prefixstr, %object
+	.size	prefixstr, 4
+prefixstr:
+	.space	4
+	.type	chbuf1, %object
+	.size	chbuf1, 256
+chbuf1:
+	.space	256
+	.type	chbuf2, %object
+	.size	chbuf2, 256
+chbuf2:
+	.space	256
+	.type	chbuf3, %object
+	.size	chbuf3, 256
+chbuf3:
+	.space	256
+	.ident	"GCC: (Debian 4.6.3-14+rpi1) 4.6.3"
+	.section	.note.GNU-stack,"",%progbits

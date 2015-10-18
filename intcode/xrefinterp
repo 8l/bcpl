@@ -1,0 +1,1010 @@
+Ass_dev M:4 DEF libhdr.h[630] Ass_dev=4
+Ass_dir M:2 DEF libhdr.h[628] Ass_dir=2
+Ass_link M:0 DEF libhdr.h[626] Ass_link=0
+Ass_name M:5 DEF libhdr.h[631] Ass_name=5
+Ass_task M:1 DEF libhdr.h[627] Ass_task=1
+Ass_type M:3 DEF libhdr.h[629] Ass_type=3
+B2Wsh M:2 DEF libhdr.h[203] B2Wsh=2
+B2Wsh M:2 MAN libhdr.h[209] bytesperword=1<<B2Wsh
+CloseObj M:1 DEF libhdr.h[258] CloseObj=1
+Dcb_arg M:4 DEF libhdr.h[571] Dcb_arg=4
+Dcb_cvp M:6 DEF libhdr.h[573] Dcb_cvp=6
+Dcb_devid M:1 DEF libhdr.h[568] Dcb_devid=1
+Dcb_flag M:9 DEF libhdr.h[579] Dcb_flag=9
+Dcb_intson M:7 DEF libhdr.h[577] Dcb_intson=7
+Dcb_irq M:8 DEF libhdr.h[578] Dcb_irq=8
+Dcb_op M:3 DEF libhdr.h[570] Dcb_op=3
+Dcb_threadp M:5 DEF libhdr.h[572] Dcb_threadp=5
+Dcb_type M:0 DEF libhdr.h[567] Dcb_type=0
+Dcb_upb M:15 DEF libhdr.h[588] Dcb_upb=
+Dcb_var0 M:10 DEF libhdr.h[583] Dcb_var0=10
+Dcb_var1 M:11 DEF libhdr.h[584] Dcb_var1=11
+Dcb_var2 M:12 DEF libhdr.h[585] Dcb_var2=12
+Dcb_var3 M:13 DEF libhdr.h[586] Dcb_var3=13
+Dcb_var4 M:14 DEF libhdr.h[587] Dcb_var4=14
+Dcb_wkq M:2 DEF libhdr.h[569] Dcb_wkq=2
+Devc_create M:1 DEF libhdr.h[598] Devc_create=1
+Devc_destroy M:2 DEF libhdr.h[599] Devc_destroy=2
+Devc_setintson M:5 DEF libhdr.h[602] Devc_setintson=5
+Devc_start M:3 DEF libhdr.h[600] Devc_start=3
+Devc_stop M:4 DEF libhdr.h[601] Devc_stop=4
+Devt_clk M:1 DEF libhdr.h[591] Devt_clk=1
+Devt_fileop M:4 DEF libhdr.h[594] Devt_fileop=4
+Devt_tcpdev M:5 DEF libhdr.h[595] Devt_tcpdev=5
+Devt_ttyin M:2 DEF libhdr.h[592] Devt_ttyin=2
+Devt_ttyout M:3 DEF libhdr.h[593] Devt_ttyout=3
+GB2312 M:-2 DEF libhdr.h[500] GB2312=-2
+InitObj M:0 DEF libhdr.h[257] InitObj=0
+State_dead M:12 DEF libhdr.h[617] State_dead=12
+State_hold M:2 DEF libhdr.h[614] State_hold=2
+State_int M:8 DEF libhdr.h[616] State_int=8
+State_pkt M:1 DEF libhdr.h[613] State_pkt=1
+State_wait M:4 DEF libhdr.h[615] State_wait=4
+Sys_buttons M:56 DEF libhdr.h[401] Sys_buttons=56
+Sys_callc M:59 DEF libhdr.h[404] Sys_callc=59
+Sys_callnative M:53 DEF libhdr.h[398] Sys_callnative=53
+Sys_close M:16 DEF libhdr.h[364] Sys_close=16
+Sys_cputime M:30 DEF libhdr.h[377] Sys_cputime=30
+Sys_datstamp M:44 DEF libhdr.h[389] Sys_datstamp=44
+Sys_delay M:57 DEF libhdr.h[402] Sys_delay=57
+Sys_deletefile M:17 DEF libhdr.h[365] Sys_deletefile=17
+Sys_devcom M:43 DEF libhdr.h[388] Sys_devcom=43
+Sys_dumpmem M:52 DEF libhdr.h[397] Sys_dumpmem=52
+Sys_filemodtime M:31 DEF libhdr.h[378] Sys_filemodtime=31
+Sys_filesize M:46 DEF libhdr.h[391] Sys_filesize=46
+Sys_flt M:63 DEF libhdr.h[409] Sys_flt=63
+Sys_freevec M:22 DEF libhdr.h[370] Sys_freevec=22
+Sys_getpid M:51 DEF libhdr.h[396] Sys_getpid=51
+Sys_getprefix M:33 DEF libhdr.h[380] Sys_getprefix=33
+Sys_getsysval M:48 DEF libhdr.h[393] Sys_getsysval=48
+Sys_gettrval M:62 DEF libhdr.h[408] Sys_gettrval=62
+Sys_getvec M:21 DEF libhdr.h[369] Sys_getvec=21
+Sys_globin M:24 DEF libhdr.h[372] Sys_globin=24
+Sys_graphics M:34 DEF libhdr.h[381] Sys_graphics=34
+Sys_inc M:55 DEF libhdr.h[400] Sys_inc=55
+Sys_incdcount M:65 DEF libhdr.h[411] Sys_incdcount=65
+Sys_interpret M:7 DEF libhdr.h[356] Sys_interpret=7
+Sys_intflag M:28 DEF libhdr.h[375] Sys_intflag=28
+Sys_loadseg M:23 DEF libhdr.h[371] Sys_loadseg=23
+Sys_lockirq M:41 DEF libhdr.h[386] Sys_lockirq=41
+Sys_muldiv M:26 DEF libhdr.h[374] Sys_muldiv=26
+Sys_openappend M:19 DEF libhdr.h[367] Sys_openappend=19
+Sys_openread M:14 DEF libhdr.h[362] Sys_openread=14
+Sys_openreadwrite M:47 DEF libhdr.h[392] Sys_openreadwrite=47
+Sys_openwrite M:15 DEF libhdr.h[363] Sys_openwrite=15
+Sys_platform M:54 DEF libhdr.h[399] Sys_platform=54
+Sys_pollsardch M:64 DEF libhdr.h[410] Sys_pollsardch=64
+Sys_putsysval M:49 DEF libhdr.h[394] Sys_putsysval=49
+Sys_quit M:0 DEF libhdr.h[349] Sys_quit=0
+Sys_read M:12 DEF libhdr.h[360] Sys_read=12
+Sys_renamefile M:18 DEF libhdr.h[366] Sys_renamefile=18
+Sys_rti M:1 DEF libhdr.h[350] Sys_rti=1
+Sys_sardch M:10 DEF libhdr.h[358] Sys_sardch=10
+Sys_saveregs M:2 DEF libhdr.h[351] Sys_saveregs=2
+Sys_sawrch M:11 DEF libhdr.h[359] Sys_sawrch=11
+Sys_sdl M:66 DEF libhdr.h[413] Sys_sdl=66
+Sys_seek M:38 DEF libhdr.h[383] Sys_seek=38
+Sys_setcount M:-1 DEF libhdr.h[348] Sys_setcount=-1
+Sys_setprefix M:32 DEF libhdr.h[379] Sys_setprefix=32
+Sys_setraster M:29 DEF libhdr.h[376] Sys_setraster=29
+Sys_setst M:3 DEF libhdr.h[352] Sys_setst=3
+Sys_settrcount M:61 DEF libhdr.h[407] Sys_settrcount=61
+Sys_shellcom M:50 DEF libhdr.h[395] Sys_shellcom=50
+Sys_sound M:58 DEF libhdr.h[403] Sys_sound=58
+Sys_tally M:6 DEF libhdr.h[355] Sys_tally=6
+Sys_tell M:39 DEF libhdr.h[384] Sys_tell=39
+Sys_tracing M:4 DEF libhdr.h[353] Sys_tracing=4
+Sys_trpush M:60 DEF libhdr.h[406] Sys_trpush=60
+Sys_unloadseg M:25 DEF libhdr.h[373] Sys_unloadseg=25
+Sys_unlockirq M:42 DEF libhdr.h[387] Sys_unlockirq=42
+Sys_waitirq M:40 DEF libhdr.h[385] Sys_waitirq=40
+Sys_watch M:5 DEF libhdr.h[354] Sys_watch=5
+Sys_write M:13 DEF libhdr.h[361] Sys_write=13
+Task_cli M:1 DEF libhdr.h[605] Task_cli=1
+Task_consolehandler M:3 DEF libhdr.h[607] Task_consolehandler=3
+Task_debug M:2 DEF libhdr.h[606] Task_debug=2
+Task_filehandler M:4 DEF libhdr.h[608] Task_filehandler=4
+Task_mbxhandler M:5 DEF libhdr.h[609] Task_mbxhandler=5
+Task_tcphandler M:6 DEF libhdr.h[610] Task_tcphandler=6
+UTF8 M:-1 DEF libhdr.h[499] UTF8=-1
+a G:216 DEF interp.b[48] a=
+a G:216 LG interp.b[137] !a:=0
+a G:216 LG interp.b[138] labref(ln,a)
+a G:216 LG interp.b[229] writef("a=%11' %7i: %s",a,b,...)
+a G:216 LG interp.b[260] b:=a
+a G:216 LG interp.b[262] !d:=a
+a G:216 LG interp.b[264] a:=a+d
+a G:216 LG interp.b[268] IF a DO ..
+a G:216 LG interp.b[270] UNLESS a DO ..
+a G:216 LG interp.b[273] d!0,d!1,d!2:=p,c,a
+a G:216 LG interp.b[274] p,c:=d,a
+a G:216 LG interp.b[281] a:=!a
+a G:216 LG interp.b[282] a:=-a
+a G:216 LG interp.b[283] a:=~a
+a G:216 LG interp.b[287] a:=b*a
+a G:216 LG interp.b[288] a:=b/a
+a G:216 LG interp.b[289] a:=b MOD a
+a G:216 LG interp.b[290] a:=b+a
+a G:216 LG interp.b[291] a:=b-a
+a G:216 LG interp.b[292] a:=b=a
+a G:216 LG interp.b[293] a:=b~=a
+a G:216 LG interp.b[294] a:=b<a
+a G:216 LG interp.b[295] a:=b>=a
+a G:216 LG interp.b[296] a:=b>a
+a G:216 LG interp.b[297] a:=b<=a
+a G:216 LG interp.b[298] a:=b<<a
+a G:216 LG interp.b[299] a:=b>>a
+a G:216 LG interp.b[300] a:=b&a
+a G:216 LG interp.b[301] a:=b|a
+a G:216 LG interp.b[302] a:=b XOR a
+a G:216 LG interp.b[303] a:=b EQV a
+a G:216 LG interp.b[305] RESULTIS a
+a G:216 LG interp.b[310] IF a=c!0 DO ..
+a G:216 LG interp.b[317] a:=b%a
+a G:216 LG interp.b[318] b%a:=p!c!0
+a G:216 LG interp.b[321] a:=ABS a
+a G:216 LG interp.b[347] selectinput(a)
+a G:216 LG interp.b[348] selectoutput(a)
+a G:216 LG interp.b[352] wrch(a)
+a G:216 LG interp.b[354] a:=findinput(a)
+a G:216 LG interp.b[356] a:=findoutput(a)
+a G:216 LG interp.b[357] RESULTIS a
+a G:216 LG interp.b[359] p,c:=a,b
+a G:216 LG interp.b[365] p,c:=d,a
+a G:216 LG interp.b[371] a:=b%a
+a G:216 LG interp.b[376] a!1
+a G:216 LG interp.b[377] a!2
+a G:216 LG interp.b[378] a!0
+a G:216 LG interp.b[383] a:=ABS a
+a G:216 LG interp.b[550] IF a DO ..
+a G:216 LG interp.b[550] writef(" retu'ode = %n",a)
+a G:216 SG interp.b[132] a:=gn+g
+a G:216 SG interp.b[260] a:=d
+a G:216 SG interp.b[264] a:=a+d
+a G:216 SG interp.b[281] a:=!a
+a G:216 SG interp.b[282] a:=-a
+a G:216 SG interp.b[283] a:=~a
+a G:216 SG interp.b[287] a:=b*a
+a G:216 SG interp.b[288] a:=b/a
+a G:216 SG interp.b[289] a:=b MOD a
+a G:216 SG interp.b[290] a:=b+a
+a G:216 SG interp.b[291] a:=b-a
+a G:216 SG interp.b[292] a:=b=a
+a G:216 SG interp.b[293] a:=b~=a
+a G:216 SG interp.b[294] a:=b<a
+a G:216 SG interp.b[295] a:=b>=a
+a G:216 SG interp.b[296] a:=b>a
+a G:216 SG interp.b[297] a:=b<=a
+a G:216 SG interp.b[298] a:=b<<a
+a G:216 SG interp.b[299] a:=b>>a
+a G:216 SG interp.b[300] a:=b&a
+a G:216 SG interp.b[301] a:=b|a
+a G:216 SG interp.b[302] a:=b XOR a
+a G:216 SG interp.b[303] a:=b EQV a
+a G:216 SG interp.b[317] a:=b%a
+a G:216 SG interp.b[321] a:=ABS a
+a G:216 SG interp.b[325] a:=sys(p!3,p!4,...,...)
+a G:216 SG interp.b[350] a:=rdch()
+a G:216 SG interp.b[354] a:=findinput(a)
+a G:216 SG interp.b[356] a:=findoutput(a)
+a G:216 SG interp.b[358] a:=p!0
+a G:216 SG interp.b[371] a:=b%a
+a G:216 SG interp.b[383] a:=ABS a
+a G:216 SG interp.b[538] a,b:=0,0
+a G:216 SG interp.b[543] a:=interpret()
+abits M:511 DEF interp.b[58] abits=dbit-1
+abits M:511 MAN interp.b[162] TEST (a&abits)=a THEN .. ELSE ..
+abits M:511 MAN interp.b[234] writef("%n",w&abits)
+abits M:511 MAN interp.b[241] d:=w&abits
+abits M:511 MAN interp.b[470] writef("%n",w&abits)
+abort G:28 DEF libhdr.h[43] abort=28
+appendstream G:66 DEF libhdr.h[81] appendstream=66
+assemble F:1 LF interp.b[455] assemble(argv!i)
+assemble F:1 RT interp.b[66] LET assemble(filename)BE..
+atoe G:208 DEF interp.b[39] atoe=
+atoe G:208 LG interp.b[394] t%i:=atoe!icgetbyte(s,i)
+atoe G:208 SG interp.b[484] atoe:=1+(TABLE -1,0,...)
+b G:217 DEF interp.b[49] b=
+b G:217 LG interp.b[229] writef("a=%11' %7i: %s",a,b,...)
+b G:217 LG interp.b[287] a:=b*a
+b G:217 LG interp.b[288] a:=b/a
+b G:217 LG interp.b[289] a:=b MOD a
+b G:217 LG interp.b[290] a:=b+a
+b G:217 LG interp.b[291] a:=b-a
+b G:217 LG interp.b[292] a:=b=a
+b G:217 LG interp.b[293] a:=b~=a
+b G:217 LG interp.b[294] a:=b<a
+b G:217 LG interp.b[295] a:=b>=a
+b G:217 LG interp.b[296] a:=b>a
+b G:217 LG interp.b[297] a:=b<=a
+b G:217 LG interp.b[298] a:=b<<a
+b G:217 LG interp.b[299] a:=b>>a
+b G:217 LG interp.b[300] a:=b&a
+b G:217 LG interp.b[301] a:=b|a
+b G:217 LG interp.b[302] a:=b XOR a
+b G:217 LG interp.b[303] a:=b EQV a
+b G:217 LG interp.b[308] UNTIL b=0 DO ..
+b G:217 LG interp.b[309] b,c:=b-1,c+2
+b G:217 LG interp.b[317] a:=b%a
+b G:217 LG interp.b[318] b%a:=p!c!0
+b G:217 LG interp.b[359] p,c:=a,b
+b G:217 LG interp.b[363] d:=p+b+1
+b G:217 LG interp.b[364] d!0,d!1,d!2,d!3:=p!0,p!1,p,b
+b G:217 LG interp.b[371] a:=b%a
+b G:217 SG interp.b[260] b:=a
+b G:217 SG interp.b[307] b,d:=c!0,c!1
+b G:217 SG interp.b[309] b,c:=b-1,c+2
+b G:217 SG interp.b[538] a,b:=0,0
+binrdch G:39 DEF libhdr.h[54] binrdch=39
+binwrch G:42 DEF libhdr.h[57] binwrch=42
+bitsperbyte M:8 DEF libhdr.h[210] bitsperbyte=8
+bitsperbyte M:8 MAN libhdr.h[211] bitsperword=bitsperbyte*bytesperword
+bitsperword M:32 DEF libhdr.h[211] bitsperword=bitsperbyte*bytesperword
+bitsperword M:32 MAN libhdr.h[213] minint=1<<bitsperword-1
+bootregs M:11 DEF libhdr.h[415] bootregs=11
+bytesize M:8 DEF interp.b[59] bytesize=8
+bytesperword M:4 DEF libhdr.h[209] bytesperword=1<<B2Wsh
+bytesperword M:4 MAN libhdr.h[211] bitsperword=bitsperbyte*bytesperword
+bytesperword M:4 MAN libhdr.h[212] mcaddrinc=bytesperword
+bytesperword M:4 MAN libhdr.h[463] scb_nameeend=scb_name+scb_maxnamelen/bytesperword
+bytesperword M:4 MAN libhdr.h[564] tcb_upb=tcb_namebase+15/bytesperword+1
+c G:218 DEF interp.b[50] c=
+c G:218 LG interp.b[226] !c
+c G:218 LG interp.b[229] writef("a=%11' %7i: %s",a,b,...)
+c G:218 LG interp.b[238] w:=!c
+c G:218 LG interp.b[239] c:=c+1
+c G:218 LG interp.b[242] c:=c+1
+c G:218 LG interp.b[242] d:=!c
+c G:218 LG interp.b[257] writef("*nintc' c = %n*n",c-1)
+c G:218 LG interp.b[273] d!0,d!1,d!2:=p,c,a
+c G:218 LG interp.b[307] b,d:=c!0,c!1
+c G:218 LG interp.b[309] b,c:=b-1,c+2
+c G:218 LG interp.b[310] IF a=c!0 DO ..
+c G:218 LG interp.b[311] d:=c!1
+c G:218 LG interp.b[318] b%a:=p!c!0
+c G:218 LG interp.b[319] c:=c+1
+c G:218 SG interp.b[239] c:=c+1
+c G:218 SG interp.b[242] c:=c+1
+c G:218 SG interp.b[266] c:=d
+c G:218 SG interp.b[268] c:=d
+c G:218 SG interp.b[270] c:=d
+c G:218 SG interp.b[274] p,c:=d,a
+c G:218 SG interp.b[284] c:=p!1
+c G:218 SG interp.b[309] b,c:=b-1,c+2
+c G:218 SG interp.b[315] c:=d
+c G:218 SG interp.b[319] c:=c+1
+c G:218 SG interp.b[359] p,c:=a,b
+c G:218 SG interp.b[365] p,c:=d,a
+c G:218 SG interp.b[448] c:=p
+callco G:19 DEF libhdr.h[34] callco=19
+callseg G:107 DEF libhdr.h[123] callseg=107
+capitalch G:96 DEF libhdr.h[112] capitalch=96
+ch G:212 DEF interp.b[44] ch=
+ch G:212 LG interp.b[120] TEST ch=76 THEN .. ELSE ..
+ch G:212 LG interp.b[133] TEST ch=76 THEN .. ELSE ..
+ch G:212 LG interp.b[151] IF ch=73 DO ..
+ch G:212 LG interp.b[152] IF ch=80 DO ..
+ch G:212 LG interp.b[153] IF ch=71 DO ..
+ch G:212 LG interp.b[155] TEST ch=76 THEN .. ELSE ..
+ch G:212 LG interp.b[182] UNLESS ch=47 DO ..
+ch G:212 LG interp.b[183] UNTIL ch=10 DO ..
+ch G:212 LG interp.b[188] IF ch=45 DO ..
+ch G:212 LG interp.b[189] WHILE 48<=ch&ch<=57 DO ..
+ch G:212 LG interp.b[189] a:=10*a+ch-48
+ch G:212 LG interp.b[88] SWITCHON ch INTO..
+ch G:212 LG interp.b[89] IF ch=endstreamch DO ..
+ch G:212 LG interp.b[94] writef("*nBad ' p = %n*n",ch,p)
+ch G:212 SG interp.b[181] ch:=rdch()
+ch G:212 SG interp.b[183] ch:=rdch()
+changeco G:6 DEF libhdr.h[21] changeco=6
+changepri G:155 DEF libhdr.h[177] changepri=155
+cis G:12 DEF libhdr.h[27] cis=12
+clear F:16 LAB interp.b[80] clear:FOR i=0 TO 2000 DO..
+clear F:16 LF interp.b[145] GOTO clear
+clear_words G:115 DEF libhdr.h[131] clear_words=115
+cli_commanddir G:136 DEF libhdr.h[154] cli_commanddir=136
+cli_commandfile G:143 DEF libhdr.h[161] cli_commandfile=143
+cli_commandname G:138 DEF libhdr.h[156] cli_commandname=138
+cli_currentinput G:142 DEF libhdr.h[160] cli_currentinput=142
+cli_currentoutput G:146 DEF libhdr.h[165] cli_currentoutput=146
+cli_data G:135 DEF libhdr.h[153] cli_data=135
+cli_defaultstack G:147 DEF libhdr.h[166] cli_defaultstack=147
+cli_faillevel G:139 DEF libhdr.h[157] cli_faillevel=139
+cli_init G:133 DEF libhdr.h[151] cli_init=133
+cli_initialfaillevel M:10 DEF libhdr.h[508] cli_initialfaillevel=return_hard
+cli_initialstack M:50000 DEF libhdr.h[507] cli_initialstack=50000
+cli_module G:149 DEF libhdr.h[168] cli_module=149
+cli_module_gn M:149 DEF libhdr.h[506] cli_module_gn=149
+cli_preloadlist G:145 DEF libhdr.h[164] cli_preloadlist=145
+cli_prompt G:140 DEF libhdr.h[158] cli_prompt=140
+cli_result2 G:134 DEF libhdr.h[152] cli_result2=134
+cli_returncode G:137 DEF libhdr.h[155] cli_returncode=137
+cli_standardinput G:141 DEF libhdr.h[159] cli_standardinput=141
+cli_standardoutput G:148 DEF libhdr.h[167] cli_standardoutput=148
+cli_status G:144 DEF libhdr.h[163] cli_status=144
+cli_tallyflag G:132 DEF libhdr.h[150] cli_tallyflag=132
+clibit_comcom M:4 DEF libhdr.h[513] clibit_comcom=4
+clibit_endcli M:256 DEF libhdr.h[519] clibit_endcli=256
+clibit_eofdel M:2 DEF libhdr.h[512] clibit_eofdel=2
+clibit_maincli M:8 DEF libhdr.h[514] clibit_maincli=8
+clibit_mbxcli M:64 DEF libhdr.h[517] clibit_mbxcli=64
+clibit_newcli M:16 DEF libhdr.h[515] clibit_newcli=16
+clibit_noprompt M:1 DEF libhdr.h[511] clibit_noprompt=1
+clibit_runcli M:32 DEF libhdr.h[516] clibit_runcli=32
+clibit_tcpcli M:128 DEF libhdr.h[518] clibit_tcpcli=128
+clihook G:4 DEF libhdr.h[19] clihook=4
+cliregs M:21 DEF libhdr.h[416] cliregs=21
+co_c M:5 DEF libhdr.h[255] co_c=
+co_fn M:3 DEF libhdr.h[253] co_fn=
+co_list M:2 DEF libhdr.h[252] co_list=
+co_parent M:1 DEF libhdr.h[251] co_parent=
+co_pptr M:0 DEF libhdr.h[250] co_pptr=0
+co_size M:4 DEF libhdr.h[254] co_size=
+codewrch G:126 DEF libhdr.h[142] codewrch=126
+colist G:8 DEF libhdr.h[23] colist=8
+compch G:97 DEF libhdr.h[113] compch=97
+compstring G:98 DEF libhdr.h[114] compstring=98
+consoletask G:171 DEF libhdr.h[190] consoletask=171
+copy_bytes G:116 DEF libhdr.h[132] copy_bytes=116
+copy_words G:114 DEF libhdr.h[130] copy_words=114
+copydir G:79 DEF libhdr.h[94] copydir=79
+copyobj G:75 DEF libhdr.h[90] copyobj=75
+copystring G:99 DEF libhdr.h[115] copystring=99
+cos G:13 DEF libhdr.h[28] cos=13
+cowait G:20 DEF libhdr.h[35] cowait=20
+cp G:215 DEF interp.b[47] cp=
+cp G:215 LG interp.b[174] IF cp>=4 DO ..
+cp G:215 LG interp.b[177] (p-1)%cp:=c
+cp G:215 LG interp.b[178] cp:=cp+1
+cp G:215 SG interp.b[100] cp:=4
+cp G:215 SG interp.b[171] p,cp:=p+1,4
+cp G:215 SG interp.b[175] cp:=0
+cp G:215 SG interp.b[178] cp:=cp+1
+cp G:215 SG interp.b[82] cp:=4
+createco G:17 DEF libhdr.h[32] createco=17
+createdev G:172 DEF libhdr.h[191] createdev=172
+createdir G:82 DEF libhdr.h[97] createdir=82
+createtask G:153 DEF libhdr.h[175] createtask=153
+currco G:7 DEF libhdr.h[22] currco=7
+current_language G:190 DEF libhdr.h[199] current_language=190
+currentdir G:14 DEF libhdr.h[29] currentdir=14
+cyclecount G:213 DEF interp.b[45] cyclecount=
+cyclecount G:213 LG interp.b[237] cyclecount:=cyclecount+1
+cyclecount G:213 LG interp.b[549] writef("*n*nExe'les = %n",cyclecount)
+cyclecount G:213 SG interp.b[237] cyclecount:=cyclecount+1
+cyclecount G:213 SG interp.b[541] cyclecount:=0
+d G:219 DEF interp.b[51] d=
+d G:219 LG interp.b[244] d:=d+p
+d G:219 LG interp.b[245] d:=d+g
+d G:219 LG interp.b[246] d:=!d
+d G:219 LG interp.b[249] writef("  %n",d)
+d G:219 LG interp.b[260] a:=d
+d G:219 LG interp.b[262] !d:=a
+d G:219 LG interp.b[264] a:=a+d
+d G:219 LG interp.b[266] c:=d
+d G:219 LG interp.b[268] c:=d
+d G:219 LG interp.b[270] c:=d
+d G:219 LG interp.b[272] d:=p+d
+d G:219 LG interp.b[273] d!0,d!1,d!2:=p,c,a
+d G:219 LG interp.b[274] p,c:=d,a
+d G:219 LG interp.b[277] SWITCHON d INTO..
+d G:219 LG interp.b[315] c:=d
+d G:219 LG interp.b[364] d!0,d!1,d!2,d!3:=p!0,p!1,p,b
+d G:219 LG interp.b[365] p,c:=d,a
+d G:219 SG interp.b[241] d:=w&abits
+d G:219 SG interp.b[242] d:=!c
+d G:219 SG interp.b[244] d:=d+p
+d G:219 SG interp.b[245] d:=d+g
+d G:219 SG interp.b[246] d:=!d
+d G:219 SG interp.b[272] d:=p+d
+d G:219 SG interp.b[307] b,d:=c!0,c!1
+d G:219 SG interp.b[311] d:=c!1
+d G:219 SG interp.b[363] d:=p+b+1
+dat_to_strings G:110 DEF libhdr.h[126] dat_to_strings=110
+datstamp G:109 DEF libhdr.h[125] datstamp=109
+datstring G:108 DEF libhdr.h[124] datstring=108
+dbit M:512 DEF interp.b[57] dbit=512
+dbit M:512 MAN interp.b[157] stw(w+dbit)
+dbit M:512 MAN interp.b[164] stw(w+dbit)
+dbit M:512 MAN interp.b[233] IF (w&dbit)~=0 DO ..
+dbit M:512 MAN interp.b[241] TEST (w&dbit)=0 THEN .. ELSE ..
+dbit M:512 MAN interp.b[249] IF (w&dbit)~=0 DO ..
+dbit M:512 MAN interp.b[468] TEST (w&dbit)~=0 THEN .. ELSE ..
+dbit M:512 MAN interp.b[58] abits=dbit-1
+deadcode M:#xDEADC0DE DEF libhdr.h[233] deadcode=#xDEADC0DE
+delay G:128 DEF libhdr.h[144] delay=128
+delayuntil G:129 DEF libhdr.h[145] delayuntil=129
+deleteco G:18 DEF libhdr.h[33] deleteco=18
+deletedev G:173 DEF libhdr.h[192] deletedev=173
+deletefile G:76 DEF libhdr.h[91] deletefile=76
+deleteself G:125 DEF libhdr.h[141] deleteself=125
+deletetask G:154 DEF libhdr.h[176] deletetask=154
+deplete G:43 DEF libhdr.h[58] deplete=43
+endread G:60 DEF libhdr.h[75] endread=60
+endread G:60 LG interp.b[361] endread()
+endstream G:62 DEF libhdr.h[77] endstream=62
+endstream G:62 LG interp.b[90] endstream(filestream)
+endstreamch M:-1 DEF libhdr.h[216] endstreamch=-1
+endstreamch M:-1 MAN interp.b[89] IF ch=endstreamch DO ..
+endtask G:162 DEF libhdr.h[184] endtask=162
+endwrite G:61 DEF libhdr.h[76] endwrite=61
+endwrite G:61 LG interp.b[362] endwrite()
+entryword M:57311 DEF libhdr.h[235] entryword=57311
+error F:85 LAB interp.b[255] error:DEFAULT:..
+error F:85 LF interp.b[279] GOTO error
+etoa G:207 DEF interp.b[38] etoa=
+etoa G:207 SG interp.b[504] etoa:=1+(TABLE -1,0,...)
+fault G:174 DEF libhdr.h[193] fault=174
+findappend G:130 DEF libhdr.h[146] findappend=130
+findarg G:104 DEF libhdr.h[120] findarg=104
+findinoutput G:50 DEF libhdr.h[65] findinoutput=50
+findinput G:48 DEF libhdr.h[63] findinput=48
+findinput G:48 LG interp.b[354] a:=findinput(a)
+findinput G:48 LG interp.b[69] findinput(filename)
+findoutput G:49 DEF libhdr.h[64] findoutput=49
+findoutput G:49 LG interp.b[356] a:=findoutput(a)
+findstream G:52 DEF libhdr.h[67] findstream=52
+findupdate G:51 DEF libhdr.h[66] findupdate=51
+fl_abs M:5 DEF libhdr.h[472] fl_abs=
+fl_acos M:20 DEF libhdr.h[476] fl_acos=20
+fl_asin M:21 DEF libhdr.h[477] fl_asin=
+fl_atan M:22 DEF libhdr.h[478] fl_atan=
+fl_atan2 M:23 DEF libhdr.h[479] fl_atan2=
+fl_avail M:0 DEF libhdr.h[470] fl_avail=0
+fl_ceil M:38 DEF libhdr.h[494] fl_ceil=
+fl_cos M:24 DEF libhdr.h[480] fl_cos=
+fl_cosh M:27 DEF libhdr.h[483] fl_cosh=
+fl_div M:7 DEF libhdr.h[473] fl_div=
+fl_eq M:12 DEF libhdr.h[474] fl_eq=
+fl_exp M:30 DEF libhdr.h[486] fl_exp=
+fl_fix M:4 DEF libhdr.h[472] fl_fix=
+fl_float M:3 DEF libhdr.h[472] fl_float=
+fl_floor M:39 DEF libhdr.h[495] fl_floor=
+fl_fmod M:40 DEF libhdr.h[496] fl_fmod=
+fl_frexp M:31 DEF libhdr.h[487] fl_frexp=
+fl_ge M:17 DEF libhdr.h[474] fl_ge=
+fl_gr M:15 DEF libhdr.h[474] fl_gr=
+fl_ldexp M:32 DEF libhdr.h[488] fl_ldexp=
+fl_le M:16 DEF libhdr.h[474] fl_le=
+fl_log M:33 DEF libhdr.h[489] fl_log=
+fl_log10 M:34 DEF libhdr.h[490] fl_log10=
+fl_ls M:14 DEF libhdr.h[474] fl_ls=
+fl_minus M:9 DEF libhdr.h[473] fl_minus=
+fl_mk M:1 DEF libhdr.h[471] fl_mk=
+fl_modf M:35 DEF libhdr.h[491] fl_modf=
+fl_mult M:6 DEF libhdr.h[473] fl_mult=
+fl_ne M:13 DEF libhdr.h[474] fl_ne=
+fl_neg M:11 DEF libhdr.h[473] fl_neg=
+fl_plus M:8 DEF libhdr.h[473] fl_plus=
+fl_pos M:10 DEF libhdr.h[473] fl_pos=
+fl_pow M:36 DEF libhdr.h[492] fl_pow=
+fl_sin M:25 DEF libhdr.h[481] fl_sin=
+fl_sinh M:28 DEF libhdr.h[484] fl_sinh=
+fl_sqrt M:37 DEF libhdr.h[493] fl_sqrt=
+fl_tan M:26 DEF libhdr.h[482] fl_tan=
+fl_tanh M:29 DEF libhdr.h[485] fl_tanh=
+fl_unmk M:2 DEF libhdr.h[471] fl_unmk=
+flag_a M:1 DEF libhdr.h[619] flag_a=1<<0
+flag_b M:2 DEF libhdr.h[620] flag_b=1<<1
+flag_c M:4 DEF libhdr.h[621] flag_c=1<<2
+flag_d M:8 DEF libhdr.h[622] flag_d=1<<3
+flag_e M:16 DEF libhdr.h[623] flag_e=1<<4
+freeobj G:78 DEF libhdr.h[93] freeobj=78
+freevec G:27 DEF libhdr.h[42] freevec=27
+freevec G:27 LG interp.b[545] freevec(g)
+freevec G:27 LG interp.b[546] freevec(progvec)
+fshift M:13 DEF interp.b[56] fshift=13
+fshift M:13 MAN interp.b[149] w:=f<<fshift
+fshift M:13 MAN interp.b[227] w>>fshift
+fshift M:13 MAN interp.b[253] SWITCHON w>>fshift INTO..
+fshift M:13 MAN interp.b[463] IF (w>>fshift+3)=0 DO ..
+fshift M:13 MAN interp.b[464] writef("  %s",fstr(w>>fshift))
+fshift M:13 MAN interp.b[60] lig1=0<<fshift|ibit|gbit|1
+fshift M:13 MAN interp.b[61] k3=6<<fshift|3
+fshift M:13 MAN interp.b[62] x22=7<<fshift|22
+fstr F:8 FN interp.b[210] LET fstr(f)=..
+fstr F:8 LF interp.b[228] fstr(op)
+fstr F:8 LF interp.b[464] writef("  %s",fstr(w>>fshift))
+g G:210 DEF interp.b[42] g=
+g G:210 LG interp.b[132] a:=gn+g
+g G:210 LG interp.b[245] d:=d+g
+g G:210 LG interp.b[431] g!i:=0
+g G:210 LG interp.b[435] g!0:=1000
+g G:210 LG interp.b[437] g!g_rootnode:=introotnode
+g G:210 LG interp.b[545] freevec(g)
+g G:210 SG interp.b[430] g,progvec:=getvec(1000),getvec(progsize)
+g_colist M:8 DEF libhdr.h[241] g_colist=8
+g_currco M:7 DEF libhdr.h[240] g_currco=7
+g_globsize M:0 DEF libhdr.h[238] g_globsize=0
+g_keyboard M:20 DEF libhdr.h[245] g_keyboard=20
+g_memsize M:14 DEF libhdr.h[244] g_memsize=14
+g_rootnode M:9 DEF libhdr.h[242] g_rootnode=9
+g_rootnode M:9 MAN interp.b[437] g!g_rootnode:=introotnode
+g_screen M:21 DEF libhdr.h[246] g_screen=21
+g_sdlbase M:450 DEF libhdr.h[634] g_sdlbase=450
+g_sndbase M:400 DEF libhdr.h[633] g_sndbase=400
+g_sys M:3 DEF libhdr.h[239] g_sys=3
+gbit M:1024 DEF interp.b[57] gbit=1024
+gbit M:1024 MAN interp.b[153] w:=w+gbit
+gbit M:1024 MAN interp.b[232] IF (w&gbit)~=0 DO ..
+gbit M:1024 MAN interp.b[245] IF (w&gbit)~=0 DO ..
+gbit M:1024 MAN interp.b[467] IF (w&gbit)~=0 DO ..
+gbit M:1024 MAN interp.b[60] lig1=0<<fshift|ibit|gbit|1
+get_index_record G:73 DEF libhdr.h[88] get_index_record=73
+get_record G:71 DEF libhdr.h[86] get_record=71
+get_text G:93 DEF libhdr.h[109] get_text=93
+get_textblib G:93 DEF libhdr.h[108] get_textblib=93
+getlogname G:118 DEF libhdr.h[134] getlogname=118
+getremipaddr G:54 DEF libhdr.h[69] getremipaddr=54
+getvec G:25 DEF libhdr.h[40] getvec=25
+getvec G:25 LG interp.b[430] g,progvec:=getvec(1000),getvec(progsize)
+getword G:32 DEF libhdr.h[47] getword=32
+globin G:24 DEF libhdr.h[39] globin=24
+globsize G:0 DEF libhdr.h[15] globsize=0
+globword M:#x8F8F0000 DEF libhdr.h[231] globword=#x8F8F0000
+hold G:158 DEF libhdr.h[180] hold=158
+ibit M:4096 DEF interp.b[57] ibit=4096
+ibit M:4096 MAN interp.b[151] w:=w+ibit
+ibit M:4096 MAN interp.b[230] IF (w&ibit)~=0 DO ..
+ibit M:4096 MAN interp.b[246] IF (w&ibit)~=0 DO ..
+ibit M:4096 MAN interp.b[465] IF (w&ibit)~=0 DO ..
+ibit M:4096 MAN interp.b[60] lig1=0<<fshift|ibit|gbit|1
+icgetbyte F:11 FN interp.b[398] LET icgetbyte(s,i)=..
+icgetbyte F:11 LF interp.b[393] t%0:=icgetbyte(s,0)
+icgetbyte F:11 LF interp.b[394] FOR i=1 TO icgetbyte(s,0) DO..
+icgetbyte F:11 LF interp.b[394] t%i:=atoe!icgetbyte(s,i)
+icputbyte F:12 RT interp.b[404] LET icputbyte(s,i,ch)BE..
+id_appendscb M:132 DEF libhdr.h[424] id_appendscb=132
+id_inoutscb M:131 DEF libhdr.h[423] id_inoutscb=131
+id_inscb M:129 DEF libhdr.h[421] id_inscb=129
+id_outscb M:130 DEF libhdr.h[422] id_outscb=130
+initco G:22 DEF libhdr.h[37] initco=22
+initio G:46 DEF libhdr.h[61] initio=46
+input G:58 DEF libhdr.h[73] input=58
+input G:58 LG interp.b[445] stdin:=input()
+input G:58 LG interp.b[68] input()
+instrcount G:121 DEF libhdr.h[137] instrcount=121
+interpret F:9 FN interp.b[222] LET interpret()=..
+interpret F:9 LF interp.b[543] a:=interpret()
+intflag G:119 DEF libhdr.h[135] intflag=119
+isrregs M:41 DEF libhdr.h[419] isrregs=41
+k3 M:49155 DEF interp.b[61] k3=6<<fshift|3
+k3 M:49155 MAN interp.b[450] p!1:=k3
+klibregs M:21 DEF libhdr.h[417] klibregs=21
+labref F:7 LF interp.b[123] labref(rdn(),p-1)
+labref F:7 LF interp.b[138] labref(ln,a)
+labref F:7 LF interp.b[159] labref(rdn(),p-1)
+labref F:7 RT interp.b[204] LET labref(n,a)BE..
+labv G:214 DEF interp.b[46] labv=
+labv G:214 LG interp.b[144] IF labv!i>0 DO ..
+labv G:214 LG interp.b[195] labv!n
+labv G:214 LG interp.b[201] labv!n:=-p
+labv G:214 LG interp.b[205] labv!n
+labv G:214 LG interp.b[206] labv!n:=a
+labv G:214 LG interp.b[81] labv!i:=0
+labv G:214 SG interp.b[71] labv:=v
+level G:15 DEF libhdr.h[30] level=15
+lig1 M:5121 DEF interp.b[60] lig1=0<<fshift|ibit|gbit|1
+lig1 M:5121 MAN interp.b[449] p!0:=lig1
+loadseg G:105 DEF libhdr.h[121] loadseg=105
+locatedir G:80 DEF libhdr.h[95] locatedir=80
+locateobj G:81 DEF libhdr.h[96] locateobj=81
+longjump G:16 DEF libhdr.h[31] longjump=16
+maxint M:#x7FFFFFFF DEF libhdr.h[214] maxint=minint-1
+mcaddrinc M:4 DEF libhdr.h[212] mcaddrinc=bytesperword
+minint M:#x80000000 DEF libhdr.h[213] minint=1<<bitsperword-1
+minint M:#x80000000 MAN libhdr.h[214] maxint=minint-1
+mkramstream G:123 DEF libhdr.h[139] mkramstream=123
+muldiv G:5 DEF libhdr.h[20] muldiv=5
+newline G:84 DEF libhdr.h[99] newline=84
+newline G:84 LG interp.b[250] newline()
+newline G:84 LG interp.b[472] newline()
+newline G:84 LG interp.b[551] newline()
+newpage G:120 DEF libhdr.h[136] newpage=120
+next F:15 LAB interp.b[84] next:rch()
+next F:15 LF interp.b[106] GOTO next
+next F:15 LF interp.b[95] GOTO next
+note G:63 DEF libhdr.h[78] note=63
+notinuse M:-1 DEF libhdr.h[522] notinuse=-1
+output G:59 DEF libhdr.h[74] output=59
+output G:59 LG interp.b[446] stdout:=output()
+p G:211 DEF interp.b[43] p=
+p G:211 LG interp.b[123] labref(rdn(),p-1)
+p G:211 LG interp.b[135] writef("*nbad ' p = %n*n",p)
+p G:211 LG interp.b[159] labref(rdn(),p-1)
+p G:211 LG interp.b[170] !p:=w
+p G:211 LG interp.b[171] p,cp:=p+1,4
+p G:211 LG interp.b[177] (p-1)%cp:=c
+p G:211 LG interp.b[196] writef("L%n a' p = %n*n",n,...,p)
+p G:211 LG interp.b[198] !k:=p
+p G:211 LG interp.b[201] labv!n:=-p
+p G:211 LG interp.b[229] writef("a=%11' %7i: %s",a,b,...)
+p G:211 LG interp.b[244] d:=d+p
+p G:211 LG interp.b[272] d:=p+d
+p G:211 LG interp.b[273] d!0,d!1,d!2:=p,c,a
+p G:211 LG interp.b[284] c:=p!1
+p G:211 LG interp.b[285] p:=p!0
+p G:211 LG interp.b[318] b%a:=p!c!0
+p G:211 LG interp.b[325] a:=sys(p!3,p!4,...,...)
+p G:211 LG interp.b[358] a:=p!0
+p G:211 LG interp.b[363] d:=p+b+1
+p G:211 LG interp.b[364] d!0,d!1,d!2,d!3:=p!0,p!1,p,b
+p G:211 LG interp.b[448] c:=p
+p G:211 LG interp.b[449] p!0:=lig1
+p G:211 LG interp.b[450] p!1:=k3
+p G:211 LG interp.b[451] p!2:=x22
+p G:211 LG interp.b[452] p:=p+3
+p G:211 LG interp.b[482] writef("*nProg'ze = %n*n",p-progvec-200)
+p G:211 LG interp.b[94] writef("*nBad ' p = %n*n",ch,p)
+p G:211 SG interp.b[171] p,cp:=p+1,4
+p G:211 SG interp.b[274] p,c:=d,a
+p G:211 SG interp.b[285] p:=p!0
+p G:211 SG interp.b[359] p,c:=a,b
+p G:211 SG interp.b[365] p,c:=d,a
+p G:211 SG interp.b[443] p:=progvec+200
+p G:211 SG interp.b[452] p:=p+3
+packstring G:30 DEF libhdr.h[45] packstring=30
+pathfindinput G:53 DEF libhdr.h[68] pathfindinput=53
+pbit M:2048 DEF interp.b[57] pbit=2048
+pbit M:2048 MAN interp.b[152] w:=w+pbit
+pbit M:2048 MAN interp.b[231] IF (w&pbit)~=0 DO ..
+pbit M:2048 MAN interp.b[244] IF (w&pbit)~=0 DO ..
+pbit M:2048 MAN interp.b[466] IF (w&pbit)~=0 DO ..
+peercom G:179 DEF libhdr.h[196] peercom=179
+pkt_a1 M:5 DEF libhdr.h[531] pkt_a1=5
+pkt_a2 M:6 DEF libhdr.h[532] pkt_a2=6
+pkt_a3 M:7 DEF libhdr.h[533] pkt_a3=7
+pkt_a4 M:8 DEF libhdr.h[534] pkt_a4=8
+pkt_a5 M:9 DEF libhdr.h[535] pkt_a5=9
+pkt_a6 M:10 DEF libhdr.h[536] pkt_a6=10
+pkt_arg1 M:5 DEF libhdr.h[531] pkt_arg1=5
+pkt_arg2 M:6 DEF libhdr.h[532] pkt_arg2=6
+pkt_arg3 M:7 DEF libhdr.h[533] pkt_arg3=7
+pkt_arg4 M:8 DEF libhdr.h[534] pkt_arg4=8
+pkt_arg5 M:9 DEF libhdr.h[535] pkt_arg5=9
+pkt_arg6 M:10 DEF libhdr.h[536] pkt_arg6=10
+pkt_devid M:1 DEF libhdr.h[527] pkt_devid=1
+pkt_devtaskid M:1 DEF libhdr.h[527] pkt_devtaskid=1
+pkt_id M:1 DEF libhdr.h[527] pkt_id=1
+pkt_link M:0 DEF libhdr.h[526] pkt_link=0
+pkt_op M:2 DEF libhdr.h[528] pkt_op=2
+pkt_r1 M:3 DEF libhdr.h[529] pkt_r1=3
+pkt_r2 M:4 DEF libhdr.h[530] pkt_r2=4
+pkt_res1 M:3 DEF libhdr.h[529] pkt_res1=3
+pkt_res2 M:4 DEF libhdr.h[530] pkt_res2=4
+pkt_taskid M:1 DEF libhdr.h[527] pkt_taskid=1
+pkt_type M:2 DEF libhdr.h[528] pkt_type=2
+point G:64 DEF libhdr.h[79] point=64
+pollingch M:-3 DEF libhdr.h[218] pollingch=-3
+progsize G:206 DEF interp.b[36] progsize=
+progsize G:206 LG interp.b[430] g,progvec:=getvec(1000),getvec(progsize)
+progsize G:206 LG interp.b[432] FOR i=0 TO progsize DO..
+progsize G:206 SG interp.b[425] progsize:=1000000
+progsize G:206 SG interp.b[426] progsize:=!argv!11
+progvec G:209 DEF interp.b[40] progvec=
+progvec G:209 LG interp.b[432] progvec!i:=0
+progvec G:209 LG interp.b[436] introotnode:=progvec+100
+progvec G:209 LG interp.b[443] p:=progvec+200
+progvec G:209 LG interp.b[461] progvec!i
+progvec G:209 LG interp.b[462] writef("%i3: %x5: %8x",i,...,w)
+progvec G:209 LG interp.b[469] writef("D %8x",progvec!(i+1))
+progvec G:209 LG interp.b[482] writef("*nProg'ze = %n*n",p-progvec-200)
+progvec G:209 LG interp.b[546] freevec(progvec)
+progvec G:209 SG interp.b[430] g,progvec:=getvec(1000),getvec(progsize)
+put_index_record G:74 DEF libhdr.h[89] put_index_record=74
+put_record G:72 DEF libhdr.h[87] put_record=72
+putword G:33 DEF libhdr.h[48] putword=33
+qpkt G:161 DEF libhdr.h[183] qpkt=161
+randno G:34 DEF libhdr.h[49] randno=34
+randseed G:127 DEF libhdr.h[143] randseed=127
+rch F:4 LF interp.b[117] rch()
+rch F:4 LF interp.b[119] rch()
+rch F:4 LF interp.b[121] rch()
+rch F:4 LF interp.b[130] rch()
+rch F:4 LF interp.b[134] rch()
+rch F:4 LF interp.b[150] rch()
+rch F:4 LF interp.b[151] rch()
+rch F:4 LF interp.b[152] rch()
+rch F:4 LF interp.b[153] rch()
+rch F:4 LF interp.b[156] rch()
+rch F:4 LF interp.b[188] rch()
+rch F:4 LF interp.b[189] rch()
+rch F:4 LF interp.b[85] rch()
+rch F:4 RT interp.b[181] LET rch()BE..
+rdargs G:102 DEF libhdr.h[118] rdargs=102
+rdargs G:102 LG interp.b[417] UNLESS rdargs(",,,,,',TRACE/S",argv,100) DO ..
+rdch G:38 DEF libhdr.h[53] rdch=38
+rdch G:38 LG interp.b[181] ch:=rdch()
+rdch G:38 LG interp.b[183] ch:=rdch()
+rdch G:38 LG interp.b[350] a:=rdch()
+rditem G:103 DEF libhdr.h[119] rditem=103
+rdn F:5 FN interp.b[186] LET rdn()=..
+rdn F:5 LF interp.b[117] stc(rdn())
+rdn F:5 LF interp.b[123] labref(rdn(),p-1)
+rdn F:5 LF interp.b[125] stw(rdn())
+rdn F:5 LF interp.b[131] gn:=rdn()
+rdn F:5 LF interp.b[136] ln:=rdn()
+rdn F:5 LF interp.b[159] labref(rdn(),p-1)
+rdn F:5 LF interp.b[161] rdn()
+rdn F:5 LF interp.b[99] setlab(rdn())
+readn G:83 DEF libhdr.h[98] readn=83
+readwords G:44 DEF libhdr.h[59] readwords=44
+recordnote G:70 DEF libhdr.h[85] recordnote=70
+recordpoint G:69 DEF libhdr.h[84] recordpoint=69
+release G:159 DEF libhdr.h[181] release=159
+renamefile G:77 DEF libhdr.h[92] renamefile=77
+result2 G:10 DEF libhdr.h[25] result2=10
+resumeco G:21 DEF libhdr.h[36] resumeco=21
+return_hard M:10 DEF libhdr.h[503] return_hard=10
+return_hard M:10 MAN libhdr.h[508] cli_initialfaillevel=return_hard
+return_ok M:0 DEF libhdr.h[505] return_ok=0
+return_severe M:20 DEF libhdr.h[502] return_severe=20
+return_soft M:5 DEF libhdr.h[504] return_soft=5
+returncode G:11 DEF libhdr.h[26] returncode=11
+returnpkt G:169 DEF libhdr.h[188] returnpkt=169
+rewindstream G:65 DEF libhdr.h[80] rewindstream=65
+rootnode G:9 DEF libhdr.h[24] rootnode=9
+rootnode G:9 LG interp.b[440] introotnode!n:=rootnode!n
+rootnodeaddr M:100 DEF libhdr.h[262] rootnodeaddr=100
+rtn_abortcode M:27 DEF libhdr.h[298] rtn_abortcode=
+rtn_adjclock M:33 DEF libhdr.h[316] rtn_adjclock=
+rtn_blib M:19 DEF libhdr.h[287] rtn_blib=
+rtn_blklist M:4 DEF libhdr.h[269] rtn_blklist=
+rtn_boot M:17 DEF libhdr.h[285] rtn_boot=
+rtn_boottrace M:39 DEF libhdr.h[331] rtn_boottrace=
+rtn_bptaddr M:9 DEF libhdr.h[276] rtn_bptaddr=
+rtn_bptinstr M:10 DEF libhdr.h[277] rtn_bptinstr=
+rtn_clkintson M:6 DEF libhdr.h[272] rtn_clkintson=
+rtn_clwkq M:12 DEF libhdr.h[280] rtn_clwkq=
+rtn_context M:28 DEF libhdr.h[299] rtn_context=
+rtn_crntask M:3 DEF libhdr.h[268] rtn_crntask=
+rtn_days M:40 DEF libhdr.h[334] rtn_days=
+rtn_dbgvars M:11 DEF libhdr.h[278] rtn_dbgvars=
+rtn_dcountv M:34 DEF libhdr.h[318] rtn_dcountv=
+rtn_devtab M:1 DEF libhdr.h[266] rtn_devtab=
+rtn_dumpflag M:25 DEF libhdr.h[295] rtn_dumpflag=
+rtn_envlist M:26 DEF libhdr.h[296] rtn_envlist=
+rtn_hdrsvar M:37 DEF libhdr.h[327] rtn_hdrsvar=
+rtn_idletcb M:32 DEF libhdr.h[315] rtn_idletcb=
+rtn_info M:15 DEF libhdr.h[283] rtn_info=
+rtn_insadebug M:8 DEF libhdr.h[274] rtn_insadebug=
+rtn_intflag M:24 DEF libhdr.h[294] rtn_intflag=
+rtn_keyboard M:20 DEF libhdr.h[288] rtn_keyboard=
+rtn_klib M:18 DEF libhdr.h[286] rtn_klib=
+rtn_lastch M:7 DEF libhdr.h[273] rtn_lastch=
+rtn_lastg M:30 DEF libhdr.h[308] rtn_lastg=
+rtn_lastp M:29 DEF libhdr.h[307] rtn_lastp=
+rtn_lastst M:31 DEF libhdr.h[309] rtn_lastst=
+rtn_mc0 M:43 DEF libhdr.h[339] rtn_mc0=
+rtn_mc1 M:44 DEF libhdr.h[341] rtn_mc1=
+rtn_mc2 M:45 DEF libhdr.h[342] rtn_mc2=
+rtn_mc3 M:46 DEF libhdr.h[343] rtn_mc3=
+rtn_membase M:13 DEF libhdr.h[281] rtn_membase=
+rtn_memsize M:14 DEF libhdr.h[282] rtn_memsize=
+rtn_mins M:41 DEF libhdr.h[336] rtn_mins=rtn_msecs
+rtn_msecs M:41 DEF libhdr.h[335] rtn_msecs=
+rtn_msecs M:41 MAN libhdr.h[336] rtn_mins=rtn_msecs
+rtn_pathvar M:36 DEF libhdr.h[325] rtn_pathvar=
+rtn_rootvar M:35 DEF libhdr.h[323] rtn_rootvar=
+rtn_screen M:21 DEF libhdr.h[289] rtn_screen=
+rtn_scriptsvar M:38 DEF libhdr.h[329] rtn_scriptsvar=
+rtn_sys M:16 DEF libhdr.h[284] rtn_sys=
+rtn_tallyv M:5 DEF libhdr.h[270] rtn_tallyv=
+rtn_tasktab M:0 DEF libhdr.h[265] rtn_tasktab=0
+rtn_tcblist M:2 DEF libhdr.h[267] rtn_tcblist=
+rtn_ticks M:42 DEF libhdr.h[337] rtn_ticks=
+rtn_upb M:50 DEF libhdr.h[345] rtn_upb=50
+rtn_vecstatsv M:22 DEF libhdr.h[291] rtn_vecstatsv=
+rtn_vecstatsvupb M:23 DEF libhdr.h[292] rtn_vecstatsvupb=
+sardch G:36 DEF libhdr.h[51] sardch=36
+saveregs M:31 DEF libhdr.h[418] saveregs=31
+sawrch G:37 DEF libhdr.h[52] sawrch=37
+sawritef G:95 DEF libhdr.h[111] sawritef=95
+scb_blength M:14 DEF libhdr.h[449] scb_blength=
+scb_block M:9 DEF libhdr.h[444] scb_block=
+scb_buf M:3 DEF libhdr.h[438] scb_buf=
+scb_bufend M:11 DEF libhdr.h[446] scb_bufend=
+scb_encoding M:19 DEF libhdr.h[459] scb_encoding=
+scb_end M:5 DEF libhdr.h[440] scb_end=
+scb_endfn M:8 DEF libhdr.h[443] scb_endfn=
+scb_fd M:16 DEF libhdr.h[451] scb_fd=
+scb_id M:0 DEF libhdr.h[435] scb_id=0
+scb_lblock M:12 DEF libhdr.h[447] scb_lblock=
+scb_ldata M:13 DEF libhdr.h[448] scb_ldata=
+scb_maxnamelen M:31 DEF libhdr.h[433] scb_maxnamelen=31
+scb_maxnamelen M:31 MAN libhdr.h[463] scb_nameeend=scb_name+scb_maxnamelen/bytesperword
+scb_name M:20 DEF libhdr.h[461] scb_name=
+scb_name M:20 MAN libhdr.h[463] scb_nameeend=scb_name+scb_maxnamelen/bytesperword
+scb_nameeend M:27 DEF libhdr.h[463] scb_nameeend=scb_name+scb_maxnamelen/bytesperword
+scb_pos M:4 DEF libhdr.h[439] scb_pos=
+scb_rdfn M:6 DEF libhdr.h[441] scb_rdfn=
+scb_reclen M:15 DEF libhdr.h[450] scb_reclen=
+scb_size M:28 DEF libhdr.h[466] scb_size=
+scb_size M:28 MAN libhdr.h[467] scb_upb=scb_size-1
+scb_task M:2 DEF libhdr.h[437] scb_task=
+scb_timeout M:17 DEF libhdr.h[452] scb_timeout=
+scb_timeoutact M:18 DEF libhdr.h[455] scb_timeoutact=
+scb_type M:1 DEF libhdr.h[436] scb_type=
+scb_upb M:27 DEF libhdr.h[467] scb_upb=scb_size-1
+scb_wrfn M:7 DEF libhdr.h[442] scb_wrfn=
+scb_write M:10 DEF libhdr.h[445] scb_write=
+scbt_console M:-1 DEF libhdr.h[429] scbt_console=-1
+scbt_file M:1 DEF libhdr.h[427] scbt_file=1
+scbt_mbx M:-2 DEF libhdr.h[430] scbt_mbx=-2
+scbt_net M:2 DEF libhdr.h[426] scbt_net=2
+scbt_ram M:0 DEF libhdr.h[428] scbt_ram=0
+scbt_tcp M:-3 DEF libhdr.h[431] scbt_tcp=-3
+sectword M:64991 DEF libhdr.h[234] sectword=64991
+selectinput G:56 DEF libhdr.h[71] selectinput=56
+selectinput G:56 LG interp.b[347] selectinput(a)
+selectinput G:56 LG interp.b[78] selectinput(filestream)
+selectinput G:56 LG interp.b[91] selectinput(oldin)
+selectoutput G:57 DEF libhdr.h[72] selectoutput=57
+selectoutput G:57 LG interp.b[256] selectoutput(stdout)
+selectoutput G:57 LG interp.b[348] selectoutput(a)
+selectoutput G:57 LG interp.b[548] selectoutput(stdout)
+sendpkt G:165 DEF libhdr.h[186] sendpkt=165
+set_process_name G:175 DEF libhdr.h[194] set_process_name=175
+setbit G:112 DEF libhdr.h[128] setbit=112
+setbulk G:122 DEF libhdr.h[138] setbulk=122
+setflags G:156 DEF libhdr.h[178] setflags=156
+setlab F:6 LF interp.b[99] setlab(rdn())
+setlab F:6 RT interp.b[194] LET setlab(n)BE..
+setlogname G:117 DEF libhdr.h[133] setlogname=117
+setrecordlength G:68 DEF libhdr.h[83] setrecordlength=68
+setseed G:35 DEF libhdr.h[50] setseed=35
+settimeout G:55 DEF libhdr.h[70] settimeout=55
+settimeoutact G:124 DEF libhdr.h[140] settimeoutact=124
+source G:203 DEF interp.b[33] source=
+splitname G:47 DEF libhdr.h[62] splitname=47
+srchwk G:150 DEF libhdr.h[172] srchwk=150
+stackword M:#xABCD1234 DEF libhdr.h[232] stackword=#xABCD1234
+start G:1 DEF libhdr.h[16] start=1
+start G:1 FN interp.b[411] LET start()=..
+startco G:23 DEF libhdr.h[38] startco=23
+stc F:3 LF interp.b[117] stc(rdn())
+stc F:3 RT interp.b[174] LET stc(c)BE..
+stdin G:201 DEF interp.b[30] stdin=
+stdin G:201 SG interp.b[445] stdin:=input()
+stdout G:200 DEF interp.b[29] stdout=ug
+stdout G:200 LG interp.b[256] selectoutput(stdout)
+stdout G:200 LG interp.b[548] selectoutput(stdout)
+stdout G:200 SG interp.b[446] stdout:=output()
+stepstream G:67 DEF libhdr.h[82] stepstream=67
+stop G:2 DEF libhdr.h[17] stop=2
+str2numb G:101 DEF libhdr.h[117] str2numb=101
+string370 F:10 FN interp.b[390] LET string370(s)=..
+string_to_dat G:111 DEF libhdr.h[127] string_to_dat=111
+string_to_number G:100 DEF libhdr.h[116] string_to_number=100
+stw F:2 LF interp.b[122] stw(0)
+stw F:2 LF interp.b[125] stw(rdn())
+stw F:2 LF interp.b[157] stw(w+dbit)
+stw F:2 LF interp.b[158] stw(0)
+stw F:2 LF interp.b[163] stw(w+a)
+stw F:2 LF interp.b[164] stw(a)
+stw F:2 LF interp.b[164] stw(w+dbit)
+stw F:2 LF interp.b[174] stw(0)
+stw F:2 RT interp.b[170] LET stw(w)BE..
+sw F:14 LAB interp.b[87] sw:SWITCHON ch INTO..
+sw F:14 LF interp.b[101] GOTO sw
+sw F:14 LF interp.b[117] GOTO sw
+sw F:14 LF interp.b[126] GOTO sw
+sw F:14 LF interp.b[140] GOTO sw
+sw F:14 LF interp.b[167] GOTO sw
+sys G:3 DEF libhdr.h[18] sys=3
+sys G:3 LG interp.b[325] a:=sys(p!3,p!4,...,...)
+sysabort G:29 DEF libhdr.h[44] sysabort=29
+t_bhunk M:3000 DEF libhdr.h[228] t_bhunk=3000
+t_bhunk64 M:4000 DEF libhdr.h[229] t_bhunk64=4000
+t_end M:1002 DEF libhdr.h[224] t_end=1002
+t_end64 M:2002 DEF libhdr.h[227] t_end64=2002
+t_hunk M:1000 DEF libhdr.h[222] t_hunk=1000
+t_hunk64 M:2000 DEF libhdr.h[225] t_hunk64=2000
+t_reloc M:1001 DEF libhdr.h[223] t_reloc=1001
+t_reloc64 M:2001 DEF libhdr.h[226] t_reloc64=2001
+taskid G:152 DEF libhdr.h[174] taskid=152
+taskwait G:160 DEF libhdr.h[182] taskwait=160
+tcb G:151 DEF libhdr.h[173] tcb=151
+tcb_a M:11 DEF libhdr.h[553] tcb_a=tcb_regs
+tcb_active M:10 DEF libhdr.h[550] tcb_active=10
+tcb_b M:12 DEF libhdr.h[554] tcb_b=12
+tcb_c M:13 DEF libhdr.h[555] tcb_c=13
+tcb_count M:18 DEF libhdr.h[560] tcb_count=18
+tcb_flags M:5 DEF libhdr.h[545] tcb_flags=5
+tcb_g M:15 DEF libhdr.h[557] tcb_g=15
+tcb_gbase M:8 DEF libhdr.h[548] tcb_gbase=8
+tcb_link M:0 DEF libhdr.h[540] tcb_link=0
+tcb_namebase M:19 DEF libhdr.h[562] tcb_namebase=19
+tcb_namebase M:19 MAN libhdr.h[564] tcb_upb=tcb_namebase+15/bytesperword+1
+tcb_p M:14 DEF libhdr.h[556] tcb_p=14
+tcb_pc M:17 DEF libhdr.h[559] tcb_pc=17
+tcb_pri M:2 DEF libhdr.h[542] tcb_pri=2
+tcb_regs M:11 DEF libhdr.h[552] tcb_regs=11
+tcb_regs M:11 MAN libhdr.h[553] tcb_a=tcb_regs
+tcb_sbase M:9 DEF libhdr.h[549] tcb_sbase=9
+tcb_seglist M:7 DEF libhdr.h[547] tcb_seglist=7
+tcb_st M:16 DEF libhdr.h[558] tcb_st=16
+tcb_state M:4 DEF libhdr.h[544] tcb_state=4
+tcb_stsiz M:6 DEF libhdr.h[546] tcb_stsiz=6
+tcb_taskid M:1 DEF libhdr.h[541] tcb_taskid=1
+tcb_upb M:23 DEF libhdr.h[564] tcb_upb=tcb_namebase+15/bytesperword+1
+tcb_wkq M:3 DEF libhdr.h[543] tcb_wkq=3
+testbit G:113 DEF libhdr.h[129] testbit=113
+testflags G:157 DEF libhdr.h[179] testflags=157
+tg M:190 DEF libhdr.h[206] tg=190
+timeoutch M:-2 DEF libhdr.h[217] timeoutch=-2
+tofile G:204 DEF interp.b[34] tofile=
+tofile G:204 SG interp.b[422] tofile:=0
+tofile G:204 SG interp.b[423] tofile:=argv!10
+tostream G:205 DEF interp.b[35] tostream=
+tracing G:202 DEF interp.b[31] tracing=
+tracing G:202 LG interp.b[225] IF tracing DO ..
+tracing G:202 LG interp.b[248] IF tracing DO ..
+tracing G:202 LG interp.b[458] IF tracing DO ..
+tracing G:202 SG interp.b[428] tracing:=argv!12
+ug M:200 DEF libhdr.h[207] ug=200
+ug M:200 MAN interp.b[29] stdout=ug
+unhold G:159 DEF libhdr.h[181] unhold=159
+unloadseg G:106 DEF libhdr.h[122] unloadseg=106
+unpackstring G:31 DEF libhdr.h[46] unpackstring=31
+unrdch G:40 DEF libhdr.h[55] unrdch=40
+w G:220 DEF interp.b[52] w=
+w G:220 LG interp.b[151] w:=w+ibit
+w G:220 LG interp.b[152] w:=w+pbit
+w G:220 LG interp.b[153] w:=w+gbit
+w G:220 LG interp.b[157] stw(w+dbit)
+w G:220 LG interp.b[163] stw(w+a)
+w G:220 LG interp.b[164] stw(w+dbit)
+w G:220 LG interp.b[241] TEST (w&dbit)=0 THEN .. ELSE ..
+w G:220 LG interp.b[241] d:=w&abits
+w G:220 LG interp.b[244] IF (w&pbit)~=0 DO ..
+w G:220 LG interp.b[245] IF (w&gbit)~=0 DO ..
+w G:220 LG interp.b[246] IF (w&ibit)~=0 DO ..
+w G:220 LG interp.b[249] IF (w&dbit)~=0 DO ..
+w G:220 LG interp.b[253] SWITCHON w>>fshift INTO..
+w G:220 SG interp.b[149] w:=f<<fshift
+w G:220 SG interp.b[151] w:=w+ibit
+w G:220 SG interp.b[152] w:=w+pbit
+w G:220 SG interp.b[153] w:=w+gbit
+w G:220 SG interp.b[238] w:=!c
+wordsize M:16 DEF interp.b[59] wordsize=16
+wrch G:41 DEF libhdr.h[56] wrch=41
+wrch G:41 LG interp.b[230] wrch(73)
+wrch G:41 LG interp.b[231] wrch(80)
+wrch G:41 LG interp.b[232] wrch(71)
+wrch G:41 LG interp.b[233] wrch(68)
+wrch G:41 LG interp.b[352] wrch(a)
+wrch G:41 LG interp.b[465] wrch(73)
+wrch G:41 LG interp.b[466] wrch(80)
+wrch G:41 LG interp.b[467] wrch(71)
+writed G:85 DEF libhdr.h[100] writed=85
+writef G:94 DEF libhdr.h[110] writef=94
+writef G:94 LG interp.b[135] writef("*nbad ' p = %n*n",p)
+writef G:94 LG interp.b[144] writef("L%n unset*n",i)
+writef G:94 LG interp.b[196] writef("L%n a' p = %n*n",n,...,p)
+writef G:94 LG interp.b[229] writef("a=%11' %7i: %s",a,b,...)
+writef G:94 LG interp.b[234] writef("%n",w&abits)
+writef G:94 LG interp.b[249] writef("  %n",d)
+writef G:94 LG interp.b[257] writef("*nintc' c = %n*n",c-1)
+writef G:94 LG interp.b[418] writef("Bad a' interp*n")
+writef G:94 LG interp.b[459] writef("Loade'rogram*n*n")
+writef G:94 LG interp.b[462] writef("%i3: %x5: %8x",i,...,w)
+writef G:94 LG interp.b[464] writef("  %s",fstr(w>>fshift))
+writef G:94 LG interp.b[469] writef("D %8x",progvec!(i+1))
+writef G:94 LG interp.b[470] writef("%n",w&abits)
+writef G:94 LG interp.b[482] writef("*nProg'ze = %n*n",p-progvec-200)
+writef G:94 LG interp.b[549] writef("*n*nExe'les = %n",cyclecount)
+writef G:94 LG interp.b[550] writef(" retu'ode = %n",a)
+writef G:94 LG interp.b[74] writef("Troub'ile: %s*n",filename)
+writef G:94 LG interp.b[94] writef("*nBad ' p = %n*n",ch,p)
+writehex G:87 DEF libhdr.h[102] writehex=87
+writen G:86 DEF libhdr.h[101] writen=86
+writeoct G:88 DEF libhdr.h[103] writeoct=88
+writes G:89 DEF libhdr.h[104] writes=89
+writes G:89 LG interp.b[415] writes("intco'entered*n")
+writet G:90 DEF libhdr.h[105] writet=90
+writeu G:91 DEF libhdr.h[106] writeu=91
+writewords G:45 DEF libhdr.h[60] writewords=45
+writez G:92 DEF libhdr.h[107] writez=92
+x22 M:57366 DEF interp.b[62] x22=7<<fshift|22
+x22 M:57366 MAN interp.b[451] p!2:=x22

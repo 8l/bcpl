@@ -1,0 +1,113 @@
+The FLOW code for BCPL
+by
+Martin Richards  (c) April 2001
+
+FLOW is a language to represent a flow graph translation of BCPL
+programs. It is intended for use in optimisation experiments in which
+the translator is given the entire program (including the source of
+all libraries) to optimise. The hope is that the optimiser will be
+able to deduce a lot about the program using dataflow analysis
+techniques, even though the language is typeless and pointers and
+indirection are used extensively.
+
+The only interface to the operating system is via the SYSLIB functions
+sys, muldiv and chgco whose meaning can be built into the translator.
+
+FLOW is an assembly language for a flow graph in which every statement
+starts with an operator optionally followed by operands. Many of the
+statements correspond to 3 address operations such as
+
+ADD Vi Vj Vk
+
+mean Vi:=Vj+Vk where Vi,Vj and Vk are value identifies (represented as
+numbers). The value identifiers (eg V3 and V163) are used to identify
+globals, statics, manifest constants, dynamic vector, argument vectors
+and many other quantities depending on how they are declared. If Vi is
+not explicitly declared it is implicitly declared to be local.
+
+GLOBAL Vi Gn       declares Vi to be Global variable n
+STATIC Vi Kn       declares Vi to be a Static variable initialised to Kn
+CONST Vi Kn        declares Vi to equal Kn
+ARG Vi n           declares Vi to be argument n of the current function
+LOCAL Vi Vj        declares Vi to be a local initialised to Vj
+VEC Vi Kn          declares Vi to point to a local vector with upb Kn
+TABLE Vi n K1...Kn declares a table
+LABEL Vi Lj        declare Vi to be program label Lj
+FNLAB Vi Lj        declare Vi to be function entry point labelled Lj
+
+GLOBINIT Gn Li     Initialise Global n with value Li 
+
+SECTION n K1...Kn  Start a new section 
+   Each section has its own set of value identifiers V1... and 
+   labels L1...
+
+
+LD Vi Vj           Vi := Vj
+
+...
+
+
+      
+
+NEEDS n K1...Kn
+LD Vi Vj
+
+STRING Vi n K1...Kn
+TABLE  Vi n K1...Kn
+
+TRUE Vi
+FALSE Vi
+QUERY Vi
+LLV Vi Vj
+STIND Vi Vj
+RV Vi Vj
+VECAP Vi Vj Vk
+MULT Vi Vj Vk
+DIV Vi Vj Vk
+REM Vi Vj Vk
+PLUS Vi Vj Vk
+MINUS Vi Vj Vk
+EQ Vi Vj Vk
+NE Vi Vj Vk
+LS Vi Vj Vk
+GR Vi Vj Vk
+LE Vi Vj Vk
+GE Vi Vj Vk
+LSHIFT Vi Vj Vk
+RSHIFT Vi Vj Vk
+LOGAND Vi Vj Vk
+LOGOR Vi Vj Vk
+EQV Vi Vj Vk
+NEQV Vi Vj Vk
+NOT Vi Vj
+NEG Vi Vj
+ABS Vi Vj
+JT Vi Ln
+JF Vi Ln
+GOTO
+LAB Ln
+FNAP Vf Vr n V1...Vn
+FNAP Vf n V1...Vn
+FNRN
+RTRN
+JUMP Ln
+FINISH
+SWITCHON Vi n Ld K1 L1 ... Kn Ln
+GETBYTE Vi Vj Vk
+PUTBYTE Vi Vj Vk
+
+ENTRY Lf n K1...Kn
+ENDPROC
+
+NAME Vi n K1...Kn
+MANIFEST Vi Kk
+STATIC Vi Kk
+LOCAL Vi
+ARG Vi
+VEC Vi
+GLOBAL Vi Gn
+GLOBINIT Gn Lm
+
+CHGCO Vi Vj           changeco(Vi, Vj)
+MDIV Vi Va Vb Vc      Vi := muldiv(Va, Vb, Vc)
+SYS Vi Va Vb Vc Vd    Vi := sys(Va, Vb, Vc, Vd)

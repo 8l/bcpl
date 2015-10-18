@@ -1,0 +1,436 @@
+
+BCPL Cintcode System (30 Sept 2010)
+0.000> 
+A demonstration of the Fibonacci Heap Algorithm
+
+
+Inserting nodes into heap1
+Insert key 12
+Insert key 30
+Insert key 20
+Insert key 26
+Insert key 11
+Insert key 5
+Insert key 15
+
+The heap1 is now
+
+*-5 id 06
+*-11 id 05
+*-12 id 01
+*-30 id 02
+*-20 id 03
+*-26 id 04
+*-15 id 07
+
+Inserting nodes into heap2
+Insert key 22
+Insert key 33
+Insert key 14
+Insert key 24
+Insert key 9
+Insert key 7
+Insert key 16
+
+The heap2 is now
+
+*-7 id 13
+*-9 id 12
+*-14 id 10
+*-22 id 08
+*-33 id 09
+*-24 id 11
+*-16 id 14
+
+Calling extractmin of heap1
+
+min key was 5
+
+The heap1 is now
+
+*-11 id 05
+! *-12 id 01
+! *-20 id 03
+!   *-30 id 02
+*-15 id 07
+  *-26 id 04
+
+Calling extractmin of heap2
+
+min key of heap2 was 7
+
+The heap2 is now
+
+*-9 id 12
+! *-14 id 10
+! *-22 id 08
+!   *-33 id 09
+*-16 id 14
+  *-24 id 11
+
+Merging heap2 into heap1
+
+The heap1 is now
+
+*-9 id 12
+! *-14 id 10
+! *-22 id 08
+!   *-33 id 09
+*-16 id 14
+! *-24 id 11
+*-11 id 05
+! *-12 id 01
+! *-20 id 03
+!   *-30 id 02
+*-15 id 07
+  *-26 id 04
+
+Inserting nodes into heap1
+Insert key 2
+Insert key 17
+Insert key 35
+Insert key 26
+Insert key 54
+Insert key 4
+Insert key 14
+Insert key 25
+Insert key 43
+Insert key 37
+Insert key 28
+
+The heap1 is now
+
+*-2 id 15
+*-9 id 12
+! *-14 id 10
+! *-22 id 08
+!   *-33 id 09
+*-16 id 14
+! *-24 id 11
+*-11 id 05
+! *-12 id 01
+! *-20 id 03
+!   *-30 id 02
+*-15 id 07
+! *-26 id 04
+*-17 id 16
+*-35 id 17
+*-26 id 18
+*-54 id 19
+*-4 id 20
+*-14 id 21
+*-25 id 22
+*-43 id 23
+*-37 id 24
+*-28 id 25
+
+Calling extractmin of heap1
+
+min key was 2
+
+The heap1 is now
+
+*-4 id 20
+! *-14 id 21
+! *-25 id 22
+!   *-43 id 23
+*-9 id 12
+! *-14 id 10
+! *-22 id 08
+! ! *-33 id 09
+! *-11 id 05
+! ! *-12 id 01
+! ! *-20 id 03
+! !   *-30 id 02
+! *-15 id 07
+!   *-26 id 04
+!   *-16 id 14
+!   ! *-24 id 11
+!   *-17 id 16
+!     *-35 id 17
+!     *-26 id 18
+!       *-54 id 19
+*-28 id 25
+  *-37 id 24
+
+Calling decreasekey of node 04 from 26 to 23 in heap1
+
+The heap1 is now
+
+*-4 id 20
+! *-14 id 21
+! *-25 id 22
+!   *-43 id 23
+*-9 id 12
+! *-14 id 10
+! *-22 id 08
+! ! *-33 id 09
+! *-11 id 05
+! ! *-12 id 01
+! ! *-20 id 03
+! !   *-30 id 02
+! *-15 id 07
+!   *-23 id 04
+!   *-16 id 14
+!   ! *-24 id 11
+!   *-17 id 16
+!     *-35 id 17
+!     *-26 id 18
+!       *-54 id 19
+*-28 id 25
+  *-37 id 24
+
+Calling decreasekey of node 04 from 23 to 13 in heap1
+
+The heap1 is now
+
+*-4 id 20
+! *-14 id 21
+! *-25 id 22
+!   *-43 id 23
+*-9 id 12
+! *-14 id 10
+! *-22 id 08
+! ! *-33 id 09
+! *-11 id 05
+! ! *-12 id 01
+! ! *-20 id 03
+! !   *-30 id 02
+! *-15 id 07 marked
+!   *-16 id 14
+!   ! *-24 id 11
+!   *-17 id 16
+!     *-35 id 17
+!     *-26 id 18
+!       *-54 id 19
+*-28 id 25
+! *-37 id 24
+*-13 id 04
+
+Calling decreasekey of node 18 from 26 to 12 in heap1
+
+The heap1 is now
+
+*-4 id 20
+! *-14 id 21
+! *-25 id 22
+!   *-43 id 23
+*-9 id 12
+! *-14 id 10
+! *-22 id 08
+! ! *-33 id 09
+! *-11 id 05
+! ! *-12 id 01
+! ! *-20 id 03
+! !   *-30 id 02
+! *-15 id 07 marked
+!   *-16 id 14
+!   ! *-24 id 11
+!   *-17 id 16 marked
+!     *-35 id 17
+*-28 id 25
+! *-37 id 24
+*-13 id 04
+*-12 id 18
+  *-54 id 19
+
+Calling decreasekey of node 11 from 24 to 12 in heap1
+
+The heap1 is now
+
+*-4 id 20
+! *-14 id 21
+! *-25 id 22
+!   *-43 id 23
+*-9 id 12
+! *-14 id 10
+! *-22 id 08
+! ! *-33 id 09
+! *-11 id 05
+! ! *-12 id 01
+! ! *-20 id 03
+! !   *-30 id 02
+! *-15 id 07 marked
+!   *-16 id 14 marked
+!   *-17 id 16 marked
+!     *-35 id 17
+*-28 id 25
+! *-37 id 24
+*-13 id 04
+*-12 id 18
+! *-54 id 19
+*-12 id 11
+
+Calling decreasekey of node 17 from 35 to 7 in heap1
+
+The heap1 is now
+
+*-4 id 20
+! *-14 id 21
+! *-25 id 22
+!   *-43 id 23
+*-9 id 12
+! *-14 id 10
+! *-22 id 08
+! ! *-33 id 09
+! *-11 id 05
+!   *-12 id 01
+!   *-20 id 03
+!     *-30 id 02
+*-28 id 25
+! *-37 id 24
+*-13 id 04
+*-12 id 18
+! *-54 id 19
+*-12 id 11
+*-7 id 17
+*-17 id 16
+*-15 id 07
+  *-16 id 14 marked
+
+Calling extractmin of heap1
+
+min key was 4
+
+The heap1 is now
+
+*-7 id 17
+! *-17 id 16
+! *-12 id 11
+! ! *-13 id 04
+! *-12 id 18
+! ! *-54 id 19
+! ! *-28 id 25
+! !   *-37 id 24
+! *-9 id 12
+!   *-14 id 10
+!   *-22 id 08
+!   ! *-33 id 09
+!   *-11 id 05
+!     *-12 id 01
+!     *-20 id 03
+!       *-30 id 02
+*-14 id 21
+*-15 id 07
+  *-16 id 14 marked
+  *-25 id 22
+    *-43 id 23
+
+Clear heap1
+
+Insert key 98
+Insert key 99
+Insert key 1
+heap1 is now:
+
+*-1 id 100
+*-98 id 02
+*-99 id 03
+extractmin(heap1)
+heap1 is now:
+
+*-98 id 02
+  *-99 id 03
+delete node with id=3
+heap1 is now:
+
+*-98 id 02
+Insert key 96
+Insert key 97
+Insert key 1
+heap1 is now:
+
+*-1 id 100
+*-96 id 04
+*-98 id 02
+*-97 id 05
+extractmin(heap1)
+heap1 is now:
+
+*-96 id 04
+! *-98 id 02
+*-97 id 05
+delete node with id=5
+heap1 is now:
+
+*-96 id 04
+  *-98 id 02
+Insert key 94
+Insert key 95
+Insert key 1
+heap1 is now:
+
+*-1 id 100
+*-94 id 06
+*-96 id 04
+! *-98 id 02
+*-95 id 07
+extractmin(heap1)
+heap1 is now:
+
+*-94 id 06
+  *-95 id 07
+  *-96 id 04
+    *-98 id 02
+delete node with id=7
+heap1 is now:
+
+*-94 id 06
+  *-96 id 04
+    *-98 id 02
+Insert key 92
+Insert key 93
+Insert key 1
+heap1 is now:
+
+*-1 id 100
+*-92 id 08
+*-94 id 06
+! *-96 id 04
+!   *-98 id 02
+*-93 id 09
+extractmin(heap1)
+heap1 is now:
+
+*-92 id 08
+  *-93 id 09
+  *-94 id 06
+    *-96 id 04
+      *-98 id 02
+delete node with id=9
+heap1 is now:
+
+*-92 id 08
+  *-94 id 06
+    *-96 id 04
+      *-98 id 02
+Insert key 90
+Insert key 91
+Insert key 1
+heap1 is now:
+
+*-1 id 100
+*-90 id 10
+*-92 id 08
+! *-94 id 06
+!   *-96 id 04
+!     *-98 id 02
+*-91 id 11
+extractmin(heap1)
+heap1 is now:
+
+*-90 id 10
+  *-91 id 11
+  *-92 id 08
+    *-94 id 06
+      *-96 id 04
+        *-98 id 02
+delete node with id=11
+heap1 is now:
+
+*-90 id 10
+  *-92 id 08
+    *-94 id 06
+      *-96 id 04
+        *-98 id 02
+0.040> 

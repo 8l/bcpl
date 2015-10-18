@@ -1,0 +1,14 @@
+This demonstrates a subtle bug in Strachey's GPM which is
+not present in bgpm. Try
+
+gpmcj bug.gpm
+
+and
+
+bgpm bug.bgpm
+
+[def\args\{arg0=^0 arg1=^1 arg2=^2 arg3=^3}]
+[args\aaa[def\junk\junkbody]xxx\bbbyyy\ccczzz]
+[args\aaaxxx\bbbyyy\ccczzz[def\junk\junkbody]]
+[args\aaaxxx\bbbyyy\ccczzz\[def\junk\junkbody]]
+

@@ -1,0 +1,3 @@
+
+vclean:
+	rm -f *~ */*~ */OCODE

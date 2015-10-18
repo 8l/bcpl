@@ -1,0 +1,78 @@
+
+A BCPL Native System for 386/486/Pentium based machines, the DEC Alpha
+(64-bit implementation), VAX and ARM machines.
+
+==== Note: The ARM version is currently under development. ====
+
+This directory contain a version of a BCPL system that compiles into
+native assembly language. It currently has codegenerators for Intel
+based machines running under Linux, the DEC Alpha, VAX and ARM
+machines.  It uses simple codegenerators (sial-386, sial-alpha,
+sial-vax and sial-arm) that translate the internal assembly language
+(sial) into assembly language for the target architecture. The BCPL
+source of these codegenerators and bcpl2sial are in
+BCPL/cintcode/com. It should be fairly easy to modify these
+codegenerators for other architectures, and should take no more than
+about 3 days work. Native code runs about ten times faster that the
+Cintcode interpretive version.
+
+The native distribution of BCPL is part of the standard BCPL
+distribution contained in the file bcpl.tgz (or bcpl.zip). Under
+Linux, bcpl.tgz should be placed in the directory BCPL and extracted
+by the command:
+
+      tar zxvf bcpl.tgz
+
+This will create and fill the directories
+
+      BCPL/cintcode
+&
+      BCPL/bcplprogs
+&
+      BCPL/natbcpl
+
+Ensure that the shell variables PATH, BCPLROOT, BCPLHDRS, BCPLPATH and
+BCPLSCRIPTS are set up correctly.
+
+First ensure the BCPL Cintcode system is properly installed. To do
+this change to the cintcode directory, possibly edit Makefile for the
+architecture, and then type: make clean followed by:  make.
+
+    cd ----/BCPL/cintcode
+    <edit Makefile to suit your system - the default is Linux>
+    make clean
+    make
+
+This should recompile the BCPL Cintcode system and create an executable
+called cintsys, and recompile all the standard BCPL system code and
+commands. If successful it will generate a lot of output ending with
+two lines similar to the following:
+
+BCPL Cintcode System (24 Jan 2012)
+0>
+
+The BCPL Cincode system is now expecting you to type Command Language
+Interpreter commands. To exit the system type the command: logout or
+CTRL-C.
+
+Now enter the directory BCPL/natbcpl, possibly edit Makefile for the
+architecture and libhdr for the Manifest constant B2Wsh (=2 or =3) for
+32 bit or 64 bit machines, respectively, and then type make. This
+only works under Linux (possibly Cygwin) and the DEC ALPHA at the
+moment. But can be used to generate assembly code for the VAX.
+
+   cd ../natbcpl
+   <edit Makefile and libhdr>
+   make clean
+   make
+
+This will build the native BCPL system and compile and run some
+example programs.
+
+This native code version of BCPL was revised and improved in April
+2004 to incorporate suggestions made by Colin Liebenrood.
+
+
+Martin Richards                      http://www.cl.cam.ac.ul/users/mr/
+20 May 2013                          mr@cl.cam.ac.uk
+

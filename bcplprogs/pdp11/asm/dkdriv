@@ -1,0 +1,219 @@
+;*********************************************************
+;                                                        *
+; Driver for RK05/RK11 discs.                            *
+; The only actions recognised by this version are read   *
+; block, write block, and dummy (gets status).           *
+;                                                        *
+;  Brian Knight   14 May 1979                            *
+;                                                        *
+;*********************************************************
+;
+; States etc.
+;
+INTEN   =          100          ; interrupt enable
+RDYFL   =          200          ; ready flag
+ERRFL   =       100000          ; error flag
+CRESET  =            1          ; control reset
+READFN  =            5          ; disc read
+WRITFN  =            3          ; disc write
+DRESET  =           15          ; Drive Reset
+ERRVEC  =            4          ; error trap vector
+;
+; Device control block symbols
+;
+;               0               ; device driver ptr (BCPL)
+D.ID    =       2               ; id
+D.WKQ   =       4               ; work queue
+D.START =       6               ; start routine - for QPKT
+D.STOP  =       8.              ; stop routine - for DQPKT
+D.JSR   =      10.              ; subroutine jump to
+D.INT   =      12.              ; interrupt routine
+D.I     = D.JSR+4               ; offset for interrupt rtn
+D.VEC   =      14.              ; interrupt vector
+D.RKDS  =      16.              ; drive status reg
+D.RKER  =      18.              ; error reg
+D.RKCS  =      20.              ; control and status word
+D.RKWC  =      22.              ; word count reg
+D.RKBA  =      24.              ; bus address reg
+D.RKDA  =      26.              ; disk address reg
+;
+; Packet symbols
+;
+P.ID    =       2               ; task or device id
+P.TYPE  =       4               ; type or action
+P.RES1  =       6               ; first result
+P.RES2  =       8.              ; second result
+P.A1    =      10.              ; argument 1
+P.A2    =      12.
+P.A3    =      14.
+P.A4    =      16.
+P.A5    =      18.
+P.A6    =      20.
+P.ACT   =    P.TYPE             ; controller action
+P.DERR  =    P.RES1             ; controller error code
+P.STAT  =    P.RES2             ; drive status
+P.BUFF  =    P.A1               ; store buffer addr
+P.WCNT  =    P.A2               ; word count
+P.DRIV  =    P.A3               ; drive number
+P.CYL   =    P.A4               ; disc cylinder
+P.SUR   =    P.A5               ; disc surface
+P.SEC   =    P.A6               ; disc sector
+;
+; Device actions
+;
+A.DUMMY   =     1000.           ; dummy - gets status
+A.READ    =     1001.           ; read from disc
+A.WRITE   =     1002.           ; write to disc
+;
+; The rootnode
+;
+CRNTSK  =  456
+DEVMVP  =  502 ; MOVPKT for device drivers (MC addr)
+DEVINT  =  504 ; INTENT for device drivers (MC addr)
+DEVRET  =  506 ; INTRET for device drivers (MC addr)
+
+        .WORD   DKINIT          ; initialisation rtn
+        .WORD   DKUNIN          ; uninitialisation rtn
+
+; Device initialisation routine. It is entered with the
+; address of the DCB in R2, and the DEVID in R0, which
+; must be preserved.
+
+DKINIT: MOV     #DKINT,D.INT(R2); fill in rest of DCB
+        MOV     #DKSTART,D.START(R2)
+        MOV     #DKSTOP,D.STOP(R2)
+        MOV     D.VEC(R2),R1    ; get interrupt vector
+        MOV     R2,(R1)         ; plug it with address
+        ADD     #D.JSR,(R1)     ; of interrupt JSR
+        RTS     PC
+
+; Device uninitialisation routine. It is entered with
+; the address of the DCB in R2, which must be preserved.
+
+DKUNIN: MOV     @#ERRVEC,@D.VEC(R2) ; restore int vec
+        RTS     PC
+
+; Device start routine. This is entered whenever a pkt
+; is sent to the device and its work queue is empty. It
+; is entered with the address of the DCB in R2, and the
+; BCPL address of the packet in R0. It returns non-zero.
+
+DKSTART:ASL     R0              ; MC head pkt ptr
+        MOV     @#CRNTSK,R1     ; in case MOVPKT required
+        ASL     R1
+        JSR     PC,DKACT        ; initiate disc action
+        BEQ     DKST1           ; unless pkt sent back
+        BIS     #INTEN,@D.RKCS(R2) ;  enable interrupts
+DKST1:  RTS     PC
+
+; Device stop routine. This is entered if the head pkt
+; is dequeued from the device. It is entered with the
+; address of the packet in R1 and the DCB in R2, which
+; must be preserved.
+
+DKSTOP: MOV     #CRESET,@D.RKCS(R2); do control reset
+        BIC     #INTEN,@D.RKCS(R2) ; disable interrupts
+        RTS     PC
+
+; Disc interrupt routine.
+; This is entered whenever the disc completes the last
+; requested action.  This can be when a read or write
+; is complete, in which case the packet which requested
+; it is returned. If the disc interrupts to give an error,
+; the error field of the packet will be set non-zero.
+; It is entered with R2 saved on the system stack and
+; the address of the DCB word following the interrupt
+; subroutine jump in R2.
+
+DKINT:  MOV     R1,-(SP)        ; R2 already on stack
+        MOV     R0,-(SP)
+        MOV     R3,-(SP)
+        SUB     #D.I,R2         ; correct DCB ptr
+        MOV     @#CRNTSK,R1     ; R1 holds highest pri
+        ASL     R1              ; TCB ptr
+        MOV     D.WKQ(R2),R0
+        ASL     R0              ; MC head pkt ptr
+        BIT     #RDYFL,@D.RKCS(R2) ; is disc ready?
+        BEQ     DKINT4          ; return if not
+
+; Have completed a read/write, so send the packet back.
+
+        JSR     PC,SNDPKT       ; send pkt back
+DKINT1: MOV     D.WKQ(R2),R0    ; any more packets?
+        BEQ     DKINT2          ; no
+        ASL     R0              ; next pkt ptr
+        JSR     PC,DKACT        ; initiate next action
+        BEQ     DKINT1          ; pkt was sent back
+        BR      DKINT3
+
+DKINT2: BIC     #INTEN,@D.RKCS(R2) ; disable interrupts
+DKINT3: MOV     @#DEVINT,PC     ; exit via INTENT
+
+DKINT4: MOV     @#DEVRET,PC     ; return from interrupt
+
+; This routine initiates a disc action or returns a status
+; request pkt. It is entered with the MC pkt address in R0
+; and the MC DCB address in R2.  R0, R1, R2 are preserved
+; unless the pkt is sent back, in which case it exits via
+; SNDPKT with the Z bit set.
+
+DKACT:  MOV     P.DRIV(R0),R3      ; get drive number
+        SWAB    R3                 ; move left of cyl addr
+        ADD     P.CYL(R0),R3       ; insert cyl addr
+        ASL     R3                 ; free the surface bit
+        ADD     P.SUR(R0),R3       ; add in surface bit
+        ASL     R3                 ; shift cylinder/surface
+        ASL     R3                 ; bits to right place
+        ASL     R3                 ; for disc address word
+        ASL     R3
+        ADD     P.SEC(R0),R3       ; add in sector
+        BIT     #ERRFL,@D.RKCS(R2) ; previous error ?
+        BEQ     DKACT1             ; jump if OK
+        MOV     #DRESET,@D.RKCS(R2); Do drive reset
+DKACT4: BIT     #RDYFL,@D.RKCS(R2) ; Busy wait until done
+        BEQ     DKACT4
+        MOV     #CRESET,@D.RKCS(R2); do control reset
+
+DKACT1: MOV     R3,@D.RKDA(R2)     ; set disc address
+        CMP     #A.DUMMY,P.ACT(R0) ; status request ?
+        BEQ     SNDPKT             ; yes - send pkt back
+        BIT     #ERRFL,@D.RKCS(R2) ; still error ?
+        BNE     SNDPKT             ; yes - send pkt back
+        BIT     #RDYFL,@D.RKCS(R2) ; device ready ?
+        BEQ     DKACT2             ; wait for next int
+        MOV     P.BUFF(R0),R3      ; store buffer addr
+        ASL     R3
+        MOV     R3,@D.RKBA(R2)     ; set disc buffer addr
+        MOV     P.WCNT(R0),R3      ; no. of words
+        NEG     R3
+        MOV     R3,@D.RKWC(R2)     ; set word count
+        CMP     #A.READ,P.ACT(R0)  ; read request ?
+        BNE     DKACT3
+        MOV     #<INTEN!READFN>,@D.RKCS(R2) ; yes - do it
+DKACT2: MOV     (SP)+,PC           ; return with Z clear
+
+DKACT3: CMP     #A.WRITE,P.ACT(R0) ; write request ?
+        BNE     SNDPKT             ; no - invalid action
+        MOV     #<INTEN!WRITFN>,@D.RKCS(R2) ; yes - do it
+        MOV     (SP)+,PC           ; return with Z clear
+
+; This routine sends back the head packet, returning the
+; status info. It is entered with R0, R1, and R2 holding
+; the pkt ptr, highest priority task TCB ptr, and the DCB
+; ptr. R1 is updated and R2 preserved on exit.
+
+SNDPKT: MOV     @D.RKER(R2),P.DERR(R0) ; get error flags
+        MOV     @D.RKDS(R2),P.STAT(R0) ; get drive status
+        MOV     D.ID(R2),R3    ; DEVID for MOVPKT
+        MOV     (R0),D.WKQ(R2)  ; DQ packet
+        MOV     R2,-(SP)        ; save DCB ptr
+        MOV     R0,R2           ; for MOVPKT
+        MOV     @#DEVMVP,R0     ; get MOVPKT routine
+        JSR     PC,(R0)         ; send packet back
+        MOV     (SP)+,R2        ; restore DCB ptr
+        SEZ
+        RTS     PC              ; return with Z set
+
+        .END
+
+

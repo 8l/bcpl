@@ -1,0 +1,3 @@
+.k file/a
+echo "compiling :bcplprogs:<file>.b to <file>"
+bcpl :bcplprogs:<file>.b to <file>

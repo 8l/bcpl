@@ -1,0 +1,55 @@
+sialsep 
+
+This separates an sial stream into 11 separate files:
+
+Cstr, Fstr, Gstr, Kstr, Lstr, Mstr, Nstr, Pstr, Rstr, Tstr and Wstr.
+
+These each contain the sequence of numbers for each type of value in
+in the sial source stream. The type letters are omitted. For example, if
+the sial data starts as follows:
+
+F104
+F103
+K3
+C83
+C89
+C78
+F113
+K5
+C115
+C116
+C97
+C114
+C116
+F111
+L1
+F11
+K0
+F13
+
+The Cstr starts as follows:
+
+83
+89
+78
+115
+116
+97
+114
+116
+
+and Kstr starts as follows:
+
+3
+5
+0
+
+These stream are compressed by compression programs specifically designed
+for each type of stream. For example, Kstr is compressed by the program
+ksquash.b. The command
+
+ksquash
+
+will compress Kstr and print out the size of the resulting file.
+
+

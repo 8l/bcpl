@@ -1,0 +1,4 @@
+#!/home/mr/distribution/BCPL/cintcode/cintsys -s
+.k file/a,arg
+echo "bcpl sysb/<file>.b to enderlit/<file> hdrs BCPLHDRS oender t32 <arg>"
+bcpl sysb/<file>.b to enderlit/<file> oender hdrs BCPLHDRS oender t32 <arg>

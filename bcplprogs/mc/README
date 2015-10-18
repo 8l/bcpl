@@ -1,0 +1,19 @@
+This directory is used for the development of MC Packages.
+Currently only mci386 is under development.
+
+The Makefile can be used to compile it, generate a cross reference
+listing and install mci386.b and mc.h in the appropriate BCPL
+distribution directories (BCPL/cintcode/com and BCPL/cintcode/g).
+
+The files in this directory are:
+
+mc.h             The testing version of the MC header file
+mci386.b         The testing version of the mci386 package
+mctest.b         A test program for the mci386 package
+mcver.b          A systematic test for the mci386 package
+xrefdata         A cross reference listing for mci386.b
+
+Further documentation can be found in bcplprogs/mc/doc/.
+
+M. Richards
+14 Dec 2007

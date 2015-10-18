@@ -1,0 +1,166 @@
+                      Grace lines problem.
+
+David Barton mentioned this problem to me in the late 1960s and
+it is now about time I attempted a solution.
+
+THE PROBLEM
+
+Four lines in 3D have, in general,two common transversals.
+
+Take 5 lines in 3D sharing a common traversal, if we leave out one
+line there is in general a unique second traversal. Leaving out the
+each of the five lines in turn leads to 5 second traversals. These
+turn out in general to have a unique traversal in common.
+
+Now take 6 lines in 3D with a common traversal. Leaving each out in
+turn leads to 6 lines (as above). These 6 lines have in general a common
+traversal.
+
+Now take 7 lines in 3D with a common traversal. Leaving each out in
+turn leads to 7 lines (as above). Question: do these 7 lines have in
+general a common traversal?
+
+POSSIBLE SOLUTION
+
+If the answer is no, we should be able to find a counter example.
+A possible approach is to take seven pseudo random lines in 3D
+sharing a common traversal and see whether the resulting 7 lines
+have a common traversal. A possible trick is to use integer modular
+arithmetic so that no rounding or truncation errors can creep in. 
+
+Four lines in 3D have, in general, two common transversals.
+
+Let line A be:   x = t
+                 y = a1 + a2t
+                 z = a3 + a4t
+
+Define lines B, C, D, E, F and G similarly.
+
+Without loss of generality, assume they all pass through the x-axis,
+ie the line x=t, y=0, z=0.
+
+For line A, there must be some t such that y = a1 + a2t = 0 and
+z = a3 + a4t = 0. So a1/a2 = a3/a4, is a1 a4 = a2 a3.
+
+Let line P be an arbitrary line in 3D:
+                 x = t
+                 y = p + qt
+                 z = r + st
+
+If P intersects A then they meet at point:
+
+                 x = t         = t
+                 y = a1 + a2t  = p + qt
+                 z = a3 + a4t  = r + st
+
+I.e.             a1 - p        a3 - q
+                 ------ = -t = ------
+                 a2 - r        a4 - s
+
+So               (a1 - p)(a4 - s) = (a2 - q)(a3 - r)
+
+If P is a common transversal of all four lines A, B, C and D, then:
+
+                 (a1 - p)(a4 - s) = (a2 - q)(a3 - r)
+                 (b1 - p)(b4 - s) = (b2 - q)(b3 - r)
+                 (c1 - p)(c4 - s) = (c2 - q)(c3 - r)
+                 (d1 - p)(d4 - s) = (d2 - q)(d3 - r)
+
+This is equivalent to:
+
+   [a1a4-a2a3  -a4  a3   a2  -a1   1   -1] x [ 1]  =  [0]
+   [b1b4-b2b3  -b4  b3   b2  -b1   1   -1]   [ p]     [0]
+   [c1c4-c2c3  -c4  c3   c2  -c1   1   -1]   [ q]     [0]
+   [d1d4-d2d3  -d4  d3   d2  -d1   1   -1]   [ r]     [0]
+                                             [ s]
+                                             [ps]
+                                             [qr]
+
+Noting that A, B, C and D pass through the x-axis, giving
+a1a4-a2a3=0, etc., this simplifies to:
+
+   [a4  -a3  -a2  a1] x [ p]  =  (ps-qr) x [1]
+   [b4  -b3  -b2  b1]   [ q]               [1]
+   [c4  -c3  -c2  c1]   [ r]               [1]
+   [d4  -d3  -d2  d1]   [ s]               [1]
+
+Write w = (ps-qr).  There is a solution of the form:
+
+   p = a + a'w
+   q = b + b'w
+   r = c + c'w
+   s = d + d'w
+
+where
+
+   [a4  -a3  -a2  a1] x [ a]  =  [0]
+   [b4  -b3  -b2  b1]   [ b]     [0]
+   [c4  -c3  -c2  c1]   [ c]     [0]
+   [d4  -d3  -d2  d1]   [ d]     [0]
+
+   [a4  -a3  -a2  a1] x [a']  =  [1]
+   [b4  -b3  -b2  b1]   [b']     [1]
+   [c4  -c3  -c2  c1]   [c']     [1]
+   [d4  -d3  -d2  d1]   [d']     [1]
+
+Thus a, b, c, d, a', b', c' and d' can be calculated. Substituting
+for p, q, r and s in w = (ps-qr) we get:
+
+         w = (a+a'w)(d+d'w) - (b+b'w)(c+c'w)
+
+i.e.
+
+         (a'd'-b'c')ww + (a'd+ad'-bc'-b'c-1)w + ad-bc = 0
+
+This is a quadratic in w and can be solved to give two values for w.
+One will correspond to the known traversal (the x-axis) and the other
+will be the (typically) unique second traversal.
+ 
+
+Example:
+
+Consider two randomly chosen tranversals:
+
+T1         x = t,     y = -3 + 2t,     z = -5 + 3t
+T2         x = t,     y = -2 + 3t,     z = -4 + 5t
+
+Let line A be T1(0) to T2(1) i.e. (0,-3,-5) to (1, 1, 1)
+Let line B be T1(1) to T2(2) i.e. (1,-1,-2) to (2, 4, 6)
+Let line C be T1(2) to T2(3) i.e. (2, 1, 1) to (3, 7,11)
+Let line D be T1(3) to T2(5) i.e. (3, 3, 4) to (5,10,16)
+
+This gives:
+
+ (a1, a2, a3, a4) = (-3,     4,   -5,   6)
+ (b1, b2, b3, b4) = (-6,     5,  -10,   8)
+ (c1, c2, c3, c4) = (-11,    6,  -19,  10)
+ (d1, d2, d3, d4) = (-12,    5,   ??,  ??)
+
+So if (p, q, r, s) is a transversal, the following should hold:
+
+   [ 6    5   -4  -3] x [ a]  =  [ -3 *  6  -  4 *  -5] = [ 2]
+   [ 8   10   -5  -6]   [ b]     [ -6 *  8  -  5 * -10]   [ 2]
+   [10   19   -6 -11]   [ c]     [-11 * 10  -  6 * -19]   [ 4]
+   [??   ??   -5 -12]   [ d]     [-12 * ??  -  5 *  ??]   [??]
+
+   [ 6    5   -4  -3] x [a']  =  [1]
+   [ 8   10   -5  -6]   [b']     [1]
+   [10   19   -6 -11]   [c']     [1]
+   [??   ??   -5 -12]   [d']     [1]
+
+giving      (a,  b,  c,  d)  = (-4, 1, -6, 1)
+and         (a', b', c', d') = ( 1, 1,  1, 2)
+
+The quadratic:
+
+           (a'd'-b'c')ww + (a'd+ad'-bc'-b'c-1)w + ad-bc = 0
+
+becomes               ww - 3 w + 2 = 0
+
+giving                w = 1  or w = 2
+
+Note that    w = (ps-qr)  for both transversals
+
+and that T1  is   (a,  b,  c,  d) + 1 * (a', b', c', d')
+and that T2  is   (a,  b,  c,  d) + 2 * (a', b', c', d')
+

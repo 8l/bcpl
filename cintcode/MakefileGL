@@ -1,0 +1,639 @@
+# The is the Makefile to (re-)build the BCPL Cintcode System
+
+# Implemented by Martin Richards (c) April 2014
+
+# Change history
+
+# 14/04/2014
+# Added the EXT user extension library.
+# See g/ext.h, ext.b, sysc/extfn.c
+
+# 23/01/2014
+# This Makefile can create a BCPL system that interfaces with
+# the OpenGL graphics library. On some systems it uses SDL and the full
+# OpenGL library while on other systems it uses OpenGL ES and EGL.
+# The BCPL graphics library g/GL.b with header g/GL.h hides the
+# differences between the two versions of OpenGL, so the same BCPL
+# code should work without change with either version of OpenGL.
+
+# The Makefile for the Raspberry Pi is called MakefileRaspiGL and
+# this uses the OpenGL ES and EGL libraries.
+
+# Added NOFLOAT for systems (eg GP2X) that do not support floating
+# point.
+
+# Added sys(Sys_sound, fno, a1, a2, a3) to provide alsa sound
+# facilities when running under Linux.
+# ----- Under development ------------
+
+# Moved the executables cintsys and rastsys into $BCPLROOT/bin
+# from $BCPLROOT. This will require a change in the setting of
+# the environment variable PATH.
+
+# (Renamed most file names to lowercase letters to simplify running on
+# Windows machines.)
+# Modified the Makefile to allow compilation of the system for the
+# GP2X handheld machine when running under Cygwin.
+
+# Before running this makefile check that the environment variables
+# BCPLROOT, BCPLHDR, BCPLCIN and PATH are correctly defined as
+# described in docs/README
+
+# Just modified to allow cross compilation for the GP2X handheld Linux machine.
+
+# Location of Assembly language source code (architecture dependent)
+# for example: SYSM = sysasm/LINUX
+
+# Select the appropriate definition of CC, LIBS and SYSM
+# SYSM gives the location of machine specific code (eg cintasm.s)
+
+# To build the system for freeBSD use the Linux option and possibly
+# change dosys to _dosys in sys/LINUX/cintasm.s.  See the comment in
+# that file.
+
+# To build the system for Windows 95/98/NT/2000/XP using the 
+# GNU Cygnus compiler edit the file cintcode\Makefile to select
+# "forCYGWIN32" then use (under Windows) run the commands:
+#        make clean
+#        make
+
+# This will generate a lot of output ending with something like:
+
+#        BCPL 32-bit Cintcode System (30 May 2013)
+#        0.000> 
+
+# At this prompt type:
+
+#        0.000> c compall
+
+# This will recompile all the standard commands.
+
+
+# To build the system for Windows 95/98/NT using Microsoft Visual C
+# edit the file sys\Win32\makefile then use the command: make Win32
+# This version does not yet use cintasm.asm
+# ***** This version is out of date *****
+
+# First define the default settings.
+
+FASTERP = obj/fasterp.o
+
+# Assume a little ender machine unless otherwise specified
+ENDER = litender
+
+# The following line is for cross compilation to the GP2X
+# for use when running under Cygwin. The location of the
+# ARM development kit may need changing for your machine.
+# Floating point is not available on the GP2X
+
+# The following for armgcc under cygwin
+#GP2XCC = /cygdrive/c/devkitGP2X/bin/arm-linux-gcc -O4 -static -DforGP2X -DNOFLOAT
+
+# The following for arm-linux-gcc for GP2X under Linux
+GP2XCC = /home/mr10/devkitPro/devkitGP2X/bin/arm-linux-gcc -O4 -static -DforGP2X -DNOFLOAT
+
+# The following for arm gnueabi-gcc under Linux
+#GP2XCC = arm-none-linux-gnueabi-gcc -O4 -static -DforLinux -DNOFLOAT
+
+# Location of the SD card under Cygwin
+#SD = /cygdrive/g
+
+# Location of the SD card under Linux on Solestreet
+SD = /media/535A-B0C2
+
+# There are typically three versions of the interpreter
+
+# Two are derived from sysc/cinterp.c. A fast version is generated
+# by #defining FASTyes to produce obj/fasterp.o. Without FASTyes defined
+# a version with all debugging aids is generated in obj/cinterp.o
+# The fast version is implemented in assembly language for some
+# architectures eg sysasm/LINUX/cintasm.s gives obj/cintasm.o
+
+# On a 1GHz Mobile Pentium III the times for running the benchmark
+# bench100 in bcplprogs/tests/bench100.b are:
+
+# cinterp                   18.76 secs
+# fasterp                   14.93 secs
+# cintasm                   12.37 secs
+
+# So hand written assembly language is hardly worth the effort,
+# so is no longer maintained.
+
+# Now define/redefine the variables for particular architectures.
+
+#####################################################################
+# add FASTERP = obj/cintasm.o for architectures having a hand written
+# assembly language fast interpreter. This will override the
+# default setting of: FASTERP = obj/fasterp.o
+#####################################################################
+
+#CC = gcc -O4 -DforMAC
+#ENDER = bigender
+
+#CC = gcc -O4 -DforMIPS
+
+#CC = gcc -O4 -DforSGI
+#ENDER = bigender
+
+# For the Raspberry Pi Linux without any graphics libraries
+#CC = gcc -O2 -DforRaspi -DEXTavail
+
+# For Raspberry Pi Linux with the SDL library
+#CC = gcc -O4 -DforRaspiSDL -DEXTavail
+#CFLAGS+=`sdl-config --cflags`
+#LDFLAGS+=`sdl-config --libs`
+
+# For Raspberry Pi Linux with EGL and OpenGL ES
+#CC = gcc -O4 -DforRaspiGL -DEXTavail
+#CFLAGS+=-DSTANDALONE -D__STDC_CONSTANT_MACROS
+#CFLAGS+=-D__STDC_LIMIT_MACROS -DTARGET_POSIX -D_LINUX -fPIC
+#CFLAGS+=-DPIC -D_REENTRANT -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64
+#CFLAGS+=-U_FORTIFY_SOURCE -Wall -g -DHAVE_LIBOPENMAX=2
+#CFLAGS+=-DOMX -DOMX_SKIP64BIT -ftree-vectorize -pipe -DUSE_EXTERNAL_OMX
+#CFLAGS+=-DHAVE_LIBBCM_HOST -DUSE_EXTERNAL_LIBBCM_HOST -DUSE_VCHIQ_ARM -Wno-psabi
+#CFLAGS+=-I/opt/vc/include/ -I/opt/vc/include/interface/vcos/pthreads
+#CFLAGS+=-I/opt/vc/include/interface/vmcs_host/linux -I./ -I../libs/ilclient -I../libs/vgfont
+#LDFLAGS+=-L/opt/vc/lib/ -lGLESv2 -lEGL -lopenmaxil -lbcm_host
+#LDFLAGS+=-lvcos -lvchiq_arm -lpthread -lrt -L../libs/ilclient -L../libs/vgfont
+
+# For Pentium Linux without any graphics libraries
+#CC = gcc -O4 -DforLinux -DSOUND -DCALLC -DEXTavail
+
+# For Linux with the SDL features
+#CC = gcc -O4 -DforLinuxSDL -DSOUND -DCALLC -DEXTavail
+#CFLAGS+=`sdl-config --cflags`
+#LDFLAGS+=`sdl-config --libs`
+
+# For Linux with GL features called from SDL
+CC = gcc -O4 -DforLinuxGL -DSOUND -DCALLC -DEXTavail
+CFLAGS+=`sdl-config --cflags`
+LDFLAGS+=`sdl-config --libs` -lGL
+
+# For Pentium Linux 64-bit Cintcode
+#CC = gcc -O4 -DforLinux64
+
+# The following works under Cygwin on Pentiums and AMD 64 Athlon machines.
+# make gp2x will cross compile the system for the GP2x handheld machine,
+# and make gp2xinstall will install the BCPL Cintcode system on the SD memory
+# card of the GP2X assuming it is on drive G:.
+#CC = gcc -O4 -DforCYGWIN32
+
+# Version for the Power PC running Mac OS 10.3.9 -- added 26/7/05
+#CC = gcc -O4 -DforMacOSPPC
+#ENDER = bigender
+
+# Version for the Macmini running Intel Mac OS-X 32 bit version -- added 12/01/11
+#CC = gcc -O4 -m32 -DforMacOSX
+#ENDER = litender
+
+# The following is under development for AMD 64 Athlon machines
+#CC = gcc -O4 -DforLinuxAMD64
+
+# Version for the PowerMac G4 running Debian Linux was
+# kindly provided by Chris Emerson
+#CC = gcc -O4 -DforLinuxPPC
+#ENDER = bigender
+
+#CC = gcc -O4 -DforSUN4
+#ENDER = bigender
+
+#CC = gcc -O4 -DforSPARC
+#ENDER = bigender
+
+#CC = gcc -O4 -DforALPHA
+
+#CC = gcc -O4 -DforMSDOS
+
+#CC = gcc -O4 -DforOS2
+
+
+run:	bcplready
+	bin/cintsys
+
+run64:	bcplready64
+	bin/cintsys64
+
+sys:	bin/cintsys $(ENDER)
+	echo "bin/cintsys is up to date"
+
+sys64:	bin/cintsys64 $(ENDER)64
+	echo "bin/cintsys64 is up to date"
+
+bcplready:	bin/cintsys bin/rastsys $(ENDER) allcompiled
+	echo touch >bcplready
+
+bcplready64:	bin/cintsys64 bin/rastsys64 $(ENDER)64 allcompiled64
+	echo touch >bcplready64
+
+allcompiled:	bin/cintsys
+	cintsys -c c compall
+	echo touch >allcompiled
+
+allcompiled64:	bin/cintsys64
+	cintsys64 -c c compall64
+	echo touch >allcompiled64
+
+sane:	bcplready
+	stty sane
+	./bin/cintsys
+
+xref:	allcompiled rawxref
+	cintsys -c sortxref rawxref to xrefdata
+	rm rawxref
+
+rawxref:
+	cintsys -c c compall xref >rawxref
+
+xbmake:	allcompiled
+	cintsys -c c bc bmake xref >rawxref
+	cintsys -c sortxref rawxref to xrefbmake
+	rm rawxref
+
+xplaymus:	allcompiled
+	cintsys -c c bc playmus xref >rawxref
+	cintsys -c sortxref rawxref to xplaymus
+	rm rawxref
+
+xrefxbcpl:	allcompiled com/xbcpl.b com/xbcplfe.b com/xbcplcgcin.b \
+	g/xbcplfecg.h
+	cintsys -c c bc xbcpl xref >rawxref
+	cintsys -c sortxref rawxref to xrefxbcpl
+	rm rawxref
+
+xrefbcplint:	allcompiled com/bcplint.b com/bcplfe.b com/cg-intcode.b \
+	g/bcplfecg.h
+	cintsys -c c bc bcplint xref >rawxref
+	cintsys -c sortxref rawxref to xrefbcplint
+	rm rawxref
+
+xrefcgint:	allcompiled com/cg-intcode.b g/bcplfecg.h
+	cintsys -c bcpl com/cg-intcode.b to junk xref >rawxref
+	cintsys -c sortxref rawxref to xrefcgint
+	rm rawxref
+
+pal70:	allcompiled
+	cintsys -c c bc pal70
+
+xrefpal70:	allcompiled com/pal70.b
+	cintsys -c c bc pal70 xref >rawxrefpal70
+	cintsys -c sortxref rawxrefpal70 to xrefpal70
+	rm rawxrefpal70
+
+xrefxpal70:	allcompiled com/xpal70.b
+	cintsys -c c bc xpal70 xref >rawxrefxpal70
+	cintsys -c sortxref rawxrefxpal70 to xrefxpal70
+	rm rawxrefxpal70
+
+pal75:	allcompiled g/pal75hdr.h com/pal75.b
+	cintsys -c c xbc pal75
+
+xrefpal75:	allcompiled g/pal75hdr.h com/pal75.b
+	cintsys -c c xbc pal75 xref >rawxrefpal75
+	cintsys -c sortxref rawxrefpal75 to xrefpal75
+	rm rawxrefpal75
+
+Win32:
+	copy sys\cintsys.h
+	nmake /f sys\Win32\makefile
+
+bigender:
+	rm -f litender
+	cp enderbig/syslib cin/syscin
+	cp enderbig/boot cin/syscin
+	cp enderbig/blib cin/syscin
+	cp enderbig/dlib cin/syscin
+	cp enderbig/cli cin/syscin
+	cp enderbig/bcpl cin
+	cp enderbig/c cin
+	cp enderbig/echo cin
+	cp enderbig/logout cin
+	cp enderbig/cmpltest cin
+	cp enderbig/map cin
+	cp enderbig/abort cin
+	cp enderbig/b .
+	cp enderbig/b64 .
+	cp enderbig/bc .
+	cp enderbig/bc64 .
+	cp enderbig/bs .
+	cp enderbig/bs64 .
+	cp enderbig/bcb .
+	cp enderbig/bcb64 .
+	cp enderbig/bcl .
+	cp enderbig/bcl64 .
+	cp enderbig/bsb .
+	cp enderbig/bsb64 .
+	cp enderbig/bsl .
+	cp enderbig/bsl64 .
+	echo touch >bigender
+
+bigender64:
+	rm -f litender64
+	cp enderbig64/syslib cin64/syscin
+	cp enderbig64/boot cin64/syscin
+	cp enderbig64/blib cin64/syscin
+	cp enderbig64/dlib cin64/syscin
+	cp enderbig64/cli cin64/syscin
+	cp enderbig64/bcpl cin64
+	cp enderbig64/c cin64
+	cp enderbig64/echo cin64
+	cp enderbig64/logout cin64
+	cp enderbig64/cmpltest cin64
+	cp enderbig64/map cin64
+	cp enderbig64/abort cin64
+	cp enderbig64/b .
+	cp enderbig64/b64 .
+	cp enderbig64/bc .
+	cp enderbig64/bc64 .
+	cp enderbig64/bs .
+	cp enderbig64/bs64 .
+	cp enderbig64/bcb .
+	cp enderbig64/bcb64 .
+	cp enderbig64/bcl .
+	cp enderbig64/bcl64 .
+	cp enderbig64/bsb .
+	cp enderbig64/bsb64 .
+	cp enderbig64/bsl .
+	cp enderbig64/bsl64 .
+	echo touch >bigender64
+
+litender:
+	rm -f bigender
+	cp enderlit/syslib cin/syscin
+	cp enderlit/boot cin/syscin
+	cp enderlit/blib cin/syscin
+	cp enderlit/dlib cin/syscin
+	cp enderlit/cli cin/syscin
+	cp enderlit/bcpl cin
+	cp enderlit/c cin
+	cp enderlit/echo cin
+	cp enderlit/logout cin
+	cp enderlit/cmpltest cin
+	cp enderlit/map cin
+	cp enderlit/abort cin
+	cp enderlit/b .
+	cp enderlit/b64 .
+	cp enderlit/bc .
+	cp enderlit/bc64 .
+	cp enderlit/bs .
+	cp enderlit/bs64 .
+	cp enderlit/bcb .
+	cp enderlit/bcb64 .
+	cp enderlit/bcl .
+	cp enderlit/bcl64 .
+	cp enderlit/bsb .
+	cp enderlit/bsb64 .
+	cp enderlit/bsl .
+	cp enderlit/bsl64 .
+	echo touch >litender
+
+litender64:
+	rm -f bigender64
+	cp enderlit64/syslib cin64/syscin
+	cp enderlit64/boot cin64/syscin
+	cp enderlit64/blib cin64/syscin
+	cp enderlit64/dlib cin64/syscin
+	cp enderlit64/cli cin64/syscin
+	cp enderlit64/bcpl cin64
+	cp enderlit64/c cin64
+	cp enderlit64/echo cin64
+	cp enderlit64/logout cin64
+	cp enderlit64/cmpltest cin64
+	cp enderlit64/map cin64
+	cp enderlit64/abort cin64
+	cp enderlit64/b .
+	cp enderlit64/b64 .
+	cp enderlit64/bc .
+	cp enderlit64/bc64 .
+	cp enderlit64/bs .
+	cp enderlit64/bs64 .
+	cp enderlit64/bcb .
+	cp enderlit64/bcb64 .
+	cp enderlit64/bcl .
+	cp enderlit64/bcl64 .
+	cp enderlit64/bsb .
+	cp enderlit64/bsb64 .
+	cp enderlit64/bsl .
+	cp enderlit64/bsl64 .
+	echo touch >litender64
+
+
+debug:	bin/cintsys
+	stty sane
+	dbx bin/cintsys
+
+sysc/INT.h:	sysc/mkint-h.c
+	$(CC) $(CFLAGS) -o mkint-h sysc/mkint-h.c $(LDFLAGS)
+	./mkint-h >sysc/INT.h
+	rm -f mkint-h
+
+obj/cintsys.s:	sysc/cintsys.c sysc/cintsys.h sysc/INT.h \
+	sysc/soundfn.c
+	$(CC) $(CFLAGS) -S -c sysc/cintsys.c
+
+obj/cintsys.o:	sysc/cintsys.c sysc/cintsys.h sysc/INT.h \
+	sysc/soundfn.c
+	$(CC) $(CFLAGS) -o obj/cintsys.o -c sysc/cintsys.c
+
+obj/cinterp.o:	sysc/cinterp.c sysc/cintsys.h sysc/INT.h
+	$(CC) $(CFLAGS) -o obj/cinterp.o -c sysc/cinterp.c
+
+obj/fasterp.o:	sysc/cinterp.c sysc/cintsys.h sysc/INT.h
+	$(CC) $(CFLAGS) -DFASTyes -o obj/fasterp.o -c sysc/cinterp.c
+
+obj/cintasm.o:	$(SYSM)/cintasm.sx
+	gcc -c -o obj/cintasm.o $(SYSM)/cintasm.sx
+
+obj/rasterp.o:	sysc/rasterp.c sysc/cintsys.h sysc/INT.h
+	$(CC) $(CFLAGS) -o obj/rasterp.o -c sysc/rasterp.c
+
+obj/nrastlib.o:	sysc/nrastlib.c sysc/cintsys.h sysc/INT.h
+	$(CC) $(CFLAGS) -o obj/nrastlib.o -c sysc/nrastlib.c
+
+obj/rastlib.o:	sysc/rastlib.c sysc/cintsys.h sysc/INT.h
+	$(CC) $(CFLAGS) -o obj/rastlib.o -c sysc/rastlib.c
+
+obj/kblib.o:	sysc/kblib.c sysc/cintsys.h sysc/INT.h Makefile
+	$(CC) $(CFLAGS) -o obj/kblib.o -c sysc/kblib.c
+
+obj/cfuncs.o:	sysc/cfuncs.c sysc/cintsys.h sysc/INT.h
+	$(CC) $(CFLAGS) -o obj/cfuncs.o -c sysc/cfuncs.c
+
+obj/sdlfn.o:	sysc/sdlfn.c sysc/cintsys.h sysc/INT.h
+	$(CC) $(CFLAGS) -o obj/sdlfn.o -c sysc/sdlfn.c
+
+obj/glfn.o:	sysc/glfn.c sysc/cintsys.h sysc/INT.h
+	$(CC) $(CFLAGS) -o obj/glfn.o -c sysc/glfn.c
+
+obj/extfn.o:	sysc/extfn.c sysc/cintsys.h sysc/INT.h
+	$(CC) $(CFLAGS) -o obj/extfn.o -c sysc/extfn.c
+
+obj/sdldrawlib.o:	sysc/sdldrawlib.c sysc/cintsys.h sysc/INT.h
+#	$(CC) $(CFLAGS) -E sysc/sdldrawlib.c >sysc/sdldrawlib.txt
+	$(CC) $(CFLAGS) -o obj/sdldrawlib.o -c sysc/sdldrawlib.c
+
+bin/cintsys:	obj/cintsys.o obj/cinterp.o obj/kblib.o obj/cfuncs.o \
+	$(FASTERP) obj/nrastlib.o \
+	obj/sdlfn.o obj/glfn.o obj/extfn.o obj/sdldrawlib.o
+	$(CC) $(CFLAGS) -o bin/cintsys obj/cintsys.o obj/cinterp.o \
+	obj/kblib.o obj/cfuncs.o  obj/sdlfn.o \
+	obj/glfn.o obj/extfn.o $(FASTERP) \
+	obj/nrastlib.o obj/sdldrawlib.o -lm $(LDFLAGS)
+
+bin/rastsys:	obj/cintsys.o obj/cinterp.o obj/kblib.o obj/cfuncs.o \
+	obj/rasterp.o obj/rastlib.o \
+	obj/sdlfn.o obj/glfn.o obj/extfn.o obj/sdldrawlib.o
+	$(CC) $(CFLAGS) -o bin/rastsys obj/cintsys.o obj/cinterp.o \
+	obj/kblib.o obj/cfuncs.o obj/sdlfn.o obj/glfn.o obj/extfn.o \
+	obj/sdldrawlib.o obj/rasterp.o \
+	obj/rastlib.o -lm $(LDFLAGS)
+
+
+# Rule for the creation of cintsys64 and rastsys64
+
+
+obj/cintsys64.o:	sysc/cintsys64.c sysc/cintsys64.h sysc/INT.h \
+	sysc/soundfn.c sysc/sdlfn.c
+	$(CC) $(CFLAGS) -o obj/cintsys64.o -c sysc/cintsys64.c
+
+obj/cinterp64.o:	sysc/cinterp64.c sysc/cintsys64.h sysc/INT.h
+	$(CC) $(CFLAGS) -o obj/cinterp64.o -c sysc/cinterp64.c
+
+obj/fasterp64.o:	sysc/cinterp64.c sysc/cintsys64.h sysc/INT.h
+	$(CC) $(CFLAGS) -DFASTyes -o obj/fasterp64.o -c sysc/cinterp64.c
+
+obj/cintasm64.o:	$(SYSM)/cintasm64.sx
+	gcc -c -o obj/cintasm64.o $(SYSM)/cintasm64.sx
+
+obj/rasterp64.o:	sysc/rasterp64.c sysc/cintsys64.h sysc/INT.h
+	$(CC) $(CFLAGS) -o obj/rasterp64.o -c sysc/rasterp64.c
+
+obj/nrastlib64.o:	sysc/nrastlib64.c sysc/cintsys64.h sysc/INT.h
+	$(CC) $(CFLAGS) -o obj/nrastlib64.o -c sysc/nrastlib64.c
+
+obj/rastlib64.o:	sysc/rastlib64.c sysc/cintsys64.h sysc/INT.h
+	$(CC) $(CFLAGS) -o obj/rastlib64.o -c sysc/rastlib64.c
+
+obj/kblib64.o:	sysc/kblib64.c sysc/cintsys64.h sysc/INT.h
+	$(CC) $(CFLAGS) -o obj/kblib64.o -c sysc/kblib64.c
+
+obj/cfuncs64.o:	sysc/cfuncs64.c sysc/cintsys64.h sysc/INT.h
+	$(CC) $(CFLAGS) -o obj/cfuncs64.o -c sysc/cfuncs64.c
+
+obj/sdlfn64.o:	sysc/sdlfn.c sysc/cintsys64.h sysc/INT.h
+	$(CC) $(CFLAGS) -o obj/sdlfn64.o -c sysc/sdlfn.c
+
+obj/sdldrawlib64.o:	sysc/sdldrawlib.c sysc/cintsys64.h sysc/INT.h
+#	$(CC) $(CFLAGS) -E sysc/sdldrawlib.c >sysc/sdldrawlib.txt
+	$(CC) $(CFLAGS) -o obj/sdldrawlib64.o -c sysc/sdldrawlib.c
+
+bin/cintsys64:	obj/cintsys64.o obj/cinterp64.o obj/kblib64.o obj/cfuncs64.o \
+	obj/fasterp64.o obj/nrastlib64.o obj/sdlfn64.o obj/sdldrawlib64.o
+	$(CC) $(CFLAGS) -o bin/cintsys64 obj/cintsys64.o obj/cinterp64.o \
+	obj/kblib64.o obj/cfuncs64.o  obj/sdlfn64.o obj/fasterp64.o \
+	obj/nrastlib64.o obj/sdldrawlib64.o -lm $(LDFLAGS)
+
+bin/rastsys64:	obj/cintsys64.o obj/cinterp64.o obj/kblib64.o obj/cfuncs64.o \
+	obj/rasterp64.o obj/rastlib64.o obj/sdlfn64.o obj/sdldrawlib64.o
+	$(CC) $(CFLAGS) -o bin/rastsys64 obj/cintsys64.o obj/cinterp64.o \
+	obj/kblib64.o obj/cfuncs64.o obj/sdlfn64.o obj/sdldrawlib64.o obj/rasterp64.o \
+	obj/rastlib64.o -lm $(LDFLAGS)
+
+# When running under Cygwin, the following lines are used to build
+# cintsys.gpu and rastsys.gpu that can then be transferred and run on
+# the GP2X machine. The gp2x sd memory card is assumed to be mounted
+# on drive G:
+
+gp2x:	bcplready cintsys.gpu rastsys.gpu
+
+gp2xinstalltst:	tst.gpu
+	rm -f $(SD)/Bin/tst.gpu
+	cp -r tst.gpu $(SD)/Bin/tst
+
+gp2xinstall:	bcplready cintsys.gpu
+	rm -rf $(SD)/bcpl
+	cp -rp ../../BCPL $(SD)/bcpl
+	rm -f $(SD)/Bin/cintsys.gpu
+	cp -r cintsys.gpu $(SD)/Bin/cintsys
+	rm -f $(SD)//Bin/bcpl.gpe
+	cp -r ../../GP2X/gp2x/bcpl.gpe $(SD)/Bin/bcpl.gpe
+
+obj/gp2xcintsys.o:	sysc/cintsys.c sysc/cintsys.h sysc/INT.h
+	$(GP2XCC) -o obj/gp2xcintsys.o -c sysc/cintsys.c
+
+obj/gp2xcinterp.o:	sysc/cinterp.c sysc/cintsys.h sysc/INT.h
+	$(GP2XCC) -o obj/gp2xcinterp.o -c sysc/cinterp.c
+
+armcinterp.s:	sysc/cinterp.c sysc/cintsys.h sysc/INT.h
+	$(GP2XCC) -S sysc/cinterp.c
+	mv cinterp.s armcinterp.s
+
+obj/gp2xfasterp.o:	sysc/cinterp.c sysc/cintsys.h sysc/INT.h
+	$(GP2XCC) -DFASTyes -o obj/gp2xfasterp.o -c sysc/cinterp.c
+
+obj/gp2xcintasm.o:	$(SYSM)/cintasm.sx
+	$(GP2XCC) -c -o obj/gp2xcintasm.o $(SYSM)/cintasm.sx
+
+obj/gp2xrasterp.o:	sysc/rasterp.c sysc/cintsys.h sysc/INT.h
+	$(GP2XCC) -o obj/gp2xrasterp.o -c sysc/rasterp.c
+
+obj/gp2xnrastlib.o:	sysc/nrastlib.c sysc/cintsys.h sysc/INT.h
+	$(GP2XCC) -o obj/gp2xnrastlib.o -c sysc/nrastlib.c
+
+obj/gp2xrastlib.o:	sysc/rastlib.c sysc/cintsys.h sysc/INT.h
+	$(GP2XCC) -o obj/gp2xrastlib.o -c sysc/rastlib.c
+
+obj/gp2xkblib.o:	sysc/kblib.c sysc/cintsys.h sysc/INT.h
+	$(GP2XCC) -o obj/gp2xkblib.o -c sysc/kblib.c
+
+cintsys.gpu:	obj/gp2xcintsys.o obj/gp2xcinterp.o obj/gp2xkblib.o \
+	obj/gp2xfasterp.o obj/gp2xnrastlib.o
+	$(GP2XCC) -o cintsys.gpu obj/gp2xcintsys.o obj/gp2xcinterp.o \
+	obj/gp2xkblib.o obj/gp2xfasterp.o  obj/gp2xnrastlib.o
+
+rastsys.gpu:	obj/gp2xcintsys.o obj/gp2xcinterp.o obj/gp2xkblib.o \
+	obj/gp2xrasterp.o obj/gp2xrastlib.o
+	$(GP2XCC) -o rastsys.gpu obj/gp2xcintsys.o obj/gp2xcinterp.o \
+	obj/gp2xkblib.o obj/gp2xrasterp.o obj/gp2xrastlib.o
+
+tst.gpu:	sysc/tst.c
+	$(GP2XCC) -o tst.gpu sysc/tst.c
+
+
+env:
+	@echo
+	@echo "To set the Cintpos environment variables"
+	@echo "read, edit and run the script ./setbcplenv, which is:"
+	@echo 
+	cat ./setbcplenv
+	@echo
+# Alternatively put some equivalent code in your .profile file.
+
+clean:
+	rm -f ocode mcode comfile core all rawxref
+	rm -f sial mial mintcode junk*
+	rm -f *~ sysc/*~ sysb/*~ sysasm/*/*~ com/*~ doc/*~
+	rm -f sysc/INT.h
+	rm -f litender bigender
+	rm -f obj/*.o
+	rm -f cintsys rastsys
+	rm -f bin/cintsys bin/rastsys
+	rm -f bin/cintsys.exe bin/rastsys.exe
+	rm -f cintsys.gpu rastsys.gpu
+	rm -f raster raster.ps stats analysis profile
+	rm -rf allcompiled bcplready
+
+clean64:
+	rm -f ocode mcode comfile core all rawxref
+	rm -f sial mial mintcode junk*
+	rm -f *~ sysc/*~ sysb/*~ sysasm/*/*~ com/*~ doc/*~
+	rm -f sysc/INT.h
+	rm -f litender64 bigender64
+	rm -f obj/*.o
+	rm -f cintsys64 rastsys64
+	rm -f bin/cintsys64 bin/rastsys64
+	rm -f bin/cintsys64.exe bin/rastsys64.exe
+	rm -f cintsys64.gpu rastsys64.gpu
+	rm -f raster raster.ps stats analysis profile
+	rm -rf allcompiled64 bcplready64
+
+vclean:	clean clean64

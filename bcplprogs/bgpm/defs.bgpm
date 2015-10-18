@@ -1,0 +1,21 @@
+This is to demonstrate that GPM and BGPM macros can leave definitions
+behind.
+
+[def\defs\{
+Defining ^1a`
+[def\^1a\{Macro ^0 called with argument ^1}]
+Defining ^1b`
+[def\^1b\{Macro ^0 called with argument ^1}]
+Defining ^1c`
+[def\^1c\{Macro ^0 called with argument ^1}]
+}]`
+
+{[defs\A]} => [defs\A]
+{[defs\B]} => [defs\B]
+{[defs\C]} => [defs\C]
+
+{[Aa\xxx]} => [Aa\xxx]
+{[Bb\yyy]} => [Bb\yyy]
+{[Cc\zzz]} => [Cc\zzz]
+
+End of test

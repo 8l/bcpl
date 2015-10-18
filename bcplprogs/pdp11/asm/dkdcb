@@ -1,0 +1,20 @@
+; Device control block for the RK11/RK05 disk/controller
+
+;       .WORD        0  ; Link to driver
+        .WORD        0  ; Device ID
+        .WORD        0  ; Work queue
+        .WORD        0  ; Start routine
+        .WORD        0  ; Stop routine
+        JSR     R2,@(PC)+
+        .WORD        0  ; Interrupt routine
+        .WORD      220  ; Interrupt vector
+        .WORD   177400  ; RKDS drive status reg
+        .WORD   177402  ; RKER error reg
+        .WORD   177404  ; RKCS control and status reg
+        .WORD   177406  ; RKWC word count reg
+        .WORD   177410  ; RKBA bus address reg
+        .WORD   177412  ; RKDA disc address reg
+
+        .END
+
+

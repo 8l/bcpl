@@ -1,0 +1,44 @@
+` This version is for gpmcj
+
+{[collatz\n]} will output the collatz seqence starting at n
+
+n => n/2,  if n even
+n => 3n+1, if n odd
+
+continue until n=1
+
+Collatz Conjecture: Every collatz sequence end with a one.
+
+Ie can it ever diverge, or end in a loop not containing 1?
+
+[DEF\+\{[DEC\[BAR\+\[BIN\^1]\[BIN\^2]]]}]`
+[DEF\-\{[DEC\[BAR\-\[BIN\^1]\[BIN\^2]]]}]`
+[DEF\*\{[DEC\[BAR\*\[BIN\^1]\[BIN\^2]]]}]`
+[DEF\/\{[DEC\[BAR\/\[BIN\^1]\[BIN\^2]]]}]`
+[DEF\%\{[DEC\[BAR\%\[BIN\^1]\[BIN\^2]]]}]`
+
+[DEF\collatz\{[C\`
+  [DEF\n\0000000000]`
+  [UPDATE\n\[+\^1\0]]`
+  [DEF\R0\{[UPDATE\n\[/\[n]\2]]}]`
+  [DEF\R1\{[UPDATE\n\[+\[*\3\[n]]\1]]}]`
+  [DEF\next\{[R[%\[n]\2]]}]`
+  [DEF\C\{`
+    [n]
+`
+    [[n]\[DEF\[n]\{[next][C]}]`
+         [DEF\1\]]`
+}]`
+]}`
+]`
+
+{[collatz\7]} =>
+[collatz\7]
+
+{[collatz\767]} =>
+[collatz\767]
+
+{[collatz\60000001]} =>
+[collatz\60000001]
+
+

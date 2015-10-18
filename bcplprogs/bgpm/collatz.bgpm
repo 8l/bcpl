@@ -1,0 +1,39 @@
+
+
+{[collatz\n]} will output the collatz seqence starting at n
+
+n => n/2,  if n even
+n => 3n+1, if n odd
+
+continue until n=1
+
+Collatz Conjecture: Every collatz sequence end with a one.
+
+Ie can it ever diverge, or end in a loop not containing 1?
+
+
+[def\collatz\{[C\`
+  [def\n\0000000000]`
+  [set\n\[eval\^1]]`
+  [def\R0\{[set\n\[eval\[n]/2]]}]`
+  [def\R1\{[set\n\[eval\3*[n]+1]]}]`
+  [def\next\{[R[eval\[n]%2]]}]`
+  [def\C\{`
+    [n]
+`
+    [[n]\[def\[n]\{[next][C]}]`
+         [def\1\]]`
+}]`
+]}`
+]`
+
+{[collatz\7]} =>
+[collatz\7]
+
+`{[collatz\767]} =>
+`[collatz\767]
+
+`{[collatz\600000001]} =>
+`[collatz\600000001]
+
+

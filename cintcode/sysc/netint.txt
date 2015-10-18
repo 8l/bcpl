@@ -1,0 +1,47 @@
+NETINT=>show cpu/full
+
+System: NETINT, HP rx2660  (1.59GHz/6.0MB)
+
+  SMP execlet   = 3 : Enabled : Streamlined.
+  Config tree   = Version 6
+  Primary CPU   = 0
+  HWRPB CPUs    = 1
+  Page Size     = 8192
+  Revision Code =
+  Serial Number = DEH47130F3
+  Default CPU Capabilities:
+        System: QUORUM RUN
+  Default Process Capabilities:
+        System: QUORUM RUN
+
+CPU 0    State: RUN                CPUDB: 8801E000     Handle: 00005D70
+         Owner: 000004C8         Current: 000004C8     Partition 0 (NETINT)
+        ChgCnt:        1           State: Present, Primary, Reassignable
+       Process: MRICH177             PID: 001C2DDF
+  Capabilities:
+        System: PRIMARY QUORUM RUN RAD0
+  Slot Context: 9017D000
+     CPU     -  State..........: RC, PA, PP, CV, PV, PMV, PL
+                Type...........: Itanium Major = 32,  Minor = 0
+                Speed..........: 1595 Mhz
+                LID............: 00000000
+                Variation......: IEEE FP, Primary Eligible
+                Serial Number..: 000039017F7B5ACD
+                Revision.......:
+                Halt Request...: 0
+                Software Comp..: 7.0
+     PALCODE -  Revision Code..: 1.1
+                Compatibility..: 0
+                Max Shared CPUs: 0
+  Bindings:
+     NETACP           PID = 00000416  Reason: PRIMARY Capability
+  Fastpath:
+        PKB0
+        PKA0
+        EWA0
+        EWB0
+        BG0
+  Features:
+     Autostart - Enabled.
+     Fastpath  - Selection enabled as Preferred CPU.
+NETINT=>

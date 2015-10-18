@@ -1,0 +1,85 @@
+
+{[prime\n]} => the nth prime number.
+
+[def\+\{[eval\^1+^2]}]`      Definitions for bgpm
+[def\%\{[eval\^1%^2]}]`
+
+`[DEF\+\{[DEC\[BAR\+\[BIN\^1]\[Bin\^2]]]}]`  Definition for gpmcj
+`[DEF\%\{[DEC\[BAR\%\[BIN\^1]\[Bin\^2]]]}]`  Definition for gpmcj
+
+[def\isprime\{`
+   [p%^1=[%\^2\^1]\`
+     [def\p%^1=[%\^2\^1]\{[isprime\[+\}^1{\1]\}^2{]}]`
+     [def\p%^1=0\no]`
+     [def\p%^2=0\yes]`
+   ]`
+ }`
+]`
+
+[def\nextprime\{`
+`nextprime entered
+   [set\p\[+\[p]\1]]`
+`p now = [p]
+`{[isprime\2\[p]]} => [isprime\2\[p]]
+`Calling macro test=[isprime\2\[p]] after defining test=yes and test=no
+   [test=[isprime\2\[p]]\`
+     [def\test=yes\]`
+     [def\test=no\{[nextprime]}]`
+   ]`
+ }`
+]`
+
+[def\iter\{`
+   [res[n]\`
+      [def\res[n]\{`
+        [set\i\[+\[i]\1]]`
+        [nextprime]`
+        [iter]`
+      }`
+     ]`
+     [def\res[i]\{[p]}]`
+   ]`
+ }`
+]`
+
+[def\prime\{`
+   [iter\`
+     [def\n\[+\^1\0]]`
+     [def\i\1\padding]`
+     [def\p\2\padding]`
+   ]`
+ }`
+]`
+
+
+{[isprime\2\2]}   = [isprime\2\2]
+{[isprime\2\3]}   = [isprime\2\3]
+{[isprime\2\4]}   = [isprime\2\4]
+{[isprime\2\5]}   = [isprime\2\5]
+{[isprime\2\6]}   = [isprime\2\6]
+{[isprime\2\9]}   = [isprime\2\9]
+{[isprime\2\197]} = [isprime\2\197]
+{[isprime\2\541]} = [isprime\2\541]
+
+
+`[def\p\25]
+`{[p]} => [p]
+`{[nextprime]} => [nextprime]
+`{[p]} => [p]
+
+{[prime\1]}   => [prime\1]
+{[prime\2]}   => [prime\2]
+{[prime\3]}   => [prime\3]
+{[prime\10]}  => [prime\10]
+{[prime\20]}  => [prime\20]
+{[prime\30]}  => [prime\30]
+{[prime\40]}  => [prime\40]
+{[prime\50]}  => [prime\50]
+{[prime\60]}  => [prime\60]
+{[prime\70]}  => [prime\70]
+{[prime\80]}  => [prime\80]
+{[prime\90]}  => [prime\90]
+{[prime\100]} => [prime\100]
+
+End of test
+

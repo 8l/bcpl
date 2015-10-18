@@ -1,0 +1,15 @@
+; Device control block for the console printer
+
+;       .WORD        0  ; Link to driver
+        .WORD        0  ; Device ID
+        .WORD        0  ; Work queue
+        .WORD        0  ; Start routine
+        .WORD        0  ; Stop routine
+        JSR     R2,@(PC)+
+        .WORD        0  ; Interrupt routine
+        .WORD       64  ; Interrupt vector
+        .WORD   177564  ; Control and status reg
+
+        .END
+
+

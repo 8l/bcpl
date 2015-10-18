@@ -1,0 +1,118 @@
+;*********************************************************
+;                                                        *
+; Device driver for single character input devices ie.   *
+; Console keyboard, paper tape reader etc.               *
+;                                                        *
+;*********************************************************
+;
+; States and interrupt vectors
+;
+INTEN   =          100          ; interrupt mask
+RDYFL   =          200          ; ready flag
+ERRFL   =       100000          ; error flag
+RDEN    =            1          ; reader enable
+ERRVEC  =            4          ; error trap vector
+;
+; Device control block symbols
+;
+;               0               ; device driver ptr (BCPL)
+D.ID    =       2               ; id
+D.WKQ   =       4               ; work queue
+D.START =       6               ; start routine - for QPKT
+D.STOP  =       8.              ; stop routine - for DQPKT
+D.JSR   =      10.              ; subroutine jump to
+D.INT   =      12.              ; interrupt routine
+D.I     = D.JSR+4               ; offset for interrupt rtn
+D.VEC   =      14.              ; interrupt vector
+D.CSW   =      16.              ; control and status word
+;
+; Packet symbols
+;
+P.ID    =       2               ; task or device id
+P.TYPE  =       4               ; type or action
+P.RES1  =       6               ; first result
+P.RES2  =       8.              ; second result
+P.A1    =      10.              ; argument 1
+;
+; The rootnode
+;
+CRNTSK  =  456
+DEVMVP  =  502 ; MOVPKT for device drivers (MC addr)
+DEVINT  =  504 ; INTENT for device drivers (MC addr)
+DEVRET  =  506 ; INTRET for device drivers (MC addr)
+
+        .WORD   RINIT           ; initialisation rtn
+        .WORD   RUNIN           ; uninitialisation rtn
+
+; Device initialisation routine. It is entered with the
+; address of the DCB in R2, and the DEVID in R0, which
+; must be preserved.
+
+RINIT:  MOV     #RINT,D.INT(R2) ; fill in rest of DCB
+        MOV     #RSTART,D.START(R2)
+        MOV     #RSTOP,D.STOP(R2)
+        MOV     D.VEC(R2),R1    ; get interrupt vector
+        MOV     R2,(R1)         ; plug it with address
+        ADD     #D.JSR,(R1)     ; of interrupt JSR
+        RTS     PC
+
+; Device uninitialisation routine. It is entered with
+; the address of the DCB in R2, which must be preserved.
+
+RUNIN:  MOV     @#ERRVEC,@D.VEC(R2) ; restore int vec
+        BR      RSTOP
+
+; Device start routine. This is entered whenever a pkt
+; is sent to the device and its work queue is empty. It
+; is entered with the address of the DCB in R2, and the
+; BCPL address of the packet in R0. It returns non-zero.
+
+RSTART: MOV     D.CSW(R2),R3    ; addr of status reg
+        TST     2(R3)           ; ignore chars in buffer
+        BIS     #<INTEN!RDEN>,(R3); enable ints, get char
+        RTS     PC
+
+; Device stop routine. This is entered if the head pkt
+; is dequeued from the device. It is entered with the
+; address of packet in R1 and the DCB in R2, which must
+; be preserved.
+
+RSTOP:  BIC     #<INTEN!RDEN>,@D.CSW(R2) ; disable ints
+        RTS     PC
+
+; Interrupt routine. It is entered with R2 saved on the
+; system stack and the address of the DCB word following
+; the interrupt subroutine jump in R2.
+
+RINT:   MOV     R1,-(SP)        ; R2 already on stack
+        MOV     R0,-(SP)
+        MOV     R3,-(SP)
+        MOV     D.CSW-D.I(R2),R3; status register
+        MOV     D.WKQ-D.I(R2),R0; pkt
+        ASL     R0
+        CLR     R1              ; clear result2
+        TSTB    (R3)            ; test ready flag
+        BPL     RINT1           ; error if not ready
+        TST     (R3)            ; test error flag
+        BPL     RINT2           ; error unless clear
+RINT1:  COM     R1              ; indicate error
+RINT2:  MOV     R1,P.RES2(R0)   ; set pkt result2
+        MOVB    2(R3),P.RES1(R0); fetch char
+        CLRB    P.RES1+1(R0)    ; clear high byte
+        MOV     (R0),D.WKQ-D.I(R2); DQ pkt
+        BNE     RINT3           ; not last
+        BIC     #INTEN,(R3)     ; if last clear int enable
+        BR      RINT4
+
+RINT3:  BIS     #RDEN,(R3)      ; read another char
+RINT4:  MOV     D.ID-D.I(R2),R3 ; id of sender
+        MOV     R0,R2           ; set pkt address and
+        MOV     @#CRNTSK,R1     ; current task for MOVPKT
+        ASL     R1
+        MOV     @#DEVMVP,R0     ; get MOVPKT routine
+        JSR     PC,(R0)         ; queue Pkt on task
+        MOV     @#DEVINT,PC     ; exit via INTENT
+
+        .END
+
+

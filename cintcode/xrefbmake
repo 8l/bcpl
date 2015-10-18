@@ -1,0 +1,1347 @@
+B2Wsh M:2 DEF libhdr.h[153] B2Wsh=2
+B2Wsh M:2 MAN libhdr.h[159] bytesperword=1<<B2Wsh
+CloseObj M:1 DEF libhdr.h[204] CloseObj=1
+GB2312 M:-2 DEF libhdr.h[438] GB2312=-2
+InitObj M:0 DEF libhdr.h[203] InitObj=0
+L F:158 LAB com/bmake.b[716] L:bg_ch:=bggetch()
+L F:158 LF com/bmake.b[718] GOTO L
+L F:158 LF com/bmake.b[719] GOTO L
+M F:157 LAB com/bmake.b[718] M:IF bg_ch>=(1<<20) DO ..
+M F:157 LF com/bmake.b[714] GOTO M
+Sys_buttons M:56 DEF libhdr.h[344] Sys_buttons=56
+Sys_callc M:59 DEF libhdr.h[347] Sys_callc=59
+Sys_callnative M:53 DEF libhdr.h[341] Sys_callnative=53
+Sys_close M:16 DEF libhdr.h[308] Sys_close=16
+Sys_cputime M:30 DEF libhdr.h[320] Sys_cputime=30
+Sys_datstamp M:44 DEF libhdr.h[332] Sys_datstamp=44
+Sys_delay M:57 DEF libhdr.h[345] Sys_delay=57
+Sys_deletefile M:17 DEF libhdr.h[309] Sys_deletefile=17
+Sys_devcom M:43 DEF libhdr.h[331] Sys_devcom=43
+Sys_dumpmem M:52 DEF libhdr.h[340] Sys_dumpmem=52
+Sys_filemodtime M:31 DEF libhdr.h[321] Sys_filemodtime=31
+Sys_filesize M:46 DEF libhdr.h[334] Sys_filesize=46
+Sys_flt M:63 DEF libhdr.h[352] Sys_flt=63
+Sys_freevec M:22 DEF libhdr.h[313] Sys_freevec=22
+Sys_getpid M:51 DEF libhdr.h[339] Sys_getpid=51
+Sys_getprefix M:33 DEF libhdr.h[323] Sys_getprefix=33
+Sys_getsysval M:48 DEF libhdr.h[336] Sys_getsysval=48
+Sys_gettrval M:62 DEF libhdr.h[351] Sys_gettrval=62
+Sys_getvec M:21 DEF libhdr.h[312] Sys_getvec=21
+Sys_globin M:24 DEF libhdr.h[315] Sys_globin=24
+Sys_graphics M:34 DEF libhdr.h[324] Sys_graphics=34
+Sys_inc M:55 DEF libhdr.h[343] Sys_inc=55
+Sys_interpret M:7 DEF libhdr.h[300] Sys_interpret=7
+Sys_intflag M:28 DEF libhdr.h[318] Sys_intflag=28
+Sys_loadseg M:23 DEF libhdr.h[314] Sys_loadseg=23
+Sys_lockirq M:41 DEF libhdr.h[329] Sys_lockirq=41
+Sys_muldiv M:26 DEF libhdr.h[317] Sys_muldiv=26
+Sys_openread M:14 DEF libhdr.h[306] Sys_openread=14
+Sys_openreadwrite M:47 DEF libhdr.h[335] Sys_openreadwrite=47
+Sys_openwrite M:15 DEF libhdr.h[307] Sys_openwrite=15
+Sys_platform M:54 DEF libhdr.h[342] Sys_platform=54
+Sys_putsysval M:49 DEF libhdr.h[337] Sys_putsysval=49
+Sys_quit M:0 DEF libhdr.h[293] Sys_quit=0
+Sys_read M:12 DEF libhdr.h[304] Sys_read=12
+Sys_renamefile M:18 DEF libhdr.h[310] Sys_renamefile=18
+Sys_rti M:1 DEF libhdr.h[294] Sys_rti=1
+Sys_sardch M:10 DEF libhdr.h[302] Sys_sardch=10
+Sys_saveregs M:2 DEF libhdr.h[295] Sys_saveregs=2
+Sys_sawrch M:11 DEF libhdr.h[303] Sys_sawrch=11
+Sys_seek M:38 DEF libhdr.h[326] Sys_seek=38
+Sys_setcount M:-1 DEF libhdr.h[292] Sys_setcount=-1
+Sys_setprefix M:32 DEF libhdr.h[322] Sys_setprefix=32
+Sys_setraster M:29 DEF libhdr.h[319] Sys_setraster=29
+Sys_setst M:3 DEF libhdr.h[296] Sys_setst=3
+Sys_settrcount M:61 DEF libhdr.h[350] Sys_settrcount=61
+Sys_shellcom M:50 DEF libhdr.h[338] Sys_shellcom=50
+Sys_sound M:58 DEF libhdr.h[346] Sys_sound=58
+Sys_tally M:6 DEF libhdr.h[299] Sys_tally=6
+Sys_tell M:39 DEF libhdr.h[327] Sys_tell=39
+Sys_tracing M:4 DEF libhdr.h[297] Sys_tracing=4
+Sys_trpush M:60 DEF libhdr.h[349] Sys_trpush=60
+Sys_unloadseg M:25 DEF libhdr.h[316] Sys_unloadseg=25
+Sys_unlockirq M:42 DEF libhdr.h[330] Sys_unlockirq=42
+Sys_waitirq M:40 DEF libhdr.h[328] Sys_waitirq=40
+Sys_watch M:5 DEF libhdr.h[298] Sys_watch=5
+Sys_write M:13 DEF libhdr.h[305] Sys_write=13
+UTF8 M:-1 DEF libhdr.h[437] UTF8=-1
+abort G:28 DEF libhdr.h[43] abort=28
+abort G:28 LG com/bmake.b[1285] abort(1000)
+abort G:28 LG com/bmake.b[987] abort(999)
+appendstream G:66 DEF libhdr.h[81] appendstream=66
+arg F:39 FN com/bmake.b[386] LET arg(a,n)=..
+arg F:39 LF com/bmake.b[571] arg(bg_p+5,rdint())
+arg F:39 LF com/bmake.b[607] bg_c:=arg(lookup(...)+2,1)
+arg F:39 LF com/bmake.b[646] arg(bg_p+5,1)
+arg F:39 LF com/bmake.b[647] arg(bg_p+5,2)
+arg F:39 LF com/bmake.b[660] arg(bg_p+5,1)
+arg F:39 LF com/bmake.b[661] arg(bg_p+5,2)
+arg F:39 LF com/bmake.b[664] arg(a+2,1)
+arg F:39 LF com/bmake.b[673] arg(bg_p+5,1)
+arg F:39 LF com/bmake.b[702] arg(bg_p+5,2)
+arg F:39 LF com/bmake.b[761] argp:=arg(bg_p+5,n)
+arg F:39 LF com/bmake.b[969] arg(e+2,0)
+arg F:39 LF com/bmake.b[970] arg(e+2,1)
+arg2str F:41 FN com/bmake.b[428] LET arg2str(a,str)=..
+arg2str F:41 LF com/bmake.b[424] bg_error("Macro' defined",arg2str(name,buf))
+argp G:282 DEF com/bmake.b[121] argp=
+argp G:282 LG com/bmake.b[762] argt:=argp+!argp+1
+argp G:282 LG com/bmake.b[835] argp+1
+argp G:282 SG com/bmake.b[761] argp:=arg(bg_p+5,n)
+argp G:282 SG com/bmake.b[837] argp:=p
+argt G:283 DEF com/bmake.b[121] argt=
+argt G:283 LG com/bmake.b[836] IF p>=argt DO ..
+argt G:283 SG com/bmake.b[762] argt:=argp+!argp+1
+base G:254 DEF com/bmake.b[110] base=
+base G:254 LG com/bmake.b[240] UNLESS base DO ..
+base G:254 LG com/bmake.b[305] IF base DO ..
+base G:254 LG com/bmake.b[305] freevec(base)
+base G:254 LG com/bmake.b[471] bg_s,bg_t,bg_h,bg_p,...:=base-1,base+upb,0,0,...
+base G:254 SG com/bmake.b[201] base:=0
+base G:254 SG com/bmake.b[239] base:=getvec(upb)
+bg_c G:205 DEF com/bmake.b[82] bg_c=
+bg_c G:205 LG com/bmake.b[344] TEST bg_c THEN .. ELSE ..
+bg_c G:205 LG com/bmake.b[346] bg_c:=bg_c+1
+bg_c G:205 LG com/bmake.b[347] ch:=!bg_c
+bg_c G:205 LG com/bmake.b[600] a!1:=bg_c
+bg_c G:205 SG com/bmake.b[346] bg_c:=bg_c+1
+bg_c G:205 SG com/bmake.b[471] bg_s,bg_t,bg_h,bg_p,...:=base-1,base+upb,0,0,...
+bg_c G:205 SG com/bmake.b[607] bg_c:=arg(lookup(...)+2,1)
+bg_c G:205 SG com/bmake.b[633] bg_c:=bg_p!1
+bg_c G:205 SG com/bmake.b[654] bg_c:=bg_p!1
+bg_c G:205 SG com/bmake.b[691] bg_c:=bg_p!1
+bg_ch G:207 DEF com/bmake.b[84] bg_ch=
+bg_ch G:207 LG com/bmake.b[503] SWITCHON bg_ch INTO..
+bg_ch G:207 LG com/bmake.b[506] IF bg_ch>=(1<<20) DO ..
+bg_ch G:207 LG com/bmake.b[508] lineno:=bg_ch
+bg_ch G:207 LG com/bmake.b[509] bgputch(bg_ch)
+bg_ch G:207 LG com/bmake.b[513] bgputch(bg_ch)
+bg_ch G:207 LG com/bmake.b[535] IF bg_ch<0 DO ..
+bg_ch G:207 LG com/bmake.b[536] IF bg_ch=c_lquote DO ..
+bg_ch G:207 LG com/bmake.b[537] IF bg_ch=c_rquote DO ..
+bg_ch G:207 LG com/bmake.b[538] bgputch(bg_ch)
+bg_ch G:207 LG com/bmake.b[555] bgputch(bg_ch)
+bg_ch G:207 LG com/bmake.b[565] bgputch(bg_ch)
+bg_ch G:207 LG com/bmake.b[718] IF bg_ch>=(1<<20) DO ..
+bg_ch G:207 LG com/bmake.b[719] IF 48<=bg_ch&bg_ch<=57 DO ..
+bg_ch G:207 LG com/bmake.b[719] val:=10*val+bg_ch-48
+bg_ch G:207 LG com/bmake.b[770] SWITCHON bg_ch INTO..
+bg_ch G:207 LG com/bmake.b[793] SWITCHON bg_ch INTO..
+bg_ch G:207 LG com/bmake.b[794] IF n>1|n=1&bg_ch=41|n=0&bg_ch=s_eof DO ..
+bg_ch G:207 LG com/bmake.b[847] WHILE 48<=bg_ch&bg_ch<=57 DO ..
+bg_ch G:207 LG com/bmake.b[847] val:=10*val+bg_ch-48
+bg_ch G:207 LG com/bmake.b[850] UNLESS bg_ch=46 DO ..
+bg_ch G:207 LG com/bmake.b[852] UNLESS 48<=bg_ch&bg_ch<=57 DO ..
+bg_ch G:207 LG com/bmake.b[853] val:=10*val+bg_ch-48
+bg_ch G:207 LG com/bmake.b[855] UNLESS 48<=bg_ch&bg_ch<=57 DO ..
+bg_ch G:207 LG com/bmake.b[856] val:=10*val+bg_ch-48
+bg_ch G:207 LG com/bmake.b[858] UNLESS 48<=bg_ch&bg_ch<=57 DO ..
+bg_ch G:207 LG com/bmake.b[859] val:=10*val+bg_ch-48
+bg_ch G:207 SG com/bmake.b[487] bg_ch:=bggetch()
+bg_ch G:207 SG com/bmake.b[534] bg_ch:=bggetch()
+bg_ch G:207 SG com/bmake.b[568] bg_ch:=bggetch()
+bg_ch G:207 SG com/bmake.b[716] bg_ch:=bggetch()
+bg_ch G:207 SG com/bmake.b[767] bg_ch:=getargch()
+bg_ch G:207 SG com/bmake.b[784] bg_ch:=getargch()
+bg_ch G:207 SG com/bmake.b[796] bg_ch:=getargch()
+bg_ch G:207 SG com/bmake.b[848] bg_ch:=getargch()
+bg_ch G:207 SG com/bmake.b[851] bg_ch:=getargch()
+bg_ch G:207 SG com/bmake.b[854] bg_ch:=getargch()
+bg_ch G:207 SG com/bmake.b[857] bg_ch:=getargch()
+bg_ch G:207 SG com/bmake.b[860] bg_ch:=getargch()
+bg_e G:206 DEF com/bmake.b[83] bg_e=
+bg_e G:206 LG com/bmake.b[392] bg_e,0,!name
+bg_e G:206 LG com/bmake.b[446] push(bg_e)
+bg_e G:206 LG com/bmake.b[602] a!3:=bg_e
+bg_e G:206 LG com/bmake.b[650] bg_t:=bg_e-1
+bg_e G:206 LG com/bmake.b[651] bg_e!1:=bg_p!4
+bg_e G:206 LG com/bmake.b[652] bg_e!0:=bg_p!3
+bg_e G:206 SG com/bmake.b[457] bg_e:=bg_t+1
+bg_e G:206 SG com/bmake.b[471] bg_s,bg_t,bg_h,bg_p,...:=base-1,base+upb,0,0,...
+bg_e G:206 SG com/bmake.b[631] bg_e:=bg_p!3
+bg_e G:206 SG com/bmake.b[649] bg_e:=a1-2
+bg_e G:206 SG com/bmake.b[689] bg_e:=bg_p!3
+bg_error F:56 LF com/bmake.b[335] bg_error("Insuf'rk space")
+bg_error F:56 LF com/bmake.b[386] bg_error("Too f'rguments")
+bg_error F:56 LF com/bmake.b[424] bg_error("Macro' defined",arg2str(name,buf))
+bg_error F:56 LF com/bmake.b[535] bg_error("Non c'd string")
+bg_error F:56 LF com/bmake.b[683] bg_error("File 'too long")
+bg_error F:56 LF com/bmake.b[734] bg_error("Unabl'$get!%s;",filename)
+bg_error F:56 LF com/bmake.b[739] bg_error("Too m'ET files")
+bg_error F:56 LF com/bmake.b[771] bg_error("Bad e'n, ch=%c",ch)
+bg_error F:56 LF com/bmake.b[795] bg_error("Bad expression")
+bg_error F:56 LF com/bmake.b[986] bg_error("Syste'failure*n")
+bg_error F:56 RT com/bmake.b[906] LET bg_error(mess,a,b,c)BE..
+bg_f G:204 DEF com/bmake.b[81] bg_f=
+bg_f G:204 LG com/bmake.b[544] bg_f:=push(bg_f)
+bg_f G:204 LG com/bmake.b[588] bg_f
+bg_f G:204 LG com/bmake.b[917] IF bg_f DO ..
+bg_f G:204 LG com/bmake.b[917] prcall(3,bg_f,bg_h,bg_s)
+bg_f G:204 SG com/bmake.b[471] bg_s,bg_t,bg_h,bg_p,...:=base-1,base+upb,0,0,...
+bg_f G:204 SG com/bmake.b[544] bg_f:=push(bg_f)
+bg_f G:204 SG com/bmake.b[597] bg_f:=a!0
+bg_h G:202 DEF com/bmake.b[79] bg_h=
+bg_h G:202 LG com/bmake.b[326] TEST bg_h=0 THEN .. ELSE ..
+bg_h G:202 LG com/bmake.b[545] push(bg_h)
+bg_h G:202 LG com/bmake.b[554] IF bg_h=0 DO ..
+bg_h G:202 LG com/bmake.b[558] !bg_h:=bg_s-bg_h
+bg_h G:202 LG com/bmake.b[590] IF bg_h=0 DO ..
+bg_h G:202 LG com/bmake.b[595] !bg_h:=bg_s-bg_h
+bg_h G:202 LG com/bmake.b[917] prcall(3,bg_f,bg_h,bg_s)
+bg_h G:202 SG com/bmake.b[471] bg_s,bg_t,bg_h,bg_p,...:=base-1,base+upb,0,0,...
+bg_h G:202 SG com/bmake.b[549] bg_h:=push(?)
+bg_h G:202 SG com/bmake.b[559] bg_h:=push(?)
+bg_h G:202 SG com/bmake.b[598] bg_h:=a!1
+bg_p G:203 DEF com/bmake.b[80] bg_p=
+bg_p G:203 LG com/bmake.b[564] IF bg_p=0 DO ..
+bg_p G:203 LG com/bmake.b[571] arg(bg_p+5,rdint())
+bg_p G:203 LG com/bmake.b[599] a!0:=bg_p
+bg_p G:203 LG com/bmake.b[607] bg_c:=arg(lookup(...)+2,1)
+bg_p G:203 LG com/bmake.b[629] IF bg_p=0 DO ..
+bg_p G:203 LG com/bmake.b[630] bg_t:=bg_p!4
+bg_p G:203 LG com/bmake.b[631] bg_e:=bg_p!3
+bg_p G:203 LG com/bmake.b[632] lineno:=bg_p!2
+bg_p G:203 LG com/bmake.b[633] bg_c:=bg_p!1
+bg_p G:203 LG com/bmake.b[634] bg_p:=bg_p!0
+bg_p G:203 LG com/bmake.b[646] arg(bg_p+5,1)
+bg_p G:203 LG com/bmake.b[647] arg(bg_p+5,2)
+bg_p G:203 LG com/bmake.b[651] bg_e!1:=bg_p!4
+bg_p G:203 LG com/bmake.b[652] bg_e!0:=bg_p!3
+bg_p G:203 LG com/bmake.b[653] lineno:=bg_p!2
+bg_p G:203 LG com/bmake.b[654] bg_c:=bg_p!1
+bg_p G:203 LG com/bmake.b[655] bg_p:=bg_p!0
+bg_p G:203 LG com/bmake.b[660] arg(bg_p+5,1)
+bg_p G:203 LG com/bmake.b[661] arg(bg_p+5,2)
+bg_p G:203 LG com/bmake.b[673] arg(bg_p+5,1)
+bg_p G:203 LG com/bmake.b[688] bg_t:=bg_p!4
+bg_p G:203 LG com/bmake.b[689] bg_e:=bg_p!3
+bg_p G:203 LG com/bmake.b[690] lineno:=bg_p!2
+bg_p G:203 LG com/bmake.b[691] bg_c:=bg_p!1
+bg_p G:203 LG com/bmake.b[692] bg_p:=bg_p!0
+bg_p G:203 LG com/bmake.b[702] arg(bg_p+5,2)
+bg_p G:203 LG com/bmake.b[761] argp:=arg(bg_p+5,n)
+bg_p G:203 LG com/bmake.b[918] btrace(bg_p,3)
+bg_p G:203 SG com/bmake.b[471] bg_s,bg_t,bg_h,bg_p,...:=base-1,base+upb,0,0,...
+bg_p G:203 SG com/bmake.b[606] bg_p:=bg_t+1
+bg_p G:203 SG com/bmake.b[634] bg_p:=bg_p!0
+bg_p G:203 SG com/bmake.b[655] bg_p:=bg_p!0
+bg_p G:203 SG com/bmake.b[692] bg_p:=bg_p!0
+bg_s G:200 DEF com/bmake.b[77] bg_s=ug
+bg_s G:200 LG com/bmake.b[335] IF bg_t=bg_s DO ..
+bg_s G:200 LG com/bmake.b[336] bg_s:=bg_s+1
+bg_s G:200 LG com/bmake.b[337] !bg_s:=ch
+bg_s G:200 LG com/bmake.b[338] RESULTIS bg_s
+bg_s G:200 LG com/bmake.b[444] bg_s
+bg_s G:200 LG com/bmake.b[456] !bg_t:=!bg_s
+bg_s G:200 LG com/bmake.b[456] UNTIL bg_s=s1 DO ..
+bg_s G:200 LG com/bmake.b[456] bg_t,bg_s:=bg_t-1,bg_s-1
+bg_s G:200 LG com/bmake.b[558] !bg_h:=bg_s-bg_h
+bg_s G:200 LG com/bmake.b[595] !bg_h:=bg_s-bg_h
+bg_s G:200 LG com/bmake.b[605] !bg_t:=!bg_s
+bg_s G:200 LG com/bmake.b[605] .. REPEATUNTIL bg_s<a
+bg_s G:200 LG com/bmake.b[605] bg_t,bg_s:=bg_t-1,bg_s-1
+bg_s G:200 LG com/bmake.b[917] prcall(3,bg_f,bg_h,bg_s)
+bg_s G:200 SG com/bmake.b[336] bg_s:=bg_s+1
+bg_s G:200 SG com/bmake.b[456] bg_t,bg_s:=bg_t-1,bg_s-1
+bg_s G:200 SG com/bmake.b[471] bg_s,bg_t,bg_h,bg_p,...:=base-1,base+upb,0,0,...
+bg_s G:200 SG com/bmake.b[605] bg_t,bg_s:=bg_t-1,bg_s-1
+bg_t G:201 DEF com/bmake.b[78] bg_t=
+bg_t G:201 LG com/bmake.b[335] IF bg_t=bg_s DO ..
+bg_t G:201 LG com/bmake.b[447] push(bg_t)
+bg_t G:201 LG com/bmake.b[456] !bg_t:=!bg_s
+bg_t G:201 LG com/bmake.b[456] bg_t,bg_s:=bg_t-1,bg_s-1
+bg_t G:201 LG com/bmake.b[457] bg_e:=bg_t+1
+bg_t G:201 LG com/bmake.b[603] a!4:=bg_t
+bg_t G:201 LG com/bmake.b[605] !bg_t:=!bg_s
+bg_t G:201 LG com/bmake.b[605] bg_t,bg_s:=bg_t-1,bg_s-1
+bg_t G:201 LG com/bmake.b[606] bg_p:=bg_t+1
+bg_t G:201 SG com/bmake.b[456] bg_t,bg_s:=bg_t-1,bg_s-1
+bg_t G:201 SG com/bmake.b[471] bg_s,bg_t,bg_h,bg_p,...:=base-1,base+upb,0,0,...
+bg_t G:201 SG com/bmake.b[605] bg_t,bg_s:=bg_t-1,bg_s-1
+bg_t G:201 SG com/bmake.b[630] bg_t:=bg_p!4
+bg_t G:201 SG com/bmake.b[650] bg_t:=bg_e-1
+bg_t G:201 SG com/bmake.b[688] bg_t:=bg_p!4
+bgbexp G:281 DEF com/bmake.b[121] bgbexp=
+bgbexp G:281 FN com/bmake.b[766] LET bgbexp()=..
+bgbexp G:281 LG com/bmake.b[791] bgbexp()
+bgexp G:280 DEF com/bmake.b[121] bgexp=
+bgexp G:280 FN com/bmake.b[790] LET bgexp(n)=..
+bgexp G:280 LG com/bmake.b[763] RESULTIS bgexp(0)
+bgexp G:280 LG com/bmake.b[780] RESULTIS bgexp(2)
+bgexp G:280 LG com/bmake.b[781] RESULTIS -bgexp(2)
+bgexp G:280 LG com/bmake.b[783] bgexp(1)
+bgexp G:280 LG com/bmake.b[800] bgexp(6)
+bgexp G:280 LG com/bmake.b[807] bgexp(6)
+bgexp G:280 LG com/bmake.b[812] a:=muldiv(a,bgexp(5),1000)
+bgexp G:280 LG com/bmake.b[814] a:=muldiv(a,1000,bgexp(5))
+bgexp G:280 LG com/bmake.b[816] a:=a+bgexp(4)
+bgexp G:280 LG com/bmake.b[818] a:=a-bgexp(4)
+bgexp G:280 LG com/bmake.b[820] bgexp(3)
+bgexp G:280 LG com/bmake.b[825] bgexp(2)
+bggetch G:208 DEF com/bmake.b[86] bggetch=
+bggetch G:208 FN com/bmake.b[341] LET bggetch()=..
+bggetch G:208 LG com/bmake.b[487] bg_ch:=bggetch()
+bggetch G:208 LG com/bmake.b[534] bg_ch:=bggetch()
+bggetch G:208 LG com/bmake.b[568] bg_ch:=bggetch()
+bggetch G:208 LG com/bmake.b[716] bg_ch:=bggetch()
+bgpmco G:212 DEF com/bmake.b[89] bgpmco=
+bgpmco G:212 LG com/bmake.b[1056] ch:=callco(bgpmco)
+bgpmco G:212 LG com/bmake.b[245] UNLESS bgpmco DO ..
+bgpmco G:212 LG com/bmake.b[300] IF bgpmco DO ..
+bgpmco G:212 LG com/bmake.b[300] deleteco(bgpmco)
+bgpmco G:212 SG com/bmake.b[205] bgpmco:=0
+bgpmco G:212 SG com/bmake.b[243] bgpmco:=createco(bgpmfn,2000)
+bgpmfn G:213 DEF com/bmake.b[90] bgpmfn=
+bgpmfn G:213 LG com/bmake.b[243] bgpmco:=createco(bgpmfn,2000)
+bgpmfn G:213 RT com/bmake.b[462] LET bgpmfn()BE..
+bgputch G:209 DEF com/bmake.b[86] bgputch=
+bgputch G:209 LG com/bmake.b[509] bgputch(bg_ch)
+bgputch G:209 LG com/bmake.b[513] bgputch(bg_ch)
+bgputch G:209 LG com/bmake.b[538] bgputch(bg_ch)
+bgputch G:209 LG com/bmake.b[555] bgputch(bg_ch)
+bgputch G:209 LG com/bmake.b[565] bgputch(bg_ch)
+bgputch G:209 LG com/bmake.b[581] bgputch(ch)
+bgputch G:209 LG com/bmake.b[591] bgputch(ch)
+bgputch G:209 LG com/bmake.b[612] bgputch(c_lquote)
+bgputch G:209 LG com/bmake.b[616] bgputch(c_rquote)
+bgputch G:209 LG com/bmake.b[620] bgputch(c_comment)
+bgputch G:209 LG com/bmake.b[704] bgputch(!q)
+bgputch G:209 LG com/bmake.b[866] bgputch(45)
+bgputch G:209 LG com/bmake.b[870] bgputch(46)
+bgputch G:209 LG com/bmake.b[871] bgputch(frac/100+48)
+bgputch G:209 LG com/bmake.b[874] bgputch(frac/10+48)
+bgputch G:209 LG com/bmake.b[877] bgputch(frac+48)
+bgputch G:209 LG com/bmake.b[882] bgputch(n REM 10+48)
+bgputch G:209 RT com/bmake.b[325] LET bgputch(ch)BE..
+bgrdnum F:50 FN com/bmake.b[844] LET bgrdnum()=..
+bgrdnum F:50 LF com/bmake.b[778] RESULTIS bgrdnum()
+bgwrn G:210 DEF com/bmake.b[86] bgwrn=
+bgwrnum F:51 LF com/bmake.b[698] bgwrnum(evalarg(1))
+bgwrnum F:51 RT com/bmake.b[864] LET bgwrnum(n)BE..
+binrdch G:39 DEF libhdr.h[54] binrdch=39
+binwrch G:42 DEF libhdr.h[57] binwrch=42
+bitsperbyte M:8 DEF libhdr.h[160] bitsperbyte=8
+bitsperbyte M:8 MAN libhdr.h[161] bitsperword=bitsperbyte*bytesperword
+bitsperword M:32 DEF libhdr.h[161] bitsperword=bitsperbyte*bytesperword
+bitsperword M:32 MAN libhdr.h[163] minint=1<<bitsperword-1
+blkb G:250 DEF com/bmake.b[105] blkb=
+blkb G:250 SG com/bmake.b[208] blklist,blkb,blkp,blkt,blkitem:=0,0,0,0,0
+blkitem G:253 DEF com/bmake.b[108] blkitem=
+blkitem G:253 SG com/bmake.b[208] blklist,blkb,blkp,blkt,blkitem:=0,0,0,0,0
+blklist G:249 DEF com/bmake.b[104] blklist=
+blklist G:249 LG com/bmake.b[306] WHILE blklist DO ..
+blklist G:249 LG com/bmake.b[307] blklist
+blklist G:249 LG com/bmake.b[990] v!0:=blklist
+blklist G:249 SG com/bmake.b[208] blklist,blkb,blkp,blkt,blkitem:=0,0,0,0,0
+blklist G:249 SG com/bmake.b[308] blklist:=!blk
+blklist G:249 SG com/bmake.b[991] blklist:=v
+blkp G:251 DEF com/bmake.b[106] blkp=
+blkp G:251 LG com/bmake.b[979] blkp
+blkp G:251 LG com/bmake.b[982] IF blkp>=blkt DO ..
+blkp G:251 SG com/bmake.b[208] blklist,blkb,blkp,blkt,blkitem:=0,0,0,0,0
+blkp G:251 SG com/bmake.b[981] blkp:=p+n+1
+blkp G:251 SG com/bmake.b[994] blkp:=p+n+1
+blkt G:252 DEF com/bmake.b[107] blkt=
+blkt G:252 LG com/bmake.b[982] IF blkp>=blkt DO ..
+blkt G:252 SG com/bmake.b[208] blklist,blkb,blkp,blkt,blkitem:=0,0,0,0,0
+blkt G:252 SG com/bmake.b[992] blkt:=v+blkupb
+blkupb M:4000 DEF com/bmake.b[135] blkupb=4000
+bootregs M:11 DEF libhdr.h[354] bootregs=11
+btrace F:59 LF com/bmake.b[918] btrace(bg_p,3)
+btrace F:59 RT com/bmake.b[937] LET btrace(p,n)BE..
+bytesperword M:4 DEF libhdr.h[159] bytesperword=1<<B2Wsh
+bytesperword M:4 MAN com/bmake.b[1165] wordnode:=newvec(len/bytesperword+3)
+bytesperword M:4 MAN com/bmake.b[1212] charv:=newvec(256/bytesperword)
+bytesperword M:4 MAN com/bmake.b[182] LET b=VEC 64/bytesperword
+bytesperword M:4 MAN com/bmake.b[393] LET buf=VEC 256/bytesperword
+bytesperword M:4 MAN com/bmake.b[676] LET filename=VEC 256/bytesperword
+bytesperword M:4 MAN com/bmake.b[744] newvec(len/bytesperword)
+bytesperword M:4 MAN libhdr.h[161] bitsperword=bitsperbyte*bytesperword
+bytesperword M:4 MAN libhdr.h[162] mcaddrinc=bytesperword
+bytesperword M:4 MAN libhdr.h[401] scb_nameeend=scb_name+scb_maxnamelen/bytesperword
+c_apply M:93 DEF com/bmake.b[153] c_apply=93
+c_apply M:93 MAN com/bmake.b[587] CASE c_apply:.. 
+c_apply M:93 MAN com/bmake.b[940] wrc(c_apply)
+c_arg M:35 DEF com/bmake.b[158] c_arg=35
+c_arg M:35 MAN com/bmake.b[563] CASE c_arg:.. 
+c_call M:91 DEF com/bmake.b[152] c_call=91
+c_call M:91 MAN com/bmake.b[543] CASE c_call:.. 
+c_call M:91 MAN com/bmake.b[945] c_call
+c_comment M:37 DEF com/bmake.b[155] c_comment=37
+c_comment M:37 MAN com/bmake.b[358] UNLESS ch=c_comment DO ..
+c_comment M:37 MAN com/bmake.b[620] bgputch(c_comment)
+c_lquote M:123 DEF com/bmake.b[156] c_lquote=123
+c_lquote M:123 MAN com/bmake.b[532] CASE c_lquote:.. 
+c_lquote M:123 MAN com/bmake.b[536] IF bg_ch=c_lquote DO ..
+c_lquote M:123 MAN com/bmake.b[612] bgputch(c_lquote)
+c_rquote M:125 DEF com/bmake.b[157] c_rquote=125
+c_rquote M:125 MAN com/bmake.b[537] IF bg_ch=c_rquote DO ..
+c_rquote M:125 MAN com/bmake.b[616] bgputch(c_rquote)
+c_sep M:33 DEF com/bmake.b[154] c_sep=33
+c_sep M:33 MAN com/bmake.b[553] CASE c_sep:.. 
+c_sep M:33 MAN com/bmake.b[957] sep:=c_sep
+callco G:19 DEF libhdr.h[34] callco=19
+callco G:19 LG com/bmake.b[1056] ch:=callco(bgpmco)
+callseg G:107 DEF libhdr.h[123] callseg=107
+capitalch G:96 DEF libhdr.h[112] capitalch=96
+ch G:269 DEF com/bmake.b[118] ch=
+ch G:269 LG com/bmake.b[1058] UNLESS ch=endstreamch DO ..
+ch G:269 LG com/bmake.b[1060] chbuf%(chcount&63):=ch
+ch G:269 LG com/bmake.b[1066] sawritef("lex: '%n '%c'*n",lineno>>20,...,...)
+ch G:269 LG com/bmake.b[1069] SWITCHON ch INTO..
+ch G:269 LG com/bmake.b[1071] SWITCHON ch INTO..
+ch G:269 LG com/bmake.b[1074] writef("Item char: %c*n",ch)
+ch G:269 LG com/bmake.b[1103] IF ch=61 DO ..
+ch G:269 LG com/bmake.b[1108] IF ch=60 DO ..
+ch G:269 LG com/bmake.b[1112] IF ch=62 DO ..
+ch G:269 LG com/bmake.b[1114] IF ch=62 DO ..
+ch G:269 LG com/bmake.b[1122] writef("Body '%c'*n",ch)
+ch G:269 LG com/bmake.b[1136] WHILE 48<=ch&ch<=57 DO ..
+ch G:269 LG com/bmake.b[1136] val:=10*val+ch-48
+ch G:269 LG com/bmake.b[1139] UNLESS ch=46 DO ..
+ch G:269 LG com/bmake.b[1141] UNLESS 48<=ch&ch<=57 DO ..
+ch G:269 LG com/bmake.b[1142] val:=10*val+ch-48
+ch G:269 LG com/bmake.b[1144] UNLESS 48<=ch&ch<=57 DO ..
+ch G:269 LG com/bmake.b[1145] val:=10*val+ch-48
+ch G:269 LG com/bmake.b[1147] UNLESS 48<=ch&ch<=57 DO ..
+ch G:269 LG com/bmake.b[1148] val:=10*val+ch-48
+ch G:269 LG com/bmake.b[1190] ch
+ch G:269 LG com/bmake.b[1191] IF ch=10|ch=12 DO ..
+ch G:269 LG com/bmake.b[1195] IF ch=92 DO ..
+ch G:269 LG com/bmake.b[1197] SWITCHON ch INTO..
+ch G:269 LG com/bmake.b[1199] res:=ch
+ch G:269 LG com/bmake.b[1279] UNTIL ch=10|ch=endstreamch DO ..
+ch G:269 LG com/bmake.b[270] IF ch=endstreamch DO ..
+ch G:269 LG com/bmake.b[279] wrch(ch)
+ch G:269 LG com/bmake.b[591] bgputch(ch)
+ch G:269 LG com/bmake.b[771] bg_error("Bad e'n, ch=%c",ch)
+ch G:269 LG com/bmake.b[839] RESULTIS ch
+ch G:269 LG com/bmake.b[839] UNLESS ch>=(1<<20) DO ..
+ch G:269 LG com/bmake.b[840] lineno:=ch
+ch G:269 SG com/bmake.b[1056] ch:=callco(bgpmco)
+ch G:269 SG com/bmake.b[838] ch:=!p
+changeco G:6 DEF libhdr.h[21] changeco=6
+charv G:287 DEF com/bmake.b[122] charv=
+charv G:287 LG com/bmake.b[1214] UNLESS charv&nametable DO ..
+charv G:287 SG com/bmake.b[1212] charv:=newvec(256/bytesperword)
+chbuf G:270 DEF com/bmake.b[118] chbuf=
+chbuf G:270 LG com/bmake.b[1060] chbuf%(chcount&63):=ch
+chbuf G:270 LG com/bmake.b[1183] chbuf%(p&63)
+chbuf G:270 LG com/bmake.b[193] chbuf%i:=0
+chbuf G:270 SG com/bmake.b[192] chbuf:=b
+chcount G:271 DEF com/bmake.b[118] chcount=
+chcount G:271 LG com/bmake.b[1059] chcount:=chcount+1
+chcount G:271 LG com/bmake.b[1060] chbuf%(chcount&63):=ch
+chcount G:271 LG com/bmake.b[1182] FOR p=chcount-63 TO chcount DO..
+chcount G:271 SG com/bmake.b[1059] chcount:=chcount+1
+chcount G:271 SG com/bmake.b[194] chcount:=0
+chpos G:286 DEF com/bmake.b[122] chpos=
+chpos G:286 LG com/bmake.b[887] IF chpos>70 DO ..
+chpos G:286 LG com/bmake.b[890] chpos:=chpos+4
+chpos G:286 LG com/bmake.b[895] chpos:=chpos+1
+chpos G:286 SG com/bmake.b[886] chpos:=0
+chpos G:286 SG com/bmake.b[890] chpos:=chpos+4
+chpos G:286 SG com/bmake.b[895] chpos:=chpos+1
+cis G:12 DEF libhdr.h[27] cis=12
+clear_words G:115 DEF libhdr.h[131] clear_words=115
+clihook G:4 DEF libhdr.h[19] clihook=4
+cliregs M:21 DEF libhdr.h[355] cliregs=21
+co_c M:5 DEF libhdr.h[201] co_c=
+co_fn M:3 DEF libhdr.h[199] co_fn=
+co_list M:2 DEF libhdr.h[198] co_list=
+co_parent M:1 DEF libhdr.h[197] co_parent=
+co_pptr M:0 DEF libhdr.h[196] co_pptr=0
+co_size M:4 DEF libhdr.h[200] co_size=
+codewrch G:126 DEF libhdr.h[142] codewrch=126
+colist G:8 DEF libhdr.h[23] colist=8
+compch G:97 DEF libhdr.h[113] compch=97
+compstring G:98 DEF libhdr.h[114] compstring=98
+copy_bytes G:116 DEF libhdr.h[132] copy_bytes=116
+copy_words G:114 DEF libhdr.h[130] copy_words=114
+copydir G:79 DEF libhdr.h[94] copydir=79
+copyobj G:75 DEF libhdr.h[90] copyobj=75
+copystring G:99 DEF libhdr.h[115] copystring=99
+cos G:13 DEF libhdr.h[28] cos=13
+cowait G:20 DEF libhdr.h[35] cowait=20
+cowait G:20 LG com/bmake.b[329] cowait(ch)
+cowait G:20 LG com/bmake.b[520] cowait(endstreamch)
+cowait G:20 LG com/bmake.b[625] cowait(s_eof)
+createco G:17 DEF libhdr.h[32] createco=17
+createco G:17 LG com/bmake.b[243] bgpmco:=createco(bgpmfn,2000)
+createdir G:82 DEF libhdr.h[97] createdir=82
+currco G:7 DEF libhdr.h[22] currco=7
+currentdir G:14 DEF libhdr.h[29] currentdir=14
+dat_to_strings G:110 DEF libhdr.h[126] dat_to_strings=110
+datstamp G:109 DEF libhdr.h[125] datstamp=109
+datstring G:108 DEF libhdr.h[124] datstring=108
+deadcode M:-559038242 DEF libhdr.h[183] deadcode=#xDEADC0DE
+debugv G:260 DEF com/bmake.b[112] debugv=
+debugv G:260 LG com/bmake.b[186] debugv!i:=FALSE
+debugv G:260 SG com/bmake.b[185] debugv:=dbv
+define F:42 LF com/bmake.b[475] define("def",s_def)
+define F:42 LF com/bmake.b[476] define("set",s_set)
+define F:42 LF com/bmake.b[477] define("get",s_get)
+define F:42 LF com/bmake.b[478] define("eval",s_eval)
+define F:42 LF com/bmake.b[479] define("lquote",s_lquote)
+define F:42 LF com/bmake.b[480] define("rquote",s_rquote)
+define F:42 LF com/bmake.b[481] define("eof",s_eof)
+define F:42 LF com/bmake.b[482] define("rep",s_rep)
+define F:42 RT com/bmake.b[443] LET define(name,code)BE..
+delay G:128 DEF libhdr.h[144] delay=128
+delayuntil G:129 DEF libhdr.h[145] delayuntil=129
+deleteco G:18 DEF libhdr.h[33] deleteco=18
+deleteco G:18 LG com/bmake.b[300] deleteco(bgpmco)
+deletefile G:76 DEF libhdr.h[91] deletefile=76
+deleteself G:125 DEF libhdr.h[141] deleteself=125
+deplete G:43 DEF libhdr.h[58] deplete=43
+endread G:60 DEF libhdr.h[75] endread=60
+endread G:60 LG com/bmake.b[301] endread()
+endread G:60 LG com/bmake.b[523] endread()
+endstream G:62 DEF libhdr.h[77] endstream=62
+endstreamch M:-1 DEF libhdr.h[166] endstreamch=-1
+endstreamch M:-1 MAN com/bmake.b[1058] UNLESS ch=endstreamch DO ..
+endstreamch M:-1 MAN com/bmake.b[1078] CASE endstreamch:.. 
+endstreamch M:-1 MAN com/bmake.b[1091] CASE endstreamch:.. 
+endstreamch M:-1 MAN com/bmake.b[1279] UNTIL ch=10|ch=endstreamch DO ..
+endstreamch M:-1 MAN com/bmake.b[270] IF ch=endstreamch DO ..
+endstreamch M:-1 MAN com/bmake.b[365] IF ch=endstreamch DO ..
+endstreamch M:-1 MAN com/bmake.b[516] CASE endstreamch:.. 
+endstreamch M:-1 MAN com/bmake.b[520] cowait(endstreamch)
+endwrite G:61 DEF libhdr.h[76] endwrite=61
+endwrite G:61 LG com/bmake.b[302] endwrite()
+entryword M:57311 DEF libhdr.h[185] entryword=57311
+err F:185 LAB com/bmake.b[795] err:bg_error("Bad expression")
+errcount G:261 DEF com/bmake.b[113] errcount=
+errcount G:261 LG com/bmake.b[1268] errcount:=errcount+1
+errcount G:261 LG com/bmake.b[1282] errcount:=errcount+1
+errcount G:261 LG com/bmake.b[1283] IF errcount>=errmax DO ..
+errcount G:261 LG com/bmake.b[297] IF errcount DO ..
+errcount G:261 LG com/bmake.b[923] errcount:=errcount+1
+errcount G:261 LG com/bmake.b[924] IF errcount>=errmax DO ..
+errcount G:261 SG com/bmake.b[1268] errcount:=errcount+1
+errcount G:261 SG com/bmake.b[1282] errcount:=errcount+1
+errcount G:261 SG com/bmake.b[188] errcount,errmax:=0,5
+errcount G:261 SG com/bmake.b[923] errcount:=errcount+1
+errmax G:262 DEF com/bmake.b[113] errmax=
+errmax G:262 LG com/bmake.b[1283] IF errcount>=errmax DO ..
+errmax G:262 LG com/bmake.b[924] IF errcount>=errmax DO ..
+errmax G:262 SG com/bmake.b[188] errcount,errmax:=0,5
+error G:211 DEF com/bmake.b[87] error=
+error G:211 LG com/bmake.b[1281] error("")
+error G:211 LG com/bmake.b[911] error()
+error G:211 RT com/bmake.b[915] LET error(mess,a,b,c)BE..
+evalarg F:46 FN com/bmake.b[760] LET evalarg(n)=..
+evalarg F:46 LF com/bmake.b[698] bgwrnum(evalarg(1))
+evalarg F:46 LF com/bmake.b[703] FOR k=1 TO evalarg(1)/1000 DO..
+fatalerr G:263 DEF com/bmake.b[114] fatalerr=
+fatalerr G:263 LG com/bmake.b[1214] fatalerr("More 'e needed")
+fatalerr G:263 LG com/bmake.b[1283] fatalerr("Too m'y errors")
+fatalerr G:263 LG com/bmake.b[228] fatalerr("Bad a'r BMAKE*n")
+fatalerr G:263 LG com/bmake.b[241] fatalerr("Unabl'b = %n)*n",upb)
+fatalerr G:263 LG com/bmake.b[245] fatalerr("Unabl' bgpmco*n")
+fatalerr G:263 LG com/bmake.b[924] fatalerr("*nToo 'y errors")
+fatalerr G:263 RT com/bmake.b[1256] LET fatalerr(mess,a,b,c)BE..
+fatalsynerr G:265 DEF com/bmake.b[114] fatalsynerr=
+fatalsynerr G:265 LG com/bmake.b[1252] fatalsynerr("Incor'mination")
+fatalsynerr G:265 RT com/bmake.b[1263] LET fatalsynerr(mess,a)BE..
+fin F:3 LAB com/bmake.b[299] fin:IF bgpmco DO ..
+fin F:3 LF com/bmake.b[189] fin_p,fin_l:=level(),fin
+fin F:3 LF com/bmake.b[217] GOTO fin
+fin F:3 LF com/bmake.b[250] GOTO fin
+fin F:3 LF com/bmake.b[257] GOTO fin
+fin F:3 LF com/bmake.b[283] GOTO fin
+fin F:3 LF com/bmake.b[290] GOTO fin
+fin F:3 LF com/bmake.b[297] GOTO fin
+fin_l G:259 DEF com/bmake.b[110] fin_l=
+fin_l G:259 LG com/bmake.b[1260] longjump(fin_p,fin_l)
+fin_l G:259 LG com/bmake.b[1270] longjump(fin_p,fin_l)
+fin_l G:259 LG com/bmake.b[190] rec_p,rec_l:=fin_p,fin_l
+fin_l G:259 SG com/bmake.b[189] fin_p,fin_l:=level(),fin
+fin_p G:258 DEF com/bmake.b[110] fin_p=
+fin_p G:258 LG com/bmake.b[1260] longjump(fin_p,fin_l)
+fin_p G:258 LG com/bmake.b[1270] longjump(fin_p,fin_l)
+fin_p G:258 LG com/bmake.b[190] rec_p,rec_l:=fin_p,fin_l
+fin_p G:258 SG com/bmake.b[189] fin_p,fin_l:=level(),fin
+findarg G:104 DEF libhdr.h[120] findarg=104
+findinoutput G:50 DEF libhdr.h[65] findinoutput=50
+findinput G:48 DEF libhdr.h[63] findinput=48
+findinput G:48 LG com/bmake.b[247] sourcestream:=findinput(fromname)
+findinput G:48 LG com/bmake.b[726] findinput(filename)
+findoutput G:49 DEF libhdr.h[64] findoutput=49
+findoutput G:49 LG com/bmake.b[254] tostream:=findoutput(toname)
+findstream G:52 DEF libhdr.h[67] findstream=52
+findupdate G:51 DEF libhdr.h[66] findupdate=51
+fl_abs M:5 DEF libhdr.h[410] fl_abs=
+fl_acos M:20 DEF libhdr.h[414] fl_acos=20
+fl_asin M:21 DEF libhdr.h[415] fl_asin=
+fl_atan M:22 DEF libhdr.h[416] fl_atan=
+fl_atan2 M:23 DEF libhdr.h[417] fl_atan2=
+fl_avail M:0 DEF libhdr.h[408] fl_avail=0
+fl_ceil M:38 DEF libhdr.h[432] fl_ceil=
+fl_cos M:24 DEF libhdr.h[418] fl_cos=
+fl_cosh M:27 DEF libhdr.h[421] fl_cosh=
+fl_div M:7 DEF libhdr.h[411] fl_div=
+fl_eq M:12 DEF libhdr.h[412] fl_eq=
+fl_exp M:30 DEF libhdr.h[424] fl_exp=
+fl_fix M:4 DEF libhdr.h[410] fl_fix=
+fl_float M:3 DEF libhdr.h[410] fl_float=
+fl_floor M:39 DEF libhdr.h[433] fl_floor=
+fl_fmod M:40 DEF libhdr.h[434] fl_fmod=
+fl_frexp M:31 DEF libhdr.h[425] fl_frexp=
+fl_ge M:17 DEF libhdr.h[412] fl_ge=
+fl_gr M:15 DEF libhdr.h[412] fl_gr=
+fl_ldexp M:32 DEF libhdr.h[426] fl_ldexp=
+fl_le M:16 DEF libhdr.h[412] fl_le=
+fl_log M:33 DEF libhdr.h[427] fl_log=
+fl_log10 M:34 DEF libhdr.h[428] fl_log10=
+fl_ls M:14 DEF libhdr.h[412] fl_ls=
+fl_minus M:9 DEF libhdr.h[411] fl_minus=
+fl_mk M:1 DEF libhdr.h[409] fl_mk=
+fl_modf M:35 DEF libhdr.h[429] fl_modf=
+fl_mult M:6 DEF libhdr.h[411] fl_mult=
+fl_ne M:13 DEF libhdr.h[412] fl_ne=
+fl_neg M:11 DEF libhdr.h[411] fl_neg=
+fl_plus M:8 DEF libhdr.h[411] fl_plus=
+fl_pos M:10 DEF libhdr.h[411] fl_pos=
+fl_pow M:36 DEF libhdr.h[430] fl_pow=
+fl_sin M:25 DEF libhdr.h[419] fl_sin=
+fl_sinh M:28 DEF libhdr.h[422] fl_sinh=
+fl_sqrt M:37 DEF libhdr.h[431] fl_sqrt=
+fl_tan M:26 DEF libhdr.h[420] fl_tan=
+fl_tanh M:29 DEF libhdr.h[423] fl_tanh=
+fl_unmk M:2 DEF libhdr.h[409] fl_unmk=
+freeobj G:78 DEF libhdr.h[93] freeobj=78
+freevec G:27 DEF libhdr.h[42] freevec=27
+freevec G:27 LG com/bmake.b[305] freevec(base)
+freevec G:27 LG com/bmake.b[309] freevec(blk)
+g_colist M:8 DEF libhdr.h[191] g_colist=8
+g_currco M:7 DEF libhdr.h[190] g_currco=7
+g_globsize M:0 DEF libhdr.h[188] g_globsize=0
+g_rootnode M:9 DEF libhdr.h[192] g_rootnode=9
+g_sys M:3 DEF libhdr.h[189] g_sys=3
+get_index_record G:73 DEF libhdr.h[88] get_index_record=73
+get_record G:71 DEF libhdr.h[86] get_record=71
+get_text G:93 DEF libhdr.h[109] get_text=93
+get_textblib G:93 DEF libhdr.h[108] get_textblib=93
+getargch F:49 FN com/bmake.b[834] LET getargch()=..
+getargch F:49 LF com/bmake.b[767] bg_ch:=getargch()
+getargch F:49 LF com/bmake.b[784] bg_ch:=getargch()
+getargch F:49 LF com/bmake.b[796] bg_ch:=getargch()
+getargch F:49 LF com/bmake.b[848] bg_ch:=getargch()
+getargch F:49 LF com/bmake.b[851] bg_ch:=getargch()
+getargch F:49 LF com/bmake.b[854] bg_ch:=getargch()
+getargch F:49 LF com/bmake.b[857] bg_ch:=getargch()
+getargch F:49 LF com/bmake.b[860] bg_ch:=getargch()
+getlogname G:118 DEF libhdr.h[134] getlogname=118
+getremipaddr G:54 DEF libhdr.h[69] getremipaddr=54
+getstreams G:221 DEF com/bmake.b[94] getstreams=
+getstreams G:221 LG com/bmake.b[517] IF getstreams=0 DO ..
+getstreams G:221 LG com/bmake.b[524] lineno:=h3!getstreams
+getstreams G:221 LG com/bmake.b[525] sourcestream:=h2!getstreams
+getstreams G:221 LG com/bmake.b[526] getstreams:=h1!getstreams
+getstreams G:221 LG com/bmake.b[750] getstreams:=mk3(getstreams,sourcestream,lineno)
+getstreams G:221 SG com/bmake.b[203] getstreams:=0
+getstreams G:221 SG com/bmake.b[526] getstreams:=h1!getstreams
+getstreams G:221 SG com/bmake.b[750] getstreams:=mk3(getstreams,sourcestream,lineno)
+getvec G:25 DEF libhdr.h[40] getvec=25
+getvec G:25 LG com/bmake.b[239] base:=getvec(upb)
+getvec G:25 LG com/bmake.b[983] getvec(blkupb)
+getword G:32 DEF libhdr.h[47] getword=32
+globin G:24 DEF libhdr.h[39] globin=24
+globsize G:0 DEF libhdr.h[15] globsize=0
+globword M:-1886453760 DEF libhdr.h[181] globword=#x8F8F0000
+h1 M:0 DEF com/bmake.b[161] h1=0
+h1 M:0 MAN com/bmake.b[526] getstreams:=h1!getstreams
+h2 M:1 DEF com/bmake.b[161] h2=
+h2 M:1 MAN com/bmake.b[1167] h2!wordnode:=s_item
+h2 M:1 MAN com/bmake.b[1171] RESULTIS h2!wordnode
+h2 M:1 MAN com/bmake.b[525] sourcestream:=h2!getstreams
+h3 M:2 DEF com/bmake.b[161] h3=
+h3 M:2 MAN com/bmake.b[1161] TEST @h3!wordnode%i=word%i THEN .. ELSE ..
+h3 M:2 MAN com/bmake.b[1168] @h3!wordnode%i:=word%i
+h3 M:2 MAN com/bmake.b[524] lineno:=h3!getstreams
+h4 M:3 DEF com/bmake.b[161] h4=
+h5 M:4 DEF com/bmake.b[161] h5=
+h6 M:5 DEF com/bmake.b[161] h6=
+h7 M:6 DEF com/bmake.b[161] h7=
+id_inoutscb M:131 DEF libhdr.h[362] id_inoutscb=131
+id_inscb M:129 DEF libhdr.h[360] id_inscb=129
+id_outscb M:130 DEF libhdr.h[361] id_outscb=130
+initco G:22 DEF libhdr.h[37] initco=22
+initio G:46 DEF libhdr.h[61] initio=46
+input G:58 DEF libhdr.h[73] input=58
+input G:58 LG com/bmake.b[198] sysin:=input()
+instrcount G:121 DEF libhdr.h[137] instrcount=121
+intflag G:119 DEF libhdr.h[135] intflag=119
+isrregs M:41 DEF libhdr.h[358] isrregs=41
+klibregs M:21 DEF libhdr.h[356] klibregs=21
+level G:15 DEF libhdr.h[30] level=15
+level G:15 LG com/bmake.b[1210] rec_p,rec_l:=level(),recover
+level G:15 LG com/bmake.b[189] fin_p,fin_l:=level(),fin
+level G:15 LG com/bmake.b[469] rec_p,rec_l:=level(),ret
+lex F:282 LF com/bmake.b[1220] lex()
+lex F:282 LF com/bmake.b[1244] lex()
+lex F:282 LF com/bmake.b[1280] lex()
+lex F:282 RT com/bmake.b[1064] LET lex()BE..
+lexval G:278 DEF com/bmake.b[120] lexval=
+lineno G:222 DEF com/bmake.b[94] lineno=
+lineno G:222 LG com/bmake.b[1066] sawritef("lex: '%n '%c'*n",lineno>>20,...,...)
+lineno G:222 LG com/bmake.b[1264] prlineno(lineno)
+lineno G:222 LG com/bmake.b[1275] prlineno(lineno)
+lineno G:222 LG com/bmake.b[332] lineno:=lineno+1
+lineno G:222 LG com/bmake.b[367] lineno:=lineno+1
+lineno G:222 LG com/bmake.b[376] lineno:=lineno+1
+lineno G:222 LG com/bmake.b[550] push(lineno)
+lineno G:222 LG com/bmake.b[560] push(lineno)
+lineno G:222 LG com/bmake.b[572] lineno
+lineno G:222 LG com/bmake.b[580] lineno:=lineno+1
+lineno G:222 LG com/bmake.b[601] a!2:=lineno
+lineno G:222 LG com/bmake.b[750] getstreams:=mk3(getstreams,sourcestream,lineno)
+lineno G:222 LG com/bmake.b[908] prlineno(lineno)
+lineno G:222 SG com/bmake.b[225] lineno:=(1<<20)+1
+lineno G:222 SG com/bmake.b[328] lineno:=ch
+lineno G:222 SG com/bmake.b[332] lineno:=lineno+1
+lineno G:222 SG com/bmake.b[349] lineno:=ch
+lineno G:222 SG com/bmake.b[367] lineno:=lineno+1
+lineno G:222 SG com/bmake.b[376] lineno:=lineno+1
+lineno G:222 SG com/bmake.b[508] lineno:=bg_ch
+lineno G:222 SG com/bmake.b[524] lineno:=h3!getstreams
+lineno G:222 SG com/bmake.b[577] lineno:=ch
+lineno G:222 SG com/bmake.b[580] lineno:=lineno+1
+lineno G:222 SG com/bmake.b[583] lineno:=lno
+lineno G:222 SG com/bmake.b[632] lineno:=bg_p!2
+lineno G:222 SG com/bmake.b[653] lineno:=bg_p!2
+lineno G:222 SG com/bmake.b[690] lineno:=bg_p!2
+lineno G:222 SG com/bmake.b[755] lineno:=(sourcefileno<<20)+1
+lineno G:222 SG com/bmake.b[840] lineno:=ch
+loadseg G:105 DEF libhdr.h[121] loadseg=105
+locatedir G:80 DEF libhdr.h[95] locatedir=80
+locateobj G:81 DEF libhdr.h[96] locateobj=81
+longjump G:16 DEF libhdr.h[31] longjump=16
+longjump G:16 LG com/bmake.b[1260] longjump(fin_p,fin_l)
+longjump G:16 LG com/bmake.b[1270] longjump(fin_p,fin_l)
+longjump G:16 LG com/bmake.b[1286] longjump(rec_p,rec_l)
+longjump G:16 LG com/bmake.b[927] longjump(rec_p,rec_l)
+lookup F:40 FN com/bmake.b[391] LET lookup(name)=..
+lookup F:40 LF com/bmake.b[607] bg_c:=arg(lookup(...)+2,1)
+lookup F:40 LF com/bmake.b[663] lookup(name)
+lookupword F:321 FN com/bmake.b[1154] LET lookupword(word)=..
+maxint M:2147483647 DEF libhdr.h[164] maxint=minint-1
+mcaddrinc M:4 DEF libhdr.h[162] mcaddrinc=bytesperword
+minint M:-2147483648 DEF libhdr.h[163] minint=1<<bitsperword-1
+minint M:-2147483648 MAN libhdr.h[164] maxint=minint-1
+mk1 G:228 DEF com/bmake.b[98] mk1=
+mk1 G:228 FN com/bmake.b[1001] LET mk1(x)=..
+mk1list G:242 DEF com/bmake.b[102] mk1list=
+mk1list G:242 LG com/bmake.b[1046] !p:=mk1list
+mk1list G:242 SG com/bmake.b[1046] mk1list:=p
+mk1list G:242 SG com/bmake.b[210] mk1list,mk2list,mk3list,mk4list,...:=0,0,0,0,...
+mk2 G:229 DEF com/bmake.b[98] mk2=
+mk2 G:229 FN com/bmake.b[1007] LET mk2(x,y)=..
+mk2list G:243 DEF com/bmake.b[102] mk2list=
+mk2list G:243 LG com/bmake.b[1047] !p:=mk2list
+mk2list G:243 SG com/bmake.b[1047] mk2list:=p
+mk2list G:243 SG com/bmake.b[210] mk1list,mk2list,mk3list,mk4list,...:=0,0,0,0,...
+mk3 G:230 DEF com/bmake.b[98] mk3=
+mk3 G:230 FN com/bmake.b[1013] LET mk3(x,y,z)=..
+mk3 G:230 LG com/bmake.b[750] getstreams:=mk3(getstreams,sourcestream,lineno)
+mk3list G:244 DEF com/bmake.b[102] mk3list=
+mk3list G:244 LG com/bmake.b[1014] mk3list
+mk3list G:244 LG com/bmake.b[1048] !p:=mk3list
+mk3list G:244 SG com/bmake.b[1016] mk3list:=!p
+mk3list G:244 SG com/bmake.b[1048] mk3list:=p
+mk3list G:244 SG com/bmake.b[210] mk1list,mk2list,mk3list,mk4list,...:=0,0,0,0,...
+mk4 G:231 DEF com/bmake.b[98] mk4=
+mk4 G:231 FN com/bmake.b[1022] LET mk4(x,y,z,t)=..
+mk4list G:245 DEF com/bmake.b[102] mk4list=
+mk4list G:245 LG com/bmake.b[1049] !p:=mk4list
+mk4list G:245 SG com/bmake.b[1049] mk4list:=p
+mk4list G:245 SG com/bmake.b[210] mk1list,mk2list,mk3list,mk4list,...:=0,0,0,0,...
+mk5 G:232 DEF com/bmake.b[98] mk5=
+mk5 G:232 FN com/bmake.b[1028] LET mk5(x,y,z,t,u)=..
+mk5list G:246 DEF com/bmake.b[102] mk5list=
+mk5list G:246 LG com/bmake.b[1050] !p:=mk5list
+mk5list G:246 SG com/bmake.b[1050] mk5list:=p
+mk5list G:246 SG com/bmake.b[210] mk1list,mk2list,mk3list,mk4list,...:=0,0,0,0,...
+mk6 G:233 DEF com/bmake.b[98] mk6=
+mk6 G:233 FN com/bmake.b[1034] LET mk6(x,y,z,t,u,v)=..
+mk6list G:247 DEF com/bmake.b[102] mk6list=
+mk6list G:247 LG com/bmake.b[1051] !p:=mk6list
+mk6list G:247 SG com/bmake.b[1051] mk6list:=p
+mk6list G:247 SG com/bmake.b[210] mk1list,mk2list,mk3list,mk4list,...:=0,0,0,0,...
+mk7 G:234 DEF com/bmake.b[98] mk7=
+mk7 G:234 FN com/bmake.b[1040] LET mk7(x,y,z,t,u,v,w)=..
+mk7list G:248 DEF com/bmake.b[102] mk7list=
+mk7list G:248 LG com/bmake.b[1052] !p:=mk7list
+mk7list G:248 SG com/bmake.b[1052] mk7list:=p
+mk7list G:248 SG com/bmake.b[210] mk1list,mk2list,mk3list,mk4list,...:=0,0,0,0,...
+mkramstream G:123 DEF libhdr.h[139] mkramstream=123
+muldiv G:5 DEF libhdr.h[20] muldiv=5
+muldiv G:5 LG com/bmake.b[812] a:=muldiv(a,bgexp(5),1000)
+muldiv G:5 LG com/bmake.b[814] a:=muldiv(a,1000,bgexp(5))
+n_a1 M:3 DEF com/bmake.b[164] n_a1=
+n_a2 M:4 DEF com/bmake.b[164] n_a2=
+n_a3 M:5 DEF com/bmake.b[164] n_a3=
+n_a4 M:6 DEF com/bmake.b[164] n_a4=
+n_ln M:2 DEF com/bmake.b[164] n_ln=
+n_next M:0 DEF com/bmake.b[164] n_next=0
+n_op M:1 DEF com/bmake.b[164] n_op=
+nametable G:293 DEF com/bmake.b[128] nametable=
+nametable G:293 LG com/bmake.b[1159] wordnode:=nametable!hashval
+nametable G:293 LG com/bmake.b[1166] !wordnode:=nametable!hashval
+nametable G:293 LG com/bmake.b[1169] nametable!hashval:=wordnode
+nametable G:293 LG com/bmake.b[1214] UNLESS charv&nametable DO ..
+nametable G:293 LG com/bmake.b[1215] nametable!i:=0
+nametable G:293 SG com/bmake.b[1213] nametable:=newvec(nametablesize)
+nametablesize M:541 DEF com/bmake.b[134] nametablesize=541
+nametablesize M:541 MAN com/bmake.b[1158] hashval:=hashval REM nametablesize
+nametablesize M:541 MAN com/bmake.b[1213] nametable:=newvec(nametablesize)
+nametablesize M:541 MAN com/bmake.b[1215] FOR i=0 TO nametablesize DO..
+newline G:84 DEF libhdr.h[99] newline=84
+newline G:84 LG com/bmake.b[1186] newline()
+newline G:84 LG com/bmake.b[1217] newline()
+newline G:84 LG com/bmake.b[1224] newline()
+newline G:84 LG com/bmake.b[1240] newline()
+newline G:84 LG com/bmake.b[1243] newline()
+newline G:84 LG com/bmake.b[1264] newline()
+newline G:84 LG com/bmake.b[1275] newline()
+newline G:84 LG com/bmake.b[294] newline()
+newline G:84 LG com/bmake.b[886] newline()
+newpage G:120 DEF libhdr.h[136] newpage=120
+newvec G:227 DEF com/bmake.b[98] newvec=
+newvec G:227 FN com/bmake.b[978] LET newvec(n)=..
+newvec G:227 LG com/bmake.b[1002] newvec(0)
+newvec G:227 LG com/bmake.b[1008] newvec(1)
+newvec G:227 LG com/bmake.b[1017] p:=newvec(2)
+newvec G:227 LG com/bmake.b[1023] newvec(3)
+newvec G:227 LG com/bmake.b[1029] newvec(4)
+newvec G:227 LG com/bmake.b[1035] newvec(5)
+newvec G:227 LG com/bmake.b[1041] newvec(6)
+newvec G:227 LG com/bmake.b[1165] wordnode:=newvec(len/bytesperword+3)
+newvec G:227 LG com/bmake.b[1212] charv:=newvec(256/bytesperword)
+newvec G:227 LG com/bmake.b[1213] nametable:=newvec(nametablesize)
+newvec G:227 LG com/bmake.b[214] sourcenamev:=newvec(sourcefileupb)
+newvec G:227 LG com/bmake.b[744] newvec(len/bytesperword)
+note G:63 DEF libhdr.h[78] note=63
+numval G:279 DEF com/bmake.b[120] numval=
+opstr G:275 DEF com/bmake.b[119] opstr=
+opstr G:291 DEF com/bmake.b[124] opstr=
+opstr G:291 FN com/bmake.b[1289] LET opstr(tok)=..
+opstr G:291 LG com/bmake.b[1223] writef("%t9",opstr(token))
+optPtree G:226 DEF com/bmake.b[96] optPtree=
+optTokens G:224 DEF com/bmake.b[96] optTokens=
+optTokens G:224 LG com/bmake.b[1217] IF optTokens DO ..
+optTokens G:224 LG com/bmake.b[1222] WHILE optTokens DO ..
+optTokens G:224 LG com/bmake.b[1249] IF optTokens DO ..
+optTokens G:224 LG com/bmake.b[290] IF optTokens DO ..
+optTokens G:224 SG com/bmake.b[235] optTokens:=argv!4
+optTree G:225 DEF com/bmake.b[96] optTree=
+optTree G:225 LG com/bmake.b[292] IF optTree DO ..
+optTree G:225 SG com/bmake.b[236] optTree:=argv!5
+output G:59 DEF libhdr.h[74] output=59
+output G:59 LG com/bmake.b[199] sysout:=output()
+packstring G:30 DEF libhdr.h[45] packstring=30
+parse G:272 DEF com/bmake.b[118] parse=
+parse G:272 FN com/bmake.b[1208] LET parse()=..
+parse G:272 LG com/bmake.b[288] tree:=parse()
+pathfindinput G:53 DEF libhdr.h[68] pathfindinput=53
+pathfindinput G:53 LG com/bmake.b[731] stream:=pathfindinput(filename,"MUSHDRS")
+performget F:45 LF com/bmake.b[693] performget(filename)
+performget F:45 RT com/bmake.b[724] LET performget(filename)BE..
+point G:64 DEF libhdr.h[79] point=64
+pollingch M:-3 DEF libhdr.h[168] pollingch=-3
+pptrace G:223 DEF com/bmake.b[96] pptrace=
+pptrace G:223 LG com/bmake.b[265] IF pptrace DO ..
+pptrace G:223 SG com/bmake.b[234] pptrace:=argv!3
+prcall F:58 LF com/bmake.b[917] prcall(3,bg_f,bg_h,bg_s)
+prcall F:58 LF com/bmake.b[932] prcall(n-1,!f,...,...)
+prcall F:58 RT com/bmake.b[930] LET prcall(n,f,h,s)BE..
+prlineno G:276 DEF com/bmake.b[119] prlineno=
+prlineno G:276 LG com/bmake.b[1264] prlineno(lineno)
+prlineno G:276 LG com/bmake.b[1275] prlineno(lineno)
+prlineno G:276 LG com/bmake.b[908] prlineno(lineno)
+prlineno G:276 RT com/bmake.b[318] LET prlineno(ln)BE..
+prtree G:274 DEF com/bmake.b[119] prtree=
+prtree G:274 LG com/bmake.b[293] prtree(tree,0,20)
+push F:37 FN com/bmake.b[335] LET push(ch)=..
+push F:37 LF com/bmake.b[330] push(ch)
+push F:37 LF com/bmake.b[446] push(bg_e)
+push F:37 LF com/bmake.b[447] push(bg_t)
+push F:37 LF com/bmake.b[449] push(name%0+1)
+push F:37 LF com/bmake.b[450] push((1<<20)+1)
+push F:37 LF com/bmake.b[451] push(name%i)
+push F:37 LF com/bmake.b[452] push(2)
+push F:37 LF com/bmake.b[453] push((1<<20)+1)
+push F:37 LF com/bmake.b[454] push(code)
+push F:37 LF com/bmake.b[455] push(s_eom)
+push F:37 LF com/bmake.b[544] bg_f:=push(bg_f)
+push F:37 LF com/bmake.b[545] push(bg_h)
+push F:37 LF com/bmake.b[546] push(?)
+push F:37 LF com/bmake.b[547] push(?)
+push F:37 LF com/bmake.b[548] push(?)
+push F:37 LF com/bmake.b[549] bg_h:=push(?)
+push F:37 LF com/bmake.b[550] push(lineno)
+push F:37 LF com/bmake.b[559] bg_h:=push(?)
+push F:37 LF com/bmake.b[560] push(lineno)
+push F:37 LF com/bmake.b[596] push(s_eom)
+put_index_record G:74 DEF libhdr.h[89] put_index_record=74
+put_record G:72 DEF libhdr.h[87] put_record=72
+putword G:33 DEF libhdr.h[48] putword=33
+randno G:34 DEF libhdr.h[49] randno=34
+randseed G:127 DEF libhdr.h[143] randseed=127
+rch G:268 DEF com/bmake.b[118] rch=
+rch G:268 LG com/bmake.b[1075] rch()
+rch G:268 LG com/bmake.b[1098] rch()
+rch G:268 LG com/bmake.b[1102] rch()
+rch G:268 LG com/bmake.b[1105] rch()
+rch G:268 LG com/bmake.b[1111] rch()
+rch G:268 LG com/bmake.b[1113] rch()
+rch G:268 LG com/bmake.b[1116] rch()
+rch G:268 LG com/bmake.b[1129] rch()
+rch G:268 LG com/bmake.b[1137] rch()
+rch G:268 LG com/bmake.b[1140] rch()
+rch G:268 LG com/bmake.b[1143] rch()
+rch G:268 LG com/bmake.b[1146] rch()
+rch G:268 LG com/bmake.b[1149] rch()
+rch G:268 LG com/bmake.b[1196] rch()
+rch G:268 LG com/bmake.b[1204] rch()
+rch G:268 LG com/bmake.b[1279] rch()
+rch G:268 LG com/bmake.b[269] rch()
+rch G:268 LG com/bmake.b[286] rch()
+rch G:268 RT com/bmake.b[1055] LET rch()BE..
+rdargs G:102 DEF libhdr.h[118] rdargs=102
+rdargs G:102 LG com/bmake.b[227] UNLESS rdargs("TARGE't/S,-c/S",argv,50) DO ..
+rdch G:38 DEF libhdr.h[53] rdch=38
+rdch G:38 LG com/bmake.b[355] ch:=rdch()
+rdch G:38 LG com/bmake.b[364] ch:=rdch()
+rdch G:38 LG com/bmake.b[373] ch:=rdch()
+rdint F:44 FN com/bmake.b[711] LET rdint()=..
+rdint F:44 LF com/bmake.b[571] arg(bg_p+5,rdint())
+rditem G:103 DEF libhdr.h[119] rditem=103
+rdnum F:283 FN com/bmake.b[1132] LET rdnum()=..
+rdstrch G:292 DEF com/bmake.b[127] rdstrch=
+rdstrch G:292 FN com/bmake.b[1189] LET rdstrch()=..
+rdtag G:290 DEF com/bmake.b[123] rdtag=
+readn G:83 DEF libhdr.h[98] readn=83
+readwords G:44 DEF libhdr.h[59] readwords=44
+rec_l G:257 DEF com/bmake.b[110] rec_l=
+rec_l G:257 LG com/bmake.b[1286] longjump(rec_p,rec_l)
+rec_l G:257 LG com/bmake.b[927] longjump(rec_p,rec_l)
+rec_l G:257 SG com/bmake.b[1210] rec_p,rec_l:=level(),recover
+rec_l G:257 SG com/bmake.b[190] rec_p,rec_l:=fin_p,fin_l
+rec_l G:257 SG com/bmake.b[469] rec_p,rec_l:=level(),ret
+rec_p G:256 DEF com/bmake.b[110] rec_p=
+rec_p G:256 LG com/bmake.b[1286] longjump(rec_p,rec_l)
+rec_p G:256 LG com/bmake.b[927] longjump(rec_p,rec_l)
+rec_p G:256 SG com/bmake.b[1210] rec_p,rec_l:=level(),recover
+rec_p G:256 SG com/bmake.b[190] rec_p,rec_l:=fin_p,fin_l
+rec_p G:256 SG com/bmake.b[469] rec_p,rec_l:=level(),ret
+recordnote G:70 DEF libhdr.h[85] recordnote=70
+recordpoint G:69 DEF libhdr.h[84] recordpoint=69
+recover F:356 LAB com/bmake.b[1248] recover:IF optTokens DO ..
+recover F:356 LF com/bmake.b[1210] rec_p,rec_l:=level(),recover
+renamefile G:77 DEF libhdr.h[92] renamefile=77
+result2 G:10 DEF libhdr.h[25] result2=10
+resumeco G:21 DEF libhdr.h[36] resumeco=21
+ret F:106 LAB com/bmake.b[629] ret:IF bg_p=0 DO ..
+ret F:106 LF com/bmake.b[469] rec_p,rec_l:=level(),ret
+ret F:106 LF com/bmake.b[669] GOTO ret
+ret F:106 LF com/bmake.b[699] GOTO ret
+ret F:106 LF com/bmake.b[705] GOTO ret
+returncode G:11 DEF libhdr.h[26] returncode=11
+rewindstream G:65 DEF libhdr.h[80] rewindstream=65
+rootnode G:9 DEF libhdr.h[24] rootnode=9
+rootnodeaddr M:100 DEF libhdr.h[208] rootnodeaddr=100
+rtn_abortcode M:27 DEF libhdr.h[244] rtn_abortcode=
+rtn_adjclock M:33 DEF libhdr.h[262] rtn_adjclock=
+rtn_blib M:19 DEF libhdr.h[233] rtn_blib=
+rtn_blklist M:4 DEF libhdr.h[215] rtn_blklist=
+rtn_boot M:17 DEF libhdr.h[231] rtn_boot=
+rtn_boottrace M:39 DEF libhdr.h[277] rtn_boottrace=
+rtn_bptaddr M:9 DEF libhdr.h[222] rtn_bptaddr=
+rtn_bptinstr M:10 DEF libhdr.h[223] rtn_bptinstr=
+rtn_clkintson M:6 DEF libhdr.h[218] rtn_clkintson=
+rtn_clwkq M:12 DEF libhdr.h[226] rtn_clwkq=
+rtn_context M:28 DEF libhdr.h[245] rtn_context=
+rtn_crntask M:3 DEF libhdr.h[214] rtn_crntask=
+rtn_days M:40 DEF libhdr.h[280] rtn_days=
+rtn_dbgvars M:11 DEF libhdr.h[224] rtn_dbgvars=
+rtn_dcountv M:34 DEF libhdr.h[264] rtn_dcountv=
+rtn_devtab M:1 DEF libhdr.h[212] rtn_devtab=
+rtn_dumpflag M:25 DEF libhdr.h[241] rtn_dumpflag=
+rtn_envlist M:26 DEF libhdr.h[242] rtn_envlist=
+rtn_hdrsvar M:37 DEF libhdr.h[273] rtn_hdrsvar=
+rtn_idletcb M:32 DEF libhdr.h[261] rtn_idletcb=
+rtn_info M:15 DEF libhdr.h[229] rtn_info=
+rtn_insadebug M:8 DEF libhdr.h[220] rtn_insadebug=
+rtn_intflag M:24 DEF libhdr.h[240] rtn_intflag=
+rtn_keyboard M:20 DEF libhdr.h[234] rtn_keyboard=
+rtn_klib M:18 DEF libhdr.h[232] rtn_klib=
+rtn_lastch M:7 DEF libhdr.h[219] rtn_lastch=
+rtn_lastg M:30 DEF libhdr.h[254] rtn_lastg=
+rtn_lastp M:29 DEF libhdr.h[253] rtn_lastp=
+rtn_lastst M:31 DEF libhdr.h[255] rtn_lastst=
+rtn_mc0 M:42 DEF libhdr.h[283] rtn_mc0=
+rtn_mc1 M:43 DEF libhdr.h[285] rtn_mc1=
+rtn_mc2 M:44 DEF libhdr.h[286] rtn_mc2=
+rtn_mc3 M:45 DEF libhdr.h[287] rtn_mc3=
+rtn_membase M:13 DEF libhdr.h[227] rtn_membase=
+rtn_memsize M:14 DEF libhdr.h[228] rtn_memsize=
+rtn_msecs M:41 DEF libhdr.h[281] rtn_msecs=
+rtn_pathvar M:36 DEF libhdr.h[271] rtn_pathvar=
+rtn_rootvar M:35 DEF libhdr.h[269] rtn_rootvar=
+rtn_screen M:21 DEF libhdr.h[235] rtn_screen=
+rtn_scriptsvar M:38 DEF libhdr.h[275] rtn_scriptsvar=
+rtn_sys M:16 DEF libhdr.h[230] rtn_sys=
+rtn_tallyv M:5 DEF libhdr.h[216] rtn_tallyv=
+rtn_tasktab M:0 DEF libhdr.h[211] rtn_tasktab=0
+rtn_tcblist M:2 DEF libhdr.h[213] rtn_tcblist=
+rtn_upb M:50 DEF libhdr.h[289] rtn_upb=50
+rtn_vecstatsv M:22 DEF libhdr.h[237] rtn_vecstatsv=
+rtn_vecstatsvupb M:23 DEF libhdr.h[238] rtn_vecstatsvupb=
+s_body M:4 DEF com/bmake.b[170] s_body=
+s_body M:4 MAN com/bmake.b[1110] token:=s_body
+s_body M:4 MAN com/bmake.b[1233] CASE s_body:.. 
+s_body M:4 MAN com/bmake.b[1292] CASE s_body:.. 
+s_bodyend M:8 DEF com/bmake.b[174] s_bodyend=
+s_bodyend M:8 MAN com/bmake.b[1293] CASE s_bodyend:.. 
+s_bodystart M:7 DEF com/bmake.b[173] s_bodystart=
+s_bodystart M:7 MAN com/bmake.b[1294] CASE s_bodystart:.. 
+s_comment M:-10 DEF com/bmake.b[148] s_comment=-10
+s_comment M:-10 MAN com/bmake.b[619] CASE s_comment:.. 
+s_def M:-4 DEF com/bmake.b[142] s_def=-4
+s_def M:-4 MAN com/bmake.b[475] define("def",s_def)
+s_def M:-4 MAN com/bmake.b[637] CASE s_def:.. 
+s_depends M:3 DEF com/bmake.b[169] s_depends=
+s_depends M:3 MAN com/bmake.b[1104] token:=s_depends
+s_depends M:3 MAN com/bmake.b[1295] CASE s_depends:.. 
+s_eof M:-2 DEF com/bmake.b[138] s_eof=-2
+s_eof M:-2 MAN com/bmake.b[1079] token:=s_eof
+s_eof M:-2 MAN com/bmake.b[1092] token:=s_eof
+s_eof M:-2 MAN com/bmake.b[1239] IF token=s_eof DO ..
+s_eof M:-2 MAN com/bmake.b[1252] UNLESS token=s_eof DO ..
+s_eof M:-2 MAN com/bmake.b[481] define("eof",s_eof)
+s_eof M:-2 MAN com/bmake.b[623] CASE s_eof:.. 
+s_eof M:-2 MAN com/bmake.b[625] cowait(s_eof)
+s_eof M:-2 MAN com/bmake.b[794] IF n>1|n=1&bg_ch=41|n=0&bg_ch=s_eof DO ..
+s_eof M:-2 MAN com/bmake.b[836] RESULTIS s_eof
+s_eom M:-3 DEF com/bmake.b[139] s_eom=-3
+s_eom M:-3 MAN com/bmake.b[402] s_eom
+s_eom M:-3 MAN com/bmake.b[403] s_eom
+s_eom M:-3 MAN com/bmake.b[417] IF ch1=s_eom DO ..
+s_eom M:-3 MAN com/bmake.b[455] push(s_eom)
+s_eom M:-3 MAN com/bmake.b[596] push(s_eom)
+s_eom M:-3 MAN com/bmake.b[628] CASE s_eom:.. 
+s_eom M:-3 MAN com/bmake.b[648] a2!(!a2+1):=s_eom
+s_eom M:-3 MAN com/bmake.b[668] b!(len+1):=s_eom
+s_eval M:-7 DEF com/bmake.b[145] s_eval=-7
+s_eval M:-7 MAN com/bmake.b[478] define("eval",s_eval)
+s_eval M:-7 MAN com/bmake.b[697] CASE s_eval:.. 
+s_get M:-6 DEF com/bmake.b[144] s_get=-6
+s_get M:-6 MAN com/bmake.b[477] define("get",s_get)
+s_get M:-6 MAN com/bmake.b[672] CASE s_get:.. 
+s_item M:1 DEF com/bmake.b[167] s_item=1
+s_item M:1 MAN com/bmake.b[1086] token:=s_item
+s_item M:1 MAN com/bmake.b[1167] h2!wordnode:=s_item
+s_item M:1 MAN com/bmake.b[1229] CASE s_item:.. 
+s_item M:1 MAN com/bmake.b[1296] CASE s_item:.. 
+s_lquote M:-8 DEF com/bmake.b[146] s_lquote=-8
+s_lquote M:-8 MAN com/bmake.b[479] define("lquote",s_lquote)
+s_lquote M:-8 MAN com/bmake.b[611] CASE s_lquote:.. 
+s_param M:2 DEF com/bmake.b[168] s_param=
+s_param M:2 MAN com/bmake.b[1297] CASE s_param:.. 
+s_pattern M:6 DEF com/bmake.b[172] s_pattern=
+s_pattern M:6 MAN com/bmake.b[1298] CASE s_pattern:.. 
+s_rep M:-19 DEF com/bmake.b[149] s_rep=-19
+s_rep M:-19 MAN com/bmake.b[482] define("rep",s_rep)
+s_rep M:-19 MAN com/bmake.b[701] CASE s_rep:.. 
+s_rquote M:-9 DEF com/bmake.b[147] s_rquote=-9
+s_rquote M:-9 MAN com/bmake.b[480] define("rquote",s_rquote)
+s_rquote M:-9 MAN com/bmake.b[615] CASE s_rquote:.. 
+s_rule M:5 DEF com/bmake.b[171] s_rule=
+s_rule M:5 MAN com/bmake.b[1299] CASE s_rule:.. 
+s_set M:-5 DEF com/bmake.b[143] s_set=-5
+s_set M:-5 MAN com/bmake.b[476] define("set",s_set)
+s_set M:-5 MAN com/bmake.b[659] CASE s_set:.. 
+sardch G:36 DEF libhdr.h[51] sardch=36
+saveregs M:31 DEF libhdr.h[357] saveregs=31
+sawrch G:37 DEF libhdr.h[52] sawrch=37
+sawritef G:95 DEF libhdr.h[111] sawritef=95
+sawritef G:95 LG com/bmake.b[1066] sawritef("lex: '%n '%c'*n",lineno>>20,...,...)
+scb_blength M:14 DEF libhdr.h[387] scb_blength=
+scb_block M:9 DEF libhdr.h[382] scb_block=
+scb_buf M:3 DEF libhdr.h[376] scb_buf=
+scb_bufend M:11 DEF libhdr.h[384] scb_bufend=
+scb_encoding M:19 DEF libhdr.h[397] scb_encoding=
+scb_end M:5 DEF libhdr.h[378] scb_end=
+scb_endfn M:8 DEF libhdr.h[381] scb_endfn=
+scb_fd M:16 DEF libhdr.h[389] scb_fd=
+scb_id M:0 DEF libhdr.h[373] scb_id=0
+scb_lblock M:12 DEF libhdr.h[385] scb_lblock=
+scb_ldata M:13 DEF libhdr.h[386] scb_ldata=
+scb_maxnamelen M:31 DEF libhdr.h[371] scb_maxnamelen=31
+scb_maxnamelen M:31 MAN libhdr.h[401] scb_nameeend=scb_name+scb_maxnamelen/bytesperword
+scb_name M:20 DEF libhdr.h[399] scb_name=
+scb_name M:20 MAN libhdr.h[401] scb_nameeend=scb_name+scb_maxnamelen/bytesperword
+scb_nameeend M:27 DEF libhdr.h[401] scb_nameeend=scb_name+scb_maxnamelen/bytesperword
+scb_pos M:4 DEF libhdr.h[377] scb_pos=
+scb_rdfn M:6 DEF libhdr.h[379] scb_rdfn=
+scb_reclen M:15 DEF libhdr.h[388] scb_reclen=
+scb_size M:28 DEF libhdr.h[404] scb_size=
+scb_size M:28 MAN libhdr.h[405] scb_upb=scb_size-1
+scb_task M:2 DEF libhdr.h[375] scb_task=
+scb_timeout M:17 DEF libhdr.h[390] scb_timeout=
+scb_timeoutact M:18 DEF libhdr.h[393] scb_timeoutact=
+scb_type M:1 DEF libhdr.h[374] scb_type=
+scb_upb M:27 DEF libhdr.h[405] scb_upb=scb_size-1
+scb_wrfn M:7 DEF libhdr.h[380] scb_wrfn=
+scb_write M:10 DEF libhdr.h[383] scb_write=
+scbt_console M:-1 DEF libhdr.h[367] scbt_console=-1
+scbt_file M:1 DEF libhdr.h[365] scbt_file=1
+scbt_mbx M:-2 DEF libhdr.h[368] scbt_mbx=-2
+scbt_net M:2 DEF libhdr.h[364] scbt_net=2
+scbt_ram M:0 DEF libhdr.h[366] scbt_ram=0
+scbt_tcp M:-3 DEF libhdr.h[369] scbt_tcp=-3
+sectword M:64991 DEF libhdr.h[184] sectword=64991
+selectinput G:56 DEF libhdr.h[71] selectinput=56
+selectinput G:56 LG com/bmake.b[261] selectinput(sourcestream)
+selectinput G:56 LG com/bmake.b[303] selectinput(sysin)
+selectinput G:56 LG com/bmake.b[527] selectinput(sourcestream)
+selectinput G:56 LG com/bmake.b[752] selectinput(sourcestream)
+selectoutput G:57 DEF libhdr.h[72] selectoutput=57
+selectoutput G:57 LG com/bmake.b[262] selectoutput(tostream)
+selectoutput G:57 LG com/bmake.b[304] selectoutput(sysout)
+selectoutput G:57 LG com/bmake.b[907] selectoutput(sysout)
+selectoutput G:57 LG com/bmake.b[910] selectoutput(tostream)
+selectoutput G:57 LG com/bmake.b[912] selectoutput(tostream)
+selectoutput G:57 LG com/bmake.b[926] selectoutput(tostream)
+setbit G:112 DEF libhdr.h[128] setbit=112
+setbulk G:122 DEF libhdr.h[138] setbulk=122
+setlogname G:117 DEF libhdr.h[133] setlogname=117
+setrecordlength G:68 DEF libhdr.h[83] setrecordlength=68
+setseed G:35 DEF libhdr.h[50] setseed=35
+settimeout G:55 DEF libhdr.h[70] settimeout=55
+settimeoutact G:124 DEF libhdr.h[140] settimeoutact=124
+sourcefileno G:219 DEF com/bmake.b[93] sourcefileno=
+sourcefileno G:219 LG com/bmake.b[738] IF sourcefileno>=sourcefileupb DO ..
+sourcefileno G:219 LG com/bmake.b[746] sourcefileno:=sourcefileno+1
+sourcefileno G:219 LG com/bmake.b[747] sourcenamev!sourcefileno:=str
+sourcefileno G:219 LG com/bmake.b[755] lineno:=(sourcefileno<<20)+1
+sourcefileno G:219 SG com/bmake.b[219] sourcefileno:=1
+sourcefileno G:219 SG com/bmake.b[746] sourcefileno:=sourcefileno+1
+sourcefileupb G:220 DEF com/bmake.b[93] sourcefileupb=
+sourcefileupb G:220 LG com/bmake.b[214] sourcenamev:=newvec(sourcefileupb)
+sourcefileupb G:220 LG com/bmake.b[220] FOR i=0 TO sourcefileupb DO..
+sourcefileupb G:220 LG com/bmake.b[738] IF sourcefileno>=sourcefileupb DO ..
+sourcefileupb G:220 SG com/bmake.b[213] sourcefileupb:=1000
+sourcenamev G:218 DEF com/bmake.b[93] sourcenamev=
+sourcenamev G:218 LG com/bmake.b[215] UNLESS sourcenamev DO ..
+sourcenamev G:218 LG com/bmake.b[220] sourcenamev!i:="unknown"
+sourcenamev G:218 LG com/bmake.b[321] writef(" %s[%n]",sourcenamev!fileno,lno)
+sourcenamev G:218 LG com/bmake.b[747] sourcenamev!sourcefileno:=str
+sourcenamev G:218 LG com/bmake.b[947] sourcenamev!(lno>>20)
+sourcenamev G:218 SG com/bmake.b[214] sourcenamev:=newvec(sourcefileupb)
+sourcestream G:216 DEF com/bmake.b[92] sourcestream=
+sourcestream G:216 LG com/bmake.b[248] UNLESS sourcestream DO ..
+sourcestream G:216 LG com/bmake.b[261] IF sourcestream DO ..
+sourcestream G:216 LG com/bmake.b[261] selectinput(sourcestream)
+sourcestream G:216 LG com/bmake.b[301] UNLESS sourcestream=sysin DO ..
+sourcestream G:216 LG com/bmake.b[527] selectinput(sourcestream)
+sourcestream G:216 LG com/bmake.b[750] getstreams:=mk3(getstreams,sourcestream,lineno)
+sourcestream G:216 LG com/bmake.b[752] selectinput(sourcestream)
+sourcestream G:216 SG com/bmake.b[202] sourcestream:=0
+sourcestream G:216 SG com/bmake.b[247] sourcestream:=findinput(fromname)
+sourcestream G:216 SG com/bmake.b[525] sourcestream:=h2!getstreams
+sourcestream G:216 SG com/bmake.b[751] sourcestream:=stream
+splitname G:47 DEF libhdr.h[62] splitname=47
+stackword M:-1412623820 DEF libhdr.h[182] stackword=#xABCD1234
+start G:1 DEF libhdr.h[16] start=1
+start G:1 FN com/bmake.b[177] LET start()=..
+startco G:23 DEF libhdr.h[38] startco=23
+stepstream G:67 DEF libhdr.h[82] stepstream=67
+stop G:2 DEF libhdr.h[17] stop=2
+str2numb G:101 DEF libhdr.h[117] str2numb=101
+string_to_dat G:111 DEF libhdr.h[127] string_to_dat=111
+string_to_number G:100 DEF libhdr.h[116] string_to_number=100
+stringval G:289 DEF com/bmake.b[122] stringval=
+strv G:267 DEF com/bmake.b[116] strv=
+strv G:267 SG com/bmake.b[184] strv:=s
+sw F:105 LAB com/bmake.b[495] sw:SWITCHON bg_ch INTO..
+sw F:105 LF com/bmake.b[584] GOTO sw
+synerr G:264 DEF com/bmake.b[114] synerr=
+synerr G:264 LG com/bmake.b[1126] synerr("Unexpected '<'")
+synerr G:264 LG com/bmake.b[1193] synerr("Unesc'haracter")
+synerr G:264 LG com/bmake.b[1198] synerr("Bad s'constant")
+synerr G:264 LG com/bmake.b[249] synerr("Unabl'ile: %s*n",fromname)
+synerr G:264 LG com/bmake.b[256] synerr("Unabl'ile: %s*n",toname)
+synerr G:264 RT com/bmake.b[1273] LET synerr(mess,a,b,c)BE..
+sys G:3 DEF libhdr.h[18] sys=3
+sysabort G:29 DEF libhdr.h[44] sysabort=29
+sysin G:214 DEF com/bmake.b[92] sysin=
+sysin G:214 LG com/bmake.b[301] UNLESS sourcestream=sysin DO ..
+sysin G:214 LG com/bmake.b[303] selectinput(sysin)
+sysin G:214 SG com/bmake.b[198] sysin:=input()
+sysout G:215 DEF com/bmake.b[92] sysout=
+sysout G:215 LG com/bmake.b[302] UNLESS tostream=sysout DO ..
+sysout G:215 LG com/bmake.b[304] selectoutput(sysout)
+sysout G:215 LG com/bmake.b[907] selectoutput(sysout)
+sysout G:215 SG com/bmake.b[199] sysout:=output()
+t_bhunk M:3000 DEF libhdr.h[178] t_bhunk=3000
+t_bhunk64 M:4000 DEF libhdr.h[179] t_bhunk64=4000
+t_end M:1002 DEF libhdr.h[174] t_end=1002
+t_end64 M:2002 DEF libhdr.h[177] t_end64=2002
+t_hunk M:1000 DEF libhdr.h[172] t_hunk=1000
+t_hunk64 M:2000 DEF libhdr.h[175] t_hunk64=2000
+t_reloc M:1001 DEF libhdr.h[173] t_reloc=1001
+t_reloc64 M:2001 DEF libhdr.h[176] t_reloc64=2001
+target G:294 DEF com/bmake.b[129] target=
+target G:294 SG com/bmake.b[231] target:=argv!0
+taskid M:1 DEF libhdr.h[440] taskid=1
+testbit G:113 DEF libhdr.h[129] testbit=113
+tg M:190 DEF libhdr.h[156] tg=190
+timeoutch M:-2 DEF libhdr.h[167] timeoutch=-2
+token G:277 DEF com/bmake.b[120] token=
+token G:277 LG com/bmake.b[1223] writef("%t9",opstr(token))
+token G:277 LG com/bmake.b[1225] SWITCHON token INTO..
+token G:277 LG com/bmake.b[1239] IF token=s_eof DO ..
+token G:277 LG com/bmake.b[1252] UNLESS token=s_eof DO ..
+token G:277 SG com/bmake.b[1079] token:=s_eof
+token G:277 SG com/bmake.b[1086] token:=s_item
+token G:277 SG com/bmake.b[1092] token:=s_eof
+token G:277 SG com/bmake.b[1104] token:=s_depends
+token G:277 SG com/bmake.b[1110] token:=s_body
+tostream G:217 DEF com/bmake.b[92] tostream=
+tostream G:217 LG com/bmake.b[255] UNLESS tostream DO ..
+tostream G:217 LG com/bmake.b[262] IF tostream DO ..
+tostream G:217 LG com/bmake.b[262] selectoutput(tostream)
+tostream G:217 LG com/bmake.b[302] UNLESS tostream=sysout DO ..
+tostream G:217 LG com/bmake.b[910] selectoutput(tostream)
+tostream G:217 LG com/bmake.b[912] selectoutput(tostream)
+tostream G:217 LG com/bmake.b[926] selectoutput(tostream)
+tostream G:217 SG com/bmake.b[204] tostream:=0
+tostream G:217 SG com/bmake.b[254] tostream:=findoutput(toname)
+tree G:273 DEF com/bmake.b[118] tree=
+tree G:273 LG com/bmake.b[293] prtree(tree,0,20)
+tree G:273 SG com/bmake.b[288] tree:=parse()
+trerr G:266 DEF com/bmake.b[115] trerr=
+ug M:200 DEF libhdr.h[157] ug=200
+ug M:200 MAN com/bmake.b[77] bg_s=ug
+unloadseg G:106 DEF libhdr.h[122] unloadseg=106
+unmk1 G:235 DEF com/bmake.b[100] unmk1=
+unmk1 G:235 RT com/bmake.b[1046] LET unmk1(p)BE..
+unmk2 G:236 DEF com/bmake.b[100] unmk2=
+unmk2 G:236 RT com/bmake.b[1047] LET unmk2(p)BE..
+unmk3 G:237 DEF com/bmake.b[100] unmk3=
+unmk3 G:237 RT com/bmake.b[1048] LET unmk3(p)BE..
+unmk4 G:238 DEF com/bmake.b[100] unmk4=
+unmk4 G:238 RT com/bmake.b[1049] LET unmk4(p)BE..
+unmk5 G:239 DEF com/bmake.b[100] unmk5=
+unmk5 G:239 RT com/bmake.b[1050] LET unmk5(p)BE..
+unmk6 G:240 DEF com/bmake.b[100] unmk6=
+unmk6 G:240 RT com/bmake.b[1051] LET unmk6(p)BE..
+unmk7 G:241 DEF com/bmake.b[100] unmk7=
+unmk7 G:241 RT com/bmake.b[1052] LET unmk7(p)BE..
+unpackstring G:31 DEF libhdr.h[46] unpackstring=31
+unrdch G:40 DEF libhdr.h[55] unrdch=40
+upb G:255 DEF com/bmake.b[110] upb=
+upb G:255 LG com/bmake.b[238] IF upb<500 DO ..
+upb G:255 LG com/bmake.b[239] base:=getvec(upb)
+upb G:255 LG com/bmake.b[241] fatalerr("Unabl'b = %n)*n",upb)
+upb G:255 LG com/bmake.b[471] bg_s,bg_t,bg_h,bg_p,...:=base-1,base+upb,0,0,...
+upb G:255 SG com/bmake.b[196] upb:=100000
+upb G:255 SG com/bmake.b[238] upb:=500
+wordnode G:288 DEF com/bmake.b[122] wordnode=
+wordnode G:288 LG com/bmake.b[1161] TEST @h3!wordnode%i=word%i THEN .. ELSE ..
+wordnode G:288 LG com/bmake.b[1161] WHILE wordnode&i<=len DO ..
+wordnode G:288 LG com/bmake.b[1163] wordnode,i:=!wordnode,0
+wordnode G:288 LG com/bmake.b[1164] UNLESS wordnode DO ..
+wordnode G:288 LG com/bmake.b[1166] !wordnode:=nametable!hashval
+wordnode G:288 LG com/bmake.b[1167] h2!wordnode:=s_item
+wordnode G:288 LG com/bmake.b[1168] @h3!wordnode%i:=word%i
+wordnode G:288 LG com/bmake.b[1169] nametable!hashval:=wordnode
+wordnode G:288 LG com/bmake.b[1171] RESULTIS h2!wordnode
+wordnode G:288 SG com/bmake.b[1159] wordnode:=nametable!hashval
+wordnode G:288 SG com/bmake.b[1163] wordnode,i:=!wordnode,0
+wordnode G:288 SG com/bmake.b[1165] wordnode:=newvec(len/bytesperword+3)
+wrarg F:61 LF com/bmake.b[955] wrarg(a)
+wrarg F:61 LF com/bmake.b[972] wrarg(name)
+wrarg F:61 LF com/bmake.b[973] wrarg(value)
+wrarg F:61 RT com/bmake.b[961] LET wrarg(a)BE..
+wrc G:284 DEF com/bmake.b[122] wrc=
+wrc G:284 LG com/bmake.b[899] wrc(s%i)
+wrc G:284 LG com/bmake.b[903] wrc(n REM 10+48)
+wrc G:284 LG com/bmake.b[921] wrc(10)
+wrc G:284 LG com/bmake.b[940] wrc(10)
+wrc G:284 LG com/bmake.b[940] wrc(c_apply)
+wrc G:284 LG com/bmake.b[949] wrc(32)
+wrc G:284 LG com/bmake.b[950] wrc(filename%i)
+wrc G:284 LG com/bmake.b[951] wrc(91)
+wrc G:284 LG com/bmake.b[955] wrc(sep)
+wrc G:284 LG com/bmake.b[964] wrc(!ptr)
+wrc G:284 LG com/bmake.b[972] wrc(32)
+wrc G:284 LG com/bmake.b[974] wrc(10)
+wrc G:284 RT com/bmake.b[885] LET wrc(ch)BE..
+wrcall F:60 LF com/bmake.b[934] wrcall(f+5,s)
+wrcall F:60 LF com/bmake.b[940] wrcall(p+5,p!4)
+wrcall F:60 RT com/bmake.b[944] LET wrcall(a,b)BE..
+wrch G:41 DEF libhdr.h[56] wrch=41
+wrch G:41 LG com/bmake.b[1184] wrch(k)
+wrch G:41 LG com/bmake.b[279] wrch(ch)
+wrch G:41 LG com/bmake.b[893] wrch(ch)
+wrchbuf F:322 LF com/bmake.b[1267] wrchbuf()
+wrchbuf F:322 LF com/bmake.b[1277] wrchbuf()
+wrchbuf F:322 RT com/bmake.b[1180] LET wrchbuf()BE..
+wrenv F:62 RT com/bmake.b[968] LET wrenv(e,n)BE..
+writed G:85 DEF libhdr.h[100] writed=85
+writef G:94 DEF libhdr.h[110] writef=94
+writef G:94 LG com/bmake.b[1074] writef("Item char: %c*n",ch)
+writef G:94 LG com/bmake.b[1085] writef("End of item*n")
+writef G:94 LG com/bmake.b[1120] writef("Body '<'*n")
+writef G:94 LG com/bmake.b[1122] writef("Body '%c'*n",ch)
+writef G:94 LG com/bmake.b[1223] writef("%t9",opstr(token))
+writef G:94 LG com/bmake.b[1230] writef(" item *"%s*"","xxx")
+writef G:94 LG com/bmake.b[1234] writef(" body %8.3d",0)
+writef G:94 LG com/bmake.b[1258] writef(mess,a,b,c)
+writef G:94 LG com/bmake.b[1264] writef("*nErro' line:  ")
+writef G:94 LG com/bmake.b[1265] writef(mess,a)
+writef G:94 LG com/bmake.b[1266] writef("*nRecent text:*n")
+writef G:94 LG com/bmake.b[1275] writef("*nErro' line:  ")
+writef G:94 LG com/bmake.b[1276] writef(mess,a,b,c)
+writef G:94 LG com/bmake.b[216] writef("Insuf'ailable*n")
+writef G:94 LG com/bmake.b[321] writef(" %s[%n]",sourcenamev!fileno,lno)
+writef G:94 LG com/bmake.b[889] writef("'%n'",ch)
+writef G:94 LG com/bmake.b[909] writef(mess,a,b,c)
+writehex G:87 DEF libhdr.h[102] writehex=87
+writen G:86 DEF libhdr.h[101] writen=86
+writeoct G:88 DEF libhdr.h[103] writeoct=88
+writes G:89 DEF libhdr.h[104] writes=89
+writes G:89 LG com/bmake.b[1181] writes("*n...")
+writes G:89 LG com/bmake.b[1257] writes("*nError: ")
+writes G:89 LG com/bmake.b[1259] writes("*nComp'aborted*n")
+writes G:89 LG com/bmake.b[1269] writes("*nComp'aborted*n")
+writes G:89 LG com/bmake.b[292] writes("*nComp'e Tree*n*n")
+writet G:90 DEF libhdr.h[105] writet=90
+writeu G:91 DEF libhdr.h[106] writeu=91
+writewords G:45 DEF libhdr.h[60] writewords=45
+writez G:92 DEF libhdr.h[107] writez=92
+wrn F:55 LF com/bmake.b[902] wrn(n/10)
+wrn F:55 LF com/bmake.b[952] wrn(ln)
+wrn F:55 RT com/bmake.b[901] LET wrn(n)BE..
+wrpn F:52 LF com/bmake.b[868] wrpn(n/1000)
+wrpn F:52 LF com/bmake.b[881] wrpn(n/10)
+wrpn F:52 RT com/bmake.b[880] LET wrpn(n)BE..
+wrs G:285 DEF com/bmake.b[122] wrs=
+wrs G:285 LG com/bmake.b[887] wrs("*n  ")
+wrs G:285 LG com/bmake.b[894] wrs("  ")
+wrs G:285 LG com/bmake.b[908] wrs("*n*n###'ror near")
+wrs G:285 LG com/bmake.b[908] wrs(": ")
+wrs G:285 LG com/bmake.b[916] wrs("*nInco' calls:*n")
+wrs G:285 LG com/bmake.b[918] wrs("Activ' calls:*n")
+wrs G:285 LG com/bmake.b[931] wrs(" ...")
+wrs G:285 LG com/bmake.b[938] wrs(" ...*n")
+wrs G:285 LG com/bmake.b[953] wrs("]: ")
+wrs G:285 LG com/bmake.b[965] wrs(" ...")
+wrs G:285 LG com/bmake.b[971] wrs(" ...*n")
+wrs G:285 LG com/bmake.b[972] wrs(" Name: ")
+wrs G:285 LG com/bmake.b[973] wrs("  Value: ")
+wrs G:285 RT com/bmake.b[899] LET wrs(s)BE..

@@ -1,0 +1,23 @@
+xref
+<<
+delete -f rawxref
+c compall "ver rawxref xref"
+sortxref rawxref to xrefdata
+delete rawxref
+>>
+
+xplaymus <= com/playmus.b g/playmus.h
+<<
+delete -f rawxref
+c bc playmus "ver rawxref xref"
+sortxref rawxref to xplaymus
+delete rawxref
+>>
+
+
+% xcdecode all the compressed source files in posxfiles
+
+decodeall
+<<
+xcdecode bin sysxfiles/cintsys.xc1
+>>

@@ -1,0 +1,31 @@
+
+All macro programs with filenames ending in .bgpm can be run using
+bgpm, and those ending in .gpm should be run using gpmcj or gpm. gpm
+is like gpmcj but with minor corrections concerning the treatment of
+DEF and UPDATE.
+
+To demostrate the problem try
+
+gpmcj prime.gpm
+
+and 
+
+gpm.prime.gpm
+
+There are some notes about the implementations of gpm and bgpm in
+bgpm.txt and gpm.txt.
+
+Various macro programs woth trying are:
+
+bgpm versions
+
+bug.bgpm      defs.bgpm    hanoi.bgpm  prime.bgpm  sumbug.bgpm	updtst.bgpm
+collatz.bgpm  errors.bgpm  perm.bgpm   sum.bgpm    t1.bgpm
+
+gpm versions
+
+bug.gpm      defs.gpm	 hanoi.gpm  prime.gpm	sum.gpm  updtst.gpm
+collatz.gpm  errors.gpm  perm.gpm   sumbug.gpm	t1.gpm
+
+Martin Richards
+7 May 2013

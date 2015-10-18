@@ -1,0 +1,12 @@
+GET "libhdr"
+
+LET start() = VALOF
+{ LET instr = findinput("sintab")
+  selectinput(instr)
+
+  { LET ch=rdch()
+    IF ch=endstreamch BREAK
+
+    wrch(ch)
+  } REPEAT
+}

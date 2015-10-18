@@ -1,0 +1,1805 @@
+ # This is an assembly language version of cinterp for the mips R2000/R3000
+ # machines.
+ #
+ # Written by Martin Richards  (c) June 1993
+
+ # Register usage conventions:
+ #
+ # $0        zero     Wired zero
+ # $1        AT       May be used by the assembler
+ # $2        v0       The returned value
+ # $3        v1       Second returned value?
+ # $4 - $7   a0 - a3  The first four conforming arguments
+ # $8 - $15  t0 - t7  Temporary registers
+ # $16 - $23 s0 - s7  must be preserved
+ # $24 - $25 t8 - t9  Temporary registers
+ # $26 - $27 k0 - k1  Kernel temporary registers
+ # $28       gp       Mips global pointer
+ # $29       sp       Points to stack location of first argument on entry
+ # $30       s8       must be preserved
+ # $31       ra       The return address
+
+#include <regdef.h>
+
+	.set	nobopt
+
+	.text
+	.align	2
+	.globl	cintasm
+
+	.extern result2,4
+
+	.text
+
+	.ent	cintasm
+cintasm:
+	subu	sp,sp,64
+	sw	ra,60(sp)	# save registers
+	sw	s8,56(sp)
+	sw	s7,52(sp)
+	sw	s6,48(sp)
+	sw	s5,44(sp)
+	sw	s4,40(sp)
+	sw	s3,36(sp)
+	sw	s2,32(sp)
+	sw	s1,28(sp)
+	sw	s0,24(sp)
+
+	move	s8,a1		# m/c addr of cintcode memory
+
+	move	s7,a0
+	sll	s7,s7,2
+	addu	s7,s7,s8	# m/c addr of register vector
+
+	lw	s0,0(s7)	# A
+	lw	s1,4(s7)	# B
+	lw	s2,8(s7)	# C
+	lw	s3,12(s7)
+	addu	s3,s3,s8	# m/c addr P
+	lw	s5,16(s7)
+	addu	s4,s5,s8	# m/c address of G0
+	srl	s5,s5,2		# bcpl pointer to G0
+	lw	s6,24(s7)
+	addu	s6,s6,s8	# m/c address PC
+	la	ra,runtbl
+	
+ # The register usage is as follows:
+
+ # s0   A
+ # s1   B
+ # s2   C
+ # s3   m/c addr P
+ # s4   m/c addr G
+ # s5   bcpl pointer G
+ # s6   m/c add PC
+ # s7   m/c address of regs vector
+ # s8   m/c address of base of Cintcode memory
+ # ra   = runtbl
+
+
+	# To single step cintasm:
+        # Set count to -2 (0-2sr7)
+	# then use the c command. This will execute one cintcode
+	# instruction and then cause fault 10.
+
+	lbu	v0,0(s6)	# v0 = op code
+	j	fetch1
+
+ret10:	li	v0,10
+	j	ret
+	
+ # At fetch:
+ #   s6 = pc  (= address of F A)
+ #   v0 = op code F
+ # At the jump:
+ #   s6 has been incremented, ie it now points to A
+ #   v1 = 4*F
+ #   t0 = A (sign extended)
+ #   v0 = A (unsigned)
+
+fetch:
+	#lw	t7,28(s7)	# comment out when debugged
+	#addu	t7,t7,2		# comment out when debugged
+	#beqz	t7,ret10	# comment out when debugged
+fetch1:
+	sll	v1,v0,2		# v1 = 4 * op code
+	addu	a0,ra,v1
+	lw	a0,0(a0)
+	lb	t0,1(s6)	# t0 = next byte of instruction
+	addu	s6,s6,1		# pc++
+	andi	v0,t0,255	# n = B[pc]
+	j	a0
+
+ret:				# Result in v0
+	sw	s0,0(s7)	# A
+	sw	s1,4(s7)	# B
+	sw	s2,8(s7)	# C
+	subu	s3,s3,s8	# m/c addr P
+	sw	s3,12(s7)
+	subu	s6,s6,s8	# m/c address PC
+	sw	s6,24(s7)
+ 
+	lw	ra,60(sp)	# restore registers
+	lw	s8,56(sp)
+	lw	s7,52(sp)
+	lw	s6,48(sp)
+	lw	s5,44(sp)
+	lw	s4,40(sp)
+	lw	s3,36(sp)
+	lw	s2,32(sp)
+	lw	s1,28(sp)
+	lw	s0,24(sp)
+
+	addu	sp,sp,64
+	j	ra
+
+	.rdata
+	
+	.align 2
+
+runtbl:
+ .word   L0,   L1,   L2,   L3,   L4,   L5,   L6,   L7
+ .word   L8,   L9,  L10,  L11,  L12,  L13,  L14,  L15
+ .word  L16,  L17,  L18,  L19,  L20,  L21,  L22,  L23
+ .word  L24,  L25,  L26,  L27,  L28,  L29,  L30,  L31
+ .word  L32,  L33,  L34,  L35,  L36,  L37,  L38,  L39
+ .word  L40,  L41,  L42,  L43,  L44,  L45,  L46,  L47
+ .word  L48,  L49,  L50,  L51,  L52,  L53,  L54,  L55
+ .word  L56,  L57,  L58,  L59,  L60,  L61,  L62,  L63
+ .word  L64,  L65,  L66,  L67,  L68,  L69,  L70,  L71
+ .word  L72,  L73,  L74,  L75,  L76,  L77,  L78,  L79
+ .word  L80,  L81,  L82,  L83,  L84,  L85,  L86,  L87
+ .word  L88,  L89,  L90,  L91,  L92,  L93,  L94,  L95
+ .word  L96,  L97,  L98,  L99, L100, L101, L102, L103
+ .word L104, L105, L106, L107, L108, L109, L110, L111
+ .word L112, L113, L114, L115, L116, L117, L118, L119
+ .word L120, L121, L122, L123, L124, L125, L126, L127
+ .word L128, L129, L130, L131, L132, L133, L134, L135
+ .word L136, L137, L138, L139, L140, L141, L142, L143
+ .word L144, L145, L146, L147, L148, L149, L150, L151
+ .word L152, L153, L154, L155, L156, L157, L158, L159
+ .word L160, L161, L162, L163, L164, L165, L166, L167
+ .word L168, L169, L170, L171, L172, L173, L174, L175
+ .word L176, L177, L178, L179, L180, L181, L182, L183
+ .word L184, L185, L186, L187, L188, L189, L190, L191
+ .word L192, L193, L194, L195, L196, L197, L198, L199
+ .word L200, L201, L202, L203, L204, L205, L206, L207
+ .word L208, L209, L210, L211, L212, L213, L214, L215
+ .word L216, L217, L218, L219, L220, L221, L222, L223
+ .word L224, L225, L226, L227, L228, L229, L230, L231
+ .word L232, L233, L234, L235, L236, L237, L238, L239
+ .word L240, L241, L242, L243, L244, L245, L246, L247
+ .word L248, L249, L250, L251, L252, L253, L254, L255
+
+
+	.text
+
+ # frq=nnn  give the frequency of execution of each
+ #          cintcode operation when the bcpl compiler
+ #          compiles itself
+
+L0:   # Error     frq=0
+L1:   # Error     frq=0
+	ori	v0,$0,1
+	subu	s6,s6,1
+	j	ret
+
+
+L2:   # brk     frq=0
+	ori	v0,$0,2
+	subu	s6,s6,1
+	j	ret
+
+L3:   # k3     frq=3002
+L4:   # k4     frq=7738
+L5:   # k5     frq=4520
+L6:   # k6     frq=1
+L7:   # k7     frq=480
+L8:   # k8     frq=10
+L9:   # k9     frq=0
+L10:  # k10    frq=0
+L11:  # k11    frq=28
+	move	a0,s0
+	move	s0,s1
+
+apply:		# v1 = 4*k
+		# a0 = entry point
+		# s0 = first argument
+                # s6 = return address
+	addu	a1,s3,v1	# new P
+	subu	s3,s3,s8
+	sw	s3,0(a1)	# p[k] := p
+	move	s3,a1		# p := p+k
+	subu	s6,s6,s8
+	sw	s6,4(s3)	# p[1] := pc
+	sw	a0,8(s3)	# p[2] := entry point
+	addu	s6,a0,s8	# pc := entry point (as m/c address)
+	sw	s0,12(s3)	# p[3] := a
+	bltz	s6,negpc
+	lbu	v0,0(s6)
+	j	fetch
+
+negpc:	ori	v0,$0,4		# negative pc fault
+	j	ret
+
+L12:  # lf      frq=11729
+	move	s1,s0		# b := a
+	addu	s0,t0,s6
+	subu	s0,s0,s8	# a := pc + SB[pc]
+	lbu	v0,1(s6)
+	addu	s6,s6,1	        # pc++
+	j	fetch
+
+L13:  # lf$     frq=4338
+	move	s1,s0		# b := a
+	and	s0,s6,-2	# a := pc & #xFFFFFFFE
+	addu	s0,s0,v0
+	addu	s0,s0,v0	# a := a + 2*B[pc]
+	lh	v0,0(s0)
+	addu	s0,s0,v0
+	subu	s0,s0,s8	# a := a + SH[a]
+	lbu	v0,1(s6)
+	addu	s6,s6,1		# pc++
+	j	fetch
+
+L14:  # lm      frq=598248
+	move	s1,s0		# b := a
+	subu	s0,$0,v0	# a := - B[pc++]
+	lbu	v0,1(s6)
+	addu	s6,s6,1		# pc++
+	j	fetch
+
+L15:  # lm1     frq=163150
+	move	s1,s0		# b := a
+	addu	s0,$0,-1	# a := -1
+	j	fetch
+
+L16:  # l0      frq=244421
+	move	s1,s0		# b := a
+	ori	s0,$0,0
+	j	fetch
+
+L17:  # l1      frq=740929
+	move	s1,s0		# b := a
+	ori	s0,$0,1
+	j	fetch
+
+L18:  # l2      frq=38430
+	move	s1,s0		# b := a
+	ori	s0,$0,2
+	j	fetch
+
+L19:  # l3      frq=49815
+	move	s1,s0		# b := a
+	ori	s0,$0,3
+	j	fetch
+
+L20:  # l4      frq=83246
+	move	s1,s0		# b := a
+	ori	s0,$0,4
+	j	fetch
+
+L21:  # l5      frq=1224
+	move	s1,s0		# b := a
+	ori	s0,$0,5
+	j	fetch
+
+L22:  # l6      frq=54857
+	move	s1,s0		# b := a
+	ori	s0,$0,6
+	j	fetch
+
+L23:  # l7      frq=8683
+	move	s1,s0		# b := a
+	ori	s0,$0,7
+	j	fetch
+
+L24:  # l8      frq=13745
+	move	s1,s0		# b := a
+	ori	s0,$0,8
+	j	fetch
+
+L25:  # l9      frq=96877
+	move	s1,s0		# b := a
+	ori	s0,$0,9
+	j	fetch
+
+L26:  # l10     frq=253528
+	move	s1,s0		# b := a
+	ori	s0,$0,10
+	j	fetch
+
+L27:  # fhop     frq=2295
+	move	s0,$0		# a := 0
+	lbu	v0,1(s6)
+	addu	s6,s6,1		# pc++
+	j	fetch
+
+L28:  # jeq     frq=758839
+	beq	s1,s0,jump
+	lbu	v0,1(s6)
+	addu	s6,s6,1		# pc++
+	j	fetch
+
+L29:  # jeq$     frq=0
+	beq	s1,s0,indjump
+	lbu	v0,1(s6)
+	addu	s6,s6,1		# pc++
+	j	fetch
+
+L30:  # jeq0     frq=253477
+	beqz	s0,jump
+	lbu	v0,1(s6)
+	addu	s6,s6,1		# pc++
+	j	fetch
+
+L31:  # jeq0$     frq=2926
+	beqz	s0,indjump
+	lbu	v0,1(s6)
+	addu	s6,s6,1		# pc++
+	j	fetch
+
+L32:  # k     frq=35172
+	addu	s6,s6,1
+	sll	v1,v0,2		# v1 = 4*k
+	move	a0,s0
+	move	s0,s1
+	j	apply
+
+L33:  # kh     frq=0
+	ulhu	v0,0(s6)
+	addu	s6,s6,2
+	sll	v1,v0,2		# v1 = 4*k
+	move	a0,s0
+	move	s0,s1
+	j	apply
+
+L34:  # kw     frq=0
+	ulw	v0,0(s6)
+	addu	s6,s6,4
+	sll	v1,v0,2		# v1 = 4*k
+	move	a0,s0
+	move	s0,s1
+	j	apply
+
+L35:  # k3g      frq=204783
+L36:  # k4g      frq=135269
+L37:  # k5g      frq=263407
+L38:  # k6g      frq=13337
+L39:  # k7g      frq=4992
+L40:  # k8g      frq=4660
+L41:  # k9g      frq=1689
+L42:  # k10g     frq=310
+L43:  # k11g     frq=9
+	subu	v1,v1,4*32	# v1 = 4*k
+	addu	s6,s6,1		# s6 = return address
+	sll	v0,v0,2
+	addu	v0,v0,s4
+	lw	a0,0(v0)	# a0 = g!n
+	j	apply
+
+L44:  # s0g     frq=401845
+	addu	s6,s6,1		# pc++
+	sll	t0,v0,2
+	addu	t0,t0,s4
+	lw	t0,0(t0)
+	sll	t0,t0,2
+	addu	t0,t0,s8
+	sw	s0,0(t0)	# g!n!0 := a
+	lbu	v0,0(s6)
+	j	fetch
+
+L45:  # l0g     frq=411817
+	move	s1,s0		# b := a
+	addu	s6,s6,1		# pc++
+	sll	t0,v0,2
+	addu	t0,t0,s4
+	lw	t0,0(t0)
+	sll	t0,t0,2
+	addu	t0,t0,s8
+	lw	s0,0(t0)	# a := g!n!0
+	lbu	v0,0(s6)
+	j	fetch
+
+L46:  # l1g     frq=409459
+	move	s1,s0		# b := a
+	addu	s6,s6,1		# pc++
+	sll	t0,v0,2
+	addu	t0,t0,s4
+	lw	t0,0(t0)
+	sll	t0,t0,2
+	addu	t0,t0,s8
+	lw	s0,4*1(t0)	# a := g!n!1
+	lbu	v0,0(s6)
+	j	fetch
+
+L47:  # l2g     frq=3
+	move	s1,s0		# b := a
+	addu	s6,s6,1		# pc++
+	sll	t0,v0,2
+	addu	t0,t0,s4
+	lw	t0,0(t0)
+	sll	t0,t0,2
+	addu	t0,t0,s8
+	lw	s0,4*2(t0)	# a := g!n!2
+	lbu	v0,0(s6)
+	j	fetch
+
+L48:  # lg     frq=1365544
+	move	s1,s0		# b := a
+	addu	s6,s6,1
+	sll	t0,v0,2
+	addu	t0,t0,s4
+	lw	s0,0(t0)	# a = g!(B[pc++])
+	lbu	v0,0(s6)
+	j	fetch
+
+L49:  # sg     frq=324122
+	addu	s6,s6,1
+	sll	t0,v0,2
+	addu	t0,t0,s4
+	sw	s0,0(t0)	# g!(B[pc++]) := a
+	lbu	v0,0(s6)
+	j	fetch
+
+L50:  # llg     frq=0
+	move	s1,s0		# b := a
+	addu	s6,s6,1
+	addu	s0,v0,s5	# a := g + B[pc++]
+	lbu	v0,0(s6)
+	j	fetch
+
+L51:  # ag     frq=7
+	addu	s6,s6,1
+	sll	t0,v0,2
+	addu	t0,t0,s4
+	lw	t0,0(t0)
+	addu	s0,s0,t0	# a += g!(B[pc++])
+	lbu	v0,0(s6)
+	j	fetch
+
+L52:  # mul     frq=132122
+	mult	s0,s1
+	mflo	s0
+	j	fetch
+
+L53:  # div     frq=74675
+	beq	s0,$0,diverr
+	div	s0,s1,s0
+	j	fetch
+
+L54:  # rem     frq=92754
+	beq	s0,$0,diverr
+	rem	s0,s1,s0
+	j	fetch
+
+diverr:
+	subu	s6,s6,1
+	or	v0,$0,5
+	j	ret
+
+L55:  # xor     frq=56780
+	xor	s0,s0,s1
+	j	fetch
+
+L56:  # sl     frq=0
+	lbu	v0,1(s6)
+	addu	t0,t0,s6
+	sw	s0,0(t0)	# W[pc + SB[pc]] := a
+	addu	s6,s6,1		# pc++
+	j	fetch
+
+L57:  # sl$     frq=0
+	and	v1,s6,-2	# x := pc & #xFFFFFFFE
+	addu	v1,v1,v0
+	addu	v1,v1,v0	# x := x + 2*B[pc]
+	lh	v0,0(v1)
+	addu	v1,v1,v0
+	sw	s0,0(v1)	# W[x+SH[x]] := a
+	addu	s6,s6,1		# pc++
+	lbu	v0,0(s6)
+	j	fetch
+
+L58:  # ll     frq=0
+	move	s1,s0		# b := a
+	addu	v0,t0,s6
+	lw	s0,0(v0)	# a := W[pc + SB[pc]]
+	addu	s6,s6,1		# pc++
+	lbu	v0,0(s6)
+	j	fetch
+
+L59:  # ll$     frq=0
+	move	s1,s0		# b := a
+	and	v1,s6,-2	# x := pc & #xFFFFFFFE
+	addu	v1,v1,v0
+	addu	v1,v1,v0	# x := x + 2*B[pc]
+	lh	v0,0(v1)
+	addu	v1,v1,v0
+	lw	s0,0(v1)	# a := W[x+SH[x]]
+	addu	s6,s6,1		# pc++
+	lbu	v0,0(s6)
+	j	fetch
+
+L60:  # jne     frq=412167
+	bne	s1,s0,jump
+	addu	s6,s6,1		# pc++
+	lbu	v0,0(s6)
+	j	fetch
+
+L61:  # jne$     frq=17329
+	bne	s1,s0,indjump
+	addu	s6,s6,1		# pc++
+	lbu	v0,0(s6)
+	j	fetch
+
+L62:  # jne0     frq=673057
+	bnez	s0,jump
+	addu	s6,s6,1		# pc++
+	lbu	v0,0(s6)
+	j	fetch
+
+L63:  # jne0$     frq=8593
+	bnez	s0,indjump
+	addu	s6,s6,1		# pc++
+	lbu	v0,0(s6)
+	j	fetch
+
+L64:  # llp     frq=10685
+	move	s1,s0		# b := a
+	subu	s0,s3,s8
+	srl	s0,s0,2
+	addu	s6,s6,1
+	addu	s0,s0,v0	# a := p + B[pc++]
+	lbu	v0,0(s6)
+	j	fetch
+
+L65:  # llph     frq=0
+	move	s1,s0		# b := a
+	subu	s0,s3,s8
+	srl	s0,s0,2
+	ulhu	v0,0(s6)
+	addu	s6,s6,2
+	addu	s0,s0,v0	# a := p + H[pc]; pc += 2
+	lbu	v0,0(s6)
+	j	fetch
+
+L66:  # llpw     frq=0
+	move	s1,s0		# b := a
+	subu	s0,s3,s8
+	srl	s0,s0,2
+	ulw	v0,0(s6)
+	addu	s6,s6,4
+	addu	s0,s0,v0	# a := p + W[pc]; pc += 4
+	lbu	v0,0(s6)
+	j	fetch
+
+L67:  # k3g1     frq=62815
+L68:  # k4g1     frq=312332
+L69:  # k5g1     frq=93172
+L70:  # k6g1     frq=33086
+L71:  # k7g1     frq=56780
+L72:  # k8g1     frq=15758
+L73:  # k9g1     frq=25517
+L74:  # k10g1     frq=2673
+L75:  # k11g1     frq=3440
+	subu	v1,v1,4*64	# v1 = 4*k
+	lbu	v0,0(s6)	# n = B[pc]
+	addu	s6,s6,1		# s6 = return address
+	sll	v0,v0,2
+	addu	v0,v0,s4
+	lw	a0,4*256(v0)	# a0 = g!(n+256)
+	j	apply
+
+L76:  # s0g1     frq=1639
+	addu	s6,s6,1
+	sll	v0,v0,2
+	addu	v0,v0,s4
+	lw	v0,4*256(v0)
+	sll	v0,v0,2
+	addu	v0,v0,s8
+	sw	s0,4*0(v0)	# !(g!(n+256)) := a
+	lbu	v0,0(s6)
+	j	fetch
+ 
+L77:  # l0g1     frq=724
+	move	s1,s0		# b := a
+	addu	s6,s6,1
+	sll	v0,v0,2
+	addu	v0,v0,s4
+	lw	v0,4*256(v0)
+	sll	v0,v0,2
+	addu	v0,v0,s8
+	lw	s0,4*0(v0)	# a := 0!(g!(n+256))
+	lbu	v0,0(s6)
+	j	fetch
+
+L78:  # l1g1     frq=724
+	move	s1,s0		# b := a
+	addu	s6,s6,1
+	sll	v0,v0,2
+	addu	v0,v0,s4
+	lw	v0,4*256(v0)
+	sll	v0,v0,2
+	addu	v0,v0,s8
+	lw	s0,4*1(v0)	# a := 1!(g!(n+256))
+	lbu	v0,0(s6)
+	j	fetch
+
+L79:  # l2g1     frq=724
+	move	s1,s0		# b := a
+	addu	s6,s6,1
+	sll	v0,v0,2
+	addu	v0,v0,s4
+	lw	v0,4*256(v0)
+	sll	v0,v0,2
+	addu	v0,v0,s8
+	lw	s0,4*2(v0)	# a := 2!(g!(n+256))
+	lbu	v0,0(s6)
+	j	fetch
+
+L80:  # lg1     frq=249497
+	move	s1,s0		# b := a
+	addu	s6,s6,1		# pc++
+	sll	v0,v0,2
+	addu	v0,v0,s4
+	lw	s0,4*256(v0)	# a := g!(n+256)
+	lbu	v0,0(s6)
+	j	fetch
+
+L81:  # sg1     frq=155081
+	addu	s6,s6,1		# pc++
+	sll	v0,v0,2
+	addu	v0,v0,s4
+	sw	s0,4*256(v0)	# g!(n+256) := a
+	lbu	v0,0(s6)
+	j	fetch
+
+L82:  # llg1     frq=0
+	move	s1,s0		# b := a
+	addu	s6,s6,1		# pc++
+	addu	v0,v0,s5
+	addu	s0,v0,256	# a := @ g!(n+256)
+	lbu	v0,0(s6)
+	j	fetch
+
+L83:  # ag1     frq=1290
+	addu	s6,s6,1		# pc++
+	sll	v0,v0,2
+	addu	v0,v0,s4
+	lw	v0,4*256(v0)
+	addu	s0,s0,v0	# a += g!(n+256)
+	lbu	v0,0(s6)
+	j	fetch
+
+L84:  # add     frq=51328
+	addu	s0,s0,s1
+	j	fetch
+
+L85:  # sub     frq=51606
+	subu	s0,s1,s0
+	j	fetch
+
+L86:  # lsh     frq=23772
+	li	v1,31
+	bgt	s0,v1,setzero
+	sll	s0,s1,s0
+	j	fetch
+
+L87:  # rsh     frq=65180
+	li	v1,31
+	bgt	s0,v1,setzero
+	srl	s0,s1,s0
+	j	fetch
+
+setzero:li	s0,0
+	j	fetch
+
+L88:  # and     frq=192985
+	and	s0,s0,s1
+	j	fetch
+
+L89:  # or     frq=24123
+	or	s0,s0,s1
+	j	fetch
+
+L90:  # lll     frq=57746
+	move	s1,s0		# b := a
+	addu	v0,t0,s6
+	subu	s0,v0,s8
+	srl	s0,s0,2	# a := (x + pc) >> 2
+	addu	s6,s6,1	# pc++
+	lbu	v0,0(s6)
+	j	fetch
+
+L91:  # lll$     frq=189
+	move	s1,s0		# b := a
+	and	v1,s6,-2	# x := pc & #xFFFFFFFE
+	addu	v1,v1,v0
+	addu	v1,v1,v0	# x := x + 2*B[pc]
+	lh	v0,0(v1)
+	addu	s0,v1,v0
+	subu	s0,s0,s8
+	srl	s0,s0,2		# a := (x + SH[x]) >> 2
+	addu	s6,s6,1		# pc++
+	lbu	v0,0(s6)
+	j	fetch
+
+L92:  # jls     frq=293452
+	blt	s1,s0,jump
+	addu	s6,s6,1		# pc++
+	lbu	v0,0(s6)
+	j	fetch
+
+L93:  # jls$     frq=6421
+	blt	s1,s0,indjump
+	addu	s6,s6,1		# pc++
+	lbu	v0,0(s6)
+	j	fetch
+
+L94:  # jls0     frq=3102
+	bltz	s0,jump
+	addu	s6,s6,1		# pc++
+	lbu	v0,0(s6)
+	j	fetch
+
+L95:  # jls0$     frq=0
+	bltz	s0,indjump
+	addu	s6,s6,1		# pc++
+	lbu	v0,0(s6)
+	j	fetch
+
+L96:  # l     frq=1098722
+	move	s1,s0		# b := a
+	move	s0,v0		# a := B[pc]
+	addu	s6,s6,1		# pc++
+	lbu	v0,0(s6)
+	j	fetch
+
+L97:  # lh     frq=84529
+	move	s1,s0		# b := a
+	ulhu	s0,0(s6)
+	addu	s6,s6,2	# a := H[pc]; pc += 2
+	lbu	v0,0(s6)
+	j	fetch
+
+L98:  # lw     frq=0
+	move	s1,s0		# b := a
+	ulw	s0,0(s6)	# a := W[pc]
+	addu	s6,s6,4		# pc += 4
+	lbu	v0,0(s6)
+	j	fetch
+
+L99:  # k3gh     frq=320
+L100: # k4gh     frq=4633
+L101: # k5gh     frq=6808
+L102: # k6gh     frq=8806
+L103: # k7gh     frq=9358
+L104: # k8gh     frq=17
+L105: # k9gh     frq=0
+L106: # k10gh     frq=169
+L107: # k11gh     frq=0
+	subu	v1,v1,4*96	# v1 = 4*k
+	ulhu	v0,0(s6)	# n = H[pc]
+	addu	s6,s6,2		# s6 = return address
+	sll	v0,v0,2
+	addu	v0,v0,s4
+	lw	a0,0(v0)	# a0 = g!n
+	j	apply
+
+L108: # s0gh     frq=15601
+	ulhu	v0,0(s6)
+	addu	s6,s6,2
+	sll	v0,v0,2
+	addu	v0,v0,s4
+	lw	v0,0(v0)
+	sll	v0,v0,2
+	addu	v0,v0,s8
+	sw	s0,0(v0)	# 0!(g!(H[pc])) := a; pc += 2
+	lbu	v0,0(s6)
+	j	fetch
+
+L109: # l0gh     frq=9924
+	move	s1,s0		# b := a
+	ulhu	v0,0(s6)
+	addu	s6,s6,2
+	sll	v0,v0,2
+	addu	v0,v0,s4
+	lw	v0,0(v0)
+	sll	v0,v0,2
+	addu	v0,v0,s8
+	lw	s0,0(v0)	# a := 0!(g!(H[pc])); pc += 2
+	lbu	v0,0(s6)
+	j	fetch
+
+L110: # l1gh     frq=5952
+	move	s1,s0		# b := a
+	ulhu	v0,0(s6)
+	addu	s6,s6,2
+	sll	v0,v0,2
+	addu	v0,v0,s4
+	lw	v0,0(v0)
+	sll	v0,v0,2
+	addu	v0,v0,s8
+	lw	s0,4*1(v0)	# a := 1!(g!(H[pc])); pc += 2
+	lbu	v0,0(s6)
+	j	fetch
+
+L111: # l2gh     frq=0
+	move	s1,s0		# b := a
+	ulhu	v0,0(s6)
+	addu	s6,s6,2
+	sll	v0,v0,2
+	addu	v0,v0,s4
+	lw	v0,0(v0)
+	sll	v0,v0,2
+	addu	v0,v0,s8
+	lw	s0,4*2(v0)	# a := 2!(g!(H[pc])); pc += 2
+	lbu	v0,0(s6)
+	j	fetch
+
+L112: # lgh     frq=700955
+	move	s1,s0		# b := a
+	ulhu	v0,0(s6)
+	addu	s6,s6,2
+	sll	v0,v0,2
+	addu	v0,v0,s4
+	lw	s0,0(v0)	# a := g!(H[pc]); pc += 2
+	lbu	v0,0(s6)
+	j	fetch
+
+L113: # sgh     frq=297790
+	ulhu	v0,0(s6)
+	addu	s6,s6,2
+	sll	v0,v0,2
+	addu	v0,v0,s4
+	sw	s0,0(v0)	# g!(H[pc]) := a; pc += 2
+	lbu	v0,0(s6)
+	j	fetch
+
+L114: # llgh     frq=14161
+	move	s1,s0		# b := a
+	ulhu	v0,0(s6)
+	addu	s6,s6,2
+	addu	s0,v0,s5	# a := @ g!(H[pc]); pc += 2
+	lbu	v0,0(s6)
+	j	fetch
+
+L115: # agh     frq=90488
+	ulhu	v0,0(s6)
+	addu	s6,s6,2
+	sll	v0,v0,2
+	addu	v0,v0,s4
+	lw	v0,0(v0)
+	addu	s0,s0,v0	# a += g!(H[pc]); pc += 2
+	lbu	v0,0(s6)
+	j	fetch
+
+L116: # rv      frq=81916
+	sll	v1,s0,2
+	addu	v1,v1,s8
+	lw	s0,0(v1)	# a := a!0
+	j	fetch
+
+L117: # rv1     frq=18677
+	sll	v1,s0,2
+	addu	v1,v1,s8
+	lw	s0,4*1(v1)	# a := a!1
+	j	fetch
+
+L118: # rv2     frq=24044
+	sll	v1,s0,2
+	addu	v1,v1,s8
+	lw	s0,4*2(v1)	# a := a!2
+	j	fetch
+
+L119: # rv3     frq=942
+	sll	v1,s0,2
+	addu	v1,v1,s8
+	lw	s0,4*3(v1)	# a := a!3
+	j	fetch
+
+L120: # rv4     frq=0
+	sll	v1,s0,2
+	addu	v1,v1,s8
+	lw	s0,4*4(v1)	# a := a!4
+	j	fetch
+
+L121: # rv5     frq=303
+	sll	v1,s0,2
+	addu	v1,v1,s8
+	lw	s0,4*5(v1)	# a := a!5
+	j	fetch
+
+L122: # rv6     frq=392
+	sll	v1,s0,2
+	addu	v1,v1,s8
+	lw	s0,4*6(v1)	# a := a!6
+	j	fetch
+
+L123: # rtn     frq=1315089
+	lw	s6,4(s3)
+	addu	s6,s6,s8	# make pc a m/c address
+	lw	s3,0(s3)
+	addu	s3,s3,s8	# make p a m/c address
+	lbu	v0,0(s6)
+	j	fetch
+
+L124: # jgr     frq=234567
+	bgt	s1,s0,jump
+	addu	s6,s6,1		# pc++
+	lbu	v0,0(s6)
+	j	fetch
+
+L125: # jgr$     frq=0
+	bgt	s1,s0,indjump
+	addu	s6,s6,1		# pc++
+	lbu	v0,0(s6)
+	j	fetch
+
+L126: # jgr0     frq=1664
+	bgtz	s0,jump
+	addu	s6,s6,1		# pc++
+	lbu	v0,0(s6)
+	j	fetch
+
+L127: # jgr0$     frq=0
+	bgtz	s0,indjump
+	addu	s6,s6,1		# pc++
+	lbu	v0,0(s6)
+	j	fetch
+
+L128: # lp     frq=32473
+	move	s1,s0		# b := a
+	sll	v0,v0,2
+	addu	v0,v0,s3
+	lw	s0,0(v0)	# a := p!(B[pc])
+	addu	s6,s6,1		# pc++
+	lbu	v0,0(s6)
+	j	fetch
+
+L129: # lph     frq=0
+	move	s1,s0		# b := a
+	ulhu	v0,0(s6)
+	addu	s6,s6,2
+	sll	v0,v0,2
+	addu	v0,v0,s3
+	lw	s0,0(v0)	# a := p!(B[pc]); pc += 2
+	lbu	v0,0(s6)
+	j	fetch
+
+L130: # lpw     frq=0
+	move	s1,s0		# b := a
+	ulw	v0,0(s6)
+	sll	v0,v0,2
+	addu	v0,v0,s3
+	lw	s0,0(v0)	# a := p!(W[pc])
+	addu	s6,s6,4		# pc += 4
+	lbu	v0,0(s6)
+	j	fetch
+
+L131: # lp3     frq=1681284
+	move	s1,s0		# b := a
+	lw	s0,4*3(s3)
+	j	fetch
+
+L132: # lp4     frq=593132
+	move	s1,s0		# b := a
+	lw	s0,4*4(s3)
+	j	fetch
+
+L133: # lp5     frq=355769
+	move	s1,s0		# b := a
+	lw	s0,4*5(s3)
+	j	fetch
+
+L134: # lp6     frq=200287
+	move	s1,s0		# b := a
+	lw	s0,4*6(s3)
+	j	fetch
+
+L135: # lp7     frq=228093
+	move	s1,s0		# b := a
+	lw	s0,4*7(s3)
+	j	fetch
+
+L136: # lp8     frq=126649
+	move	s1,s0		# b := a
+	lw	s0,4*8(s3)
+	j	fetch
+
+L137: # lp9     frq=24237
+	move	s1,s0		# b := a
+	lw	s0,4*9(s3)
+	j	fetch
+
+L138: # lp10     frq=11740
+	move	s1,s0		# b := a
+	lw	s0,4*10(s3)
+	j	fetch
+
+L139: # lp11     frq=8112
+	move	s1,s0		# b := a
+	lw	s0,4*11(s3)
+	j	fetch
+
+L140: # lp12     frq=1283
+	move	s1,s0		# b := a
+	lw	s0,4*12(s3)
+	j	fetch
+
+L141: # lp13     frq=121
+	move	s1,s0		# b := a
+	lw	s0,4*13(s3)
+	j	fetch
+
+L142: # lp14     frq=214
+	move	s1,s0		# b := a
+	lw	s0,4*14(s3)
+	j	fetch
+
+L143: # lp15     frq=13779
+	move	s1,s0		# b := a
+	lw	s0,4*15(s3)
+	j	fetch
+
+L144: # lp16     frq=45432
+	move	s1,s0		# b := a
+	lw	s0,4*16(s3)
+	j	fetch
+
+L145: # sys     frq=554
+	bnez	s0,sys1		# IF a==0 DO
+	lw	v0,4*4(s3)	#   { res := p!4; GOTO ret }
+	j	ret 
+sys1:
+	move	a1,s5		# g as a BCPL pointer
+	subu	a0,s3,s8
+	srl	a0,a0,2		# p as a BCPL pointer
+	jal	dosys
+	move	s0,v0		# a := dosys(p, g)
+	la	ra,runtbl
+	lbu	v0,0(s6)
+	j	fetch
+
+L146: # swb     frq=48805
+	addu	s6,s6,1
+	and	s6,s6,-2	# pc := (pc+1) & #xFFFFFFFE
+	lhu	a0,0(s6)	# n := H[pc]
+
+	li	a1,1		# i = 1
+
+swb1:
+	sll	v0,a1,2		# {
+	addu	v0,v0,s6
+	lhu	v1,0(v0)	#   v1 := H[pc+4*i]
+	bne	s0,v1,swb2	#   IF a=v1 DO
+				#   {  // case found
+	addu	v0,v0,2		#      x := pc+4*i+2
+	lh	v1,0(v0)
+	addu	s6,v0,v1	#      pc := x + SH[x]
+	lbu	v0,0(s6)
+	j	fetch		#      GOTO fetch
+				#   }
+
+swb2:
+	addu	a1,a1,a1	#   i := 2*i
+	slt	v0,s0,v1
+	addu	a1,a1,v0	#   IF a < v1 DO i++
+	ble	a1,a0,swb1	# } repeatwhile i<=n
+
+	addu	s6,s6,2		# case not found
+	lh	v0,0(s6)
+	addu	s6,s6,v0	# pc := pc + SH[pc]
+	lbu	v0,0(s6)
+	j	fetch
+
+
+L147: # swl     frq=85714
+	addu	s6,s6,1
+	and	s6,s6,-2	# pc := (pc+1) & #xFFFFFFFE
+	bltz	s0,swl1		# J if a too small
+	lhu	a0,0(s6)	# n := H[pc]
+	bge	s0,a0,swl1	# J if a too large
+	addu	s6,s6,4
+	addu	s6,s6,s0
+	addu	s6,s6,s0	# pc := pc+2*a+4
+	lh	v0,0(s6)
+	addu	s6,s6,v0	# pc := pc + SH[pc]
+	lbu	v0,0(s6)
+	j	fetch
+
+swl1:
+	addu	s6,s6,2		# pc := pc + 2
+	lh	v0,0(s6)
+	addu	s6,s6,v0	# pc := pc + SH[pc]
+	lbu	v0,0(s6)
+	j	fetch
+
+L148: # st     frq=53452
+	sll	v1,s0,2
+	addu	v1,v1,s8
+	sw	s1,0(v1)	# a!0 := b
+	j	fetch
+
+L149: # st1     frq=36925
+	sll	v1,s0,2
+	addu	v1,v1,s8
+	sw	s1,4*1(v1)	# a!1 := b
+	j	fetch
+
+L150: # st2     frq=32011
+	sll	v1,s0,2
+	addu	v1,v1,s8
+	sw	s1,4*2(v1)	# a!2 := b
+	j	fetch
+
+L151: # st3     frq=5530
+	sll	v1,s0,2
+	addu	v1,v1,s8
+	sw	s1,4*3(v1)	# a!3 := b
+	j	fetch
+
+L152: # stp3     frq=2182
+	lw	v1,4*3(s3)
+	addu	v1,v1,s0
+	sll	v1,v1,2
+	addu	v1,v1,s8
+	sw	s1,0(v1)	# p!3!a := b
+	j	fetch
+
+L153: # stp4     frq=780
+	lw	v1,4*4(s3)
+	addu	v1,v1,s0
+	sll	v1,v1,2
+	addu	v1,v1,s8
+	sw	s1,0(v1)	# p!4!a := b
+	j	fetch
+
+L154: # stp5     frq=20
+	lw	v1,4*5(s3)
+	addu	v1,v1,s0
+	sll	v1,v1,2
+	addu	v1,v1,s8
+	sw	s1,0(v1)	# p!5!a := b
+	j	fetch
+
+L155: # goto     frq=0
+	addu	s6,s0,s8	# pc := a
+	lbu	v0,0(s6)	# op := B[pc]
+	j	fetch
+
+L156: # jle     frq=575294
+	ble	s1,s0,jump
+	addu	s6,s6,1		# pc++
+	lbu	v0,0(s6)
+	j	fetch
+
+L157: # jle$     frq=12919
+	ble	s1,s0,indjump
+	addu	s6,s6,1		# pc++
+	lbu	v0,0(s6)
+	j	fetch
+
+L158: # jle0     frq=13814
+	blez	s0,jump
+	addu	s6,s6,1		# pc++
+	lbu	v0,0(s6)
+	j	fetch
+
+L159: # jle0$     frq=0
+	blez	s0,indjump
+	addu	s6,s6,1		# pc++
+	lbu	v0,0(s6)
+	j	fetch
+
+L160: # sp     frq=57497
+	addu	s6,s6,1
+	sll	v0,v0,2
+	addu	v0,v0,s3
+	sw	s0,0(v0)	# p!(B[pc++]) := a
+	lbu	v0,0(s6)
+	j	fetch
+
+L161: # sph     frq=0
+	ulhu	v0,0(s6)
+	addu	s6,s6,2
+	sll	v0,v0,2
+	addu	v0,v0,s3
+	sw	s0,0(v0)	# p!(H[pc]) := a; pc += 2
+	lbu	v0,0(s6)
+	j	fetch
+
+L162: # spw     frq=0
+	ulw	v0,0(s6)
+	addu	s6,s6,4
+	sll	v0,v0,2
+	addu	v0,v0,s3
+	sw	s0,0(v0)	# p!(W[pc]) := a; pc += 4
+	lbu	v0,0(s6)
+	j	fetch
+
+L163: # sp3     frq=448052
+	sw	s0,4*3(s3)	# p!3 := a
+	j	fetch
+
+L164: # sp4     frq=988190
+	sw	s0,4*4(s3)	# p!4 := a
+	j	fetch
+
+L165: # sp5     frq=344005
+	sw	s0,4*5(s3)	# p!5 := a
+	j	fetch
+
+L166: # sp6     frq=163718
+	sw	s0,4*6(s3)	# p!6 := a
+	j	fetch
+
+L167: # sp7     frq=233850
+	sw	s0,4*7(s3)	# p!7 := a
+	j	fetch
+
+L168: # sp8     frq=109584
+	sw	s0,4*8(s3)	# p!8 := a
+	j	fetch
+
+L169: # sp9     frq=110121
+	sw	s0,4*9(s3)	# p!9 := a
+	j	fetch
+
+L170: # sp10     frq=56154
+	sw	s0,4*10(s3)	# p!10 := a
+	j	fetch
+
+L171: # sp11     frq=50794
+	sw	s0,4*11(s3)	# p!11 := a
+	j	fetch
+
+L172: # sp12     frq=20524
+	sw	s0,4*12(s3)	# p!12 := a
+	j	fetch
+
+L173: # sp13     frq=15806
+	sw	s0,4*13(s3)	# p!13 := a
+	j	fetch
+
+L174: # sp14     frq=4839
+	sw	s0,4*14(s3)	# p!14 := a
+	j	fetch
+
+L175: # sp15     frq=16120
+	sw	s0,4*15(s3)	# p!15 := a
+	j	fetch
+
+L176: # sp16     frq=33499
+	sw	s0,4*16(s3)	# p!16 := a
+	j	fetch
+
+L177: # s1     frq=34291
+	subu	s0,s0,1		# a := a - 1
+	j	fetch
+
+L178: # s2     frq=4205
+	subu	s0,s0,2		# a := a - 2
+	j	fetch
+
+L179: # s3     frq=26048
+	subu	s0,s0,3		# a := a - 3
+	j	fetch
+
+L180: # s4     frq=3
+	subu	s0,s0,4		# a := a - 4
+	j	fetch
+
+L181: # xch     frq=1761584
+	move	v1,s0
+	move	s0,s1
+	move	s1,v1
+	j	fetch
+
+L182: # gbyt     frq=504790
+	sll	v1,s1,2
+	addu	v1,v1,s0
+	addu	v1,v1,s8
+	lbu	s0,0(v1)	# a := b%a
+	j	fetch
+
+L183: # pbyt     frq=395227
+	sll	v1,s1,2
+	addu	v1,v1,s0
+	addu	v1,v1,s8
+	sb	s2,0(v1)	# b%a := c
+	j	fetch
+
+L184: # atc     frq=395227
+	move	s2,s0		# c := a
+	j	fetch
+
+L185: # atb     frq=0
+	move	s1,s0		# b := a
+	j	fetch
+
+L186: # j     frq=302744
+jump:
+	addu	s6,s6,t0	# pc += SB[pc]
+	lbu	v0,0(s6)
+	j	fetch
+
+L187: # j$     frq=150058
+indjump:
+	addu	a0,v0,v0
+	addu	a0,a0,s6	# a0 := pc + 2*B[pc]
+	and	a0,a0,-2	# a0 &= #xFFFFFFFE
+	lh	s6,0(a0)
+	add	s6,s6,a0	# pc := a0 + SH[a0]
+	lbu	v0,0(s6)
+	j	fetch
+
+L188: # jge     frq=301004
+	bge	s1,s0,jump
+	addu	s6,s6,1		# pc++
+	lbu	v0,0(s6)
+	j	fetch
+
+L189: # jge$     frq=0
+	bge	s1,s0,indjump
+	addu	s6,s6,1		# pc++
+	lbu	v0,0(s6)
+	j	fetch
+
+L190: # jge0     frq=47832
+	bgez	s0,jump
+	addu	s6,s6,1		# pc++
+	lbu	v0,0(s6)
+	j	fetch
+
+L191: # jge0$     frq=0
+	bgez	s0,indjump
+	addu	s6,s6,1		# pc++
+	lbu	v0,0(s6)
+	j	fetch
+
+L192: # ap     frq=6416
+	addu	s6,s6,1
+	sll	v0,v0,2
+	addu	v0,v0,s3
+	lw	v0,0(v0)
+	addu	s0,s0,v0	# a += p!(B[pc++])
+	lbu	v0,0(s6)
+	j	fetch
+
+L193: # aph     frq=0
+	ulhu	v0,0(s6)
+	addu	s6,s6,2
+	sll	v0,v0,2
+	addu	v0,v0,s3
+	lw	v0,0(v0)
+	addu	s0,s0,v0	# a += p!(H[pc]); pc += 2
+	lbu	v0,0(s6)
+	j	fetch
+
+L194: # apw     frq=0
+	ulw	v0,0(s6)
+	addu	s6,s6,4
+	sll	v0,v0,2
+	addu	v0,v0,s3
+	lw	v0,0(v0)
+	addu	s0,s0,v0	# a += p!(W[pc]); pc += 4
+	lbu	v0,0(s6)
+	j	fetch
+
+L195: # ap3     frq=283379
+	lw	v1,4*3(s3)
+	addu	s0,s0,v1	# a += p!3
+	j	fetch
+
+L196: # ap4     frq=832703
+	lw	v1,4*4(s3)
+	addu	s0,s0,v1	# a += p!4
+	j	fetch
+
+L197: # ap5     frq=65255
+	lw	v1,4*5(s3)
+	addu	s0,s0,v1	# a += p!5
+	j	fetch
+
+L198: # ap6     frq=11097
+	lw	v1,4*6(s3)
+	addu	s0,s0,v1	# a += p!6
+	j	fetch
+
+L199: # ap7     frq=106439
+	lw	v1,4*7(s3)
+	addu	s0,s0,v1	# a += p!7
+	j	fetch
+
+L200: # ap8     frq=3583
+	lw	v1,4*8(s3)
+	addu	s0,s0,v1	# a += p!8
+	j	fetch
+
+L201: # ap9     frq=47609
+	lw	v1,4*9(s3)
+	addu	s0,s0,v1	# a += p!9
+	j	fetch
+
+L202: # ap10     frq=1439
+	lw	v1,4*10(s3)
+	addu	s0,s0,v1	# a += p!10
+	j	fetch
+
+L203: # ap11     frq=0
+	lw	v1,4*11(s3)
+	addu	s0,s0,v1	# a += p!11
+	j	fetch
+
+L204: # ap12     frq=21
+	lw	v1,4*12(s3)
+	addu	s0,s0,v1	# a += p!12
+	j	fetch
+
+L205: # xpbyt     frq=326298
+	sll	v1,s0,2
+	addu	v1,v1,s1
+	addu	v1,v1,s8
+	sb	s2,0(v1)	# a%b := c
+	j	fetch
+
+L206: # lmh     frq=1269
+	move	s1,s0		# b := a
+	ulhu	v0,0(s6)
+	addu	s6,s6,2
+	subu	s0,$0,v0	# a := -H[pc]; pc += 2
+	lbu	v0,0(s6)
+	j	fetch
+
+L207: # btc     frq=184802
+	move	s2,s1		#  c := b
+	j	fetch
+
+L208: # nop     frq=0
+	j	fetch
+
+L209: # a1     frq=319289
+	addu	s0,s0,1		# a := a + 1
+	j	fetch
+
+L210: # a2     frq=69342
+	addu	s0,s0,2		# a := a + 2
+	j	fetch
+
+L211: # a3     frq=44520
+	addu	s0,s0,3		# a := a + 3
+	j	fetch
+
+L212: # a4     frq=5224
+	addu	s0,s0,4		# a := a + 4
+	j	fetch
+
+L213: # a5     frq=0
+	addu	s0,s0,5		# a := a + 5
+	j	fetch
+
+L214: # rvp3     frq=1108
+	lw	v1,4*3(s3)
+	addu	v1,v1,s0
+	sll	v1,v1,2
+	addu	v1,v1,s8
+	lw	s0,0(v1)	# a := p!3!a
+	j	fetch
+
+L215: # rvp4     frq=1582
+	lw	v1,4*4(s3)
+	addu	v1,v1,s0
+	sll	v1,v1,2
+	addu	v1,v1,s8
+	lw	s0,0(v1)	# a := p!4!a
+	j	fetch
+
+L216: # rvp5     frq=30
+	lw	v1,4*5(s3)
+	addu	v1,v1,s0
+	sll	v1,v1,2
+	addu	v1,v1,s8
+	lw	s0,0(v1)	# a := p!5!a
+	j	fetch
+
+L217: # rvp6     frq=12697
+	lw	v1,4*6(s3)
+	addu	v1,v1,s0
+	sll	v1,v1,2
+	addu	v1,v1,s8
+	lw	s0,0(v1)	# a := p!6!a
+	j	fetch
+
+L218: # rvp7     frq=1449
+	lw	v1,4*7(s3)
+	addu	v1,v1,s0
+	sll	v1,v1,2
+	addu	v1,v1,s8
+	lw	s0,0(v1)	# a := p!7!a
+	j	fetch
+
+L219: # st0p3     frq=10619
+	lw	v1,4*3(s3)
+	sll	v1,v1,2
+	addu	v1,v1,s8
+	sw	s0,0(v1)	# p!3!0 := a
+	j	fetch
+
+L220: # st0p4     frq=7637
+	lw	v1,4*4(s3)
+	sll	v1,v1,2
+	addu	v1,v1,s8
+	sw	s0,0(v1)	# p!4!0 := a
+	j	fetch
+
+L221: # st1p3     frq=1455
+	lw	v1,4*3(s3)
+	sll	v1,v1,2
+	addu	v1,v1,s8
+	sw	s0,4*1(v1)	# p!3!1 := a
+	j	fetch
+
+L222: # st1p4     frq=0
+	lw	v1,4*4(s3)
+	sll	v1,v1,2
+	addu	v1,v1,s8
+	sw	s0,4*1(v1)	# p!4!1 := a
+	j	fetch
+
+L223: # Error     frq=0
+	subu	s6,s6,1
+	addu	v0,$0,1		# res := 1
+	j	ret
+
+L224: # a     frq=74587
+	addu	s6,s6,1
+	addu	s0,s0,v0	# a += B[pc++]
+	lbu	v0,0(s6)
+	j	fetch
+
+L225: # ah     frq=6
+	ulhu	v0,0(s6)
+	addu	s6,s6,2
+	addu	s0,s0,v0	# a += H[pc]; pc += 2
+	lbu	v0,0(s6)
+	j	fetch
+
+L226: # aw        frq=0
+	ulw	v0,0(s6)
+	addu	s6,s6,4
+	addu	s0,s0,v0	# a += W[pc]; pc += 4
+	lbu	v0,0(s6)
+	j	fetch
+
+L227: # l0p3      frq=65102
+	move	s1,s0		# b := a
+	lw	v1,4*3(s3)
+	sll	v1,v1,2
+	addu	v1,v1,s8
+	lw	s0,0(v1)	# a := p!3!0
+	j	fetch
+
+L228: # l0p4      frq=612068
+	move	s1,s0		# b := a
+	lw	v1,4*4(s3)
+	sll	v1,v1,2
+	addu	v1,v1,s8
+	lw	s0,0(v1)	# a := p!4!0
+	j	fetch
+
+L229: # l0p5      frq=17186
+	move	s1,s0		# b := a
+	lw	v1,4*5(s3)
+	sll	v1,v1,2
+	addu	v1,v1,s8
+	lw	s0,0(v1)	# a := p!5!0
+	j	fetch
+
+L230: # l0p6      frq=8430
+	move	s1,s0		# b := a
+	lw	v1,4*6(s3)
+	sll	v1,v1,2
+	addu	v1,v1,s8
+	lw	s0,0(v1)	# a := p!6!0
+	j	fetch
+
+L231: # l0p7      frq=30505
+	move	s1,s0		# b := a
+	lw	v1,4*7(s3)
+	sll	v1,v1,2
+	addu	v1,v1,s8
+	lw	s0,0(v1)	# a := p!7!0
+	j	fetch
+
+L232: # l0p8      frq=14744
+	move	s1,s0		# b := a
+	lw	v1,4*8(s3)
+	sll	v1,v1,2
+	addu	v1,v1,s8
+	lw	s0,0(v1)	# a := p!8!0
+	j	fetch
+
+L233: # l0p9      frq=0
+	move	s1,s0		# b := a
+	lw	v1,4*9(s3)
+	sll	v1,v1,2
+	addu	v1,v1,s8
+	lw	s0,0(v1)	# a := p!9!0
+	j	fetch
+
+L234: # l0p10     frq=0
+	move	s1,s0		# b := a
+	lw	v1,4*10(s3)
+	sll	v1,v1,2
+	addu	v1,v1,s8
+	lw	s0,0(v1)	# a := p!10!0
+	j	fetch
+
+L235: # l0p11     frq=0
+	move	s1,s0		# b := a
+	lw	v1,4*11(s3)
+	sll	v1,v1,2
+	addu	v1,v1,s8
+	lw	s0,0(v1)	# a := p!11!0
+	j	fetch
+
+L236: # l0p12     frq=0
+	move	s1,s0		# b := a
+	lw	v1,4*12(s3)
+	sll	v1,v1,2
+	addu	v1,v1,s8
+	lw	s0,0(v1)	# a := p!12!0
+	j	fetch
+
+L237: # s      frq=130833
+	addu	s6,s6,1		# pc++
+	subu	s0,s0,v0	# a -= B[pc++]
+	lbu	v0,0(s6)
+	j	fetch
+
+L238: # sh     frq=0
+	ulhu	v0,0(s6)
+	addu	s6,s6,2
+	subu	s0,s0,v0	# a -= H[pc]; pc += 2
+	lbu	v0,0(s6)
+	j	fetch
+
+L239: # mdiv     frq=0
+	lw	a0,4*3(s3)
+	lw	a1,4*4(s3)
+	lw	a2,4*5(s3)
+	jal	muldiv
+	move	s0,v0
+	lw	v0,result2
+	sw	v0,4*10(s4)
+	la	ra,runtbl
+	
+	lw	s6,4(s3)	# and return
+	addu	s6,s6,s8	# make pc a m/c address
+	lw	s3,0(s3)
+	addu	s3,s3,s8	# make p a m/c address
+	lbu	v0,0(s6)
+	j	fetch
+
+L240: # chgco     frq=2
+	lw	v1,0(s3)
+	lw	v0,4*7(s4)
+	sll	v0,v0,2
+	addu	v0,v0,s8
+	sw	v1,0(v0)	# !currco := !p
+	lw	s6,4(s3)
+	addu	s6,s6,s8	# pc := p!1
+	lw	v0,4*4(s3)
+	sw	v0,4*7(s4)	# currco := cptr
+	sll	v0,v0,2
+	addu	v0,v0,s8
+	lw	v0,0(v0)
+	addu	s3,v0,s8	# p := !cptr
+	lbu	v0,0(s6)
+	j	fetch
+
+L241: # neg     frq=297
+	subu	s0,$0,s0	# a := -a
+	j	fetch
+
+L242: # not     frq=196
+	nor	s0,$0,s0
+	j	fetch
+
+L243: # l1p3     frq=35547
+	move	s1,s0		# b := a
+	lw	v1,4*3(s3)
+	sll	v1,v1,2
+	addu	v1,v1,s8
+	lw	s0,4*1(v1)	# a := p!3!1
+	j	fetch
+
+L244: # l1p4     frq=3525
+	move	s1,s0		# b := a
+	lw	v1,4*4(s3)
+	sll	v1,v1,2
+	addu	v1,v1,s8
+	lw	s0,4*1(v1)	# a := p!4!1
+	j	fetch
+
+L245: # l1p5     frq=20773
+	move	s1,s0		# b := a
+	lw	v1,4*5(s3)
+	sll	v1,v1,2
+	addu	v1,v1,s8
+	lw	s0,4*1(v1)	# a := p!5!1
+	j	fetch
+
+L246: # l1p6     frq=414
+	move	s1,s0		# b := a
+	lw	v1,4*6(s3)
+	sll	v1,v1,2
+	addu	v1,v1,s8
+	lw	s0,4*1(v1)	# a := p!6!1
+	j	fetch
+
+L247: # l2p3     frq=22841
+	move	s1,s0		# b := a
+	lw	v1,4*3(s3)
+	sll	v1,v1,2
+	addu	v1,v1,s8
+	lw	s0,4*2(v1)	# a := p!3!2
+	j	fetch
+
+L248: # l2p4     frq=5310
+	move	s1,s0		# b := a
+	lw	v1,4*4(s3)
+	sll	v1,v1,2
+	addu	v1,v1,s8
+	lw	s0,4*2(v1)	# a := p!4!2
+	j	fetch
+
+L249: # l2p5     frq=32256
+	move	s1,s0		# b := a
+	lw	v1,4*5(s3)
+	sll	v1,v1,2
+	addu	v1,v1,s8
+	lw	s0,4*2(v1)	# a := p!5!2
+	j	fetch
+
+L250: # l3p3     frq=4185
+	move	s1,s0		# b := a
+	lw	v1,4*3(s3)
+	sll	v1,v1,2
+	addu	v1,v1,s8
+	lw	s0,4*3(v1)	# a := p!3!3
+	j	fetch
+
+L251: # l3p4     frq=1
+	move	s1,s0		# b := a
+	lw	v1,4*4(s3)
+	sll	v1,v1,2
+	addu	v1,v1,s8
+	lw	s0,4*3(v1)	# a := p!4!3
+	j	fetch
+
+L252: # l4p3     frq=449
+	move	s1,s0		# b := a
+	lw	v1,4*3(s3)
+	sll	v1,v1,2
+	addu	v1,v1,s8
+	lw	s0,4*4(v1)	# a := p!3!4
+	j	fetch
+
+L253: # l4p4     frq=1
+	move	s1,s0		# b := a
+	lw	v1,4*4(s3)
+	sll	v1,v1,2
+	addu	v1,v1,s8
+	lw	s0,4*4(v1)	# a := p!4!4
+	j	fetch
+
+L254: # Error     frq=0
+L255: # Error     frq=0
+	subu	s6,s6,1
+	addu	v0,$0,1
+	j	ret
+
+	.end	cintasm
+

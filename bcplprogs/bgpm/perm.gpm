@@ -1,0 +1,55 @@
+
+[DEF\inc\{[DEC\[BAR\+\[BIN\^1]\[BIN\1]]]}]`
+[DEF\dec\{[DEC\[BAR\-\[BIN\^1]\[BIN\1]]]}]`
+
+[DEF\perm\{`
+   [perms\1\^1\\^2\`
+     [DEF\arg\{[list\`
+                 [DEF\S\{^}^1]`
+               ]`
+              }`
+     ]`
+     [DEF\ax\{[^1\^1\`
+                 [DEF\^1\{{\}[arg\^1]}]`
+                 [DEF\^2\]`
+              ]`
+             }`
+     ]`
+     [DEF\allbut\{[ax\^1\^2]`
+                  [^1\^1\^2\^3\`
+                    [DEF\^1\{[allbut\[inc\^1]\^2\^3]}]`
+                    [DEF\^3\]`
+                  ]`
+                 }`
+     ]`
+     [DEF\perms\{`
+       [^2\^1\^2\^3\^4\`
+         [DEF\list\{[}S^4{]}]`
+         [DEF\^2\{[perms\1\[dec\^2]\^3[arg\^1]\[allbut\1\^1\^2]]`
+                  [^1\^1\^2\^3\^4\`
+                    [DEF\^1\{[perms\[inc\^1]\^2\^3\^4]}]`
+                    [DEF\^2\][debug]`
+                  ]`
+                 }`
+         ]`
+         [DEF\0\^3
+`
+         ]`
+       ]`
+      }`
+     ]`
+   ]`
+ }`
+]` End of DEF perm
+
+[DEF\debug\]`
+
+Permuting A B C
+
+{[perm\3\{\A\B\C}]} =>
+[perm\3\{\A\B\C}]
+
+
+`{[perm\5\{\A\B\C\D\E}]} =>
+`[perm\5\{\A\B\C\D\E}]
+

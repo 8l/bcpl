@@ -1,0 +1,150 @@
+/*******************************************************************************
+**              (C) Copyright  Tripos Research Group 1982                     **
+**             University of Cambridge Computer Laboratory                    **
+********************************************************************************
+
+      ########  ########  ##        ########  ##    ##  ######    #######
+      ########  ########  ##        ########  ##    ##  #######   ########
+      ##           ##     ##        ##        ##    ##  ##    ##  ##    ##
+      ######       ##     ##        ######    ########  ##    ##  ########
+      ##           ##     ##        ##        ##    ##  ##    ##  #######
+      ##           ##     ##        ##        ##    ##  ##    ##  ##  ##
+      ##        ########  ########  ########  ##    ##  #######   ##   ##
+      ##        ########  ########  ########  ##    ##  ######    ##    ##
+
+********************************************************************************
+**      Author : mike richardson                                     1982     **
+*******************************************************************************/
+
+/*******************************************************************************
+*                                                                              *
+*   header containing manifests for user-accessible filing system structures   *
+*                                                                              *
+*******************************************************************************/
+
+MANIFEST
+$(
+   // results of examine operations - the information is returned in a vector
+   // which is divided into two parts (a) directory entry
+   //                                 (b) object header
+   // the directory entry occupies the first <dirent.size> words followed by
+   // the header information - not that for examineobj the former is unset
+
+   dirent.type          =  1    // slot for type of object           FH3/FS/FM
+   dirent.name          =  2    // name of object (BCPL string here) FH3/FS/FM
+   dirent.fskey         =  18   // fileserver key of object ....        /FS/FM*
+   dirent.file.puid     =  18   // PUID of the file part                /FS/FM*
+   dirent.index.puid    =  22   // PUID of index for directories        /FS/FM*
+   dirent.access.bits   =  26   // access allowed through this entry    /FS/FM
+   dirent.station       =  27   // station which wrote this entry       /FS/FM
+   dirent.matrix.bits   =  28   // access matrix bits                      /FM
+   dirent.upB           =  29   // upper bound on directory info
+   dirent.size          =  30   // size of directory entry
+
+   file.type            =  0    // type marker field for file        FH3/FS/FM
+   file.byte.size       =  1    // two-word file size in bytes          /FS/FM
+   file.creation.dat    =  3    // last-written date from datstamp   FH3/FS/FM
+   file.station         =  14   // station which created this file      /FS/FM
+   file.writers.puid    =  15   // four word PUID of writer of file     /FS/
+   file.header.upB      =  24   // upper bound on file header
+   file.header.size     =  25   // file header size
+
+   dir.type             =  0    // type marker field for directory   FH3/FS/FM
+   dir.creation.dat     =  3    // creation date of directory        FH3/FS/FM
+   dir.index.puid       =  10   // PUID of corresponding index          /FS/
+   dir.station          =  14   // station which created directory      /FS/FM
+   dir.creators.puid    =  15   // PUID of whoever created cirectory    /FS/FM
+   dir.header.upB       =  24   // upper bound on directory header
+   dir.header.size      =  25   // directory header size
+
+   // note (a) the PUIDs returned may be zapped if access is disallowed (FM*)
+   //      (b) the same manifests are used for FH3, FS, and FM, and all
+   //          implementations will arrange data in this manner
+   //      (c) data in unpacked (dibyte-quadbyte) if necessary except that
+   //          name strings remain contigious
+
+    fs.type.dir         =  1    // object is a directory (FS)
+    fs.type.file        =  2    // object is a file      (FS)
+    fm.type.dir         =  1    // object is a directory (FM)
+    fm.type.file        =  2    // object is a file      (FM)
+   fh3.type.dir         =  2    // object is a directory (FH3)
+   fh3.type.root        =  1    // object is root dir.   (FH3)
+   fh3.type.file        = -3    // object is a file      (FH3)
+
+   type.dir             =  1    // type as interpreted from "objinfo"
+   type.file            =  2    // type as interpreted from "objinfo"
+
+   // discinfo result manifests - information is returned in a vector
+   // which has the following offsets for all filing system implementations
+   // not however that space information is not available for FS and FM
+
+   discinfo.type        =  0    // filing system type (implementation)
+   discinfo.unit        =  1    // unit number
+   discinfo.state       =  2    // validation state
+   discinfo.space       =  3    // free space available
+   discinfo.used        =  4    // disc space used
+   discinfo.alloc       =  5    // allocation unit size in bytes
+                                // for above
+   discinfo.upB         =  5    // upper bound on size of vector
+
+   disctype.floppy      =  90   // disc is a floppy didc
+   disctype.cart        =  91   // disc is a cartridge (RK05-like)
+   disctype.big         =  92   // big disc pack
+   disctype.FS          =  93   // fileserver image (FS)
+   disctype.FM          =  94   // fileserver image (FM)
+   disctype.core        =  95   // core handler
+   disctype.tape        =  96   // tape handler
+   disctype.real        =  97   // unspecified real disc system
+   disctype.FH5         =  98   // FH5 filing system
+
+   discstate.writeprotected  =  80      // disc is write protected
+   discstate.notvalidated    =  81      // disc is not (yet) validated
+   discstate.validated       =  82      // disc is validated (may be written to)
+
+   // lock manifests - filing system independant
+
+   lock.key             =  1    // object key (FH3 only)
+   lock.access          =  2    // basic access mode (shared/exclusive)
+   lock.task            =  3    // task which owns the lock
+
+   exclusive.lock       = -1    // access to the object is exclusive
+   shared.lock          = -2    // access to the object is shared
+
+   // lock manifests - FS and FM only
+   // note that the PUID may not be completely set by FM if write access is not
+   // permitted but that sufficient will be to uniquely identify the object
+
+   lock.file.puid       =  4    // PUID of file part of object
+   lock.lastex          =  17   // last examined directory slot         FM/FS
+
+   // lock manifests - FM/FH4/FH5 only
+   // these manifests concern protection states and permitted object access
+
+   lock.OID             =  8    //  object identifier + protection info
+   lock.prot            =  8    //  object's protection status
+
+   // in all cases other locations in the lock may be used by the handlers but
+   // the contents are NOT defined and are subject to change without notice
+
+   // access bits returned from the OBJINFO interface : access bits will be
+   // converted into this format by the interface from internal arrangements
+
+   access.r             = #X0001        // read bit
+   access.w             = #X0002        // write bit
+   access.d             = #X0004        // delete bit
+
+   matrix.d             = #X0080
+   matrix.a             = #X0040
+   matrix.u             = #X0020        // update bit
+   matrix.c             = #X0010        // create bit
+   matrix.f             = #X0020        // create files bit
+   matrix.v             = #X0008        // V matrix bit
+   matrix.x             = #X0004        // X matrix bit
+   matrix.y             = #X0002        // Y matrix bit
+   matrix.z             = #X0001        // Z matrix bit
+   matrix.r             = #X0001
+   matrix.w             = #X0002
+   matrix.e             = #X0004        // execute bit
+$)
+
+

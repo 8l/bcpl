@@ -1,0 +1,106 @@
+
+BCPL Cintcode System (25 Jan 2007)
+0> 
+mcfft entered K=2 N=4
+
+//    ENTRY F1 3 0
+// swap:    1    2
+//    MV A,M175176
+//    MV B,M175190
+//    MV C,M175177
+//    MV D,M175191
+//    MV M175176,C
+//    MV M175190,D
+//    MV M175177,A
+//    MV M175191,B
+// bfly:    0    1 w^0/4 = (40000000,00000000)
+//    MV B,M175176
+//    MV C,M175190
+//    ADD M175175,B
+//    ADD M175189,C
+//    SUB M175176,B
+//    SUB M175190,C
+// bfly:    2    3 w^0/4 = (40000000,00000000)
+//    MV B,M175178
+//    MV C,M175192
+//    ADD M175177,B
+//    ADD M175191,C
+//    SUB M175178,B
+//    SUB M175192,C
+// bfly:    0    2 w^0/4 = (40000000,00000000)
+//    MV B,M175177
+//    MV C,M175191
+//    ADD M175175,B
+//    ADD M175189,C
+//    SUB M175177,B
+//    SUB M175191,C
+// bfly:    1    3 w^1/4 = (00000000,40000000)
+//    MV B,M175192
+//    MV C,M175178
+//    NEG B
+//    ADD M175176,B
+//    ADD M175190,C
+//    SUB M175178,B
+//    SUB M175192,C
+//    RTN
+//    ENDFN
+
+//    ENTRY F2 3 0
+// swap:    1    2
+//    MV A,M175176
+//    MV B,M175190
+//    MV C,M175177
+//    MV D,M175191
+//    MV M175176,C
+//    MV M175190,D
+//    MV M175177,A
+//    MV M175191,B
+// bfly:    0    1 w^0/4 = (40000000,00000000)
+//    MV B,M175176
+//    MV C,M175190
+//    ADD M175175,B
+//    ADD M175189,C
+//    SUB M175176,B
+//    SUB M175190,C
+// bfly:    2    3 w^0/4 = (40000000,00000000)
+//    MV B,M175178
+//    MV C,M175192
+//    ADD M175177,B
+//    ADD M175191,C
+//    SUB M175178,B
+//    SUB M175192,C
+// bfly:    0    2 w^0/4 = (40000000,00000000)
+//    MV B,M175177
+//    MV C,M175191
+//    ADD M175175,B
+//    ADD M175189,C
+//    SUB M175177,B
+//    SUB M175191,C
+// bfly:    1    3 w^-1/4 = (00000000,40000000)
+//    MV B,M175192
+//    MV C,M175178
+//    NEG B
+//    ADD M175176,B
+//    ADD M175190,C
+//    SUB M175178,B
+//    SUB M175192,C
+// div:     0 by 4
+// div:     1 by 4
+// div:     2 by 4
+// div:     3 by 4
+//    RTN
+//    ENDFN
+//    END
+
+Original data
+(     0.00,     0.00)(     1.00,     0.00)(     2.00,     0.00)(     3.00,     0.00)
+
+
+Transformed data
+(     6.00,     0.00)(     0.00,     0.00)(     0.00,     0.00)(     0.00,     0.00)
+
+
+Data after applying the inverse transform
+(     6.00,     0.00)(     0.00,     0.00)(     0.00,     0.00)(     0.00,     0.00)
+
+20> 

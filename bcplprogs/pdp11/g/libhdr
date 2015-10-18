@@ -1,0 +1,252 @@
+|| Standard BCPL header for TRIPOS on the LSI-4 and 68000 systems
+|| *** 68000 root node moved to BCPL address 256 ***
+
+GLOBAL
+$(
+   globsize     :  0
+   start        :  1            //      start(pkt)
+   stop         :  2            //      stop(code)
+                                // globals 3 to 9 are machine dependent
+                                // g3      is used for stack checking
+                                // g4 - g7 software mul, div/rem, lshift, rshift
+   gbytes       :   8           // res := gbytes(byteaddr, size)    [68000 only]
+   pbytes       :   9           //        pbytes(byteaddr,size,val) [68000 only]
+   result2      :  10
+   returncode   :  11
+   stackbase    :  12
+   tcb          :  13           // tcb of this task
+   taskid       :  14           // task number of this task
+   getbyte      :  15           // ch  := getbyte(v,i)
+   byteget      :  15           // ch  := byteget(v,i)    : getbyte LSI4/68000
+   putbyte      :  16           //        putbyte(v,i,ch)
+   byteput      :  16           //        byteput(v,i,ch) : putbyte LSI4/68000
+   level        :  17           // p   := level()
+   longjump     :  18           //        longjump(p,l)
+   muldiv       :  19           // res := muldiv(a,b,c)
+   aptovec      :  20           // res := aptovec(fn,upb)
+   sardch       :  21           // ch  := sardch()
+   sawrch       :  22           //        sawrch(ch)
+   createco     :  23           // co  := createco(fn, stsize)
+   deleteco     :  24           //        deleteco(co)
+   callco       :  25           // arg := callco(co,arg)
+   cowait       :  26           // arg := cowait(arg)
+   resumeco     :  27           // arg := resumeco(co,arg)
+   globin       :  28           // res := globin(seg)
+   getvec       :  29           // v   := getvec(upb)
+   freevec      :  30           //        freevec(v)
+   createdev    :  31           // dev := createdev(dcb)
+   deletedev    :  32           // dcb := deletedev(dev)
+   createtask   :  33           // id  := createtask(seglist,stsize,pri)
+   deletetask   :  34           // res := deletetask(id)
+   changepri    :  35           // res := changepri(id,pri)
+   setflags     :  36           // res := setflags(id,flags)
+   testflags    :  37           // res := testflags(flags)
+   abort        :  38           //        abort(code,arg)
+   hold         :  39           // res := hold(id)
+   release      :  40           // res := release(id)
+   taskwait     :  41           // pkt := taskwait()
+   qpkt         :  42           // res := qpkt(pkt)
+   dqpkt        :  43           // res := dqpkt(id,pkt)
+   packstring   :  44           // res := packstring(v,s)
+   unpackstring :  45           //        unpackstring(s,v)
+   endtask      :  46           //        endtask(seg)
+   delay        :  47           // res := delay(ticks)
+   sendpkt      :  48           // res := sendpkt(link,id,type,r1,r2,...args)
+   returnpkt    :  49           // res := returnpkt(pkt,res1,res2)
+   initio       :  50           //        initio()
+   currentdir   :  51
+   cis          :  52
+   cos          :  53
+   rdch         :  54           // ch  := rdch()
+   unrdch       :  55           // res := unrdch()
+   wrch         :  56           //        wrch(ch)
+   readwords    :  57           // res := readwords(v,n)
+   writewords   :  58           //        writewords(v,n)
+   findinput    :  59           // scb := findinput(name)
+   findoutput   :  60           // scb := findoutput(name)
+   selectinput  :  61           //        selectinput(scb)
+   selectoutput :  62           //        selectoutput(scb)
+   endread      :  63           //        endread()
+   endwrite     :  64           //        endwrite()
+   input        :  65           // scb := input()
+   output       :  66           // scb := output()
+   readn        :  67           // n   := readn()
+   newline      :  68           //        newline()
+   writed       :  69           //        writed(n,d)
+   writen       :  70           //        writen(n)
+   writehex     :  71           //        writehex(n,d)
+   writeoct     :  72           //        writeoct(n,d)
+   writes       :  73           //        writes(string)
+   writef       :  74           //        writef(format,args..)
+   capitalch    :  75           // ch  := capitalch(ch)
+   compch       :  76           // res := compch(ch1,ch2)
+   compstring   :  77           // res := compstring(s1,s2)
+   rdargs       :  78           // res := rdargs(keys,v,upb)
+   rditem       :  79           // res := rditem(v,upb)
+   findarg      :  80           // res := findarg(keys,item)
+   loadseg      :  81           // seg := loadseg(name)
+   unloadseg    :  82           //        unloadseg(seg)
+   callseg      :  83           // res := callseg(name,a1,a2,a3,a4)
+   tidyup       :  84           // User redefinable task tidy up routine
+   datstring    :  85           // v   := datstring(v)
+   datstamp     :  86           // v   := datstamp(v)
+   enter        :  87           // res := enter(regs)    [68000 only]
+// 88
+// 89
+   deleteobj    :  90           // res := deleteobj(name)
+   deletefile   :  90
+   renameobj    :  91           // res := renameobj(name1,name2)
+   renamefile   :  91
+   findupdate   :  92           // scb := findupdate(name)
+   endstream    :  93           //        endstream(scb)
+   get2bytes    :  94           // wrd := get2bytes(v,wordoffset)
+   put2bytes    :  95           //        put2bytes(v,wordoffset,word)
+// 96
+// 97
+// 98
+// 99
+   pktwait      :  100          // pkt := pktwait(dest,pkt)
+// 101
+   devicetask   :  102          // res := devicetask(name)
+   deviceaddr   :  103          // res := (deviceaddr("devname"<<2)>>2) [VME]
+   fault        :  104          //        fault(code)
+   consoletask  :  105
+// 106
+   splitname    :  107          // res := splitname(...)
+   locateobj    :  108          // res := locateobj(name)
+   freeobj      :  109          //        freedir(dir)
+// 110
+// 111
+// findobj      :  112
+   copydir      :  113          // res := copydir(lock)
+   note         :  114          // res := note(scb,v)
+   point        :  115          // res := point(scb,v)
+   findappend   :  116          // scb := findappend(name)
+   rewind       :  117          // scb := rewind()
+   endtoinput   :  118          // scb := endtoinput()
+// 119
+// 120
+// 121
+// 122
+   locatedir    :  123          // dir := locatedir(name)
+// 124
+   createdir    :  125          // res := createdir(name)
+
+   // Globals 126-132 reserved for linking loader
+   // Globals 133-149 defined in CLIHDR
+$)
+
+MANIFEST
+$(
+// manifests values for the LSI4
+// bytesperword         =  2
+// mcaddrinc            =  1
+// mcrelocinc           =  1
+// rootnode             =  8
+
+// manifest values for the 68000
+   bytesperword         =  4
+   mcaddrinc            =  4
+   mcrelocinc           =  4
+   rootnode             =  256
+
+// **** note that definitition of maxint and minint assume 2s complement ****
+
+   bitsperbyte          =  8
+   bitsperword          =  bytesperword * bitsperbyte
+   minint               =  1 << [ bitsperword-1 ]
+   maxint               =  NOT minint
+
+   endstreamch          =  -1                   // end of input stream
+   emptybuffch          =  #XFFFFFF00 + '**'    // returned by RDCH on empty
+                                                // buffer. Prints as *
+   notinuse             =  -1                   // conventional packet link
+   ug                   =  150                  // user global base
+   fg                   =  ug                   // synonym for user base
+   firstfreeglobal      =  ug                   // and another synonym ...
+   tickspersecond       =  50                   // clock tick rate
+
+   freebit              =  1                    // free bit in store block
+   sizebits             =  NOT freebit          // block size bits in chain
+
+   task.cli            =     1          // standard CLI
+   task.debug          =     2          // standard debug task
+   task.consolehandler =     3          // standard console handler
+   task.filehandler    =     4          // standard file handler
+
+   state.pkt           =     1          // packet(s) on work queue
+   state.hold          =     2          // task in held state
+   state.wait          =     4          // task waiting for packet
+   state.int           =   #10          // task interrupted
+   state.dead          =   #14          // task is dead
+
+   flag.break          =     1          // standard break flag
+
+   co.cllr             =     1
+   co.send             =     2
+   co.resp             =     3
+   co.func             =     4
+
+   pkt.link            =     0          // packet link word
+   pkt.id              =     1          // packet task/device identifier
+   pkt.devtaskid       =     1
+   pkt.taskid          =     1
+   pkt.devid           =     1
+   pkt.type            =     2          // packet action type
+   pkt.res1            =     3          // result one
+   pkt.res2            =     4          // ...... two
+   pkt.arg1            =     5          // argument fields
+   pkt.arg2            =     6
+   pkt.arg3            =     7
+   pkt.arg4            =     8
+   pkt.arg5            =     9
+   pkt.arg6            =    10
+
+   rtn.tasktab         =     0          // pointer to task table
+   rtn.devtab          =     1          // pointer to device table
+   rtn.tcblist         =     2          // tcb priority queue
+   rtn.crntask         =     3          // pointer to current task tcb
+   rtn.blklist         =     4          // free store block list
+   rtn.debtask         =     5          // pointer to debug task tcb
+   rtn.days            =     6          // time since 1st Jan 1978
+   rtn.mins            =     7
+   rtn.ticks           =     8
+   rtn.clwkq           =     9          // work queue for clock
+   rtn.memsize         =    10          // memory size in 1K word units
+   rtn.info            =    11          // pointer at info vector
+   rtn.kstart          =    12          // kernel entry address
+                                        // from here on is machine dependent
+// rtn.devmp           =    13
+// rtn.devint          =    14
+// rtn.devrep          =    15
+// rtn.devsav          =    16
+// rtn.upb             =    16          // For LSI-4
+   rtn.upb             =    24          // For 68000s (actually 23 1/2 !!!)
+
+   info.mctype         =     0          // info vector machine type
+   info.assignments    =     1          // assignments list head
+   info.devices        =     2          // mounted devices vector
+   info.handlers       =     3          // mounted handlers vector
+   info.systemtype     =     4          // 0 if unknown, else a string
+   info.ringinfo       =     5          // pointer to ring-specific data vector
+
+   tcb.link            =     0          // link to next tcb
+   tcb.taskid          =     1          // identifier of the task
+   tcb.pri             =     2          // priority
+   tcb.wkq             =     3          // packet work queue
+   tcb.state           =     4          // current state of task
+   tcb.flags           =     5          // task flags
+   tcb.stsiz           =     6          // root coroutine stack size
+   tcb.seglist         =     7          // segment list pointer
+   tcb.gbase           =     8          // pointer at global vector
+   tcb.sbase           =     9          // pointer at root stack base
+   tcb.pxhand          =    11          // address of private exception handler
+// tcb.upb             =    17          // rest is machine dependent LSI4
+// tcb.upb             =    40          // rest is machine dependent 68000
+
+   dcb.driver          =     0          // link to device driver
+   dcb.devid           =     1          // device identifier
+   dcb.wkq             =     2          // device packet work queue
+$)
+
+

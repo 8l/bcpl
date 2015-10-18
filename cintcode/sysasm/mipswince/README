@@ -1,0 +1,73 @@
+BCPL Cintcode for Windows CE 2.0
+
+
+The files in this directory can be used to build the BCPL Cintcode
+system for Windows CE 2.0. They have be tested on an HP 620LX handheld
+machine.
+
+To use them you need to have installed Windows CE Services and have an
+HP620LX running Windows 2.0. If you wish to recompile the system you
+will also need Visual C 5.0 and the Windows CE Toolkit.
+
+After possibly editing Makefile, just type:
+
+nmake
+
+This will rebuild ceBCPL.exe and copy it to the handheld machine.
+
+You will need to copy the directories bcpl\cintcode and bcpl\bcplprogs
+into the handheld machine. Note that the HP620LX is a little ended
+machine and so little ended versions of the Cintcode files are needed.
+These are exactly the same as the Linux or Windows versions and so
+no special action is necessary.
+
+Next, update some windows CE Registry entries as described at the end
+of this document.
+
+Double clicking the ceBCPL icon will start the BCPL Cintcode system.
+When using it for the first time it is a good idea to recompile the
+system by executing the following two commands:
+
+prefix bcpl/cintcode
+c compall
+
+To try out some of the demonstration programs in bcpl/bcplprogs type:
+
+prefix bcpl/bcplprogs/demos
+c b primes
+primes
+c b queens
+queens
+
+prefix bcpl/bcplprogs/graphics
+c b gr
+gr
+
+This last example demonstrated a very simple graphics package that
+allows a BCPL program to draw lines and points in 8-bit colour.
+
+The Windows CE Registry
+
+The registry should contain the following entry in
+
+HKEY_CURRENT_USER\Software\ceBCPL
+
+Name: BCPLPATH       Data: "\BCPL\cintcode"
+
+
+You may also find it convenient to update the registry so that double
+clicking on .b (bcpl) files automatically invokes the pocket word 
+editor. Ie, in:
+
+HKEY_CLASSES_ROOT/.b
+
+Name: (default)      Data: "bcplfile"
+
+HKEY_CLASSES_ROOT\bcplfile\Shell\Open\Command
+
+Name: (default)      Data:  "pword %1%
+
+
+
+Martin Richards
+22 June 2000

@@ -1,0 +1,58 @@
+Test monitor 1
+[def\m1\{aaa]bbb}]
+[m1]
+
+
+Test monitor 2
+[xxx\aaa^2bbb]
+
+
+Test monitor 3
+[def\m3\{aaa ^n bbb}]
+[m3\qqq]
+
+
+Test monitor 4
+[def\m4\{aaa ^5 bbb}]
+[m4\xxx\yyy\zzz\ttt]
+
+
+Test monitor 5
+[def\m5a\m5a body]
+[def\m5\{[m5a}]
+[m5\xxx\yyy\zzz\ttt]
+
+Test monitor 7
+[m7\xxx\yyy\zzz\ttt]
+
+Test monitor 9
+[def\m9\xxxx]
+[set\m9\aaa]
+[m9]
+[set\m9\bbbb]
+[m9]
+[set\m9\ccccc]
+[m9]
+
+Test monitor 10
+[BIN\123x]
+
+Testing arithmetic
+
+[def\args\{arg0=^0 arg1=^1 arg2=^2}]
+[args\aaa\bbb\ccc\ddd]
+
+
+[def\+\{[eval\^1+^1]}]
+[def\-\{[eval\^1-^1]}]
+[def\*\{[eval\^1*^1]}]
+[def\/\{[eval\^1/^1]}]
+[def\%\{[eval\^1%^1]}]
+
+7+3=[+\7\3]
+7-3=[-\7\3]
+7*3=[*\7\3]
+7/3=[/\7\3]
+7%3=[%\7\3]
+
+End of test

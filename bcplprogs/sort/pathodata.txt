@@ -1,0 +1,78 @@
+
+A B C D E F G H . . .               I J K L M N O P . . .   S T U V W X Y Z
+|                                   |                                     |
+l                                   m                                     r
+
+m is (l+r)/2.
+
+Choose all elements to be distinct and greater than zero, and A<Z<I so 
+that Z is the first median m1. Choosing m1 to be as small as possible, we
+have
+
+A=1, Z=m1=2, I>m1
+
+A B C D E F G H . . .               I J K L M N O P . . .   S T U V W X Y Z
+1                                   |                                     2
+|                                   |                                     |
+l                                   m                                     r
+
+Choosing all of B, C,..., Y greater than m1 leads to:
+
+A B C D E F G H . . .               I J K L M N O P . . .   S T U V W X Y Z
+1 |                                 |                                     2
+| |                                 |                                     |
+l p                                 m                                     r
+                                                                          q
+
+causing B and Z to be swapped, and p and q moving to new postions without
+further swaps.
+
+A Z C D E F G H . . .               I J K L M N O P . . .   S T U V W X Y B
+1 2 |                               |                                     |
+| | |                               |                                     |
+l q p                               m                                     r
+
+Quicksort is now applied trivially to the region l .. p-1 
+and then to the region p .. r.
+
+A Z C D E F G H . . .               I J K L M N O P . . .   S T U V W X Y B
+1 2 |                                 |                                   |
+    |                                 |                                   |
+    l                                 m                                   r
+
+m is the new mid point (l+r)/2
+
+As before choose C<B<J so that B is the new median m2, and choose all the 
+elements D, E,..., Y to be greater than m2 leads to the following state:
+
+A Z C B E F G H . . .               I J K L M N O P . . .   S T U V W X Y D
+1 2 3 4 |                               |                                 |
+        |                               |                                 |
+        l                               m                                 r
+
+and then
+
+A Z C B E D G H . . .               I J K L M N O P . . .   S T U V W X Y F
+1 2 3 4 5 6 |                             |                               |
+            |                             |                               |
+            l                             m                               r
+
+followed by
+
+A Z C B E D G F . . .               I J K L M N O P . . .   S T U V W X Y F
+1 2 3 4 5 6 7 8                             |                             |
+                |                           |                             |
+                l                           m                             r
+
+so the original sequence starts as follows:
+
+A B C D E F G H . . .               I J K L M N O P . . .   S T U V W X Y Z
+1 4 3 6 5 8 7                                                             2
+| | | | | | |                                               | | | | | | | | 
+1 2 3 4 5 6 7                                                             n
+
+ie it can be set by:
+
+FOR i = 1 TO n-1 BY 2 DO v!i := i
+FOR i = 2 TO n-1 BY 2 DO v!i := i+2
+v!n := 2

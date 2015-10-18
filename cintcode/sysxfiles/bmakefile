@@ -1,0 +1,7 @@
+% Convert cintsys.xc  to cintsys.xc1 on VMS
+
+
+all
+<<
+echo "Converting cintsys.xc"; shellcom "conv/fdl=bin cintsys.xc cintsys.xc1"
+>>

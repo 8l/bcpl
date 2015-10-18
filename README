@@ -1,0 +1,838 @@
+BCPL CINTCODE DISTRIBUTION   (Revised 28 June 2013)
+
+The following change was made on 31 May 2013.
+
+
+The BCPL compiler has just been upgraded with options t32 and t64
+to allow it to generate 64-bit Cintcode when running on a 32-bit
+system, and 32-bit Cintcode when running on a 64-bit system.
+The 32-bit Cintcode compiled code is placed in cintcode/cin, and
+the 64-bit code is placed in cintcode/cin64. The old BCPL64
+distribution is now obsolete.
+
+In directory BCPL/cintcode the command
+
+make clean
+make
+
+will rebuild the 32-bit Cintcode system called cintsys, and
+
+make clean64
+make sys64
+
+will rebuild the 64-bit Cintcode system called cintsys64.
+
+The command-commands b64, bc64, bs64, bcb64, bsb64, bcl64 and bsl64
+will compile to 64-bit Cintode when the compiler is running on either
+a 32- or 64-bit system.
+
+The command-commands b, bc, bs, bcb, bsb, bcl and bsl will compile to
+32-bit Cintode when the compiler is running on either a 32- or 64-bit
+system.
+
+The directory BCPL/cintcode/cin holds 32-bit Cintcode compiled code.
+The directory BCPL/cintcode/cin64 holds 64-bit Cintcode compiled code.
+
+c compall     will recompile all the BCPL code for the 32-bit version
+c compall64   will recompile all the BCPL code for the 64-bit version
+
+******************** IMPORTANT *****************************
+
+On 12 Oct 2006, the location of cintsys and rastsys moved from
+$BCPLROOT to BCPLROOT/bin. This will require a change in the setting
+of the PATH environment variable.
+
+Before installing BCPL, read this README file and remember to edit the
+Makefile and set the environment variable BCPLROOT to your chosen
+absolute location for the cintcode directory, and include this in the
+PATH environment variable.
+
+On my system (using bash under Linux), this is done by:
+
+export BCPLROOT=/home/mr10/distribution/BCPL/cintcode
+export PATH=$PATH:$BCPLROOT/bin
+
+(The variables BCPLPATH and BCPLHDRS now do not need to be set if
+ their values would be $BCPLROOT/cin and $BCPLROOT/g, respectively)
+
+************************************************************
+
+
+
+
+
+After installing BCPL, you may have to re-install packages that depend
+on it, such as Cintpos, Cobench, Tcobench, Bench, MCPL, VSPL, etc.
+
+
+A manual for Cintcode BCPL and Cintpos is available via my home page.
+
+Latest changes: ---------------------------------------------------
+
+04/10/07
+Several files changed to make it easier to compile the system
+under Windows using the Microsoft Visual Studio tools. See the 
+instructions below.
+
+10/11/06
+Added the -slow option to force using the slow interpreter (interpret)
+all the time. This is useful if there seems to be a bug in cinterp or
+fasterp.  Updated the programs com/dumpsys.b and com/dumpdebug.b to
+help analyse analyse compacted dumps of the Cintcode memory (typically
+in DUMP.mem).  Made a change to sysasm/cintasm.S to correct a bug
+relating to the Cintcode pc going negative.
+
+08/11/06
+Added the -d option to set the dump flag in the rootnode (equivalent
+to calling the command: dumpmem on). This will cause the entire
+Cintcode memory to be dumped to DUMP.mem in a compacted form if the
+Cintcode system returns with a non zero return code. The file DUMP.mem
+can be printed in a readable form using the dumpsys command (always
+assuming you have a working BCPL system).
+
+07/11/06
+Added the -f, -v and -V options to help people track down installation
+problems. They trace the behaviour of the system, particularly during
+the bootstrapping process.
+
+The option -v generates a simple trace of the bootstrapping process,
+mainly within sysc/cintsys.c and sysb/boot.b. It should produce output
+similar to the following:
+
+solestreet$ cintsys -v
+Boot tracing level is set to 1
+Cintcode memory (upb=4000000) allocated
+Boot's stack allocated at 211
+Boot's global vector allocated at 727
+Rootnode allocated at 100
+syscin/boot loaded successfully
+syscin/blib loaded successfully
+syscin/syslib loaded successfully
+syscin/dlib loaded successfully
+cintsys calling the interpreter
+CLI stack allocated at 8249
+CLI global vector allocated at 8665
+
+BCPL Cintcode System (7 Nov 2006)
+boot about to call the interpreter recursively
+It should start executing the boot function: startcli
+boot: about to call sys(Sys_interpret,...)
+startcli: can now use normal stream i/o
+startcli: trying to load syscin/cli
+startcli: loaded syscin/cli successfully
+startcli: now entering the cli
+cli: now entering the main CLI loop
+0> 
+
+The option -V is similar to -v, but also includes some Cintcode
+instruction level tracing.
+
+The -f option traces the use of environment variables such as BCPLPATH
+within the function pathinput (defined in sysc/cintsys.c). It helps to
+solve problems caused by incorrect setting of the environment
+variables. Try calling:
+
+cintsys -f
+
+then
+
+bcpl com/bcpl.b to junk
+
+It should show the location of successfully opened files.
+
+
+27/07/06
+The treatment of GET directives has changed. Firstly .h is appended to
+the filename does not end with .h or .b. The name is then looked up in
+
+(1) the current working diectory, then
+(2) the directories specified by the headers environment variable
+    (typically BCPLPATH or POSPATH), and finally
+(3) the g/ directory in the system root, typically given by BCPLROOT or
+    POSROOT.
+
+25/07/06 Made loadseg first search the current working directory, then
+the BCPLPATH directories, and finally the cin/ directory in the
+BCPLROOT directory.  Great news: you normally no longer have to define
+the BCPLPATH environment variable.
+
+21/06/06
+Modified the Makefile to allow the system to be cross-compiled
+for the GP2X handheld Linux gaming machine when running under Cygwin.
+Renamed most files to use lower case letters to ease some problems
+with windows machines.
+
+16/05/06
+For the native code version of BCPL, rdch from standard input
+reads the shell argument characters before reading from stdin.
+This required a change to natbcpl/sysc/clib.c and
+natbcpl/sysb/blib.b.
+
+13/09/05
+Made MakefileWin32 work under Windows XP using Visual C++ tools.
+The resulting executable was: cintsys.exe and it can be entered
+(for the first time) by the shell command: setupwin32
+You may need to slightly edit setupwin32.bat.
+
+30/08/05 ############### IMPORTANT CHANGE #########################
+Change name of the BCPL Cintcode executable from cinterp to cintsys
+to make it documentation more compatible with cintpos. The raster
+version rasterp was also changed (to rastsys).
+
+26/07/05 
+A version for the Mac PC running Mac OS X has just been added,
+although it does not currently use the hand written assembly language
+interpreter yet.
+
+End of recent changes ----------------------------------------------
+
+This is the README file for the NEW VERSION of the BCPL distribution.
+Note the slight change in directory structure and the use of the
+environment variables BCPLROOT, BCPLPATH and BCPLHDRS. For details
+see below.
+
+This distribution of BCPL is free of charge to individuals for private
+use and to academic institutions, but please, if you install the
+system, send me an e-mail message (to mr@cl.cam.ac.uk) so I can keep a
+record of who is interested in it. It is available via my Home Page
+(http://www.cl.cam.ac.uk/users/mr).
+
+It provides a machine independent interpretive version of BCPL. The
+interpreter in implemented in C, but for some architectures it also
+has a version implemented in assembly language giving improved
+performance.
+
+This distribution contains versions of the system for Linux, DEC Alpha
+machines, Mips R2000/3000 and Mac Power PCs, Sun4s, Sun/SPARCs and
+386/486/Pentium machines under MSDOS, Windows 95/98/NT/2000/XP,
+Windows CE2.0 (for the HP 620LX), Mac OS X or OS/2. Some
+implementations have not been tested recently and are rather out of
+date. The simplest installation is for Linux machines. Installation on
+other machines is described later. This distribution does include the
+executable: cintsys.exe that should run under most Windows systems on
+Pentium mased machines.
+
+TIME/ADDRESS DIAGRAMS
+
+A version of the interpreter that can generate a time/address
+diagrams in Postscript has been added to the distribution (see
+com/raster.b, com/rast2ps.b, sys/rasterp.c and sys/rastlib.c)
+
+PROFILING
+
+Profiling and statistics gathering is available, see com/stats.b
+
+CHANGE LOG
+
+For a log of recent changes look in cintcode/doc/changes.
+
+NATIVE CODE
+
+A BCPL system that generates native is now available in this
+distribution.  It currently only provides code generators for the i386
+and DEC Alpha architectures.  On these machines it gives a speed up
+of about a factor of ten.
+
+
+PERFORMANCE STATISTICS (Cintcode interpreters)
+
+                            BCPL self           bench         Date
+                            compilation                       measured
+
+Cintcode instructions        22244904           6176753       12 Jan 96
+executed
+
+2.4GHz Athlon AMD64 Windows XP
+                               0.609             0.140        15 Sep 05
+
+1GHz Mobile Pentium III        0.460             0.130        15 Sep 05
+
+1GHz Mobile Pentium III native 0.150                          15 Sep 05
+
+66MHz 486 Linux                5.340             1.360        11 Jan 96
+
+120MHz Pentium Linux           2.030             0.550        12 Jan 96
+
+90MHz Pentium Linux            2.770             0.710        31 May 96
+
+90MHz Pentium Linux native     0.75              0.109        19 Aug 96
+
+450MHz Pentium Linux           0.760             0.270         7 Jan 00
+
+450MHz Pentium Linux native    0.09              0.03          7 Jan 00
+
+400MHz Pentium Windows NT      0.881             0.320         7 Dec 99
+
+150MHz DEC Alpha               3.199             0.766        12 Jan 96
+
+DEC R2000/R3000 Mips (10MHz?) 45.750            12.394        12 Jan 96
+
+Sun4m ????                    13.549             3.817        12 Jan 96
+
+Sun4m SPARC 20 Model 514       9.830             2.610        12 Jan 96
+
+75MHz SH3 Windows CE 2.0       7.558             3.517         7 Jan 00
+
+Notes:
+
+1) The times are real times (including I/O) and they are in seconds.
+
+2) The self compilation test is the time to compiler an early version
+   of the BCPL compiler, typically using the commands:
+
+      bcpl com/origbcpl.b to origbcpl
+      origbcpl com/origbcpl.b to origbcpl
+
+      Then observe how long the following self compilation takes.
+
+      origbcpl com/origbcpl.b to origbcpl
+
+3) The bench program is in com/bench.b compiled using the current
+   compiler. Since the execution times are getting so small, the
+   program com/bench100.b is a better test.
+
+4) Most of the above implementations use hand written assembly language
+   interpreters, but the Windows version XP version does not. Currently
+   hand written interpreters seem to give only about 20% improvements.
+   So new ones will not be written.
+
+LINUX INSTALLATION 
+
+This section describes how to install Cintcode BCPL on an IBM PC
+running Linux.
+
+1) Choose a directory into which you wish to install BCPL and copy bcpl.tgz
+into it. E.g:
+
+        cd <somewhere>            -- eg: cd $(HOME)/distribution
+        cp <bcpl.tgz> .
+        ls -l
+
+2) Extract the files for the BCPL system, assuming ...../bcpl.tgz
+   is the tgz file.
+
+        tar zxvf ...../bcpl.tgz    -- extract bcpl.tgz
+
+Some browsers will have already automatically decompressed bcpl.tgz,
+so you may have to use the following command instead:
+
+        tar xvf ...../bcpl.tgz
+
+This will create the directories BCPL, BCPL/cintcode, BCPL/bcplprogs
+and BCPL/natbcpl and fill them with useful material. The directory
+BCPL/bcplprogs contains subdirectories of demonstration programs, and
+BCPL/natbcpl contains the native code versions of the system.
+
+3) ########## IMPORTANT -- Changed in this new version. ###########
+
+In order to use the BCPL Cintcode system from another directory
+define the shell variables BCPLROOT, BCPLPATH and BCPLHDRS must be
+given the absolute file names of the BCPL root directory, the
+directory containing the compiles commands and the directory
+containing the BCPL header files. The BCPLROOT directory should also
+be added to your PATH.  This can be done by editing the file
+BCPL/cintcode/setbcplenv, if necessary, and running the command:
+
+        . setbcplenv          under bash
+or
+        source setbcplenv     under the C-shell
+
+This will execute commands similar to:
+
+        export BCPLROOT=$HOME/distribution/BCPL/cintcode
+        export BCPLPATH=$BCPLROOT/cin
+        export BCPLHDRS=$BCPLROOT/g
+        export PATH=$PATH:$BCPLROOT/bin        *** Changed 12/10/06 ***
+or
+        setenv BCPLROOT ${HOME}/distribution/BCPL/cintcode
+        setenv BCPLPATH ${BCPLROOT}/cin
+        setenv BCPLHDRS ${BCPLROOT}/g
+        setenv PATH     ${PATH}:${BCPLROOT}/bin *** Changed 12/10/06 ***
+
+4) Change to the cintcode directory an rebuild the system (under Linux):
+
+        cd $HOME/distribution/BCPL/cintcode
+        make clean
+        make
+
+This should have rebuilt and entered the BCPL Cintcode System
+including recompiling all the standard commands.  The line 'make
+clean' is a recent recommendation that eliminates some commonly
+reported problems. There is something wrong if the output of the
+above make command does not end with something like:
+
+...
+bin/cintsys
+
+BCPL Cintcode System (7 Nov 2006)
+0> 
+
+If there is something wrong, try typing the following lines to
+a shell prompt:
+
+cintsys -f -v
+
+or 
+
+cintsys -f -V
+
+and study the output, in conjunction with sysc/cintsys.c and
+sysb/boot.b. Hopefully, there will be enough information there
+to diagnose and correct the problem.
+
+
+5) This step was required in earlier version of the distribution but is
+hopefully is NO LONGER NEEDED. You can recompile all the BCPL system code
+and all the commands by typing:
+
+        c compall
+
+6) Try out a few commands, eg:
+
+        echo hello
+        bcpl com/echo.b to junk
+        junk hello
+        map pic
+        logout   (or CTRL-C)
+
+Try "cintsys -h" to see how to set the Cintcode memory size, and see
+what the other options are.
+
+7) Read the documentation in cintcode/doc and any README files you can
+find, and possibly try out the demonstration script in
+cintcode/doc/notes.
+
+8) To compile and run a demo program such as bcplprogs/demos/queens.b:
+
+        cd ../bcplprogs/demos
+        cintsys
+        c b queens
+        queens
+        c b squad
+        squad
+        c b squad2
+        squad2
+        logout
+
+9) To construct a time/address graph, ensure that rasterp has been
+made, by:
+
+        cd $BCPLROOT
+        make bin/rastsys
+
+Then change directory to the one containing the test program, and
+enter rasterp, eg:
+
+        cd ../bcplprogs/sort
+        rastsys
+
+Compile the test program if necessary, eg:
+
+        c b sortdemo
+
+Open a raster file (eg raster), run the test, and close the raster
+file:
+
+       raster count 1000 scale 12 to rastdata      -- the default settings   
+       sortdemo
+       raster                                      -- close rastdata
+
+This will generate a relatively compact file using run length encoding
+
+    K1000 S12          1000 instruction per raster line, 12 bytes per pixel
+    W10B3W1345B1N      10 white 3 black 1345 white 1 black newline
+    W13B3W12B2N        etc
+    ...
+
+Get out of rasterp and enter cinterp (since it runs faster), convert
+the raster file to postscript and view the result:
+
+       logout
+       cintsys -c rast2ps ml 250000 mh 300000 fh 12000000 to /tmp/raster.ps
+       ghostview /tmp/raster.ps
+
+This will show a diagram of data accesses during the execution of
+shellsort, heapsort and quicksort, each sorting the same set of 10000
+random integers.
+
+10) To gather and analyse execution counts, type, for instance, the
+following:
+
+    cd $BCPLROOT
+    cintsys                     Enter the cintcode system
+    preload bcpl                Preload a program to study
+    stats                       Prints helpful information
+    stats on                    Enable stats gathering on next command
+    bcpl com/bcpl.b to junk     Execute the command to study
+ 
+    interpreter                 Select the fast interpreter
+                                stats automatically selects the slow one
+
+    stats to stats              Send instruction frequencies to file
+                                or
+    stats profile to profile    Send detailed profile info to file
+                                or
+    stats analysis to analysis  Generate statistical analysis to file
+
+    more STATS                  Look at the resulting files
+    more PROFILE
+    more ANALYSIS
+
+Installation on other unix machines
+
+Carry out steps 1 to 2 above.  In the directory BCPL/cintcode/sysasm you
+will find directories for different architectures, e.g. ALPHA, MIPS,
+SUN4, SPARC, MSDOS, MAC, OS2, BC4, Win32, CYGWIN32 and shWinCE. These
+contain files that are architecture (or compiler) dependent, typically
+including cintasm.s (or cintasm.asm).  For some old versions of Linux,
+it is necessary to change _dosys to dosys (or vice-versa) in the file
+sys/LINUX/cintasm.s.
+
+Edit Makefile (typically by adding and removing comment
+symbols) as necessary for your system/machine and then execute 
+make in the cintcode directory, e.g:
+
+    make clean
+    make
+
+Variants of the above should work for the other architectures
+running Unix.
+
+
+
+BCPL on Windows machines running Cygwin.
+
+I recommend using the GNU development tools and utilities for Windows
+95/98/NT/2000/XP that are available from
+
+    http://sources.redhat.com/cygwin/download.html.
+
+(Or do a Google search on Cygwin).
+
+I would recommend clicking on the "Install Cygwin Now!" link, and if
+you have room install everything.
+
+Edit the cintcode/Makefile to comment out the LINUX version
+
+#CC = gcc -O9 -DforLINUX
+#SYSM = ../cintcode/sysasm/linux
+#FASTERP = obj/cintasm.o
+
+and enable the CYGWIN32 version:
+
+# The following works under Cygwin on Pentium (and AMD 64 Athlon) machines.
+# make gp2xcintsys and make gp2xrastsys cross compile the system for
+# the GP2x handheld machine.
+CC = gcc -O9 -DforCYGWIN32 -static
+GP2XCC = /cygdrive/c/GP2X/devkitGP2X/bin/arm-linux-gcc -O9 -DforGP2X
+SYSM = ../cintcode/sysasm/cygwin32
+FASTERP = obj/cintasm.o
+
+Now ensure that the environment variables BCPLROOT, BCPLHDRS, BCPLPATH
+and PATH are correctly set. This can be done by editing editing and running
+cygwin.bat. This will also enter the cygwin system.
+
+Next get into the cintcode directory and call make twice.
+
+    cd distribution/BCPL/cintcode
+    make clean
+    make
+
+This should recompile the system and create the executable cintsys.exe,
+and enter the BCPL Cintcode system.
+
+This can be tested by trying the following:
+
+    bcpl com/bcpl.b to junk
+    junk com/bcpl.b to junk1
+    compare junk junk1
+    cmpltest
+    bench
+    bench100
+    logout
+
+    cd ../bcplprogs/demos
+    cintsys
+    c b queens
+    queens
+    logout
+
+You can use BCPL under Cygwin to cross compile the system for the
+GP2X handheld Linux gaming machine (costing about 120 pounds).
+For information about this machine do a Google search in GP2X.
+
+To cross compile for the GP2X machine, edit the Makefile (on the 
+Cygwin machine) then type something like:
+
+    cd ~/distribution/BCPL/cintcode
+    make gp2x
+
+Now copy the entire BCPL directory to the root of the SD memory card
+of the GP2X. This can be done in two ways as follows:
+
+(1) If you have an SD card adapter on you windows machine and it is
+mounted on drive E: (under Cygwin), type
+
+    make gp2xall
+
+(2) Alternatively, use the GP2X USB serial connection.
+
+To enter the BCPL Cintcode system, either use joyterm or connect to
+the GP2X using HyperTerm on your windows machine.
+
+Joyterm is a terminal emulator that allows ASCII characters to be
+entered using the GP2X buttons and/or the Joystick. It is available as
+package GP2X via my home page. This package contains the source and
+executable of Joyterm and two scripts Bin/bcpl.gpe and Bin/cintpos.gpe
+that set up the environment variables and enter BCPL or Cintpos,
+respectively.
+
+Use HyperTerm to make a Telnet connection to the GP2x, using
+baudrate: 115200, 1 stop bit, 8 bit, xon/xoff. You will need to
+have the USB host driver and bash program installed and running
+on the GP2X and probably a USB serial driver installed on the windows
+machine. If all this works you will be able to interact with a bash shell
+on the GP2X using the keyboard and display of your windows machine.
+
+The BCPL system should be in /mnt/sd/bcpl/cintcode and
+/mnt/sd/bcpl/bcplprogs. Rename gp2xcintsys and gp2xrastsys as cintsys
+and rastsys, by typing:
+
+cd /mnt/sd/bcpl/cintcode
+cp gp2xcintsys cintsys
+cp gp2xrastsys rastsys
+
+Set the environment variables by (editing and) running setgp2xbcplenv
+
+. ./setgp2xbcplenv
+
+This should set
+
+BCPLROOT to /mnt/sd/bcpl/cintcode
+BCPLHDRS to /mnt/sd/bcpl/cintcode/g
+BCPLPATH to /mnt/sd/bcpl/cintcode/cin
+
+and include /mnt/sd/bcpl/cintcode in the PATH variable.
+
+From any directory it should now be possible to use BCPL. For example,
+try the following:
+
+cd /mnt/sd/bcpl/cintcode
+cintsys
+bcpl com/bcpl.b to junk
+junk com/bcpl.b to junk1
+compare junk junk1
+cmpltest
+bench
+bench100
+c compall
+logout
+
+cd ../bcplprogs/demos
+cintsys
+c b queens
+queens
+logout
+
+In due course, cintsys will provide access to the GP2X buttons and
+screen. Demos will hopefully appear in bcplprogs/gp2x/ sometime.
+
+
+
+Installation on Windows NT/2000/XP machines ---- Modified 15 May 2008
+
+The files BCPL\cintcode\wincintsys.exe and
+BCPL/cintcode/winrastsys.exe has been included in this
+distribution. They are versions of cintsys and rastsys compiled for
+Pentium based Windows systems. They were compiled under Windows XP
+using the Microsoft Visual Studio tools.
+
+The following are instructions describing how Cintcode BCPL is set up
+on my laptop (which can boot either Windows XP or Fedora Linux 6).
+There is a FAT32 disc partition which is accessible from Windows as
+drive E: and from Linux as /dose. On your system you may choose
+any other drive letter (eg D: or F:) and modify the instructions
+below appropriately.
+
+1) Under Windows, obtain bcpl.zip from my home page and extract all
+its files into E:\distribution. This will create the directory
+E:\distribution\BCPL and all the files and sub-directories within it.
+
+(To avoid problems do not use the same BCPL directory as you may have
+used for a Cygwin installation of BCPL, since you may accidentally
+invoke the wrong version of cintsys.exe).
+
+The root of the BCPL Cintcode system will be in:
+
+E:\distribution\BCPL\cintcode
+
+
+2) Create a shortcut for a DOS box on the Windows desktop to execute
+the program system32\cmd.exe. Right click on this shortcut as select
+the "Properties" menu item. Set the "Target:" field in the Properties
+dialog window to:
+
+%SystemRoot%\system32\cmd.exe /q /k VC8env.bat
+
+Set the "Start in:" field to:
+
+E:\distribution\BCPL\cintcode
+
+Adjust the font size, colours and other properties of the DOS box to
+suit your preference. I, typically set the screen buffer width and
+height to 100 and 800, and the window size width and height to 100 and
+45.
+
+3) Now look at E:\distribution\BCPL\cintcode\VC8env.bat which in
+this distribution is currently:
+
+echo "Setting the BCPL environment variables"
+
+cd \distribution\BCPL\cintcode
+set BCPLROOT=/distribution/BCPL/cintcode
+set BCPLPATH=%BCPLROOT%/cin
+set BCPLHDRS=%BCPLROOT%/g
+set PATH=E:\distribution\BCPL\cintcode;%PATH%
+
+echo "Copying some key system files"
+
+copy enderlit\syslib cin\syscin
+copy enderlit\boot cin\syscin
+copy enderlit\blib cin\syscin
+copy enderlit\dlib cin\syscin
+copy enderlit\cli cin\syscin
+copy enderlit\bcpl cin
+copy enderlit\c cin
+copy enderlit\echo cin
+copy enderlit\logout cin
+copy enderlit\bcb .
+copy enderlit\bcl .
+copy enderlit\bsb .
+copy enderlit\bsl .
+
+echo "Calling vcvars32 to setup Visual Studio"
+
+"C:\Program Files\Microsoft Visual Studio 8\VC\bin\vcvars32.bat"
+rem "C:\Program Files\Microsoft Visual Studio 9.0\VC\bin\vcvars32.bat"
+rem "C:\Program Files\Microsoft Visual Studio .NET 2003\VC7\bin\vcvars32.bat"
+
+4) If Visual Studio on your machine is at a different location, one of the
+last few lines will need editing. You may find an alternative to VC8env.bat
+such as VC9env.bat or VCnetenv.bat works on your machine.
+
+5) Now double click on the "BCPL on E" shortcut. This should setup
+the environment variables for both BCPL and Visual Studio, and leave
+the DOS Box waiting for a shell command. To check that the environment
+variables are correct, type:
+
+echo %BCPLROOT%
+cl
+
+The first should output: E:\distibution\BCPL\cintcode
+and the second should enter the C compiler and immediately return with
+an error because no arguments were given.
+
+6) Your should now be able to enter the BCPL system, even if you do not
+have a C compiler installed on your system, by typing:
+
+wincintsys
+
+For compatability with other BCPL Cintcode systems, you may like to
+copy wincintsys.exe and winrastsys.exe to cintsys.exe and rastsys.exe,
+respectively.
+
+7) If you have Microsoft Visual Studio installed on your machine, you will
+be able to rebuild the entire BCPL system by typing:
+
+nmake /f MakefileVC clean
+nmake /f MakefileVC
+
+and crossing your fingers!!
+
+After much output the system should end with a BCPL Command Language
+Interpreter (CLI) prompt such as:
+
+BCPL Cintcode System (6 May 2008)
+0> 
+
+If cintsys.exe was successfully created, but its invocation fails
+try:
+
+cintsys.exe -f -V
+
+and carefully inspect the output it generated. The problem is
+often concerned with the setting of the environment variables.
+
+8) You are now in business and can execute commands such as:
+
+echo hello
+bcpl com/bcpl.b to junk
+junk com/bcpl.b to junk
+c compall
+^C
+
+9) Now that the BCPL system is installed, you should be able to enter
+it by double clicking on the "BCPL on E" icon and then typing the following
+shell command:
+
+cintsys
+
+This can be done in any directory, for example type:
+
+cd \distribution\BCPL\bcplprogs\demos
+cintsys
+
+c b fridays
+fridays
+c b queens
+queens
+c b mcqueens
+mcqueens
+^C
+
+mcqueens is a demonstrations of the new MC package that can dynamically
+generate native machine code.
+
+Good luck!!
+
+
+
+
+
+
+
+
+INSTALLATION FOR THE MAC OR OS/2
+
+These are non-unix systems and so you have to invent the appropriate
+sequence of operations to construct the system.  Under OS/2 and I used
+(long ago) IBM's CSET/2 for the C programs and Borland's TASM as the
+assembly language.
+
+The MAC and OS/2 versions are now out of date, but the versions for
+the Linux and Mac OS X systems on the Power PC should work.
+
+
+INSTALLATION FOR WINDOWS CE 2.0 (Tested on an HP 620LX)
+
+######### This no longer works #########
+
+See the file cintcode/sys/shWinCE/README.
+
+
+If you like BCPL, you may also be interested in Cintpos, MCPL, VSPL, Bench
+Cobench and Tcobench that are also freely available via my home page.
+I particularly recommend Cintpos under Linux.
+
+Have fun and good luck!
+
+
+Martin Richards
+     (mr@cl.cam.ac.uk, http://www.cl.cam.ac.uk/users/mr)
+University Computer Laboratory
+New Museums Site                  
+Pembroke Street
+Cambridge
+UK
+
+18 May 2013

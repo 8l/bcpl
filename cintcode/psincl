@@ -1,0 +1,23 @@
+% This is a demonstration include file for use with rast2ps
+
+F2 setfont
+
+(SYN) 2.1 55 2 PDR
+(TRN) 13.2 65 1.7 PDR
+(CG) 24.0 79 2.1 PDR
+(GET Stream) 0.45 770 1.7 PUL
+(Declaration Vector) 12.9 290 2.2 PDR
+(Compiled Code Buffer) 14.8 335 2.7 PDR
+(Code Output) 16.5 340 3 PDL
+(Stack) 2.9 82 2 PDL
+(Input stream) 2.4 290 1 PDR
+(SYN Parse Tree) 2.1 620 1.3 PUR
+(TRN Parse Tree) 10.8 620 1.3 PUR
+(CG Parse Tree) 19.8 620 1.3 PUR
+(OCODE Buffer) 13.1 700 2 PDR
+
+% 8.5 150 MVT (HELLO WORLD) SC 
+
+F3 setfont
+(Self Compilation of the Cintcode BCPL Compiler) TITLE
+

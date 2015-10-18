@@ -1,0 +1,95 @@
+local$ cd tonybug/
+local$ ls
+DUMPB.mem  dumpb.txt  DUMPG.mem  dumpg.txt
+local$ cintsys
+
+BCPL Cintcode System (8 Nov 2006)
+0> dumpdebug DUMPB.mem
+
+Image File: DUMPB.mem           Dated:  08-Nov-06 16:40:08
+
+Dump requested in standalone debug
+
+Rootnode at 100
+
+  blklist           0
+  memsize     4000000
+  info              0
+  sys           30124
+  blib           5217
+  boot           2749
+  abortcode         4
+  context           6
+  lastp             0
+  lastg             0
+
+CLI program selected
+
+Abort code: 4  Negative pc
+* .    8265:   Coroutine:     startcli  Parent -1  Stack 400/4
+*      8272:          cli         8270   #xABCD1234   #xABCD1234   #xABCD1234
+               #xABCD1234   #xABCD1234   #xABCD1234   #xABCD1234   #xABCD1234
+               #xABCD1234   #xABCD1234   #xABCD1234   #xABCD1234   #xABCD1234
+* ,    8265:  #StackBase#     startcli          400            0          400
+* , Base of stack
+* rt8
+
+R    0:         8270         8270            0        33088        34724
+R    5:            0          cli           -1
+* r6=          cli
+* i   12576:      L  19
+* n   12578:     AG  9
+* n   12580:     RV
+* n   12581:    SP7
+* n   12582:      L  24
+* n   12584:    K3G  3
+* a8272=        33060
+* ao  ??
+* 8272t3
+
+P    7:        33060        12559          cli
+* 12559-20
+* n   12541:     LG  7
+* n   12543:    ST3
+* n   12544:     LG  7
+* n   12546:     A4
+* n   12547:    LP6
+* n   12548:    XCH
+* n   12549:     ST
+* n   12550:     LG  7
+* n   12552:     A5
+* n   12553:     L0
+* n   12554:    XCH
+* n   12555:     ST
+* n   12556:     LF  12576
+* n   12558:     K7
+* n   12559:    RTN
+* g7=         8265
+* 
+
+rl3:   # k3     frq=3002
+rl4:   # k4     frq=7738
+rl5:   # k5     frq=4520
+rl6:   # k6     frq=1
+rl7:   # k7     frq=480
+rl8:   # k8     frq=10
+rl9:   # k9     frq=0
+rl10:  # k10    frq=0
+rl11:  # k11    frq=28
+ leal (%ebp,%eax,4),%eax
+ subl %edi,%ebp
+ movl %ebp,(%eax)        # p[k] := p
+ movl %eax,%ebp          # p := p+k
+ subl %edi,%esi
+ movl %esi,4(%ebp)       # p[1] := pc
+ movl %ebx,8(%ebp)       # p[2] := a  (the new pc)
+ leal (%edi,%ebx),%esi   # pc := a (new pc as m/c address)
+ movl %ecx,%ebx          # a := b
+ movl %ebx,12(%ebp)      # p[3] := a
+ orl %esi,%esi       <---------------------- (1)
+ js negpc            <---------------------- (2)
+ movzbl (%esi),%eax
+ incl %esi
+ jmp *runtbl(,%eax,4)
+
+

@@ -1,0 +1,4 @@
+#!/home/mr/distribution/BCPL/cintcode/cintsys -s
+.k file/a,opt
+echo "bcplint <file>.b to <file>.int hdrs BCPLHDRS <opt>"
+bcplint <file>.b to <file>.int hdrs BCPLHDRS <opt>

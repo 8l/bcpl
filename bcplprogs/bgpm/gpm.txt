@@ -1,0 +1,192 @@
+This is a brief description of how gpmcj.b works.
+
+Variables
+
+ST     This is the base of the GPM stack. It upper bound is upb.
+
+A      A work variable normally holding the next character to process.
+W      A second work variable.
+
+H      If zero output is sent to standard output or a file.
+       If non zero it points to the start of where the current macro
+       argument is being laid out in the stack. When an argument is complete
+       ST!H points to the next argument, and ST!(H+1) ... ST!(H+ST!H-1) are
+       characters of the argument. eg
+
+             4 A B C 
+             ^       ^
+             H       Next argument
+
+P      If zero, input is coming from standard input or a file.
+       If non zero, it points to a macro call laid out in the stack with all
+       its arguments. ST!(P-1) holds the number of stack cells used to represent
+       the call. ST!P holds the previous P. ST!(P+1) hold the previous value of C.
+       ST!(P+2) holds the length of the zeroth argument (the name of the macro
+       being called). For example, [aaa\bbb\ccc] is laid out as follows
+
+             16 P0 C0 4 a a a 4 b b b 4 c c c -2
+                ^
+                P
+
+       where P0 is the previous P and C0 is the previous C. The -2 marks the end
+       of the argument list.
+
+F      If zero, no macro call is being laid out on the stack.
+       If non zero, it points to where a macro call is being laid out on the
+       stack.
+       ST!(F-1) holds H0, the value of H when '[' was encountered.
+       ST!F     holds F0, the previous F.
+       ST!(F+1) holds zero, but will hold the previous C when this macro call
+                is complete and converted into an item in the P chain.
+       ST!(F+2) points to the where the zeroth argument will be placed.
+
+C      If zero, input is taken from standard input or a file.
+       If non zero it points to a position in the body of the definition of
+       the macro which is currently being called.
+
+S      points to the next free location on the stack.
+
+E      points the the most recently defined macro in the environment chain.
+       ST!E         holds the previous value of E
+       ST!(E+1)     holds the length of the name of the defined macro.
+       E+1+ST!(E+1) points to the start of the body of the defined macro.
+                    The body is terminated by -2 (the marker).
+
+q      If equal to 1 normal macro scanning is performed.
+       If greater than 1, current input is in quotes. '{' increments q
+       and '}' decrements q.
+
+The marker is used to mark the end of argument lists. It also is also
+used to mark the end of a macro body. Unfortunately whatever value is
+used to represent the marker, it can also be the result of calls of
+BIN or BAR. Either the implementation must be changed significantly,
+or a value chosen (such as -314159) that is unlikely to be used in
+macro programs.  Two possibilities are as follows: A better solution
+is to replay BIN, DEC and BAR by macros such as + and - as suggested
+in the CJ paper, or by eval as in bgpm.
+
+Processing of the warning characters.
+
+'`'    This is the comment character. It is only processed when input
+       comes from standard input or a file. Its effect is to skip over
+       the rest of the current line, and then skip over all white space
+       characters (newlines, newpages, spaces and tabs) after that.
+
+'['    Start laying out a macro call.
+
+       ....... 
+               ^
+               S
+
+becomes (H0 = previous H, F0 = previous F)
+
+       ....... H0 F0 0  0  
+                  ^     ^   ^
+                  F     H   S
+
+'\'     Argument separator.
+
+       ....... n0 ......
+               ^         ^
+               H0        S0
+
+becomes (n0 = number of non argument stack cells between H0 and S,
+         H0 = previous H)
+
+       ....... n1 ...... 0
+                         ^  ^
+                         H  S
+
+where n1 = S0-H0-n0. n1 is the true length of the argument starting
+                     at H0. Macro definitions may occupy other cells
+                     between H0 and H, but these should be after the
+                     last argument of a call.
+
+']'    Call a macro
+
+       ....... n0 ...... H0 F0 0  | arg 0 | arg 1 | .... k0 ......
+               ^            ^                            ^         ^
+               H0           F                            H         S                    
+
+becomes ( k1 = S-H-k0 )
+
+       ....... n1 ...... n2 P0 C0 | arg 0 | arg 1 | .... k1 ...... -2
+               ^            ^                                          ^
+               H            P                                          S                    
+
+where n1 = n0 + n2,
+      n2 = S-P+1, the number of stack cells between P-1 and S
+
+'^'    Copy macro argument
+
+       Get the next character which should be a digit and copy the corresponding
+       argument of the call pointed to by P. If H is zero this will be copied
+       to standard output or a file, If H is non zero, it will be copied to the
+       top of the stack.
+
+<m>    This marks the end of the body of the macro currently being called.
+
+       First adjust the environment chain pointers of definitions in the
+       results area of the stack (ie between P-1+ST!(P-1) and S) and remove
+       definitions embedded in the call (ie between P and P-1+ST!(P-1)).
+
+       If H=0 ( and defs present)
+
+       ..   ..... n0 P0 C0 | arg 0 | arg 1 | ...... <m> | defs-only |
+          ^          ^                                          ^    ^
+                  |<------------------ n0 ------------->|
+          P0         P                                          E    S                    
+
+becomes (after adjusting some pointers in the defs-only)
+
+       ..   .....| defs-only |
+          ^             ^    ^
+          P             E    S                    
+
+       If H>P, H must be reduced by n0
+
+       If H<P, ST!H must be reduced by n0
+
+Machine macros
+
+DEF    This causes a macro definition to be linked on the head of the environment
+       chain. Its first argument is the name of the macro being defined, and the 
+       second argument is the value. Other arguments may be present to increase
+       amount of space allocated for the macro value. The marker value is placed
+       at the end of the macro body. The length field of the macro body is replaced
+       by the maximum length the value can take. This length is checked by the
+       UPDATE macro.
+
+       Initial state
+
+       .......... n0 P0 C0 4 D E F | <name> | <value> | ...... <m> |
+                     ^                                               ^
+                     P                                               S
+
+       Final state
+
+       .......... E0 | <name> | <value> <m> | ...... <m> |
+                  ^                                        ^
+                  E                                        S
+
+       Any local definitions made in the arument list of DEF will be removed
+       from the environment chain.
+
+VAL    This expands to to value field of the macro whose name is the first
+       argument of VAL.
+
+UPDATE This updates the value of the macro whose name is the first argument
+       of UPDATE. The replacement value is the second argument of UPDATE. A
+       check is made to ensure that there is room for the replacement. The
+       marker <m> is placed at the end of the replacement value.
+
+BIN    This converts a possibly signed sequence of digits to a binary value.
+
+DEC    The converts a binary value to a possibly signed sequence os digits.
+
+BAR    This performs aritmetic operations on two binary values. The first
+       argument is '+', '-', '*, '/' or '%' specifying an arithmetic operation
+       of addition, subtraction, multiplication, division, or remaider after
+       division. The operands are in arguments two and three.
+    
+

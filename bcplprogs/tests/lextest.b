@@ -1,0 +1,127 @@
+? // To turn on lex testing
+123
+1_23
+1.2
+1234.5678
+1234.56780000
+12e10
+34e-10
+12.34e10
+0.00000000001e10
+//Test overflow
+2147483647
+2147483647.9
+2147483648
+2147483648.9
+2147483648.0
+2147483648.0000
+
+
+abc
+abc_def
+abc.def123
+"abc*ndef"
+TRUE
+FALSE
+VALOF
+LV @
+RV
+!
+?
+ABS
+*
+/
+REM MOD
++
+-
+= EQ
+~= \= NE
+< LS
+> GR
+<= LE
+>= GE 
+FLOAT
+FIX
+FABS #ABS
+#*
+#/
+#+
+#-
+#=
+#~=
+#<
+#>
+#<=
+#>=
+:=
+!:=
+*:=
+REM:=
+MOD:=
+/:=
++:=
+-:=
+<<:= LSHIFT:=
+>>:= RSHIFT:=
+&:= LOGAND:=
+|:= LOGOR:=
+EQV:=
+NEQV:= XOR:=
+SLCT
+%
+#(
+~ NOT \
+<< LSHIFT
+>> RSHIFT
+& LOGAND
+| LOGOR
+EQV
+NEQV XOR
+->
+,
+TABLE
+NEEDS
+SECTION
+GOTO
+RESULTIS
+TEST
+FOR
+IF
+UNLESS
+WHILE
+UNTIL
+REPEAT
+REPEATWHILE
+REPEATUNTIL
+SKIP
+LOOP
+BREAK
+RETURN
+FINISH
+ENDCASE
+SWITCHON
+CASE
+DEFAULT
+<>
+LET
+AND
+MANIFEST
+GLOBAL
+STATIC
+BE
+$( {
+$) }
+;
+INTO
+TO
+BY
+DO THEN
+ELSE
+VEC
+(
+)
+[
+]
+.
+
+// End of lex test

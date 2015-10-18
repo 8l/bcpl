@@ -1,0 +1,17 @@
+This directory holds the hand written files:
+
+mkint-h.c
+bcpl.h
+clib.c
+kblib.c
+hello.c
+
+The temporary c files are held in tempc/
+
+INT.h
+
+created by running mkint-h.c
+
+Other typical files in tempc/ are
+
+initprog.c initcmpltest.c etc

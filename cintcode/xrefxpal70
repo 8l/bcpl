@@ -1,0 +1,3022 @@
+B2Wsh M:2 DEF libhdr.h[153] B2Wsh=2
+B2Wsh M:2 MAN libhdr.h[159] bytesperword=1<<B2Wsh
+CloseObj M:1 DEF libhdr.h[204] CloseObj=1
+GB2312 M:-2 DEF libhdr.h[438] GB2312=-2
+InitObj M:0 DEF libhdr.h[203] InitObj=0
+Sys_buttons M:56 DEF libhdr.h[344] Sys_buttons=56
+Sys_callc M:59 DEF libhdr.h[347] Sys_callc=59
+Sys_callnative M:53 DEF libhdr.h[341] Sys_callnative=53
+Sys_close M:16 DEF libhdr.h[308] Sys_close=16
+Sys_cputime M:30 DEF libhdr.h[320] Sys_cputime=30
+Sys_datstamp M:44 DEF libhdr.h[332] Sys_datstamp=44
+Sys_delay M:57 DEF libhdr.h[345] Sys_delay=57
+Sys_deletefile M:17 DEF libhdr.h[309] Sys_deletefile=17
+Sys_devcom M:43 DEF libhdr.h[331] Sys_devcom=43
+Sys_dumpmem M:52 DEF libhdr.h[340] Sys_dumpmem=52
+Sys_filemodtime M:31 DEF libhdr.h[321] Sys_filemodtime=31
+Sys_filesize M:46 DEF libhdr.h[334] Sys_filesize=46
+Sys_flt M:63 DEF libhdr.h[352] Sys_flt=63
+Sys_freevec M:22 DEF libhdr.h[313] Sys_freevec=22
+Sys_getpid M:51 DEF libhdr.h[339] Sys_getpid=51
+Sys_getprefix M:33 DEF libhdr.h[323] Sys_getprefix=33
+Sys_getsysval M:48 DEF libhdr.h[336] Sys_getsysval=48
+Sys_gettrval M:62 DEF libhdr.h[351] Sys_gettrval=62
+Sys_getvec M:21 DEF libhdr.h[312] Sys_getvec=21
+Sys_globin M:24 DEF libhdr.h[315] Sys_globin=24
+Sys_graphics M:34 DEF libhdr.h[324] Sys_graphics=34
+Sys_inc M:55 DEF libhdr.h[343] Sys_inc=55
+Sys_interpret M:7 DEF libhdr.h[300] Sys_interpret=7
+Sys_intflag M:28 DEF libhdr.h[318] Sys_intflag=28
+Sys_loadseg M:23 DEF libhdr.h[314] Sys_loadseg=23
+Sys_lockirq M:41 DEF libhdr.h[329] Sys_lockirq=41
+Sys_muldiv M:26 DEF libhdr.h[317] Sys_muldiv=26
+Sys_openread M:14 DEF libhdr.h[306] Sys_openread=14
+Sys_openreadwrite M:47 DEF libhdr.h[335] Sys_openreadwrite=47
+Sys_openwrite M:15 DEF libhdr.h[307] Sys_openwrite=15
+Sys_platform M:54 DEF libhdr.h[342] Sys_platform=54
+Sys_putsysval M:49 DEF libhdr.h[337] Sys_putsysval=49
+Sys_quit M:0 DEF libhdr.h[293] Sys_quit=0
+Sys_read M:12 DEF libhdr.h[304] Sys_read=12
+Sys_renamefile M:18 DEF libhdr.h[310] Sys_renamefile=18
+Sys_rti M:1 DEF libhdr.h[294] Sys_rti=1
+Sys_sardch M:10 DEF libhdr.h[302] Sys_sardch=10
+Sys_saveregs M:2 DEF libhdr.h[295] Sys_saveregs=2
+Sys_sawrch M:11 DEF libhdr.h[303] Sys_sawrch=11
+Sys_seek M:38 DEF libhdr.h[326] Sys_seek=38
+Sys_setcount M:-1 DEF libhdr.h[292] Sys_setcount=-1
+Sys_setprefix M:32 DEF libhdr.h[322] Sys_setprefix=32
+Sys_setraster M:29 DEF libhdr.h[319] Sys_setraster=29
+Sys_setst M:3 DEF libhdr.h[296] Sys_setst=3
+Sys_settrcount M:61 DEF libhdr.h[350] Sys_settrcount=61
+Sys_shellcom M:50 DEF libhdr.h[338] Sys_shellcom=50
+Sys_sound M:58 DEF libhdr.h[346] Sys_sound=58
+Sys_tally M:6 DEF libhdr.h[299] Sys_tally=6
+Sys_tell M:39 DEF libhdr.h[327] Sys_tell=39
+Sys_tracing M:4 DEF libhdr.h[297] Sys_tracing=4
+Sys_trpush M:60 DEF libhdr.h[349] Sys_trpush=60
+Sys_unloadseg M:25 DEF libhdr.h[316] Sys_unloadseg=25
+Sys_unlockirq M:42 DEF libhdr.h[330] Sys_unlockirq=42
+Sys_waitirq M:40 DEF libhdr.h[328] Sys_waitirq=40
+Sys_watch M:5 DEF libhdr.h[298] Sys_watch=5
+Sys_write M:13 DEF libhdr.h[305] Sys_write=13
+UTF8 M:-1 DEF libhdr.h[437] UTF8=-1
+a G:501 DEF com/xpal70.b[116] a=501
+a G:501 LG com/xpal70.b[1000] s!(stackp-1):=a
+a G:501 LG com/xpal70.b[1005] TEST h3!a=nilrv THEN .. ELSE ..
+a G:501 LG com/xpal70.b[1007] error1("FUNCT'RGUMENTS",a,0)
+a G:501 LG com/xpal70.b[1019] UNLESS h2!a=label DO ..
+a G:501 LG com/xpal70.b[1020] error("CANNOT GO TO ",a,0,0)
+a G:501 LG com/xpal70.b[1025] c,e:=h4!a,h6!a
+a G:501 LG com/xpal70.b[1026] s:=node(h3!a)
+a G:501 LG com/xpal70.b[1028] h1!s,h2!s:=h3!a,stack
+a G:501 LG com/xpal70.b[1029] a:=h5!a
+a G:501 LG com/xpal70.b[1030] h4!s,h5!s,h6!s:=h4!a,h5!a,h6!a
+a G:501 LG com/xpal70.b[1036] h3!b:=a
+a G:501 LG com/xpal70.b[1037] UNLESS h2!a=m_tuple&h3!a=n DO ..
+a G:501 LG com/xpal70.b[1040] printa(a,tupledepth)
+a G:501 LG com/xpal70.b[1052] v!i:=h3!a!i
+a G:501 LG com/xpal70.b[1197] h2!a=number&h2!b=number->number,...=real&...=real->real,m_false
+a G:501 LG com/xpal70.b[1201] (h2!a=m_true|h2!a=m_false)&(h2!b=m_true|h2!b=m_false)
+a G:501 LG com/xpal70.b[1277] writes(h4!a)
+a G:501 LG com/xpal70.b[1279] printa(h5!a,tupledepth)
+a G:501 LG com/xpal70.b[1382] marklist(a)
+a G:501 LG com/xpal70.b[1424] a:=h3!a
+a G:501 LG com/xpal70.b[1425] UNLESS h2!a=m_tuple&h3!a=n DO ..
+a G:501 LG com/xpal70.b[1442] a:=h3!a
+a G:501 LG com/xpal70.b[1443] UNLESS h2!a=m_tuple&h3!a=n DO ..
+a G:501 LG com/xpal70.b[1454] e:=list(5,env,e,...)
+a G:501 LG com/xpal70.b[1459] h3!b:=h3!a!(i+1)
+a G:501 LG com/xpal70.b[1460] h3!b:=a
+a G:501 LG com/xpal70.b[1474] printa(a,tupledepth)
+a G:501 LG com/xpal70.b[1476] TEST h2!a=m_tuple THEN .. ELSE ..
+a G:501 LG com/xpal70.b[1478] IF m>h3!a DO ..
+a G:501 LG com/xpal70.b[1478] m:=h3!a
+a G:501 LG com/xpal70.b[1491] a:=list(6,...&lfield,...,...)
+a G:501 LG com/xpal70.b[1492] a:=list(3,lvalue,a)
+a G:501 LG com/xpal70.b[1493] e:=list(5,env,e,...)
+a G:501 LG com/xpal70.b[1500] h6!h3!h5!a:=e
+a G:501 LG com/xpal70.b[1501] a:=h3!a
+a G:501 LG com/xpal70.b[1551] printb(a)
+a G:501 LG com/xpal70.b[1564] b:=h3!a
+a G:501 LG com/xpal70.b[1571] a:=list(4,string,a,...)
+a G:501 LG com/xpal70.b[1576] a:=h3!a
+a G:501 LG com/xpal70.b[1577] UNLESS h2!a=string DO ..
+a G:501 LG com/xpal70.b[1578] error1("STERN",a,0)
+a G:501 LG com/xpal70.b[1583] a:=h3!a
+a G:501 LG com/xpal70.b[1589] UNLESS h2!a=m_tuple&h3!a=2 DO ..
+a G:501 LG com/xpal70.b[1590] error1("CONC",a,0)
+a G:501 LG com/xpal70.b[1596] h2!h3!h4!a,h2!h3!h5!a
+a G:501 LG com/xpal70.b[1600] b,x:=h3!h4!a,1
+a G:501 LG com/xpal70.b[1607] b:=h3!h5!a
+a G:501 LG com/xpal70.b[1616] h3!a:=list(4,string,0,...)
+a G:501 LG com/xpal70.b[1617] a:=h3!a
+a G:501 LG com/xpal70.b[1619] h3!a:=h3!h5!h3!s!...
+a G:501 LG com/xpal70.b[1629] SWITCHON h2!h3!a INTO..
+a G:501 LG com/xpal70.b[1646] a:=h2!...=m_tuple&h3!...=0->truerv,falserv
+a G:501 LG com/xpal70.b[1652] UNLESS h2!h3!a=m_tuple DO ..
+a G:501 LG com/xpal70.b[1653] error1("ORDER",a,0)
+a G:501 LG com/xpal70.b[1658] a:=list(3,number,h3!...)
+a G:501 LG com/xpal70.b[1664] SWITCHON h2!h3!a INTO..
+a G:501 LG com/xpal70.b[1677] a:=h2!h3!a=number->truerv,falserv
+a G:501 LG com/xpal70.b[1683] SWITCHON h2!h3!a INTO..
+a G:501 LG com/xpal70.b[1696] SWITCHON h2!h3!a INTO..
+a G:501 LG com/xpal70.b[1709] a:=h2!h3!a=jj->truerv,falserv
+a G:501 LG com/xpal70.b[1715] a:=h2!h3!a=label->truerv,falserv
+a G:501 LG com/xpal70.b[1721] a:=h2!h3!a=m_tuple->truerv,falserv
+a G:501 LG com/xpal70.b[1727] a:=h2!h3!a=real->truerv,falserv
+a G:501 LG com/xpal70.b[1733] a:=h2!h3!a=m_dummy->truerv,falserv
+a G:501 LG com/xpal70.b[1739] a:=h3!a
+a G:501 LG com/xpal70.b[1740] UNLESS h2!a=m_tuple&h3!a=2 DO ..
+a G:501 LG com/xpal70.b[1741] error1("SHARE",a,0)
+a G:501 LG com/xpal70.b[1746] a:=h4!a=h5!a->truerv,falserv
+a G:501 LG com/xpal70.b[1757] a:=h3!a
+a G:501 LG com/xpal70.b[1758] UNLESS h2!a=string DO ..
+a G:501 LG com/xpal70.b[1759] error1("STOI",a,0)
+a G:501 LG com/xpal70.b[1765] WHILE h2!a=string DO ..
+a G:501 LG com/xpal70.b[1766] b:=b*10+h4!a-48
+a G:501 LG com/xpal70.b[1767] a:=h3!a
+a G:501 LG com/xpal70.b[1776] a:=h3!a
+a G:501 LG com/xpal70.b[1777] UNLESS h2!a=string&h2!h3!a=nils DO ..
+a G:501 LG com/xpal70.b[1778] error1("CTOI",a,0)
+a G:501 LG com/xpal70.b[1783] a:=list(3,number,h4!a)
+a G:501 LG com/xpal70.b[1789] a:=h3!a
+a G:501 LG com/xpal70.b[1790] UNLESS h2!a=number&h3!a<256&h3!a>=0 DO ..
+a G:501 LG com/xpal70.b[1791] error1("ITOC",a,0)
+a G:501 LG com/xpal70.b[1796] a:=list(4,string,nilsrv,...)
+a G:501 LG com/xpal70.b[1801] a:=h3!a
+a G:501 LG com/xpal70.b[1802] UNLESS h2!a=number DO ..
+a G:501 LG com/xpal70.b[1803] error1("ITOR",a,0)
+a G:501 LG com/xpal70.b[1808] a:=list(3,real,itor(...))
+a G:501 LG com/xpal70.b[1813] a:=h3!a
+a G:501 LG com/xpal70.b[1814] UNLESS h2!a=real DO ..
+a G:501 LG com/xpal70.b[1815] error1("RTOI",a,0)
+a G:501 LG com/xpal70.b[1820] a:=list(3,number,rtoi(...))
+a G:501 LG com/xpal70.b[1847] a:=list(4,string,a,...)
+a G:501 LG com/xpal70.b[1853] a:=h3!a
+a G:501 LG com/xpal70.b[1854] UNLESS h2!a=m_tuple&h3!a=2 DO ..
+a G:501 LG com/xpal70.b[1855] error1("TABLE",a,0)
+a G:501 LG com/xpal70.b[1860] h3!h4!a
+a G:501 LG com/xpal70.b[1863] b:=h3!h5!a
+a G:501 LG com/xpal70.b[1865] a!0,a!1,a!2:=n+3,m_tuple,n
+a G:501 LG com/xpal70.b[1866] a!i:=list(3,lvalue,b)
+a G:501 LG com/xpal70.b[1877] IF h2!h3!a=number DO ..
+a G:501 LG com/xpal70.b[1877] i:=h3!h3!a
+a G:501 LG com/xpal70.b[1893] WHILE h4!a~=0 DO ..
+a G:501 LG com/xpal70.b[1894] h1!a&nfield
+a G:501 LG com/xpal70.b[1901] h1!a:=h1!a|n
+a G:501 LG com/xpal70.b[1903] a:=h3!a
+a G:501 LG com/xpal70.b[1933] a:=h3!a
+a G:501 LG com/xpal70.b[1934] UNLESS h2!a=m_tuple&h3!a=2 DO ..
+a G:501 LG com/xpal70.b[1935] error1("LOOKUPINE",a,0)
+a G:501 LG com/xpal70.b[1940] h3!h5!a,1,namechain
+a G:501 LG com/xpal70.b[1943] b:=h3!h4!a
+a G:501 LG com/xpal70.b[1974] TEST a=nilrv THEN .. ELSE ..
+a G:501 LG com/xpal70.b[385] a:=list(3,lvalue,a)
+a G:501 LG com/xpal70.b[386] e:=list(5,env,e,...)
+a G:501 LG com/xpal70.b[405] TEST a=nilrv THEN .. ELSE ..
+a G:501 LG com/xpal70.b[406] a:=list(3,lvalue,a)
+a G:501 LG com/xpal70.b[415] TEST a=nilrv THEN .. ELSE ..
+a G:501 LG com/xpal70.b[417] a:=h3!a
+a G:501 LG com/xpal70.b[439] a:=list(4,string,a,...)
+a G:501 LG com/xpal70.b[492] s!(stackp-1):=a
+a G:501 LG com/xpal70.b[497] a:=list(3,lvalue,a)
+a G:501 LG com/xpal70.b[502] s!stackp:=a
+a G:501 LG com/xpal70.b[515] a!0,a!1,a!2:=n+3,m_tuple,n
+a G:501 LG com/xpal70.b[517] stackp,a!i:=stackp-1,s!stackp
+a G:501 LG com/xpal70.b[525] b:=h3!a
+a G:501 LG com/xpal70.b[535] IF h2!a=m_false DO ..
+a G:501 LG com/xpal70.b[540] TEST h2!a=m_true THEN .. ELSE ..
+a G:501 LG com/xpal70.b[544] error1("NOT",a,0)
+a G:501 LG com/xpal70.b[552] a:=h2!a=m_true->b,falserv
+a G:501 LG com/xpal70.b[555] error1("&",a,b)
+a G:501 LG com/xpal70.b[564] a:=h2!a=m_false->b,truerv
+a G:501 LG com/xpal70.b[567] error1("OR",a,b)
+a G:501 LG com/xpal70.b[575] UNLESS h2!a=m_tuple DO ..
+a G:501 LG com/xpal70.b[576] error1("AUG",a,b)
+a G:501 LG com/xpal70.b[581] h3!a
+a G:501 LG com/xpal70.b[584] t!i:=a!i
+a G:501 LG com/xpal70.b[592] IF a=nilrv DO ..
+a G:501 LG com/xpal70.b[593] a:=list(3,lvalue,a)
+a G:501 LG com/xpal70.b[596] a:=h3!a
+a G:501 LG com/xpal70.b[597] UNLESS h2!a=jj DO ..
+a G:501 LG com/xpal70.b[602] h4!s,h5!s,h6!s:=h3!a,h4!a,h5!a
+a G:501 LG com/xpal70.b[609] a
+a G:501 LG com/xpal70.b[612] a:=list(3,number,...*...)
+a G:501 LG com/xpal70.b[617] a:=list(3,real,fmult(...))
+a G:501 LG com/xpal70.b[633] a
+a G:501 LG com/xpal70.b[637] a:=list(3,number,.../...)
+a G:501 LG com/xpal70.b[642] a:=list(3,real,fdiv(...))
+a G:501 LG com/xpal70.b[658] a
+a G:501 LG com/xpal70.b[661] a:=list(3,number,...+...)
+a G:501 LG com/xpal70.b[666] a:=list(3,real,fadd(...))
+a G:501 LG com/xpal70.b[682] a
+a G:501 LG com/xpal70.b[685] a:=list(3,number,...-...)
+a G:501 LG com/xpal70.b[690] a:=list(3,real,fsub(...))
+a G:501 LG com/xpal70.b[706] a
+a G:501 LG com/xpal70.b[709] IF h2!a=number DO ..
+a G:501 LG com/xpal70.b[710] h3!a,h3!b,1
+a G:501 LG com/xpal70.b[724] IF h2!a=real DO ..
+a G:501 LG com/xpal70.b[725] a:=list(3,real,fpower(...))
+a G:501 LG com/xpal70.b[742] TEST h2!a=number|h2!a=real THEN .. ELSE ..
+a G:501 LG com/xpal70.b[743] a:=list(3,h2!a,h3!a)
+a G:501 LG com/xpal70.b[746] error1("+",a,0)
+a G:501 LG com/xpal70.b[753] a
+a G:501 LG com/xpal70.b[755] IF h2!a=number DO ..
+a G:501 LG com/xpal70.b[756] a:=list(3,number,-...)
+a G:501 LG com/xpal70.b[760] IF h2!a=real DO ..
+a G:501 LG com/xpal70.b[761] a:=list(3,real,fumin(...))
+a G:501 LG com/xpal70.b[771] a
+a G:501 LG com/xpal70.b[773] a:=equal(a,b)->truerv,falserv
+a G:501 LG com/xpal70.b[783] a
+a G:501 LG com/xpal70.b[785] a:=equal(a,b)->falserv,truerv
+a G:501 LG com/xpal70.b[798] a:=h3!a<h3!b->truerv,falserv
+a G:501 LG com/xpal70.b[802] a:=fls(h3!a,h3!b)->truerv,falserv
+a G:501 LG com/xpal70.b[805] error1("LS",a,b)
+a G:501 LG com/xpal70.b[813] a:=h3!a<=h3!b->truerv,falserv
+a G:501 LG com/xpal70.b[817] a:=fle(h3!a,h3!b)->truerv,falserv
+a G:501 LG com/xpal70.b[820] error1("LE",a,b)
+a G:501 LG com/xpal70.b[827] a:=h3!a>=h3!b->truerv,falserv
+a G:501 LG com/xpal70.b[831] a:=fge(h3!a,h3!b)->truerv,falserv
+a G:501 LG com/xpal70.b[834] error1("GE",a,b)
+a G:501 LG com/xpal70.b[841] a:=h3!a>h3!b->truerv,falserv
+a G:501 LG com/xpal70.b[845] a:=fgr(h3!a,h3!b)->truerv,falserv
+a G:501 LG com/xpal70.b[848] error1("GR",a,b)
+a G:501 LG com/xpal70.b[858] IF h2!a=m_false DO ..
+a G:501 LG com/xpal70.b[862] IF h2!a=m_true DO ..
+a G:501 LG com/xpal70.b[866] error("NOT A'HVALUE: ",a,0,0)
+a G:501 LG com/xpal70.b[881] a:=list(3,lvalue,a)
+a G:501 LG com/xpal70.b[886] a:=list(3,lvalue,a)
+a G:501 LG com/xpal70.b[901] h6!b,h7!b:=e,a
+a G:501 LG com/xpal70.b[929] s!stackp:=a
+a G:501 LG com/xpal70.b[935] s!stackp:=h3!a
+a G:501 LG com/xpal70.b[946] a:=h3!a
+a G:501 LG com/xpal70.b[947] SWITCHON h2!a INTO..
+a G:501 LG com/xpal70.b[950] oldc,c:=c+1,h4!a
+a G:501 LG com/xpal70.b[957] error(0,a," APPLIED TO ",b)
+a G:501 LG com/xpal70.b[958] UNLESS h3!a=0 DO ..
+a G:501 LG com/xpal70.b[958] a:=h4!a
+a G:501 LG com/xpal70.b[963] TEST 1<=n&n<=h3!a THEN .. ELSE ..
+a G:501 LG com/xpal70.b[964] a:=a!(n+2)
+a G:501 LG com/xpal70.b[967] error(0,a," APPLIED TO ",b)
+a G:501 LG com/xpal70.b[968] UNLESS h3!a=0 DO ..
+a G:501 LG com/xpal70.b[969] a:=a!(h3!a+2)
+a G:501 LG com/xpal70.b[970] a:=h4!a
+a G:501 LG com/xpal70.b[976] (h3!a)()
+a G:501 LG com/xpal70.b[980] error("ATTEM'O APPLY ",a," TO ",...)
+a G:501 LG com/xpal70.b[991] e:=h3!a
+a G:501 SG com/xpal70.b[1021] a:=dummyrv
+a G:501 SG com/xpal70.b[1029] a:=h5!a
+a G:501 SG com/xpal70.b[1046] a:=dummyrv
+a G:501 SG com/xpal70.b[1056] a:=dummyrv
+a G:501 SG com/xpal70.b[1409] stackp,a:=stackp-1,s!stackp
+a G:501 SG com/xpal70.b[1413] stackp,a,b:=stackp-2,s!(stackp+1),s!stackp
+a G:501 SG com/xpal70.b[1424] a:=h3!a
+a G:501 SG com/xpal70.b[1442] a:=h3!a
+a G:501 SG com/xpal70.b[1490] a:=list(6,stack,6,...)
+a G:501 SG com/xpal70.b[1491] a:=list(6,...&lfield,...,...)
+a G:501 SG com/xpal70.b[1492] a:=list(3,lvalue,a)
+a G:501 SG com/xpal70.b[1498] a:=e
+a G:501 SG com/xpal70.b[1501] a:=h3!a
+a G:501 SG com/xpal70.b[1510] a:=list(3,lvalue,e)
+a G:501 SG com/xpal70.b[1523] a:=list(3,lvalue,e)
+a G:501 SG com/xpal70.b[1552] a:=dummyrv
+a G:501 SG com/xpal70.b[1559] a:=dummyrv
+a G:501 SG com/xpal70.b[1565] a:=nilsrv
+a G:501 SG com/xpal70.b[1571] a:=list(4,string,a,...)
+a G:501 SG com/xpal70.b[1576] a:=h3!a
+a G:501 SG com/xpal70.b[1579] a:=nilsrv
+a G:501 SG com/xpal70.b[1583] a:=h3!a
+a G:501 SG com/xpal70.b[1588] a:=h3!s!(stackp-1)
+a G:501 SG com/xpal70.b[1592] a:=nilsrv
+a G:501 SG com/xpal70.b[1609] a:=b
+a G:501 SG com/xpal70.b[1614] a:=b
+a G:501 SG com/xpal70.b[1617] a:=h3!a
+a G:501 SG com/xpal70.b[1621] a:=b
+a G:501 SG com/xpal70.b[1636] a:=truerv
+a G:501 SG com/xpal70.b[1640] a:=falserv
+a G:501 SG com/xpal70.b[1646] a:=h2!...=m_tuple&h3!...=0->truerv,falserv
+a G:501 SG com/xpal70.b[1654] a:=list(3,number,0)
+a G:501 SG com/xpal70.b[1658] a:=list(3,number,h3!...)
+a G:501 SG com/xpal70.b[1667] a:=truerv
+a G:501 SG com/xpal70.b[1671] a:=falserv
+a G:501 SG com/xpal70.b[1677] a:=h2!h3!a=number->truerv,falserv
+a G:501 SG com/xpal70.b[1686] a:=truerv
+a G:501 SG com/xpal70.b[1690] a:=falserv
+a G:501 SG com/xpal70.b[1699] a:=truerv
+a G:501 SG com/xpal70.b[1703] a:=falserv
+a G:501 SG com/xpal70.b[1709] a:=h2!h3!a=jj->truerv,falserv
+a G:501 SG com/xpal70.b[1715] a:=h2!h3!a=label->truerv,falserv
+a G:501 SG com/xpal70.b[1721] a:=h2!h3!a=m_tuple->truerv,falserv
+a G:501 SG com/xpal70.b[1727] a:=h2!h3!a=real->truerv,falserv
+a G:501 SG com/xpal70.b[1733] a:=h2!h3!a=m_dummy->truerv,falserv
+a G:501 SG com/xpal70.b[1739] a:=h3!a
+a G:501 SG com/xpal70.b[1742] a:=falserv
+a G:501 SG com/xpal70.b[1746] a:=h4!a=h5!a->truerv,falserv
+a G:501 SG com/xpal70.b[1757] a:=h3!a
+a G:501 SG com/xpal70.b[1760] a:=list(3,number,0)
+a G:501 SG com/xpal70.b[1767] a:=h3!a
+a G:501 SG com/xpal70.b[1769] a:=list(3,number,b)
+a G:501 SG com/xpal70.b[1776] a:=h3!a
+a G:501 SG com/xpal70.b[1779] a:=list(3,number,0)
+a G:501 SG com/xpal70.b[1783] a:=list(3,number,h4!a)
+a G:501 SG com/xpal70.b[1789] a:=h3!a
+a G:501 SG com/xpal70.b[1792] a:=nilsrv
+a G:501 SG com/xpal70.b[1796] a:=list(4,string,nilsrv,...)
+a G:501 SG com/xpal70.b[1801] a:=h3!a
+a G:501 SG com/xpal70.b[1804] a:=list(3,real,0)
+a G:501 SG com/xpal70.b[1808] a:=list(3,real,itor(...))
+a G:501 SG com/xpal70.b[1813] a:=h3!a
+a G:501 SG com/xpal70.b[1816] a:=list(3,number,0)
+a G:501 SG com/xpal70.b[1820] a:=list(3,number,rtoi(...))
+a G:501 SG com/xpal70.b[1826] a:=list(2,nils)
+a G:501 SG com/xpal70.b[1847] a:=list(4,string,a,...)
+a G:501 SG com/xpal70.b[1853] a:=h3!a
+a G:501 SG com/xpal70.b[1856] a:=nilrv
+a G:501 SG com/xpal70.b[1864] a:=node(n+3)
+a G:501 SG com/xpal70.b[1873] a:=s!(stackp-1)
+a G:501 SG com/xpal70.b[1888] a:=e
+a G:501 SG com/xpal70.b[1903] a:=h3!a
+a G:501 SG com/xpal70.b[1907] a:=h6!q
+a G:501 SG com/xpal70.b[1933] a:=h3!a
+a G:501 SG com/xpal70.b[1936] a:=nilrv
+a G:501 SG com/xpal70.b[1973] a:=lvofname(i,h5!x)
+a G:501 SG com/xpal70.b[1982] a:=list(5,jj,...,...)
+a G:501 SG com/xpal70.b[384] a:=list(3,basicfn,y)
+a G:501 SG com/xpal70.b[385] a:=list(3,lvalue,a)
+a G:501 SG com/xpal70.b[404] a:=lvofname(c!0,e)
+a G:501 SG com/xpal70.b[406] a:=list(3,lvalue,a)
+a G:501 SG com/xpal70.b[414] a:=lvofname(c!0,e)
+a G:501 SG com/xpal70.b[417] a:=h3!a
+a G:501 SG com/xpal70.b[423] a:=list(5,jj,...,...)
+a G:501 SG com/xpal70.b[428] a:=e
+a G:501 SG com/xpal70.b[437] a:=nilsrv
+a G:501 SG com/xpal70.b[439] a:=list(4,string,a,...)
+a G:501 SG com/xpal70.b[447] a:=list(3,c!1,c!2)
+a G:501 SG com/xpal70.b[460] a:=truerv
+a G:501 SG com/xpal70.b[465] a:=falserv
+a G:501 SG com/xpal70.b[470] a:=guessrv
+a G:501 SG com/xpal70.b[475] a:=nilrv
+a G:501 SG com/xpal70.b[480] a:=dummyrv
+a G:501 SG com/xpal70.b[485] a:=list(4,closure,e,...)
+a G:501 SG com/xpal70.b[491] a:=list(3,lvalue,s!...)
+a G:501 SG com/xpal70.b[497] a:=list(3,lvalue,a)
+a G:501 SG com/xpal70.b[514] a:=node(n+3)
+a G:501 SG com/xpal70.b[536] a:=truerv
+a G:501 SG com/xpal70.b[541] a:=falserv
+a G:501 SG com/xpal70.b[552] a:=h2!a=m_true->b,falserv
+a G:501 SG com/xpal70.b[556] a:=falserv
+a G:501 SG com/xpal70.b[564] a:=h2!a=m_false->b,truerv
+a G:501 SG com/xpal70.b[568] a:=falserv
+a G:501 SG com/xpal70.b[577] a:=nilrv
+a G:501 SG com/xpal70.b[585] a:=t
+a G:501 SG com/xpal70.b[591] a:=lvofname(nameres,e)
+a G:501 SG com/xpal70.b[593] a:=list(3,lvalue,a)
+a G:501 SG com/xpal70.b[596] a:=h3!a
+a G:501 SG com/xpal70.b[612] a:=list(3,number,...*...)
+a G:501 SG com/xpal70.b[617] a:=list(3,real,fmult(...))
+a G:501 SG com/xpal70.b[626] a:=list(3,number,0)
+a G:501 SG com/xpal70.b[637] a:=list(3,number,.../...)
+a G:501 SG com/xpal70.b[642] a:=list(3,real,fdiv(...))
+a G:501 SG com/xpal70.b[652] a:=list(3,number,0)
+a G:501 SG com/xpal70.b[661] a:=list(3,number,...+...)
+a G:501 SG com/xpal70.b[666] a:=list(3,real,fadd(...))
+a G:501 SG com/xpal70.b[675] a:=list(3,number,0)
+a G:501 SG com/xpal70.b[685] a:=list(3,number,...-...)
+a G:501 SG com/xpal70.b[690] a:=list(3,real,fsub(...))
+a G:501 SG com/xpal70.b[699] a:=list(3,number,0)
+a G:501 SG com/xpal70.b[720] a:=list(3,number,r)
+a G:501 SG com/xpal70.b[725] a:=list(3,real,fpower(...))
+a G:501 SG com/xpal70.b[735] a:=list(3,number,0)
+a G:501 SG com/xpal70.b[743] a:=list(3,h2!a,h3!a)
+a G:501 SG com/xpal70.b[747] a:=list(3,number,0)
+a G:501 SG com/xpal70.b[756] a:=list(3,number,-...)
+a G:501 SG com/xpal70.b[761] a:=list(3,real,fumin(...))
+a G:501 SG com/xpal70.b[765] a:=list(3,number,0)
+a G:501 SG com/xpal70.b[773] a:=equal(a,b)->truerv,falserv
+a G:501 SG com/xpal70.b[785] a:=equal(a,b)->falserv,truerv
+a G:501 SG com/xpal70.b[788] a:=falserv
+a G:501 SG com/xpal70.b[798] a:=h3!a<h3!b->truerv,falserv
+a G:501 SG com/xpal70.b[802] a:=fls(h3!a,h3!b)->truerv,falserv
+a G:501 SG com/xpal70.b[806] a:=falserv
+a G:501 SG com/xpal70.b[813] a:=h3!a<=h3!b->truerv,falserv
+a G:501 SG com/xpal70.b[817] a:=fle(h3!a,h3!b)->truerv,falserv
+a G:501 SG com/xpal70.b[821] a:=falserv
+a G:501 SG com/xpal70.b[827] a:=h3!a>=h3!b->truerv,falserv
+a G:501 SG com/xpal70.b[831] a:=fge(h3!a,h3!b)->truerv,falserv
+a G:501 SG com/xpal70.b[835] a:=falserv
+a G:501 SG com/xpal70.b[841] a:=h3!a>h3!b->truerv,falserv
+a G:501 SG com/xpal70.b[845] a:=fgr(h3!a,h3!b)->truerv,falserv
+a G:501 SG com/xpal70.b[849] a:=falserv
+a G:501 SG com/xpal70.b[874] a:=list(3,lvalue,nilrv)
+a G:501 SG com/xpal70.b[881] a:=list(3,lvalue,a)
+a G:501 SG com/xpal70.b[886] a:=list(3,lvalue,a)
+a G:501 SG com/xpal70.b[915] a:=b
+a G:501 SG com/xpal70.b[927] a:=s!(stackp-1)
+a G:501 SG com/xpal70.b[933] a:=s!(stackp-1)
+a G:501 SG com/xpal70.b[946] a:=h3!a
+a G:501 SG com/xpal70.b[958] a:=h4!a
+a G:501 SG com/xpal70.b[964] a:=a!(n+2)
+a G:501 SG com/xpal70.b[969] a:=a!(h3!a+2)
+a G:501 SG com/xpal70.b[970] a:=h4!a
+a G:501 SG com/xpal70.b[997] a:=s!(stackp-1)
+abort G:28 DEF libhdr.h[43] abort=28
+appendstream G:66 DEF libhdr.h[81] appendstream=66
+apply G:427 DEF com/xpal70.b[99] apply=427
+apply G:427 LG com/xpal70.b[295] a:=apply
+apply G:427 RT com/xpal70.b[944] LET apply()BE..
+atom G:472 DEF com/xpal70.b[108] atom=472
+atom G:472 LG com/xpal70.b[344] f("ATOM",atom)
+atom G:472 RT com/xpal70.b[1627] LET atom()BE..
+aug G:402 DEF com/xpal70.b[95] aug=402
+aug G:402 LG com/xpal70.b[321] a:=aug
+aug G:402 RT com/xpal70.b[573] LET aug()BE..
+b G:502 DEF com/xpal70.b[116] b=502
+b G:502 LG com/xpal70.b[1036] h3!b:=a
+b G:502 LG com/xpal70.b[1050] b:=h3!b
+b G:502 LG com/xpal70.b[1053] h3!b!i:=v!i
+b G:502 LG com/xpal70.b[1197] h2!a=number&h2!b=number->number,...=real&...=real->real,m_false
+b G:502 LG com/xpal70.b[1201] (h2!a=m_true|h2!a=m_false)&(h2!b=m_true|h2!b=m_false)
+b G:502 LG com/xpal70.b[1224] s:=node(h1!b&lfield)
+b G:502 LG com/xpal70.b[1225] stackp:=h3!b
+b G:502 LG com/xpal70.b[1226] s!i:=b!i
+b G:502 LG com/xpal70.b[1383] marklist(b)
+b G:502 LG com/xpal70.b[1457] IF b=nilrv DO ..
+b G:502 LG com/xpal70.b[1457] b:=list(3,lvalue,b)
+b G:502 LG com/xpal70.b[1459] h3!b:=h3!a!(i+1)
+b G:502 LG com/xpal70.b[1460] h3!b:=a
+b G:502 LG com/xpal70.b[1461] h3!b:=nilrv
+b G:502 LG com/xpal70.b[1462] h3!b:=h3!s!stackp
+b G:502 LG com/xpal70.b[1566] UNLESS h2!b=string DO ..
+b G:502 LG com/xpal70.b[1567] error1("STEM",b,0)
+b G:502 LG com/xpal70.b[1571] a:=list(4,string,a,...)
+b G:502 LG com/xpal70.b[1601] UNTIL h2!b=nils DO ..
+b G:502 LG com/xpal70.b[1602] v!x:=h4!b
+b G:502 LG com/xpal70.b[1603] b:=h3!b
+b G:502 LG com/xpal70.b[1609] a:=b
+b G:502 LG com/xpal70.b[1614] a:=b
+b G:502 LG com/xpal70.b[1621] a:=b
+b G:502 LG com/xpal70.b[1866] a!i:=list(3,lvalue,b)
+b G:502 LG com/xpal70.b[1944] UNLESS h2!b=string&h2!x=jj DO ..
+b G:502 LG com/xpal70.b[1945] WHILE h2!b=string DO ..
+b G:502 LG com/xpal70.b[1946] v!i:=h4!b
+b G:502 LG com/xpal70.b[1947] b:=h3!b
+b G:502 LG com/xpal70.b[527] s!stackp:=b!(n-i)
+b G:502 LG com/xpal70.b[552] a:=h2!a=m_true->b,falserv
+b G:502 LG com/xpal70.b[555] error1("&",a,b)
+b G:502 LG com/xpal70.b[564] a:=h2!a=m_false->b,truerv
+b G:502 LG com/xpal70.b[567] error1("OR",a,b)
+b G:502 LG com/xpal70.b[576] error1("AUG",a,b)
+b G:502 LG com/xpal70.b[583] t!0,t!1,t!2,t!...:=n+4,m_tuple,n+1,b
+b G:502 LG com/xpal70.b[612] a:=list(3,number,...*...)
+b G:502 LG com/xpal70.b[617] a:=list(3,real,fmult(...))
+b G:502 LG com/xpal70.b[628] error1("**",t,b)
+b G:502 LG com/xpal70.b[636] IF h3!b=0 DO ..
+b G:502 LG com/xpal70.b[637] a:=list(3,number,.../...)
+b G:502 LG com/xpal70.b[642] a:=list(3,real,fdiv(...))
+b G:502 LG com/xpal70.b[644] UNLESS feq(h3!b,0) DO ..
+b G:502 LG com/xpal70.b[653] error1("/",t,b)
+b G:502 LG com/xpal70.b[661] a:=list(3,number,...+...)
+b G:502 LG com/xpal70.b[666] a:=list(3,real,fadd(...))
+b G:502 LG com/xpal70.b[677] error1("+",t,b)
+b G:502 LG com/xpal70.b[685] a:=list(3,number,...-...)
+b G:502 LG com/xpal70.b[690] a:=list(3,real,fsub(...))
+b G:502 LG com/xpal70.b[701] error1("-",t,b)
+b G:502 LG com/xpal70.b[708] UNLESS h2!b=number DO ..
+b G:502 LG com/xpal70.b[710] h3!a,h3!b,1
+b G:502 LG com/xpal70.b[725] a:=list(3,real,fpower(...))
+b G:502 LG com/xpal70.b[736] error1("****",t,b)
+b G:502 LG com/xpal70.b[773] a:=equal(a,b)->truerv,falserv
+b G:502 LG com/xpal70.b[775] error1("EQ",t,b)
+b G:502 LG com/xpal70.b[785] a:=equal(a,b)->falserv,truerv
+b G:502 LG com/xpal70.b[787] error1("NE",t,b)
+b G:502 LG com/xpal70.b[798] a:=h3!a<h3!b->truerv,falserv
+b G:502 LG com/xpal70.b[802] a:=fls(h3!a,h3!b)->truerv,falserv
+b G:502 LG com/xpal70.b[805] error1("LS",a,b)
+b G:502 LG com/xpal70.b[813] a:=h3!a<=h3!b->truerv,falserv
+b G:502 LG com/xpal70.b[817] a:=fle(h3!a,h3!b)->truerv,falserv
+b G:502 LG com/xpal70.b[820] error1("LE",a,b)
+b G:502 LG com/xpal70.b[827] a:=h3!a>=h3!b->truerv,falserv
+b G:502 LG com/xpal70.b[831] a:=fge(h3!a,h3!b)->truerv,falserv
+b G:502 LG com/xpal70.b[834] error1("GE",a,b)
+b G:502 LG com/xpal70.b[841] a:=h3!a>h3!b->truerv,falserv
+b G:502 LG com/xpal70.b[845] a:=fgr(h3!a,h3!b)->truerv,falserv
+b G:502 LG com/xpal70.b[848] error1("GR",a,b)
+b G:502 LG com/xpal70.b[899] h1!b,h2!b:=8,stack
+b G:502 LG com/xpal70.b[900] h4!b,h5!b:=restartc,s
+b G:502 LG com/xpal70.b[901] h6!b,h7!b:=e,a
+b G:502 LG com/xpal70.b[902] s:=b
+b G:502 LG com/xpal70.b[907] UNLESS h2!b=closure|h2!b=basicfn DO ..
+b G:502 LG com/xpal70.b[912] TEST h2!b=closure THEN .. ELSE ..
+b G:502 LG com/xpal70.b[915] a:=b
+b G:502 LG com/xpal70.b[916] oldc,c:=c,h4!b
+b G:502 LG com/xpal70.b[921] (h3!b)()
+b G:502 LG com/xpal70.b[955] b:=h3!b
+b G:502 LG com/xpal70.b[956] UNLESS h2!b=number DO ..
+b G:502 LG com/xpal70.b[957] error(0,a," APPLIED TO ",b)
+b G:502 LG com/xpal70.b[962] h3!b
+b G:502 LG com/xpal70.b[967] error(0,a," APPLIED TO ",b)
+b G:502 LG com/xpal70.b[987] h1!b,h2!b:=c!1+6,stack
+b G:502 LG com/xpal70.b[989] h4!b,h5!b:=oldc,s
+b G:502 LG com/xpal70.b[990] h6!b,h7!b:=e,s!(stackp-2)
+b G:502 LG com/xpal70.b[992] stackp,s:=7,b
+b G:502 SG com/xpal70.b[1050] b:=h3!b
+b G:502 SG com/xpal70.b[1223] c,b,e:=h4!s,h5!s,h6!s
+b G:502 SG com/xpal70.b[1413] stackp,a,b:=stackp-2,s!(stackp+1),s!stackp
+b G:502 SG com/xpal70.b[1456] b:=lvofname(c!i,e)
+b G:502 SG com/xpal70.b[1457] b:=list(3,lvalue,b)
+b G:502 SG com/xpal70.b[1564] b:=h3!a
+b G:502 SG com/xpal70.b[1600] b,x:=h3!h4!a,1
+b G:502 SG com/xpal70.b[1603] b:=h3!b
+b G:502 SG com/xpal70.b[1607] b:=h3!h5!a
+b G:502 SG com/xpal70.b[1613] b:=list(4,string,0,...)
+b G:502 SG com/xpal70.b[1863] b:=h3!h5!a
+b G:502 SG com/xpal70.b[1943] b:=h3!h4!a
+b G:502 SG com/xpal70.b[1947] b:=h3!b
+b G:502 SG com/xpal70.b[525] b:=h3!a
+b G:502 SG com/xpal70.b[898] b:=node(8)
+b G:502 SG com/xpal70.b[903] b:=h3!errorlv
+b G:502 SG com/xpal70.b[954] stackp,b:=stackp-1,s!stackp
+b G:502 SG com/xpal70.b[955] b:=h3!b
+b G:502 SG com/xpal70.b[986] b:=node(c!1+6)
+basicfn M:227 DEF com/xpal70.b[79] basicfn=227
+basicfn M:227 MAN com/xpal70.b[1125] CASE basicfn:.. 
+basicfn M:227 MAN com/xpal70.b[1365] CASE basicfn:.. 
+basicfn M:227 MAN com/xpal70.b[1698] CASE basicfn:.. 
+basicfn M:227 MAN com/xpal70.b[1878] errorlv:=list(3,lvalue,list(...))
+basicfn M:227 MAN com/xpal70.b[384] a:=list(3,basicfn,y)
+basicfn M:227 MAN com/xpal70.b[907] UNLESS h2!b=closure|h2!b=basicfn DO ..
+basicfn M:227 MAN com/xpal70.b[975] CASE basicfn:.. 
+binrdch G:39 DEF libhdr.h[54] binrdch=39
+binwrch G:42 DEF libhdr.h[57] binwrch=42
+bitsperbyte M:8 DEF libhdr.h[160] bitsperbyte=8
+bitsperbyte M:8 MAN libhdr.h[161] bitsperword=bitsperbyte*bytesperword
+bitsperword M:32 DEF libhdr.h[161] bitsperword=bitsperbyte*bytesperword
+bitsperword M:32 MAN libhdr.h[163] minint=1<<bitsperword-1
+blocklink G:463 DEF com/xpal70.b[107] blocklink=463
+blocklink G:463 LG com/xpal70.b[1517] blocklink()
+blocklink G:463 LG com/xpal70.b[316] a:=blocklink
+blocklink G:463 RT com/xpal70.b[1506] LET blocklink()BE..
+bootregs M:11 DEF libhdr.h[354] bootregs=11
+bytesperword M:4 DEF libhdr.h[159] bytesperword=1<<B2Wsh
+bytesperword M:4 MAN com/xpal70.b[184] n:=ch/bytesperword+1
+bytesperword M:4 MAN com/xpal70.b[1952] i:=(i-1)/bytesperword+1
+bytesperword M:4 MAN libhdr.h[161] bitsperword=bitsperbyte*bytesperword
+bytesperword M:4 MAN libhdr.h[162] mcaddrinc=bytesperword
+bytesperword M:4 MAN libhdr.h[401] scb_nameeend=scb_name+scb_maxnamelen/bytesperword
+c G:503 DEF com/xpal70.b[116] c=503
+c G:503 LG com/xpal70.b[1006] c:=c+1
+c G:503 LG com/xpal70.b[1014] c:=c+1
+c G:503 LG com/xpal70.b[1034] c!1
+c G:503 LG com/xpal70.b[1045] c:=c+1
+c G:503 LG com/xpal70.b[1057] c:=c+1
+c G:503 LG com/xpal70.b[1417] e:=list(5,env,e,...)
+c G:503 LG com/xpal70.b[1419] c:=c+2
+c G:503 LG com/xpal70.b[1423] c!1
+c G:503 LG com/xpal70.b[1431] c:=c+2+n
+c G:503 LG com/xpal70.b[1437] c:=c+2
+c G:503 LG com/xpal70.b[1441] c!1
+c G:503 LG com/xpal70.b[1449] c:=c+2+n
+c G:503 LG com/xpal70.b[1454] e:=list(5,env,e,...)
+c G:503 LG com/xpal70.b[1456] b:=lvofname(c!i,e)
+c G:503 LG com/xpal70.b[1470] writes(c!i)
+c G:503 LG com/xpal70.b[1485] c:=c+n+1
+c G:503 LG com/xpal70.b[1491] a:=list(6,...&lfield,...,...)
+c G:503 LG com/xpal70.b[1493] e:=list(5,env,e,...)
+c G:503 LG com/xpal70.b[1494] c:=c+3
+c G:503 LG com/xpal70.b[1499] FOR i=1 TO c!1 DO..
+c G:503 LG com/xpal70.b[1503] c:=c+2
+c G:503 LG com/xpal70.b[1509] oldc:=c!1
+c G:503 LG com/xpal70.b[1511] c:=c+2
+c G:503 LG com/xpal70.b[1876] c:=c+1
+c G:503 LG com/xpal70.b[1922] c:=c+1
+c G:503 LG com/xpal70.b[403] c:=c+1
+c G:503 LG com/xpal70.b[404] a:=lvofname(c!0,e)
+c G:503 LG com/xpal70.b[413] c:=c+1
+c G:503 LG com/xpal70.b[414] a:=lvofname(c!0,e)
+c G:503 LG com/xpal70.b[435] unpackstring(c!1,v)
+c G:503 LG com/xpal70.b[442] c:=c+1
+c G:503 LG com/xpal70.b[447] a:=list(3,c!1,c!2)
+c G:503 LG com/xpal70.b[448] c:=c+2
+c G:503 LG com/xpal70.b[456] c:=c+1
+c G:503 LG com/xpal70.b[485] a:=list(4,closure,e,...)
+c G:503 LG com/xpal70.b[486] c:=c+1
+c G:503 LG com/xpal70.b[493] c:=c+1
+c G:503 LG com/xpal70.b[504] c:=c+1
+c G:503 LG com/xpal70.b[509] c:=c+1
+c G:503 LG com/xpal70.b[513] c!1
+c G:503 LG com/xpal70.b[518] c:=c+1
+c G:503 LG com/xpal70.b[523] c!1
+c G:503 LG com/xpal70.b[530] c:=c+2
+c G:503 LG com/xpal70.b[854] c:=c!1
+c G:503 LG com/xpal70.b[859] c:=c!1
+c G:503 LG com/xpal70.b[863] c:=c+2
+c G:503 LG com/xpal70.b[867] c:=c!1-1
+c G:503 LG com/xpal70.b[872] restartc:=c+1
+c G:503 LG com/xpal70.b[879] restartc:=c+1
+c G:503 LG com/xpal70.b[891] restartc:=c+1
+c G:503 LG com/xpal70.b[916] oldc,c:=c,h4!b
+c G:503 LG com/xpal70.b[918] c:=c-3
+c G:503 LG com/xpal70.b[950] oldc,c:=c+1,h4!a
+c G:503 LG com/xpal70.b[986] b:=node(c!1+6)
+c G:503 LG com/xpal70.b[987] h1!b,h2!b:=c!1+6,stack
+c G:503 LG com/xpal70.b[993] c:=c+2
+c G:503 SG com/xpal70.b[1006] c:=c+1
+c G:503 SG com/xpal70.b[1014] c:=c+1
+c G:503 SG com/xpal70.b[1025] c,e:=h4!a,h6!a
+c G:503 SG com/xpal70.b[1045] c:=c+1
+c G:503 SG com/xpal70.b[1057] c:=c+1
+c G:503 SG com/xpal70.b[1223] c,b,e:=h4!s,h5!s,h6!s
+c G:503 SG com/xpal70.b[1419] c:=c+2
+c G:503 SG com/xpal70.b[1431] c:=c+2+n
+c G:503 SG com/xpal70.b[1437] c:=c+2
+c G:503 SG com/xpal70.b[1449] c:=c+2+n
+c G:503 SG com/xpal70.b[1485] c:=c+n+1
+c G:503 SG com/xpal70.b[1494] c:=c+3
+c G:503 SG com/xpal70.b[1503] c:=c+2
+c G:503 SG com/xpal70.b[1511] c:=c+2
+c G:503 SG com/xpal70.b[1876] c:=c+1
+c G:503 SG com/xpal70.b[1922] c:=c+1
+c G:503 SG com/xpal70.b[403] c:=c+1
+c G:503 SG com/xpal70.b[413] c:=c+1
+c G:503 SG com/xpal70.b[442] c:=c+1
+c G:503 SG com/xpal70.b[448] c:=c+2
+c G:503 SG com/xpal70.b[456] c:=c+1
+c G:503 SG com/xpal70.b[486] c:=c+1
+c G:503 SG com/xpal70.b[493] c:=c+1
+c G:503 SG com/xpal70.b[504] c:=c+1
+c G:503 SG com/xpal70.b[509] c:=c+1
+c G:503 SG com/xpal70.b[518] c:=c+1
+c G:503 SG com/xpal70.b[530] c:=c+2
+c G:503 SG com/xpal70.b[854] c:=c!1
+c G:503 SG com/xpal70.b[859] c:=c!1
+c G:503 SG com/xpal70.b[863] c:=c+2
+c G:503 SG com/xpal70.b[867] c:=c!1-1
+c G:503 SG com/xpal70.b[873] c:=@restart
+c G:503 SG com/xpal70.b[880] c:=@rvrestart
+c G:503 SG com/xpal70.b[892] c:=@okrestart
+c G:503 SG com/xpal70.b[906] c:=@norestart
+c G:503 SG com/xpal70.b[916] oldc,c:=c,h4!b
+c G:503 SG com/xpal70.b[918] c:=c-3
+c G:503 SG com/xpal70.b[950] oldc,c:=c+1,h4!a
+c G:503 SG com/xpal70.b[993] c:=c+2
+callco G:19 DEF libhdr.h[34] callco=19
+callseg G:107 DEF libhdr.h[123] callseg=107
+capitalch G:96 DEF libhdr.h[112] capitalch=96
+ch G:218 DEF com/xpal70.b[125] ch=218
+ch G:218 LG com/xpal70.b[1829] IF ch=35 DO ..
+ch G:218 LG com/xpal70.b[1838] linet!0:=ch
+ch G:218 LG com/xpal70.b[1839] UNTIL ch=10 DO ..
+ch G:218 LG com/xpal70.b[1842] linet!0:=ch
+ch G:218 SG com/xpal70.b[1840] ch:=rdch()
+ch G:218 SG com/xpal70.b[1844] ch:=rdch()
+changeco G:6 DEF libhdr.h[21] changeco=6
+cis G:12 DEF libhdr.h[27] cis=12
+clear_words G:115 DEF libhdr.h[131] clear_words=115
+clihook G:4 DEF libhdr.h[19] clihook=4
+cliregs M:21 DEF libhdr.h[355] cliregs=21
+closure M:226 DEF com/xpal70.b[79] closure=226
+closure M:226 MAN com/xpal70.b[1124] CASE closure:.. 
+closure M:226 MAN com/xpal70.b[1361] CASE closure:.. 
+closure M:226 MAN com/xpal70.b[1697] CASE closure:.. 
+closure M:226 MAN com/xpal70.b[485] a:=list(4,closure,e,...)
+closure M:226 MAN com/xpal70.b[907] UNLESS h2!b=closure|h2!b=basicfn DO ..
+closure M:226 MAN com/xpal70.b[912] TEST h2!b=closure THEN .. ELSE ..
+closure M:226 MAN com/xpal70.b[948] CASE closure:.. 
+co_c M:5 DEF libhdr.h[201] co_c=
+co_fn M:3 DEF libhdr.h[199] co_fn=
+co_list M:2 DEF libhdr.h[198] co_list=
+co_parent M:1 DEF libhdr.h[197] co_parent=
+co_pptr M:0 DEF libhdr.h[196] co_pptr=0
+co_size M:4 DEF libhdr.h[200] co_size=
+codefile G:219 DEF com/xpal70.b[126] codefile=219
+codefile G:219 LG com/xpal70.b[159] 0,0,codefile
+codefilep G:220 DEF com/xpal70.b[127] codefilep=220
+codep G:504 DEF com/xpal70.b[116] codep=504
+codep G:504 LG com/xpal70.b[164] codep!0,codep:=a,codep+1
+codep G:504 LG com/xpal70.b[230] codep!0:=real
+codep G:504 LG com/xpal70.b[231] codep:=codep+1
+codep G:504 LG com/xpal70.b[232] packstring(v,codep)
+codep G:504 LG com/xpal70.b[233] a:=stof(codep)
+codep G:504 LG com/xpal70.b[235] codep!0:=number
+codep G:504 LG com/xpal70.b[236] codep:=codep+1
+codep G:504 LG com/xpal70.b[250] parv!ch:=codep
+codep G:504 LG com/xpal70.b[255] refv!refp,refv!(refp+1):=ch,codep
+codep G:504 SG com/xpal70.b[164] codep!0,codep:=a,codep+1
+codep G:504 SG com/xpal70.b[231] codep:=codep+1
+codep G:504 SG com/xpal70.b[236] codep:=codep+1
+codewrch G:126 DEF libhdr.h[142] codewrch=126
+colist G:8 DEF libhdr.h[23] colist=8
+comdbg G:423 DEF com/xpal70.b[98] comdbg=423
+comdbg G:423 LG com/xpal70.b[875] comdbg()
+comdbg G:423 LG com/xpal70.b[882] comdbg()
+comdbg G:423 LG com/xpal70.b[893] comdbg()
+comdbg G:423 RT com/xpal70.b[896] LET comdbg()BE..
+compch G:97 DEF libhdr.h[113] compch=97
+compstring G:98 DEF libhdr.h[114] compstring=98
+conc G:471 DEF com/xpal70.b[108] conc=471
+conc G:471 LG com/xpal70.b[343] f("CONC",conc)
+conc G:471 RT com/xpal70.b[1587] LET conc()BE..
+concerr F:489 LAB com/xpal70.b[1590] concerr:..;..
+concerr F:489 LF com/xpal70.b[1598] GOTO concerr
+copy_bytes G:116 DEF libhdr.h[132] copy_bytes=116
+copy_words G:114 DEF libhdr.h[130] copy_words=114
+copydir G:79 DEF libhdr.h[94] copydir=79
+copyobj G:75 DEF libhdr.h[90] copyobj=75
+copystring G:99 DEF libhdr.h[115] copystring=99
+cos G:13 DEF libhdr.h[28] cos=13
+count G:505 DEF com/xpal70.b[116] count=505
+count G:505 LG com/xpal70.b[1239] writen(count)
+cowait G:20 DEF libhdr.h[35] cowait=20
+createco G:17 DEF libhdr.h[32] createco=17
+createdir G:82 DEF libhdr.h[97] createdir=82
+cton G:486 DEF com/xpal70.b[111] cton=486
+cton G:486 LG com/xpal70.b[359] f("CTOI",cton)
+cton G:486 RT com/xpal70.b[1774] LET cton()BE..
+currco G:7 DEF libhdr.h[22] currco=7
+currentdir G:14 DEF libhdr.h[29] currentdir=14
+dat_to_strings G:110 DEF libhdr.h[126] dat_to_strings=110
+dataflag G:221 DEF com/xpal70.b[128] dataflag=221
+dataflag G:221 LG com/xpal70.b[1828] UNLESS dataflag DO ..
+dataflag G:221 LG com/xpal70.b[1829] TEST dataflag THEN .. ELSE ..
+dataflag G:221 SG com/xpal70.b[1830] dataflag:=FALSE
+datstamp G:109 DEF libhdr.h[125] datstamp=109
+datstring G:108 DEF libhdr.h[124] datstring=108
+deadcode M:-559038242 DEF libhdr.h[183] deadcode=#xDEADC0DE
+decllabel G:461 DEF com/xpal70.b[106] decllabel=461
+decllabel G:461 LG com/xpal70.b[314] a:=decllabel
+decllabel G:461 RT com/xpal70.b[1489] LET decllabel()BE..
+decllib G:379 DEF com/xpal70.b[90] decllib=379
+decllib G:379 RT com/xpal70.b[383] LET decllib(x,y)BE..
+declname G:455 DEF com/xpal70.b[105] declname=455
+declname G:455 LG com/xpal70.b[307] a:=declname
+declname G:455 RT com/xpal70.b[1416] LET declname()BE..
+declnames G:456 DEF com/xpal70.b[105] declnames=456
+declnames G:456 LG com/xpal70.b[308] a:=declnames
+declnames G:456 RT com/xpal70.b[1422] LET declnames()BE..
+delay G:128 DEF libhdr.h[144] delay=128
+delayuntil G:129 DEF libhdr.h[145] delayuntil=129
+deleteco G:18 DEF libhdr.h[33] deleteco=18
+deletefile G:76 DEF libhdr.h[91] deletefile=76
+deleteself G:125 DEF libhdr.h[141] deleteself=125
+deplete G:43 DEF libhdr.h[58] deplete=43
+derr F:165 LAB com/xpal70.b[651] derr:a:=list(3,number,0)
+derr F:165 LF com/xpal70.b[636] GOTO derr
+derr F:165 LF com/xpal70.b[646] GOTO derr
+diagnose G:492 DEF com/xpal70.b[112] diagnose=492
+diagnose G:492 LG com/xpal70.b[1231] diagnose()
+diagnose G:492 LG com/xpal70.b[364] f("DIAGNOSE",diagnose)
+diagnose G:492 RT com/xpal70.b[1871] LET diagnose()BE..
+div G:405 DEF com/xpal70.b[95] div=405
+div G:405 LG com/xpal70.b[281] a:=div
+div G:405 RT com/xpal70.b[632] LET div()BE..
+dummy G:391 DEF com/xpal70.b[93] dummy=391
+dummy G:391 LG com/xpal70.b[320] a:=dummy
+dummy G:391 RT com/xpal70.b[479] LET dummy()BE..
+dummyrv G:506 DEF com/xpal70.b[116] dummyrv=506
+dummyrv G:506 LG com/xpal70.b[1021] a:=dummyrv
+dummyrv G:506 LG com/xpal70.b[1046] a:=dummyrv
+dummyrv G:506 LG com/xpal70.b[1056] a:=dummyrv
+dummyrv G:506 LG com/xpal70.b[1522] s:=list(5,stack,4,...)
+dummyrv G:506 LG com/xpal70.b[1552] a:=dummyrv
+dummyrv G:506 LG com/xpal70.b[1559] a:=dummyrv
+dummyrv G:506 LG com/xpal70.b[1874] s!(stackp-1):=list(3,lvalue,dummyrv)
+dummyrv G:506 LG com/xpal70.b[1920] s!(stackp-1):=list(3,lvalue,dummyrv)
+dummyrv G:506 LG com/xpal70.b[480] a:=dummyrv
+e G:510 DEF com/xpal70.b[117] e=510
+e G:510 LG com/xpal70.b[1379] marklist(e)
+e G:510 LG com/xpal70.b[1417] e:=list(5,env,e,...)
+e G:510 LG com/xpal70.b[1454] e:=list(5,env,e,...)
+e G:510 LG com/xpal70.b[1456] b:=lvofname(c!i,e)
+e G:510 LG com/xpal70.b[1491] a:=list(6,...&lfield,...,...)
+e G:510 LG com/xpal70.b[1493] e:=list(5,env,e,...)
+e G:510 LG com/xpal70.b[1498] a:=e
+e G:510 LG com/xpal70.b[1500] h6!h3!h5!a:=e
+e G:510 LG com/xpal70.b[1510] a:=list(3,lvalue,e)
+e G:510 LG com/xpal70.b[1523] a:=list(3,lvalue,e)
+e G:510 LG com/xpal70.b[1888] a:=e
+e G:510 LG com/xpal70.b[386] e:=list(5,env,e,...)
+e G:510 LG com/xpal70.b[404] a:=lvofname(c!0,e)
+e G:510 LG com/xpal70.b[414] a:=lvofname(c!0,e)
+e G:510 LG com/xpal70.b[428] a:=e
+e G:510 LG com/xpal70.b[485] a:=list(4,closure,e,...)
+e G:510 LG com/xpal70.b[591] a:=lvofname(nameres,e)
+e G:510 LG com/xpal70.b[901] h6!b,h7!b:=e,a
+e G:510 LG com/xpal70.b[990] h6!b,h7!b:=e,s!(stackp-2)
+e G:510 SG com/xpal70.b[1025] c,e:=h4!a,h6!a
+e G:510 SG com/xpal70.b[1223] c,b,e:=h4!s,h5!s,h6!s
+e G:510 SG com/xpal70.b[1417] e:=list(5,env,e,...)
+e G:510 SG com/xpal70.b[1454] e:=list(5,env,e,...)
+e G:510 SG com/xpal70.b[1493] e:=list(5,env,e,...)
+e G:510 SG com/xpal70.b[1524] e:=0
+e G:510 SG com/xpal70.b[386] e:=list(5,env,e,...)
+e G:510 SG com/xpal70.b[453] e:=s!(stackp-2)
+e G:510 SG com/xpal70.b[991] e:=h3!a
+edbg G:419 DEF com/xpal70.b[97] edbg=419
+edbg G:419 LG com/xpal70.b[1008] edbg()
+edbg G:419 LG com/xpal70.b[1486] edbg()
+edbg G:419 LG com/xpal70.b[868] edbg()
+edbg G:419 LG com/xpal70.b[981] edbg()
+edbg G:419 RT com/xpal70.b[871] LET edbg()BE..
+enddata F:560 LAB com/xpal70.b[1835] enddata:..;..
+enddata F:560 LF com/xpal70.b[1828] GOTO enddata
+endread G:60 DEF libhdr.h[75] endread=60
+endstream G:62 DEF libhdr.h[77] endstream=62
+endstreamch M:-1 DEF libhdr.h[166] endstreamch=-1
+endstreamch M:-1 MAN com/xpal70.b[169] UNLESS ch=endstreamch DO ..
+endwrite G:61 DEF libhdr.h[76] endwrite=61
+entryword M:57311 DEF libhdr.h[185] entryword=57311
+env M:234 DEF com/xpal70.b[81] env=234
+env M:234 MAN com/xpal70.b[1342] CASE env:.. 
+env M:234 MAN com/xpal70.b[1417] e:=list(5,env,e,...)
+env M:234 MAN com/xpal70.b[1454] e:=list(5,env,e,...)
+env M:234 MAN com/xpal70.b[1493] e:=list(5,env,e,...)
+env M:234 MAN com/xpal70.b[386] e:=list(5,env,e,...)
+equ M:216 DEF com/xpal70.b[75] equ=216
+equ M:216 MAN com/xpal70.b[265] CASE equ:.. 
+equal G:438 DEF com/xpal70.b[101] equal=438
+equal G:438 FN com/xpal70.b[1169] LET equal(a,b)=..
+equal G:438 LG com/xpal70.b[1187] RESULTIS equal(h3!a,h3!b)
+equal G:438 LG com/xpal70.b[773] a:=equal(a,b)->truerv,falserv
+equal G:438 LG com/xpal70.b[785] a:=equal(a,b)->falserv,truerv
+errct G:507 DEF com/xpal70.b[116] errct=507
+errct G:507 LG com/xpal70.b[905] errct:=errct+1
+errct G:507 LG com/xpal70.b[906] IF errct>=maxerr DO ..
+errct G:507 LG com/xpal70.b[908] UNLESS errct>=maxerr DO ..
+errct G:507 SG com/xpal70.b[905] errct:=errct+1
+errdbg G:420 DEF com/xpal70.b[98] errdbg=420
+errdbg G:420 LG com/xpal70.b[1022] errdbg()
+errdbg G:420 LG com/xpal70.b[1047] errdbg()
+errdbg G:420 LG com/xpal70.b[416] errdbg()
+errdbg G:420 LG com/xpal70.b[545] errdbg()
+errdbg G:420 LG com/xpal70.b[557] errdbg()
+errdbg G:420 LG com/xpal70.b[569] errdbg()
+errdbg G:420 LG com/xpal70.b[578] errdbg()
+errdbg G:420 LG com/xpal70.b[629] errdbg()
+errdbg G:420 LG com/xpal70.b[654] errdbg()
+errdbg G:420 LG com/xpal70.b[678] errdbg()
+errdbg G:420 LG com/xpal70.b[702] errdbg()
+errdbg G:420 LG com/xpal70.b[737] errdbg()
+errdbg G:420 LG com/xpal70.b[748] errdbg()
+errdbg G:420 LG com/xpal70.b[767] errdbg()
+errdbg G:420 LG com/xpal70.b[777] errdbg()
+errdbg G:420 LG com/xpal70.b[790] errdbg()
+errdbg G:420 LG com/xpal70.b[807] errdbg()
+errdbg G:420 LG com/xpal70.b[822] errdbg()
+errdbg G:420 LG com/xpal70.b[836] errdbg()
+errdbg G:420 LG com/xpal70.b[850] errdbg()
+errdbg G:420 RT com/xpal70.b[878] LET errdbg()BE..
+errflag G:508 DEF com/xpal70.b[117] errflag=508
+errflag G:508 LG com/xpal70.b[774] TEST errflag THEN .. ELSE ..
+errflag G:508 LG com/xpal70.b[786] TEST errflag THEN .. ELSE ..
+errflag G:508 SG com/xpal70.b[1193] errflag:=TRUE
+errflag G:508 SG com/xpal70.b[776] errflag:=FALSE
+errflag G:508 SG com/xpal70.b[789] errflag:=FALSE
+errlvdbg G:421 DEF com/xpal70.b[98] errlvdbg=421
+errlvdbg G:421 LG com/xpal70.b[1568] errlvdbg()
+errlvdbg G:421 LG com/xpal70.b[1580] errlvdbg()
+errlvdbg G:421 LG com/xpal70.b[1593] errlvdbg()
+errlvdbg G:421 LG com/xpal70.b[1655] errlvdbg()
+errlvdbg G:421 LG com/xpal70.b[1743] errlvdbg()
+errlvdbg G:421 LG com/xpal70.b[1761] errlvdbg()
+errlvdbg G:421 LG com/xpal70.b[1780] errlvdbg()
+errlvdbg G:421 LG com/xpal70.b[1793] errlvdbg()
+errlvdbg G:421 LG com/xpal70.b[1805] errlvdbg()
+errlvdbg G:421 LG com/xpal70.b[1817] errlvdbg()
+errlvdbg G:421 LG com/xpal70.b[1857] errlvdbg()
+errlvdbg G:421 LG com/xpal70.b[1937] errlvdbg()
+errlvdbg G:421 LG com/xpal70.b[1975] errlvdbg()
+errlvdbg G:421 LG com/xpal70.b[959] errlvdbg()
+errlvdbg G:421 LG com/xpal70.b[971] errlvdbg()
+errlvdbg G:421 RT com/xpal70.b[885] LET errlvdbg()BE..
+errokdbg G:422 DEF com/xpal70.b[98] errokdbg=422
+errokdbg G:422 LG com/xpal70.b[407] errokdbg()
+errokdbg G:422 LG com/xpal70.b[599] errokdbg()
+errokdbg G:422 LG com/xpal70.b[887] errokdbg()
+errokdbg G:422 RT com/xpal70.b[890] LET errokdbg()BE..
+error G:434 DEF com/xpal70.b[100] error=434
+error G:434 LG com/xpal70.b[1020] error("CANNOT GO TO ",a,0,0)
+error G:434 LG com/xpal70.b[1038] error("CONFO'SIGNMENT",0,0,0)
+error G:434 LG com/xpal70.b[1210] error("UNDEC'ED NAME ",0,n,0)
+error G:434 LG com/xpal70.b[1426] error("CONFO'FINITION",0,0,0)
+error G:434 LG com/xpal70.b[1444] error("CONFO'FINITION",0,0,0)
+error G:434 LG com/xpal70.b[598] error("INCOR'E OF RES",0,0,0)
+error G:434 LG com/xpal70.b[866] error("NOT A'HVALUE: ",a,0,0)
+error G:434 LG com/xpal70.b[957] error(0,a," APPLIED TO ",b)
+error G:434 LG com/xpal70.b[967] error(0,a," APPLIED TO ",b)
+error G:434 LG com/xpal70.b[980] error("ATTEM'O APPLY ",a," TO ",...)
+error G:434 RT com/xpal70.b[1065] LET error(ms1,db1,ms2,db2)BE..
+error1 G:435 DEF com/xpal70.b[101] error1=435
+error1 G:435 LG com/xpal70.b[1007] error1("FUNCT'RGUMENTS",a,0)
+error1 G:435 LG com/xpal70.b[1567] error1("STEM",b,0)
+error1 G:435 LG com/xpal70.b[1578] error1("STERN",a,0)
+error1 G:435 LG com/xpal70.b[1590] error1("CONC",a,0)
+error1 G:435 LG com/xpal70.b[1653] error1("ORDER",a,0)
+error1 G:435 LG com/xpal70.b[1741] error1("SHARE",a,0)
+error1 G:435 LG com/xpal70.b[1759] error1("STOI",a,0)
+error1 G:435 LG com/xpal70.b[1778] error1("CTOI",a,0)
+error1 G:435 LG com/xpal70.b[1791] error1("ITOC",a,0)
+error1 G:435 LG com/xpal70.b[1803] error1("ITOR",a,0)
+error1 G:435 LG com/xpal70.b[1815] error1("RTOI",a,0)
+error1 G:435 LG com/xpal70.b[1855] error1("TABLE",a,0)
+error1 G:435 LG com/xpal70.b[1935] error1("LOOKUPINE",a,0)
+error1 G:435 LG com/xpal70.b[544] error1("NOT",a,0)
+error1 G:435 LG com/xpal70.b[555] error1("&",a,b)
+error1 G:435 LG com/xpal70.b[567] error1("OR",a,b)
+error1 G:435 LG com/xpal70.b[576] error1("AUG",a,b)
+error1 G:435 LG com/xpal70.b[628] error1("**",t,b)
+error1 G:435 LG com/xpal70.b[653] error1("/",t,b)
+error1 G:435 LG com/xpal70.b[677] error1("+",t,b)
+error1 G:435 LG com/xpal70.b[701] error1("-",t,b)
+error1 G:435 LG com/xpal70.b[736] error1("****",t,b)
+error1 G:435 LG com/xpal70.b[746] error1("+",a,0)
+error1 G:435 LG com/xpal70.b[766] error1("-",t,0)
+error1 G:435 LG com/xpal70.b[775] error1("EQ",t,b)
+error1 G:435 LG com/xpal70.b[787] error1("NE",t,b)
+error1 G:435 LG com/xpal70.b[805] error1("LS",a,b)
+error1 G:435 LG com/xpal70.b[820] error1("LE",a,b)
+error1 G:435 LG com/xpal70.b[834] error1("GE",a,b)
+error1 G:435 LG com/xpal70.b[848] error1("GR",a,b)
+error1 G:435 RT com/xpal70.b[1074] LET error1(op,arg1,arg2)BE..
+errorlv G:509 DEF com/xpal70.b[117] errorlv=509
+errorlv G:509 LG com/xpal70.b[903] b:=h3!errorlv
+errorlv G:509 LG com/xpal70.b[913] s!stackp:=errorlv
+errorlv G:509 SG com/xpal70.b[1878] errorlv:=list(3,lvalue,list(...))
+f G:511 DEF com/xpal70.b[117] f=511
+fabs G:77 DEF com/xpal70.b[35] fabs=77
+fadd G:71 DEF com/xpal70.b[29] fadd=71
+fadd G:71 LG com/xpal70.b[666] a:=list(3,real,fadd(...))
+falserv G:512 DEF com/xpal70.b[117] falserv=512
+falserv G:512 LG com/xpal70.b[1640] a:=falserv
+falserv G:512 LG com/xpal70.b[1646] a:=h2!...=m_tuple&h3!...=0->truerv,falserv
+falserv G:512 LG com/xpal70.b[1671] a:=falserv
+falserv G:512 LG com/xpal70.b[1677] a:=h2!h3!a=number->truerv,falserv
+falserv G:512 LG com/xpal70.b[1690] a:=falserv
+falserv G:512 LG com/xpal70.b[1703] a:=falserv
+falserv G:512 LG com/xpal70.b[1709] a:=h2!h3!a=jj->truerv,falserv
+falserv G:512 LG com/xpal70.b[1715] a:=h2!h3!a=label->truerv,falserv
+falserv G:512 LG com/xpal70.b[1721] a:=h2!h3!a=m_tuple->truerv,falserv
+falserv G:512 LG com/xpal70.b[1727] a:=h2!h3!a=real->truerv,falserv
+falserv G:512 LG com/xpal70.b[1733] a:=h2!h3!a=m_dummy->truerv,falserv
+falserv G:512 LG com/xpal70.b[1742] a:=falserv
+falserv G:512 LG com/xpal70.b[1746] a:=h4!a=h5!a->truerv,falserv
+falserv G:512 LG com/xpal70.b[465] a:=falserv
+falserv G:512 LG com/xpal70.b[541] a:=falserv
+falserv G:512 LG com/xpal70.b[552] a:=h2!a=m_true->b,falserv
+falserv G:512 LG com/xpal70.b[556] a:=falserv
+falserv G:512 LG com/xpal70.b[568] a:=falserv
+falserv G:512 LG com/xpal70.b[773] a:=equal(a,b)->truerv,falserv
+falserv G:512 LG com/xpal70.b[785] a:=equal(a,b)->falserv,truerv
+falserv G:512 LG com/xpal70.b[788] a:=falserv
+falserv G:512 LG com/xpal70.b[798] a:=h3!a<h3!b->truerv,falserv
+falserv G:512 LG com/xpal70.b[802] a:=fls(h3!a,h3!b)->truerv,falserv
+falserv G:512 LG com/xpal70.b[806] a:=falserv
+falserv G:512 LG com/xpal70.b[813] a:=h3!a<=h3!b->truerv,falserv
+falserv G:512 LG com/xpal70.b[817] a:=fle(h3!a,h3!b)->truerv,falserv
+falserv G:512 LG com/xpal70.b[821] a:=falserv
+falserv G:512 LG com/xpal70.b[827] a:=h3!a>=h3!b->truerv,falserv
+falserv G:512 LG com/xpal70.b[831] a:=fge(h3!a,h3!b)->truerv,falserv
+falserv G:512 LG com/xpal70.b[835] a:=falserv
+falserv G:512 LG com/xpal70.b[841] a:=h3!a>h3!b->truerv,falserv
+falserv G:512 LG com/xpal70.b[845] a:=fgr(h3!a,h3!b)->truerv,falserv
+falserv G:512 LG com/xpal70.b[849] a:=falserv
+fdiv G:74 DEF com/xpal70.b[32] fdiv=74
+fdiv G:74 LG com/xpal70.b[642] a:=list(3,real,fdiv(...))
+feq G:80 DEF com/xpal70.b[38] feq=80
+feq G:80 LG com/xpal70.b[644] UNLESS feq(h3!b,0) DO ..
+fge G:79 DEF com/xpal70.b[37] fge=79
+fge G:79 LG com/xpal70.b[831] a:=fge(h3!a,h3!b)->truerv,falserv
+fgr G:78 DEF com/xpal70.b[36] fgr=78
+fgr G:78 LG com/xpal70.b[845] a:=fgr(h3!a,h3!b)->truerv,falserv
+findarg G:104 DEF libhdr.h[120] findarg=104
+findinoutput G:50 DEF libhdr.h[65] findinoutput=50
+findinput G:48 DEF libhdr.h[63] findinput=48
+findoutput G:49 DEF libhdr.h[64] findoutput=49
+findstream G:52 DEF libhdr.h[67] findstream=52
+findupdate G:51 DEF libhdr.h[66] findupdate=51
+fini F:574 LAB com/xpal70.b[1910] fini:RETURN
+fini F:574 LF com/xpal70.b[1913] GOTO fini
+fl_abs M:5 DEF libhdr.h[410] fl_abs=
+fl_acos M:20 DEF libhdr.h[414] fl_acos=20
+fl_asin M:21 DEF libhdr.h[415] fl_asin=
+fl_atan M:22 DEF libhdr.h[416] fl_atan=
+fl_atan2 M:23 DEF libhdr.h[417] fl_atan2=
+fl_avail M:0 DEF libhdr.h[408] fl_avail=0
+fl_ceil M:38 DEF libhdr.h[432] fl_ceil=
+fl_cos M:24 DEF libhdr.h[418] fl_cos=
+fl_cosh M:27 DEF libhdr.h[421] fl_cosh=
+fl_div M:7 DEF libhdr.h[411] fl_div=
+fl_eq M:12 DEF libhdr.h[412] fl_eq=
+fl_exp M:30 DEF libhdr.h[424] fl_exp=
+fl_fix M:4 DEF libhdr.h[410] fl_fix=
+fl_float M:3 DEF libhdr.h[410] fl_float=
+fl_floor M:39 DEF libhdr.h[433] fl_floor=
+fl_fmod M:40 DEF libhdr.h[434] fl_fmod=
+fl_frexp M:31 DEF libhdr.h[425] fl_frexp=
+fl_ge M:17 DEF libhdr.h[412] fl_ge=
+fl_gr M:15 DEF libhdr.h[412] fl_gr=
+fl_ldexp M:32 DEF libhdr.h[426] fl_ldexp=
+fl_le M:16 DEF libhdr.h[412] fl_le=
+fl_log M:33 DEF libhdr.h[427] fl_log=
+fl_log10 M:34 DEF libhdr.h[428] fl_log10=
+fl_ls M:14 DEF libhdr.h[412] fl_ls=
+fl_minus M:9 DEF libhdr.h[411] fl_minus=
+fl_mk M:1 DEF libhdr.h[409] fl_mk=
+fl_modf M:35 DEF libhdr.h[429] fl_modf=
+fl_mult M:6 DEF libhdr.h[411] fl_mult=
+fl_ne M:13 DEF libhdr.h[412] fl_ne=
+fl_neg M:11 DEF libhdr.h[411] fl_neg=
+fl_plus M:8 DEF libhdr.h[411] fl_plus=
+fl_pos M:10 DEF libhdr.h[411] fl_pos=
+fl_pow M:36 DEF libhdr.h[430] fl_pow=
+fl_sin M:25 DEF libhdr.h[419] fl_sin=
+fl_sinh M:28 DEF libhdr.h[422] fl_sinh=
+fl_sqrt M:37 DEF libhdr.h[431] fl_sqrt=
+fl_tan M:26 DEF libhdr.h[420] fl_tan=
+fl_tanh M:29 DEF libhdr.h[423] fl_tanh=
+fl_unmk M:2 DEF libhdr.h[409] fl_unmk=
+fle G:83 DEF com/xpal70.b[40] fle=83
+fle G:83 LG com/xpal70.b[817] a:=fle(h3!a,h3!b)->truerv,falserv
+floterr G:90 DEF com/xpal70.b[48] floterr=90
+floterr G:90 LG com/xpal70.b[618] IF floterr DO ..
+floterr G:90 LG com/xpal70.b[643] IF floterr DO ..
+floterr G:90 LG com/xpal70.b[667] IF floterr DO ..
+floterr G:90 LG com/xpal70.b[691] IF floterr DO ..
+floterr G:90 LG com/xpal70.b[726] IF floterr DO ..
+floterr G:90 SG com/xpal70.b[620] floterr:=FALSE
+floterr G:90 SG com/xpal70.b[645] floterr:=FALSE
+floterr G:90 SG com/xpal70.b[669] floterr:=FALSE
+floterr G:90 SG com/xpal70.b[693] floterr:=FALSE
+floterr G:90 SG com/xpal70.b[728] floterr:=FALSE
+fls G:82 DEF com/xpal70.b[41] fls=82
+fls G:82 LG com/xpal70.b[802] a:=fls(h3!a,h3!b)->truerv,falserv
+fmerr F:175 LAB com/xpal70.b[700] fmerr:error1("-",t,b)
+fmerr F:175 LF com/xpal70.b[694] GOTO fmerr
+fmuerr F:161 LAB com/xpal70.b[627] fmuerr:error1("**",t,b)
+fmuerr F:161 LF com/xpal70.b[621] GOTO fmuerr
+fmult G:73 DEF com/xpal70.b[31] fmult=73
+fmult G:73 LG com/xpal70.b[617] a:=list(3,real,fmult(...))
+fne G:81 DEF com/xpal70.b[39] fne=81
+formclosure G:392 DEF com/xpal70.b[93] formclosure=392
+formclosure G:392 LG com/xpal70.b[311] a:=formclosure
+formclosure G:392 RT com/xpal70.b[484] LET formclosure()BE..
+formlvalue G:393 DEF com/xpal70.b[93] formlvalue=393
+formlvalue G:393 LG com/xpal70.b[273] a:=formlvalue
+formlvalue G:393 LG com/xpal70.b[920] formlvalue()
+formlvalue G:393 RT com/xpal70.b[490] LET formlvalue()BE..
+formrvalue G:396 DEF com/xpal70.b[94] formrvalue=396
+formrvalue G:396 LG com/xpal70.b[272] a:=formrvalue
+formrvalue G:396 RT com/xpal70.b[507] LET formrvalue()BE..
+fperr F:171 LAB com/xpal70.b[676] fperr:error1("+",t,b)
+fperr F:171 LF com/xpal70.b[670] GOTO fperr
+fpower G:75 DEF com/xpal70.b[33] fpower=75
+fpower G:75 LG com/xpal70.b[725] a:=list(3,real,fpower(...))
+freeobj G:78 DEF libhdr.h[93] freeobj=78
+freevec G:27 DEF libhdr.h[42] freevec=27
+fsub G:72 DEF com/xpal70.b[30] fsub=72
+fsub G:72 LG com/xpal70.b[690] a:=list(3,real,fsub(...))
+ftos G:87 DEF com/xpal70.b[45] ftos=87
+ftos G:87 LG com/xpal70.b[1093] ftos(h3!x,v)
+fumin G:76 DEF com/xpal70.b[34] fumin=76
+fumin G:76 LG com/xpal70.b[761] a:=list(3,real,fumin(...))
+g_colist M:8 DEF libhdr.h[191] g_colist=8
+g_currco M:7 DEF libhdr.h[190] g_currco=7
+g_globsize M:0 DEF libhdr.h[188] g_globsize=0
+g_rootnode M:9 DEF libhdr.h[192] g_rootnode=9
+g_sys M:3 DEF libhdr.h[189] g_sys=3
+gc1 M:65536 DEF com/xpal70.b[1286] gc1=65536
+gc1 M:65536 MAN com/xpal70.b[1372] gcmark:=gcmark+gc1
+gcdbg G:232 DEF com/xpal70.b[129] gcdbg=232
+gcdbg G:232 LG com/xpal70.b[1297] IF gcdbg DO ..
+gcdbg G:232 LG com/xpal70.b[1305] IF gcdbg DO ..
+gcdbg G:232 LG com/xpal70.b[1315] IF gcdbg DO ..
+gcdbg G:232 LG com/xpal70.b[1317] IF gcdbg DO ..
+gcmark G:513 DEF com/xpal70.b[117] gcmark=513
+gcmark G:513 LG com/xpal70.b[1241] gcmark:=gcmark>>16
+gcmark G:513 LG com/xpal70.b[1242] writen(gcmark)
+gcmark G:513 LG com/xpal70.b[1309] WHILE (h1!listl&mfield)=gcmark DO ..
+gcmark G:513 LG com/xpal70.b[1312] h1!listt:=gcmark
+gcmark G:513 LG com/xpal70.b[1313] UNTIL (h1!listl&mfield)=gcmark DO ..
+gcmark G:513 LG com/xpal70.b[1328] IF (h1!x&mfield)=gcmark DO ..
+gcmark G:513 LG com/xpal70.b[1329] h1!x:=h1!x&lfield|gcmark
+gcmark G:513 LG com/xpal70.b[1372] gcmark:=gcmark+gc1
+gcmark G:513 LG com/xpal70.b[1374] IF (gcmark&mfield)=0 DO ..
+gcmark G:513 SG com/xpal70.b[1241] gcmark:=gcmark>>16
+gcmark G:513 SG com/xpal70.b[1372] gcmark:=gcmark+gc1
+get_index_record G:73 DEF libhdr.h[88] get_index_record=73
+get_record G:71 DEF libhdr.h[86] get_record=71
+get_text G:93 DEF libhdr.h[109] get_text=93
+get_textblib G:93 DEF libhdr.h[108] get_textblib=93
+getlogname G:118 DEF libhdr.h[134] getlogname=118
+getremipaddr G:54 DEF libhdr.h[69] getremipaddr=54
+getvec G:25 DEF libhdr.h[40] getvec=25
+getword G:32 DEF libhdr.h[47] getword=32
+globin G:24 DEF libhdr.h[39] globin=24
+globsize G:0 DEF libhdr.h[15] globsize=0
+globword M:-1886453760 DEF libhdr.h[181] globword=#x8F8F0000
+guess M:233 DEF com/xpal70.b[81] guess=233
+guess M:233 MAN com/xpal70.b[1365] CASE guess:.. 
+guessrv G:514 DEF com/xpal70.b[118] guessrv=514
+guessrv G:514 LG com/xpal70.b[470] a:=guessrv
+h1 M:0 DEF com/xpal70.b[54] h1=0
+h1 M:0 MAN com/xpal70.b[1028] h1!s,h2!s:=h3!a,stack
+h1 M:0 MAN com/xpal70.b[1224] s:=node(h1!b&lfield)
+h1 M:0 MAN com/xpal70.b[1298] h1!listp:=listl-listp
+h1 M:0 MAN com/xpal70.b[1308] h1!listt:=0
+h1 M:0 MAN com/xpal70.b[1309] WHILE (h1!listl&mfield)=gcmark DO ..
+h1 M:0 MAN com/xpal70.b[1310] listl:=listl+(h1!listl&lfield)
+h1 M:0 MAN com/xpal70.b[1312] h1!listt:=gcmark
+h1 M:0 MAN com/xpal70.b[1313] UNTIL (h1!listl&mfield)=gcmark DO ..
+h1 M:0 MAN com/xpal70.b[1314] listl:=listl+(h1!listl&lfield)
+h1 M:0 MAN com/xpal70.b[1328] IF (h1!x&mfield)=gcmark DO ..
+h1 M:0 MAN com/xpal70.b[1329] h1!x:=h1!x&lfield|gcmark
+h1 M:0 MAN com/xpal70.b[1333] writehex(h1!x)
+h1 M:0 MAN com/xpal70.b[1491] a:=list(6,...&lfield,...,...)
+h1 M:0 MAN com/xpal70.b[1894] h1!a&nfield
+h1 M:0 MAN com/xpal70.b[1901] h1!a:=h1!a|n
+h1 M:0 MAN com/xpal70.b[899] h1!b,h2!b:=8,stack
+h1 M:0 MAN com/xpal70.b[987] h1!b,h2!b:=c!1+6,stack
+h2 M:1 DEF com/xpal70.b[54] h2=1
+h2 M:1 MAN com/xpal70.b[1019] UNLESS h2!a=label DO ..
+h2 M:1 MAN com/xpal70.b[1028] h1!s,h2!s:=h3!a,stack
+h2 M:1 MAN com/xpal70.b[1037] UNLESS h2!a=m_tuple&h3!a=n DO ..
+h2 M:1 MAN com/xpal70.b[1088] SWITCHON h2!x INTO..
+h2 M:1 MAN com/xpal70.b[1136] SWITCHON h2!x INTO..
+h2 M:1 MAN com/xpal70.b[1170] h2!b
+h2 M:1 MAN com/xpal70.b[1178] SWITCHON h2!a INTO..
+h2 M:1 MAN com/xpal70.b[1197] h2!a=number&h2!b=number->number,...=real&...=real->real,m_false
+h2 M:1 MAN com/xpal70.b[1201] (h2!a=m_true|h2!a=m_false)&(h2!b=m_true|h2!b=m_false)
+h2 M:1 MAN com/xpal70.b[1330] SWITCHON h2!x INTO..
+h2 M:1 MAN com/xpal70.b[1334] writen(h2!x)
+h2 M:1 MAN com/xpal70.b[1425] UNLESS h2!a=m_tuple&h3!a=n DO ..
+h2 M:1 MAN com/xpal70.b[1443] UNLESS h2!a=m_tuple&h3!a=n DO ..
+h2 M:1 MAN com/xpal70.b[1476] TEST h2!a=m_tuple THEN .. ELSE ..
+h2 M:1 MAN com/xpal70.b[1566] UNLESS h2!b=string DO ..
+h2 M:1 MAN com/xpal70.b[1577] UNLESS h2!a=string DO ..
+h2 M:1 MAN com/xpal70.b[1589] UNLESS h2!a=m_tuple&h3!a=2 DO ..
+h2 M:1 MAN com/xpal70.b[1596] h2!h3!h4!a,h2!h3!h5!a
+h2 M:1 MAN com/xpal70.b[1601] UNTIL h2!b=nils DO ..
+h2 M:1 MAN com/xpal70.b[1629] SWITCHON h2!h3!a INTO..
+h2 M:1 MAN com/xpal70.b[1646] a:=h2!...=m_tuple&h3!...=0->truerv,falserv
+h2 M:1 MAN com/xpal70.b[1652] UNLESS h2!h3!a=m_tuple DO ..
+h2 M:1 MAN com/xpal70.b[1664] SWITCHON h2!h3!a INTO..
+h2 M:1 MAN com/xpal70.b[1677] a:=h2!h3!a=number->truerv,falserv
+h2 M:1 MAN com/xpal70.b[1683] SWITCHON h2!h3!a INTO..
+h2 M:1 MAN com/xpal70.b[1696] SWITCHON h2!h3!a INTO..
+h2 M:1 MAN com/xpal70.b[1709] a:=h2!h3!a=jj->truerv,falserv
+h2 M:1 MAN com/xpal70.b[1715] a:=h2!h3!a=label->truerv,falserv
+h2 M:1 MAN com/xpal70.b[1721] a:=h2!h3!a=m_tuple->truerv,falserv
+h2 M:1 MAN com/xpal70.b[1727] a:=h2!h3!a=real->truerv,falserv
+h2 M:1 MAN com/xpal70.b[1733] a:=h2!h3!a=m_dummy->truerv,falserv
+h2 M:1 MAN com/xpal70.b[1740] UNLESS h2!a=m_tuple&h3!a=2 DO ..
+h2 M:1 MAN com/xpal70.b[1758] UNLESS h2!a=string DO ..
+h2 M:1 MAN com/xpal70.b[1765] WHILE h2!a=string DO ..
+h2 M:1 MAN com/xpal70.b[1777] UNLESS h2!a=string&h2!h3!a=nils DO ..
+h2 M:1 MAN com/xpal70.b[1790] UNLESS h2!a=number&h3!a<256&h3!a>=0 DO ..
+h2 M:1 MAN com/xpal70.b[1802] UNLESS h2!a=number DO ..
+h2 M:1 MAN com/xpal70.b[1814] UNLESS h2!a=real DO ..
+h2 M:1 MAN com/xpal70.b[1854] UNLESS h2!a=m_tuple&h3!a=2 DO ..
+h2 M:1 MAN com/xpal70.b[1861] UNLESS h2!n=number DO ..
+h2 M:1 MAN com/xpal70.b[1877] IF h2!h3!a=number DO ..
+h2 M:1 MAN com/xpal70.b[1934] UNLESS h2!a=m_tuple&h3!a=2 DO ..
+h2 M:1 MAN com/xpal70.b[1944] UNLESS h2!b=string&h2!x=jj DO ..
+h2 M:1 MAN com/xpal70.b[1945] WHILE h2!b=string DO ..
+h2 M:1 MAN com/xpal70.b[535] IF h2!a=m_false DO ..
+h2 M:1 MAN com/xpal70.b[540] TEST h2!a=m_true THEN .. ELSE ..
+h2 M:1 MAN com/xpal70.b[552] a:=h2!a=m_true->b,falserv
+h2 M:1 MAN com/xpal70.b[564] a:=h2!a=m_false->b,truerv
+h2 M:1 MAN com/xpal70.b[575] UNLESS h2!a=m_tuple DO ..
+h2 M:1 MAN com/xpal70.b[597] UNLESS h2!a=jj DO ..
+h2 M:1 MAN com/xpal70.b[708] UNLESS h2!b=number DO ..
+h2 M:1 MAN com/xpal70.b[709] IF h2!a=number DO ..
+h2 M:1 MAN com/xpal70.b[724] IF h2!a=real DO ..
+h2 M:1 MAN com/xpal70.b[742] TEST h2!a=number|h2!a=real THEN .. ELSE ..
+h2 M:1 MAN com/xpal70.b[743] a:=list(3,h2!a,h3!a)
+h2 M:1 MAN com/xpal70.b[755] IF h2!a=number DO ..
+h2 M:1 MAN com/xpal70.b[760] IF h2!a=real DO ..
+h2 M:1 MAN com/xpal70.b[858] IF h2!a=m_false DO ..
+h2 M:1 MAN com/xpal70.b[862] IF h2!a=m_true DO ..
+h2 M:1 MAN com/xpal70.b[899] h1!b,h2!b:=8,stack
+h2 M:1 MAN com/xpal70.b[907] UNLESS h2!b=closure|h2!b=basicfn DO ..
+h2 M:1 MAN com/xpal70.b[912] TEST h2!b=closure THEN .. ELSE ..
+h2 M:1 MAN com/xpal70.b[947] SWITCHON h2!a INTO..
+h2 M:1 MAN com/xpal70.b[956] UNLESS h2!b=number DO ..
+h2 M:1 MAN com/xpal70.b[987] h1!b,h2!b:=c!1+6,stack
+h3 M:2 DEF com/xpal70.b[54] h3=2
+h3 M:2 MAN com/xpal70.b[1005] TEST h3!a=nilrv THEN .. ELSE ..
+h3 M:2 MAN com/xpal70.b[1026] s:=node(h3!a)
+h3 M:2 MAN com/xpal70.b[1028] h1!s,h2!s:=h3!a,stack
+h3 M:2 MAN com/xpal70.b[1036] h3!b:=a
+h3 M:2 MAN com/xpal70.b[1037] UNLESS h2!a=m_tuple&h3!a=n DO ..
+h3 M:2 MAN com/xpal70.b[1050] b:=h3!b
+h3 M:2 MAN com/xpal70.b[1052] v!i:=h3!a!i
+h3 M:2 MAN com/xpal70.b[1053] h3!b!i:=v!i
+h3 M:2 MAN com/xpal70.b[1089] writen(h3!x)
+h3 M:2 MAN com/xpal70.b[1093] ftos(h3!x,v)
+h3 M:2 MAN com/xpal70.b[1099] printb(h3!x)
+h3 M:2 MAN com/xpal70.b[1102] h3!x
+h3 M:2 MAN com/xpal70.b[1123] printb(h3!x)
+h3 M:2 MAN com/xpal70.b[1145] h3!x
+h3 M:2 MAN com/xpal70.b[1158] printa(h3!x,n)
+h3 M:2 MAN com/xpal70.b[1183] IF btag=number&h3!a=h3!b DO ..
+h3 M:2 MAN com/xpal70.b[1185] IF btag=real&h3!a=h3!b DO ..
+h3 M:2 MAN com/xpal70.b[1187] RESULTIS equal(h3!a,h3!b)
+h3 M:2 MAN com/xpal70.b[1204] h3!lookupno:=h3!lookupno+1
+h3 M:2 MAN com/xpal70.b[1207] p:=h3!p
+h3 M:2 MAN com/xpal70.b[1217] p:=h3!p
+h3 M:2 MAN com/xpal70.b[1225] stackp:=h3!b
+h3 M:2 MAN com/xpal70.b[1237] writen(h3!lookupno)
+h3 M:2 MAN com/xpal70.b[1252] n:=h3!y
+h3 M:2 MAN com/xpal70.b[1339] FOR i=1 TO h3!x DO..
+h3 M:2 MAN com/xpal70.b[1344] x:=h3!x
+h3 M:2 MAN com/xpal70.b[1348] FOR i=4 TO h3!x-1 DO..
+h3 M:2 MAN com/xpal70.b[1362] x:=h3!x
+h3 M:2 MAN com/xpal70.b[1380] h3!s:=stackp
+h3 M:2 MAN com/xpal70.b[1424] a:=h3!a
+h3 M:2 MAN com/xpal70.b[1425] UNLESS h2!a=m_tuple&h3!a=n DO ..
+h3 M:2 MAN com/xpal70.b[1442] a:=h3!a
+h3 M:2 MAN com/xpal70.b[1443] UNLESS h2!a=m_tuple&h3!a=n DO ..
+h3 M:2 MAN com/xpal70.b[1459] h3!b:=h3!a!(i+1)
+h3 M:2 MAN com/xpal70.b[1460] h3!b:=a
+h3 M:2 MAN com/xpal70.b[1461] h3!b:=nilrv
+h3 M:2 MAN com/xpal70.b[1462] h3!b:=h3!s!stackp
+h3 M:2 MAN com/xpal70.b[1478] IF m>h3!a DO ..
+h3 M:2 MAN com/xpal70.b[1478] m:=h3!a
+h3 M:2 MAN com/xpal70.b[1500] h6!h3!h5!a:=e
+h3 M:2 MAN com/xpal70.b[1501] a:=h3!a
+h3 M:2 MAN com/xpal70.b[1564] b:=h3!a
+h3 M:2 MAN com/xpal70.b[1576] a:=h3!a
+h3 M:2 MAN com/xpal70.b[1583] a:=h3!a
+h3 M:2 MAN com/xpal70.b[1588] a:=h3!s!(stackp-1)
+h3 M:2 MAN com/xpal70.b[1589] UNLESS h2!a=m_tuple&h3!a=2 DO ..
+h3 M:2 MAN com/xpal70.b[1596] h2!h3!h4!a,h2!h3!h5!a
+h3 M:2 MAN com/xpal70.b[1600] b,x:=h3!h4!a,1
+h3 M:2 MAN com/xpal70.b[1603] b:=h3!b
+h3 M:2 MAN com/xpal70.b[1607] b:=h3!h5!a
+h3 M:2 MAN com/xpal70.b[1616] h3!a:=list(4,string,0,...)
+h3 M:2 MAN com/xpal70.b[1617] a:=h3!a
+h3 M:2 MAN com/xpal70.b[1619] h3!a:=h3!h5!h3!s!...
+h3 M:2 MAN com/xpal70.b[1629] SWITCHON h2!h3!a INTO..
+h3 M:2 MAN com/xpal70.b[1646] a:=h2!...=m_tuple&h3!...=0->truerv,falserv
+h3 M:2 MAN com/xpal70.b[1652] UNLESS h2!h3!a=m_tuple DO ..
+h3 M:2 MAN com/xpal70.b[1658] a:=list(3,number,h3!...)
+h3 M:2 MAN com/xpal70.b[1664] SWITCHON h2!h3!a INTO..
+h3 M:2 MAN com/xpal70.b[1677] a:=h2!h3!a=number->truerv,falserv
+h3 M:2 MAN com/xpal70.b[1683] SWITCHON h2!h3!a INTO..
+h3 M:2 MAN com/xpal70.b[1696] SWITCHON h2!h3!a INTO..
+h3 M:2 MAN com/xpal70.b[1709] a:=h2!h3!a=jj->truerv,falserv
+h3 M:2 MAN com/xpal70.b[1715] a:=h2!h3!a=label->truerv,falserv
+h3 M:2 MAN com/xpal70.b[1721] a:=h2!h3!a=m_tuple->truerv,falserv
+h3 M:2 MAN com/xpal70.b[1727] a:=h2!h3!a=real->truerv,falserv
+h3 M:2 MAN com/xpal70.b[1733] a:=h2!h3!a=m_dummy->truerv,falserv
+h3 M:2 MAN com/xpal70.b[1739] a:=h3!a
+h3 M:2 MAN com/xpal70.b[1740] UNLESS h2!a=m_tuple&h3!a=2 DO ..
+h3 M:2 MAN com/xpal70.b[1757] a:=h3!a
+h3 M:2 MAN com/xpal70.b[1767] a:=h3!a
+h3 M:2 MAN com/xpal70.b[1776] a:=h3!a
+h3 M:2 MAN com/xpal70.b[1777] UNLESS h2!a=string&h2!h3!a=nils DO ..
+h3 M:2 MAN com/xpal70.b[1789] a:=h3!a
+h3 M:2 MAN com/xpal70.b[1790] UNLESS h2!a=number&h3!a<256&h3!a>=0 DO ..
+h3 M:2 MAN com/xpal70.b[1796] a:=list(4,string,nilsrv,...)
+h3 M:2 MAN com/xpal70.b[1801] a:=h3!a
+h3 M:2 MAN com/xpal70.b[1808] a:=list(3,real,itor(...))
+h3 M:2 MAN com/xpal70.b[1813] a:=h3!a
+h3 M:2 MAN com/xpal70.b[1820] a:=list(3,number,rtoi(...))
+h3 M:2 MAN com/xpal70.b[1853] a:=h3!a
+h3 M:2 MAN com/xpal70.b[1854] UNLESS h2!a=m_tuple&h3!a=2 DO ..
+h3 M:2 MAN com/xpal70.b[1860] h3!h4!a
+h3 M:2 MAN com/xpal70.b[1862] n:=h3!n
+h3 M:2 MAN com/xpal70.b[1863] b:=h3!h5!a
+h3 M:2 MAN com/xpal70.b[1877] IF h2!h3!a=number DO ..
+h3 M:2 MAN com/xpal70.b[1877] i:=h3!h3!a
+h3 M:2 MAN com/xpal70.b[1903] a:=h3!a
+h3 M:2 MAN com/xpal70.b[1933] a:=h3!a
+h3 M:2 MAN com/xpal70.b[1934] UNLESS h2!a=m_tuple&h3!a=2 DO ..
+h3 M:2 MAN com/xpal70.b[1940] h3!h5!a,1,namechain
+h3 M:2 MAN com/xpal70.b[1943] b:=h3!h4!a
+h3 M:2 MAN com/xpal70.b[1947] b:=h3!b
+h3 M:2 MAN com/xpal70.b[417] a:=h3!a
+h3 M:2 MAN com/xpal70.b[508] s!(stackp-1):=h3!s!(stackp-1)
+h3 M:2 MAN com/xpal70.b[525] b:=h3!a
+h3 M:2 MAN com/xpal70.b[581] h3!a
+h3 M:2 MAN com/xpal70.b[596] a:=h3!a
+h3 M:2 MAN com/xpal70.b[602] h4!s,h5!s,h6!s:=h3!a,h4!a,h5!a
+h3 M:2 MAN com/xpal70.b[612] a:=list(3,number,...*...)
+h3 M:2 MAN com/xpal70.b[617] a:=list(3,real,fmult(...))
+h3 M:2 MAN com/xpal70.b[636] IF h3!b=0 DO ..
+h3 M:2 MAN com/xpal70.b[637] a:=list(3,number,.../...)
+h3 M:2 MAN com/xpal70.b[642] a:=list(3,real,fdiv(...))
+h3 M:2 MAN com/xpal70.b[644] UNLESS feq(h3!b,0) DO ..
+h3 M:2 MAN com/xpal70.b[661] a:=list(3,number,...+...)
+h3 M:2 MAN com/xpal70.b[666] a:=list(3,real,fadd(...))
+h3 M:2 MAN com/xpal70.b[685] a:=list(3,number,...-...)
+h3 M:2 MAN com/xpal70.b[690] a:=list(3,real,fsub(...))
+h3 M:2 MAN com/xpal70.b[710] h3!a,h3!b,1
+h3 M:2 MAN com/xpal70.b[725] a:=list(3,real,fpower(...))
+h3 M:2 MAN com/xpal70.b[743] a:=list(3,h2!a,h3!a)
+h3 M:2 MAN com/xpal70.b[756] a:=list(3,number,-...)
+h3 M:2 MAN com/xpal70.b[761] a:=list(3,real,fumin(...))
+h3 M:2 MAN com/xpal70.b[798] a:=h3!a<h3!b->truerv,falserv
+h3 M:2 MAN com/xpal70.b[802] a:=fls(h3!a,h3!b)->truerv,falserv
+h3 M:2 MAN com/xpal70.b[813] a:=h3!a<=h3!b->truerv,falserv
+h3 M:2 MAN com/xpal70.b[817] a:=fle(h3!a,h3!b)->truerv,falserv
+h3 M:2 MAN com/xpal70.b[827] a:=h3!a>=h3!b->truerv,falserv
+h3 M:2 MAN com/xpal70.b[831] a:=fge(h3!a,h3!b)->truerv,falserv
+h3 M:2 MAN com/xpal70.b[841] a:=h3!a>h3!b->truerv,falserv
+h3 M:2 MAN com/xpal70.b[845] a:=fgr(h3!a,h3!b)->truerv,falserv
+h3 M:2 MAN com/xpal70.b[897] h3!s:=stackp
+h3 M:2 MAN com/xpal70.b[903] b:=h3!errorlv
+h3 M:2 MAN com/xpal70.b[921] (h3!b)()
+h3 M:2 MAN com/xpal70.b[935] s!stackp:=h3!a
+h3 M:2 MAN com/xpal70.b[946] a:=h3!a
+h3 M:2 MAN com/xpal70.b[955] b:=h3!b
+h3 M:2 MAN com/xpal70.b[958] UNLESS h3!a=0 DO ..
+h3 M:2 MAN com/xpal70.b[962] h3!b
+h3 M:2 MAN com/xpal70.b[963] TEST 1<=n&n<=h3!a THEN .. ELSE ..
+h3 M:2 MAN com/xpal70.b[968] UNLESS h3!a=0 DO ..
+h3 M:2 MAN com/xpal70.b[969] a:=a!(h3!a+2)
+h3 M:2 MAN com/xpal70.b[976] (h3!a)()
+h3 M:2 MAN com/xpal70.b[988] h3!s:=stackp
+h3 M:2 MAN com/xpal70.b[991] e:=h3!a
+h4 M:3 DEF com/xpal70.b[54] h4=3
+h4 M:3 MAN com/xpal70.b[1025] c,e:=h4!a,h6!a
+h4 M:3 MAN com/xpal70.b[1030] h4!s,h5!s,h6!s:=h4!a,h5!a,h6!a
+h4 M:3 MAN com/xpal70.b[1098] wrch(h4!x)
+h4 M:3 MAN com/xpal70.b[1187] IF btag=string&h4!a=h4!b DO ..
+h4 M:3 MAN com/xpal70.b[1206] IF h4!p=n DO ..
+h4 M:3 MAN com/xpal70.b[1216] RESULTIS h4!p
+h4 M:3 MAN com/xpal70.b[1223] c,b,e:=h4!s,h5!s,h6!s
+h4 M:3 MAN com/xpal70.b[1277] writes(h4!a)
+h4 M:3 MAN com/xpal70.b[1353] x:=h4!x
+h4 M:3 MAN com/xpal70.b[1490] a:=list(6,stack,6,...)
+h4 M:3 MAN com/xpal70.b[1571] a:=list(4,string,a,...)
+h4 M:3 MAN com/xpal70.b[1596] h2!h3!h4!a,h2!h3!h5!a
+h4 M:3 MAN com/xpal70.b[1600] b,x:=h3!h4!a,1
+h4 M:3 MAN com/xpal70.b[1602] v!x:=h4!b
+h4 M:3 MAN com/xpal70.b[1746] a:=h4!a=h5!a->truerv,falserv
+h4 M:3 MAN com/xpal70.b[1766] b:=b*10+h4!a-48
+h4 M:3 MAN com/xpal70.b[1783] a:=list(3,number,h4!a)
+h4 M:3 MAN com/xpal70.b[1860] h3!h4!a
+h4 M:3 MAN com/xpal70.b[1890] IF h4!s=restartc DO ..
+h4 M:3 MAN com/xpal70.b[1893] WHILE h4!a~=0 DO ..
+h4 M:3 MAN com/xpal70.b[1925] IF h4!s=restartc DO ..
+h4 M:3 MAN com/xpal70.b[1943] b:=h3!h4!a
+h4 M:3 MAN com/xpal70.b[1946] v!i:=h4!b
+h4 M:3 MAN com/xpal70.b[1982] a:=list(5,jj,...,...)
+h4 M:3 MAN com/xpal70.b[423] a:=list(5,jj,...,...)
+h4 M:3 MAN com/xpal70.b[602] h4!s,h5!s,h6!s:=h3!a,h4!a,h5!a
+h4 M:3 MAN com/xpal70.b[900] h4!b,h5!b:=restartc,s
+h4 M:3 MAN com/xpal70.b[916] oldc,c:=c,h4!b
+h4 M:3 MAN com/xpal70.b[950] oldc,c:=c+1,h4!a
+h4 M:3 MAN com/xpal70.b[958] a:=h4!a
+h4 M:3 MAN com/xpal70.b[970] a:=h4!a
+h4 M:3 MAN com/xpal70.b[989] h4!b,h5!b:=oldc,s
+h5 M:4 DEF com/xpal70.b[54] h5=4
+h5 M:4 MAN com/xpal70.b[1029] a:=h5!a
+h5 M:4 MAN com/xpal70.b[1030] h4!s,h5!s,h6!s:=h4!a,h5!a,h6!a
+h5 M:4 MAN com/xpal70.b[1206] RESULTIS h5!p
+h5 M:4 MAN com/xpal70.b[1216] IF h5!p=l DO ..
+h5 M:4 MAN com/xpal70.b[1223] c,b,e:=h4!s,h5!s,h6!s
+h5 M:4 MAN com/xpal70.b[1251] y:=h5!q
+h5 M:4 MAN com/xpal70.b[1279] printa(h5!a,tupledepth)
+h5 M:4 MAN com/xpal70.b[1343] marklist(h5!x)
+h5 M:4 MAN com/xpal70.b[1352] marklist(h5!x)
+h5 M:4 MAN com/xpal70.b[1358] x:=h5!x
+h5 M:4 MAN com/xpal70.b[1490] a:=list(6,stack,6,...)
+h5 M:4 MAN com/xpal70.b[1500] h6!h3!h5!a:=e
+h5 M:4 MAN com/xpal70.b[1596] h2!h3!h4!a,h2!h3!h5!a
+h5 M:4 MAN com/xpal70.b[1607] b:=h3!h5!a
+h5 M:4 MAN com/xpal70.b[1619] h3!a:=h3!h5!h3!s!...
+h5 M:4 MAN com/xpal70.b[1746] a:=h4!a=h5!a->truerv,falserv
+h5 M:4 MAN com/xpal70.b[1863] b:=h3!h5!a
+h5 M:4 MAN com/xpal70.b[1940] h3!h5!a,1,namechain
+h5 M:4 MAN com/xpal70.b[1973] a:=lvofname(i,h5!x)
+h5 M:4 MAN com/xpal70.b[1982] a:=list(5,jj,...,...)
+h5 M:4 MAN com/xpal70.b[423] a:=list(5,jj,...,...)
+h5 M:4 MAN com/xpal70.b[602] h4!s,h5!s,h6!s:=h3!a,h4!a,h5!a
+h5 M:4 MAN com/xpal70.b[900] h4!b,h5!b:=restartc,s
+h5 M:4 MAN com/xpal70.b[989] h4!b,h5!b:=oldc,s
+h6 M:5 DEF com/xpal70.b[54] h6=5
+h6 M:5 MAN com/xpal70.b[1025] c,e:=h4!a,h6!a
+h6 M:5 MAN com/xpal70.b[1030] h4!s,h5!s,h6!s:=h4!a,h5!a,h6!a
+h6 M:5 MAN com/xpal70.b[1223] c,b,e:=h4!s,h5!s,h6!s
+h6 M:5 MAN com/xpal70.b[1250] IF h6!q=0 DO ..
+h6 M:5 MAN com/xpal70.b[1256] name:=nameoflv(name,h6!q)
+h6 M:5 MAN com/xpal70.b[1264] IF h6!q=0 DO ..
+h6 M:5 MAN com/xpal70.b[1357] marklist(h6!x)
+h6 M:5 MAN com/xpal70.b[1490] a:=list(6,stack,6,...)
+h6 M:5 MAN com/xpal70.b[1500] h6!h3!h5!a:=e
+h6 M:5 MAN com/xpal70.b[1907] a:=h6!q
+h6 M:5 MAN com/xpal70.b[1982] a:=list(5,jj,...,...)
+h6 M:5 MAN com/xpal70.b[423] a:=list(5,jj,...,...)
+h6 M:5 MAN com/xpal70.b[602] h4!s,h5!s,h6!s:=h3!a,h4!a,h5!a
+h6 M:5 MAN com/xpal70.b[901] h6!b,h7!b:=e,a
+h6 M:5 MAN com/xpal70.b[990] h6!b,h7!b:=e,s!(stackp-2)
+h7 M:6 DEF com/xpal70.b[54] h7=6
+h7 M:6 MAN com/xpal70.b[901] h6!b,h7!b:=e,a
+h7 M:6 MAN com/xpal70.b[990] h6!b,h7!b:=e,s!(stackp-2)
+id_inoutscb M:131 DEF libhdr.h[362] id_inoutscb=131
+id_inscb M:129 DEF libhdr.h[360] id_inscb=129
+id_outscb M:130 DEF libhdr.h[361] id_outscb=130
+initco G:22 DEF libhdr.h[37] initco=22
+initio G:46 DEF libhdr.h[61] initio=46
+initname G:457 DEF com/xpal70.b[105] initname=457
+initname G:457 LG com/xpal70.b[309] a:=initname
+initname G:457 RT com/xpal70.b[1434] LET initname()BE..
+initnames G:458 DEF com/xpal70.b[105] initnames=458
+initnames G:458 LG com/xpal70.b[310] a:=initnames
+initnames G:458 RT com/xpal70.b[1440] LET initnames()BE..
+input G:234 DEF com/xpal70.b[130] input=234
+input G:58 DEF libhdr.h[73] input=58
+instrcount G:121 DEF libhdr.h[137] instrcount=121
+integer M:213 DEF com/xpal70.b[75] integer=213
+integer M:213 MAN com/xpal70.b[243] CASE integer:.. 
+intflag G:119 DEF libhdr.h[135] intflag=119
+isdummy G:483 DEF com/xpal70.b[111] isdummy=483
+isdummy G:483 LG com/xpal70.b[354] f("ISDUMMY",isdummy)
+isdummy G:483 RT com/xpal70.b[1731] LET isdummy()BE..
+isenviroment G:479 DEF com/xpal70.b[110] isenviroment=479
+isenviroment G:479 LG com/xpal70.b[355] f("ISENVIROMENT",isenviroment)
+isenvironment F:480 RT com/xpal70.b[1707] LET isenvironment()BE..
+isfunction G:478 DEF com/xpal70.b[110] isfunction=478
+isfunction G:478 LG com/xpal70.b[351] f("ISFUNCTION",isfunction)
+isfunction G:478 RT com/xpal70.b[1694] LET isfunction()BE..
+islabel G:480 DEF com/xpal70.b[110] islabel=480
+islabel G:480 LG com/xpal70.b[352] f("ISLABEL",islabel)
+islabel G:480 RT com/xpal70.b[1713] LET islabel()BE..
+isnumber G:476 DEF com/xpal70.b[109] isnumber=476
+isnumber G:476 LG com/xpal70.b[348] f("ISINTEGER",isnumber)
+isnumber G:476 RT com/xpal70.b[1675] LET isnumber()BE..
+isreal G:482 DEF com/xpal70.b[111] isreal=482
+isreal G:482 LG com/xpal70.b[349] f("ISREAL",isreal)
+isreal G:482 RT com/xpal70.b[1725] LET isreal()BE..
+isrregs M:41 DEF libhdr.h[358] isrregs=41
+isstring G:477 DEF com/xpal70.b[109] isstring=477
+isstring G:477 LG com/xpal70.b[350] f("ISSTRING",isstring)
+isstring G:477 RT com/xpal70.b[1681] LET isstring()BE..
+istruthvalue G:475 DEF com/xpal70.b[109] istruthvalue=475
+istruthvalue G:475 LG com/xpal70.b[347] f("ISTRUTHVALUE",istruthvalue)
+istruthvalue G:475 RT com/xpal70.b[1662] LET istruthvalue()BE..
+istuple G:481 DEF com/xpal70.b[110] istuple=481
+istuple G:481 LG com/xpal70.b[353] f("ISTUPLE",istuple)
+istuple G:481 RT com/xpal70.b[1719] LET istuple()BE..
+itor G:84 DEF com/xpal70.b[42] itor=84
+itor G:84 LG com/xpal70.b[1808] a:=list(3,real,itor(...))
+jj M:221 DEF com/xpal70.b[78] jj=221
+jj M:221 MAN com/xpal70.b[1127] CASE jj:.. 
+jj M:221 MAN com/xpal70.b[1351] CASE jj:.. 
+jj M:221 MAN com/xpal70.b[1709] a:=h2!h3!a=jj->truerv,falserv
+jj M:221 MAN com/xpal70.b[1944] UNLESS h2!b=string&h2!x=jj DO ..
+jj M:221 MAN com/xpal70.b[1982] a:=list(5,jj,...,...)
+jj M:221 MAN com/xpal70.b[297] CASE jj:.. 
+jj M:221 MAN com/xpal70.b[423] a:=list(5,jj,...,...)
+jj M:221 MAN com/xpal70.b[597] UNLESS h2!a=jj DO ..
+jump G:417 DEF com/xpal70.b[97] jump=417
+jump G:417 LG com/xpal70.b[313] a:=jump
+jump G:417 RT com/xpal70.b[854] LET jump()BE..
+jumpf G:418 DEF com/xpal70.b[97] jumpf=418
+jumpf G:418 LG com/xpal70.b[312] a:=jumpf
+jumpf G:418 RT com/xpal70.b[856] LET jumpf()BE..
+klibregs M:21 DEF libhdr.h[356] klibregs=21
+l F:384 LAB com/xpal70.b[1322] l:IF @x>stackwarning DO ..
+l F:384 LF com/xpal70.b[1345] GOTO l
+l F:384 LF com/xpal70.b[1354] GOTO l
+l F:384 LF com/xpal70.b[1359] GOTO l
+l F:384 LF com/xpal70.b[1363] GOTO l
+l F:4 LAB com/xpal70.b[165] l:ch,p:=p!0,p+1
+l F:4 LF com/xpal70.b[162] GOTO l
+l F:4 LF com/xpal70.b[173] GOTO l
+l F:4 LF com/xpal70.b[251] GOTO l
+l F:4 LF com/xpal70.b[268] GOTO l
+l F:575 LAB com/xpal70.b[1892] l:writes("?VARI'RVALUE*n*n")
+l F:575 LF com/xpal70.b[1916] GOTO l
+lab M:214 DEF com/xpal70.b[75] lab=214
+lab M:214 MAN com/xpal70.b[248] CASE lab:.. 
+label M:232 DEF com/xpal70.b[81] label=232
+label M:232 MAN com/xpal70.b[1019] UNLESS h2!a=label DO ..
+label M:232 MAN com/xpal70.b[1126] CASE label:.. 
+label M:232 MAN com/xpal70.b[1356] CASE label:.. 
+label M:232 MAN com/xpal70.b[1491] a:=list(6,...&lfield,...,...)
+label M:232 MAN com/xpal70.b[1715] a:=h2!h3!a=label->truerv,falserv
+lastfn G:493 DEF com/xpal70.b[113] lastfn=493
+lastfn G:493 LG com/xpal70.b[1878] errorlv:=list(3,lvalue,list(...))
+lastfn G:493 LG com/xpal70.b[365] f("LASTFN",lastfn)
+lastfn G:493 RT com/xpal70.b[1919] LET lastfn()BE..
+lastfn1 G:446 DEF com/xpal70.b[103] lastfn1=446
+lastfn1 G:446 FN com/xpal70.b[1247] LET lastfn1(p)=..
+lastfn1 G:446 LG com/xpal70.b[1891] lastfn1(0)
+lastfn1 G:446 LG com/xpal70.b[1909] UNLESS lastfn1(1) DO ..
+lastfn1 G:446 LG com/xpal70.b[1926] lastfn1(0)
+lastfn1 G:446 LG com/xpal70.b[1927] UNLESS lastfn1(1) DO ..
+length G:474 DEF com/xpal70.b[109] length=474
+length G:474 LG com/xpal70.b[346] f("ORDER",length)
+length G:474 RT com/xpal70.b[1650] LET length()BE..
+lerr F:587 LAB com/xpal70.b[1935] lerr:..;..
+lerr F:587 LF com/xpal70.b[1944] GOTO lerr
+level G:15 DEF libhdr.h[30] level=15
+lfield M:65535 DEF com/xpal70.b[1063] lfield=65535
+lfield M:65535 DEF com/xpal70.b[1286] lfield=65535
+lfield M:65535 DEF com/xpal70.b[1406] lfield=65535
+lfield M:65535 MAN com/xpal70.b[1224] s:=node(h1!b&lfield)
+lfield M:65535 MAN com/xpal70.b[1310] listl:=listl+(h1!listl&lfield)
+lfield M:65535 MAN com/xpal70.b[1314] listl:=listl+(h1!listl&lfield)
+lfield M:65535 MAN com/xpal70.b[1329] h1!x:=h1!x&lfield|gcmark
+lfield M:65535 MAN com/xpal70.b[1491] a:=list(6,...&lfield,...,...)
+libname G:378 DEF com/xpal70.b[90] libname=378
+libname G:378 RT com/xpal70.b[371] LET libname(x,y)BE..
+linep G:515 DEF com/xpal70.b[118] linep=515
+linep G:515 LG com/xpal70.b[1827] IF linep>linet DO ..
+linep G:515 LG com/xpal70.b[1847] a:=list(4,string,a,...)
+linep G:515 LG com/xpal70.b[1848] linep:=linep+1
+linep G:515 SG com/xpal70.b[1845] linep:=linev
+linep G:515 SG com/xpal70.b[1848] linep:=linep+1
+linet G:516 DEF com/xpal70.b[118] linet=516
+linet G:516 LG com/xpal70.b[1827] IF linep>linet DO ..
+linet G:516 LG com/xpal70.b[1838] linet!0:=ch
+linet G:516 LG com/xpal70.b[1841] linet:=linet+1
+linet G:516 LG com/xpal70.b[1842] linet!0:=ch
+linet G:516 SG com/xpal70.b[1837] linet:=linev
+linet G:516 SG com/xpal70.b[1841] linet:=linet+1
+linev G:517 DEF com/xpal70.b[118] linev=517
+linev G:517 LG com/xpal70.b[1837] linet:=linev
+linev G:517 LG com/xpal70.b[1845] linep:=linev
+list G:452 DEF com/xpal70.b[104] list=452
+list G:452 FN com/xpal70.b[1387] LET list(n,a,b,c,d,e,f)=..
+list G:452 LG com/xpal70.b[1417] e:=list(5,env,e,...)
+list G:452 LG com/xpal70.b[1454] e:=list(5,env,e,...)
+list G:452 LG com/xpal70.b[1457] b:=list(3,lvalue,b)
+list G:452 LG com/xpal70.b[1490] a:=list(6,stack,6,...)
+list G:452 LG com/xpal70.b[1491] a:=list(6,...&lfield,...,...)
+list G:452 LG com/xpal70.b[1492] a:=list(3,lvalue,a)
+list G:452 LG com/xpal70.b[1493] e:=list(5,env,e,...)
+list G:452 LG com/xpal70.b[1510] a:=list(3,lvalue,e)
+list G:452 LG com/xpal70.b[1515] s!stackp:=list(3,lvalue,nilrv)
+list G:452 LG com/xpal70.b[1522] s:=list(5,stack,4,...)
+list G:452 LG com/xpal70.b[1523] a:=list(3,lvalue,e)
+list G:452 LG com/xpal70.b[1571] a:=list(4,string,a,...)
+list G:452 LG com/xpal70.b[1613] b:=list(4,string,0,...)
+list G:452 LG com/xpal70.b[1616] h3!a:=list(4,string,0,...)
+list G:452 LG com/xpal70.b[1654] a:=list(3,number,0)
+list G:452 LG com/xpal70.b[1658] a:=list(3,number,h3!...)
+list G:452 LG com/xpal70.b[1760] a:=list(3,number,0)
+list G:452 LG com/xpal70.b[1769] a:=list(3,number,b)
+list G:452 LG com/xpal70.b[1779] a:=list(3,number,0)
+list G:452 LG com/xpal70.b[1783] a:=list(3,number,h4!a)
+list G:452 LG com/xpal70.b[1796] a:=list(4,string,nilsrv,...)
+list G:452 LG com/xpal70.b[1804] a:=list(3,real,0)
+list G:452 LG com/xpal70.b[1808] a:=list(3,real,itor(...))
+list G:452 LG com/xpal70.b[1816] a:=list(3,number,0)
+list G:452 LG com/xpal70.b[1820] a:=list(3,number,rtoi(...))
+list G:452 LG com/xpal70.b[1826] a:=list(2,nils)
+list G:452 LG com/xpal70.b[1847] a:=list(4,string,a,...)
+list G:452 LG com/xpal70.b[1866] a!i:=list(3,lvalue,b)
+list G:452 LG com/xpal70.b[1874] s!(stackp-1):=list(3,lvalue,dummyrv)
+list G:452 LG com/xpal70.b[1878] errorlv:=list(3,lvalue,list(...))
+list G:452 LG com/xpal70.b[1920] s!(stackp-1):=list(3,lvalue,dummyrv)
+list G:452 LG com/xpal70.b[1982] a:=list(5,jj,...,...)
+list G:452 LG com/xpal70.b[384] a:=list(3,basicfn,y)
+list G:452 LG com/xpal70.b[385] a:=list(3,lvalue,a)
+list G:452 LG com/xpal70.b[386] e:=list(5,env,e,...)
+list G:452 LG com/xpal70.b[406] a:=list(3,lvalue,a)
+list G:452 LG com/xpal70.b[423] a:=list(5,jj,...,...)
+list G:452 LG com/xpal70.b[439] a:=list(4,string,a,...)
+list G:452 LG com/xpal70.b[447] a:=list(3,c!1,c!2)
+list G:452 LG com/xpal70.b[485] a:=list(4,closure,e,...)
+list G:452 LG com/xpal70.b[491] a:=list(3,lvalue,s!...)
+list G:452 LG com/xpal70.b[497] a:=list(3,lvalue,a)
+list G:452 LG com/xpal70.b[593] a:=list(3,lvalue,a)
+list G:452 LG com/xpal70.b[612] a:=list(3,number,...*...)
+list G:452 LG com/xpal70.b[617] a:=list(3,real,fmult(...))
+list G:452 LG com/xpal70.b[626] a:=list(3,number,0)
+list G:452 LG com/xpal70.b[637] a:=list(3,number,.../...)
+list G:452 LG com/xpal70.b[642] a:=list(3,real,fdiv(...))
+list G:452 LG com/xpal70.b[652] a:=list(3,number,0)
+list G:452 LG com/xpal70.b[661] a:=list(3,number,...+...)
+list G:452 LG com/xpal70.b[666] a:=list(3,real,fadd(...))
+list G:452 LG com/xpal70.b[675] a:=list(3,number,0)
+list G:452 LG com/xpal70.b[685] a:=list(3,number,...-...)
+list G:452 LG com/xpal70.b[690] a:=list(3,real,fsub(...))
+list G:452 LG com/xpal70.b[699] a:=list(3,number,0)
+list G:452 LG com/xpal70.b[720] a:=list(3,number,r)
+list G:452 LG com/xpal70.b[725] a:=list(3,real,fpower(...))
+list G:452 LG com/xpal70.b[735] a:=list(3,number,0)
+list G:452 LG com/xpal70.b[743] a:=list(3,h2!a,h3!a)
+list G:452 LG com/xpal70.b[747] a:=list(3,number,0)
+list G:452 LG com/xpal70.b[756] a:=list(3,number,-...)
+list G:452 LG com/xpal70.b[761] a:=list(3,real,fumin(...))
+list G:452 LG com/xpal70.b[765] a:=list(3,number,0)
+list G:452 LG com/xpal70.b[874] a:=list(3,lvalue,nilrv)
+list G:452 LG com/xpal70.b[881] a:=list(3,lvalue,a)
+list G:452 LG com/xpal70.b[886] a:=list(3,lvalue,a)
+listl G:518 DEF com/xpal70.b[118] listl=518
+listl G:518 LG com/xpal70.b[1290] IF listp+n>=listl DO ..
+listl G:518 LG com/xpal70.b[1298] UNLESS listp=listl DO ..
+listl G:518 LG com/xpal70.b[1298] h1!listp:=listl-listp
+listl G:518 LG com/xpal70.b[1299] IF listl=listt DO ..
+listl G:518 LG com/xpal70.b[1309] WHILE (h1!listl&mfield)=gcmark DO ..
+listl G:518 LG com/xpal70.b[1310] listl:=listl+(h1!listl&lfield)
+listl G:518 LG com/xpal70.b[1311] listp:=listl
+listl G:518 LG com/xpal70.b[1313] UNTIL (h1!listl&mfield)=gcmark DO ..
+listl G:518 LG com/xpal70.b[1314] listl:=listl+(h1!listl&lfield)
+listl G:518 LG com/xpal70.b[1315] writen(listl-listp)
+listl G:518 LG com/xpal70.b[1316] .. REPEATWHILE listp+n>=listl
+listl G:518 SG com/xpal70.b[1306] listl,b:=listv,TRUE
+listl G:518 SG com/xpal70.b[1310] listl:=listl+(h1!listl&lfield)
+listl G:518 SG com/xpal70.b[1314] listl:=listl+(h1!listl&lfield)
+listl G:518 SG com/xpal70.b[1882] listl:=listv
+listp G:519 DEF com/xpal70.b[118] listp=519
+listp G:519 LG com/xpal70.b[1290] IF listp+n>=listl DO ..
+listp G:519 LG com/xpal70.b[1291] listp:=listp+n
+listp G:519 LG com/xpal70.b[1292] RESULTIS listp-n
+listp G:519 LG com/xpal70.b[1298] UNLESS listp=listl DO ..
+listp G:519 LG com/xpal70.b[1298] h1!listp:=listl-listp
+listp G:519 LG com/xpal70.b[1315] writen(listl-listp)
+listp G:519 LG com/xpal70.b[1316] .. REPEATWHILE listp+n>=listl
+listp G:519 SG com/xpal70.b[1291] listp:=listp+n
+listp G:519 SG com/xpal70.b[1311] listp:=listl
+listt G:520 DEF com/xpal70.b[119] listt=520
+listt G:520 LG com/xpal70.b[1230] listt:=listt+6
+listt G:520 LG com/xpal70.b[1299] IF listl=listt DO ..
+listt G:520 LG com/xpal70.b[1308] h1!listt:=0
+listt G:520 LG com/xpal70.b[1312] h1!listt:=gcmark
+listt G:520 SG com/xpal70.b[1230] listt:=listt+6
+listv G:521 DEF com/xpal70.b[119] listv=521
+listv G:521 LG com/xpal70.b[1306] listl,b:=listv,TRUE
+listv G:521 LG com/xpal70.b[1882] listl:=listv
+load G:375 DEF com/xpal70.b[90] load=375
+load G:375 RT com/xpal70.b[158] LET load()BE..
+loade G:383 DEF com/xpal70.b[91] loade=383
+loade G:383 LG com/xpal70.b[305] a:=loade
+loade G:383 RT com/xpal70.b[427] LET loade()BE..
+loadguess G:389 DEF com/xpal70.b[92] loadguess=389
+loadguess G:389 LG com/xpal70.b[276] a:=loadguess
+loadguess G:389 RT com/xpal70.b[469] LET loadguess()BE..
+loadj G:382 DEF com/xpal70.b[91] loadj=382
+loadj G:382 LG com/xpal70.b[297] a:=loadj
+loadj G:382 RT com/xpal70.b[422] LET loadj()BE..
+loadl G:380 DEF com/xpal70.b[91] loadl=380
+loadl G:380 LG com/xpal70.b[302] a:=loadl
+loadl G:380 RT com/xpal70.b[402] LET loadl()BE..
+loadn G:385 DEF com/xpal70.b[91] loadn=385
+loadn G:385 LG com/xpal70.b[304] a:=loadn
+loadn G:385 RT com/xpal70.b[446] LET loadn()BE..
+loadr G:381 DEF com/xpal70.b[91] loadr=381
+loadr G:381 LG com/xpal70.b[301] a:=loadr
+loadr G:381 RT com/xpal70.b[412] LET loadr()BE..
+loads G:384 DEF com/xpal70.b[91] loads=384
+loads G:384 LG com/xpal70.b[303] a:=loads
+loads G:384 RT com/xpal70.b[432] LET loads()BE..
+loadseg G:105 DEF libhdr.h[121] loadseg=105
+locatedir G:80 DEF libhdr.h[95] locatedir=80
+locateobj G:81 DEF libhdr.h[96] locateobj=81
+longjump G:16 DEF libhdr.h[31] longjump=16
+longjump G:16 LG com/xpal70.b[1244] longjump(xpend,xpendlevel)
+longjump G:16 LG com/xpal70.b[212] longjump(xpend,xpendlevel)
+longjump G:16 LG com/xpal70.b[260] longjump(xpend,xpendlevel)
+longjump G:16 LG com/xpal70.b[376] longjump(xpend,xpendlevel)
+lookupine G:494 DEF com/xpal70.b[113] lookupine=494
+lookupine G:494 LG com/xpal70.b[367] f("LOOKUPINE",lookupine)
+lookupine G:494 RT com/xpal70.b[1932] LET lookupine()BE..
+lookupno G:522 DEF com/xpal70.b[119] lookupno=522
+lookupno G:522 LG com/xpal70.b[1204] h3!lookupno:=h3!lookupno+1
+lookupno G:522 LG com/xpal70.b[1237] writen(h3!lookupno)
+lose1 G:431 DEF com/xpal70.b[100] lose1=431
+lose1 G:431 LG com/xpal70.b[279] a:=lose1
+lose1 G:431 RT com/xpal70.b[1012] LET lose1()BE..
+lvalue M:228 DEF com/xpal70.b[80] lvalue=228
+lvalue M:228 MAN com/xpal70.b[1123] CASE lvalue:.. 
+lvalue M:228 MAN com/xpal70.b[1157] CASE lvalue:.. 
+lvalue M:228 MAN com/xpal70.b[1361] CASE lvalue:.. 
+lvalue M:228 MAN com/xpal70.b[1454] e:=list(5,env,e,...)
+lvalue M:228 MAN com/xpal70.b[1457] b:=list(3,lvalue,b)
+lvalue M:228 MAN com/xpal70.b[1492] a:=list(3,lvalue,a)
+lvalue M:228 MAN com/xpal70.b[1510] a:=list(3,lvalue,e)
+lvalue M:228 MAN com/xpal70.b[1515] s!stackp:=list(3,lvalue,nilrv)
+lvalue M:228 MAN com/xpal70.b[1523] a:=list(3,lvalue,e)
+lvalue M:228 MAN com/xpal70.b[1866] a!i:=list(3,lvalue,b)
+lvalue M:228 MAN com/xpal70.b[1874] s!(stackp-1):=list(3,lvalue,dummyrv)
+lvalue M:228 MAN com/xpal70.b[1878] errorlv:=list(3,lvalue,list(...))
+lvalue M:228 MAN com/xpal70.b[1920] s!(stackp-1):=list(3,lvalue,dummyrv)
+lvalue M:228 MAN com/xpal70.b[385] a:=list(3,lvalue,a)
+lvalue M:228 MAN com/xpal70.b[406] a:=list(3,lvalue,a)
+lvalue M:228 MAN com/xpal70.b[491] a:=list(3,lvalue,s!...)
+lvalue M:228 MAN com/xpal70.b[497] a:=list(3,lvalue,a)
+lvalue M:228 MAN com/xpal70.b[593] a:=list(3,lvalue,a)
+lvalue M:228 MAN com/xpal70.b[874] a:=list(3,lvalue,nilrv)
+lvalue M:228 MAN com/xpal70.b[881] a:=list(3,lvalue,a)
+lvalue M:228 MAN com/xpal70.b[886] a:=list(3,lvalue,a)
+lvch G:251 DEF com/xpal70.b[131] lvch=251
+lvofname G:441 DEF com/xpal70.b[102] lvofname=441
+lvofname G:441 FN com/xpal70.b[1203] LET lvofname(n,p)=..
+lvofname G:441 LG com/xpal70.b[1456] b:=lvofname(c!i,e)
+lvofname G:441 LG com/xpal70.b[1973] a:=lvofname(i,h5!x)
+lvofname G:441 LG com/xpal70.b[404] a:=lvofname(c!0,e)
+lvofname G:441 LG com/xpal70.b[414] a:=lvofname(c!0,e)
+lvofname G:441 LG com/xpal70.b[591] a:=lvofname(nameres,e)
+m F:5 LAB com/xpal70.b[163] m:codep!0,codep:=a,codep+1
+m F:5 LF com/xpal70.b[206] GOTO m
+m F:5 LF com/xpal70.b[218] GOTO m
+m F:5 LF com/xpal70.b[240] GOTO m
+m F:5 LF com/xpal70.b[245] GOTO m
+m F:5 LF com/xpal70.b[263] GOTO m
+m F:5 LF com/xpal70.b[270] GOTO m
+m F:5 LF com/xpal70.b[271] GOTO m
+m F:5 LF com/xpal70.b[272] GOTO m
+m F:5 LF com/xpal70.b[273] GOTO m
+m F:5 LF com/xpal70.b[274] GOTO m
+m F:5 LF com/xpal70.b[275] GOTO m
+m F:5 LF com/xpal70.b[276] GOTO m
+m F:5 LF com/xpal70.b[277] GOTO m
+m F:5 LF com/xpal70.b[278] GOTO m
+m F:5 LF com/xpal70.b[279] GOTO m
+m F:5 LF com/xpal70.b[280] GOTO m
+m F:5 LF com/xpal70.b[281] GOTO m
+m F:5 LF com/xpal70.b[282] GOTO m
+m F:5 LF com/xpal70.b[283] GOTO m
+m F:5 LF com/xpal70.b[284] GOTO m
+m F:5 LF com/xpal70.b[285] GOTO m
+m F:5 LF com/xpal70.b[286] GOTO m
+m F:5 LF com/xpal70.b[287] GOTO m
+m F:5 LF com/xpal70.b[288] GOTO m
+m F:5 LF com/xpal70.b[289] GOTO m
+m F:5 LF com/xpal70.b[290] GOTO m
+m F:5 LF com/xpal70.b[291] GOTO m
+m F:5 LF com/xpal70.b[292] GOTO m
+m F:5 LF com/xpal70.b[293] GOTO m
+m F:5 LF com/xpal70.b[294] GOTO m
+m F:5 LF com/xpal70.b[295] GOTO m
+m F:5 LF com/xpal70.b[296] GOTO m
+m F:5 LF com/xpal70.b[297] GOTO m
+m F:5 LF com/xpal70.b[298] GOTO m
+m F:5 LF com/xpal70.b[299] GOTO m
+m F:5 LF com/xpal70.b[300] GOTO m
+m F:5 LF com/xpal70.b[301] GOTO m
+m F:5 LF com/xpal70.b[302] GOTO m
+m F:5 LF com/xpal70.b[303] GOTO m
+m F:5 LF com/xpal70.b[304] GOTO m
+m F:5 LF com/xpal70.b[305] GOTO m
+m F:5 LF com/xpal70.b[306] GOTO m
+m F:5 LF com/xpal70.b[307] GOTO m
+m F:5 LF com/xpal70.b[308] GOTO m
+m F:5 LF com/xpal70.b[309] GOTO m
+m F:5 LF com/xpal70.b[310] GOTO m
+m F:5 LF com/xpal70.b[311] GOTO m
+m F:5 LF com/xpal70.b[312] GOTO m
+m F:5 LF com/xpal70.b[313] GOTO m
+m F:5 LF com/xpal70.b[314] GOTO m
+m F:5 LF com/xpal70.b[315] GOTO m
+m F:5 LF com/xpal70.b[316] GOTO m
+m F:5 LF com/xpal70.b[317] GOTO m
+m F:5 LF com/xpal70.b[318] GOTO m
+m F:5 LF com/xpal70.b[319] GOTO m
+m F:5 LF com/xpal70.b[320] GOTO m
+m F:5 LF com/xpal70.b[321] GOTO m
+m F:5 LF com/xpal70.b[323] GOTO m
+m_apply M:175 DEF com/xpal70.b[63] m_apply=175
+m_apply M:175 MAN com/xpal70.b[295] CASE m_apply:.. 
+m_aug M:160 DEF com/xpal70.b[60] m_aug=160
+m_aug M:160 MAN com/xpal70.b[321] CASE m_aug:.. 
+m_blocklink M:209 DEF com/xpal70.b[73] m_blocklink=209
+m_blocklink M:209 MAN com/xpal70.b[316] CASE m_blocklink:.. 
+m_decllabel M:207 DEF com/xpal70.b[73] m_decllabel=207
+m_decllabel M:207 MAN com/xpal70.b[314] CASE m_decllabel:.. 
+m_declname M:203 DEF com/xpal70.b[72] m_declname=203
+m_declname M:203 MAN com/xpal70.b[307] CASE m_declname:.. 
+m_declnames M:204 DEF com/xpal70.b[72] m_declnames=204
+m_declnames M:204 MAN com/xpal70.b[308] CASE m_declnames:.. 
+m_div M:170 DEF com/xpal70.b[62] m_div=170
+m_div M:170 MAN com/xpal70.b[281] CASE m_div:.. 
+m_dummy M:220 DEF com/xpal70.b[78] m_dummy=220
+m_dummy M:220 MAN com/xpal70.b[1128] CASE m_dummy:.. 
+m_dummy M:220 MAN com/xpal70.b[1366] CASE m_dummy:.. 
+m_dummy M:220 MAN com/xpal70.b[1733] a:=h2!h3!a=m_dummy->truerv,falserv
+m_dummy M:220 MAN com/xpal70.b[320] CASE m_dummy:.. 
+m_eq M:168 DEF com/xpal70.b[61] m_eq=168
+m_eq M:168 MAN com/xpal70.b[286] CASE m_eq:.. 
+m_false M:223 DEF com/xpal70.b[78] m_false=223
+m_false M:223 MAN com/xpal70.b[1122] CASE m_false:.. 
+m_false M:223 MAN com/xpal70.b[1173] CASE m_false:.. 
+m_false M:223 MAN com/xpal70.b[1181] CASE m_false:.. 
+m_false M:223 MAN com/xpal70.b[1181] IF btag=m_false DO ..
+m_false M:223 MAN com/xpal70.b[1197] h2!a=number&h2!b=number->number,...=real&...=real->real,m_false
+m_false M:223 MAN com/xpal70.b[1201] (h2!a=m_true|h2!a=m_false)&(h2!b=m_true|h2!b=m_false)
+m_false M:223 MAN com/xpal70.b[1364] CASE m_false:.. 
+m_false M:223 MAN com/xpal70.b[1631] CASE m_false:.. 
+m_false M:223 MAN com/xpal70.b[1666] CASE m_false:.. 
+m_false M:223 MAN com/xpal70.b[278] CASE m_false:.. 
+m_false M:223 MAN com/xpal70.b[535] IF h2!a=m_false DO ..
+m_false M:223 MAN com/xpal70.b[564] a:=h2!a=m_false->b,truerv
+m_false M:223 MAN com/xpal70.b[858] IF h2!a=m_false DO ..
+m_formclosure M:189 DEF com/xpal70.b[68] m_formclosure=189
+m_formclosure M:189 MAN com/xpal70.b[311] CASE m_formclosure:.. 
+m_formlvalue M:190 DEF com/xpal70.b[68] m_formlvalue=190
+m_formlvalue M:190 MAN com/xpal70.b[273] CASE m_formlvalue:.. 
+m_formrvalue M:191 DEF com/xpal70.b[68] m_formrvalue=191
+m_formrvalue M:191 MAN com/xpal70.b[272] CASE m_formrvalue:.. 
+m_ge M:163 DEF com/xpal70.b[61] m_ge=163
+m_ge M:163 MAN com/xpal70.b[291] CASE m_ge:.. 
+m_goto M:148 DEF com/xpal70.b[57] m_goto=148
+m_goto M:148 MAN com/xpal70.b[300] CASE m_goto:.. 
+m_gr M:166 DEF com/xpal70.b[61] m_gr=166
+m_gr M:166 MAN com/xpal70.b[288] CASE m_gr:.. 
+m_initname M:205 DEF com/xpal70.b[72] m_initname=205
+m_initname M:205 MAN com/xpal70.b[309] CASE m_initname:.. 
+m_initnames M:206 DEF com/xpal70.b[72] m_initnames=206
+m_initnames M:206 MAN com/xpal70.b[310] CASE m_initnames:.. 
+m_jump M:195 DEF com/xpal70.b[70] m_jump=195
+m_jump M:195 MAN com/xpal70.b[313] CASE m_jump:.. 
+m_jumpf M:196 DEF com/xpal70.b[70] m_jumpf=196
+m_jumpf M:196 MAN com/xpal70.b[312] CASE m_jumpf:.. 
+m_le M:165 DEF com/xpal70.b[61] m_le=165
+m_le M:165 MAN com/xpal70.b[289] CASE m_le:.. 
+m_loade M:183 DEF com/xpal70.b[66] m_loade=183
+m_loade M:183 MAN com/xpal70.b[305] CASE m_loade:.. 
+m_loadguess M:188 DEF com/xpal70.b[67] m_loadguess=188
+m_loadguess M:188 MAN com/xpal70.b[276] CASE m_loadguess:.. 
+m_loadl M:181 DEF com/xpal70.b[66] m_loadl=181
+m_loadl M:181 MAN com/xpal70.b[302] CASE m_loadl:.. 
+m_loadn M:185 DEF com/xpal70.b[66] m_loadn=185
+m_loadn M:185 MAN com/xpal70.b[304] CASE m_loadn:.. 
+m_loadr M:182 DEF com/xpal70.b[66] m_loadr=182
+m_loadr M:182 MAN com/xpal70.b[301] CASE m_loadr:.. 
+m_loads M:184 DEF com/xpal70.b[66] m_loads=184
+m_loads M:184 MAN com/xpal70.b[303] CASE m_loads:.. 
+m_logand M:162 DEF com/xpal70.b[60] m_logand=162
+m_logand M:162 MAN com/xpal70.b[292] CASE m_logand:.. 
+m_logor M:161 DEF com/xpal70.b[60] m_logor=161
+m_logor M:161 MAN com/xpal70.b[293] CASE m_logor:.. 
+m_lose1 M:200 DEF com/xpal70.b[71] m_lose1=200
+m_lose1 M:200 MAN com/xpal70.b[279] CASE m_lose1:.. 
+m_ls M:167 DEF com/xpal70.b[61] m_ls=167
+m_ls M:167 MAN com/xpal70.b[287] CASE m_ls:.. 
+m_members M:192 DEF com/xpal70.b[69] m_members=192
+m_members M:192 MAN com/xpal70.b[275] CASE m_members:.. 
+m_minus M:158 DEF com/xpal70.b[59] m_minus=158
+m_minus M:158 MAN com/xpal70.b[283] CASE m_minus:.. 
+m_mult M:169 DEF com/xpal70.b[62] m_mult=169
+m_mult M:169 MAN com/xpal70.b[280] CASE m_mult:.. 
+m_ne M:164 DEF com/xpal70.b[61] m_ne=164
+m_ne M:164 MAN com/xpal70.b[290] CASE m_ne:.. 
+m_neg M:174 DEF com/xpal70.b[63] m_neg=174
+m_neg M:174 MAN com/xpal70.b[285] CASE m_neg:.. 
+m_nil M:152 DEF com/xpal70.b[58] m_nil=152
+m_nil M:152 MAN com/xpal70.b[1364] CASE m_nil:.. 
+m_nil M:152 MAN com/xpal70.b[319] CASE m_nil:.. 
+m_not M:151 DEF com/xpal70.b[58] m_not=151
+m_not M:151 MAN com/xpal70.b[296] CASE m_not:.. 
+m_plus M:157 DEF com/xpal70.b[59] m_plus=157
+m_plus M:157 MAN com/xpal70.b[282] CASE m_plus:.. 
+m_pos M:173 DEF com/xpal70.b[63] m_pos=173
+m_pos M:173 MAN com/xpal70.b[284] CASE m_pos:.. 
+m_power M:171 DEF com/xpal70.b[62] m_power=171
+m_power M:171 MAN com/xpal70.b[318] CASE m_power:.. 
+m_res M:149 DEF com/xpal70.b[57] m_res=149
+m_res M:149 MAN com/xpal70.b[299] CASE m_res:.. 
+m_reslink M:210 DEF com/xpal70.b[73] m_reslink=210
+m_reslink M:210 MAN com/xpal70.b[317] CASE m_reslink:.. 
+m_restoree1 M:187 DEF com/xpal70.b[67] m_restoree1=187
+m_restoree1 M:187 MAN com/xpal70.b[271] CASE m_restoree1:.. 
+m_return M:198 DEF com/xpal70.b[70] m_return=198
+m_return M:198 MAN com/xpal70.b[315] CASE m_return:.. 
+m_save M:197 DEF com/xpal70.b[70] m_save=197
+m_save M:197 MAN com/xpal70.b[294] CASE m_save:.. 
+m_setlabes M:208 DEF com/xpal70.b[73] m_setlabes=208
+m_setlabes M:208 MAN com/xpal70.b[270] CASE m_setlabes:.. 
+m_setup M:211 DEF com/xpal70.b[74] m_setup=211
+m_setup M:211 MAN com/xpal70.b[322] CASE m_setup:.. 
+m_testempty M:199 DEF com/xpal70.b[71] m_testempty=199
+m_testempty M:199 MAN com/xpal70.b[306] CASE m_testempty:.. 
+m_true M:222 DEF com/xpal70.b[78] m_true=222
+m_true M:222 MAN com/xpal70.b[1121] CASE m_true:.. 
+m_true M:222 MAN com/xpal70.b[1172] CASE m_true:.. 
+m_true M:222 MAN com/xpal70.b[1179] CASE m_true:.. 
+m_true M:222 MAN com/xpal70.b[1179] IF btag=m_true DO ..
+m_true M:222 MAN com/xpal70.b[1201] (h2!a=m_true|h2!a=m_false)&(h2!b=m_true|h2!b=m_false)
+m_true M:222 MAN com/xpal70.b[1364] CASE m_true:.. 
+m_true M:222 MAN com/xpal70.b[1630] CASE m_true:.. 
+m_true M:222 MAN com/xpal70.b[1665] CASE m_true:.. 
+m_true M:222 MAN com/xpal70.b[277] CASE m_true:.. 
+m_true M:222 MAN com/xpal70.b[540] TEST h2!a=m_true THEN .. ELSE ..
+m_true M:222 MAN com/xpal70.b[552] a:=h2!a=m_true->b,falserv
+m_true M:222 MAN com/xpal70.b[862] IF h2!a=m_true DO ..
+m_tuple M:225 DEF com/xpal70.b[79] m_tuple=225
+m_tuple M:225 MAN com/xpal70.b[1037] UNLESS h2!a=m_tuple&h3!a=n DO ..
+m_tuple M:225 MAN com/xpal70.b[1102] CASE m_tuple:.. 
+m_tuple M:225 MAN com/xpal70.b[1144] CASE m_tuple:.. 
+m_tuple M:225 MAN com/xpal70.b[1338] CASE m_tuple:.. 
+m_tuple M:225 MAN com/xpal70.b[1425] UNLESS h2!a=m_tuple&h3!a=n DO ..
+m_tuple M:225 MAN com/xpal70.b[1443] UNLESS h2!a=m_tuple&h3!a=n DO ..
+m_tuple M:225 MAN com/xpal70.b[1476] TEST h2!a=m_tuple THEN .. ELSE ..
+m_tuple M:225 MAN com/xpal70.b[1589] UNLESS h2!a=m_tuple&h3!a=2 DO ..
+m_tuple M:225 MAN com/xpal70.b[1646] a:=h2!...=m_tuple&h3!...=0->truerv,falserv
+m_tuple M:225 MAN com/xpal70.b[1652] UNLESS h2!h3!a=m_tuple DO ..
+m_tuple M:225 MAN com/xpal70.b[1721] a:=h2!h3!a=m_tuple->truerv,falserv
+m_tuple M:225 MAN com/xpal70.b[1740] UNLESS h2!a=m_tuple&h3!a=2 DO ..
+m_tuple M:225 MAN com/xpal70.b[1854] UNLESS h2!a=m_tuple&h3!a=2 DO ..
+m_tuple M:225 MAN com/xpal70.b[1865] a!0,a!1,a!2:=n+3,m_tuple,n
+m_tuple M:225 MAN com/xpal70.b[1934] UNLESS h2!a=m_tuple&h3!a=2 DO ..
+m_tuple M:225 MAN com/xpal70.b[274] CASE m_tuple:.. 
+m_tuple M:225 MAN com/xpal70.b[515] a!0,a!1,a!2:=n+3,m_tuple,n
+m_tuple M:225 MAN com/xpal70.b[575] UNLESS h2!a=m_tuple DO ..
+m_tuple M:225 MAN com/xpal70.b[583] t!0,t!1,t!2,t!...:=n+4,m_tuple,n+1,b
+m_tuple M:225 MAN com/xpal70.b[953] CASE m_tuple:.. 
+m_update M:201 DEF com/xpal70.b[71] m_update=201
+m_update M:201 MAN com/xpal70.b[298] CASE m_update:.. 
+mapliblist G:377 DEF com/xpal70.b[90] mapliblist=377
+mapliblist G:377 RT com/xpal70.b[338] LET mapliblist(f)BE..
+mark G:451 DEF com/xpal70.b[104] mark=451
+mark G:451 LG com/xpal70.b[1304] mark()
+mark G:451 LG com/xpal70.b[1881] mark()
+mark G:451 RT com/xpal70.b[1371] LET mark()BE..
+marklist G:450 DEF com/xpal70.b[104] marklist=450
+marklist G:450 LG com/xpal70.b[1339] marklist(x!(i+2))
+marklist G:450 LG com/xpal70.b[1343] marklist(h5!x)
+marklist G:450 LG com/xpal70.b[1348] marklist(x!i)
+marklist G:450 LG com/xpal70.b[1352] marklist(h5!x)
+marklist G:450 LG com/xpal70.b[1357] marklist(h6!x)
+marklist G:450 LG com/xpal70.b[1379] marklist(e)
+marklist G:450 LG com/xpal70.b[1381] marklist(s)
+marklist G:450 LG com/xpal70.b[1382] marklist(a)
+marklist G:450 LG com/xpal70.b[1383] marklist(b)
+marklist G:450 RT com/xpal70.b[1321] LET marklist(x)BE..
+maxct G:252 DEF com/xpal70.b[132] maxct=252
+maxerr G:253 DEF com/xpal70.b[133] maxerr=253
+maxerr G:253 LG com/xpal70.b[906] IF errct>=maxerr DO ..
+maxerr G:253 LG com/xpal70.b[908] UNLESS errct>=maxerr DO ..
+maxint M:2147483647 DEF libhdr.h[164] maxint=minint-1
+mcaddrinc M:4 DEF libhdr.h[162] mcaddrinc=bytesperword
+members G:398 DEF com/xpal70.b[94] members=398
+members G:398 LG com/xpal70.b[275] a:=members
+members G:398 RT com/xpal70.b[522] LET members()BE..
+mfield M:16711680 DEF com/xpal70.b[1286] mfield=#x00FF0000
+mfield M:16711680 MAN com/xpal70.b[1309] WHILE (h1!listl&mfield)=gcmark DO ..
+mfield M:16711680 MAN com/xpal70.b[1313] UNTIL (h1!listl&mfield)=gcmark DO ..
+mfield M:16711680 MAN com/xpal70.b[1328] IF (h1!x&mfield)=gcmark DO ..
+mfield M:16711680 MAN com/xpal70.b[1374] IF (gcmark&mfield)=0 DO ..
+minint M:-2147483648 DEF libhdr.h[163] minint=1<<bitsperword-1
+minint M:-2147483648 MAN libhdr.h[164] maxint=minint-1
+minus G:407 DEF com/xpal70.b[96] minus=407
+minus G:407 LG com/xpal70.b[283] a:=minus
+minus G:407 RT com/xpal70.b[681] LET minus()BE..
+mkramstream G:123 DEF libhdr.h[139] mkramstream=123
+muldiv G:5 DEF libhdr.h[20] muldiv=5
+mult G:404 DEF com/xpal70.b[95] mult=404
+mult G:404 LG com/xpal70.b[280] a:=mult
+mult G:404 RT com/xpal70.b[608] LET mult()BE..
+n1 M:16777216 DEF com/xpal70.b[1753] n1=#x01000000
+n1 M:16777216 MAN com/xpal70.b[1900] n:=n+n1
+name M:154 DEF com/xpal70.b[58] name=154
+name M:154 MAN com/xpal70.b[178] CASE name:.. 
+namechain G:523 DEF com/xpal70.b[119] namechain=523
+namechain G:523 LG com/xpal70.b[180] namechain,0,0
+namechain G:523 LG com/xpal70.b[1940] h3!h5!a,1,namechain
+namechain G:523 LG com/xpal70.b[214] strp!0:=namechain
+namechain G:523 LG com/xpal70.b[378] strp!0:=namechain
+namechain G:523 SG com/xpal70.b[216] namechain:=strp
+namechain G:523 SG com/xpal70.b[380] namechain:=strp
+nameerror G:460 DEF com/xpal70.b[106] nameerror=460
+nameerror G:460 LG com/xpal70.b[1427] nameerror(n,1)
+nameerror G:460 LG com/xpal70.b[1445] nameerror(n,4)
+nameerror G:460 RT com/xpal70.b[1467] LET nameerror(n,p)BE..
+nameoflv G:442 DEF com/xpal70.b[102] nameoflv=442
+nameoflv G:442 FN com/xpal70.b[1214] LET nameoflv(l,p)=..
+nameoflv G:442 LG com/xpal70.b[1256] name:=nameoflv(name,h6!q)
+nameres G:524 DEF com/xpal70.b[119] nameres=524
+nameres G:524 LG com/xpal70.b[1209] UNLESS n=nameres DO ..
+nameres G:524 LG com/xpal70.b[591] a:=lvofname(nameres,e)
+ndist M:24 DEF com/xpal70.b[1063] ndist=24
+ndist M:24 MAN com/xpal70.b[1275] writen(n>>ndist)
+neg G:410 DEF com/xpal70.b[96] neg=410
+neg G:410 LG com/xpal70.b[285] a:=neg
+neg G:410 RT com/xpal70.b[752] LET neg()BE..
+newline G:84 DEF libhdr.h[99] newline=84
+newline G:84 LG com/xpal70.b[1041] newline()
+newline G:84 LG com/xpal70.b[1475] newline()
+newline G:84 LG com/xpal70.b[172] newline()
+newpage G:120 DEF libhdr.h[136] newpage=120
+next11 G:395 DEF com/xpal70.b[93] next11=395
+next11 G:395 LG com/xpal70.b[1058] next11()
+next11 G:395 LG com/xpal70.b[1976] next11()
+next11 G:395 LG com/xpal70.b[409] next11()
+next11 G:395 LG com/xpal70.b[418] next11()
+next11 G:395 LG com/xpal70.b[424] next11()
+next11 G:395 LG com/xpal70.b[429] next11()
+next11 G:395 LG com/xpal70.b[443] next11()
+next11 G:395 LG com/xpal70.b[449] next11()
+next11 G:395 LG com/xpal70.b[461] next11()
+next11 G:395 LG com/xpal70.b[466] next11()
+next11 G:395 LG com/xpal70.b[476] next11()
+next11 G:395 LG com/xpal70.b[481] next11()
+next11 G:395 LG com/xpal70.b[487] next11()
+next11 G:395 LG com/xpal70.b[498] next11()
+next11 G:395 LG com/xpal70.b[519] next11()
+next11 G:395 LG com/xpal70.b[537] next11()
+next11 G:395 LG com/xpal70.b[542] next11()
+next11 G:395 LG com/xpal70.b[553] next11()
+next11 G:395 LG com/xpal70.b[565] next11()
+next11 G:395 LG com/xpal70.b[586] next11()
+next11 G:395 LG com/xpal70.b[613] next11()
+next11 G:395 LG com/xpal70.b[623] next11()
+next11 G:395 LG com/xpal70.b[638] next11()
+next11 G:395 LG com/xpal70.b[648] next11()
+next11 G:395 LG com/xpal70.b[662] next11()
+next11 G:395 LG com/xpal70.b[672] next11()
+next11 G:395 LG com/xpal70.b[686] next11()
+next11 G:395 LG com/xpal70.b[696] next11()
+next11 G:395 LG com/xpal70.b[721] next11()
+next11 G:395 LG com/xpal70.b[731] next11()
+next11 G:395 LG com/xpal70.b[744] next11()
+next11 G:395 LG com/xpal70.b[757] next11()
+next11 G:395 LG com/xpal70.b[762] next11()
+next11 G:395 LG com/xpal70.b[779] next11()
+next11 G:395 LG com/xpal70.b[792] next11()
+next11 G:395 LG com/xpal70.b[799] next11()
+next11 G:395 LG com/xpal70.b[803] next11()
+next11 G:395 LG com/xpal70.b[814] next11()
+next11 G:395 LG com/xpal70.b[818] next11()
+next11 G:395 LG com/xpal70.b[828] next11()
+next11 G:395 LG com/xpal70.b[832] next11()
+next11 G:395 LG com/xpal70.b[842] next11()
+next11 G:395 LG com/xpal70.b[846] next11()
+next11 G:395 LG com/xpal70.b[965] next11()
+next11 G:395 RT com/xpal70.b[501] LET next11()BE..
+nextarea G:449 DEF com/xpal70.b[104] nextarea=449
+nextarea G:449 LG com/xpal70.b[1290] nextarea(n)
+nextarea G:449 RT com/xpal70.b[1295] LET nextarea(n)BE..
+nextlv11 G:394 DEF com/xpal70.b[93] nextlv11=394
+nextlv11 G:394 LG com/xpal70.b[1553] nextlv11()
+nextlv11 G:394 LG com/xpal70.b[1560] nextlv11()
+nextlv11 G:394 LG com/xpal70.b[1572] nextlv11()
+nextlv11 G:394 LG com/xpal70.b[1584] nextlv11()
+nextlv11 G:394 LG com/xpal70.b[1610] nextlv11()
+nextlv11 G:394 LG com/xpal70.b[1622] nextlv11()
+nextlv11 G:394 LG com/xpal70.b[1637] nextlv11()
+nextlv11 G:394 LG com/xpal70.b[1641] nextlv11()
+nextlv11 G:394 LG com/xpal70.b[1647] nextlv11()
+nextlv11 G:394 LG com/xpal70.b[1659] nextlv11()
+nextlv11 G:394 LG com/xpal70.b[1668] nextlv11()
+nextlv11 G:394 LG com/xpal70.b[1672] nextlv11()
+nextlv11 G:394 LG com/xpal70.b[1678] nextlv11()
+nextlv11 G:394 LG com/xpal70.b[1687] nextlv11()
+nextlv11 G:394 LG com/xpal70.b[1691] nextlv11()
+nextlv11 G:394 LG com/xpal70.b[1700] nextlv11()
+nextlv11 G:394 LG com/xpal70.b[1704] nextlv11()
+nextlv11 G:394 LG com/xpal70.b[1710] nextlv11()
+nextlv11 G:394 LG com/xpal70.b[1716] nextlv11()
+nextlv11 G:394 LG com/xpal70.b[1722] nextlv11()
+nextlv11 G:394 LG com/xpal70.b[1728] nextlv11()
+nextlv11 G:394 LG com/xpal70.b[1734] nextlv11()
+nextlv11 G:394 LG com/xpal70.b[1747] nextlv11()
+nextlv11 G:394 LG com/xpal70.b[1770] nextlv11()
+nextlv11 G:394 LG com/xpal70.b[1784] nextlv11()
+nextlv11 G:394 LG com/xpal70.b[1797] nextlv11()
+nextlv11 G:394 LG com/xpal70.b[1809] nextlv11()
+nextlv11 G:394 LG com/xpal70.b[1821] nextlv11()
+nextlv11 G:394 LG com/xpal70.b[1831] nextlv11()
+nextlv11 G:394 LG com/xpal70.b[1849] nextlv11()
+nextlv11 G:394 LG com/xpal70.b[1867] nextlv11()
+nextlv11 G:394 LG com/xpal70.b[1983] nextlv11()
+nextlv11 G:394 LG com/xpal70.b[471] nextlv11()
+nextlv11 G:394 RT com/xpal70.b[496] LET nextlv11()BE..
+nfield M:-1090519040 DEF com/xpal70.b[1753] nfield=#xBF000000
+nfield M:-1090519040 MAN com/xpal70.b[1894] h1!a&nfield
+nil G:390 DEF com/xpal70.b[92] nil=390
+nil G:390 LG com/xpal70.b[319] a:=nil
+nil G:390 LG com/xpal70.b[919] nil()
+nil G:390 RT com/xpal70.b[474] LET nil()BE..
+nilrv G:525 DEF com/xpal70.b[120] nilrv=525
+nilrv G:525 LG com/xpal70.b[1005] TEST h3!a=nilrv THEN .. ELSE ..
+nilrv G:525 LG com/xpal70.b[1211] RESULTIS nilrv
+nilrv G:525 LG com/xpal70.b[1255] UNLESS name=nilrv DO ..
+nilrv G:525 LG com/xpal70.b[1261] name:=nilrv
+nilrv G:525 LG com/xpal70.b[1265] .. REPEATWHILE name=nilrv
+nilrv G:525 LG com/xpal70.b[1454] e:=list(5,env,e,...)
+nilrv G:525 LG com/xpal70.b[1457] IF b=nilrv DO ..
+nilrv G:525 LG com/xpal70.b[1461] h3!b:=nilrv
+nilrv G:525 LG com/xpal70.b[1507] s!stackp:=nilrv
+nilrv G:525 LG com/xpal70.b[1515] s!stackp:=list(3,lvalue,nilrv)
+nilrv G:525 LG com/xpal70.b[1856] a:=nilrv
+nilrv G:525 LG com/xpal70.b[1936] a:=nilrv
+nilrv G:525 LG com/xpal70.b[1974] TEST a=nilrv THEN .. ELSE ..
+nilrv G:525 LG com/xpal70.b[405] TEST a=nilrv THEN .. ELSE ..
+nilrv G:525 LG com/xpal70.b[415] TEST a=nilrv THEN .. ELSE ..
+nilrv G:525 LG com/xpal70.b[475] a:=nilrv
+nilrv G:525 LG com/xpal70.b[577] a:=nilrv
+nilrv G:525 LG com/xpal70.b[592] IF a=nilrv DO ..
+nilrv G:525 LG com/xpal70.b[874] a:=list(3,lvalue,nilrv)
+nils M:230 DEF com/xpal70.b[80] nils=230
+nils M:230 MAN com/xpal70.b[1100] CASE nils:.. 
+nils M:230 MAN com/xpal70.b[1138] CASE nils:.. 
+nils M:230 MAN com/xpal70.b[1177] CASE nils:.. 
+nils M:230 MAN com/xpal70.b[1189] CASE nils:.. 
+nils M:230 MAN com/xpal70.b[1189] IF btag=nils DO ..
+nils M:230 MAN com/xpal70.b[1365] CASE nils:.. 
+nils M:230 MAN com/xpal70.b[1597] UNLESS (x=string|x=nils)&(y=string|y=nils) DO ..
+nils M:230 MAN com/xpal70.b[1601] UNTIL h2!b=nils DO ..
+nils M:230 MAN com/xpal70.b[1635] CASE nils:.. 
+nils M:230 MAN com/xpal70.b[1685] CASE nils:.. 
+nils M:230 MAN com/xpal70.b[1777] UNLESS h2!a=string&h2!h3!a=nils DO ..
+nils M:230 MAN com/xpal70.b[1826] a:=list(2,nils)
+nilsrv G:526 DEF com/xpal70.b[120] nilsrv=526
+nilsrv G:526 LG com/xpal70.b[1565] a:=nilsrv
+nilsrv G:526 LG com/xpal70.b[1579] a:=nilsrv
+nilsrv G:526 LG com/xpal70.b[1592] a:=nilsrv
+nilsrv G:526 LG com/xpal70.b[1792] a:=nilsrv
+nilsrv G:526 LG com/xpal70.b[1796] a:=list(4,string,nilsrv,...)
+nilsrv G:526 LG com/xpal70.b[437] a:=nilsrv
+node G:448 DEF com/xpal70.b[103] node=448
+node G:448 FN com/xpal70.b[1289] LET node(n)=..
+node G:448 LG com/xpal70.b[1026] s:=node(h3!a)
+node G:448 LG com/xpal70.b[1224] s:=node(h1!b&lfield)
+node G:448 LG com/xpal70.b[1389] node(n)
+node G:448 LG com/xpal70.b[1864] a:=node(n+3)
+node G:448 LG com/xpal70.b[514] a:=node(n+3)
+node G:448 LG com/xpal70.b[582] node(n+4)
+node G:448 LG com/xpal70.b[898] b:=node(8)
+node G:448 LG com/xpal70.b[986] b:=node(c!1+6)
+norestart G:426 DEF com/xpal70.b[99] norestart=426
+norestart G:426 LLG com/xpal70.b[906] c:=@norestart
+norestart G:426 RT com/xpal70.b[939] LET norestart()BE..
+note G:63 DEF libhdr.h[78] note=63
+nset G:527 DEF com/xpal70.b[120] nset=527
+nset G:527 LG com/xpal70.b[1879] IF nset DO ..
+nset G:527 SG com/xpal70.b[1373] nset:=FALSE
+nset G:527 SG com/xpal70.b[1885] nset:=TRUE
+ntoc G:487 DEF com/xpal70.b[111] ntoc=487
+ntoc G:487 LG com/xpal70.b[360] f("ITOC",ntoc)
+ntoc G:487 RT com/xpal70.b[1787] LET ntoc()BE..
+ntor G:488 DEF com/xpal70.b[112] ntor=488
+ntor G:488 LG com/xpal70.b[362] f("ITOR",ntor)
+ntor G:488 RT com/xpal70.b[1800] LET ntor()BE..
+null G:473 DEF com/xpal70.b[108] null=473
+null G:473 LG com/xpal70.b[345] f("NULL",null)
+null G:473 RT com/xpal70.b[1644] LET null()BE..
+number M:224 DEF com/xpal70.b[78] number=224
+number M:224 MAN com/xpal70.b[1089] CASE number:.. 
+number M:224 MAN com/xpal70.b[1174] CASE number:.. 
+number M:224 MAN com/xpal70.b[1183] CASE number:.. 
+number M:224 MAN com/xpal70.b[1183] IF btag=number&h3!a=h3!b DO ..
+number M:224 MAN com/xpal70.b[1197] h2!a=number&h2!b=number->number,...=real&...=real->real,m_false
+number M:224 MAN com/xpal70.b[1364] CASE number:.. 
+number M:224 MAN com/xpal70.b[1632] CASE number:.. 
+number M:224 MAN com/xpal70.b[1654] a:=list(3,number,0)
+number M:224 MAN com/xpal70.b[1658] a:=list(3,number,h3!...)
+number M:224 MAN com/xpal70.b[1677] a:=h2!h3!a=number->truerv,falserv
+number M:224 MAN com/xpal70.b[1760] a:=list(3,number,0)
+number M:224 MAN com/xpal70.b[1769] a:=list(3,number,b)
+number M:224 MAN com/xpal70.b[1779] a:=list(3,number,0)
+number M:224 MAN com/xpal70.b[1783] a:=list(3,number,h4!a)
+number M:224 MAN com/xpal70.b[1790] UNLESS h2!a=number&h3!a<256&h3!a>=0 DO ..
+number M:224 MAN com/xpal70.b[1802] UNLESS h2!a=number DO ..
+number M:224 MAN com/xpal70.b[1816] a:=list(3,number,0)
+number M:224 MAN com/xpal70.b[1820] a:=list(3,number,rtoi(...))
+number M:224 MAN com/xpal70.b[1861] UNLESS h2!n=number DO ..
+number M:224 MAN com/xpal70.b[1877] IF h2!h3!a=number DO ..
+number M:224 MAN com/xpal70.b[221] CASE number:.. 
+number M:224 MAN com/xpal70.b[235] codep!0:=number
+number M:224 MAN com/xpal70.b[611] IF testnumbs2()=number DO ..
+number M:224 MAN com/xpal70.b[612] a:=list(3,number,...*...)
+number M:224 MAN com/xpal70.b[626] a:=list(3,number,0)
+number M:224 MAN com/xpal70.b[635] IF testnumbs2()=number DO ..
+number M:224 MAN com/xpal70.b[637] a:=list(3,number,.../...)
+number M:224 MAN com/xpal70.b[652] a:=list(3,number,0)
+number M:224 MAN com/xpal70.b[660] IF testnumbs2()=number DO ..
+number M:224 MAN com/xpal70.b[661] a:=list(3,number,...+...)
+number M:224 MAN com/xpal70.b[675] a:=list(3,number,0)
+number M:224 MAN com/xpal70.b[684] IF testnumbs2()=number DO ..
+number M:224 MAN com/xpal70.b[685] a:=list(3,number,...-...)
+number M:224 MAN com/xpal70.b[699] a:=list(3,number,0)
+number M:224 MAN com/xpal70.b[708] UNLESS h2!b=number DO ..
+number M:224 MAN com/xpal70.b[709] IF h2!a=number DO ..
+number M:224 MAN com/xpal70.b[720] a:=list(3,number,r)
+number M:224 MAN com/xpal70.b[735] a:=list(3,number,0)
+number M:224 MAN com/xpal70.b[742] TEST h2!a=number|h2!a=real THEN .. ELSE ..
+number M:224 MAN com/xpal70.b[747] a:=list(3,number,0)
+number M:224 MAN com/xpal70.b[755] IF h2!a=number DO ..
+number M:224 MAN com/xpal70.b[756] a:=list(3,number,-...)
+number M:224 MAN com/xpal70.b[765] a:=list(3,number,0)
+number M:224 MAN com/xpal70.b[797] IF testnumbs2()=number DO ..
+number M:224 MAN com/xpal70.b[812] IF testnumbs2()=number DO ..
+number M:224 MAN com/xpal70.b[826] IF testnumbs2()=number DO ..
+number M:224 MAN com/xpal70.b[840] IF testnumbs2()=number DO ..
+number M:224 MAN com/xpal70.b[956] UNLESS h2!b=number DO ..
+okrestart G:424 DEF com/xpal70.b[98] okrestart=424
+okrestart G:424 LLG com/xpal70.b[892] c:=@okrestart
+okrestart G:424 RT com/xpal70.b[926] LET okrestart()BE..
+oldc G:528 DEF com/xpal70.b[120] oldc=528
+oldc G:528 LG com/xpal70.b[989] h4!b,h5!b:=oldc,s
+oldc G:528 SG com/xpal70.b[1509] oldc:=c!1
+oldc G:528 SG com/xpal70.b[1521] oldc:=@r_finish
+oldc G:528 SG com/xpal70.b[916] oldc,c:=c,h4!b
+oldc G:528 SG com/xpal70.b[950] oldc,c:=c+1,h4!a
+output G:59 DEF libhdr.h[74] output=59
+packstring G:30 DEF libhdr.h[45] packstring=30
+packstring G:30 LG com/xpal70.b[186] packstring(v,s)
+packstring G:30 LG com/xpal70.b[1951] packstring(v,vp)
+packstring G:30 LG com/xpal70.b[232] packstring(v,codep)
+param M:215 DEF com/xpal70.b[75] param=215
+param M:215 MAN com/xpal70.b[253] CASE param:.. 
+parv G:529 DEF com/xpal70.b[120] parv=529
+parv G:529 LG com/xpal70.b[250] parv!ch:=codep
+parv G:529 LG com/xpal70.b[267] parv!a:=ch
+parv G:529 LG com/xpal70.b[330] !refv!(i+1):=parv!refv!i
+pathfindinput G:53 DEF libhdr.h[68] pathfindinput=53
+plus G:406 DEF com/xpal70.b[95] plus=406
+plus G:406 LG com/xpal70.b[282] a:=plus
+plus G:406 RT com/xpal70.b[657] LET plus()BE..
+point G:64 DEF libhdr.h[79] point=64
+pollingch M:-3 DEF libhdr.h[168] pollingch=-3
+pos G:409 DEF com/xpal70.b[96] pos=409
+pos G:409 LG com/xpal70.b[284] a:=pos
+pos G:409 RT com/xpal70.b[740] LET pos()BE..
+power G:408 DEF com/xpal70.b[96] power=408
+power G:408 LG com/xpal70.b[318] a:=power
+power G:408 RT com/xpal70.b[705] LET power()BE..
+print G:467 DEF com/xpal70.b[107] print=467
+print G:467 LG com/xpal70.b[339] f("PRINT",print)
+print G:467 RT com/xpal70.b[1549] LET print()BE..
+printa G:437 DEF com/xpal70.b[101] printa=437
+printa G:437 LG com/xpal70.b[1040] printa(a,tupledepth)
+printa G:437 LG com/xpal70.b[1068] printa(db1,tupledepth)
+printa G:437 LG com/xpal70.b[1070] printa(db2,tupledepth)
+printa G:437 LG com/xpal70.b[1078] printa(arg1,tupledepth)
+printa G:437 LG com/xpal70.b[1081] printa(arg2,tupledepth)
+printa G:437 LG com/xpal70.b[1149] printa(x!i,n-1)
+printa G:437 LG com/xpal70.b[1152] printa(x!(m+2),n-1)
+printa G:437 LG com/xpal70.b[1158] printa(h3!x,n)
+printa G:437 LG com/xpal70.b[1269] printa(arg,tupledepth)
+printa G:437 LG com/xpal70.b[1279] printa(h5!a,tupledepth)
+printa G:437 LG com/xpal70.b[1474] printa(a,tupledepth)
+printa G:437 RT com/xpal70.b[1133] LET printa(x,n)BE..
+printb G:436 DEF com/xpal70.b[101] printb=436
+printb G:436 LG com/xpal70.b[1099] printb(h3!x)
+printb G:436 LG com/xpal70.b[1113] printb(x!i)
+printb G:436 LG com/xpal70.b[1116] printb(x!(n+2))
+printb G:436 LG com/xpal70.b[1123] printb(h3!x)
+printb G:436 LG com/xpal70.b[1140] printb(x)
+printb G:436 LG com/xpal70.b[1163] printb(x)
+printb G:436 LG com/xpal70.b[1551] printb(a)
+printb G:436 RT com/xpal70.b[1086] LET printb(x)BE..
+put_index_record G:74 DEF libhdr.h[89] put_index_record=74
+put_record G:72 DEF libhdr.h[87] put_record=72
+putword G:33 DEF libhdr.h[48] putword=33
+pwerr F:179 LAB com/xpal70.b[734] pwerr:a:=list(3,number,0)
+pwerr F:179 LF com/xpal70.b[708] GOTO pwerr
+pwerr F:179 LF com/xpal70.b[712] GOTO pwerr
+pwerr F:179 LF com/xpal70.b[729] GOTO pwerr
+q G:530 DEF com/xpal70.b[120] q=530
+q G:530 LG com/xpal70.b[1250] IF h6!q=0 DO ..
+q G:530 LG com/xpal70.b[1251] y:=h5!q
+q G:530 LG com/xpal70.b[1256] name:=nameoflv(name,h6!q)
+q G:530 LG com/xpal70.b[1264] IF h6!q=0 DO ..
+q G:530 LG com/xpal70.b[1613] b:=list(4,string,0,...)
+q G:530 LG com/xpal70.b[1907] a:=h6!q
+q G:530 SG com/xpal70.b[1262] q:=y
+q G:530 SG com/xpal70.b[1889] q:=s
+q G:530 SG com/xpal70.b[1924] q:=s
+r_eq G:411 DEF com/xpal70.b[96] r_eq=411
+r_eq G:411 LG com/xpal70.b[286] a:=r_eq
+r_eq G:411 RT com/xpal70.b[770] LET r_eq()BE..
+r_false G:388 DEF com/xpal70.b[92] r_false=388
+r_false G:388 LG com/xpal70.b[278] a:=r_false
+r_false G:388 RT com/xpal70.b[464] LET r_false()BE..
+r_finish G:466 DEF com/xpal70.b[107] r_finish=466
+r_finish G:466 LG com/xpal70.b[356] f("FINISH",r_finish)
+r_finish G:466 LLG com/xpal70.b[1521] oldc:=@r_finish
+r_finish G:466 RT com/xpal70.b[1544] LET r_finish()BE..
+r_ge G:416 DEF com/xpal70.b[97] r_ge=416
+r_ge G:416 LG com/xpal70.b[291] a:=r_ge
+r_ge G:416 RT com/xpal70.b[824] LET r_ge()BE..
+r_goto G:432 DEF com/xpal70.b[100] r_goto=432
+r_goto G:432 LG com/xpal70.b[300] a:=r_goto
+r_goto G:432 RT com/xpal70.b[1017] LET r_goto()BE..
+r_gr G:415 DEF com/xpal70.b[97] r_gr=415
+r_gr G:415 LG com/xpal70.b[288] a:=r_gr
+r_gr G:415 RT com/xpal70.b[838] LET r_gr()BE..
+r_le G:414 DEF com/xpal70.b[97] r_le=414
+r_le G:414 LG com/xpal70.b[289] a:=r_le
+r_le G:414 RT com/xpal70.b[810] LET r_le()BE..
+r_logand G:400 DEF com/xpal70.b[94] r_logand=400
+r_logand G:400 LG com/xpal70.b[292] a:=r_logand
+r_logand G:400 RT com/xpal70.b[549] LET r_logand()BE..
+r_logor G:401 DEF com/xpal70.b[95] r_logor=401
+r_logor G:401 LG com/xpal70.b[293] a:=r_logor
+r_logor G:401 RT com/xpal70.b[561] LET r_logor()BE..
+r_ls G:413 DEF com/xpal70.b[96] r_ls=413
+r_ls G:413 LG com/xpal70.b[287] a:=r_ls
+r_ls G:413 RT com/xpal70.b[795] LET r_ls()BE..
+r_name G:459 DEF com/xpal70.b[106] r_name=459
+r_name G:459 LG com/xpal70.b[1430] r_name(i,1)
+r_name G:459 LG com/xpal70.b[1436] r_name(1,7)
+r_name G:459 LG com/xpal70.b[1448] r_name(i,4)
+r_name G:459 LG com/xpal70.b[1479] r_name(i,p)
+r_name G:459 LG com/xpal70.b[1480] r_name(i,p+2)
+r_name G:459 LG com/xpal70.b[1482] r_name(2,p+1)
+r_name G:459 LG com/xpal70.b[1483] r_name(i,p+2)
+r_name G:459 RT com/xpal70.b[1452] LET r_name(i,p)BE..
+r_ne G:412 DEF com/xpal70.b[96] r_ne=412
+r_ne G:412 LG com/xpal70.b[290] a:=r_ne
+r_ne G:412 RT com/xpal70.b[782] LET r_ne()BE..
+r_not G:399 DEF com/xpal70.b[94] r_not=399
+r_not G:399 LG com/xpal70.b[296] a:=r_not
+r_not G:399 RT com/xpal70.b[533] LET r_not()BE..
+r_return G:429 DEF com/xpal70.b[99] r_return=429
+r_return G:429 LG com/xpal70.b[315] a:=r_return
+r_return G:429 LG com/xpal70.b[603] r_return()
+r_return G:429 RT com/xpal70.b[996] LET r_return()BE..
+r_table G:491 DEF com/xpal70.b[112] r_table=491
+r_table G:491 LG com/xpal70.b[366] f("TABLE",r_table)
+r_table G:491 RT com/xpal70.b[1852] LET r_table()BE..
+r_true G:387 DEF com/xpal70.b[92] r_true=387
+r_true G:387 LG com/xpal70.b[277] a:=r_true
+r_true G:387 RT com/xpal70.b[459] LET r_true()BE..
+randno G:34 DEF libhdr.h[49] randno=34
+randseed G:127 DEF libhdr.h[143] randseed=127
+rdargs G:102 DEF libhdr.h[118] rdargs=102
+rdch G:38 DEF libhdr.h[53] rdch=38
+rdch G:38 LG com/xpal70.b[1840] ch:=rdch()
+rdch G:38 LG com/xpal70.b[1844] ch:=rdch()
+rdchar G:490 DEF com/xpal70.b[112] rdchar=490
+rdchar G:490 LG com/xpal70.b[363] f("READCH",rdchar)
+rdchar G:490 RT com/xpal70.b[1824] LET rdchar()BE..
+rditem G:103 DEF libhdr.h[119] rditem=103
+readn G:83 DEF libhdr.h[98] readn=83
+readwords G:44 DEF libhdr.h[59] readwords=44
+real M:231 DEF com/xpal70.b[80] real=231
+real M:231 MAN com/xpal70.b[1092] CASE real:.. 
+real M:231 MAN com/xpal70.b[1175] CASE real:.. 
+real M:231 MAN com/xpal70.b[1185] CASE real:.. 
+real M:231 MAN com/xpal70.b[1185] IF btag=real&h3!a=h3!b DO ..
+real M:231 MAN com/xpal70.b[1197] h2!a=number&h2!b=number->number,...=real&...=real->real,m_false
+real M:231 MAN com/xpal70.b[1366] CASE real:.. 
+real M:231 MAN com/xpal70.b[1633] CASE real:.. 
+real M:231 MAN com/xpal70.b[1727] a:=h2!h3!a=real->truerv,falserv
+real M:231 MAN com/xpal70.b[1804] a:=list(3,real,0)
+real M:231 MAN com/xpal70.b[1808] a:=list(3,real,itor(...))
+real M:231 MAN com/xpal70.b[1814] UNLESS h2!a=real DO ..
+real M:231 MAN com/xpal70.b[230] codep!0:=real
+real M:231 MAN com/xpal70.b[616] IF testnumbs2()=real DO ..
+real M:231 MAN com/xpal70.b[617] a:=list(3,real,fmult(...))
+real M:231 MAN com/xpal70.b[641] IF testnumbs2()=real DO ..
+real M:231 MAN com/xpal70.b[642] a:=list(3,real,fdiv(...))
+real M:231 MAN com/xpal70.b[665] IF testnumbs2()=real DO ..
+real M:231 MAN com/xpal70.b[666] a:=list(3,real,fadd(...))
+real M:231 MAN com/xpal70.b[689] IF testnumbs2()=real DO ..
+real M:231 MAN com/xpal70.b[690] a:=list(3,real,fsub(...))
+real M:231 MAN com/xpal70.b[724] IF h2!a=real DO ..
+real M:231 MAN com/xpal70.b[725] a:=list(3,real,fpower(...))
+real M:231 MAN com/xpal70.b[742] TEST h2!a=number|h2!a=real THEN .. ELSE ..
+real M:231 MAN com/xpal70.b[760] IF h2!a=real DO ..
+real M:231 MAN com/xpal70.b[761] a:=list(3,real,fumin(...))
+real M:231 MAN com/xpal70.b[801] IF testnumbs2()=real DO ..
+real M:231 MAN com/xpal70.b[816] IF testnumbs2()=real DO ..
+real M:231 MAN com/xpal70.b[830] IF testnumbs2()=real DO ..
+real M:231 MAN com/xpal70.b[844] IF testnumbs2()=real DO ..
+recordnote G:70 DEF libhdr.h[85] recordnote=70
+recordpoint G:69 DEF libhdr.h[84] recordpoint=69
+refp G:531 DEF com/xpal70.b[121] refp=531
+refp G:531 LG com/xpal70.b[255] refv!refp,refv!(refp+1):=ch,codep
+refp G:531 LG com/xpal70.b[256] refp:=refp+2
+refp G:531 LG com/xpal70.b[257] IF refp>reft DO ..
+refp G:531 LG com/xpal70.b[329] UNTIL i=refp DO ..
+refp G:531 SG com/xpal70.b[161] refp:=0
+refp G:531 SG com/xpal70.b[256] refp:=refp+2
+refp G:531 SG com/xpal70.b[333] refp:=0
+reft G:532 DEF com/xpal70.b[121] reft=532
+reft G:532 LG com/xpal70.b[257] IF refp>reft DO ..
+refv G:533 DEF com/xpal70.b[121] refv=533
+refv G:533 LG com/xpal70.b[255] refv!refp,refv!(refp+1):=ch,codep
+refv G:533 LG com/xpal70.b[330] !refv!(i+1):=parv!refv!i
+renamefile G:77 DEF libhdr.h[92] renamefile=77
+reserr F:144 LAB com/xpal70.b[598] reserr:..;..
+reserr F:144 LF com/xpal70.b[594] GOTO reserr
+reslink G:464 DEF com/xpal70.b[107] reslink=464
+reslink G:464 LG com/xpal70.b[317] a:=reslink
+reslink G:464 RT com/xpal70.b[1514] LET reslink()BE..
+restart G:443 DEF com/xpal70.b[102] restart=443
+restart G:443 LG com/xpal70.b[928] restart()
+restart G:443 LG com/xpal70.b[934] restart()
+restart G:443 LG com/xpal70.b[998] restart()
+restart G:443 LLG com/xpal70.b[873] c:=@restart
+restart G:443 RT com/xpal70.b[1222] LET restart()BE..
+restartc G:534 DEF com/xpal70.b[121] restartc=534
+restartc G:534 LG com/xpal70.b[1890] IF h4!s=restartc DO ..
+restartc G:534 LG com/xpal70.b[1925] IF h4!s=restartc DO ..
+restartc G:534 LG com/xpal70.b[900] h4!b,h5!b:=restartc,s
+restartc G:534 SG com/xpal70.b[872] restartc:=c+1
+restartc G:534 SG com/xpal70.b[879] restartc:=c+1
+restartc G:534 SG com/xpal70.b[891] restartc:=c+1
+restartc G:534 SG com/xpal70.b[923] restartc:=0
+restoree1 G:386 DEF com/xpal70.b[92] restoree1=386
+restoree1 G:386 LG com/xpal70.b[271] a:=restoree1
+restoree1 G:386 RT com/xpal70.b[452] LET restoree1()BE..
+result G:403 DEF com/xpal70.b[95] result=403
+result G:403 LG com/xpal70.b[299] a:=result
+result G:403 RT com/xpal70.b[590] LET result()BE..
+result2 G:10 DEF libhdr.h[25] result2=10
+resumeco G:21 DEF libhdr.h[36] resumeco=21
+returncode G:11 DEF libhdr.h[26] returncode=11
+rewindstream G:65 DEF libhdr.h[80] rewindstream=65
+rootnode G:9 DEF libhdr.h[24] rootnode=9
+rootnodeaddr M:100 DEF libhdr.h[208] rootnodeaddr=100
+rtn_abortcode M:27 DEF libhdr.h[244] rtn_abortcode=
+rtn_adjclock M:33 DEF libhdr.h[262] rtn_adjclock=
+rtn_blib M:19 DEF libhdr.h[233] rtn_blib=
+rtn_blklist M:4 DEF libhdr.h[215] rtn_blklist=
+rtn_boot M:17 DEF libhdr.h[231] rtn_boot=
+rtn_boottrace M:39 DEF libhdr.h[277] rtn_boottrace=
+rtn_bptaddr M:9 DEF libhdr.h[222] rtn_bptaddr=
+rtn_bptinstr M:10 DEF libhdr.h[223] rtn_bptinstr=
+rtn_clkintson M:6 DEF libhdr.h[218] rtn_clkintson=
+rtn_clwkq M:12 DEF libhdr.h[226] rtn_clwkq=
+rtn_context M:28 DEF libhdr.h[245] rtn_context=
+rtn_crntask M:3 DEF libhdr.h[214] rtn_crntask=
+rtn_days M:40 DEF libhdr.h[280] rtn_days=
+rtn_dbgvars M:11 DEF libhdr.h[224] rtn_dbgvars=
+rtn_dcountv M:34 DEF libhdr.h[264] rtn_dcountv=
+rtn_devtab M:1 DEF libhdr.h[212] rtn_devtab=
+rtn_dumpflag M:25 DEF libhdr.h[241] rtn_dumpflag=
+rtn_envlist M:26 DEF libhdr.h[242] rtn_envlist=
+rtn_hdrsvar M:37 DEF libhdr.h[273] rtn_hdrsvar=
+rtn_idletcb M:32 DEF libhdr.h[261] rtn_idletcb=
+rtn_info M:15 DEF libhdr.h[229] rtn_info=
+rtn_insadebug M:8 DEF libhdr.h[220] rtn_insadebug=
+rtn_intflag M:24 DEF libhdr.h[240] rtn_intflag=
+rtn_keyboard M:20 DEF libhdr.h[234] rtn_keyboard=
+rtn_klib M:18 DEF libhdr.h[232] rtn_klib=
+rtn_lastch M:7 DEF libhdr.h[219] rtn_lastch=
+rtn_lastg M:30 DEF libhdr.h[254] rtn_lastg=
+rtn_lastp M:29 DEF libhdr.h[253] rtn_lastp=
+rtn_lastst M:31 DEF libhdr.h[255] rtn_lastst=
+rtn_mc0 M:42 DEF libhdr.h[283] rtn_mc0=
+rtn_mc1 M:43 DEF libhdr.h[285] rtn_mc1=
+rtn_mc2 M:44 DEF libhdr.h[286] rtn_mc2=
+rtn_mc3 M:45 DEF libhdr.h[287] rtn_mc3=
+rtn_membase M:13 DEF libhdr.h[227] rtn_membase=
+rtn_memsize M:14 DEF libhdr.h[228] rtn_memsize=
+rtn_msecs M:41 DEF libhdr.h[281] rtn_msecs=
+rtn_pathvar M:36 DEF libhdr.h[271] rtn_pathvar=
+rtn_rootvar M:35 DEF libhdr.h[269] rtn_rootvar=
+rtn_screen M:21 DEF libhdr.h[235] rtn_screen=
+rtn_scriptsvar M:38 DEF libhdr.h[275] rtn_scriptsvar=
+rtn_sys M:16 DEF libhdr.h[230] rtn_sys=
+rtn_tallyv M:5 DEF libhdr.h[216] rtn_tallyv=
+rtn_tasktab M:0 DEF libhdr.h[211] rtn_tasktab=0
+rtn_tcblist M:2 DEF libhdr.h[213] rtn_tcblist=
+rtn_upb M:50 DEF libhdr.h[289] rtn_upb=50
+rtn_vecstatsv M:22 DEF libhdr.h[237] rtn_vecstatsv=
+rtn_vecstatsvupb M:23 DEF libhdr.h[238] rtn_vecstatsvupb=
+rtoi G:85 DEF com/xpal70.b[43] rtoi=85
+rtoi G:85 LG com/xpal70.b[1820] a:=list(3,number,rtoi(...))
+rton G:489 DEF com/xpal70.b[112] rton=489
+rton G:489 LG com/xpal70.b[361] f("RTOI",rton)
+rton G:489 RT com/xpal70.b[1812] LET rton()BE..
+rvrestart G:425 DEF com/xpal70.b[99] rvrestart=425
+rvrestart G:425 LLG com/xpal70.b[880] c:=@rvrestart
+rvrestart G:425 RT com/xpal70.b[932] LET rvrestart()BE..
+s G:535 DEF com/xpal70.b[121] s=535
+s G:535 LG com/xpal70.b[1000] s!(stackp-1):=a
+s G:535 LG com/xpal70.b[1028] h1!s,h2!s:=h3!a,stack
+s G:535 LG com/xpal70.b[1030] h4!s,h5!s,h6!s:=h4!a,h5!a,h6!a
+s G:535 LG com/xpal70.b[1223] c,b,e:=h4!s,h5!s,h6!s
+s G:535 LG com/xpal70.b[1226] s!i:=b!i
+s G:535 LG com/xpal70.b[1380] h3!s:=stackp
+s G:535 LG com/xpal70.b[1381] marklist(s)
+s G:535 LG com/xpal70.b[1409] stackp,a:=stackp-1,s!stackp
+s G:535 LG com/xpal70.b[1413] stackp,a,b:=stackp-2,s!(stackp+1),s!stackp
+s G:535 LG com/xpal70.b[1417] e:=list(5,env,e,...)
+s G:535 LG com/xpal70.b[1462] h3!b:=h3!s!stackp
+s G:535 LG com/xpal70.b[1490] a:=list(6,stack,6,...)
+s G:535 LG com/xpal70.b[1491] a:=list(6,...&lfield,...,...)
+s G:535 LG com/xpal70.b[1507] s!stackp:=nilrv
+s G:535 LG com/xpal70.b[1515] s!stackp:=list(3,lvalue,nilrv)
+s G:535 LG com/xpal70.b[1588] a:=h3!s!(stackp-1)
+s G:535 LG com/xpal70.b[1619] h3!a:=h3!h5!h3!s!...
+s G:535 LG com/xpal70.b[1873] a:=s!(stackp-1)
+s G:535 LG com/xpal70.b[1874] s!(stackp-1):=list(3,lvalue,dummyrv)
+s G:535 LG com/xpal70.b[1889] q:=s
+s G:535 LG com/xpal70.b[1890] IF h4!s=restartc DO ..
+s G:535 LG com/xpal70.b[1920] s!(stackp-1):=list(3,lvalue,dummyrv)
+s G:535 LG com/xpal70.b[1924] q:=s
+s G:535 LG com/xpal70.b[1925] IF h4!s=restartc DO ..
+s G:535 LG com/xpal70.b[1982] a:=list(5,jj,...,...)
+s G:535 LG com/xpal70.b[423] a:=list(5,jj,...,...)
+s G:535 LG com/xpal70.b[453] e:=s!(stackp-2)
+s G:535 LG com/xpal70.b[455] s!(stackp-1):=s!stackp
+s G:535 LG com/xpal70.b[491] a:=list(3,lvalue,s!...)
+s G:535 LG com/xpal70.b[492] s!(stackp-1):=a
+s G:535 LG com/xpal70.b[502] s!stackp:=a
+s G:535 LG com/xpal70.b[508] s!(stackp-1):=h3!s!(stackp-1)
+s G:535 LG com/xpal70.b[517] stackp,a!i:=stackp-1,s!stackp
+s G:535 LG com/xpal70.b[527] s!stackp:=b!(n-i)
+s G:535 LG com/xpal70.b[602] h4!s,h5!s,h6!s:=h3!a,h4!a,h5!a
+s G:535 LG com/xpal70.b[897] h3!s:=stackp
+s G:535 LG com/xpal70.b[900] h4!b,h5!b:=restartc,s
+s G:535 LG com/xpal70.b[913] s!stackp:=errorlv
+s G:535 LG com/xpal70.b[927] a:=s!(stackp-1)
+s G:535 LG com/xpal70.b[929] s!stackp:=a
+s G:535 LG com/xpal70.b[933] a:=s!(stackp-1)
+s G:535 LG com/xpal70.b[935] s!stackp:=h3!a
+s G:535 LG com/xpal70.b[954] stackp,b:=stackp-1,s!stackp
+s G:535 LG com/xpal70.b[980] error("ATTEM'O APPLY ",a," TO ",...)
+s G:535 LG com/xpal70.b[988] h3!s:=stackp
+s G:535 LG com/xpal70.b[989] h4!b,h5!b:=oldc,s
+s G:535 LG com/xpal70.b[990] h6!b,h7!b:=e,s!(stackp-2)
+s G:535 LG com/xpal70.b[997] a:=s!(stackp-1)
+s G:535 SG com/xpal70.b[1026] s:=node(h3!a)
+s G:535 SG com/xpal70.b[1224] s:=node(h1!b&lfield)
+s G:535 SG com/xpal70.b[1522] s:=list(5,stack,4,...)
+s G:535 SG com/xpal70.b[902] s:=b
+s G:535 SG com/xpal70.b[992] stackp,s:=7,b
+sardch G:36 DEF libhdr.h[51] sardch=36
+save G:428 DEF com/xpal70.b[99] save=428
+save G:428 LG com/xpal70.b[1526] save()
+save G:428 LG com/xpal70.b[294] a:=save
+save G:428 RT com/xpal70.b[985] LET save()BE..
+saveenv G:495 DEF com/xpal70.b[113] saveenv=495
+saveenv G:495 LG com/xpal70.b[368] f("SAVEENV",saveenv)
+saveenv G:495 RT com/xpal70.b[1980] LET saveenv()BE..
+saveregs M:31 DEF libhdr.h[357] saveregs=31
+sawrch G:37 DEF libhdr.h[52] sawrch=37
+sawritef G:95 DEF libhdr.h[111] sawritef=95
+scb_blength M:14 DEF libhdr.h[387] scb_blength=
+scb_block M:9 DEF libhdr.h[382] scb_block=
+scb_buf M:3 DEF libhdr.h[376] scb_buf=
+scb_bufend M:11 DEF libhdr.h[384] scb_bufend=
+scb_encoding M:19 DEF libhdr.h[397] scb_encoding=
+scb_end M:5 DEF libhdr.h[378] scb_end=
+scb_endfn M:8 DEF libhdr.h[381] scb_endfn=
+scb_fd M:16 DEF libhdr.h[389] scb_fd=
+scb_id M:0 DEF libhdr.h[373] scb_id=0
+scb_lblock M:12 DEF libhdr.h[385] scb_lblock=
+scb_ldata M:13 DEF libhdr.h[386] scb_ldata=
+scb_maxnamelen M:31 DEF libhdr.h[371] scb_maxnamelen=31
+scb_maxnamelen M:31 MAN libhdr.h[401] scb_nameeend=scb_name+scb_maxnamelen/bytesperword
+scb_name M:20 DEF libhdr.h[399] scb_name=
+scb_name M:20 MAN libhdr.h[401] scb_nameeend=scb_name+scb_maxnamelen/bytesperword
+scb_nameeend M:27 DEF libhdr.h[401] scb_nameeend=scb_name+scb_maxnamelen/bytesperword
+scb_pos M:4 DEF libhdr.h[377] scb_pos=
+scb_rdfn M:6 DEF libhdr.h[379] scb_rdfn=
+scb_reclen M:15 DEF libhdr.h[388] scb_reclen=
+scb_size M:28 DEF libhdr.h[404] scb_size=
+scb_size M:28 MAN libhdr.h[405] scb_upb=scb_size-1
+scb_task M:2 DEF libhdr.h[375] scb_task=
+scb_timeout M:17 DEF libhdr.h[390] scb_timeout=
+scb_timeoutact M:18 DEF libhdr.h[393] scb_timeoutact=
+scb_type M:1 DEF libhdr.h[374] scb_type=
+scb_upb M:27 DEF libhdr.h[405] scb_upb=scb_size-1
+scb_wrfn M:7 DEF libhdr.h[380] scb_wrfn=
+scb_write M:10 DEF libhdr.h[383] scb_write=
+scbt_console M:-1 DEF libhdr.h[367] scbt_console=-1
+scbt_file M:1 DEF libhdr.h[365] scbt_file=1
+scbt_mbx M:-2 DEF libhdr.h[368] scbt_mbx=-2
+scbt_net M:2 DEF libhdr.h[364] scbt_net=2
+scbt_ram M:0 DEF libhdr.h[366] scbt_ram=0
+scbt_tcp M:-3 DEF libhdr.h[369] scbt_tcp=-3
+sectword M:64991 DEF libhdr.h[184] sectword=64991
+selectinput G:56 DEF libhdr.h[71] selectinput=56
+selectoutput G:57 DEF libhdr.h[72] selectoutput=57
+setbit G:112 DEF libhdr.h[128] setbit=112
+setbulk G:122 DEF libhdr.h[138] setbulk=122
+setlabes G:462 DEF com/xpal70.b[106] setlabes=462
+setlabes G:462 LG com/xpal70.b[270] a:=setlabes
+setlabes G:462 RT com/xpal70.b[1497] LET setlabes()BE..
+setlogname G:117 DEF libhdr.h[133] setlogname=117
+setparams G:376 DEF com/xpal70.b[90] setparams=376
+setparams G:376 LG com/xpal70.b[175] setparams()
+setparams G:376 LG com/xpal70.b[322] setparams()
+setparams G:376 RT com/xpal70.b[327] LET setparams()BE..
+setrecordlength G:68 DEF libhdr.h[83] setrecordlength=68
+setseed G:35 DEF libhdr.h[50] setseed=35
+settimeout G:55 DEF libhdr.h[70] settimeout=55
+settimeoutact G:124 DEF libhdr.h[140] settimeoutact=124
+setup G:465 DEF com/xpal70.b[107] setup=465
+setup G:465 LG com/xpal70.b[323] a:=setup
+setup G:465 RT com/xpal70.b[1520] LET setup()BE..
+share G:484 DEF com/xpal70.b[111] share=484
+share G:484 LG com/xpal70.b[357] f("SHARE",share)
+share G:484 RT com/xpal70.b[1737] LET share()BE..
+split1 G:453 DEF com/xpal70.b[104] split1=453
+split1 G:453 LG com/xpal70.b[1004] split1()
+split1 G:453 LG com/xpal70.b[1013] split1()
+split1 G:453 LG com/xpal70.b[1018] split1()
+split1 G:453 LG com/xpal70.b[1424] split1()
+split1 G:453 LG com/xpal70.b[1442] split1()
+split1 G:453 LG com/xpal70.b[1527] split1()
+split1 G:453 LG com/xpal70.b[1550] split1()
+split1 G:453 LG com/xpal70.b[1557] split1()
+split1 G:453 LG com/xpal70.b[1564] split1()
+split1 G:453 LG com/xpal70.b[1576] split1()
+split1 G:453 LG com/xpal70.b[1591] split1()
+split1 G:453 LG com/xpal70.b[1608] split1()
+split1 G:453 LG com/xpal70.b[1620] split1()
+split1 G:453 LG com/xpal70.b[1628] split1()
+split1 G:453 LG com/xpal70.b[1645] split1()
+split1 G:453 LG com/xpal70.b[1651] split1()
+split1 G:453 LG com/xpal70.b[1663] split1()
+split1 G:453 LG com/xpal70.b[1676] split1()
+split1 G:453 LG com/xpal70.b[1682] split1()
+split1 G:453 LG com/xpal70.b[1695] split1()
+split1 G:453 LG com/xpal70.b[1708] split1()
+split1 G:453 LG com/xpal70.b[1714] split1()
+split1 G:453 LG com/xpal70.b[1720] split1()
+split1 G:453 LG com/xpal70.b[1726] split1()
+split1 G:453 LG com/xpal70.b[1732] split1()
+split1 G:453 LG com/xpal70.b[1738] split1()
+split1 G:453 LG com/xpal70.b[1757] split1()
+split1 G:453 LG com/xpal70.b[1775] split1()
+split1 G:453 LG com/xpal70.b[1788] split1()
+split1 G:453 LG com/xpal70.b[1801] split1()
+split1 G:453 LG com/xpal70.b[1813] split1()
+split1 G:453 LG com/xpal70.b[1825] split1()
+split1 G:453 LG com/xpal70.b[1853] split1()
+split1 G:453 LG com/xpal70.b[1933] split1()
+split1 G:453 LG com/xpal70.b[1981] split1()
+split1 G:453 LG com/xpal70.b[524] split1()
+split1 G:453 LG com/xpal70.b[534] split1()
+split1 G:453 LG com/xpal70.b[741] split1()
+split1 G:453 LG com/xpal70.b[754] split1()
+split1 G:453 LG com/xpal70.b[857] split1()
+split1 G:453 LG com/xpal70.b[945] split1()
+split1 G:453 RT com/xpal70.b[1408] LET split1()BE..
+split2 G:454 DEF com/xpal70.b[105] split2=454
+split2 G:454 LG com/xpal70.b[1035] split2()
+split2 G:454 LG com/xpal70.b[550] split2()
+split2 G:454 LG com/xpal70.b[562] split2()
+split2 G:454 LG com/xpal70.b[574] split2()
+split2 G:454 LG com/xpal70.b[610] split2()
+split2 G:454 LG com/xpal70.b[634] split2()
+split2 G:454 LG com/xpal70.b[659] split2()
+split2 G:454 LG com/xpal70.b[683] split2()
+split2 G:454 LG com/xpal70.b[707] split2()
+split2 G:454 LG com/xpal70.b[772] split2()
+split2 G:454 LG com/xpal70.b[784] split2()
+split2 G:454 LG com/xpal70.b[796] split2()
+split2 G:454 LG com/xpal70.b[811] split2()
+split2 G:454 LG com/xpal70.b[825] split2()
+split2 G:454 LG com/xpal70.b[839] split2()
+split2 G:454 RT com/xpal70.b[1412] LET split2()BE..
+splitname G:47 DEF libhdr.h[62] splitname=47
+stack M:235 DEF com/xpal70.b[81] stack=235
+stack M:235 MAN com/xpal70.b[1028] h1!s,h2!s:=h3!a,stack
+stack M:235 MAN com/xpal70.b[1347] CASE stack:.. 
+stack M:235 MAN com/xpal70.b[1490] a:=list(6,stack,6,...)
+stack M:235 MAN com/xpal70.b[1522] s:=list(5,stack,4,...)
+stack M:235 MAN com/xpal70.b[899] h1!b,h2!b:=8,stack
+stack M:235 MAN com/xpal70.b[987] h1!b,h2!b:=c!1+6,stack
+stackp G:536 DEF com/xpal70.b[121] stackp=536
+stackp G:536 LG com/xpal70.b[1000] s!(stackp-1):=a
+stackp G:536 LG com/xpal70.b[1226] FOR i=0 TO stackp-1 DO..
+stackp G:536 LG com/xpal70.b[1380] h3!s:=stackp
+stackp G:536 LG com/xpal70.b[1409] stackp,a:=stackp-1,s!stackp
+stackp G:536 LG com/xpal70.b[1413] stackp,a,b:=stackp-2,s!(stackp+1),s!stackp
+stackp G:536 LG com/xpal70.b[1417] e:=list(5,env,e,...)
+stackp G:536 LG com/xpal70.b[1418] stackp:=stackp-1
+stackp G:536 LG com/xpal70.b[1435] stackp:=stackp-1
+stackp G:536 LG com/xpal70.b[1462] h3!b:=h3!s!stackp
+stackp G:536 LG com/xpal70.b[1507] s!stackp:=nilrv
+stackp G:536 LG com/xpal70.b[1508] stackp:=stackp+1
+stackp G:536 LG com/xpal70.b[1515] s!stackp:=list(3,lvalue,nilrv)
+stackp G:536 LG com/xpal70.b[1516] stackp:=stackp+1
+stackp G:536 LG com/xpal70.b[1588] a:=h3!s!(stackp-1)
+stackp G:536 LG com/xpal70.b[1619] h3!a:=h3!h5!h3!s!...
+stackp G:536 LG com/xpal70.b[1873] a:=s!(stackp-1)
+stackp G:536 LG com/xpal70.b[1874] s!(stackp-1):=list(3,lvalue,dummyrv)
+stackp G:536 LG com/xpal70.b[1920] s!(stackp-1):=list(3,lvalue,dummyrv)
+stackp G:536 LG com/xpal70.b[453] e:=s!(stackp-2)
+stackp G:536 LG com/xpal70.b[454] stackp:=stackp-1
+stackp G:536 LG com/xpal70.b[455] s!(stackp-1):=s!stackp
+stackp G:536 LG com/xpal70.b[491] a:=list(3,lvalue,s!...)
+stackp G:536 LG com/xpal70.b[492] s!(stackp-1):=a
+stackp G:536 LG com/xpal70.b[502] s!stackp:=a
+stackp G:536 LG com/xpal70.b[503] stackp:=stackp+1
+stackp G:536 LG com/xpal70.b[508] s!(stackp-1):=h3!s!(stackp-1)
+stackp G:536 LG com/xpal70.b[517] stackp,a!i:=stackp-1,s!stackp
+stackp G:536 LG com/xpal70.b[527] s!stackp:=b!(n-i)
+stackp G:536 LG com/xpal70.b[528] stackp:=stackp+1
+stackp G:536 LG com/xpal70.b[897] h3!s:=stackp
+stackp G:536 LG com/xpal70.b[913] s!stackp:=errorlv
+stackp G:536 LG com/xpal70.b[914] stackp:=stackp+1
+stackp G:536 LG com/xpal70.b[927] a:=s!(stackp-1)
+stackp G:536 LG com/xpal70.b[929] s!stackp:=a
+stackp G:536 LG com/xpal70.b[930] stackp:=stackp+1
+stackp G:536 LG com/xpal70.b[933] a:=s!(stackp-1)
+stackp G:536 LG com/xpal70.b[935] s!stackp:=h3!a
+stackp G:536 LG com/xpal70.b[936] stackp:=stackp+1
+stackp G:536 LG com/xpal70.b[949] stackp:=stackp+1
+stackp G:536 LG com/xpal70.b[954] stackp,b:=stackp-1,s!stackp
+stackp G:536 LG com/xpal70.b[980] error("ATTEM'O APPLY ",a," TO ",...)
+stackp G:536 LG com/xpal70.b[988] h3!s:=stackp
+stackp G:536 LG com/xpal70.b[990] h6!b,h7!b:=e,s!(stackp-2)
+stackp G:536 LG com/xpal70.b[997] a:=s!(stackp-1)
+stackp G:536 LG com/xpal70.b[999] stackp:=stackp-1
+stackp G:536 SG com/xpal70.b[1027] stackp:=6
+stackp G:536 SG com/xpal70.b[1225] stackp:=h3!b
+stackp G:536 SG com/xpal70.b[1409] stackp,a:=stackp-1,s!stackp
+stackp G:536 SG com/xpal70.b[1413] stackp,a,b:=stackp-2,s!(stackp+1),s!stackp
+stackp G:536 SG com/xpal70.b[1418] stackp:=stackp-1
+stackp G:536 SG com/xpal70.b[1435] stackp:=stackp-1
+stackp G:536 SG com/xpal70.b[1508] stackp:=stackp+1
+stackp G:536 SG com/xpal70.b[1516] stackp:=stackp+1
+stackp G:536 SG com/xpal70.b[1525] stackp:=5
+stackp G:536 SG com/xpal70.b[454] stackp:=stackp-1
+stackp G:536 SG com/xpal70.b[503] stackp:=stackp+1
+stackp G:536 SG com/xpal70.b[517] stackp,a!i:=stackp-1,s!stackp
+stackp G:536 SG com/xpal70.b[528] stackp:=stackp+1
+stackp G:536 SG com/xpal70.b[904] stackp:=7
+stackp G:536 SG com/xpal70.b[914] stackp:=stackp+1
+stackp G:536 SG com/xpal70.b[930] stackp:=stackp+1
+stackp G:536 SG com/xpal70.b[936] stackp:=stackp+1
+stackp G:536 SG com/xpal70.b[949] stackp:=stackp+1
+stackp G:536 SG com/xpal70.b[954] stackp,b:=stackp-1,s!stackp
+stackp G:536 SG com/xpal70.b[992] stackp,s:=7,b
+stackp G:536 SG com/xpal70.b[999] stackp:=stackp-1
+stackwarning G:269 DEF com/xpal70.b[134] stackwarning=269
+stackwarning G:269 LG com/xpal70.b[1107] IF @x>stackwarning DO ..
+stackwarning G:269 LG com/xpal70.b[1323] IF @x>stackwarning DO ..
+stackword M:-1412623820 DEF libhdr.h[182] stackword=#xABCD1234
+start G:1 DEF libhdr.h[16] start=1
+startco G:23 DEF libhdr.h[38] startco=23
+stem G:469 DEF com/xpal70.b[108] stem=469
+stem G:469 LG com/xpal70.b[341] f("STEM",stem)
+stem G:469 RT com/xpal70.b[1563] LET stem()BE..
+stepstream G:67 DEF libhdr.h[82] stepstream=67
+stern G:470 DEF com/xpal70.b[108] stern=470
+stern G:470 LG com/xpal70.b[342] f("STERN",stern)
+stern G:470 RT com/xpal70.b[1575] LET stern()BE..
+stof G:86 DEF com/xpal70.b[44] stof=86
+stof G:86 LG com/xpal70.b[233] a:=stof(codep)
+stoi G:88 DEF com/xpal70.b[46] stoi=88
+ston G:485 DEF com/xpal70.b[111] ston=485
+ston G:485 LG com/xpal70.b[358] f("STOI",ston)
+ston G:485 RT com/xpal70.b[1756] LET ston()BE..
+stop G:2 DEF libhdr.h[17] stop=2
+storage G:272 DEF com/xpal70.b[135] storage=272
+storaget G:273 DEF com/xpal70.b[136] storaget=273
+str2numb G:101 DEF libhdr.h[117] str2numb=101
+strb G:537 DEF com/xpal70.b[122] strb=537
+strb G:537 LG com/xpal70.b[209] IF strp<strb DO ..
+strb G:537 LG com/xpal70.b[373] IF strp<strb DO ..
+string M:229 DEF com/xpal70.b[80] string=229
+string M:229 MAN com/xpal70.b[1098] CASE string:.. 
+string M:229 MAN com/xpal70.b[1137] CASE string:.. 
+string M:229 MAN com/xpal70.b[1176] CASE string:.. 
+string M:229 MAN com/xpal70.b[1187] CASE string:.. 
+string M:229 MAN com/xpal70.b[1187] IF btag=string&h4!a=h4!b DO ..
+string M:229 MAN com/xpal70.b[1361] CASE string:.. 
+string M:229 MAN com/xpal70.b[1566] UNLESS h2!b=string DO ..
+string M:229 MAN com/xpal70.b[1571] a:=list(4,string,a,...)
+string M:229 MAN com/xpal70.b[1577] UNLESS h2!a=string DO ..
+string M:229 MAN com/xpal70.b[1597] UNLESS (x=string|x=nils)&(y=string|y=nils) DO ..
+string M:229 MAN com/xpal70.b[1613] b:=list(4,string,0,...)
+string M:229 MAN com/xpal70.b[1616] h3!a:=list(4,string,0,...)
+string M:229 MAN com/xpal70.b[1634] CASE string:.. 
+string M:229 MAN com/xpal70.b[1684] CASE string:.. 
+string M:229 MAN com/xpal70.b[1758] UNLESS h2!a=string DO ..
+string M:229 MAN com/xpal70.b[1765] WHILE h2!a=string DO ..
+string M:229 MAN com/xpal70.b[1777] UNLESS h2!a=string&h2!h3!a=nils DO ..
+string M:229 MAN com/xpal70.b[1796] a:=list(4,string,nilsrv,...)
+string M:229 MAN com/xpal70.b[1847] a:=list(4,string,a,...)
+string M:229 MAN com/xpal70.b[1944] UNLESS h2!b=string&h2!x=jj DO ..
+string M:229 MAN com/xpal70.b[1945] WHILE h2!b=string DO ..
+string M:229 MAN com/xpal70.b[439] a:=list(4,string,a,...)
+string_to_dat G:111 DEF libhdr.h[127] string_to_dat=111
+string_to_number G:100 DEF libhdr.h[116] string_to_number=100
+stringconst M:153 DEF com/xpal70.b[58] stringconst=153
+stringconst M:153 MAN com/xpal70.b[179] CASE stringconst:.. 
+strp G:538 DEF com/xpal70.b[122] strp=538
+strp G:538 LG com/xpal70.b[185] s:=strp-n
+strp G:538 LG com/xpal70.b[209] IF strp<strb DO ..
+strp G:538 LG com/xpal70.b[214] strp!0:=namechain
+strp G:538 LG com/xpal70.b[215] strp!1:=s
+strp G:538 LG com/xpal70.b[216] namechain:=strp
+strp G:538 LG com/xpal70.b[372] strp:=strp-2
+strp G:538 LG com/xpal70.b[373] IF strp<strb DO ..
+strp G:538 LG com/xpal70.b[378] strp!0:=namechain
+strp G:538 LG com/xpal70.b[379] strp!1:=x
+strp G:538 LG com/xpal70.b[380] namechain:=strp
+strp G:538 SG com/xpal70.b[208] strp:=s-2
+strp G:538 SG com/xpal70.b[372] strp:=strp-2
+sys G:3 DEF libhdr.h[18] sys=3
+sysabort G:29 DEF libhdr.h[44] sysabort=29
+t_bhunk M:3000 DEF libhdr.h[178] t_bhunk=3000
+t_bhunk64 M:4000 DEF libhdr.h[179] t_bhunk64=4000
+t_end M:1002 DEF libhdr.h[174] t_end=1002
+t_end64 M:2002 DEF libhdr.h[177] t_end64=2002
+t_hunk M:1000 DEF libhdr.h[172] t_hunk=1000
+t_hunk64 M:2000 DEF libhdr.h[175] t_hunk64=2000
+t_reloc M:1001 DEF libhdr.h[173] t_reloc=1001
+t_reloc64 M:2001 DEF libhdr.h[176] t_reloc64=2001
+tablerr F:568 LAB com/xpal70.b[1855] tablerr:..;..
+tablerr F:568 LF com/xpal70.b[1861] GOTO tablerr
+taskid M:1 DEF libhdr.h[440] taskid=1
+terminate G:444 DEF com/xpal70.b[103] terminate=444
+terminate G:444 LG com/xpal70.b[1302] terminate()
+terminate G:444 LG com/xpal70.b[1325] terminate()
+terminate G:444 LG com/xpal70.b[1377] terminate()
+terminate G:444 RT com/xpal70.b[1229] LET terminate()BE..
+terminate1 G:445 DEF com/xpal70.b[103] terminate1=445
+terminate1 G:445 LG com/xpal70.b[1232] terminate1()
+terminate1 G:445 LG com/xpal70.b[1546] terminate1()
+terminate1 G:445 LG com/xpal70.b[1836] terminate1()
+terminate1 G:445 LG com/xpal70.b[941] terminate1()
+terminate1 G:445 RT com/xpal70.b[1235] LET terminate1()BE..
+testbit G:113 DEF libhdr.h[129] testbit=113
+testbools2 G:440 DEF com/xpal70.b[102] testbools2=440
+testbools2 G:440 FN com/xpal70.b[1201] LET testbools2()=..
+testbools2 G:440 LG com/xpal70.b[551] TEST testbools2() THEN .. ELSE ..
+testbools2 G:440 LG com/xpal70.b[563] TEST testbools2() THEN .. ELSE ..
+testempty G:430 DEF com/xpal70.b[100] testempty=430
+testempty G:430 LG com/xpal70.b[306] a:=testempty
+testempty G:430 RT com/xpal70.b[1003] LET testempty()BE..
+testnumbs2 G:439 DEF com/xpal70.b[101] testnumbs2=439
+testnumbs2 G:439 FN com/xpal70.b[1197] LET testnumbs2()=..
+testnumbs2 G:439 LG com/xpal70.b[611] IF testnumbs2()=number DO ..
+testnumbs2 G:439 LG com/xpal70.b[616] IF testnumbs2()=real DO ..
+testnumbs2 G:439 LG com/xpal70.b[635] IF testnumbs2()=number DO ..
+testnumbs2 G:439 LG com/xpal70.b[641] IF testnumbs2()=real DO ..
+testnumbs2 G:439 LG com/xpal70.b[660] IF testnumbs2()=number DO ..
+testnumbs2 G:439 LG com/xpal70.b[665] IF testnumbs2()=real DO ..
+testnumbs2 G:439 LG com/xpal70.b[684] IF testnumbs2()=number DO ..
+testnumbs2 G:439 LG com/xpal70.b[689] IF testnumbs2()=real DO ..
+testnumbs2 G:439 LG com/xpal70.b[797] IF testnumbs2()=number DO ..
+testnumbs2 G:439 LG com/xpal70.b[801] IF testnumbs2()=real DO ..
+testnumbs2 G:439 LG com/xpal70.b[812] IF testnumbs2()=number DO ..
+testnumbs2 G:439 LG com/xpal70.b[816] IF testnumbs2()=real DO ..
+testnumbs2 G:439 LG com/xpal70.b[826] IF testnumbs2()=number DO ..
+testnumbs2 G:439 LG com/xpal70.b[830] IF testnumbs2()=real DO ..
+testnumbs2 G:439 LG com/xpal70.b[840] IF testnumbs2()=number DO ..
+testnumbs2 G:439 LG com/xpal70.b[844] IF testnumbs2()=real DO ..
+tg M:190 DEF libhdr.h[156] tg=190
+time_exceeded G:93 DEF com/xpal70.b[87] time_exceeded=93
+timeoutch M:-2 DEF libhdr.h[167] timeoutch=-2
+timeovfl G:199 DEF com/xpal70.b[87] timeovfl=199
+tlength G:539 DEF com/xpal70.b[122] tlength=539
+top G:540 DEF com/xpal70.b[122] top=540
+truerv G:541 DEF com/xpal70.b[122] truerv=541
+truerv G:541 LG com/xpal70.b[1636] a:=truerv
+truerv G:541 LG com/xpal70.b[1646] a:=h2!...=m_tuple&h3!...=0->truerv,falserv
+truerv G:541 LG com/xpal70.b[1667] a:=truerv
+truerv G:541 LG com/xpal70.b[1677] a:=h2!h3!a=number->truerv,falserv
+truerv G:541 LG com/xpal70.b[1686] a:=truerv
+truerv G:541 LG com/xpal70.b[1699] a:=truerv
+truerv G:541 LG com/xpal70.b[1709] a:=h2!h3!a=jj->truerv,falserv
+truerv G:541 LG com/xpal70.b[1715] a:=h2!h3!a=label->truerv,falserv
+truerv G:541 LG com/xpal70.b[1721] a:=h2!h3!a=m_tuple->truerv,falserv
+truerv G:541 LG com/xpal70.b[1727] a:=h2!h3!a=real->truerv,falserv
+truerv G:541 LG com/xpal70.b[1733] a:=h2!h3!a=m_dummy->truerv,falserv
+truerv G:541 LG com/xpal70.b[1746] a:=h4!a=h5!a->truerv,falserv
+truerv G:541 LG com/xpal70.b[460] a:=truerv
+truerv G:541 LG com/xpal70.b[536] a:=truerv
+truerv G:541 LG com/xpal70.b[564] a:=h2!a=m_false->b,truerv
+truerv G:541 LG com/xpal70.b[773] a:=equal(a,b)->truerv,falserv
+truerv G:541 LG com/xpal70.b[785] a:=equal(a,b)->falserv,truerv
+truerv G:541 LG com/xpal70.b[798] a:=h3!a<h3!b->truerv,falserv
+truerv G:541 LG com/xpal70.b[802] a:=fls(h3!a,h3!b)->truerv,falserv
+truerv G:541 LG com/xpal70.b[813] a:=h3!a<=h3!b->truerv,falserv
+truerv G:541 LG com/xpal70.b[817] a:=fle(h3!a,h3!b)->truerv,falserv
+truerv G:541 LG com/xpal70.b[827] a:=h3!a>=h3!b->truerv,falserv
+truerv G:541 LG com/xpal70.b[831] a:=fge(h3!a,h3!b)->truerv,falserv
+truerv G:541 LG com/xpal70.b[841] a:=h3!a>h3!b->truerv,falserv
+truerv G:541 LG com/xpal70.b[845] a:=fgr(h3!a,h3!b)->truerv,falserv
+tuple G:397 DEF com/xpal70.b[94] tuple=397
+tuple G:397 LG com/xpal70.b[274] a:=tuple
+tuple G:397 RT com/xpal70.b[512] LET tuple()BE..
+tupledepth G:287 DEF com/xpal70.b[137] tupledepth=287
+tupledepth G:287 LG com/xpal70.b[1040] printa(a,tupledepth)
+tupledepth G:287 LG com/xpal70.b[1068] printa(db1,tupledepth)
+tupledepth G:287 LG com/xpal70.b[1070] printa(db2,tupledepth)
+tupledepth G:287 LG com/xpal70.b[1078] printa(arg1,tupledepth)
+tupledepth G:287 LG com/xpal70.b[1081] printa(arg2,tupledepth)
+tupledepth G:287 LG com/xpal70.b[1269] printa(arg,tupledepth)
+tupledepth G:287 LG com/xpal70.b[1279] printa(h5!a,tupledepth)
+tupledepth G:287 LG com/xpal70.b[1474] printa(a,tupledepth)
+ug M:200 DEF libhdr.h[157] ug=200
+unloadseg G:106 DEF libhdr.h[122] unloadseg=106
+unpackstring G:31 DEF libhdr.h[46] unpackstring=31
+unpackstring G:31 LG com/xpal70.b[435] unpackstring(c!1,v)
+unrdch G:40 DEF libhdr.h[55] unrdch=40
+update G:433 DEF com/xpal70.b[100] update=433
+update G:433 LG com/xpal70.b[298] a:=update
+update G:433 RT com/xpal70.b[1033] LET update()BE..
+userpage G:468 DEF com/xpal70.b[108] userpage=468
+userpage G:468 LG com/xpal70.b[340] f("PAGE",userpage)
+userpage G:468 RT com/xpal70.b[1556] LET userpage()BE..
+wrch G:41 DEF libhdr.h[56] wrch=41
+wrch G:41 LG com/xpal70.b[1044] wrch(10)
+wrch G:41 LG com/xpal70.b[1071] wrch(10)
+wrch G:41 LG com/xpal70.b[1083] wrch(10)
+wrch G:41 LG com/xpal70.b[1098] wrch(h4!x)
+wrch G:41 LG com/xpal70.b[1111] wrch(40)
+wrch G:41 LG com/xpal70.b[1117] wrch(41)
+wrch G:41 LG com/xpal70.b[1139] wrch(39)
+wrch G:41 LG com/xpal70.b[1141] wrch(39)
+wrch G:41 LG com/xpal70.b[1147] wrch(40)
+wrch G:41 LG com/xpal70.b[1150] wrch(44)
+wrch G:41 LG com/xpal70.b[1153] wrch(41)
+wrch G:41 LG com/xpal70.b[1162] wrch(32)
+wrch G:41 LG com/xpal70.b[1164] wrch(32)
+wrch G:41 LG com/xpal70.b[1270] wrch(10)
+wrch G:41 LG com/xpal70.b[1276] wrch(9)
+wrch G:41 LG com/xpal70.b[1278] wrch(9)
+wrch G:41 LG com/xpal70.b[1280] wrch(10)
+wrch G:41 LG com/xpal70.b[1471] wrch(10)
+writed G:85 DEF libhdr.h[100] writed=85
+writef G:89 DEF com/xpal70.b[47] writef=89
+writef G:94 DEF libhdr.h[110] writef=94
+writehex G:87 DEF libhdr.h[102] writehex=87
+writehex G:87 LG com/xpal70.b[1333] writehex(h1!x)
+writehex G:87 LG com/xpal70.b[1333] writehex(x)
+writen G:86 DEF libhdr.h[101] writen=86
+writen G:86 LG com/xpal70.b[1043] writen(n)
+writen G:86 LG com/xpal70.b[1089] writen(h3!x)
+writen G:86 LG com/xpal70.b[1237] writen(h3!lookupno)
+writen G:86 LG com/xpal70.b[1239] writen(count)
+writen G:86 LG com/xpal70.b[1242] writen(gcmark)
+writen G:86 LG com/xpal70.b[1275] writen(n>>ndist)
+writen G:86 LG com/xpal70.b[1315] writen(listl-listp)
+writen G:86 LG com/xpal70.b[1334] writen(h2!x)
+writen G:86 LG com/xpal70.b[171] writen(ch)
+writenode G:447 DEF com/xpal70.b[103] writenode=447
+writenode G:447 LG com/xpal70.b[1896] writenode(m)
+writenode G:447 LG com/xpal70.b[1902] writenode(n)
+writenode G:447 RT com/xpal70.b[1274] LET writenode(n)BE..
+writeoct G:88 DEF libhdr.h[103] writeoct=88
+writes G:89 DEF libhdr.h[104] writes=89
+writes G:89 LG com/xpal70.b[1039] writes("THE V'RHS IS: ")
+writes G:89 LG com/xpal70.b[1042] writes("THE N'LHS IS: ")
+writes G:89 LG com/xpal70.b[1066] writes("*n*nRUN' ERROR: ")
+writes G:89 LG com/xpal70.b[1067] writes(ms1)
+writes G:89 LG com/xpal70.b[1069] writes(ms2)
+writes G:89 LG com/xpal70.b[1075] writes("*n*nRUN' ERROR: ")
+writes G:89 LG com/xpal70.b[1076] writes(op)
+writes G:89 LG com/xpal70.b[1077] writes(" APPLIED TO ")
+writes G:89 LG com/xpal70.b[1080] writes(" AND ")
+writes G:89 LG com/xpal70.b[1094] writes(v)
+writes G:89 LG com/xpal70.b[1104] writes("NIL")
+writes G:89 LG com/xpal70.b[1108] writes("( ETC )")
+writes G:89 LG com/xpal70.b[1114] writes(", ")
+writes G:89 LG com/xpal70.b[1121] writes("TRUE")
+writes G:89 LG com/xpal70.b[1122] writes("FALSE")
+writes G:89 LG com/xpal70.b[1125] writes("$FUNCTION$")
+writes G:89 LG com/xpal70.b[1126] writes("$LABEL$")
+writes G:89 LG com/xpal70.b[1127] writes("$ENVIRONMENT$")
+writes G:89 LG com/xpal70.b[1128] writes("$DUMMY$")
+writes G:89 LG com/xpal70.b[1129] writes("$$$")
+writes G:89 LG com/xpal70.b[1135] writes(" ETC ")
+writes G:89 LG com/xpal70.b[1146] writes(" NIL ")
+writes G:89 LG com/xpal70.b[1238] writes(" LOOKUPS ?")
+writes G:89 LG com/xpal70.b[1240] writes(" CYCLES*n")
+writes G:89 LG com/xpal70.b[1243] writes(" GARB'ECTIONS*n")
+writes G:89 LG com/xpal70.b[1266] writes("AT TH'TED IS: ")
+writes G:89 LG com/xpal70.b[1267] writes(name)
+writes G:89 LG com/xpal70.b[1268] writes("*nTHE 'IED IS: ")
+writes G:89 LG com/xpal70.b[1277] writes(h4!a)
+writes G:89 LG com/xpal70.b[1297] writes("*n*nNEX'N PHASE*n")
+writes G:89 LG com/xpal70.b[1301] writes("*n*nRUN'HAUSTED*n")
+writes G:89 LG com/xpal70.b[1305] writes("*nMARK'EFORMED*n")
+writes G:89 LG com/xpal70.b[1315] writes("  ")
+writes G:89 LG com/xpal70.b[1317] writes(" *n")
+writes G:89 LG com/xpal70.b[1324] writes("*n*nMAX'XCEEDED*n")
+writes G:89 LG com/xpal70.b[1332] writes("*n*nMAR'T ERROR*n")
+writes G:89 LG com/xpal70.b[1333] writes(" H1!x=")
+writes G:89 LG com/xpal70.b[1334] writes(" NODE TYPE IS ")
+writes G:89 LG com/xpal70.b[1335] writes(" *n")
+writes G:89 LG com/xpal70.b[1375] writes("*n*nMAX'MBER OF ")
+writes G:89 LG com/xpal70.b[1376] writes("GARBA'RFORMED*n")
+writes G:89 LG com/xpal70.b[1468] writes("THE N'ED ARE:*n")
+writes G:89 LG com/xpal70.b[1470] writes(c!i)
+writes G:89 LG com/xpal70.b[1473] writes("THE V'ED ARE: ")
+writes G:89 LG com/xpal70.b[1545] writes("*n*nEXE'INISHED*n")
+writes G:89 LG com/xpal70.b[170] writes("ILLEG' LOADER ")
+writes G:89 LG com/xpal70.b[1835] writes("*nEND 'NTERED*n*n")
+writes G:89 LG com/xpal70.b[1887] writes("THE C'NT IS:*n*n")
+writes G:89 LG com/xpal70.b[1892] writes("?VARI'RVALUE*n*n")
+writes G:89 LG com/xpal70.b[1897] writes("ETC*n")
+writes G:89 LG com/xpal70.b[1914] writes("*n*nTHE'N WHICH ")
+writes G:89 LG com/xpal70.b[1915] writes("THE A'CE IS:*n*n")
+writes G:89 LG com/xpal70.b[1928] writes("ERROR'PROGRAM*n")
+writes G:89 LG com/xpal70.b[210] writes("*n*n*n?S'CUTION.*n")
+writes G:89 LG com/xpal70.b[258] writes("*n*n*n?T'CUTION.*n")
+writes G:89 LG com/xpal70.b[374] writes("*n*n*n?S'CUTION.*n")
+writes G:89 LG com/xpal70.b[619] writes("*nOVERFLOW:")
+writes G:89 LG com/xpal70.b[644] writes("*nOVERFLOW:")
+writes G:89 LG com/xpal70.b[668] writes("*nOVERFLOW:")
+writes G:89 LG com/xpal70.b[692] writes("*nOVERFLOW:")
+writes G:89 LG com/xpal70.b[727] writes("*nOVERFLOW:")
+writes G:89 LG com/xpal70.b[909] writes("EXECU'ESUMED*n*n")
+writes G:89 LG com/xpal70.b[940] writes("*nMAXI'REACHED*n")
+writet G:90 DEF libhdr.h[105] writet=90
+writeu G:91 DEF libhdr.h[106] writeu=91
+writewords G:45 DEF libhdr.h[60] writewords=45
+writez G:92 DEF libhdr.h[107] writez=92
+xpal G:202 DEF com/xpal70.b[87] xpal=202
+xpend G:289 DEF com/xpal70.b[138] xpend=289
+xpend G:289 LG com/xpal70.b[1244] longjump(xpend,xpendlevel)
+xpend G:289 LG com/xpal70.b[212] longjump(xpend,xpendlevel)
+xpend G:289 LG com/xpal70.b[260] longjump(xpend,xpendlevel)
+xpend G:289 LG com/xpal70.b[376] longjump(xpend,xpendlevel)
+xpendlevel G:290 DEF com/xpal70.b[139] xpendlevel=290
+xpendlevel G:290 LG com/xpal70.b[1244] longjump(xpend,xpendlevel)
+xpendlevel G:290 LG com/xpal70.b[212] longjump(xpend,xpendlevel)
+xpendlevel G:290 LG com/xpal70.b[260] longjump(xpend,xpendlevel)
+xpendlevel G:290 LG com/xpal70.b[376] longjump(xpend,xpendlevel)

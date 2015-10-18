@@ -1,0 +1,2233 @@
+ ; This is an assembly language version of cinterp for the Hitachi SH-3
+ ; processor used in, for instance, the HP 620LX handheld machine.
+ ;
+ ; Written by Martin Richards  (c) June 1999
+
+ ; Register usage conventions:
+ ;
+ ; R0       Return value - Temporary Register -- used by the assembler
+ ; R1-R3    Temporary Registers
+ ; R4-R7    The first four arguments
+ ; R8-R13   Permanent registers
+ ; R14      Frame Pointer
+ ; R15      Stack Pointer - Permanent register
+ ; PR       Holds the return address (also in R0 by convention)
+
+    .export _cintasm
+    .import _dosys
+    .import _muldiv
+    .import _result2
+    .import __divls
+    .import __modls
+
+    .section    .drective, data, align=4
+    .sdata      "-defaultlib:libc.lib -defaultlib:coredll.lib"
+
+    .section    .text, code, align=4
+
+_cintasm:   .entry
+    mov.l   R14,@-R15       ; Save the permanent registers
+    mov.l   R8,@-R15
+    mov.l   R9,@-R15
+    mov.l   R10,@-R15
+    mov.l   R11,@-R15
+    mov.l   R12,@-R15
+    mov.l   R13,@-R15
+    sts.l   PR,@-R15
+    add     #-40,R15        ; make room for local variables
+    .prolog
+
+; The stack layout is as follows:
+
+;         84:  -      caller arg 1 initially in R4      
+;         80:  -      caller arg 2 initially in R5
+;         76:  -      caller arg 3
+;         72:  -      caller arg 4
+;         68:  saved R14       
+;         64:  saved R8
+;         60:  saved R9
+;         56:  saved R10
+;         52:  saved R11
+;         48:  saved R12
+;         44:  saved R13
+;         40:  saved PR                 The return address
+;         36:                           Local variables
+;         32:  Cintcode ST register        
+;         28:  Cintcode Count register 
+;         24:  m/c address of regs vector        
+;         20:  Spare        
+;         16:  Cintcode C register        
+;         12:  Arg area for calls of dosys, muldiv, etc        
+;          8:
+;          4:
+; R15 -->  0:
+
+    mov     R5,R13          ; R13 = m/c addr of cintcode memory
+    mov     R4,R1
+    shll2   R1
+    add     R13,R1          ; R1 = m/c addr of regs vector
+    mov.l   R1,@(24,R15)    ; save as a local
+
+    mov.l   @R1,R8          ; A
+    mov.l   @(4,R1),R9      ; B
+    mov.l   @(8,R1),R0
+    mov.l   R0,@(16,R15)    ; C
+    mov.l   @(12,R1),R10
+    add     R13,R10         ; m/c address P
+    mov.l   @(16,R1),R11
+    mov     R11,R0
+    add     R13,R11         ; m/c address G
+    mov     #4,R6
+    shll8   R6
+    add     R11,R6          ; R6 = m/c addr of g!256
+    mov.l   @(20,R1),R2
+    mov.l   R2,@(32,R15)    ; ST
+    mov.l   @(24,R1),R12
+    add     R13,R12         ; m/c address PC
+    mov.l   @(28,R1),R7     ; Count
+    mova    runtbl,R0
+    mov     R0,R14
+    
+ ; The register and local variable usage is as follows:
+
+ ;  R6         m/c address of g!256
+ ;  R7         Count  -- saved in @(28,R15)
+ ;  R8         A
+ ;  R9         B
+ ;  @(16,R15)  C
+ ;  R10        m/c addr P
+ ;  R11        m/c addr G
+ ;  R12        m/c addr PC
+ ;  @(24,R15)  m/c address of regs vector
+ ;  R13        m/c address of base of Cintcode memory
+ ;  R14        = runtbl
+
+
+    ; To single step cintasm:
+    ; Set count to -2 (debug command: 0-2sr7)
+    ; then use the c command. This will execute one cintcode
+    ; instruction and then cause fault 10.
+
+    bra     fetch1
+    mov.b   @R12+,R0
+
+ret10:
+    add     #-1,R12     ; Correct pc
+    mov     #-2,R7      ; Count := -2
+    bra     ret
+    mov     #10,R0
+    
+ ; At fetch (and fetch1):
+ ;   R0 = op code F (sign extended) of intruction: F A ...
+ ;   R12 = pc  (points to the arg byte A, if any)
+ ; At the jump:
+ ;   R12 has been incremented to point to the byte after A
+ ;   R0 = A (sign extended)
+
+unimp:                      ; used while consructing cintasm
+    add     #-2,R12         ; Correct pc
+    mov.l   R1,@(32,R15)    ; put unimplemented instruction in st
+    bra     ret
+    mov     #80,R0          ; cause fault 80
+
+    .align  4
+fetch: ; The following six intructions are only needed while debugging cintasm.
+       ; They should be commented out when not needed.
+;    mov     #-2,R1
+;    cmp/eq R1,R7
+;    bt      ret10           ; cause abort 10 when Count = -2
+;    mov     #-1,R1
+;    cmp/eq  R1,R7
+;    subc    R7,R7           ; UNLESS Count=-1 DO Count++
+
+fetch1:
+    shll2   R0
+    mov.l   @(R0,R14),R2    ; R0 = runtbl[F]
+    jmp     @R2
+    mov.b   @R12+,R0        ; R0 = *pc++    (sign extended)
+
+ret:                        ; Result in R0
+    mov.l   @(24,R15),R1    ; m/c address of regs vector
+    mov.l   R8,@R1          ; A
+    mov.l   R9,@(4,R1)      ; B
+    mov.l   @(16,R15),R2
+    mov.l   R2,@(8,R1)      ; C
+    sub     R13,R10
+    mov.l   R10,@(12,R1)    ; P
+    sub     R13,R11
+    mov.l   R11,@(16,R1)    ; G
+    mov.l   @(32,R15),R2
+    mov.l   R2,@(20,R1)     ; ST
+    sub     R13,R12
+    mov.l   R12,@(24,R1)    ; PC
+    mov.l   R7,@(28,R1)     ; Count
+
+    add     #40,R15         ; restore registers and return
+    lds.l   @R15+,PR
+    mov.l   @R15+,R13
+    mov.l   @R15+,R12
+    mov.l   @R15+,R11
+    mov.l   @R15+,R10
+    mov.l   @R15+,R9
+    mov.l   @R15+,R8
+    rts
+    mov.l   @R15+,R14
+    
+; The following dispatch table runtbl used a sign extended subscript.
+
+    .align  4
+    .data.l L128, L129, L130, L131, L132, L133, L134, L135
+    .data.l L136, L137, L138, L139, L140, L141, L142, L143
+    .data.l L144, L145, L146, L147, L148, L149, L150, L151
+    .data.l L152, L153, L154, L155, L156, L157, L158, L159
+    .data.l L160, L161, L162, L163, L164, L165, L166, L167
+    .data.l L168, L169, L170, L171, L172, L173, L174, L175
+    .data.l L176, L177, L178, L179, L180, L181, L182, L183
+    .data.l L184, L185, L186, L187, L188, L189, L190, L191
+    .data.l L192, L193, L194, L195, L196, L197, L198, L199
+    .data.l L200, L201, L202, L203, L204, L205, L206, L207
+    .data.l L208, L209, L210, L211, L212, L213, L214, L215
+    .data.l L216, L217, L218, L219, L220, L221, L222, L223
+    .data.l L224, L225, L226, L227, L228, L229, L230, L231
+    .data.l L232, L233, L234, L235, L236, L237, L238, L239
+    .data.l L240, L241, L242, L243, L244, L245, L246, L247
+    .data.l L248, L249, L250, L251, L252, L253, L254, L255
+runtbl:
+    .data.l   L0,   L1,   L2,   L3,   L4,   L5,   L6,   L7
+    .data.l   L8,   L9,  L10,  L11,  L12,  L13,  L14,  L15
+    .data.l  L16,  L17,  L18,  L19,  L20,  L21,  L22,  L23
+    .data.l  L24,  L25,  L26,  L27,  L28,  L29,  L30,  L31
+    .data.l  L32,  L33,  L34,  L35,  L36,  L37,  L38,  L39
+    .data.l  L40,  L41,  L42,  L43,  L44,  L45,  L46,  L47
+    .data.l  L48,  L49,  L50,  L51,  L52,  L53,  L54,  L55
+    .data.l  L56,  L57,  L58,  L59,  L60,  L61,  L62,  L63
+    .data.l  L64,  L65,  L66,  L67,  L68,  L69,  L70,  L71
+    .data.l  L72,  L73,  L74,  L75,  L76,  L77,  L78,  L79
+    .data.l  L80,  L81,  L82,  L83,  L84,  L85,  L86,  L87
+    .data.l  L88,  L89,  L90,  L91,  L92,  L93,  L94,  L95
+    .data.l  L96,  L97,  L98,  L99, L100, L101, L102, L103
+    .data.l L104, L105, L106, L107, L108, L109, L110, L111
+    .data.l L112, L113, L114, L115, L116, L117, L118, L119
+    .data.l L120, L121, L122, L123, L124, L125, L126, L127
+
+
+;   .text
+
+ ; frq=nnn  give the frequency of execution of each
+ ;          cintcode operation when the bcpl compiler
+ ;          compiles itself
+
+L0:   ; Error     frq=0
+L1:   ; Error     frq=0
+    add     #-2,R12
+    bra     ret
+    mov     #1,R0
+
+L2:   ; brk     frq=0
+    add     #-2,R12
+    bra     ret
+    mov     #2,R0
+
+L3:   ; k3     frq=3002
+    bra     applyk
+    mov     #4*3,R1
+
+L4:   ; k4     frq=7738
+    bra     applyk
+    mov     #4*4,R1
+
+L5:   ; k5     frq=4520
+    bra     applyk
+    mov     #4*5,R1
+
+L6:   ; k6     frq=1
+    bra     applyk
+    mov     #4*6,R1
+
+L7:   ; k7     frq=480
+    bra     applyk
+    mov     #4*7,R1
+
+L8:   ; k8     frq=10
+    bra     applyk
+    mov     #4*8,R1
+
+L9:   ; k9     frq=0
+    bra     applyk
+    mov     #4*9,R1
+
+L10:  ; k10    frq=0
+    bra     applyk
+    mov     #4*10,R1
+
+L11:  ; k11    frq=28
+    mov     #4*11,R1
+
+applyk:
+    mov     R8,R4       ; The entry point
+    mov     R9,R8       ; The first arg
+    add     #-1,R12     ; Correct the return address
+
+apply:  ; v1 R1  = 4*k  (the stack pointer increment)
+        ; a0 R4  = entry point
+        ; s0 R8  = first argument
+        ; s6 R12 = return address
+    add     R10,R1      ; R1 = new P
+    sub     R13,R10
+    mov.l   R10,@R1     ; p[k] := p
+    mov     R1,R10      ; p := p+k
+    sub     R13,R12
+    mov.l   R12,@(4,R1) ; p[1] := return address
+    mov.l   R4,@(8,R1)  ; p[2] := entry point
+    mov     R4,R12
+    add     R13,R12     ; pc := entry point (as m/c address)
+    cmp/gt  R12,R13
+    bt/s    negpc
+    mov.l   R8,@(12,R1) ; p[3] := a
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 := *pc++
+
+negpc:
+    bra     ret
+    mov     #4,R0       ; negative pc fault
+
+L12:  ; lf      frq=11729
+    mov     R8,R9       ; b := a
+    mov     R0,R8
+    add     R12,R8
+    add     #-1,R8
+    sub     R13,R8      ; a := pc + SB[pc]
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 := *pc++
+
+L13:  ; lf$     frq=4338
+    mov     R8,R9       ; b := a
+    extu.b  R0,R1       ; R1 = B[pc]
+    mov     R12,R0
+    add     #-1,R0
+    shlr    R0
+    add     R1,R0
+    shll    R0          ; R0 = 2*(((pc-1)>>1)+R1)
+    mov.w   @R0,R8
+    add     R0,R8
+    sub     R13,R8      ; a := R0 + SH[R0]
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 := *pc++
+
+L14:  ; lm      frq=598248
+    mov     R8,R9       ; b := a
+    extu.b  R0,R1       ; R1 = A  (unsigned)
+    neg     R1,R8       ; a := -A
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 := *pc++
+
+L15:  ; lm1     frq=163150
+    mov     R8,R9       ; b := a
+    bra     fetch
+    mov     #-1,R8      ; a := -1
+
+L16:  ; l0      frq=244421
+    mov     R8,R9       ; b := a
+    bra     fetch
+    mov     #0,R8       ; a := 0
+
+L17:  ; l1      frq=740929
+    mov     R8,R9       ; b := a
+    bra     fetch
+    mov     #1,R8       ; a := 1
+
+L18:  ; l2      frq=38430
+    mov     R8,R9       ; b := a
+    bra     fetch
+    mov     #2,R8       ; a := 2
+
+L19:  ; l3      frq=49815
+    mov     R8,R9       ; b := a
+    bra     fetch
+    mov     #3,R8       ; a := 3
+
+L20:  ; l4      frq=83246
+    mov     R8,R9       ; b := a
+    bra     fetch
+    mov     #4,R8       ; a := 4
+
+L21:  ; l5      frq=1224
+    mov     R8,R9       ; b := a
+    bra     fetch
+    mov     #5,R8       ; a := 5
+
+L22:  ; l6      frq=54857
+    mov     R8,R9       ; b := a
+    bra     fetch
+    mov     #6,R8       ; a := 6
+
+L23:  ; l7      frq=8683
+    mov     R8,R9       ; b := a
+    bra     fetch
+    mov     #7,R8       ; a := 7
+
+L24:  ; l8      frq=13745
+    mov     R8,R9       ; b := a
+    bra     fetch
+    mov     #8,R8       ; a := 8
+
+L25:  ; l9      frq=96877
+    mov     R8,R9       ; b := a
+    bra     fetch
+    mov     #9,R8       ; a := 9
+
+L26:  ; l10     frq=253528
+    mov     R8,R9       ; b := a
+    bra     fetch
+    mov     #10,R8      ; a := 10
+
+L27:  ; fhop     frq=2295
+    mov     #0,R8       ; a := 0
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 := *pc++
+
+L28:  ; jeq     frq=758839
+    cmp/eq  R8,R9
+    bt      jump0
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 := *pc++
+jump0:
+    add     #-1,R12
+    add     R0,R12      ; pc := pc + SB[pc]
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 := *pc++
+
+L29:  ; jeq$     frq=0
+    cmp/eq  R8,R9
+    bt      indjump0
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 := *pc++
+indjump0:
+    bra     indjump
+
+L30:  ; jeq0     frq=253477
+    tst     R8,R8
+    bt      jump0
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 := *pc++
+
+L31:  ; jeq0$     frq=2926
+    tst     R8,R8
+    bt      indjump0
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 := *pc++
+
+L32:  ; k     frq=35172
+    extu.b  R0,R1
+    shll2   R1          ; R1 = 4*k
+    mov     R8,R4       ; R4 = entry point
+    bra     apply
+    mov     R9,R8       ; R8 = first arg
+
+L33:  ; kh     frq=0
+;    bra     unimp
+;    nop
+    mov.b   @R12+,R1
+    extu.b  R0,R0
+    extu.b  R1,R1
+    shll8   R1
+    add     R0,R1
+    shll2   R1          ; R1 = 4*k (= 4*H[pc])
+    mov     R8,R4       ; R4 = entry point
+    bra     apply
+    mov     R9,R8       ; R8 = first arg
+
+L34:  ; kw     frq=0
+;;    bra     unimp
+;;    nop
+    bsr     getW
+    mov     R8,R4       ; R4 = entry point
+    mov     R0,R1
+    shll2   R1          ; R1 = 4*k (= 4*W[pc])
+    bra     apply
+    mov     R9,R8       ; R8 = first arg
+
+
+L35:  ; k3g      frq=204783
+    bra     applykg
+    mov     #4*3,R1
+
+L36:  ; k4g      frq=135269
+    bra     applykg
+    mov     #4*4,R1
+
+L37:  ; k5g      frq=263407
+    bra     applykg
+    mov     #4*5,R1
+
+L38:  ; k6g      frq=13337
+    bra     applykg
+    mov     #4*6,R1
+
+L39:  ; k7g      frq=4992
+    bra     applykg
+    mov     #4*7,R1
+
+L40:  ; k8g      frq=4660
+    bra     applykg
+    mov     #4*8,R1
+
+L41:  ; k9g      frq=1689
+    bra     applykg
+    mov     #4*9,R1
+
+L42:  ; k10g     frq=310
+    bra     applykg
+    mov     #4*10,R1
+
+L43:  ; k11g     frq=9
+    mov     #4*11,R1
+
+applykg:
+    extu.b  R0,R0           ; R0 = n (unsigned)
+    shll2   R0
+    bra     apply
+    mov.l   @(R0,R11),R4    ; R4 = g!n
+
+L44:  ; s0g     frq=401845
+    extu.b  R0,R0
+    shll2   R0
+    mov.l   @(R0,R11),R0
+    shll2   R0
+    mov.l   R8,@(R0,R13)    ; g!n!0 := a
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 = *pc++
+
+L45:  ; l0g     frq=411817
+    mov     R8,R9           ; b := a
+    extu.b  R0,R0
+    shll2   R0
+    mov.l   @(R0,R11),R0
+    shll2   R0
+    mov.l   @(R0,R13),R8    ; a := g!n!0
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 = *pc++
+
+L46:  ; l1g     frq=409459
+    mov     R8,R9           ; b := a
+    extu.b  R0,R0
+    shll2   R0
+    mov.l   @(R0,R11),R0
+    shll2   R0
+    add     R13,R0
+    mov.l   @(4*1,R0),R8    ; a := g!n!1
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 = *pc++
+
+
+L47:  ; l2g     frq=3
+    mov     R8,R9           ; b := a
+    extu.b  R0,R0
+    shll2   R0
+    mov.l   @(R0,R11),R0
+    shll2   R0
+    add     R13,R0
+    mov.l   @(4*2,R0),R8    ; a := g!n!2
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 = *pc++
+
+
+L48:  ; lg     frq=1365544
+    mov     R8,R9       ; b := a
+    extu.b  R0,R1
+    shll2   R1
+    add     R11,R1
+    mov.l   @R1,R8      ; a := g!(B[pc++])
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 = *pc++
+
+L49:  ; sg     frq=324122
+    extu.b  R0,R1
+    shll2   R1
+    add     R11,R1
+    mov.l   R8,@R1      ; g!(B[pc++]) := a
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 = *pc++
+
+L50:  ; llg     frq=0
+    mov     R8,R9       ; b := a
+    mov     R11,R8
+    sub     R13,R8
+    shlr2   R8          ; R8 = BCPL address of g!0
+    extu.b  R0,R0
+    add     R0,R8       ; a := g + B[pc++]
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 = *pc++
+
+L51:  ; ag     frq=7
+    extu.b  R0,R0
+    shll2   R0
+    mov.l   @(R0,R11),R0
+    add     R0,R8       ; a += g!(B[pc++])
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 := *pc++
+
+L52:  ; mul     frq=132122
+    mul.l   R9,R8
+    bra      fetch
+    sts     MACL,R8     ; a := b * a
+
+L53:  ; div     frq=74675
+    tst     R8,R8
+    bt      diverr
+    mov.l   divls,R1
+    mov.l   R7,@(28,R15)    ; Save Count
+    mov     R8,R5
+    mov     R9,R4
+    jsr     @R1
+    nop
+    nop
+    nop
+    mov     #4,R6
+    shll8   R6
+    add     R11,R6          ; R6 = m/c addr of g!256
+    mov.l   @(28,R15),R7    ; Restore Count
+    mov     R0,R8           ; a := b / a
+    add     #-1,R12
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 := *pc++
+
+L54:  ; rem     frq=92754
+    tst     R8,R8
+    bt      diverr
+    mov.l   modls,R1
+    mov.l   R7,@(28,R15)    ; Save Count
+    mov     R8,R5
+    mov     R9,R4
+    jsr     @r1
+    nop
+    nop
+    nop
+    mov     #4,R6
+    shll8   R6
+    add     R11,R6          ; R6 = m/c addr of g!256
+    mov.l   @(28,R15),R7    ; Restore Count
+    mov     R0,R8           ; a := b REM a
+    add     #-1,R12
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 := *pc++
+
+    .align  4
+divls:
+    .data.l __divls
+modls:
+    .data.l __modls
+
+diverr:
+    add     #-1,R12     ; Correct pc
+    bra     ret
+    mov     #5,R0
+
+L55:  ; xor     frq=56780
+    bra     fetch
+    xor     R9,R8       ; a := b NEQV a
+
+L56:  ; sl     frq=0
+    mov     R12,R1
+    add     #-1,R1
+    mov.l   R8,@(R0,R1) ; W[pc + SB[pc]] := a
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 := *pc++
+
+L57:  ; sl$     frq=0
+    extu.b  R0,R1       ; R1 = B[pc]
+    mov     R12,R0
+    add     #-1,R0
+    shlr    R0
+    add     R1,R0
+    shll    R0          ; R0 := pc & #xFFFFFFFE
+    mov.w   @R0,R1
+    mov.l   R8,@(R0,R1) ; W[x+SH[x]] := a
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 := *pc++
+
+L58:  ; ll     frq=0
+    mov     R8,R9       ; b := a
+    mov     R12,R1
+    add     #-1,R1
+    mov.l   @(R0,R1),R8 ; a := W[pc + SB[pc]]
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 := *pc++
+
+L59:  ; ll$     frq=0
+    mov     R8,R9       ; b := a
+    extu.b  R0,R1
+    mov     R12,R0
+    add     #-1,R0
+    shlr    R0
+    add     R1,R0
+    shll    R0          ; R0 := (pc & #xFFFFFFFE) + 2*B[pc]
+    mov.w   @R0,R1
+    mov.l   @(R0,R1),R8 ; a := W[x+SH[x]]
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 := *pc++
+
+L60:  ; jne     frq=412167
+    cmp/eq  R8,R9
+    bf      jump1
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 := *pc++
+jump1:
+    add     #-1,R12
+    add     R0,R12      ; pc := pc + SB[pc]
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 := *pc++
+
+L61:  ; jne$     frq=17329
+    cmp/eq  R8,R9
+    bf      indjump1
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 := *pc++
+indjump1:
+    bra     indjump
+
+L62:  ; jne0     frq=673057
+    tst     R8,R8
+    bf      jump1
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 := *pc++
+
+L63:  ; jne0$     frq=8593
+    tst     R8,R8
+    bf      indjump1
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 := *pc++
+
+L64:  ; llp     frq=10685
+    mov     R8,R9       ; b := a
+    extu.b  R0,R1       ; R1 = n
+    mov     R10,R8
+    sub     R13,R8
+    shlr2   R8
+    add     R1,R8       ; a := @p!n
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 = *pc++
+
+L65:  ; llph     frq=0
+;;    bra     unimp
+;;    nop
+    mov     R8,R9       ; b := a
+    mov.b   @R12+,R1
+    extu.b  R0,R0
+    extu.b  R1,R1
+    shll8   R1
+    add     R0,R1           ; R1 = k (= H[pc])
+    mov     R10,R8
+    sub     R13,R8
+    shlr2   R8
+    add     R1,R8           ; a := @p!(H[pc])
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 = *pc++
+
+L66:  ; llpw     frq=0
+;;    bra     unimp
+;;    nop
+    bsr     getW
+    mov     R8,R9           ; b := a
+    mov     R10,R8
+    sub     R13,R8
+    shlr2   R8
+    add     R0,R8           ; a := W[pc]
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 := *pc++
+
+L67:  ; k3g1     frq=62815
+    bra     applykg1
+    mov     #4*3,R1
+
+L68:  ; k4g1     frq=312332
+    bra     applykg1
+    mov     #4*4,R1
+
+L69:  ; k5g1     frq=93172
+    bra     applykg1
+    mov     #4*5,R1
+
+L70:  ; k6g1     frq=33086
+    bra     applykg1
+    mov     #4*6,R1
+
+L71:  ; k7g1     frq=56780
+    bra     applykg1
+    mov     #4*7,R1
+
+L72:  ; k8g1     frq=15758
+    bra     applykg1
+    mov     #4*8,R1
+
+L73:  ; k9g1     frq=25517
+    bra     applykg1
+    mov     #4*9,R1
+
+L74:  ; k10g1     frq=2673
+    bra     applykg1
+    mov     #4*10,R1
+
+L75:  ; k11g1     frq=3440
+    mov     #4*11,R1
+
+applykg1:    
+;    bra     unimp
+;    nop
+    extu.b  R0,R0       ; R0 = n = B[pc]
+    shll2   R0
+    bra  apply          ; R1=4*k, R8=first arg, R12=return addr
+    mov.l   @(R0,R6),R4 ; R4 = g!(n+256) -- the entry point
+
+L76:  ; s0g1     frq=1639
+;    bra     unimp
+;    nop
+    extu.b  R0,R0           ; R0 = n = B[pc]
+    shll2   R0
+    mov.l   @(R0,R6),R0
+    shll2   R0
+    mov.l   R8,@(R0,R13)    ; !(g!(n+256)) := a
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 = *pc++
+ 
+L77:  ; l0g1     frq=724
+;    bra     unimp
+;    nop
+    mov     R8,R9           ; b := a
+    extu.b  R0,R0           ; R0 = n = B[pc]
+    shll2   R0
+    mov.l   @(R0,R6),R0
+    shll2   R0
+    mov.l   @(R0,R13),R8    ; a := !(g!(n+256))
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 = *pc++
+
+L78:  ; l1g1     frq=724
+;    bra     unimp
+;    nop
+    mov     R8,R9           ; b := a
+    extu.b  R0,R0           ; R0 = n = B[pc]
+    shll2   R0
+    mov.l   @(R0,R6),R0
+    shll2   R0
+    add     R13,R0
+    mov.l   @(4*1,R0),R8    ; a := 1!(g!(n+256))
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 = *pc++
+
+L79:  ; l2g1     frq=724
+;    bra     unimp
+;    nop
+    mov     R8,R9           ; b := a
+    extu.b  R0,R0           ; R0 = n = B[pc]
+    shll2   R0
+    mov.l   @(R0,R6),R0
+    shll2   R0
+    add     R13,R0
+    mov.l   @(4*2,R0),R8    ; a := 2!(g!(n+256))
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 = *pc++
+
+L80:  ; lg1     frq=249497
+;    bra     unimp
+;    nop
+    mov     R8,R9       ; b := a
+    extu.b  R0,R0
+    shll2   R0
+    mov.l   @(R0,R6),R8 ; a := g!(n+256)
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 := *pc++
+
+L81:  ; sg1     frq=155081
+;    bra     unimp
+;    nop
+    extu.b  R0,R0
+    shll2   R0
+    mov.l   R8,@(R0,R6)     ; g!(n+256) := a
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 := *pc++
+
+L82:  ; llg1     frq=0
+;    bra     unimp
+;    nop
+    mov     R8,R9           ; b := a
+    extu.b  R0,R0
+    mov     R6,R8
+    sub     R13,R8
+    shlr2   R8
+    add     R0,R8           ; a := @ g!(n+256)
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 := *pc++
+
+L83:  ; ag1     frq=1290
+;    bra     unimp
+;    nop
+    extu.b  R0,R0
+    shll2   R0
+    mov.l   @(R0,R6),R1
+    add     R1,R8       ; a += g!(n+256)
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 := *pc++
+
+L84:  ; add     frq=51328
+    bra     fetch
+    add     R9,R8       ; a := b + a
+
+L85:  ; sub     frq=51606
+    sub     R9,R8
+    bra     fetch
+    neg     R8,R8       ; a := b - a
+
+L86:  ; lsh     frq=23772
+    mov     #31,R1
+    cmp/hi  R1,R8
+    bt      setzero
+    mov     R8,R1
+    mov     R9,R8
+    bra     fetch
+    shld    R1,R8      ; a := b << a
+
+L87:  ; rsh     frq=65180
+    mov     #31,R1
+    cmp/hi  R1,R8
+    bt      setzero
+    neg     R8,R1
+    mov     R9,R8
+    bra     fetch
+    shld    R1,R8       ; a := b >> a
+
+setzero:
+    bra     fetch
+    mov     #0,R8
+
+L88:  ; and     frq=192985
+    bra     fetch
+    and     R9,R8       ; a := b & a
+
+L89:  ; or     frq=24123
+    bra     fetch
+    or      R9,R8       ; a := b | a
+
+L90:  ; lll     frq=57746
+    mov     R8,R9       ; b := a
+    mov     R12,R8
+    add     #-1,R8
+    add     R0,R8
+    sub     R13,R8
+    shlr2   R8          ; a = @pc!n
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 = *pc++
+
+L91:  ; lll$     frq=189
+    mov     R8,R9       ; b := a
+    extu.b  R0,R1
+    mov     R12,R0
+    add     #-1,R0
+    shlr    R0
+    add     R1,R0       ; x := pc & ;xFFFFFFFE
+    shll    R0          ; x := x + 2*B[pc]
+    mov.w   @R0,R8
+    add     R0,R8
+    sub     R13,R8
+    shlr2   R8          ; a := @W[x + SH[x]]
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 := *pc++
+
+L92:  ; jls     frq=293452
+    cmp/gt  R9,R8
+    bt      jump2
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 := *pc++
+jump2:
+    add     #-1,R12
+    add     R0,R12      ; pc := pc + SB[pc]
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 := *pc++
+
+L93:  ; jls$     frq=6421
+    cmp/gt  R9,R8
+    bt      indjump2
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 := *pc++
+indjump2:
+    bra     indjump
+    nop
+
+L94:  ; jls0     frq=3102
+    mov     #0,R1
+    cmp/gt  R8,R1
+    bt      jump2
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 := *pc++
+
+L95:  ; jls0$     frq=0
+    mov     #0,R1
+    cmp/gt  R8,R1
+    bt      indjump2
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 := *pc++
+
+L96:  ; l     frq=1098722
+    mov     R8,R9       ; b := a
+    extu.b  R0,R8       ; a := n    
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 = *pc++
+
+L97:  ; lh     frq=84529
+    mov     R8,R9       ; b := a
+    mov.b   @R12+,R8
+    extu.b  R0,R0
+    extu.b  R8,R8
+    shll8   R8
+    add     R0,R8       ; a := H[pc]; pc += 2
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 = *pc++
+
+L98:  ; lw     frq=0
+    bsr     getW
+    mov     R8,R9       ; b := a
+    mov     R0,R8       ; a := W[pc]
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 := *pc++
+
+L99:  ; k3gh     frq=320
+    bra     applykgh
+    mov     #4*3,R1
+L100: ; k4gh     frq=4633
+    bra     applykgh
+    mov     #4*4,R1
+L101: ; k5gh     frq=6808
+    bra     applykgh
+    mov     #4*5,R1
+L102: ; k6gh     frq=8806
+    bra     applykgh
+    mov     #4*6,R1
+L103: ; k7gh     frq=9358
+    bra     applykgh
+    mov     #4*7,R1
+L104: ; k8gh     frq=17
+    bra     applykgh
+    mov     #4*8,R1
+L105: ; k9gh     frq=0
+    bra     applykgh
+    mov     #4*9,R1
+L106: ; k10gh     frq=169
+    bra     applykgh
+    mov     #4*10,R1
+L107: ; k11gh     frq=0
+    mov     #4*11,R1
+applykgh:
+;;    bra     unimp
+;;    nop
+    extu.b  R0,R0
+    mov.b   @R12+,R2
+    extu.b  R2,R2
+    shll8   R2
+    add     R2,R0           ; R0 = H[pc]
+    shll2   R0
+    bra     apply           ; R1 = 4*k  R8 = first arg
+    mov.l   @(R0,R11),R4    ; R4 = entry point
+
+L108: ; s0gh     frq=15601
+;    bra     unimp
+;    nop
+    extu.b  R0,R0
+    mov.b   @R12+,R1
+    extu.b  R1,R1
+    shll8   R1
+    add     R1,R0
+    shll2   R0
+    mov.l   @(R0,R11),R0    ; R0 = H[pc]
+    shll2   R0
+    mov.l   R8,@(R0,R13)    ; 0!(g!(H[pc])) := a; pc += 2
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 := *pc++
+
+
+L109: ; l0gh     frq=9924
+;    bra     unimp
+;    nop
+    mov     R8,R9           ; b := a
+    extu.b  R0,R0
+    mov.b   @R12+,R1
+    extu.b  R1,R1
+    shll8   R1
+    add     R1,R0           ; R0 = H[pc]
+    shll2   R0
+    mov.l   @(R0,R11),R0
+    shll2   R0
+    mov.l   @(R0,R13),R8    ; a := 0!(g!(H[pc])) := a; pc += 2
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 := *pc++
+
+L110: ; l1gh     frq=5952
+;    bra     unimp
+;    nop
+    mov     R8,R9           ; b := a
+    extu.b  R0,R0
+    mov.b   @R12+,R1
+    extu.b  R1,R1
+    shll8   R1
+    add     R1,R0
+    shll2   R0
+    mov.l   @(R0,R11),R0
+    shll2   R0
+    add     R13,R0
+    mov.l   @(4*1,R0),R8    ; a := 1!(g!(H[pc])) := a; pc += 2
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 := *pc++
+
+L111: ; l2gh     frq=0
+;;    bra     unimp
+;;    nop
+    mov     R8,R9           ; b := a
+    extu.b  R0,R0
+    mov.b   @R12+,R1
+    extu.b  R1,R1
+    shll8   R1
+    add     R1,R0
+    shll2   R0
+    mov.l   @(R0,R11),R0
+    shll2   R0
+    add     R13,R0
+    mov.l   @(4*2,R0),R8    ; a := 2!(g!(H[pc])) := a; pc += 2
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 := *pc++
+
+L112: ; lgh     frq=700955
+;    bra     unimp
+;    nop
+    mov     R8,R9       ; b := a
+    extu.b  R0,R0
+    mov.b   @R12+,R1
+    extu.b  R1,R1
+    shll8   R1
+    add     R1,R0           ; R0 = H[pc]
+    shll2   R0
+    mov.l   @(R0,R11),R8    ; a := g!(H[pc]); pc += 2
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 = *pc++
+
+L113: ; sgh     frq=297790
+;    bra     unimp
+;    nop
+    extu.b  R0,R0
+    mov.b   @R12+,R1
+    extu.b  R1,R1
+    shll8   R1
+    add     R1,R0           ; R0 = H[pc]
+    shll2   R0
+    mov.l   R8,@(R0,R11)    ; g!(H[pc]) := a; pc += 2
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 = *pc++
+
+L114: ; llgh     frq=14161
+;    bra     unimp
+;    nop
+    mov     R8,R9           ; b := a
+    extu.b  R0,R0
+    mov.b   @R12+,R1
+    extu.b  R1,R1
+    shll8   R1
+    add     R1,R0           ; R0 = H[pc]
+    mov     R11,R8
+    sub     R13,R8
+    shlr2   R8
+    add     R0,R8           ; a := @ g!(H[pc]); pc += 2
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 = *pc++
+
+
+L115: ; agh     frq=90488
+;    bra     unimp
+;    nop
+    extu.b  R0,R0
+    mov.b   @R12+,R1
+    extu.b  R1,R1
+    shll8   R1
+    add     R1,R0           ; R0 = H[pc]
+    shll2   R0
+    mov.l   @(R0,R11),R0
+    add     R0,R8           ; a := a + g!(H[pc]) := a; pc += 2
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 = *pc++
+
+L116: ; rv      frq=81916
+    shll2   R8
+    add     R13,R8
+    bra     fetch
+    mov.l   @R8,R8          ; a := a!0
+
+L117: ; rv1     frq=18677
+    shll2   R8
+    add     R13,R8
+    bra     fetch
+    mov.l   @(4*1,R8),R8    ; a := a!1
+
+L118: ; rv2     frq=24044
+    shll2   R8
+    add     R13,R8
+    bra     fetch
+    mov.l   @(4*2,R8),R8    ; a := a!2
+
+L119: ; rv3     frq=942
+    shll2   R8
+    add     R13,R8
+    bra     fetch
+    mov.l   @(4*3,R8),R8    ; a := a!3
+
+L120: ; rv4     frq=0
+    shll2   R8
+    add     R13,R8
+    bra     fetch
+    mov.l   @(4*4,R8),R8    ; a := a!4
+
+L121: ; rv5     frq=303
+    shll2   R8
+    add     R13,R8
+    bra     fetch
+    mov.l   @(4*5,R8),R8    ; a := a!5
+
+L122: ; rv6     frq=392
+    shll2   R8
+    add     R13,R8
+    bra     fetch
+    mov.l   @(4*6,R8),R8    ; a := a!6
+
+L123: ; rtn     frq=1315089
+    mov.l   @(4,R10),R12
+    add     R13,R12     ; make pc a m/c address
+    mov.l   @R10,R10
+    add     R13,R10     ; make p a m/c address
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 = *pc++
+
+L124: ; jgr     frq=234567
+    cmp/gt  R8,R9
+    bt      jump3
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 := *pc++
+jump3:
+    add     #-1,R12
+    add     R0,R12      ; pc := pc + SB[pc]
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 := *pc++
+
+L125: ; jgr$     frq=0
+    cmp/gt  R8,R9
+    bt      indjump3
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 := *pc++
+indjump3:
+    bra     indjump
+
+L126: ; jgr0     frq=1664
+    mov     #0,R1
+    cmp/gt  R1,R8
+    bt      jump3
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 := *pc++
+
+L127: ; jgr0$     frq=0
+    mov     #0,R1
+    cmp/gt  R1,R8
+    bt      indjump3
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 := *pc++
+
+L128: ; lp     frq=32473
+    mov     R8,R9           ; b := a
+    extu.b  R0,R1
+    shll2   R1
+    add     R10,R1
+    mov.l   @R1,R8          ; a := p!(B[pc++])
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 = *pc++
+
+L129: ; lph     frq=0
+;;    bra     unimp
+;;    nop
+    mov     R8,R9           ; b := a
+    extu.b  R0,R0
+    mov.b   @R12+,R1
+    extu.b  R1,R1
+    shll8   R1
+    add     R1,R0
+    shll2   R0
+    mov.l   @(R0,R10),R8    ; a := p!(H[pc]); pc += 2
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 = *pc++
+
+L130: ; lpw     frq=0
+;;    bra     unimp
+;;    nop
+    bsr     getW
+    mov     R8,R9           ; b := a
+    shll2   R0
+    mov.l   @(R0,R10),R8    ; a := p!(W[pc])
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 := *pc++
+
+L131: ; lp3     frq=1681284
+    mov     R8,R9           ; b := a
+    bra     fetch
+    mov.l   @(4*3,R10),R8   ; a := p!3
+
+L132: ; lp4     frq=593132
+    mov     R8,R9           ; b := a
+    bra     fetch
+    mov.l   @(4*4,R10),R8   ; a := p!4
+
+L133: ; lp5     frq=355769
+    mov     R8,R9           ; b := a
+    bra     fetch
+    mov.l   @(4*5,R10),R8   ; a := p!5
+
+L134: ; lp6     frq=200287
+    mov     R8,R9           ; b := a
+    bra     fetch
+    mov.l   @(4*6,R10),R8   ; a := p!6
+
+L135: ; lp7     frq=228093
+    mov     R8,R9           ; b := a
+    bra     fetch
+    mov.l   @(4*7,R10),R8   ; a := p!7
+
+L136: ; lp8     frq=126649
+    mov     R8,R9           ; b := a
+    bra     fetch
+    mov.l   @(4*8,R10),R8   ; a := p!8
+
+L137: ; lp9     frq=24237
+    mov     R8,R9           ; b := a
+    bra     fetch
+    mov.l   @(4*9,R10),R8   ; a := p!9
+
+L138: ; lp10     frq=11740
+    mov     R8,R9           ; b := a
+    bra     fetch
+    mov.l   @(4*10,R10),R8  ; a := p!10
+
+L139: ; lp11     frq=8112
+    mov     R8,R9           ; b := a
+    bra     fetch
+    mov.l   @(4*11,R10),R8  ; a := p!11
+
+L140: ; lp12     frq=1283
+    mov     R8,R9           ; b := a
+    bra     fetch
+    mov.l   @(4*12,R10),R8  ; a := p!12
+
+L141: ; lp13     frq=121
+    mov     R8,R9           ; b := a
+    bra     fetch
+    mov.l   @(4*13,R10),R8  ; a := p!13
+
+L142: ; lp14     frq=214
+    mov     R8,R9           ; b := a
+    bra     fetch
+    mov.l   @(4*14,R10),R8  ; a := p!14
+
+L143: ; lp15     frq=13779
+    mov     R8,R9           ; b := a
+    bra     fetch
+    mov.l   @(4*15,R10),R8  ; a := p!15
+
+L144: ; lp16     frq=45432
+    mov     R8,R9           ; b := a
+    mov     #4*16,R1
+    add     R10,R1
+    bra     fetch
+    mov.l   @R1,R8          ; a := p!16
+
+L145: ; sys     frq=554
+    add     #-1,R12         ; Correct pc
+    tst     R8,R8
+    bf      sys1            ; IF a=0 DO
+    bra     ret
+    mov.l   @(4*4,R10),R0   ; { res := p!4; GOTO ret }
+
+sys1:
+    mov     R8,R0
+    cmp/eq  #-1,R0
+    bf      sys2            ; IF a=-1 DO
+    mov     R7,R8           ; { a := count
+    mov.l   @(4*4,R10),R7   ;   count := p!4 
+    mov     #-1,R0          ;   res := -1
+    bra     ret             ;   GOTO ret
+                            ; }
+sys2:
+    mov.l   R7,@(28,R15)    ; Save Count
+    mov.l   sys3,R0         ; R0 = dosys
+    mov     R11,R5
+    sub     R13,R5
+    shlr2   R5              ; R5 = BCPL address of g!0
+    mov     R10,R4
+    sub     R13,R4
+    jsr     @R0
+    shlr2   R4              ; p as a BCPL pointer
+
+    mov     #4,R6
+    shll8   R6
+    add     R11,R6          ; R6 = m/c addr of g!256
+    mov.l   @(28,R15),R7    ; Restore Count
+    mov     R0,R8           ; a := dosys(p, g)
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 := *pc++
+
+    .align  4
+sys3:
+    .data.l _dosys
+
+L146: ; swb     frq=48805
+    shlr    R12
+    shll    R12         ; pc := (pc+1) & ;xFFFFFFFE
+    mov.w   @R12,R4
+    extu.w  R4,R4       ; n := H[pc]
+    mov     #1,R5       ; i = 1
+
+; At this point     pc -->     n       dlab
+;                             k1       lab1
+;                             ...      ...
+;                             kn       labn
+
+swb1:
+    mov     R5,R0       ; {
+    shll2   R0
+    add     R12,R0      ;   R0 = pc + 4*i
+    mov.w   @R0+,R1
+    extu.w  R1,R1       ;   R1 := H[pc+4*i]
+    cmp/eq  R8,R1
+    bf      swb2        ;   IF a=R1 DO
+                        ;   {   // case found
+    mov     R0,R12      ;       pc := pc + 4*i + 2
+    mov.w   @R0,R1
+    add     R1,R12      ;       pc := pc + SH[pc]
+    bra     fetch
+    mov.b   @R12+,R0    ;       R0 := *pc++
+                        ;   }
+
+swb2:
+    cmp/gt  R8,R1
+    addc    R5,R5       ;   TEST a < R1 THEN i := 2*i + 1
+                        ;               ELSE i := 2*i
+    cmp/ge  R5,R4
+    bt      swb1        ; } repeatwhile i<=n
+
+    add     #2,R12
+    mov.w   @R12,R0
+    add     R0,R12      ; pc := pc + SH[pc]
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 := *pc++
+
+
+L147: ; swl     frq=85714
+    shlr    R12
+    shll    R12         ; pc := (pc+1) & ;xFFFFFFFE
+    mov.b   @R12+,R0
+    mov.b   @R12+,R1
+    extu.b  R0,R0
+    extu.b  R1,R1
+    shll8   R1
+    add     R0,R1       ; n := H[pc]
+    cmp/hs  R1,R8
+    bt      swl1        ; J unless 0 <= a < n
+
+    add     #2,R12
+    add     R8,R12
+    add     R8,R12      ; pc := pc+2*a + 2
+swl1:
+    mov.w   @r12,R0
+    add     R0,R12      ; pc := pc + SH[pc]
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 := *pc++
+
+L148: ; st     frq=53452
+    mov     R8,R1
+    shll2   R1
+    add     R13,R1
+    bra     fetch
+    mov.l   R9,@R1          ; a!0 := b
+
+L149: ; st1     frq=36925
+    mov     R8,R1
+    shll2   R1
+    add     R13,R1
+    bra     fetch
+    mov.l   R9,@(4*1,R1)    ; a!1 := b
+
+L150: ; st2     frq=32011
+    mov     R8,R1
+    shll2   R1
+    add     R13,R1
+    bra     fetch
+    mov.l   R9,@(4*2,R1)    ; a!2 := b
+
+L151: ; st3     frq=5530
+    mov     R8,R1
+    shll2   R1
+    add     R13,R1
+    bra     fetch
+    mov.l   R9,@(4*3,R1)    ; a!3 := b
+
+L152: ; stp3     frq=2182
+    mov.l   @(4*3,R10),R1
+    add     R8,R1
+    shll2   R1
+    add     R13,R1
+    bra     fetch
+    mov.l   R9,@R1  ; p!3!a := b
+
+L153: ; stp4     frq=780
+    mov.l   @(4*4,R10),R1
+    add     R8,R1
+    shll2   R1
+    add     R13,R1
+    bra     fetch
+    mov.l   R9,@R1  ; p!4!a := b
+
+L154: ; stp5     frq=20
+    mov.l   @(4*5,R10),R1
+    add     R8,R1
+    shll2   R1
+    add     R13,R1
+    bra     fetch
+    mov.l   R9,@R1  ; p!5!a := b
+
+L155: ; goto     frq=0
+    mov     R8,R12
+    add     R13,R12
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 := *pc++
+
+
+L156: ; jle     frq=575294
+    cmp/ge  R9,R8       ; test b<=a
+    bt      jump4
+    nop
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 := *pc++
+jump4:
+    add     #-1,R12
+    add     R0,R12      ; pc := pc + SB[pc]
+    nop
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 := *pc++
+
+L157: ; jle$     frq=12919
+    cmp/ge  R9,R8
+    bt      indjump4
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 := *pc++
+indjump4:
+    bra     indjump
+
+L158: ; jle0     frq=13814
+    mov     #0,R1
+    cmp/ge  R8,R1
+    bt      jump4
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 := *pc++
+
+L159: ; jle0$     frq=0
+    mov     #0,R1
+    cmp/ge  R8,R1
+    bt      indjump4
+    bra     fetch
+    mov.b   @R12+,R0    ; R0 := *pc++
+
+L160: ; sp     frq=57497
+    extu.b  R0,R1
+    shll2   R1
+    add     R10,R1
+    mov.l   R8,@R1  ; p!(B[pc++]) := a
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 = *pc++
+
+L161: ; sph     frq=0
+;    bra     unimp
+;    nop
+    extu.b  R0,R0
+    mov.b   @R12+,R1
+    extu.b  R1,R1
+    shll8   R1
+    add     R1,R0
+    shll2   R0
+    mov.l   R8,@(R0,R10)    ; p!(H[pc]) := a; pc += 2
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 = *pc++
+
+L162: ; spw     frq=0
+;;    bra     unimp
+;;    nop
+    bsr     getW
+    mov     R8,R9           ; b := a
+    shll2   R0
+    mov.l   R8,@(R0,R10)    ; p!(W[pc]) := a; pc += 4
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 := *pc++
+
+L163: ; sp3     frq=448052
+    bra     fetch
+    mov.l   R8,@(4*3,R10)   ; p!3 := a
+
+L164: ; sp4     frq=988190
+    bra     fetch
+    mov.l   R8,@(4*4,R10)   ; p!4 := a
+
+L165: ; sp5     frq=344005
+    bra     fetch
+    mov.l   R8,@(4*5,R10)   ; p!5 := a
+
+L166: ; sp6     frq=163718
+    bra     fetch
+    mov.l   R8,@(4*6,R10)   ; p!6 := a
+
+L167: ; sp7     frq=233850
+    bra     fetch
+    mov.l   R8,@(4*7,R10)   ; p!7 := a
+
+L168: ; sp8     frq=109584
+    bra     fetch
+    mov.l   R8,@(4*8,R10)   ; p!8 := a
+
+L169: ; sp9     frq=110121
+    bra     fetch
+    mov.l   R8,@(4*9,R10)   ; p!9 := a
+
+L170: ; sp10     frq=56154
+    bra     fetch
+    mov.l   R8,@(4*10,R10)  ; p!10 := a
+
+L171: ; sp11     frq=50794
+    bra     fetch
+    mov.l   R8,@(4*11,R10)  ; p!11 := a
+
+L172: ; sp12     frq=20524
+    bra     fetch
+    mov.l   R8,@(4*12,R10)  ; p!12 := a
+
+L173: ; sp13     frq=15806
+    bra     fetch
+    mov.l   R8,@(4*13,R10)  ; p!13 := a
+
+L174: ; sp14     frq=4839
+    bra     fetch
+    mov.l   R8,@(4*14,R10)  ; p!15 := a
+
+L175: ; sp15     frq=16120
+    bra     fetch
+    mov.l   R8,@(60,R10)    ; p!15 := a
+
+L176: ; sp16     frq=33499
+    mov     #4*16,R1
+    add     R10,R1
+    bra     fetch
+    mov.l   R8,@R1          ; p!16 := a
+
+L177: ; s1     frq=34291
+    bra     fetch
+    add     #-1,R8          ; a := a - 1
+
+L178: ; s2     frq=4205
+    bra     fetch
+    add     #-2,R8          ; a := a - 2
+
+L179: ; s3     frq=26048
+    bra     fetch
+    add     #-3,R8          ; a := a - 3
+
+L180: ; s4     frq=3
+    bra     fetch
+    add     #-4,R8          ; a := a - 4
+
+L181: ; xch     frq=1761584
+    mov     R8,R1
+    mov     R9,R8
+    bra     fetch
+    mov     R1,R9
+
+L182: ; gbyt     frq=504790
+    mov     R9,R1
+    shll2   R1
+    add     R8,R1
+    add     R13,R1
+    mov.b   @R1,R8
+    bra     fetch
+    extu.b  R8,R8           ; a := b%a
+
+L183: ; pbyt     frq=395227
+    mov     R9,R1
+    shll2   R1
+    add     R8,R1
+    add     R13,R1
+    mov.l   @(16,R15),R2
+    bra     fetch
+    mov.b   R2,@R1          ; b%a := c
+
+L184: ; atc     frq=395227
+    bra     fetch           ; c := a
+    mov.l   R8,@(16,R15)
+
+L185: ; atb     frq=0
+    bra     fetch
+    mov     R8,R9           ; b := a
+
+L186: ; j     frq=302744
+jump:
+    add     #-1,R12
+    add     R0,R12          ; pc := pc + SB[pc]
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 := *pc++
+
+L187: ; j$     frq=150058
+indjump:
+    extu.b  R0,R1           ; R1 = B[pc]
+    mov     R12,R0
+    add     #-1,R0
+    shlr    R0
+    add     R1,R0
+    shll    R0
+    mov.w   @R0,R12
+    add     R0,R12          ; a := R0 + SH[R0]
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 := *pc++
+
+L188: ; jge     frq=301004
+    cmp/ge  R8,R9
+    bt      jump5
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 := *pc++
+jump5:
+    add     #-1,R12
+    add     R0,R12          ; pc := pc + SB[pc]
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 := *pc++
+
+L189: ; jge$     frq=0
+    cmp/ge  R8,R9
+    bt      indjump5
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 := *pc++
+indjump5:
+    bra     indjump
+
+L190: ; jge0     frq=47832
+    mov     #0,R1
+    cmp/ge  R1,R8
+    bt      jump5
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 := *pc++
+
+L191: ; jge0$     frq=0
+    mov     #0,R1
+    cmp/ge  R1,R8
+    bt      indjump5
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 := *pc++
+
+L192: ; ap     frq=6416
+    extu.b  R0,R0
+    shll2   R0
+    mov.l   @(R0,R10),R0
+    add     R0,R8           ; a += p!(B[pc++])
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 := *pc++
+
+L193: ; aph     frq=0
+;;    bra     unimp
+;;    nop
+    extu.b  R0,R0
+    mov.b   @R12+,R1
+    extu.b  R1,R1
+    shll8   R1
+    add     R1,R0
+    shll2   R0
+    mov.l   @(R0,R10),R0
+    add     R0,R8           ; a := a + p!(H[pc]) := a; pc += 2
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 = *pc++
+
+L194: ; apw     frq=0
+;;    bra     unimp
+;;    nop
+    bsr     getW
+    nop
+    shll2   R0
+    mov.l   @(R0,R10),R0
+    add     R0,R8           ; a := a + p!(W[pc]); pc += 4
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 := *pc++
+
+L195: ; ap3     frq=283379
+    mov.l   @(4*3,R10),R1
+    bra     fetch
+    add     R1,R8           ; a += p!3
+
+L196: ; ap4     frq=832703
+    mov.l   @(4*4,R10),R1
+    bra     fetch
+    add     R1,R8           ; a += p!4
+
+L197: ; ap5     frq=65255
+    mov.l   @(4*5,R10),R1
+    bra     fetch
+    add     R1,R8           ; a += p!5
+
+L198: ; ap6     frq=11097
+    mov.l   @(4*6,R10),R1
+    bra     fetch
+    add     R1,R8           ; a += p!6
+
+L199: ; ap7     frq=106439
+    mov.l   @(4*7,R10),R1
+    bra     fetch
+    add     R1,R8           ; a += p!7
+
+L200: ; ap8     frq=3583
+    mov.l   @(4*8,R10),R1
+    bra     fetch
+    add     R1,R8           ; a += p!8
+
+L201: ; ap9     frq=47609
+    mov.l   @(4*9,R10),R1
+    bra     fetch
+    add     R1,R8           ; a += p!9
+
+L202: ; ap10     frq=1439
+    mov.l   @(4*10,R10),R1
+    bra     fetch
+    add     R1,R8           ; a += p!10
+
+L203: ; ap11     frq=0
+    mov.l   @(4*11,R10),R1
+    bra     fetch
+    add     R1,R8           ; a += p!11
+
+L204: ; ap12     frq=21
+    mov.l   @(4*12,R10),R1
+    bra     fetch
+    add     R1,R8           ; a += p!12
+
+L205: ; xpbyt     frq=326298
+    mov     R8,R1
+    shll2   R1
+    add     R9,R1
+    add     R13,R1
+    mov.l   @(16,R15),R2
+    bra     fetch
+    mov.b   R2,@R1          ; a%b := c
+
+L206: ; lmh     frq=1269
+;    bra     unimp
+;    nop
+    mov     R8,R9           ; b := a
+    extu.b  R0,R8
+    mov.b   @R12+,R0
+    extu.b  R0,R0
+    shll8   R0
+    add     R0,R8
+    neg     R8,R8           ; a := - H[pc]; pc += 2
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 = *pc++
+
+L207: ; btc     frq=184802
+    bra     fetch
+    mov.l   R9,@(16,R15)    ;  c := b
+
+L208: ; nop     frq=0
+    bra     fetch
+    nop
+
+L209: ; a1     frq=319289
+    bra     fetch
+    add     #1,R8           ; a := a + 1
+
+L210: ; a2     frq=69342
+    bra     fetch
+    add     #2,R8           ; a := a + 2
+
+L211: ; a3     frq=44520
+    bra     fetch
+    add     #3,R8           ; a := a + 3
+
+L212: ; a4     frq=5224
+    bra     fetch
+    add     #4,R8           ; a := a + 4
+
+L213: ; a5     frq=0
+    bra     fetch
+    add     #5,R8           ; a := a + 5
+
+L214: ; rvp3     frq=1108
+    mov.l   @(4*3,R10),R1
+    add     R8,R1
+    shll2   R1
+    add     R13,R1
+    bra     fetch
+    mov.l   @R1,R8  ; a := p!3!a
+
+L215: ; rvp4     frq=1582
+    mov.l   @(4*4,R10),R1
+    add     R8,R1
+    shll2   R1
+    add     R13,R1
+    bra     fetch
+    mov.l   @R1,R8  ; a := p!4!a
+
+L216: ; rvp5     frq=30
+    mov.l   @(4*5,R10),R1
+    add     R8,R1
+    shll2   R1
+    add     R13,R1
+    bra     fetch
+    mov.l   @R1,R8  ; a := p!5!a
+
+L217: ; rvp6     frq=12697
+    mov.l   @(4*6,R10),R1
+    add     R8,R1
+    shll2   R1
+    add     R13,R1
+    bra     fetch
+    mov.l   @R1,R8  ; a := p!6!a
+
+L218: ; rvp7     frq=1449
+    mov.l   @(4*7,R10),R1
+    add     R8,R1
+    shll2   R1
+    add     R13,R1
+    bra     fetch
+    mov.l   @R1,R8          ; a := p!7!a
+
+L219: ; st0p3     frq=10619
+    mov.l   @(4*3,R10),R1
+    shll2   R1
+    add     R13,R1
+    bra     fetch
+    mov.l   R8,@R1          ; p!3!0 := a
+
+L220: ; st0p4     frq=7637
+    mov.l   @(4*4,R10),R1
+    shll2   R1
+    add     R13,R1
+    bra     fetch
+    mov.l   R8,@R1          ; p!4!0 := a
+
+L221: ; st1p3     frq=1455
+    mov.l   @(4*3,R10),R1
+    shll2   R1
+    add     R13,R1
+    bra     fetch
+    mov.l   R8,@(4*1,R1)    ; p!3!1 := a
+
+L222: ; st1p4     frq=0
+    mov.l   @(4*4,R10),R1
+    shll2   R1
+    add     R13,R1
+    bra     fetch
+    mov.l   R8,@(4*1,R1)    ; p!4!1 := a
+
+L223: ; Error     frq=0
+    add     #-2,R12         ; Make pc point to the offending instruction
+    bra     ret
+    mov     #1,R0
+
+L224: ; a     frq=74587
+    extu.b  R0,R0
+    add     R0,R8           ; a += B[pc++]
+    bra  fetch
+    mov.b   @R12+,R0        ; R0 = *pc++
+
+L225: ; ah     frq=6
+;    bra     unimp
+;    nop
+    extu.b  R0,R1
+    mov.b   @R12+,R0
+    extu.b  R0,R0
+    shll8   R0
+    add     R0,R1
+    add     R1,R8           ; a := a + H[pc]; pc += 2
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 = *pc++
+
+L226: ; aw        frq=0
+;    bra     unimp
+;    nop
+    bsr     getW
+    nop
+    add     R0,R8           ; a := a + W[pc]; pc += 4
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 := *pc++
+
+L227: ; l0p3      frq=65102
+    mov     R8,R9   ; b := a
+    mov.l   @(4*3,R10),R1
+    shll2   R1
+    add     R13,R1
+    bra     fetch
+    mov.l   @R1,R8          ; a := p!3!0
+
+L228: ; l0p4      frq=612068
+    mov     R8,R9           ; b := a
+    mov.l   @(4*4,R10),R1
+    shll2   R1
+    add     R13,R1
+    bra     fetch
+    mov.l   @R1,R8          ; a := p!4!0
+
+L229: ; l0p5      frq=17186
+    mov     R8,R9           ; b := a
+    mov.l   @(4*5,R10),R1
+    shll2   R1
+    add     R13,R1
+    bra     fetch
+    mov.l   @R1,R8          ; a := p!5!0
+
+L230: ; l0p6      frq=8430
+    mov     R8,R9           ; b := a
+    mov.l   @(4*6,R10),R1
+    shll2   R1
+    add     R13,R1
+    bra     fetch
+    mov.l   @R1,R8          ; a := p!6!0
+
+L231: ; l0p7      frq=30505
+    mov     R8,R9           ; b := a
+    mov.l   @(4*7,R10),R1
+    shll2   R1
+    add     R13,R1
+    bra     fetch
+    mov.l   @R1,R8          ; a := p!7!0
+
+L232: ; l0p8      frq=14744
+    mov     R8,R9           ; b := a
+    mov.l   @(4*8,R10),R1
+    shll2   R1
+    add     R13,R1
+    bra     fetch
+    mov.l   @R1,R8          ; a := p!8!0
+
+L233: ; l0p9      frq=0
+    mov     R8,R9           ; b := a
+    mov.l   @(4*9,R10),R1
+    shll2   R1
+    add     R13,R1
+    bra     fetch
+    mov.l   @R1,R8          ; a := p!9!0
+
+L234: ; l0p10     frq=0
+    mov     R8,R9           ; b := a
+    mov.l   @(4*10,R10),R1
+    shll2   R1
+    add     R13,R1
+    bra     fetch
+    mov.l   @R1,R8          ; a := p!10!0
+
+L235: ; l0p11     frq=0
+    mov     R8,R9           ; b := a
+    mov.l   @(4*11,R10),R1
+    shll2   R1
+    add     R13,R1
+    bra     fetch
+    mov.l   @R1,R8          ; a := p!1!0
+
+L236: ; l0p12     frq=0
+    mov     R8,R9           ; b := a
+    mov.l   @(4*12,R10),R1
+    shll2   R1
+    add     R13,R1
+    bra     fetch
+    mov.l   @R1,R8          ; a := p!12!0
+
+L237: ; s      frq=130833
+    extu.b      R0,R1
+    sub     R1,R8           ; a -= n
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 := *pc++
+
+L238: ; sh     frq=0
+    extu.b  R0,R0
+    mov.b   @R12+,R1
+    extu.b  R1,R1
+    shll8   R1
+    add     R0,R1
+    sub     R1,R8           ; a := a - H[pc]; pc += 2
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 = *pc++
+
+L239: ; mdiv     frq=0
+    mov.l   mdiv1,R0
+    mov.l   @(4*3,R10),R4
+    mov.l   @(4*4,R10),R5
+    jsr     @R0            ; call muldiv(a, b, c)
+    mov.l   @(4*5,R10),R6
+
+    mov     #4,R6
+    shll8   R6
+    add     R11,R6          ; R6 = m/c addr of g!256
+    mov.l   @(28,R15),R7    ; Restore Count
+
+    mov     R0,R8
+    mov.l   mdiv2,R0
+    mov.l   @R0,R1
+    mov.l   R1,@(4*10,R11)  ; result2 := remainder
+
+    mov.l   @(4*1,R10),R12
+    add     R13,R12         ; make pc a m/c address
+    mov.l   @R10,R10
+    add     R13,R10         ; make p a m/c address
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 = *pc++
+
+    .align  4
+mdiv1:
+    .data.l _muldiv
+mdiv2:
+    .data.l _result2
+
+L240: ; chgco     frq=2
+    mov.l   @R10,R1
+    mov.l   @(4*7,R11),R2
+    shll2   R2
+    add     R13,R2
+    mov.l   R1,@R2          ; !currco := !p
+
+    mov.l   @(4*1,R10),R12
+    add     R13,R12         ; pc := p!1
+
+    mov.l   @(4*4,R10),R1
+    mov.l   R1,@(4*7,R11)   ; currco := cptr
+
+    shll2   R1
+    add     R13,R1
+    mov.l   @R1,R10
+    add     R13,R10         ; p := !cptr
+    bra     fetch
+    mov.b   @R12+,R0        ; R0 := *pc++
+
+L241: ; neg     frq=297
+    bra     fetch       ; a := -a
+    neg     R8,R8
+
+L242: ; not     frq=196
+    bra     fetch       ; a := ~a
+    not     R8,R8
+
+L243: ; l1p3     frq=35547
+    mov     R8,R9   ; b := a
+    mov.l   @(4*3,R10),R1
+    shll2   R1
+    add     R13,R1
+    bra     fetch
+    mov.l   @(4*1,R1),R8    ; a := p!3!1
+
+L244: ; l1p4     frq=3525
+    mov     R8,R9   ; b := a
+    mov.l   @(4*4,R10),R1
+    shll2   R1
+    add     R13,R1
+    bra     fetch
+    mov.l   @(4*1,R1),R8    ; a := p!4!1
+
+L245: ; l1p5     frq=20773
+    mov     R8,R9   ; b := a
+    mov.l   @(4*5,R10),R1
+    shll2   R1
+    add     R13,R1
+    bra     fetch
+    mov.l   @(4*1,R1),R8    ; a := p!5!1
+
+L246: ; l1p6     frq=414
+    mov     R8,R9   ; b := a
+    mov.l   @(4*6,R10),R1
+    shll2   R1
+    add     R13,R1
+    bra     fetch
+    mov.l   @(4*1,R1),R8    ; a := p!6!1
+
+L247: ; l2p3     frq=22841
+    mov     R8,R9   ; b := a
+    mov.l   @(4*3,R10),R1
+    shll2   R1
+    add     R13,R1
+    bra     fetch
+    mov.l   @(4*2,R1),R8    ; a := p!3!2
+
+L248: ; l2p4     frq=5310
+    mov     R8,R9   ; b := a
+    mov.l   @(4*4,R10),R1
+    shll2   R1
+    add     R13,R1
+    bra     fetch
+    mov.l   @(4*2,R1),R8    ; a := p!4!2
+
+L249: ; l2p5     frq=32256
+    mov     R8,R9   ; b := a
+    mov.l   @(4*5,R10),R1
+    shll2   R1
+    add     R13,R1
+    bra     fetch
+    mov.l   @(4*2,R1),R8    ; a := p!5!2
+
+L250: ; l3p3     frq=4185
+    mov     R8,R9   ; b := a
+    mov.l   @(4*3,R10),R1
+    shll2   R1
+    add     R13,R1
+    bra     fetch
+    mov.l   @(4*3,R1),R8    ; a := p!3!3
+
+L251: ; l3p4     frq=1
+    mov     R8,R9   ; b := a
+    mov.l   @(4*4,R10),R1
+    shll2   R1
+    add     R13,R1
+    bra     fetch
+    mov.l   @(4*3,R1),R8    ; a := p!4!3
+
+L252: ; l4p3     frq=449
+    mov     R8,R9   ; b := a
+    mov.l   @(4*3,R10),R1
+    shll2   R1
+    add     R13,R1
+    bra     fetch
+    mov.l   @(4*4,R1),R8    ; a := p!3!4
+
+L253: ; l4p4     frq=1
+    mov     R8,R9   ; b := a
+    mov.l   @(4*4,R10),R1
+    shll2   R1
+    add     R13,R1
+    bra     fetch
+    mov.l   @(4*4,R1),R8    ; a := p!4!4
+
+L254: ; Error     frq=0
+L255: ; Error     frq=0
+    add     #-2,R12     ; Make pc point to the offending instruction
+    bra     ret
+    mov     #1,R0
+
+    .endf
+
+    .align  4
+getW:   .entry
+    .prolog
+    extu.b  R0,R0       ; set R0 = 32 bit immediate operand
+    mov.b   @R12+,R1
+    extu.b  R1,R1
+    shll8   R1
+    add     R1,R0
+    mov.b   @R12+,R1
+    extu.b  R1,R1
+    shll16  R1
+    add     R1,R0
+    mov.b   @R12+,R1
+    extu.b  R1,R1
+    shll16  R1
+    shll8   R1
+    rts
+    add     R1,R0       ; R0 = W[pc]
+
+    .endf
+    .end
+

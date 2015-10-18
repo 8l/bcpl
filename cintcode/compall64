@@ -1,0 +1,166 @@
+.k arg
+
+# Assume bcpl c echo and preload are already compiled
+
+# preload bcpl c echo
+
+echo "First compile the bigender versions"
+c bcb64 abort
+c bcb64 bcpl
+c bcb64 bcpl64
+c bsb64 blib
+c bsb64 boot
+c bcb64 c
+c bsb64 cli
+c bcb64 cmpltest
+c bsb64 dlib
+c bcb64 echo
+c bcb64 logout
+c bcb64 map
+c bcb64 safebcpl
+c bcb64 sbcpl
+
+echo "Now compile for the little ender versions"
+c bcb64 abort
+c bcb64 bcpl
+c bcb64 bcpl64
+c bsb64 blib
+c bsb64 boot
+c bcb64 c
+c bsb64 cli
+c bcb64 cmpltest
+c bsb64 dlib
+c bcb64 echo
+c bcb64 logout
+c bcb64 map
+c bcb64 safebcpl
+c bcb64 sbcpl
+
+echo "Now compile the system files"
+c bs64 boot "<arg>"
+c bs64 blib "<arg>"
+c bs64 dlib "<arg>"
+c bs64 cli "<arg>"
+
+echo "Compile the all the standard commands"
+c bc64 abort "<arg>"
+c bc64 adjclock "<arg>"
+c bc64 append "<arg>"
+c bc64 bcpl "<arg>"
+c bc64 bcplint "<arg>"
+c bc64 bcpl64 "<arg>"
+c bc64 bcpl2sial "<arg>"
+c bc64 bcplxref "<arg>"
+c bc64 bench100 "<arg>"
+c bc64 bgpm "<arg>"
+c bc64 bin-hex "<arg>"
+c bc64 bin2n "<arg>"
+c bc64 bin-x8 "<arg>"
+c bc64 bmake "<arg>"
+# c bc64 break "<arg>"
+c bc64 c "<arg>"
+c bc64 casech "<arg>"
+c bc64 checksum "<arg>"
+c bc64 cmpltest "<arg>"
+c bc64 cobench "<arg>"
+c bc64 cobounce "<arg>"
+c bc64 compare "<arg>"
+c bc64 cosim "<arg>"
+c bc64 cotest "<arg>"
+c bc64 dat "<arg>"
+c bc64 date "<arg>"
+c bc64 dcounts "<arg>"
+c bc64 delete "<arg>"
+c bc64 detab "<arg>"
+c bc64 dumpmem "<arg>"
+c bc64 dumppos "<arg>"
+c bc64 dumpsys "<arg>"
+c bc64 echo "<arg>"
+c bc64 edit "<arg>"
+c bc64 enlarge "<arg>"
+c bc64 fail "<arg>"
+c bc64 failat "<arg>"
+c bc64 getlogname "<arg>"
+c bc64 graphdemo "<arg>"
+c bc64 hello "<arg>"
+# c bc64 help "<arg>"
+c bc64 hex-bin "<arg>"
+c bc64 hexdump "<arg>"
+# c bc64 idvec "<arg>"
+c bc64 if "<arg>"
+c bc64 input "<arg>"
+c bc64 interp "<arg>"
+c bc64 interpreter "<arg>"
+c bc64 join "<arg>"
+c bc64 lab "<arg>"
+# c bc64 library "<arg>"
+c bc64 logout "<arg>"
+c bc64 makeinit "<arg>"
+c bc64 map "<arg>"
+c bc64 mcpl "<arg>"
+c bc64 mci386 "<arg>"
+c bc64 mcpl2mial "<arg>"
+c bc64 mial-386 "<arg>"
+c bc64 mial-masm "<arg>"
+c bc64 nlconv "<arg>"
+c bc64 n2bin "<arg>"
+c bc64 origbcpl "<arg>"
+c bc64 pal70 "<arg>"
+#c xbc pal75 "<arg>"
+c bc64 playgraph "<arg>"
+c bc64 playmus "<arg>"
+c bc64 polltest "<arg>"
+c bc64 posdebug "<arg>"
+c bc64 prefix "<arg>"
+c bc64 preload "<arg>"
+c bc64 prmcode "<arg>"
+c bc64 prmidi "<arg>"
+c bc64 procode "<arg>"
+c bc64 prompt "<arg>"
+c bc64 quit "<arg>"
+c bc64 rast2ps "<arg>"
+c bc64 raster "<arg>"
+c bc64 rename "<arg>"
+c bc64 repeat "<arg>"
+c bc64 rl-decode "<arg>"
+c bc64 rl-encode "<arg>"
+c bc64 safebcpl "<arg>"
+c bc64 sbcpl "<arg>"
+c bc64 setlogname "<arg>"
+c bc64 setroot "<arg>"
+c bc64 shellcom "<arg>"
+c bc64 sial-386 "<arg>"
+c bc64 sial-arm "<arg>"
+c bc64 sial-alpha "<arg>"
+c bc64 sial-arm "<arg>"
+c bc64 sial-sasm "<arg>"
+c bc64 sial-vax "<arg>"
+c bc64 skip "<arg>"
+c bc64 sortxref "<arg>"
+c bc64 stack "<arg>"
+c bc64 stats "<arg>"
+c bc64 sysdebug "<arg>"
+c bc64 testtr "<arg>"
+c bc64 testtime "<arg>"
+c bc64 time "<arg>"
+c bc64 tstmuldivbits "<arg>"
+c bc64 type "<arg>"
+# c bc64 typeflush "<arg>"
+c bc64 typehex "<arg>"
+c bc64 unpreload "<arg>"
+c bc64 vecstats "<arg>"
+c bc64 vspl "<arg>"
+c bc64 wait "<arg>"
+c bc64 why "<arg>"
+c bc64 x8-bin "<arg>"
+c bc64 xbcpl "<arg>"
+c xbc xcmpltest "<arg>"
+c bc64 xcdecode "<arg>"
+c bc64 xcencode "<arg>"
+c bc64 xdecode "<arg>"
+c bc64 xencode "<arg>"
+c bc64 xpal70 "<arg>"
+
+
+
+

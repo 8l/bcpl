@@ -1,0 +1,130 @@
+                    The ARM instruction set used in Natbcpl
+                    (omitting the privileged instructions)
+
+<op>=MOV, <code4>=1101
+<op>=MVN, <code4>=1111
+
+<op>{cond}{S} Rd,#<k8 ROT (2*k4)>    <cond4>|001|<code4>|S|0000|<Rd>|<k4>|<k8>
+<op>{cond}{S} Rd,Rm                  <cond4>|000|<code4>|S|0000|<Rd>|00000 |000|<Rm>
+<op>{cond}{S} Rd,Rm,RRX              <cond4>|000|<code4>|S|0000|<Rd>|00000 |110|<Rm>
+<op>{cond}{S} Rd,Rm,LSL #<sh5>       <cond4>|000|<code4>|S|0000|<Rd>|<sh5> |000|<Rm>
+<op>{cond}{S} Rd,Rm,LSR #<sh5>       <cond4>|000|<code4>|S|0000|<Rd>|<sh5> |010|<Rm>
+<op>{cond}{S} Rd,Rm,ASR #<sh5>       <cond4>|000|<code4>|S|0000|<Rd>|<sh5> |100|<Rm>
+<op>{cond}{S} Rd,Rm,ROR #<sh5>       <cond4>|000|<code4>|S|0000|<Rd>|<sh5> |110|<Rm>
+<op>{cond}{S} Rd,Rm,LSL Rs           <cond4>|000|<code4>|S|0000|<Rd>|<Rs> |0001|<Rm>
+<op>{cond}{S} Rd,Rm,LSR Rs           <cond4>|000|<code4>|S|0000|<Rd>|<Rs> |0011|<Rm>
+<op>{cond}{S} Rd,Rm,ASR Rs           <cond4>|000|<code4>|S|0000|<Rd>|<Rs> |0101|<Rm>
+<op>{cond}{S} Rd,Rm,ROR Rs           <cond4>|000|<code4>|S|0000|<Rd>|<Rs> |0111|<Rm>
+
+<op>=ADD, <code4>=0100
+<op>=ADC, <code4>=0101
+<op>=SUB, <code4>=0010
+<op>=SBC, <code4>=0110
+<op>=RSB, <code4>=0011
+<op>=RSC, <code4>=0111
+<op>=AND, <code4>=0000
+<op>=EOR, <code4>=0001
+<op>=ORR, <code4>=1100
+<op>=BIC, <code4>=1110
+
+<op>{cond}{S} Rd,Rn,#<k8>>>(2*k4)>  <cond4>|001|<code4>|S|<Rn>|<Rd>|<k4>|<k8>
+<op>{cond}{S} Rd,Rn,Rm              <cond4>|000|<code4>|S|<Rn>|<Rd>|00000 |000|<Rm>
+<op>{cond}{S} Rd,Rn,Rm,RRX          <cond4>|000|<code4>|S|<Rn>|<Rd>|00000 |110|<Rm>
+<op>{cond}{S} Rd,Rn,Rm,LSL #<sh5>   <cond4>|000|<code4>|S|<Rn>|<Rd>|<sh5> |000|<Rm>
+<op>{cond}{S} Rd,Rn,Rm,LSR #<sh5>   <cond4>|000|<code4>|S|<Rn>|<Rd>|<sh5> |010|<Rm>
+<op>{cond}{S} Rd,Rn,Rm,ASR #<sh5>   <cond4>|000|<code4>|S|<Rn>|<Rd>|<sh5> |100|<Rm>
+<op>{cond}{S} Rd,Rn,Rm,ROR #<sh5>   <cond4>|000|<code4>|S|<Rn>|<Rd>|<sh5> |110|<Rm>
+<op>{cond}{S} Rd,Rn,Rm,LSL Rs       <cond4>|000|<code4>|S|<Rn>|<Rd>|<Rs> |0001|<Rm>
+<op>{cond}{S} Rd,Rn,Rm,LSR Rs       <cond4>|000|<code4>|S|<Rn>|<Rd>|<Rs> |0011|<Rm>
+<op>{cond}{S} Rd,Rn,Rm,ASR Rs       <cond4>|000|<code4>|S|<Rn>|<Rd>|<Rs> |0101|<Rm>
+<op>{cond}{S} Rd,Rn,Rm,ROR Rs       <cond4>|000|<code4>|S|<Rn>|<Rd>|<Rs> |0111|<Rm>
+
+<op>=CMP, <code4>=1010
+<op>=CMN, <code4>=1011
+<op>=TST, <code4>=1000
+<op>=TEQ, <code4>=1001
+
+<op>{cond} Rd,#<k8>>>(2*k4)>        <cond4>|001|<code4>|1|0000|<Rd>|<k4>|<k8>
+<op>{cond} Rd,Rm                    <cond4>|000|<code4>|1|0000|<Rd>|00000 |000|<Rm>
+<op>{cond} Rd,Rm,RRX                <cond4>|000|<code4>|1|0000|<Rd>|00000 |110|<Rm>
+<op>{cond} Rd,Rm,LSL #<sh5>         <cond4>|000|<code4>|1|0000|<Rd>|<sh5> |000|<Rm>
+<op>{cond} Rd,Rm,LSR #<sh5>         <cond4>|000|<code4>|1|0000|<Rd>|<sh5> |010|<Rm>
+<op>{cond} Rd,Rm,ASR #<sh5>         <cond4>|000|<code4>|1|0000|<Rd>|<sh5> |100|<Rm>
+<op>{cond} Rd,Rm,ROR #<sh5>         <cond4>|000|<code4>|1|0000|<Rd>|<sh5> |110|<Rm>
+<op>{cond} Rd,Rm,LSL Rs             <cond4>|000|<code4>|1|0000|<Rd>|<Rs> |0001|<Rm>
+<op>{cond} Rd,Rm,LSR Rs             <cond4>|000|<code4>|1|0000|<Rd>|<Rs> |0011|<Rm>
+<op>{cond} Rd,Rm,ASR Rs             <cond4>|000|<code4>|1|0000|<Rd>|<Rs> |0101|<Rm>
+<op>{cond} Rd,Rm,ROR Rs             <cond4>|000|<code4>|1|0000|<Rd>|<Rs> |0111|<Rm>
+
+
+B<cond>  <offset24>                 <cond4>|1010|<offset24>
+BL<cond> <offset24>                 <cond4>|1011|<offset24>
+BX<cond> Rm                         <cond4>|0001|0010|1111|1111|1111|0001|<Rm>
+
+<op>=LDM<cond>IA I=1 P=0 L=1
+<op>=LDM<cond>IB I=1 P=1 L=1
+<op>=LDM<cond>DA I=0 P=0 L=1
+<op>=LDM<cond>DB I=0 P=1 L=1
+<op>=STM<cond>IA I=1 P=0 L=0
+<op>=STM<cond>IB I=1 P=1 L=0
+<op>=STM<cond>DA I=0 P=0 L=0
+<op>=STM<cond>DB I=0 P=1 L=0
+
+<op> Rd,<regs16>                    <cond4>|100P|I00L|<Rn>|<regs16>
+
+<op>=LDR<cond>  B=0 L=1
+<op>=LDR<cond>B B=1 L=1
+<op>=STR<cond>  B=0 L=0
+<op>=STR<cond>B B=1 L=0
+
+<op> Rd,[Rn,#+k12]                  <cond4>|0101|1B0L|<Rn>|<Rd>|<k12>
+<op> Rd,[Rn,#-k12]                  <cond4>|0101|0B0L|<Rn>|<Rd>|<k12>
+<op> Rd,[Rn,+Rm]                    <cond4>|0111|1B0L|<Rn>|<Rd>|00000|000|<Rm>
+<op> Rd,[Rn,-Rm]                    <cond4>|0111|0B0L|<Rn>|<Rd>|00000|000|<Rm>
+<op> Rd,[Rn,+Rm, RRX]               <cond4>|0111|1B0L|<Rn>|<Rd>|00000|110|<Rm>
+<op> Rd,[Rn,-Rm, RRX]               <cond4>|0111|0B0L|<Rn>|<Rd>|00000|110|<Rm>
+<op> Rd,[Rn,+Rm, LSL #sh5]          <cond4>|0111|1B0L|<Rn>|<Rd>|<sh5>|000|<Rm>
+<op> Rd,[Rn,-Rm, LSL #sh5]          <cond4>|0111|0B0L|<Rn>|<Rd>|<sh5>|000|<Rm>
+<op> Rd,[Rn,+Rm, LSR #sh5]          <cond4>|0111|1B0L|<Rn>|<Rd>|<sh5>|010|<Rm>
+<op> Rd,[Rn,-Rm, LSR #sh5]          <cond4>|0111|0B0L|<Rn>|<Rd>|<sh5>|010|<Rm>
+<op> Rd,[Rn,+Rm, ASR #sh5]          <cond4>|0111|1B0L|<Rn>|<Rd>|<sh5>|100|<Rm>
+<op> Rd,[Rn,-Rm, ASR #sh5]          <cond4>|0111|0B0L|<Rn>|<Rd>|<sh5>|100|<Rm>
+<op> Rd,[Rn,+Rm, ROR #sh5]          <cond4>|0111|1B0L|<Rn>|<Rd>|<sh5>|110|<Rm>
+<op> Rd,[Rn,-Rm, ROR #sh5]          <cond4>|0111|0B0L|<Rn>|<Rd>|<sh5>|110|<Rm>
+
+
+<op>=LDR<cond>SH L=1 S=1 H=1
+<op>=LDR<cond>SB L=1 S=1 H=0
+<op>=LDR<cond>H  L=1 S=0 H=1
+<op>=STR<cond>H  L=0 S=0 H=1
+
+<op> Rd,[Rn, #+<h4><l4>]            <cond4>|0001|110L|<Rn>|<Rd>|<h4>|1SH1|<l4>
+<op> Rd,[Rn, #-<h4><l4>]            <cond4>|0001|010L|<Rn>|<Rd>|<h4>|1SH1|<l4>
+<op> Rd,[Rn, #+<h4><l4>]!           <cond4>|0001|111L|<Rn>|<Rd>|<h4>|1SH1|<l4>
+<op> Rd,[Rn, #-<h4><l4>]!           <cond4>|0001|011L|<Rn>|<Rd>|<h4>|1SH1|<l4>
+<op> Rd,[Rn],#+<h4><l4>             <cond4>|0000|110L|<Rn>|<Rd>|<h4>|1SH1|<l4>
+<op> Rd,[Rn],#-<h4><l4>             <cond4>|0000|010L|<Rn>|<Rd>|<h4>|1SH1|<l4>
+<op> Rd,[Rn, +Rm]                   <cond4>|0001|100L|<Rn>|<Rd>|0000|1SH1|<Rm>
+<op> Rd,[Rn, -Rm]                   <cond4>|0001|000L|<Rn>|<Rd>|0000|1SH1|<Rm>
+<op> Rd,[Rn, +Rm]!                  <cond4>|0001|101L|<Rn>|<Rd>|0000|1SH1|<Rm>
+<op> Rd,[Rn, -Rm]!                  <cond4>|0001|001L|<Rn>|<Rd>|0000|1SH1|<Rm>
+<op> Rd,[Rn],+Rm                    <cond4>|0000|100L|<Rn>|<Rd>|0000|1SH1|<Rm>
+<op> Rd,[Rn],-Rm                    <cond4>|0000|000L|<Rn>|<Rd>|0000|1SH1|<Rm>
+
+SWP<cond>   Rd,Rm,[Rn]              <cond4>|0001|0000|<Rn>|<Rd>|0000|1001|<Rm>
+SWP<cond>B  Rd,Rm,[Rn]              <cond4>|0001|0100|<Rn>|<Rd>|0000|1001|<Rm>
+
+MUL<cond>{S} Rd,Rm,[Rn]             <cond4>|0000|000S|<Rn>|0000|<Rs>|1001|<Rm>
+MLA<cond>{S} Rd,Rm,Rs,Rn            <cond4>|0000|001S|<Rd>|<Rn>|<Rs>|1001|<Rm>
+
+SMULL<cond>{S} RL,RH,Rm,Rs          <cond4>|0000|110S|<RH>|<RL>|<Rs>|1001|<Rm>
+SMLAL<cond>{S} RL,RH,Rm,Rs          <cond4>|0000|111S|<RH>|<RL>|<Rs>|1001|<Rm>
+UMULL<cond>{S} RL,RH,Rm,Rs          <cond4>|0000|100S|<RH>|<RL>|<Rs>|1001|<Rm>
+UMLAL<cond>{S} RL,RH,Rm,Rs          <cond4>|0000|101S|<RH>|<RL>|<Rs>|1001|<Rm>
+
+SWI<cond> <k24>                     <cond4>|1111|<k24>
+
+
+
+MR
+20/02/2012

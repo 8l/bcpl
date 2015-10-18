@@ -1,0 +1,290 @@
+
+An Edsac simulator
+
+by Martin Richards (c) June 2005
+
+
+This directory contains an interpreter for the Edsac computer that was
+built and ran it first program in May 1949. The interpreter is
+implemented in BCPL and can be run both under the standard BCPL
+Cintcode System, or directly as an executable program on Pentium based
+machines running under Linux. To people running Linux with access to
+the Cambridge Computer Laboratory cl file space, just type:
+
+cd ~mr/distribution/Edsac/edsac
+edsac
+
+For everyone else it is freely available within the standard BCPL
+Cintcode distribution:
+
+http://www.cl.cam.ac.uk/users/mr/BCPL.html
+
+The BCPL Cintcode version is in the directory BCPL/bcplprogs/edsac and
+the native code Linux-Pentium compiled version is in the directory
+BCPL/natbcpl/edsac. For easy access to the Edsac paper tapes the
+simulator should be run with one of these set as the current
+directory. Try. for instance
+
+cd BCPL/natbcpl
+edsac
+ 
+or, if the BCPL Cintcode system is installed,
+
+cd BCPL/bcplprogs/edsac
+cinterp
+edsac
+
+Alternatively, both the BCPL source and compiled versions can be
+obtained via the much smaller distribution:
+
+http://www.cl.cam.ac.uk/users/mr/Edsac.html.
+
+To enter this vesion of the Edsac simulator under Linux, change
+to directory Edsac/edsac and execute edsac, eg by typing:
+
+cd Edsac/edsac
+edsac
+
+The simulator will open with the message:
+
+Paper tape: squares.txt
+
+EDSAC Simulator -- Type ? for help
+
+# 
+
+You may now interact with the simulator by typing debugging commands.
+For example,
+
+z
+
+will clear all 1024 locations of Edsac's memory to zero.
+
+r
+
+will load the initial orders into locations 0 to 30 and set the
+sequence control register (SCR), the multiplier register (H) and the
+accumulator to zero. The initial orders were written by David Wheeler
+and are the ones that were used in May 1949. They are really cunning
+and well worth studying. When entered at location zero, this code will
+load and execute a program from paper tape. The default paper tape is
+in the file squares.txt which was a program written by Maurice Wilkes.
+to print a table of the squares and differences of the first 100
+natural number. It first ran in June 1949.  To load and run it type:
+
+c
+
+The output will be:
+
+    1      1      1
+    2      4      3
+    3      9      5
+    4     16      7
+    5     25      9
+  ...
+
+   98   9604    195
+   99   9801    197
+  100  10000    199
+Successful termination of the program
+#
+
+Type: ? to obtain a summary of all the debugging commands available.
+It will output the following:
+
+?             Print list of debug commands
+123  .125  #1011  #.1011  'c  17-bit constants
+123S .125S #1011S #.1011S     17-bit constants
+123L .125L #1011L #.1011L     35-bit constants
+123F .125F #1011F #.1011F     71-bit 
+*k +k -k      Multiply/Add/Subtract constant k
+/ ^           Divide/multiply the current value by 10
+~             Negate the current value
+< >           Shift the current value left/right one place
+$<s>          Set the default printing style to <s>
+                <s> = b   binary integer
+                <s> = d   decimal integer
+                <s> = f   decimal fraction
+                <s> = i   instruction
+=             Print current value in current style
+LS LL LF      Change the length of the current value
+A H P         Get value from Acc, H or SCR
+Ma MSa MLa    Get a 17 or 35 bit value from memory
+SA SH         Store value in a Acc or H
+Ja            Jump to a, ie set SCR = a
+Sa            Store the current value in memory address a
+Ia <code>     Assemble instructions into locations a, a+1,...
+Tn<s> TSn<s>  Print n consecutive 17-bit locations, style <s>
+TLn<s>        Print n consecutive 35-bit words, style <s>
+F <name>      Set the paper tape filename
+Q             Quit
+R             Load initial orders and clear registers SCR, H and Acc
+Z             Set all 1024 memory locations to zero
+DP            Toggle dump of SCR and the next order
+DR<s>         Toggle dump of the operand, style <s>
+DSH<s> DLH<s> Toggle dump of H, style <s>
+DSA<s> DLA<s> DFA<s> Toggle dump of the accumulator, style <s>
+DSa<s>        Toggle dump of 17-bit memory location in style <s>
+DLa<s>        Toggle dump 35-bit memory word, style <s>
+;             Print requested values
+B  Ba  Ua     List, set or unset breakpoints
+C             Continue normal execution
+\             Execute one instruction
+
+The debugger has a current value which is 17, 35 or 71 bits long which
+can be output using the command: = in the current printing
+style. There are four styles and these are set by the $ command.
+
+$b    Print as a binary value
+$d    Print as a decimal integer
+$f    Print as a decimal fraction
+$i    Print and an order (only applicable to 17-bit values)
+
+The current value can be set to a constant by commands such as:
+
+123S       Load a 17-bit integer
+.125S      Load a 17-bit decimal fraction
+#1011S     Load a 17-bitbinary integer
+#.1011S    Load a 17-bit binary fraction
+
+If the S (short) were replaced by L (long) or F (full) the bit length
+would be 35 or 71 bits, respectively.  If S is omitted a bit length of
+17 bits is assumed.
+
+Try typing: 123= 123s= 123l= 123f=
+
+The current value can be set to the accumulator (A), the multiplier
+register (H) or the sequence control register (SCR) by the commands:
+A, H and P, respectively.
+
+17 and 35 bit values can be loaded from memory by, for instance:
+
+M25     Load the 17 bit contents of memory location 25
+MS25    Load the 17 bit contents of memory location 25
+ML12    Load the 35 bit contents of memory word at address 12
+
+The current value can be multiplied by a constant, incremented by
+a constant or decremented by a constant by commands such as:
+
+*.123l
++1s
+-#1011
+
+Note that fractional arithmetic is used. Try, for example:
+
+0f= +1= *1= +1l= *1l= +1f=
+
+The current value can be multiplied or divided by 10 using the
+(monadic) commands: / or ^, and the value can be negated by: ~.  The
+value can be doubled or halved by the commands: < and >.
+
+Notice that the length of the current value is not changed by any of
+these commands. The length can, however, be changed explicitly by the
+commands: LS, LL and LF. Try, for example:
+
+.123f= LL= LS= LF=
+
+The current value can be stored in the accumlator (A) or the
+multiplier register (H) by the commands: SA, SH. The command S30 will
+store the current value in memory at address 30. The size of the
+current value is the size of the value stored and must be either 17 or
+35 bits.
+
+Consecutive 17 or 35 bit locations of memory can be printed using TS
+and TL commands. For example, try:
+
+r           Load the initial order
+0TS31i      Print 31 instructions in memory locations 0 to 30
+4TL5d       Print 5 35-bit integers from location 4
+24t2i       Print 2 17-bit integers from location 24
+
+The command C will cause the interpreter to run the simulation from the
+current state until it terminates normally executing the ZS instruction,
+reaches a breakpoint, or encounters a fault.
+
+The command \ will cause the interpreter to execute just one instruction
+from the current state.
+
+A breakpoint can be set or unset at location 25 by the commands:
+B25 and U25. The set of current breakpoints can be listed by
+the command: B.
+
+When execution stops at a breakpoint or after single stepping one
+instruction, the current state is output.
+
+By default, this is the SCR, the next instruction to be executed,
+its operand, the multiplier register and the accumulator.
+
+# \
+
+SCR:   9: 00100_0_0000010000_0   R  16S  // acc >>= 6
+  R: 11111000000000010
+  H: 00101000000000000 0 00000000000000000
+  A: 00000000000000101 0 00000000000000000 000000000000000000000000000000000000
+
+# \
+
+SCR:  10: 00101_0_0000000000_1   T   0L  // mem[0] = acc; acc = 0, long
+  R: 10101000000000100 0 00000000000000101
+  H: 00101000000000000 0 00000000000000000
+  A: 00000000000000000 0 00101000000000000 000000000000000000000000000000000000
+
+# 
+
+The current state can also be printed by the semicolon (;) command.
+
+What is printed can be controlled by the D command which toggles (turns on
+or off) requests to print a value. Both registers and memory locations can
+be controlled in this way. For instance,
+
+ds25i     will toggle the request to print the instruction at location 25,
+dl4d      will toggle the request to print the 35-bit integer at location 4,
+dsaf      will toggle the request to print the senior 17 bits of the accumulator
+          as a decimal fraction.
+
+The command Q (Quit) will cause the interpreter to terminate.
+
+The F command can be used to specify a file as the input paper tape,
+for example:
+
+F squares.txt  The default -- a program to tabulate squares and differences
+F primes.txt   A program equivalent to the one written by David Wheeler and
+               run on May 6, 1949 to print primes until stopped by the operator.
+
+The I command allows instructions to be assembled from the keyboard. For
+example, try:
+
+rz       Clear the registers and all of memory.
+i100     Assemble the following instructions at location 100.
+  ys     Round the accumulator by adding 2**-35 (a one in bit 36).
+  ll     Shift Acc left by one.
+  e100s  Jump to 100 if Acc>=0.
+  g100s  Jump to 100 if Acc<0.
+         Blank line to exit from the I command.
+
+100t4i   Print the four instructions just assembled.
+j100     Set SCR = 100.
+.123fsa  Set Acc to a value.
+;        Print the current state.
+\\\\\\\  Single step execute as many times as you like.
+
+As another example of the use of this interpreter, try:
+
+z        Clear memory.
+r        Load the initial orders and clear SCR, H and Acc.
+;        Print the current state.
+ds25i    Cause the instruction at location 25 to be printed.
+b25      Set a breakpoint at 25.
+ds31i    Cause the instruction at location 31 to be printed.
+b31      Set a breakpoint at 31, the first instruction of the
+         loaded program to be executed.
+\\\\\\\\ Single step execute as few instructions. Do it about 50 times
+         to observe locations 25 and 31 changing.
+cccccccc Continue execution a few times.
+u25      Unset the breakpoint at 25.
+c        Continue execution until hitting the breakpoint at 31.
+c        Run the squares program.
+
+q        Leave the Edsac interpreter.
+
+MR 27 June 2005

@@ -1,0 +1,171 @@
+
+Image File: DUMP.mem           Dated:  <unset> <unset>
+
+Dump by user probably calling: dumpmem
+
+Last abort code: 0
+
+Rootnode at 100
+
+  blklist             0
+  memsize       4000000
+  info                0
+  sys             27276
+  blib             4371
+  boot             1757
+  abortcode           0
+  context             4
+  lastp               0
+  lastg               0
+  days                0
+  msecs               0
+
+
+######################### Program Boot ###########################
+
+Registers:
+a=52 b=52 c=0 p=1004(251) g=2988(747) st=2 pc=1001 count=-1 mw=0
+
+Global variables at G = 747:
+
+G  0:          sys        start         stop          sys      clihook
+G  5:       muldiv     changeco          231          231          100
+G 15:        level     longjump     createco     deleteco       callco
+G 20:       cowait     resumeco       initco      startco       globin
+G 25:       getvec       #G026#      freevec        abort       #G029#
+G 30:   packstring  unpac'tring      getword      putword       randno
+G 35:      setseed       sardch       sawrch       sardch      binrdch
+G 40:       unrdch       sawrch      binwrch      deplete    readwords
+G 45:   writewords       #G046#    splitname    findinput   findoutput
+G 50:  findi'utput   findupdate   findstream  pathf'input  getre'paddr
+G 55:   settimeout  selectinput  selec'utput        input       output
+G 60:      endread     endwrite    endstream         note        point
+G 65:  rewin'tream  appen'tream   stepstream  setre'ength  recordpoint
+G 70:   recordnote   get_record   put_record       #G073#       #G074#
+G 75:       #G075#   deletefile   renamefile      freeobj      copydir
+G 80:       #G080#       #G081#       #G082#        readn      newline
+G 85:       writed       writen     writehex     writeoct       writes
+G 90:       writet       writeu       writez  get_t'tblib       writef
+G 95:     sawritef    capitalch       compch   compstring   copystring
+G100:  strin'umber     str2numb       rdargs       rditem      findarg
+G105:      loadseg    unloadseg      callseg    datstring     datstamp
+G110:  dat_t'rings  strin'o_dat       setbit      testbit   copy_words
+G115:  clear_words   copy_bytes   setlogname   getlogname      intflag
+G120:      newpage   instrcount      setbulk  mkramstream  setti'utact
+G125:       #G125#     codewrch       #G127#       #G128#       #G129#
+G135:       #G135#       #G136#            0       #G138#       #G139#
+G200:      sadebug    checkaddr         cont       #G203#        error
+G205:           gb           gh          gsb          gsh           gw
+G210:    instrtype        fname       nextpc       praddr      prinstr
+G215:        print        rdval    rdvaraddr          rch      wrcortn
+G220:      wrframe     writearg       #G222#         2041         2053
+G225:            0            0       #G227#       #G228#       #G229#
+G230:       #G230#            0      4000000       #G233#       #G234#
+G235:       #G235#           21       #G237#           70            0
+G240:         2031            0       #G242#       #G243#       #G244#
+
+Coroutine stacks for program Boot:
+
+     231: Current Coroutine         start  Parent -1  Stack 500/60
+     251:          sys           52            4   #xABCD1234   #xABCD1234
+            #xABCD1234   #xABCD1234   #xABCD1234   #xABCD1234   #xABCD1234
+            #xABCD1234   #xABCD1234   #xABCD1234   #xABCD1234   #xABCD1234
+     238:         boot         8051         7535           -2         6815
+                   246        57311   #x7379730B   #x20202020   #x20202020
+                 31633
+     231:  #StackBase#        start          500            0          500
+ Base of stack
+
+End of coroutine list
+
+
+######################### Program CLI ############################
+
+Registers:
+a=0 b=0 c=109 p=46216(11554) g=32204(8051) st=1 pc=27277 count=-1 mw=0
+
+Global variables at G = 8051:
+
+G  0:          sys        start         stop          sys      clihook
+G  5:       muldiv     changeco        11527        11527          100
+G 10:            0       #G011#         9061        10133            0
+G 15:        level     longjump     createco     deleteco       callco
+G 20:       cowait     resumeco       initco      startco       globin
+G 25:       getvec       #G026#      freevec        abort       #G029#
+G 30:   packstring  unpac'tring      getword      putword       randno
+G 35:      setseed       sardch       sawrch         rdch      binrdch
+G 40:       unrdch         wrch      binwrch      deplete    readwords
+G 45:   writewords       #G046#    splitname    findinput   findoutput
+G 50:  findi'utput   findupdate   findstream  pathf'input  getre'paddr
+G 55:   settimeout  selectinput  selec'utput        input       output
+G 60:      endread     endwrite    endstream         note        point
+G 65:  rewin'tream  appen'tream   stepstream  setre'ength  recordpoint
+G 70:   recordnote   get_record   put_record       #G073#       #G074#
+G 75:       #G075#   deletefile   renamefile      freeobj      copydir
+G 80:       #G080#       #G081#       #G082#        readn      newline
+G 85:       writed       writen     writehex     writeoct       writes
+G 90:       writet       writeu       writez  get_t'tblib       writef
+G 95:     sawritef    capitalch       compch   compstring   copystring
+G100:  strin'umber     str2numb       rdargs       rditem      findarg
+G105:      loadseg    unloadseg      callseg    datstring     datstamp
+G110:  dat_t'rings  strin'o_dat       setbit      testbit   copy_words
+G115:  clear_words   copy_bytes   setlogname   getlogname      intflag
+G120:      newpage   instrcount      setbulk  mkramstream  setti'utact
+G125:       #G125#     codewrch        12345       #G128#       #G129#
+G130:       #G130#           10            0       #G133#            0
+G135:       #G135#       #G136#            0         7567       #G139#
+G140:         7550         9061         9061         7594           -1
+G145:            0       #G146#        50000        10133        11453
+G240:       #G240#            0       #G242#       #G243#       #G244#
+
+Coroutine stacks for program CLI:
+
+   11527: Current Coroutine       clihook  Parent 7535  Stack 50000/71
+   11554:          sys            0           -2        11560            0
+                     0            0            0            0            0
+                     0            0            0            0            0
+   11537:        start        11541            0            0            0
+                     0            0            0            0            0
+                     0        11551        45866       rdargs        11486
+   11533:      clihook            0
+   11527:  #StackBase#      clihook        50000        11527
+ Base of stack
+
+    7535: Coroutine     startroot  Parent -1  Stack 500/163
+    7624:       callco        11527            0        30496        23051
+              changeco            0        11527        11527          sys
+                    21        50006        30532        19035     cnslrdfn
+    7545:        start            0         7550   #x3E6E2504        27168
+                    24        11205          sys           23         2221
+                     0           -1        10133            0         7562
+    7542:     rootcode
+    7535:  #StackBase#    startroot          500            0          500
+ Base of stack
+
+End of coroutine list
+
+Map of free and allocated blocks in 0..4000000
+
+       0:    210 #xDEADC0DE #xDEADC0DE #xDEADC0DE #xDEADC0DE #xDEADC0DE 
+     210:     20 #x50434208 #x5441504C #xDEADC048 #xDEADC0DE #xDEADC0DE 
+     230:    516          0         -1          0       7068        500 
+     746:   1010       1000       7068      17524       1000      17596 
+    1756:   2614 Section BOOT       
+    4370:   2438 Section BLIB       
+    6808:     38 Section syslib     
+    6846:    688 Section DLIB       
+    7534:    516      30496         -1          0       8576        500 
+    8050:   1010       1000      45852      17524      27276      17596 
+    9060:     38        129         -1          0       9099          8 
+    9098:   1034 #x706D7564 #x0A6D656D #xDEADC0DE #xDEADC0DE #xDEADC0DE 
+   10132:     38        130         -1          0      10171          0 
+   10170:   1034 #xDE203E30 #xDEADC0DE #xDEADC0DE #xDEADC0DE #xDEADC0DE 
+   11204:    248 Section CLI        
+   11452:     74 Section DUMPMEM    
+   11526:  50016      46144       7535       7535      17596      50000 
+   61542:3938458 free 
+End of block list = 4000000
+
+Largest contiguous free area: 3938458 words
+Totals: 4000000 words available, 61542 used, 3938458 free
+

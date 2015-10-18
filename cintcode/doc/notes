@@ -1,0 +1,769 @@
+
+A BCPL CINTCODE DEMONSTRATION SCRIPTS
+
+These demonstrations were constructed running the BCPL Cintcode system on a
+Linux machine, but produces identical results on most other systems
+including all Windows systems.
+
+It is assumed that, on Unix and Windows Machines, the BCPL Cintcode
+system has been properly installed in a directory called cintcode, and
+that the shell variables PATH and BCPLPATH both include this
+directory.
+
+FIRST SCRIPT
+
+The demonstration consists of typing the following script:
+
+cd ......./cintcode          -- get into the cintcode directory
+make                         -- compile (if necesary) and enter the system
+type com/echo.b
+bcpl com/echo.b to echo
+echo hello
+echo "Hi there"
+map pic
+preload bcpl
+map pic
+preload
+map blocks
+type bc
+c bc echo
+type b
+logout
+
+When the above script was run on a Linux machine (called shep) on 
+24 June 1999 the console session was as follows:
+
+shep$ make
+stty sane
+./cinterp
+BCPL Cintcode System
+0> type com/echo.b
+SECTION "ECHO"
+
+GET "libhdr"
+
+LET start() = VALOF
+$( LET argv = VEC 80
+
+   IF rdargs("", argv, 80)=0 DO $( writes("Bad argument for ECHO*n")
+                                   RESULTIS 20
+                                $)
+
+   UNLESS argv!0=0 DO writes(argv!0)
+
+   newline()
+
+   RESULTIS 0
+$)
+0> bcpl com/echo.b to echo
+clove$ 
+clove$ make
+stty sane
+./cinterp
+shep$ make
+stty sane
+./cinterp
+BCPL Cintcode System
+0> type com/echo.b
+SECTION "ECHO"
+
+GET "libhdr"
+
+LET start() = VALOF
+$( LET argv = VEC 80
+
+   IF rdargs("", argv, 80)=0 DO $( writes("Bad argument for ECHO*n")
+                                   RESULTIS 20
+                                $)
+
+   UNLESS argv!0=0 DO writes(argv!0)
+
+   newline()
+
+   RESULTIS 0
+$)
+0> bcpl com/echo.b to echo
+
+BCPL (10 June 1999)
+Code size = 112 bytes
+10> echo hello
+hello
+0> echo "Hi there"
+Hi there
+0> map pic
+
+Largest contiguous free area: 993970 words
+Totals: 1000000 words available, 6030 used, 993970 free
+
+
+     0  @@@@@@@@@@@@@a..................................................
+ 50048  ................................................................
+100096  ................................................................
+150144  ................................................................
+200192  ................................................................
+250240  ................................................................
+300288  ................................................................
+350336  ................................................................
+400384  ................................................................
+450432  ................................................................
+500480  ................................................................
+550528  ................................................................
+600576  ................................................................
+650624  ................................................................
+700672  ................................................................
+750720  ................................................................
+800768  ................................................................
+850816  ................................................................
+900864  ................................................................
+950912  ...............................................................
+20> preload bcpl
+10> map pic
+
+Largest contiguous free area: 982302 words
+Totals: 1000000 words available, 12586 used, 987414 free
+
+
+     0  @@@@@@@@@@@@@a..a@@@@@@@a.......................................
+ 50048  ................................................................
+100096  ................................................................
+150144  ................................................................
+200192  ................................................................
+250240  ................................................................
+300288  ................................................................
+350336  ................................................................
+400384  ................................................................
+450432  ................................................................
+500480  ................................................................
+550528  ................................................................
+600576  ................................................................
+650624  ................................................................
+700672  ................................................................
+750720  ................................................................
+800768  ................................................................
+850816  ................................................................
+900864  ................................................................
+950912  ...............................................................
+10> preload
+bcpl             size 26176 bytes
+0> map blocks
+
+Map of free and allocated store
+
+      0: alloc    10 words
+     10: alloc    22 words Rootnode
+     32: alloc   502 words
+    534: alloc   252 words
+    786: alloc    26 words Section syslib 
+    812: alloc   932 words Section BLIB   
+   1744: alloc  1852 words Section BOOT   
+   3596: alloc  1002 words
+   4598: alloc   208 words
+   4806: alloc   522 words
+   5328: alloc   522 words
+   5850: alloc   180 words Section CLI    
+   6030: free    480 words MAP's code Section MAP    
+   6510: free    502 words MAP's workspace
+   7012: free   4130 words
+  11142: alloc  2138 words Section SYN    
+  13280: alloc  1362 words Section TRN    
+  14642: alloc  3050 words Section CINCG  
+  17692: alloc     6 words
+  17698: free   5008 words MAP's stack
+  22706: free 977294 words
+Top of block list = 1000000
+Largest contiguous free area: 982302 words
+Totals: 1000000 words available, 12586 used, 987414 free
+
+10> type bc
+.k file/a
+echo "compiling com/<file>.b to <file>"
+bcpl com/<file>.b to <file>
+0> c bc echo
+compiling com/echo.b to echo
+
+BCPL (10 June 1999)
+Code size = 112 bytes
+0> logout
+shep$ 
+
+
+-------------------------------------
+This is the end of the first demonstration.
+
+
+SECOND SCRIPT
+
+cd ..
+cd bcplprogs
+cd demos                   -- get to a directory of demo programs
+ls
+cinterp
+type triangle.b
+type triangle.b
+c b triangle
+triangle 5 7 6
+triangle 1 2 6
+triangle 1 9 9
+triangle 12 5 13
+type queens.b
+c b queens
+queens
+type primes.b
+c b primes
+primes
+type primefib.b
+c b primefib
+primefib
+abort
+?
+
+gt20
+g4b1
+b
+c
+bcpl queens.b to junk
+\\\\\\\\\\\\\\\
+g+200t50
+g246b2
+b
+c.,,,,,,,,,,
+rt8
+10sr7
+rt8
+\rt8
+\rt8
+c
+rt8
+0b2 0b1
+c
+type fact.b
+bcpl fact.b to fact d1
+bcpl fact.b
+type OCODE
+procode OCODE
+type fact
+fact
+logout
+
+When the above script was run on a Linux machine (called shep) on 
+24 June 1999 the console session was as follows:
+
+shep$ 
+shep$ cd ..
+shep$ cd bcplprogs
+shep$ cd demos
+shep$ ls
+Makefile     coprimes.b   fact.b       ham23.b      objdemo.b    randtree.b
+Xsquare.b    crc.b        factors.b    hamming.b    pattern.b    ranexpr.b
+apfel.b      crdemo.b     findperm.b   hello.b      primefib     shtree.b
+bigprimes.b  d3nodes.b    fprimes.b    huffman.b    primefib.b   splay.b
+bprimes.b    demo.b       fridays.b    inpoly.b     primes.b     squad.b
+cavity.b     easter.b     green.b      julian.b     queens.b     triangle.b
+coins.b      enigma.b     ham2.b       nqueens.b    queens2.b    warshll.b
+shep$ cinterp
+BCPL Cintcode System
+0> type triangle.b
+GET "libhdr"
+
+LET start() = VALOF
+{ LET argv = VEC 50
+  LET len = VEC 2
+
+  IF rdargs("A/A,B/A,C/A", argv, 50) = 0
+  { writes("Bad arguments: triangle need three numbers*n")
+    RESULTIS 20
+  }
+  FOR i = 0 TO 2 DO len!i := str2numb(argv!i)
+  writes("*nTriangle given: ")
+  FOR i = 0 TO 2 DO writef("%n ", len!i)
+  writef("*nThis is %s triangle*n",
+            sort_of_triangle(len!0, len!1, len!2))
+  RESULTIS 0
+}
+
+AND sort_of_triangle(a, b, c) =
+    b<a         -> sort_of_triangle(b, a, c),
+    c<b         -> sort_of_triangle(a, c, b),
+    // At this point we know that a <= b <= c
+    c>a+b       -> "not a",
+    a=c         -> "an equilateral",
+    a=b | b=c   -> "an isoscelese",
+    c*c=a*a+b*b -> "a right angled",
+                   "a scalene"
+10> c b triangle
+compiling triangle.b to triangle
+
+BCPL (10 June 1999)
+Code size = 408 bytes
+0> triangle 5 7 6
+
+Triangle given: 5 7 6 
+This is a scalene triangle
+0> triangle 1 2 6
+
+Triangle given: 1 2 6 
+This is not a triangle
+0> triangle 1 9 9
+
+Triangle given: 1 9 9 
+This is an isoscelese triangle
+0> triangle 12 5 13
+
+Triangle given: 12 5 13 
+This is a right angled triangle
+0> type queens.b
+GET "libhdr"
+ 
+GLOBAL { count:200; all:201  }
+ 
+LET try(ld, row, rd) BE TEST row=all
+
+                        THEN count := count + 1
+
+                        ELSE { LET poss = all & ~(ld | row | rd)
+                               UNTIL poss=0 DO
+                               { LET p = poss & -poss
+                                 poss := poss - p
+                                 try(ld+p << 1, row+p, rd+p >> 1)
+                               }
+                             }
+
+LET start() = VALOF
+{ all := 1
+  
+  FOR i = 1 TO 12 DO
+  { count := 0
+    try(0, 0, 0)
+    writef("Number of solutions to %i2-queens is %i5*n", i, count)
+    all := 2*all + 1
+  }
+
+  RESULTIS 0
+}
+10> c b queens
+compiling queens.b to queens
+
+BCPL (10 June 1999)
+Code size = 184 bytes
+0> queens
+Number of solutions to  1-queens is     1
+Number of solutions to  2-queens is     0
+Number of solutions to  3-queens is     0
+Number of solutions to  4-queens is     2
+Number of solutions to  5-queens is    10
+Number of solutions to  6-queens is     4
+Number of solutions to  7-queens is    40
+Number of solutions to  8-queens is    92
+Number of solutions to  9-queens is   352
+Number of solutions to 10-queens is   724
+Number of solutions to 11-queens is  2680
+Number of solutions to 12-queens is 14200
+1870> type primes.b
+GET "libhdr"
+ 
+GLOBAL $( count: ug  $)
+ 
+MANIFEST $( upb = 999  $)
+ 
+LET start() = VALOF
+$( LET isprime = getvec(upb)
+   count := 0
+   FOR i = 2 TO upb DO isprime!i := TRUE  // Until proved otherwise.
+ 
+   FOR p = 2 TO upb IF isprime!p DO
+   $( LET i = p*p
+      UNTIL i>upb DO $( isprime!i := FALSE; i := i + p $)
+      out(p)
+   $)
+ 
+   writes("*nend of output*n")
+   freevec(isprime)
+   RESULTIS 0
+$)
+ 
+AND out(n) BE
+$( IF count REM 10 = 0 DO newline()
+   writef(" %i3", n)
+   count := count + 1
+$)
+0> c b primes
+compiling primes.b to primes
+
+BCPL (10 June 1999)
+Code size = 168 bytes
+0> primes
+
+   2   3   5   7  11  13  17  19  23  29
+  31  37  41  43  47  53  59  61  67  71
+  73  79  83  89  97 101 103 107 109 113
+ 127 131 137 139 149 151 157 163 167 173
+ 179 181 191 193 197 199 211 223 227 229
+ 233 239 241 251 257 263 269 271 277 281
+ 283 293 307 311 313 317 331 337 347 349
+ 353 359 367 373 379 383 389 397 401 409
+ 419 421 431 433 439 443 449 457 461 463
+ 467 479 487 491 499 503 509 521 523 541
+ 547 557 563 569 571 577 587 593 599 601
+ 607 613 617 619 631 641 643 647 653 659
+ 661 673 677 683 691 701 709 719 727 733
+ 739 743 751 757 761 769 773 787 797 809
+ 811 821 823 827 829 839 853 857 859 863
+ 877 881 883 887 907 911 919 929 937 941
+ 947 953 967 971 977 983 991 997
+end of output
+10> type primefib.b
+GET "libhdr"
+
+MANIFEST { upb = 4000 }
+
+LET prime1() = VALOF
+{ LET isprime = getvec(upb)
+  FOR i = 2 TO upb DO isprime!i := TRUE // Until disproved
+ 
+  FOR p = 2 TO upb IF isprime!p DO
+  { LET i = p*p
+    UNTIL i>upb DO { isprime!i := FALSE; i := i + p }
+    cowait(p)
+  }
+  freevec(isprime)
+  RESULTIS 0
+}
+
+AND prime2() = VALOF
+{ FOR n = 2 TO upb DO
+  { LET a, b = 2, 1 
+    FOR i = 1 TO n DO { LET c = (a+b) REM n
+                        a := b
+                        b := c
+                      }
+    IF a=1 DO cowait(n)
+  }
+  RESULTIS 0
+}
+
+LET start() = VALOF
+{ LET P1 = createco(prime1, 100)
+  LET P2 = createco(prime2, 100)
+  LET n1, n2, min = 0, 0, 0
+  { IF n1=min DO n1 := callco(P1)
+    IF n2=min DO n2 := callco(P2)
+    min := n1<n2 -> n1, n2
+    UNLESS n1=n2 DO
+       writef(" %i4 from P%c*n", min, n1<n2 -> '1', '2')
+  } REPEATUNTIL min=0
+  deleteco(P1)
+  deleteco(P2)
+  RESULTIS 0
+}
+0> c b primefib
+compiling primefib.b to primefib
+
+BCPL (10 June 1999)
+Code size = 276 bytes
+0> primefib
+  705 from P2
+ 2465 from P2
+ 2737 from P2
+ 3745 from P2
+3900> abort
+
+!! ABORT 99: User requested
+* ?
+?     Print list of debug commands
+Gn Pn Rn Vn           Variables
+G  P  R  V            Pointers
+ddd #odd #xhh #hh 'c  Constants
+*e /e %e +e -e |e &e Dyadic operators
+< > !                 Postfixed operators
+SGn SPn SRn SVn       Store in variable
+=     Print current value
+Tn    Print n consecutive locations
+$c    Set print style C, D, F, O, S, U or X
+LL LH Set Low and High store limits
+I     Print current instruction
+N     Print next instruction
+Q     Quit
+Press RETURN for more
+
+B 0Bn eBn  List, Unset or Set breakpoints
+C          Continue execution
+X          Equivalent to G4B9C
+Z          Equivalent to P1B9C
+\          Execute one instruction
+,          Move down one stack frame
+.          Move to current coroutine
+;          Move to parent coroutine
+[          Move to first coroutine
+]          Move to next coroutine
+* 
+* gt20
+
+G  0:       1000     start       stop        sys         clihook 
+G  5:    GLOB  5     changec        6063        6063          11 
+G 10:    GLOB 10     intflag     sardch      sawrch      GLOB 14 
+G 15:    GLOB 15     GLOB 16     level       longjum     muldiv  
+* g4b1
+* b
+1:      clihook 
+* c
+10> 
+0> bcpl queens.b to junk
+
+!! BPT 1:      clihook 
+   A=          0 B=          0     3300:    K4G  1
+* \A=          0 B=          0    24156:     L0
+* \A=          0 B=          0    24157:    SP3
+* \A=          0 B=          0    24158:    LLP  6
+* \A=      12597 B=          0    24160:    SP4
+* \A=      12597 B=          0    24161:   LLL$  24724
+* \A=       6181 B=      12597    24163:    SP5
+* \A=       6181 B=      12597    24164:     LG  52
+* \A=    output  B=       6181    24166:      K  57
+* \A=       6181 B=       6181     4324:     LG  41
+* \A=       5329 B=       6181     4326:    RTN
+* \A=       5329 B=       6181    24168:     SP  57
+* \A=       5329 B=       6181    24170:      L  30
+* \A=         30 B=       5329    24172:    SG1  36
+* \A=         30 B=       5329    24174:     L0
+* \A=          0 B=         30    24175:    SG1  35
+* 
+* g+200t50
+
+G200:    GLOB200     GLOB201     GLOB202     GLOB203     GLOB204 
+G205:    GLOB205     GLOB206     GLOB207     GLOB208     GLOB209 
+G210:    GLOB210     rdn         wrn         readnum     rdstrch 
+G215:    GLOB215     GLOB216     GLOB217     rdtag       perform 
+G220:    lex         dsw         declsys     GLOB223     GLOB224 
+G225:    lookupw     rch         GLOB227     GLOB228     GLOB229 
+G230:    GLOB230     wrchbuf     GLOB232     GLOB233     GLOB234 
+G235:    GLOB235     GLOB236     GLOB237     GLOB238     GLOB239 
+G240:    rdblock     rdsect      rnameli     rname       GLOB244 
+G245:    rdef        rcom        rdcdefs     GLOB248     GLOB249 
+* g246b2
+* b
+1:      clihook 
+2:      rcom    
+* c
+
+BCPL (10 June 1999)
+
+!! BPT 2:      rcom    
+   A=         93 B=         93    31764:    LF$  31100
+* .   12581:  Active coroutine     clihook   Size  5000  Hwm   213
+      12748:    rcom             93          84           4       27689 
+* ,   12736:    rdef             -1       56590       56572       50944 
+* ,   12728:    rdblock          -1       50856       29324           0 
+* ,   12714:    rdblock          -1       50800       29324       56604 
+* ,   12700:    rdblock          -1       50744       29324       56934 
+* ,   12686:    rdblock          -1       50688       29324       57719 
+* ,   12672:    rdblock          -1       50672       28929       57736 
+* ,   12668:    formtre           0       50672 
+* ,   12591:    start         40000       12597        6181       12608 
+* ,   12587:    clihook           0       50348 
+* , Base of stack
+* 
+* rt8
+
+R  0:         93          93           4       50992       14388 
+R  5:          0     rcom             -1 
+* 10sr7
+* rt8
+
+R  0:         93          93           4       50992       14388 
+R  5:          0     rcom             10 
+* \A=    rbcom   B=         93    31766:     K3
+* rt8
+
+R  0:    rbcom            93           4       50992       14388 
+R  5:          0       31766           9 
+* \A=         93 B=         93    31100:     L0
+* rt8
+
+R  0:         93          93           4       51004       14388 
+R  5:          0     rbcom             8 
+* c
+
+!! ABORT 3: Zero count
+* 
+* rt8
+
+R  0:          5          55           4       51004       14388 
+R  5:          0       31463          -1 
+* 0b2 0b1
+* c
+Code size = 184 bytes
+50> 
+0> type fact.b
+SECTION "fact"
+
+GET "libhdr"
+
+LET f(n) = n=0 -> 1, n*f(n-1)
+
+LET start() = VALOF
+$( FOR i = 1 TO 10 DO
+     writef("f(%i2) = %i8*n", i, f(i))
+   RESULTIS 0
+$)
+0> bcpl fact.b to fact d1
+
+BCPL (10 June 1999)
+   0:  DATAW 0x00000000
+   4:  DATAW 0x0000FDDF
+   8:  DATAW 0x63616607
+  12:  DATAW 0x20202074
+  16:  DATAW 0x0000DFDF
+  20:  DATAW 0x20206607
+  24:  DATAW 0x20202020
+// Entry to:   f      
+  28: L1:
+  28:   JNE0  L3
+  30:     L1  
+  31:    RTN  
+  32: L3:
+  32:    LM1  
+  33:    AP3  
+  34:     LF  L1
+  36:     K4  
+  37:    LP3  
+  38:    MUL  
+  39:    RTN  
+  40: L2:
+  40:  DATAW 0x0000DFDF
+  44:  DATAW 0x61747307
+  48:  DATAW 0x20207472
+// Entry to:   start  
+  52: L4:
+  52:     L1  
+  53:    SP3  
+  54: L6:
+  54:    LP3  
+  55:     LF  L1
+  57:     K9  
+  58:    SP9  
+  59:    LP3  
+  60:    SP8  
+  61:    LLL  L3920
+  63:    K4G   70
+  65:     L1  
+  66:    AP3  
+  67:    SP3  
+  68:    L10  
+  69:    JLE  L6
+  71:     L0  
+  72:    RTN  
+  76: L3920:
+  76:  DATAW 0x2528660D
+  80:  DATAW 0x20293269
+  84:  DATAW 0x6925203D
+  88:  DATAW 0x00000A38
+  92: L5:
+  92:  DATAW 0x00000000
+  96:  DATAW 0x00000001
+ 100:  DATAW 0x00000034
+ 104:  DATAW 0x00000046
+Code size = 108 bytes
+20> bcpl fact.b
+
+BCPL (10 June 1999)
+OCODE size:   124/40000
+20> type OCODE
+ 49 4 102 97 99 116 85 2 94 1 1 102 95 4 42 0
+ 40 3 20 87 3 42 1 96 90 3 91 7 40 3 42 1
+ 15 39 1 10 4 40 3 11 96 103 91 3 90 2 92 85
+ 5 94 4 5 115 116 97 114 116 95 3 42 1 92 90 6
+ 91 7 43 13 102 40 37 105 50 41 32 61 32 37 105 56
+ 10 40 3 91 12 40 3 39 1 10 9 41 70 51 4 40
+ 3 42 1 14 80 3 40 3 42 10 24 86 6 91 3 42
+ 0 96 103 91 3 90 5 92 76 1 1 4
+0> procode OCODE
+Converting OCODE to *
+SECTION 4  'f' 'a' 'c' 't'
+JUMP L2
+ENTRY L1 1  'f'
+SAVE 4
+LN 0
+LP 3
+EQ
+JF L3
+LN 1
+FNRN
+LAB L3
+STACK 7
+LP 3
+LN 1
+MINUS
+LF L1
+FNAP 4
+LP 3
+MULT
+FNRN
+ENDPROC
+STACK 3
+LAB L2
+STORE
+JUMP L5
+ENTRY L4 5  's' 't' 'a' 'r' 't'
+SAVE 3
+LN 1
+STORE
+LAB L6
+STACK 7
+LSTR 13  'f' '(' '%' 'i' '2' ')' ' ' '=' ' ' '%' 'i' '8'  10 
+LP 3
+STACK 12
+LP 3
+LF L1
+FNAP 9
+LG 70
+RTAP 4
+LP 3
+LN 1
+PLUS
+SP 3
+LP 3
+LN 10
+LE
+JT L6
+STACK 3
+LN 0
+FNRN
+ENDPROC
+STACK 3
+LAB L5
+STORE
+GLOBAL 1
+       1   L4
+
+Conversion complete
+10> type fact
+
+000003E8 0000001B 
+0000001B 0000FDDF 63616607 20202074 0000DFDF 
+20206607 20202020 7B11033E F90CC30F 7B348304 
+0000DFDF 61747307 20207472 0C83A311 83A909E4 
+240E5AA8 A3C31146 10F09C1A 0000007B 2528660D 
+20293269 6925203D 00000A38 00000000 00000001 
+00000034 00000046 
+0> fact
+f( 1) =        1
+f( 2) =        2
+f( 3) =        6
+f( 4) =       24
+f( 5) =      120
+f( 6) =      720
+f( 7) =     5040
+f( 8) =    40320
+f( 9) =   362880
+f(10) =  3628800
+0> logout
+shep$ 
+
+
+-------------------------------------
+This is the end of the second demonstration.
+
+
+
+
+

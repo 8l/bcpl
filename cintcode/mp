@@ -1,0 +1,4 @@
+#!/home/mr/distribution/BCPL/cintcode/cintsys -s
+.k file/a,opta,optb,optc,optc,optd
+echo "compiling <file>.m to <file>"
+mcpl <file>.m to <file> <opta> <optb> <optc> <optd>

@@ -1,0 +1,18 @@
+ 1-queens: solutions:          1  in          0 msecs
+ 2-queens: solutions:          0  in          0 msecs
+ 3-queens: solutions:          0  in          0 msecs
+ 4-queens: solutions:          2  in          0 msecs
+ 5-queens: solutions:         10  in          0 msecs
+ 6-queens: solutions:          4  in          0 msecs
+ 7-queens: solutions:         40  in          0 msecs
+ 8-queens: solutions:         92  in          0 msecs
+ 9-queens: solutions:        352  in         10 msecs
+10-queens: solutions:        724  in         60 msecs
+11-queens: solutions:       2680  in        280 msecs
+12-queens: solutions:      14200  in       1472 msecs
+13-queens: solutions:      73712  in       8062 msecs
+14-queens: solutions:     365596  in      47358 msecs
+15-queens: solutions:    2279184  in     293983 msecs
+16-queens: solutions:   14772512  in    1957194 msecs
+17-queens: solutions:   95815104  in   13754287 msecs
+18-queens: solutions:  666090624  in  101885665 msecs

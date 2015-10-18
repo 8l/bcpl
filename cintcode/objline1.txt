@@ -1,0 +1,46 @@
+#!/home/mr/distribution/BCPL/cintcode/cintsys -c
+
+000003E8 0000000F 
+0000000F 0000DFDF 6174730B 20207472 20202020 
+5E23075A 0000007B 6C65480D 77206F6C 646C726F 
+00000A21 00000000 00000001 00000014 0000005E 
+
+This is a typical version of the file OBJLINE1 whose first line is
+inserted as the first line of compiled object modules by the BCPL
+compiler. If the file OBJLINE1 does not exist, no such line in
+inserted.
+
+It provides a feature that is sometimes useful when running
+under Linux. For example, consider the following console session
+under Linux on my machine.
+
+bash-2.05b$ 
+bash-2.05b$ cp OBJLINE1.txt OBJLINE1
+bash-2.05b$ cintsys
+
+BCPL Cintcode System (17 January 2006)
+0> type hello.b
+GET "libhdr"
+
+LET start() BE writef("Hello world!*n")
+0> c b hello
+bcpl hello.b to hello hdrs BCPLHDRS 
+
+BCPL (17 Jan 2006)
+Code size =    60 bytes
+0> type hello
+#!/home/mr/distribution/BCPL/cintcode/cintsys -c
+
+000003E8 0000000F 
+0000000F 0000DFDF 6174730B 20207472 20202020 
+5E23075A 0000007B 6C65480D 77206F6C 646C726F 
+00000A21 00000000 00000001 00000014 0000005E 
+0> logout
+
+bash-2.05b$ chmod 755 hello
+bash-2.05b$ hello
+
+BCPL Cintcode System (17 January 2006)
+0> Hello world!
+0> 
+bash-2.05b$

@@ -1,0 +1,115 @@
+/***********************************************************************
+**             (C) Copyright 1980  TRIPOS Research Group              **
+**            University of Cambridge Computer Laboratory             **
+************************************************************************
+
+            ########   ######   ##    ##  ######    #######
+            ########  ########  ##    ##  #######   ########
+               ##     ##    ##  ##    ##  ##    ##  ##    ##
+               ##     ##    ##  ########  ##    ##  ########
+               ##     ##    ##  ##    ##  ##    ##  #######
+               ##     ##    ##  ##    ##  ##    ##  ##  ##
+            ########  ########  ##    ##  #######   ##   ##
+            ########   ######   ##    ##  ######    ##    ##
+
+************************************************************************
+**                                                                    **
+***********************************************************************/
+
+
+
+MANIFEST
+$(
+   Act.Dummy            = 1000
+   Act.Read             = 1001
+   Act.Write            = 1002
+   Act.Seek             = 1008
+   Act.EndInput         = 1003
+   Act.EndOutput        = 1004
+   Act.Findinput        = 1005
+   Act.Findoutput       = 1006
+   Act.End              = 1007
+   Act.Findupdate       = 1008
+   Act.Findappend       = 1009
+
+   // Single character I/O etc. through terminal handlers
+
+   Act.non.reflect.mode = 993
+   Act.sc.mode          = 994
+   Act.sc.read          = 995
+   Act.sc.write         = 996
+   Act.sc.msg           = 997
+
+   // Actions for Ring Virtual Terminal and Session Handler
+
+   act.connect                  = 800 // Connect to virtual terminal
+   act.disconnect               = 801 // Disconnect from virtual terminal
+   act.start.rm.refresh         = 802 // Start operating RM's dead man's handle
+   act.how.much.input           = 803 // How many characters do you have?
+   act.read.buffer              = 804 // Fill up my buffer
+// act.set.termvec              = 805 // Set terminal info vector  (in TERMHDR)
+// act.read.termvec             = 806 // Read terminal info vector (in TERMHDR)
+   act.set.currentinputtask     = 808 // Set task for input lines
+   act.return.read.packets      = 809 // Return all outstanding read packets.
+
+   // Device packet offset manifests.
+   Pkt.Action           = Pkt.Type
+   Pkt.Status           = Pkt.Res1
+   Pkt.Status2          = Pkt.Res2
+   //
+   Pkt.Time1            = Pkt.Res1
+   Pkt.Time2            = Pkt.Res2
+   Pkt.Delay            = Pkt.Arg1
+   //
+   Pkt.BuffAddr         = Pkt.Arg1
+   Pkt.WordCount        = Pkt.Arg2
+   Pkt.Drive            = Pkt.Arg3
+   Pkt.Unit             = Pkt.Drive
+   Pkt.Cylinder         = Pkt.Arg4
+   Pkt.Surface          = Pkt.Arg5
+   Pkt.Sector           = Pkt.Arg6
+
+   // Stream control block.
+   Id.InScb             = ['S'<<BitsPerByte]+'I'
+   Id.OutScb            = ['S'<<BitsPerByte]+'O'
+   Id.UpdScb            = ['S'<<BitsPerByte]+'U'
+   Scb.Link             = 0
+   Scb.Id               = 1
+   Scb.Type             = 2
+   Scb.Buf              = 3
+   Scb.Pos              = 4
+   Scb.End              = 5
+   Scb.Funcs            = 6
+   Scb.Func1            = 6
+   Scb.Rdch             = Scb.Func1
+   Scb.Func2            = 7
+   Scb.Wrch             = Scb.Func2
+   Scb.Func3            = 8
+   Scb.Args             = 9
+   Scb.Arg1             = 9
+   Scb.Arg2             = 10
+   Scb.NFunc            = Scb.Args-Scb.Funcs
+   Scb.Upb              = 10
+
+   // Load format types
+   t.hunk               = 1000
+   t.reloc              = 1001
+   t.end                = 1002
+   t.abshunk            = 1003
+   t.absreloc           = 1004
+   t.relocb             = 1005          // 8086TRIPOS
+   t.absrelocb          = 1006          // 8086TRIPOS
+
+   // Assignment vectors
+   ass.link             = 0
+   ass.task             = 1
+   ass.dir              = 2
+   ass.type             = 3
+   ass.dev              = 4
+   ass.name             = 5
+
+   // Device types
+   dt.disc              = 1
+$)
+
+

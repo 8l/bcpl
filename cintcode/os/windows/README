@@ -1,0 +1,82 @@
+Install and run Cintcode BCPL under Windows using Visual C.
+
+If you do not have have Visual C installed see the end of this
+document.
+
+Extract the BCPL system (either bcpl.zip or bcpl.tgz available
+from www.cl.cam.ac.uk/users/mr) into, say,
+
+E:\distribution\BCPL
+
+Create a desktop shortcut with something like: 
+
+Target: %SystemRoot%\system32\cmd.exe /q /k os/windows/VC8env.bat
+Start in:  E:\distribution\BCPL\cintcode
+
+Double-click on the shortcut
+
+Type:
+
+cd distribution/BCPL/cintcode
+nmake /f MakefileVC clean
+nmake /f MakefileVC
+
+This should rebuild Cintcode BCPL and enter it.
+
+Test the system by typing
+
+echo hello
+bcpl com/bcpl.b to junk
+junk com/bcpl.b to junk
+c compall
+bench100
+
+If this fails the most common fault is in the setting of environment
+variables in, say, os\windows\VC9env.bat or the location of the BCPL
+directories.
+
+To diagnose the problem double-click on the shortcut
+and type the following:
+
+cd distribution/BCPL/cintcode
+cintsys -f
+
+This traces which files are being loaded.
+
+cintsys -f -v
+
+gives a more detailed trace.
+
+If you wish to use the BCPL interface with the SDL graphics library,
+install SDL putting it in a directory such as E:\SDL then type
+something like
+
+cd distribution/BCPL/cintcode
+nmake /f MakefileVCSDL clean
+nmake /f MakefileVCSDL
+
+possibly modifying MakefileVCSDL first. If this works you should be
+able to compile and run all the programs in bcplprogs\raspi as
+described in bcpl4raspi (available via my home page).
+
+
+Good luck!
+
+PS
+
+If you do not have have Visual C installed a precompiled version of
+cintsys.exe and rastsys.exe is in os/windows/wincintsys.exe and
+os/windows/wincintsys.exe, or possibly os/windows/wincintsyssdl.exe
+and os/windows/wincintsyssdl.exe.
+
+Edit eg VCenv.bat to remove all references to Visual C but leave the
+commands setting up the BCPL environment variables. Type:
+
+copy os/windows/wincintsys.exe cintsys.exe
+cintsys
+
+This should work.
+
+Martin Richards
+29 November 2012
+

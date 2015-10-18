@@ -1,0 +1,120 @@
+This directory contains a version of the old Intcode system originally
+developed in the mid 1970s. This version is modified to run under the
+32-bit BCPL Cintcode system.
+
+This is implemented by Martin Richards (c) October 2012
+
+It is still under slow development and in full of bugs. In particular the
+system functions and i/o streams needs to be implemented.
+
+The BCPL to Intcode compiler is called bcplint. Its source code is
+
+BCPL/cintcode/g/bcplfecg.h
+BCPL/cintcode/com/bcplint.b
+BCPL/cintcode/com/bcplfe.b
+BCPL/cintcode/com/cg-intcode.b
+
+It can be re-compiled by typing
+
+cd $BCPLROOT
+cintsys -c c bc bcplint
+
+The Intcode assembler and interpreter is called interp. Its source code is
+
+BCPL/cintcode/g/bcplfecg.h
+BCPL/intcode/interp.b
+
+it can be compiled by typing
+
+cd $BCPLROOT/../intcode
+cintsys -c c b interp
+
+There are two command scripts bint and xint to simplify
+compilation and execution of intcode programs. bint is as follows
+
+#!/home/mr/distribution/BCPL/cintcode/cintsys -s
+.k file/a,opt
+echo "bcplint <file>.b to <file>.int hdrs BCPLHDRS <opt>"
+bcplint <file>.b to <file>.int hdrs BCPLHDRS <opt>
+
+and xint is as follows
+
+#!/home/mr/distribution/BCPL/cintcode/cintsys -s
+.k file/a,opt
+echo "interp syslib.int blib.int dlib.int <file>.int <opt>"
+interp syslib.int blib.int dlib.int <file>.int <opt>
+
+Note that syslib.int is hand written, the others are the
+results oc bcplint compilations.
+
+BCPL programs in BCPL/intcode can be compiled by typing
+
+cd $BCPLROOT/../intcode
+cintsys
+c bint blib
+c bint dlib
+c bint t1
+c bint fact.b
+c bint cmpltest
+c bint hello
+
+Some of these can be run by typing
+
+c xint fact
+c xint cmpltest
+c xint t1 trace
+c xint hello trace
+
+What is encouraging is that fact and cmpltest work but use no
+system calls other than sys(Sys_sawrch, ch).
+
+t1.b is a tiny test program which may or may not work depending on its
+current state.
+
+There is a Makefile which allows
+
+make xrefint            create a cross reference listing of interp.b
+
+A cross reference linsting of bcplint can be made by typing
+
+cd $BCPLROOT
+make xrefbcplint        create a cross reference listing of bcplint.b
+make xrefcgint          create a cross reference listing of just cg-intcode.b
+
+
+File with extension .b are BCPL source files and those with extension .int are
+the corresponding intcode compilations, which are text files. For instance
+typing fact.int gives the compilation of
+
+GET "libhdr"
+
+LET start() = VALOF
+{ wrch := sawrch // Temporary fudge until wrch works
+  FOR i = 1 TO 5 DO writef("fact(%n) = %i4*n", i, fact(i))
+  RESULTIS 0
+}
+
+AND fact(n) = n=0 -> 1, n*fact(n-1)
+
+which is as follows
+
+JL3 
+$ /start
+ 1 LIG37 SG41 L1 SP3 4 LL999 SP7 LIP3 SP8 LIP3 SP12 LL2 K9 SP9 LIG94 K4/
+ LIP3 A1 SP3 LIP3 L5 X15 TL4 L0 X4 
+$ /fact
+ 2 L0 LIP3 X10 FL5 L1 X4 5 LIP3 L1 X9 SP7 LL2 K4 LIP3 X5 X4 3 
+999 C15 C102 C97 C99 C116 C40 C37 C110 C41 C32 C61 C32 C37 C105 C52 C10/
+ 
+G1L1 
+Z
+
+I hope to have enough of the library interface working so that the
+intcode compilation of bcplint.b works well enough to compile
+itself. But I am running out of time.
+
+
+MR
+01/10/12
+
+

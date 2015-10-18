@@ -1,0 +1,120 @@
+; Mlib for the VAX under VMS -- Under development
+
+; Implemented by Martin Richards (c) 7 September 2009
+	
+; C Linkage on the Vax:
+;   On entry 0(SP)   is the return address
+;            4(AP)   is the first argument
+;            8(AP)   is the second argument
+;            etc
+;
+;   r2-r11 must be preserved
+;
+;   return using RET
+;   result in R0
+
+ .psect MLIB,LONG
+
+;	.ALIGN 4
+
+        .entry callstart,^M<r2,r3,r4,r5,r6,r7,r8,r9,r10,r11>
+
+ MOVL 4(AP),R10    ; M/C address of P
+ MOVL 8(AP),R11    ; M/C address of G
+
+; Register usage while executing BCPL compiled code
+
+; R11   The G pointer
+; R10   The P pointer
+; R9    = zero
+; R8    A  First argument at a function call
+; R7    B
+; R6    C
+; R2    entry address at call
+; R1    The new P pointer at function call
+
+   clrl r9
+
+   ; make sure global 3 (sys) is defined
+   MOVAL sys, 4*3(R11)
+   ; make sure global 6 (changeco) is defined
+   MOVAL changeco, 4*6(R11)
+   ; make sure global 5 (muldiv) is defined
+   MOVAL muldiv, 4*5(R11)
+
+   ; BCPL call of clihook(stackupb)
+   MOVL stackupb,R8
+   MOVL R10,R1         ; Set the new P pointer
+   MOVL 4*4(R11),R2    ; clihook
+   JSB  (R2)
+;movl r2,r8
+   MOVL R8,R0    ; return the result of start
+
+; and then return
+   RET
+
+;   	.ALIGN LONG
+
+   ; res = sys(n, x, y, z)  the BCPL callable sys function
+ .long ^X0000DFDF
+ .long ^X7379730B
+ .long ^X20202020
+ .long ^X20202020
+sys:
+ MOVL  R10,(R1)     ; save old P
+ MOVL  R1,R10       ; P := <new P>
+ MOVL  (SP)+,4(R10) ; save <return address>
+ MOVL  R2,8(R10)    ; Save <entry address>
+ MOVL  R8,12(R10)  ; Save <first arg>
+
+ PUSHL R11
+ PUSHL R10
+ CALLS #2,dosys   ; calling dosys(p, g)
+ MOVL  R0,R8        ; put result in Cintcode A register
+
+ MOVL  4(R10),R2    ; Get <return address>
+ MOVL  (R10),R10    ; P := <old P>
+ JMP   (R2)         ; Jump to <return address>
+
+; res := changeco(val, cptr)
+ .long ^X0000DFDF
+ .long ^X6168630B
+ .long ^X6365676E
+ .long ^X2020206F
+changeco:
+ MOVL R10,0(R1)   ; NP!0 := P
+ POPL R3          ; R3 = <return address>
+ MOVL R3,4(R1)    ; NP!1  := return address
+ MOVL R2,8(R1)    ; NP!2  := entry address
+ MOVL R8,12(R1)   ; NP!3  := arg1
+
+ MOVL 4*7(R11),R2   ; R2 := currco
+ MOVL R10,(R9)[R2]  ; !currco := <old P>
+ MOVL 16(R1),R4     ; R4 := cptr
+ MOVL R4,4*7(R11)   ; currco := cptr
+ MOVL (R9)[R4],R10  ; R10 := !cptr
+ JMP (R3)
+
+; res, result2 := muldiv(a, b, c)
+ .align long
+ .long ^X0000DFDF
+ .long ^X6C756D0B
+ .long ^X20766964
+ .long ^X20202020
+muldiv:
+ MOVL R10,(R1)      ; Save <old P>
+ MOVL R1,R10        ; R10 := <new P>
+ MOVL (SP)+,4(R10)  ; Save <return address>
+ MOVL R2,8(R10)     ; Save <entry address>
+ MOVL R8,12(R10)    ; Save first arg   
+
+ MOVL 4(R10),R7
+ MOVL 8(R10),R6
+ EMUL R8,R7,#0,R4   ; R8 * R7 => R4, R5
+ EDIV R6,R4,R8,4*10(R11)  ; (R4,R5)/R6 => R8, rem->result2
+
+ MOVL 4(R10),R2     ; R2 := <return address>
+ MOVL (R10),R10     ; R10 := <old P;
+ JMP (R2)           ; Jump to <return address>
+
+ .END

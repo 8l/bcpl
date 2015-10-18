@@ -1,0 +1,113 @@
+;*********************************************************
+;                                                        *
+; Device driver for single character output devices ie.  *
+; Console printer, paper tape punch etc.                 *
+;                                                        *
+;*********************************************************
+;
+; States and interrupt vectors
+;
+INTEN   =          100          ; interrupt mask
+RDYFL   =          200          ; ready flag
+ERRFL   =       100000          ; error flag
+ERRVEC  =            4          ; error trap vector
+;
+; Device control block symbols
+;
+;               0               ; device driver ptr (BCPL)
+D.ID    =       2               ; id
+D.WKQ   =       4               ; work queue
+D.START =       6               ; start routine - for QPKT
+D.STOP  =       8.              ; stop routine - for DQPKT
+D.JSR   =      10.              ; subroutine jump to
+D.INT   =      12.              ; interrupt routine
+D.I     = D.JSR+4               ; offset for interrupt rtn
+D.VEC   =      14.              ; interrupt vector
+D.CSW   =      16.              ; control and status word
+;
+; Packet symbols
+;
+P.ID    =       2               ; task or device id
+P.TYPE  =       4               ; type or action
+P.RES1  =       6               ; first result
+P.RES2  =       8.              ; second result
+P.A1    =      10.              ; argument 1
+;
+; The rootnode
+;
+CRNTSK  =  456
+DEVMVP  =  502 ; MOVPKT for device drivers (MC addr)
+DEVINT  =  504 ; INTENT for device drivers (MC addr)
+DEVRET  =  506 ; INTRET for device drivers (MC addr)
+
+        .WORD   PINIT           ; initialisation rtn
+        .WORD   PUNIN           ; uninitialisation rtn
+
+; Device initialisation routine. It is entered with the
+; address of the DCB in R2, and the DEVID in R0, which
+; must be preserved.
+
+PINIT:  MOV     #PINT,D.INT(R2) ; fill in rest of DCB
+        MOV     #PSTART,D.START(R2)
+        MOV     #PSTOP,D.STOP(R2)
+        MOV     D.VEC(R2),R1    ; get interrupt vector
+        MOV     R2,(R1)         ; plug it with address
+        ADD     #D.JSR,(R1)     ; of interrupt JSR
+        RTS     PC
+
+; Device uninitialisation routine. It is entered with
+; the address of the DCB in R2, which must be preserved.
+
+PUNIN:  MOV     @#ERRVEC,@D.VEC(R2) ; restore int vec
+        BR      PSTOP
+
+; Device start routine. This is entered whenever a pkt
+; is sent to the device and its work queue is empty. It
+; is entered with the address of the DCB in R2, and the
+; BCPL address of the packet in R0. It returns non-zero.
+
+PSTART: MOV     D.CSW(R2),R3    ; addr of status reg
+        TSTB    (R3)            ; is device ready ?
+        BMI     PST             ; yes - write immediately
+        BIS     #INTEN,(R3)     ; no -  enable interrupts
+        RTS     PC              ;  and return
+
+; Device stop routine. This is entered if the head pkt
+; is dequeued from the device. It is entered with the
+; address of the packet in R1 and the DCB in R2, which
+; must be preserved.
+
+PSTOP:  BIC     #INTEN,@D.CSW(R2) ; disable interrpts
+        RTS     PC
+
+; This routine writes the head pkt and returns it
+
+PST:    ASL     R0              ; MC pkt ptr
+        MOVB    P.A1(R0),2(R3)  ; write the char
+        MOV     (R0),D.WKQ(R2)  ; DQ the pkt
+        BNE     PST1            ; if no more pkts
+PST1:   BIC     #INTEN,(R3)     ;  disable interrupts
+        MOV     D.ID(R2),R3     ; id for MOVPKT
+        MOV     R0,R2
+        MOV     @#CRNTSK,R1
+        ASL     R1              ; current TCB ptr
+        MOV     @#DEVMVP,R0
+        JSR     PC,(R0)         ; call MOVPKT
+        RTS     PC
+
+; Interrupt routine. It is entered with R2 saved on the
+; system stack and the address of the DCB word following
+; the interrupt subroutine jump in R2.
+
+PINT:   MOV     R1,-(SP)        ; R2 already on stack
+        MOV     R0,-(SP)
+        MOV     R3,-(SP)
+        SUB     #D.I,R2         ; correct DCB ptr
+        MOV     D.CSW(R2),R3    ; status register
+        MOV     D.WKQ(R2),R0    ; get packet ptr
+        JSR     PC,PST          ; write the char
+        MOV     @#DEVINT,PC     ; exit via INTENT
+
+        .END
+
+

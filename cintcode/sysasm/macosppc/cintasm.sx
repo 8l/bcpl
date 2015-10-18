@@ -1,0 +1,2213 @@
+/* Register definitions to make the code clearer */
+#define r0 0
+#define r1 1
+#define r2 2
+#define r3 3
+#define r4 4
+#define r5 5
+#define r6 6
+#define r7 7
+#define r8 8
+#define r9 9
+#define r10 10
+#define r11 11
+#define r12 12
+#define r13 13
+#define r14 14
+#define r15 15
+#define r16 16
+#define r17 17
+#define r18 18
+#define r19 19
+#define r20 20
+#define r21 21
+#define r22 22
+#define r23 23
+#define r24 24
+#define r25 25
+#define r26 26
+#define r27 27
+#define r28 28
+#define r29 29
+#define r30 30
+#define r31 31
+
+#define reg_a	r31
+#define reg_b	r30
+#define reg_c	r29
+#define reg_Wp	r28
+#define reg_Wg	r27
+#define reg_st	r26
+#define reg_pc	r25
+#define reg_count r24
+
+#define reg_W	r23
+#define reg_regs r22
+
+#define reg_jumptable r21
+
+#define Gn_currco	7
+#define Gn_result2	10
+
+/* Arguments:
+ *      r4 = the heap.
+ *      r3 = the (word) index into the heap where the registers are stored.
+ *
+ * Return value:
+ *      r3
+ *
+ * Register allocations:
+ *      a     -> r31
+ *      b     -> r30
+ *      c     -> r29
+ *      W+p   -> r28
+ *      g     -> r27
+ *      st    -> r26
+ *      pc    -> r25
+ *      count -> r24
+ *
+ *      branch table -> r21
+ *	temp variables -> r5-r10
+ *
+ * According to the SVR4 ABI, registers r1, r14-r31 need to be restored
+ * to their values at function entry.  r3-r12 don't need to be saved
+ * except across function calls.
+ */
+#define STACK_FRAME_SIZE 64
+.globl unimp_helper
+.globl cintasm
+cintasm:
+	/* Allocate space to save registers */
+	stwu	r1, -STACK_FRAME_SIZE(r1)
+
+	/* Save non-volatile registers */
+	stw	r21, 8(r1)  /* branch table */
+	stw	r22, 12(r1) /* regs */
+	stw	r23, 16(r1)  /* W */
+	stw	r24, 20(r1) /* temp variable */
+	stw	r25, 24(r1) /* pc */
+	stw	r26, 28(r1) /* st */
+	stw	r27, 32(r1) /* g */
+	stw	r28, 36(r1) /* Wp */
+	stw	r29, 40(r1) /* c */
+	stw	r30, 44(r1) /* b */
+	stw	r31, 48(r1) /* a */
+	mflr	r0
+	stw	r0, STACK_FRAME_SIZE+4(r1)
+	
+	/* load the branch table register */
+	lis	r21, _switch_targets@h
+	ori	r21, r21, _switch_targets@l
+	
+	/* Move reg_W into the right place */
+	mr	reg_W, r4
+
+	/* Load the register actual offset into reg_regs */
+	slwi	reg_regs, r3, 2
+	add	reg_regs, reg_W, reg_regs
+
+	/* Load cintcode registers into real registers */
+	lwz	reg_a, 0(reg_regs)
+	lwz	reg_b, 4(reg_regs)
+	lwz	reg_c, 8(reg_regs)
+	lwz	reg_Wp, 12(reg_regs)
+	add	reg_Wp, reg_Wp, reg_W
+	lwz	reg_Wg, 16(reg_regs)
+	add	reg_Wg, reg_Wg, reg_W
+	lwz	reg_st, 20(reg_regs)
+	lwz	reg_pc, 24(reg_regs)
+	add	reg_pc, reg_pc, reg_W
+	lwz	reg_count, 28(reg_regs)
+
+	cmpw	reg_pc, reg_W
+	blt	_negpc
+_fetch:
+        /* The following is not needed for cintasm, since it ignores count. */
+#if 0
+	cmpwi	reg_count, 0
+	blt	_skip0
+	bne	_skip1
+	/* count == 0 */
+	li	r3, 3
+	b	_ret
+_skip1:
+	subi	reg_count, reg_count, 1
+_skip0:
+#endif /* 0 */
+#ifdef TRACINGyes
+.globl	tracing
+.globl	trace
+	lis	r10, tracing@h
+	ori	r10, r10, tracing@l
+	lwz	r10, 0(r10)
+	cmpwi	r10, 0
+	beq	_skipTRACE
+
+	/* Set up arguments: pc, p, a, b */
+	sub	r3, reg_pc, reg_W
+	sub	r4, reg_Wp, reg_W
+	srwi	r4, r4, 2
+	mr	r5, reg_a
+	mr	r6, reg_b
+	bl	trace
+_skipTRACE:
+#endif
+	/* Main part of the interpreter.  Switch on the opcode */
+	lbz	r10, 0(reg_pc)
+	addi	reg_pc, reg_pc, 1
+	slwi	r10, r10, 2
+	lwzx	r10, r10, reg_jumptable
+	mtctr	r10
+	bctr
+
+_op0:
+_op1:
+_op223:
+_op254:
+_op255: /* unimplemented instructions */
+	li	r3, 1
+	subi	reg_pc, reg_pc, 1
+	b	_ret
+
+_op2:	/* F_brk */
+	li	r3, 2
+	subi	reg_pc, reg_pc, 1
+	b	_ret
+
+_op3:	/* F_k0 + 3 */
+	sub	r10, reg_Wp, reg_W
+	stw	r10, 12(reg_Wp)
+	addi	reg_Wp, reg_Wp, 12
+	b	_applyk
+_op4:	/* F_k0 + 4 */
+	sub	r10, reg_Wp, reg_W
+	stw	r10, 16(reg_Wp)
+	addi	reg_Wp, reg_Wp, 16
+	b	_applyk
+_op5:	/* F_k0 + 5 */
+	sub	r10, reg_Wp, reg_W
+	stw	r10, 20(reg_Wp)
+	addi	reg_Wp, reg_Wp, 20
+	b	_applyk
+_op6:	/* F_k0 + 6 */
+	sub	r10, reg_Wp, reg_W
+	stw	r10, 24(reg_Wp)
+	addi	reg_Wp, reg_Wp, 24
+	b	_applyk
+_op7:	/* F_k0 + 7 */
+	sub	r10, reg_Wp, reg_W
+	stw	r10, 28(reg_Wp)
+	addi	reg_Wp, reg_Wp, 28
+	b	_applyk
+_op8:	/* F_k0 + 8 */
+	sub	r10, reg_Wp, reg_W
+	stw	r10, 32(reg_Wp)
+	addi	reg_Wp, reg_Wp, 32
+	b	_applyk
+_op9:	/* F_k0 + 9 */
+	sub	r10, reg_Wp, reg_W
+	stw	r10, 36(reg_Wp)
+	addi	reg_Wp, reg_Wp, 36
+	b	_applyk
+_op10:	/* F_k0 + 10 */
+	sub	r10, reg_Wp, reg_W
+	stw	r10, 40(reg_Wp)
+	addi	reg_Wp, reg_Wp, 40
+	b	_applyk
+_op11:	/* F_k0 + 11 */
+	sub	r10, reg_Wp, reg_W
+	stw	r10, 44(reg_Wp)
+	addi	reg_Wp, reg_Wp, 44
+	/* b _applyk */
+_applyk:
+	sub	r10, reg_pc, reg_W
+	stw	r10, 4(reg_Wp)
+	add	reg_pc, reg_a, reg_W
+	stw	reg_a, 8(reg_Wp)
+	mr	reg_a, reg_b
+	stw	reg_a, 12(reg_Wp)
+	cmpw	reg_pc, reg_W
+	bge	_fetch
+	b	_negpc
+
+_op12:  /* F_lf */
+	mr	reg_b, reg_a
+	mr	reg_a, reg_pc
+	sub	reg_a, reg_a, reg_W
+	lbz	r10, 0(reg_pc)
+	extsb	r10, r10
+	add	reg_a, reg_a, r10
+	addi	reg_pc, reg_pc, 1
+	b	_fetch
+
+_op13:	/* F_lf + 1 */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = (pc>>1) + B[pc] */
+	lbz	reg_a, 0(reg_pc)
+	sub	r10, reg_pc, reg_W
+	srwi	r10, r10, 1
+	add	reg_a, reg_a, r10
+	/* a = (a<<1) + SH[a]; */
+	slwi	reg_a, reg_a, 1
+	lhax	r10, reg_W, reg_a
+	add	reg_a, reg_a, r10
+	/* pc++ */
+	addi	reg_pc, reg_pc, 1
+	b	_fetch
+
+_op14:	/* F_lm */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = -WD(B[pc++]) */
+	lbz	reg_a, 0(reg_pc)
+	addi	reg_pc, reg_pc, 1
+	neg	reg_a, reg_a
+	b	_fetch
+
+_op15:	/* F_l0-1 */
+	mr	reg_b, reg_a
+	li	reg_a, -1
+	b _fetch
+_op16:	/* F_l0 */
+	mr	reg_b, reg_a
+	li	reg_a, 0
+	b _fetch
+_op17:	/* F_l0+1 */
+	mr	reg_b, reg_a
+	li	reg_a, 1
+	b _fetch
+_op18:	/* F_l0+2 */
+	mr	reg_b, reg_a
+	li	reg_a, 2
+	b _fetch
+_op19:	/* F_l0+3 */
+	mr	reg_b, reg_a
+	li	reg_a, 3
+	b _fetch
+_op20:	/* F_l0+4 */
+	mr	reg_b, reg_a
+	li	reg_a, 4
+	b _fetch
+_op21:	/* F_l0+5 */
+	mr	reg_b, reg_a
+	li	reg_a, 5
+	b _fetch
+_op22:	/* F_l0+6 */
+	mr	reg_b, reg_a
+	li	reg_a, 6
+	b _fetch
+_op23:	/* F_l0+7 */
+	mr	reg_b, reg_a
+	li	reg_a, 7
+	b _fetch
+_op24:	/* F_l0+8 */
+	mr	reg_b, reg_a
+	li	reg_a, 8
+	b _fetch
+_op25:	/* F_l0+9 */
+	mr	reg_b, reg_a
+	li	reg_a, 9
+	b _fetch
+_op26:	/* F_l0+10 */
+	mr	reg_b, reg_a
+	li	reg_a, 10
+	b _fetch
+
+_op27:	/* F_fhop */
+	/* a = 0; pc++ */
+	li	reg_a, 0
+	addi	reg_pc, reg_pc, 1
+	b	_fetch
+
+_op28:	/* F_jeq */
+	/* if (b==a) { pc += SB[pc]; goto fetch; } */
+	cmpw	reg_b, reg_a
+	bne	_dont_jump
+	lbz	r10, 0(reg_pc)
+	extsb	r10, r10
+	add	reg_pc, reg_pc, r10
+	b	_fetch
+
+_op29:	/* F_jeq + 1 */
+	/* if(b==a) { goto indjump; } */
+	cmpw	reg_b, reg_a
+	bne	_dont_jump
+	b	_indjump
+
+_op30:	/* F_jeq + 2 */
+	/* if(a==0) {pc += SB[pc]; goto fetch; } */
+	cmpwi	reg_a, 0
+	bne	_dont_jump
+	lbz	r10, 0(reg_pc)
+	extsb	r10, r10
+	add	reg_pc, reg_pc, r10
+	b	_fetch
+
+_op31:	/* F_jeq + 3 */
+	cmpwi	reg_a, 0
+	bne	_dont_jump
+	b	_indjump
+
+_op32:	/* F_k */
+	/* k = B[pc] */
+	lbz	r10, 0(reg_pc)
+	/* Wp[k] = p<<2 */
+	slwi	r10, r10, 2
+	sub	r0, reg_Wp, reg_W
+	stwx	r0, reg_Wp, r10
+	/* p += k */
+	add	reg_Wp, reg_Wp, r10
+	/* Wp[1] = pc + 1 */
+	addi	reg_pc, reg_pc, 1
+	sub	reg_pc, reg_pc, reg_W
+	stw	reg_pc, 4(reg_Wp)
+	/* pc = a */
+	mr	reg_pc, reg_a  /* still need to add reg_W */
+	/* Wp[2] = pc */
+	stw	reg_pc, 8(reg_Wp)
+	add	reg_pc, reg_pc, reg_W
+	/* Wp[3] = a = b */
+	mr reg_a, reg_b
+	stw	reg_b, 12(reg_Wp)
+	/* if (pc>=0) goto fetch */
+	cmpwi	reg_pc, 0
+	bge	_fetch
+	b	_negpc
+
+_op33:	/* F_kh */
+	/* k = GH(pc) */
+	lhz	r10, 0(reg_pc)
+	/* Wp[k] = p<<2 */
+	slwi	r10, r10, 2
+	sub	r0, reg_Wp, reg_W
+	stwx	r0, reg_Wp, r10
+	/* p += k */
+	add	reg_Wp, reg_Wp, r10
+	/* Wp[1] = pc + 2 */
+	addi	reg_pc, reg_pc, 2
+	sub	reg_pc, reg_pc, reg_W
+	stw	reg_pc, 4(reg_Wp)
+	/* pc = a */
+	mr	reg_pc, reg_a  /* still need to add reg_W */
+	/* Wp[2] = pc */
+	stw	reg_pc, 8(reg_Wp)
+	add	reg_pc, reg_pc, reg_W
+	/* Wp[3] = a = b */
+	mr reg_a, reg_b
+	stw	reg_b, 12(reg_Wp)
+	/* if (pc>=0) goto fetch */
+	cmpwi	reg_pc, 0
+	bge	_fetch
+	b	_negpc
+
+_op34:	/* F_kw */
+	/* k = GW(pc) */
+	lwz	r10, 0(reg_pc)
+	/* Wp[k] = p<<2 */
+	slwi	r10, r10, 2
+	sub	r0, reg_Wp, reg_W
+	stwx	r0, reg_Wp, r10
+	/* p += k */
+	add	reg_Wp, reg_Wp, r10
+	/* Wp[1] = pc + 4 */
+	addi	reg_pc, reg_pc, 4
+	sub	reg_pc, reg_pc, reg_W
+	stw	reg_pc, 4(reg_Wp)
+	/* pc = a */
+	mr	reg_pc, reg_a  /* still need to add reg_W */
+	/* Wp[2] = pc */
+	stw	reg_pc, 8(reg_Wp)
+	add	reg_pc, reg_pc, reg_W
+	/* Wp[3] = a = b */
+	mr reg_a, reg_b
+	stw	reg_b, 12(reg_Wp)
+	/* if (pc>=0) goto fetch */
+	cmpwi	reg_pc, 0
+	bge	_fetch
+	b	_negpc
+
+_op35:	/* F_k0g + 3 */
+	sub	r10, reg_Wp, reg_W
+	stw	r10, 12(reg_Wp)
+	addi	reg_Wp, reg_Wp, 12
+	b	_applyg
+_op36:	/* F_k0g + 4 */
+	sub	r10, reg_Wp, reg_W
+	stw	r10, 16(reg_Wp)
+	addi	reg_Wp, reg_Wp, 16
+	b	_applyg
+_op37:	/* F_k0g + 5 */
+	sub	r10, reg_Wp, reg_W
+	stw	r10, 20(reg_Wp)
+	addi	reg_Wp, reg_Wp, 20
+	b	_applyg
+_op38:	/* F_k0g + 6 */
+	sub	r10, reg_Wp, reg_W
+	stw	r10, 24(reg_Wp)
+	addi	reg_Wp, reg_Wp, 24
+	b	_applyg
+_op39:	/* F_k0g + 7 */
+	sub	r10, reg_Wp, reg_W
+	stw	r10, 28(reg_Wp)
+	addi	reg_Wp, reg_Wp, 28
+	b	_applyg
+_op40:	/* F_k0g + 8 */
+	sub	r10, reg_Wp, reg_W
+	stw	r10, 32(reg_Wp)
+	addi	reg_Wp, reg_Wp, 32
+	b	_applyg
+_op41:	/* F_k0g + 9 */
+	sub	r10, reg_Wp, reg_W
+	stw	r10, 36(reg_Wp)
+	addi	reg_Wp, reg_Wp, 36
+	b	_applyg
+_op42:	/* F_k0g + 10 */
+	sub	r10, reg_Wp, reg_W
+	stw	r10, 40(reg_Wp)
+	addi	reg_Wp, reg_Wp, 40
+	b	_applyg
+_op43:	/* F_k0g + 11 */
+	sub	r10, reg_Wp, reg_W
+	stw	r10, 44(reg_Wp)
+	addi	reg_Wp, reg_Wp, 44
+	/* b	_applyg */
+_applyg:
+	/* Wp[1] = pc + 1 */
+	sub	r10, reg_pc, reg_W
+	addi	r10, r10, 1
+	stw	r10, 4(reg_Wp)
+	/* pc = Wg[B[pc]] */
+	lbz	r10, 0(reg_pc)
+	slwi	r10, r10, 2
+	lwzx	r10, reg_Wg, r10
+	add	reg_pc, r10, reg_W
+	/* Wp[2] = pc  (Note: using value before adding reg_W) */
+	stw	r10, 8(reg_Wp)
+	/* Wp[3] = a */
+	stw	reg_a, 12(reg_Wp)
+	/* if (pc >= 0) goto fetch */
+	cmpw	reg_pc, reg_W
+	bge	_fetch
+	/* goto negpc */
+	b	_negpc
+
+_op44:	/* F_s0g */
+	/* r10 = B[pc++] */
+	lbz	r10, 0(reg_pc)
+	addi	reg_pc, reg_pc, 1
+	/* r10 = Wg[r10] */
+	slwi	r10, r10, 2
+	lwzx	r10, reg_Wg, r10
+	/* r10 = &W[r10] */
+	slwi	r10, r10, 2
+	add	r10, r10, reg_W
+	/* *r10 = a */
+	stw	reg_a, 0(r10)
+	b	_fetch
+
+_op45:	/* F_l0g */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = W[Wg[B[pc++]]+0] */
+	lbz	r10, 0(reg_pc)		/* r10=B[pc] */
+	addi	reg_pc, reg_pc, 1	/* pc++ */
+	slwi	r10, r10, 2
+	lwzx	r10, r10, reg_Wg	/* r10=Wg[...] */
+	slwi	r10, r10, 2
+	lwzx	reg_a, r10, reg_W	/* a = W[...] */
+	b	_fetch
+_op46:	/* F_l1g */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = W[Wg[B[pc++]]+1] */
+	lbz	r10, 0(reg_pc)		/* r10=B[pc] */
+	addi	reg_pc, reg_pc, 1	/* pc++ */
+	slwi	r10, r10, 2
+	lwzx	r10, r10, reg_Wg	/* r10=Wg[...] */
+	addi	r10, r10, 1
+	slwi	r10, r10, 2
+	lwzx	reg_a, r10, reg_W	/* a = W[...] */
+	b	_fetch
+_op47:	/* F_l2g */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = W[Wg[B[pc++]]+2] */
+	lbz	r10, 0(reg_pc)		/* r10=B[pc] */
+	addi	reg_pc, reg_pc, 1	/* pc++ */
+	slwi	r10, r10, 2
+	lwzx	r10, r10, reg_Wg	/* r10=Wg[...] */
+	addi	r10, r10, 2
+	slwi	r10, r10, 2
+	lwzx	reg_a, r10, reg_W	/* a = W[...] */
+	b	_fetch
+
+_op48:	/* F_lg */
+	mr	reg_b, reg_a 		/* b = a */
+	lbz	r10, 0(reg_pc)		/* r10 = B[pc] */
+	addi	reg_pc, reg_pc, 1	/* pc++ */
+	slwi	r10, r10, 2		/* r10 -> byte index */
+	lwzx	reg_a, reg_Wg, r10
+	b	_fetch
+
+_op49:	/* F_sg */
+	lbz	r10, 0(reg_pc)
+	addi	reg_pc, reg_pc, 1
+	slwi	r10, r10, 2
+	stwx	reg_a, reg_Wg, r10
+	b	_fetch
+
+_op50:	/* F_llg */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = g+B[pc++] */
+	lbz	r10, 0(reg_pc)
+	addi	reg_pc, reg_pc, 1
+	sub	reg_a, reg_Wg, reg_W
+	srwi	reg_a, reg_a, 2
+	add	reg_a, reg_a, r10
+	b	_fetch
+
+_op51:	/* F_ag */
+	/* (a += Wg[B[pc++]]) */
+	/* r10 = B[pc++] */
+	lbz	r10, 0(reg_pc)
+	addi	reg_pc, reg_pc, 1
+	/* r10 = &Wg[r10] */
+	slwi	r10, r10, 2
+	/* r10 = *r10 (= Wg[B[pc++]]) */
+	lwzx	r10, reg_Wg, r10
+	/* a = a + r10 */
+	add	reg_a, reg_a, r10
+	b	_fetch
+
+_op52:	/* F_mul */
+	mullw	reg_a, reg_b, reg_a
+	b	_fetch
+
+_op53:	/* F_div */
+	/* if(a==0) */
+	cmpwi	reg_a, 0
+	bne	_op53_notzero
+	/* res = 5 */
+	mr	r3, 5
+	/* pc-- */
+	subi	reg_pc, reg_pc, 1
+	/* goto ret */
+	b	_ret
+_op53_notzero:
+	/* a = b / a */
+	divw	reg_a, reg_b, reg_a	/* r10 = b/a */
+	b	_fetch
+
+_op54:	/* F_rem */
+	/* if(a==0) */
+	cmpwi	reg_a, 0
+	bne	_op54_notzero
+	/* res = 5 */
+	mr	r3, 5
+	/* pc-- */
+	subi	reg_pc, reg_pc, 1
+	/* goto ret */
+	b	_ret
+_op54_notzero:
+	/* a = b % a */
+	/* no remainder instruction!
+	 * This sequence taken from the PPC601 user's manual */
+	divw	r10, reg_b, reg_a	/* r10 = b/a */
+	mullw	r10, r10, reg_a		/* r10 = (b/a)*a */
+	subf	reg_a, r10, reg_b	/* reg_a = remainder */
+	b	_fetch
+
+_op55:	/* F_xor */
+	xor	reg_a, reg_a, reg_b
+	b	_fetch
+
+_op56:	/* F_sl */
+	/* W[(pc+SB[pc]) >> 2] = a */
+	lbz	r10, 0(reg_pc)
+	extsb	r10, r10
+	add	r10, r10, reg_pc
+	li	r6, 3
+	andc	r10, r10, r6
+	stw	reg_a, 0(r10)
+	/* pc++ */
+	addi	reg_pc, reg_pc, 1
+	b	_fetch
+	
+_op57:	/* F_sl+1 */
+	/* i = (pc>>1) + B[pc] */
+	sub	r10, reg_pc, reg_W
+	srwi	r10, r10, 1
+	lbz	r9, 0(reg_pc)
+	add	r10, r10, r9
+	/* i = (i<<1) + SH[i] */
+	slwi	r10, r10, 1
+	lhax	r9, reg_W, r10
+	stwx	reg_a, r10, r9
+	addi	reg_pc, reg_pc, 1
+	b	_fetch
+
+_op58:	/* F_ll */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = W[(pc+SB[pc])>>2] */
+	lbz	r10, 0(reg_pc)
+	extsb	r10, r10
+	add	r10, r10, reg_pc
+	li	r6, 3
+	andc	r10, r10, r6
+	lwz	reg_a, 0(r10)
+	/* pc++ */
+	addi	reg_pc, reg_pc, 1
+	b	_fetch
+
+_op59:	/* F_ll+1 */
+	/* i = (pc>>1) + B[pc] */
+	sub	r10, reg_pc, reg_W
+	srwi	r10, r10, 1
+	lbz	r9, 0(reg_pc)
+	add	r10, r10, r9
+	/* i = (i<<1) + SH[i] */
+	slwi	r10, r10, 1
+	lhax	r9, reg_W, r10
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = W[i>>2] */
+	lwzx	reg_a, r10, r9
+	/* pc++ */
+	addi	reg_pc, reg_pc, 1
+	b	_fetch
+
+_op60:	/* F_jeq */
+	/* if (b!=a) { pc += SB[pc]; goto fetch; } */
+	cmpw	reg_b, reg_a
+	beq	_dont_jump
+	lbz	r10, 0(reg_pc)
+	extsb	r10, r10
+	add	reg_pc, reg_pc, r10
+	b	_fetch
+
+_op61:	/* F_jeq + 1 */
+	/* if(b!=a) { goto indjump; } */
+	cmpw	reg_b, reg_a
+	beq	_dont_jump
+	b	_indjump
+
+_op62:	/* F_jeq + 2 */
+	/* if(a!=0) {pc += SB[pc]; goto fetch; } */
+	cmpwi	reg_a, 0
+	beq	_dont_jump
+	lbz	r10, 0(reg_pc)
+	extsb	r10, r10
+	add	reg_pc, reg_pc, r10
+	b	_fetch
+
+_op63:	/* F_jeq + 3 */
+	cmpwi	reg_a, 0
+	beq	_dont_jump
+	b	_indjump
+
+_op64:	/* F_llp */
+	mr	reg_b, reg_a
+	lbz	reg_a, 0(reg_pc)
+	addi	reg_pc, reg_pc, 1
+	sub	r10, reg_Wp, reg_W
+	srwi	r10, r10, 2
+	add	reg_a, reg_a, r10
+	b	_fetch
+_op65:	/* F_llph */
+	mr	reg_b, reg_a
+	lhz	reg_a, 0(reg_pc)
+	addi	reg_pc, reg_pc, 2
+	sub	r10, reg_Wp, reg_W
+	srwi	r10, r10, 2
+	add	reg_a, reg_a, r10
+	b	_fetch
+_op66:	/* F_llpw */
+	mr	reg_b, reg_a
+	lwz	reg_a, 0(reg_pc)
+	addi	reg_pc, reg_pc, 4
+	sub	r10, reg_Wp, reg_W
+	srwi	r10, r10, 2
+	add	reg_a, reg_a, r10
+	b	_fetch
+
+_op67:	/* F_k0g1 + 3 */
+	sub	r10, reg_Wp, reg_W
+	stw	r10, 12(reg_Wp)
+	addi	reg_Wp, reg_Wp, 12
+	b	_applyg1
+_op68:	/* F_k0g1 + 4 */
+	sub	r10, reg_Wp, reg_W
+	stw	r10, 16(reg_Wp)
+	addi	reg_Wp, reg_Wp, 16
+	b	_applyg1
+_op69:	/* F_k0g1 + 5 */
+	sub	r10, reg_Wp, reg_W
+	stw	r10, 20(reg_Wp)
+	addi	reg_Wp, reg_Wp, 20
+	b	_applyg1
+_op70:	/* F_k0g1 + 6 */
+	sub	r10, reg_Wp, reg_W
+	stw	r10, 24(reg_Wp)
+	addi	reg_Wp, reg_Wp, 24
+	b	_applyg1
+_op71:	/* F_k0g1 + 7 */
+	sub	r10, reg_Wp, reg_W
+	stw	r10, 28(reg_Wp)
+	addi	reg_Wp, reg_Wp, 28
+	b	_applyg1
+_op72:	/* F_k0g1 + 8 */
+	sub	r10, reg_Wp, reg_W
+	stw	r10, 32(reg_Wp)
+	addi	reg_Wp, reg_Wp, 32
+	b	_applyg1
+_op73:	/* F_k0g1 + 9 */
+	sub	r10, reg_Wp, reg_W
+	stw	r10, 36(reg_Wp)
+	addi	reg_Wp, reg_Wp, 36
+	b	_applyg1
+_op74:	/* F_k0g1 + 10 */
+	sub	r10, reg_Wp, reg_W
+	stw	r10, 40(reg_Wp)
+	addi	reg_Wp, reg_Wp, 40
+	b	_applyg1
+_op75:	/* F_k0g1 + 11 */
+	sub	r10, reg_Wp, reg_W
+	stw	r10, 44(reg_Wp)
+	addi	reg_Wp, reg_Wp, 44
+	/* b	_applyg1 */
+_applyg1:
+	/* Wp[1] = pc + 1 */
+	sub	r10, reg_pc, reg_W
+	addi	r10, r10, 1
+	stw	r10, 4(reg_Wp)
+	/* pc = Wg1[B[pc]] */
+	lbz	r10, 0(reg_pc)
+	slwi	r10, r10, 2
+	addi	r10, r10, 1024
+	lwzx	r10, reg_Wg, r10
+	add	reg_pc, r10, reg_W
+	/* Wp[2] = pc  (Note: using value before adding reg_W) */
+	stw	r10, 8(reg_Wp)
+	/* Wp[3] = a */
+	stw	reg_a, 12(reg_Wp)
+	/* if (pc >= 0) goto fetch */
+	cmpw	reg_pc, reg_W
+	bge	_fetch
+	/* goto negpc */
+	b	_negpc
+
+_op76:	/* F_s0g1 */
+	/* r10 = B[pc++] */
+	lbz	r10, 0(reg_pc)
+	addi	reg_pc, reg_pc, 1
+	/* r10 = Wg1[r10] */
+	slwi	r10, r10, 2
+	addi	r10, r10, 1024
+	lwzx	r10, reg_Wg, r10
+	/* r10 = &W[r10] */
+	slwi	r10, r10, 2
+	/* *r10 = a */
+	stwx	reg_a, reg_W, r10
+	b	_fetch
+
+_op77:	/* F_l0g1 */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = W[Wg1[B[pc++]]+0] */
+	lbz	r10, 0(reg_pc)		/* r10=B[pc] */
+	addi	reg_pc, reg_pc, 1	/* pc++ */
+	slwi	r10, r10, 2
+	addi	r10, r10, 1024
+	lwzx	r10, r10, reg_Wg	/* r10=Wg1[...] */
+	slwi	r10, r10, 2
+	lwzx	reg_a, r10, reg_W	/* a = W[...] */
+	b	_fetch
+_op78:	/* F_l1g1 */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = W[Wg1[B[pc++]]+1] */
+	lbz	r10, 0(reg_pc)		/* r10=B[pc] */
+	addi	reg_pc, reg_pc, 1	/* pc++ */
+	slwi	r10, r10, 2
+	addi	r10, r10, 1024
+	lwzx	r10, r10, reg_Wg	/* r10=Wg1[...] */
+	addi	r10, r10, 1
+	slwi	r10, r10, 2
+	lwzx	reg_a, r10, reg_W	/* a = W[...] */
+	b	_fetch
+_op79:	/* F_l2g1 */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = W[Wg1[B[pc++]]+2] */
+	lbz	r10, 0(reg_pc)		/* r10=B[pc] */
+	addi	reg_pc, reg_pc, 1	/* pc++ */
+	slwi	r10, r10, 2
+	addi	r10, r10, 1024
+	lwzx	r10, r10, reg_Wg	/* r10=Wg[...] */
+	addi	r10, r10, 2
+	slwi	r10, r10, 2
+	lwzx	reg_a, r10, reg_W	/* a = W[...] */
+	b	_fetch
+
+_op80:	/* F_lg1 */
+	mr	reg_b, reg_a 		/* b = a */
+	lbz	r10, 0(reg_pc)		/* r10 = B[pc] */
+	addi	reg_pc, reg_pc, 1	/* pc++ */
+	slwi	r10, r10, 2		/* r10 -> byte index */
+	addi	r10, r10, 1024
+	lwzx	reg_a, reg_Wg, r10
+	b	_fetch
+
+_op81:	/* F_sg1 */
+	/* Wg1[B[pc++]] = a */
+	lbz	r10, 0(reg_pc)
+	slwi	r10, r10, 2
+	addi	reg_pc, reg_pc, 1
+	addi	r10, r10, 1024
+	stwx	reg_a, reg_Wg, r10
+	b	_fetch
+	
+_op82:	/* F_llg1 */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = g+256+B[pc++] */
+	lbz	r10, 0(reg_pc)
+	addi	reg_pc, reg_pc, 1
+	sub	reg_a, reg_Wg, reg_W
+	srwi	reg_a, reg_a, 2
+	add	reg_a, reg_a, r10
+	addi	reg_a, reg_a, 256
+	b	_fetch
+
+_op83:	/* F_ag1 */
+	/* (a += Wg1[B[pc++]]) */
+	/* r10 = B[pc++] */
+	lbz	r10, 0(reg_pc)
+	addi	reg_pc, reg_pc, 1
+	/* r10 = &Wg1[r10] */
+	slwi	r10, r10, 2
+	addi	r10, r10, 1024
+	/* r10 = *r10 (= Wg[B[pc++]]) */
+	lwzx	r10, r10, reg_Wg
+	/* a = a + r10 */
+	add	reg_a, reg_a, r10
+	b	_fetch
+
+_op84:	/* F_add */
+	add	reg_a, reg_a, reg_b
+	b	_fetch
+_op85:	/* F_sub */
+	sub	reg_a, reg_b, reg_a
+	b	_fetch
+
+_op86:	/* F_lsh */
+	/* if (a>31) b=0  (bug) */
+	cmplwi	reg_a, 31
+	ble	_op86_skip
+	li	reg_b, 0
+_op86_skip:
+	/* a = b << a */
+	slw	reg_a, reg_b, reg_a
+	b	_fetch
+
+_op87:	/* F_rsh */
+	/* if(a>31) b=0  (bug) */
+	cmpwi	reg_a, 31
+	ble	_op87_skip
+	li	reg_b, 0
+_op87_skip:
+	/* a = WD((UWD b)>>a) */
+	srw	reg_a, reg_b, reg_a
+	b	_fetch
+
+_op88:	/* F_and */
+	and	reg_a, reg_b, reg_a
+	b	_fetch
+
+_op89:	/* F_or */
+	or	reg_a, reg_b, reg_a
+	b	_fetch
+
+_op90:	/* F_lll */
+	/* b = a; */
+	mr	reg_b, reg_a
+	/* (a = (pc + SB[pc]) >> 2;) */
+	/* r10 = SB[pc] */
+	lbz	r10, 0(reg_pc)
+	extsb	r10, r10
+	/* r10 = r10 + pc */
+	add	r10, r10, reg_pc
+	sub	r10, r10, reg_W
+	/* a = r10 >> 2 */
+	srwi	reg_a, r10, 2
+	addi	reg_pc, reg_pc, 1
+	b _fetch
+	
+_op91:	/* F_lll+1 */
+	/* i = B[pc] */
+	lbz	r10, 0(reg_pc)
+	/* i += (pc>>1) */
+	sub	r0, reg_pc, reg_W
+	srwi	r0, r0, 1
+	add	r10, r10, r0
+	/* i = (i<<1) + SH[i] */
+	slwi	r0, r10, 1
+	add	r10, r0, reg_W
+	lha	r10, 0(r10)
+	add	r10, r10, r0
+	/* b = a; */
+	mr	reg_b, reg_a
+	/* a = i>>2 */
+	srwi	reg_a, r10, 2
+	addi	reg_pc, reg_pc, 1
+	b	_fetch
+
+_op92:	/* F_jls */
+	/* if (b<a) { pc += SB[pc]; goto fetch; } */
+	cmpw	reg_b, reg_a
+	bge	_dont_jump
+	lbz	r10, 0(reg_pc)
+	extsb	r10, r10
+	add	reg_pc, reg_pc, r10
+	b	_fetch
+
+_op93:	/* F_jls + 1 */
+	/* if(b<a) { goto indjump; } */
+	cmpw	reg_b, reg_a
+	bge	_dont_jump
+	b	_indjump
+
+_op94:	/* F_jls + 2 */
+	/* if(a<0) {pc += SB[pc]; goto fetch; } */
+	cmpwi	reg_a, 0
+	bge	_dont_jump
+	lbz	r10, 0(reg_pc)
+	extsb	r10, r10
+	add	reg_pc, reg_pc, r10
+	b	_fetch
+
+_op95:	/* F_jls + 3 */
+	cmpwi	reg_a, 0
+	bge	_dont_jump
+	b	_indjump
+
+_op96:	/* F_l */
+	mr	reg_b, reg_a
+	lbz	reg_a, 0(reg_pc)
+	addi	reg_pc, reg_pc, 1
+	b	_fetch
+
+_op97:	/* F_lh */
+	mr	reg_b, reg_a
+	lhz	reg_a, 0(reg_pc)
+	addi	reg_pc, reg_pc, 2
+	b	_fetch
+
+_op98:	/* F_lw */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = GW(pc) */
+	lwz	reg_a, 0(reg_pc)
+	/* pc += 4 */
+	addi	reg_pc, reg_pc, 4
+	b	_fetch
+
+_op99:	/* F_k0gh+3 */
+	/* Wp[3] = p<<2; p+=3; */
+	sub	r10, reg_Wp, reg_W
+	stw	r10, 12(reg_Wp)
+	addi	reg_Wp, reg_Wp, 12
+	b	_applygh
+_op100:	/* F_k0gh+4 */
+	/* Wp[4] = p<<2; p+=4; */
+	sub	r10, reg_Wp, reg_W
+	stw	r10, 16(reg_Wp)
+	addi	reg_Wp, reg_Wp, 16
+	b	_applygh
+_op101:	/* F_k0gh+5 */
+	/* Wp[5] = p<<2; p+=5; */
+	sub	r10, reg_Wp, reg_W
+	stw	r10, 20(reg_Wp)
+	addi	reg_Wp, reg_Wp, 20
+	b	_applygh
+_op102:	/* F_k0gh+6 */
+	/* Wp[6] = p<<2; p+=6; */
+	sub	r10, reg_Wp, reg_W
+	stw	r10, 24(reg_Wp)
+	addi	reg_Wp, reg_Wp, 24
+	b	_applygh
+_op103:	/* F_k0gh+7 */
+	/* Wp[7] = p<<2; p+=7; */
+	sub	r10, reg_Wp, reg_W
+	stw	r10, 28(reg_Wp)
+	addi	reg_Wp, reg_Wp, 28
+	b	_applygh
+_op104:	/* F_k0gh+8 */
+	/* Wp[8] = p<<2; p+=8; */
+	sub	r10, reg_Wp, reg_W
+	stw	r10, 32(reg_Wp)
+	addi	reg_Wp, reg_Wp, 32
+	b	_applygh
+_op105:	/* F_k0gh+9 */
+	/* Wp[9] = p<<2; p+=9; */
+	sub	r10, reg_Wp, reg_W
+	stw	r10, 36(reg_Wp)
+	addi	reg_Wp, reg_Wp, 36
+	b	_applygh
+_op106:	/* F_k0gh+10 */
+	/* Wp[10] = p<<2; p+=10; */
+	sub	r10, reg_Wp, reg_W
+	stw	r10, 40(reg_Wp)
+	addi	reg_Wp, reg_Wp, 40
+	b	_applygh
+_op107:	/* F_k0gh+11 */
+	/* Wp[11] = p<<2; p+=11; */
+	sub	r10, reg_Wp, reg_W
+	stw	r10, 44(reg_Wp)
+	addi	reg_Wp, reg_Wp, 44
+	b	_applygh
+
+_applygh:
+	/* Wp[1] = pc + 2 */
+	sub	r10, reg_pc, reg_W
+	addi	r10, r10, 2
+	stw	r10, 4(reg_Wp)
+	/* pc = Wg[GH(pc)] */
+	lhz	r10, 0(reg_pc)
+	slwi	r10, r10, 2
+	lwzx	r10, reg_Wg, r10
+	add	reg_pc, r10, reg_W
+	/* Wp[2] = pc  (Note: using value before adding reg_W) */
+	stw	r10, 8(reg_Wp)
+	/* Wp[3] = a */
+	stw	reg_a, 12(reg_Wp)
+	/* if (pc >= 0) goto fetch */
+	cmpw	reg_pc, reg_W
+	bge	_fetch
+	/* goto negpc */
+	b	_negpc
+
+_op108:	/* F_s0gh */
+	/* r10 = GH[pc] */
+	lhz	r10, 0(reg_pc)
+	/* r10 = Wg[r10] */
+	slwi	r10, r10, 2
+	lwzx	r10, r10, reg_Wg
+	/* r10 = &W[r10] */
+	slwi	r10, r10, 2
+	/* *r10 = a */
+	stwx	reg_a, r10, reg_W
+	/* pc += 2 */
+	addi	reg_pc, reg_pc, 2
+	b	_fetch
+
+_op109:	/* F_l0gh */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = W[Wg[GH(pc)]+0] */
+	lhz	r10, 0(reg_pc)
+	slwi	r10, r10, 2
+	lwzx	r10, r10, reg_Wg
+	slwi	r10, r10, 2
+	lwzx	reg_a, r10, reg_W
+	/* pc += 2 */
+	addi	reg_pc, reg_pc, 2
+	b	_fetch
+_op110:	/* F_l1gh */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = W[Wg[GH(pc)]+1] */
+	lhz	r10, 0(reg_pc)
+	slwi	r10, r10, 2
+	lwzx	r10, r10, reg_Wg
+	addi	r10, r10, 1
+	slwi	r10, r10, 2
+	lwzx	reg_a, r10, reg_W
+	/* pc += 2 */
+	addi	reg_pc, reg_pc, 2
+	b	_fetch
+_op111:	/* F_l2gh */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = W[Wg[GH(pc)]+2] */
+	lhz	r10, 0(reg_pc)
+	slwi	r10, r10, 2
+	lwzx	r10, r10, reg_Wg
+	addi	r10, r10, 2
+	slwi	r10, r10, 2
+	lwzx	reg_a, r10, reg_W
+	/* pc += 2 */
+	addi	reg_pc, reg_pc, 2
+	b	_fetch
+
+_op112:	/* F_lgh */
+	mr	reg_b, reg_a 		/* b = a */
+	lhz	r10, 0(reg_pc)		/* r10 = GH[pc] */
+	addi	reg_pc, reg_pc, 2	/* pc += 2 */
+	slwi	r10, r10, 2		/* r10 -> byte index */
+	lwzx	reg_a, r10, reg_Wg
+	b	_fetch
+
+_op113:	/* F_sgh */
+	/* Wg[GH(pc)] = a */
+	lhz	r10, 0(reg_pc)
+	slwi	r10, r10, 2
+	stwx	reg_a, r10, reg_Wg
+	/* pc += 2 */
+	addi	reg_pc, reg_pc, 2
+	b	_fetch
+
+_op114:	/* F_llgh */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = g + GH(pc) */
+	lhz	r10, 0(reg_pc)
+	sub	reg_a, reg_Wg, reg_W
+	srwi	reg_a, reg_a, 2
+	add	reg_a, reg_a, r10
+	/* pc += 2 */
+	addi	reg_pc, reg_pc, 2
+	b	_fetch
+
+_op115:	/* F_agh */
+	/* a += Wg[GH(pc)] */
+	lhz	r10, 0(reg_pc)
+	slwi	r10, r10, 2
+	lwzx	r10, r10, reg_Wg
+	add	reg_a, reg_a, r10
+	/* pc += 2 */
+	addi	reg_pc, reg_pc, 2
+	b	_fetch
+
+_op116:	/* F_rv */
+	slwi	r10, reg_a, 2
+	add	r10, r10, reg_W
+	lwz	reg_a, 0(r10)
+	b	_fetch
+_op117:	/* F_rv + 1 */
+	slwi	r10, reg_a, 2
+	add	r10, r10, reg_W
+	lwz	reg_a, 4(r10)
+	b	_fetch
+_op118:	/* F_rv + 2 */
+	slwi	r10, reg_a, 2
+	add	r10, r10, reg_W
+	lwz	reg_a, 8(r10)
+	b	_fetch
+_op119:	/* F_rv + 3 */
+	slwi	r10, reg_a, 2
+	add	r10, r10, reg_W
+	lwz	reg_a, 12(r10)
+	b	_fetch
+_op120:	/* F_rv + 4 */
+	slwi	r10, reg_a, 2
+	add	r10, r10, reg_W
+	lwz	reg_a, 16(r10)
+	b	_fetch
+_op121:	/* F_rv + 5 */
+	slwi	r10, reg_a, 2
+	add	r10, r10, reg_W
+	lwz	reg_a, 20(r10)
+	b	_fetch
+_op122:	/* F_rv + 6 */
+	slwi	r10, reg_a, 2
+	add	r10, r10, reg_W
+	lwz	reg_a, 24(r10)
+	b	_fetch
+
+_op239:	/* F_mdiv */
+	/* a = muldiv(Wp[3], Wp[4], Wp[5]) */
+	lwz	r3, 12(reg_Wp)
+	lwz	r4, 16(reg_Wp)
+	lwz	r5, 20(reg_Wp)
+	bl	muldiv
+	mr	reg_a, r3
+	/* Fall through to return */
+
+_op123:	/* F_rtn */
+	/* pc = Wp[1]; */
+	lwz	reg_pc, 4(reg_Wp)
+	add	reg_pc, reg_pc, reg_W
+	/* p = W[p]>>2; */
+	lwz	reg_Wp, 0(reg_Wp)
+	add	reg_Wp, reg_Wp, reg_W
+	b	_fetch
+
+_op124: /* F_jgr */
+	/* if (b>a) { pc += SB[pc]; goto fetch; } */
+	cmpw	reg_b, reg_a
+	ble	_dont_jump
+	lbz	r10, 0(reg_pc)
+	extsb	r10, r10
+	add	reg_pc, reg_pc, r10
+	b	_fetch
+
+_op125: /* F_jgr + 1 */
+	/* if(b>a) { goto indjump; } */
+	cmpw	reg_b, reg_a
+	ble	_dont_jump
+	b	_indjump
+
+_op126: /* F_jgr + 2 */
+	/* if(a>0) {pc += SB[pc]; goto fetch; } */
+	cmpwi	reg_a, 0
+	ble	_dont_jump
+	lbz	r10, 0(reg_pc)
+	extsb	r10, r10
+	add	reg_pc, reg_pc, r10
+	b	_fetch
+
+_op127: /* F_jgr + 3 */
+	cmpwi	reg_a, 0
+	ble	_dont_jump
+	b	_indjump
+
+_op128:	/* F_lp */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = Wp[B[pc++]] */
+	lbz	r10, 0(reg_pc)
+	addi	reg_pc, reg_pc, 1
+	slwi	r10, r10, 2
+	lwzx	reg_a, r10, reg_Wp
+	b	_fetch
+
+_op129:	/* F_lph */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = Wp[GH(pc)]; pc+=2 */
+	lhz	r10, 0(reg_pc)
+	addi	reg_pc, reg_pc, 2
+	slwi	r10, r10, 2
+	lwzx	reg_a, r10, reg_Wp
+	b	_fetch
+
+_op130:	/* F_lpw */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = Wp[GW(pc)]; pc+=4 */
+	lwz	r10, 0(reg_pc)
+	addi	reg_pc, reg_pc, 4
+	slwi	r10, r10, 2
+	lwzx	reg_a, r10, reg_Wp
+	b	_fetch
+
+_op131: /* F_lp0 + 3 */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = Wp[3] */
+	lwz	reg_a, 12(reg_Wp)
+	b	_fetch
+_op132: /* F_lp0 + 4 */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = Wp[4] */
+	lwz	reg_a, 16(reg_Wp)
+	b	_fetch
+_op133: /* F_lp0 + 5 */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = Wp[5] */
+	lwz	reg_a, 20(reg_Wp)
+	b	_fetch
+_op134: /* F_lp0 + 6 */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = Wp[6] */
+	lwz	reg_a, 24(reg_Wp)
+	b	_fetch
+_op135: /* F_lp0 + 7 */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = Wp[7] */
+	lwz	reg_a, 28(reg_Wp)
+	b	_fetch
+_op136: /* F_lp0 + 8 */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = Wp[8] */
+	lwz	reg_a, 32(reg_Wp)
+	b	_fetch
+_op137: /* F_lp0 + 9 */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = Wp[9] */
+	lwz	reg_a, 36(reg_Wp)
+	b	_fetch
+_op138: /* F_lp0 + 10 */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = Wp[10] */
+	lwz	reg_a, 40(reg_Wp)
+	b	_fetch
+_op139: /* F_lp0 + 11 */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = Wp[11] */
+	lwz	reg_a, 44(reg_Wp)
+	b	_fetch
+_op140: /* F_lp0 + 12 */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = Wp[12] */
+	lwz	reg_a, 48(reg_Wp)
+	b	_fetch
+_op141: /* F_lp0 + 13 */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = Wp[13] */
+	lwz	reg_a, 52(reg_Wp)
+	b	_fetch
+_op142: /* F_lp0 + 14 */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = Wp[14] */
+	lwz	reg_a, 56(reg_Wp)
+	b	_fetch
+_op143: /* F_lp0 + 15 */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = Wp[15] */
+	lwz	reg_a, 60(reg_Wp)
+	b	_fetch
+_op144: /* F_lp0 + 16 */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = Wp[15] */
+	lwz	reg_a, 64(reg_Wp)
+	b	_fetch
+
+_op145:	/* F_sys */
+	cmpwi	reg_a, 0
+	bgt	_op145_posa
+	bne	_op145_nonza
+	/* a == 0: res = Wp[4]; goto ret; */
+	lwz	r3, 16(reg_Wp)
+	b	_ret
+_op145_nonza:
+	cmpwi	reg_a, -1
+	bne	_op145_posa
+	/* a==-1 */
+	/* a = count */
+	mr	reg_a, reg_count
+	/* count = Wp[4] */
+	lwz	reg_count, 16(reg_Wp)
+	/* res = -1; goto ret; */
+	li	r3, -1
+	b 	_ret
+_op145_posa:
+	/* a = dosys(p, g) */
+	/* Set up arguments */
+	sub	r3, reg_Wp, reg_W
+	srwi	r3, r3, 2
+	sub	r4, reg_Wg, reg_W
+	srwi	r4, r4, 2
+	bl	dosys
+	/* a = retval */
+	mr	reg_a, r3
+
+	b _fetch
+
+_op146:	/* F_swb */
+	/* &H[k] -> r10 */
+	/* i*2   -> r9 */
+	/* n*2   -> r8 */
+	/* val -> r7 */
+	/* i = 1 */
+	li	r9, 2
+	/* k = (pc+1) >> 1 (ie halfword-aligned pointer) */
+	addi	r10, reg_pc, 1
+	li	r6, 1
+	andc	r10, r10, r6
+	/* n = H[k] */
+	lhz	r8, 0(r10)
+	slwi	r8, r8, 1
+	/* while(i<=n) (first time) */
+	cmpw	r9, r8
+	bgt	_op146_break
+_op146_loop:
+	/* i = i+i */
+	slwi	r9, r9, 1
+	/* val = H[k+i] */
+	lhzx	r7, r10, r9
+	/* if (a==val) */
+	cmpw	reg_a, r7
+	bne	_op146_ne
+	/* k += i */
+	add	r10, r10, r9
+	/* break */
+	b	_op146_break
+_op146_ne:
+	/* if (a<val).  Note: we've already done the comparision */
+	bgt	_op146_gt
+	/* i++ */
+	addi	r9, r9, 2
+_op146_gt:
+	/* while(i<=n) */
+	cmpw	r9, r8
+	ble	_op146_loop
+_op146_break:
+	/* k++ */
+	addi	r10, r10, 2
+	/* pc = (k<<1) + SH[k] */
+	lha	r6, 0(r10)
+	add	reg_pc, r10, r6
+	b	_fetch
+
+_op147:	/* F_swl */
+	/* INT32 n, q*2 -> r9, r10 */
+	/* q = (pc+1) >> 1 */
+	addi	r10, reg_pc, 1
+	li	r6, 1
+	andc	r10, r10, r6
+	/* n = H[q++] */
+	lhz	r9, 0(r10)
+	addi	r10, r10, 2
+	/* if (0<=a && a<n) */
+	cmpwi	reg_a, 0
+	blt	_op147_skip
+	cmpw	reg_a, r9
+	bge	_op147_skip
+	/* q = q + a + 1 */
+	addi	r6, reg_a, 1
+	slwi	r6, r6, 1
+	add	r10, r10, r6
+_op147_skip:
+	/* pc = (q<<1) + SH[q] */
+	lha	r6, 0(r10)
+	add	reg_pc, r10, r6
+	b	_fetch
+
+_op148:	/* F_st */
+	slwi	r10, reg_a, 2
+	add	r10, reg_W, r10
+	stw	reg_b, 0(r10)
+	b	_fetch
+_op149:	/* F_st + 1 */
+	slwi	r10, reg_a, 2
+	add	r10, reg_W, r10
+	stw	reg_b, 4(r10)
+	b	_fetch
+_op150:	/* F_st + 2 */
+	slwi	r10, reg_a, 2
+	add	r10, reg_W, r10
+	stw	reg_b, 8(r10)
+	b	_fetch
+_op151:	/* F_st + 3 */
+	slwi	r10, reg_a, 2
+	add	r10, reg_W, r10
+	stw	reg_b, 12(r10)
+	b	_fetch
+
+_op152:	/* F_stp0 + 3 */
+	/* W[a+Wp[3]] = b */
+	lwz	r10, 12(reg_Wp)
+	add	r10, r10, reg_a
+	slwi	r10, r10, 2
+	stwx	reg_b, reg_W, r10
+	b	_fetch
+_op153:	/* F_stp0 + 4 */
+	/* W[a+Wp[4]] = b */
+	lwz	r10, 16(reg_Wp)
+	add	r10, r10, reg_a
+	slwi	r10, r10, 2
+	stwx	reg_b, reg_W, r10
+	b	_fetch
+_op154:	/* F_stp0 + 5 */
+	/* W[a+Wp[5]] = b */
+	lwz	r10, 20(reg_Wp)
+	add	r10, r10, reg_a
+	slwi	r10, r10, 2
+	stwx	reg_b, reg_W, r10
+	b	_fetch
+
+_op155:	/* F_goto */
+	/* pc = a */
+	add	reg_pc, reg_W, reg_a
+	b	_fetch
+
+_op156: /* F_jle */
+	/* if (b<=a) { pc += SB[pc]; goto fetch; } */
+	cmpw	reg_b, reg_a
+	bgt	_dont_jump
+	lbz	r10, 0(reg_pc)
+	extsb	r10, r10
+	add	reg_pc, reg_pc, r10
+	b	_fetch
+
+_op157: /* F_jle + 1 */
+	/* if(b<=a) { goto indjump; } */
+	cmpw	reg_b, reg_a
+	bgt	_dont_jump
+	b	_indjump
+
+_op158: /* F_jle + 2 */
+	/* if(a<=0) {pc += SB[pc]; goto fetch; } */
+	cmpwi	reg_a, 0
+	bgt	_dont_jump
+	lbz	r10, 0(reg_pc)
+	extsb	r10, r10
+	add	reg_pc, reg_pc, r10
+	b	_fetch
+
+_op159: /* F_jle + 3 */
+	cmpwi	reg_a, 0
+	bgt	_dont_jump
+	b	_indjump
+
+_op160:	/* F_sp */
+	/* Wp[B[pc++]] = a: */
+	lbz	r10, 0(reg_pc)
+	addi	reg_pc, reg_pc, 1
+	slwi	r10, r10, 2
+	stwx	reg_a, reg_Wp, r10
+	b	_fetch
+
+_op161:	/* F_sph */
+	/* Wp[GH[pc]] = a; pc += 2 */
+	lhz	r10, 0(reg_pc)
+	addi	reg_pc, reg_pc, 2
+	slwi	r10, r10, 2
+	stwx	reg_a, reg_Wp, r10
+	b	_fetch
+
+_op162:	/* F_spw */
+	/* Wp[GW[pc++]] = a; pc += 4 */
+	lwz	r10, 0(reg_pc)
+	addi	reg_pc, reg_pc, 4
+	slwi	r10, r10, 2
+	stwx	reg_a, reg_Wp, r10
+	b	_fetch
+
+_op163: /* F_sp0 + 3 */
+	stw	reg_a, 12(reg_Wp)
+	b	_fetch
+_op164: /* F_sp0 + 4 */
+	stw	reg_a, 16(reg_Wp)
+	b	_fetch
+_op165: /* F_sp0 + 5 */
+	stw	reg_a, 20(reg_Wp)
+	b	_fetch
+_op166: /* F_sp0 + 6 */
+	stw	reg_a, 24(reg_Wp)
+	b	_fetch
+_op167: /* F_sp0 + 7 */
+	stw	reg_a, 28(reg_Wp)
+	b	_fetch
+_op168: /* F_sp0 + 8 */
+	stw	reg_a, 32(reg_Wp)
+	b	_fetch
+_op169: /* F_sp0 + 9 */
+	stw	reg_a, 36(reg_Wp)
+	b	_fetch
+_op170: /* F_sp0 + 10 */
+	stw	reg_a, 40(reg_Wp)
+	b	_fetch
+_op171: /* F_sp0 + 11 */
+	stw	reg_a, 44(reg_Wp)
+	b	_fetch
+_op172: /* F_sp0 + 12 */
+	stw	reg_a, 48(reg_Wp)
+	b	_fetch
+_op173: /* F_sp0 + 13 */
+	stw	reg_a, 52(reg_Wp)
+	b	_fetch
+_op174: /* F_sp0 + 14 */
+	stw	reg_a, 56(reg_Wp)
+	b	_fetch
+_op175: /* F_sp0 + 15 */
+	stw	reg_a, 60(reg_Wp)
+	b	_fetch
+_op176: /* F_sp0 + 16 */
+	stw	reg_a, 64(reg_Wp)
+	b	_fetch
+
+_op177:	/* F_s0 + 1 */
+	subi	reg_a, reg_a, 1
+	b	_fetch
+_op178:	/* F_s0 + 2 */
+	subi	reg_a, reg_a, 2
+	b	_fetch
+_op179:	/* F_s0 + 3 */
+	subi	reg_a, reg_a, 3
+	b	_fetch
+_op180:	/* F_s0 + 4 */
+	subi	reg_a, reg_a, 4
+	b	_fetch
+
+_op181: /* F_xch */
+	mr	r10, reg_a
+	mr	reg_a, reg_b
+	mr	reg_b, r10
+	b	_fetch
+
+_op182:	/* F_gbyt */
+	/* a = B[a + (b<<2)] */
+	slwi	r10, reg_b, 2
+	add	r10, r10, reg_a
+	add	r10, r10, reg_W
+	lbz	reg_a, 0(r10)
+	b	_fetch
+
+_op183:	/* F_pbyt */
+	/* B[a + (b<<2)] = (char)c; */
+	slwi	r10, reg_b, 2
+	add	r10, r10, reg_a
+	stbx	reg_c, reg_W, r10
+	b	_fetch
+
+_op184:	/* F_atc */
+	mr	reg_c, reg_a
+	b	_fetch
+
+_op185:	/* F_atb */
+	mr	reg_b, reg_a
+	b	_fetch
+
+_op186:	/* F_j */
+	/* pc += SB[pc] */
+	lbz	r10, 0(reg_pc)
+	extsb	r10, r10
+	add	reg_pc, reg_pc, r10
+	b	_fetch
+
+_dont_jump:
+	/* pc++; goto fetch */
+	addi	reg_pc, reg_pc, 1
+	b	_fetch
+
+
+_op187:	/* F_j + 1 */
+_indjump:
+	/* pc = (pc >> 1) + B[pc] */
+	lbz	r10, 0(reg_pc)
+	sub	reg_pc, reg_pc, reg_W
+	srwi	reg_pc, reg_pc, 1
+	add	reg_pc, reg_pc, r10
+	/* pc = (pc<<1) + SH[pc]; */
+	slwi	reg_pc, reg_pc, 1
+	lhax	r10, reg_pc, reg_W
+	add	reg_pc, reg_pc, r10
+	add	reg_pc, reg_pc, reg_W
+	/* goto fetch */
+	b	_fetch
+
+_op188: /* F_jge */
+	/* if (b>=a) { pc += SB[pc]; goto fetch; } */
+	cmpw	reg_b, reg_a
+	blt	_dont_jump
+	lbz	r10, 0(reg_pc)
+	extsb	r10, r10
+	add	reg_pc, reg_pc, r10
+	b	_fetch
+
+_op189: /* F_jge + 1 */
+	/* if(b>=a) { goto indjump; } */
+	cmpw	reg_b, reg_a
+	blt	_dont_jump
+	b	_indjump
+
+_op190: /* F_jge + 2 */
+	/* if(a>=0) {pc += SB[pc]; goto fetch; } */
+	cmpwi	reg_a, 0
+	blt	_dont_jump
+	lbz	r10, 0(reg_pc)
+	extsb	r10, r10
+	add	reg_pc, reg_pc, r10
+	b	_fetch
+
+_op191: /* F_jge + 3 */
+	cmpwi	reg_a, 0
+	blt	_dont_jump
+	b	_indjump
+
+_op192:	/* F_ap */
+	/* a += Wp[B[pc++]] */
+	lbz	r10, 0(reg_pc)
+	addi	reg_pc, reg_pc, 1
+	slwi	r10, r10, 2
+	lwzx	r10, r10, reg_Wp
+	add	reg_a, reg_a, r10
+	b	_fetch
+_op193:	/* F_aph */
+	/* a += Wp[GH(pc)]; pc+=2 */
+	lhz	r10, 0(reg_pc)
+	addi	reg_pc, reg_pc, 2
+	slwi	r10, r10, 2
+	lwzx	r10, r10, reg_Wp
+	add	reg_a, reg_a, r10
+	b	_fetch
+_op194:	/* F_apw */
+	/* a += Wp[GW(pc)]; pc+=4 */
+	lwz	r10, 0(reg_pc)
+	addi	reg_pc, reg_pc, 4
+	slwi	r10, r10, 2
+	lwzx	r10, r10, reg_Wp
+	add	reg_a, reg_a, r10
+	b	_fetch
+
+_op195:	/* F_ap0 + 3 */
+	lwz	r10, 12(reg_Wp)
+	add	reg_a, reg_a, r10
+	b	_fetch
+_op196:	/* F_ap0 + 4 */
+	lwz	r10, 16(reg_Wp)
+	add	reg_a, reg_a, r10
+	b	_fetch
+_op197:	/* F_ap0 + 5 */
+	lwz	r10, 20(reg_Wp)
+	add	reg_a, reg_a, r10
+	b	_fetch
+_op198:	/* F_ap0 + 6 */
+	lwz	r10, 24(reg_Wp)
+	add	reg_a, reg_a, r10
+	b	_fetch
+_op199:	/* F_ap0 + 7 */
+	lwz	r10, 28(reg_Wp)
+	add	reg_a, reg_a, r10
+	b	_fetch
+_op200:	/* F_ap0 + 8 */
+	lwz	r10, 32(reg_Wp)
+	add	reg_a, reg_a, r10
+	b	_fetch
+_op201:	/* F_ap0 + 9 */
+	lwz	r10, 36(reg_Wp)
+	add	reg_a, reg_a, r10
+	b	_fetch
+_op202:	/* F_ap0 + 10 */
+	lwz	r10, 40(reg_Wp)
+	add	reg_a, reg_a, r10
+	b	_fetch
+_op203:	/* F_ap0 + 11 */
+	lwz	r10, 44(reg_Wp)
+	add	reg_a, reg_a, r10
+	b	_fetch
+_op204:	/* F_ap0 + 12 */
+	lwz	r10, 48(reg_Wp)
+	add	reg_a, reg_a, r10
+	b	_fetch
+
+_op205:	/* F_xpbyt */
+	/* B[b+(a<<2)] = (char) c */
+	slwi	r10, reg_a, 2
+	add	r10, r10, reg_b
+	stbx	reg_c, reg_W, r10
+	b	_fetch
+
+_op206:	/* F_lmh */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = -WD(GH(pc)); pc += 2 */
+	lhz	reg_a, 0(reg_pc)
+	addi	reg_pc, reg_pc, 2
+	neg	reg_a, reg_a
+	b	_fetch
+
+_op207:	/* F_btc */
+	mr	reg_c, reg_b
+	b	_fetch
+
+_op208:	/* F_nop */
+	b	_fetch
+
+_op209:	/* F_a0 + 1 */
+	addi	reg_a, reg_a, 1
+	b	_fetch
+_op210:	/* F_a0 + 2 */
+	addi	reg_a, reg_a, 2
+	b	_fetch
+_op211:	/* F_a0 + 3 */
+	addi	reg_a, reg_a, 3
+	b	_fetch
+_op212:	/* F_a0 + 4 */
+	addi	reg_a, reg_a, 4
+	b	_fetch
+_op213:	/* F_a0 + 5 */
+	addi	reg_a, reg_a, 5
+	b	_fetch
+
+_op214:	/* F_rvp0 + 3 */
+	/* a = W[a+Wp[3]] */
+	lwz	r10, 12(reg_Wp)
+	add	r10, r10, reg_a
+	slwi	r10, r10, 2
+	lwzx	reg_a, reg_W, r10
+	b	_fetch
+_op215:	/* F_rvp0 + 4 */
+	/* a = W[a+Wp[4]] */
+	lwz	r10, 16(reg_Wp)
+	add	r10, r10, reg_a
+	slwi	r10, r10, 2
+	lwzx	reg_a, reg_W, r10
+	b	_fetch
+_op216:	/* F_rvp0 + 5 */
+	/* a = W[a+Wp[5]] */
+	lwz	r10, 20(reg_Wp)
+	add	r10, r10, reg_a
+	slwi	r10, r10, 2
+	lwzx	reg_a, reg_W, r10
+	b	_fetch
+_op217:	/* F_rvp0 + 6 */
+	/* a = W[a+Wp[6]] */
+	lwz	r10, 24(reg_Wp)
+	add	r10, r10, reg_a
+	slwi	r10, r10, 2
+	lwzx	reg_a, reg_W, r10
+	b	_fetch
+_op218:	/* F_rvp0 + 7 */
+	/* a = W[a+Wp[7]] */
+	lwz	r10, 28(reg_Wp)
+	add	r10, r10, reg_a
+	slwi	r10, r10, 2
+	lwzx	reg_a, reg_W, r10
+	b	_fetch
+
+_op219:	/* F_st0p0+3 */
+	/* W[Wp[3]+0] = a */
+	lwz	r10, 12(reg_Wp)
+	slwi	r10, r10, 2
+	stwx	reg_a, reg_W, r10
+	b	_fetch
+_op220:	/* F_st0p0+4 */
+	/* W[Wp[3]+0] = a */
+	lwz	r10, 16(reg_Wp)
+	slwi	r10, r10, 2
+	stwx	reg_a, reg_W, r10
+	b	_fetch
+_op221:	/* F_st1p0+3 */
+	/* W[Wp[3]+1] = a */
+	lwz	r10, 12(reg_Wp)
+	addi	r10, r10, 1
+	slwi	r10, r10, 2
+	stwx	reg_a, reg_W, r10
+	b	_fetch
+_op222:	/* F_st1p0+4 */
+	/* W[Wp[3]+1] = a */
+	lwz	r10, 16(reg_Wp)
+	addi	r10, r10, 1
+	slwi	r10, r10, 2
+	stwx	reg_a, reg_W, r10
+	b	_fetch
+
+_op224:	/* F_a */
+	/* a += B[pc++] */
+	lbz	r10, 0(reg_pc)
+	addi	reg_pc, reg_pc, 1
+	add	reg_a, reg_a, r10
+	b	_fetch
+
+_op225:	/* F_ah */
+	/* a += GH[pc]; pc += 2 */
+	lhz	r10, 0(reg_pc)
+	addi	reg_pc, reg_pc, 2
+	add	reg_a, reg_a, r10
+	b	_fetch
+
+_op226:	/* F_aw */
+	/* a += GW[pc]; pc += 4 */
+	lwz	r10, 0(reg_pc)
+	addi	reg_pc, reg_pc, 4
+	add	reg_a, reg_a, r10
+	b	_fetch
+
+_op227:	/* F_l0p0 + 3 */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = W[Wp[3]+0] */
+	lwz	r10, 12(reg_Wp)
+	slwi	r10, r10, 2
+	lwzx	reg_a, r10, reg_W
+	b	_fetch
+_op228:	/* F_l0p0 + 4 */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = W[Wp[4]+0] */
+	lwz	r10, 16(reg_Wp)
+	slwi	r10, r10, 2
+	lwzx	reg_a, r10, reg_W
+	b	_fetch
+_op229:	/* F_l0p0 + 5 */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = W[Wp[5]+0] */
+	lwz	r10, 20(reg_Wp)
+	slwi	r10, r10, 2
+	lwzx	reg_a, r10, reg_W
+	b	_fetch
+_op230:	/* F_l0p0 + 6 */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = W[Wp[6]+0] */
+	lwz	r10, 24(reg_Wp)
+	slwi	r10, r10, 2
+	lwzx	reg_a, r10, reg_W
+	b	_fetch
+_op231:	/* F_l0p0 + 7 */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = W[Wp[7]+0] */
+	lwz	r10, 28(reg_Wp)
+	slwi	r10, r10, 2
+	lwzx	reg_a, r10, reg_W
+	b	_fetch
+_op232:	/* F_l0p0 + 8 */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = W[Wp[8]+0] */
+	lwz	r10, 32(reg_Wp)
+	slwi	r10, r10, 2
+	lwzx	reg_a, r10, reg_W
+	b	_fetch
+_op233:	/* F_l0p0 + 9 */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = W[Wp[9]+0] */
+	lwz	r10, 36(reg_Wp)
+	slwi	r10, r10, 2
+	lwzx	reg_a, r10, reg_W
+	b	_fetch
+_op234:	/* F_l0p0 + 10 */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = W[Wp[10]+0] */
+	lwz	r10, 40(reg_Wp)
+	slwi	r10, r10, 2
+	lwzx	reg_a, r10, reg_W
+	b	_fetch
+_op235:	/* F_l0p0 + 11 */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = W[Wp[11]+0] */
+	lwz	r10, 44(reg_Wp)
+	slwi	r10, r10, 2
+	lwzx	reg_a, r10, reg_W
+	b	_fetch
+_op236:	/* F_l0p0 + 12 */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = W[Wp[12]+0] */
+	lwz	r10, 48(reg_Wp)
+	slwi	r10, r10, 2
+	lwzx	reg_a, r10, reg_W
+	b	_fetch
+
+_op237:	/* F_s */
+	/* a -= B[pc++]; */
+	lbz	r10, 0(reg_pc)
+	sub	reg_a, reg_a, r10
+	addi	reg_pc, reg_pc, 1
+	b	_fetch
+_op238:	/* F_sh */
+	/* a -= GH(pc) */
+	lhz	r10, 0(reg_pc)
+	sub	reg_a, reg_a, r10
+	/* pc += 2 */
+	addi	reg_pc, reg_pc, 2
+	b	_fetch
+
+_op240:	/* F_chgco */
+	/* W[Wg[Gn_currco]] = Wp[0] */
+	lwz	r8, Gn_currco*4(reg_Wg)
+	slwi	r8, r8, 2
+	lwz	r9, 0(reg_Wp)
+	stwx	r9, r8, reg_W
+	/* pc = Wp[1] */
+	lwz	reg_pc, 4(reg_Wp)
+	add	reg_pc, reg_pc, reg_W
+	/* Wg[Gn_currco] = Wp[4] */
+	/* Note: r10 still holds g+(Gn_currco*4) */
+	lwz	r9, 16(reg_Wp)
+	stw	r9, Gn_currco*4(reg_Wg)
+	/* p = W[Wp[4]]>>2 */
+	slwi	r9, r9, 2
+	lwzx	r9, r9, reg_W
+	add	reg_Wp, r9, reg_W
+	b	_fetch
+
+_op241:	/* F_neg */
+	neg	reg_a, reg_a
+	b	_fetch
+
+_op242:	/* F_not */
+	nor	reg_a, reg_a, reg_a
+	b	_fetch
+
+_op243:	/* F_l1p0+3 */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = W[Wp[3]+1] */
+	lwz	r10, 12(reg_Wp)
+	addi	r10, r10, 1
+	slwi	r10, r10, 2
+	lwzx	reg_a, r10, reg_W
+	b	_fetch
+_op244:	/* F_l1p0+4 */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = W[Wp[3]+1] */
+	lwz	r10, 16(reg_Wp)
+	addi	r10, r10, 1
+	slwi	r10, r10, 2
+	lwzx	reg_a, r10, reg_W
+	b	_fetch
+_op245:	/* F_l1p0+5 */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = W[Wp[3]+1] */
+	lwz	r10, 20(reg_Wp)
+	addi	r10, r10, 1
+	slwi	r10, r10, 2
+	lwzx	reg_a, r10, reg_W
+	b	_fetch
+_op246:	/* F_l1p0+6 */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = W[Wp[3]+1] */
+	lwz	r10, 24(reg_Wp)
+	addi	r10, r10, 1
+	slwi	r10, r10, 2
+	lwzx	reg_a, r10, reg_W
+	b	_fetch
+
+_op247:	/* F_l2p0+3 */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = W[Wp[3]+2] */
+	lwz	r10, 12(reg_Wp)
+	addi	r10, r10, 2
+	slwi	r10, r10, 2
+	lwzx	reg_a, r10, reg_W
+	b	_fetch
+_op248:	/* F_l2p0+4 */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = W[Wp[3]+2] */
+	lwz	r10, 16(reg_Wp)
+	addi	r10, r10, 2
+	slwi	r10, r10, 2
+	lwzx	reg_a, r10, reg_W
+	b	_fetch
+_op249:	/* F_l2p0+5 */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = W[Wp[3]+2] */
+	lwz	r10, 20(reg_Wp)
+	addi	r10, r10, 2
+	slwi	r10, r10, 2
+	lwzx	reg_a, r10, reg_W
+	b	_fetch
+
+_op250:	/* F_l3p0 + 3 */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = W[Wp[3]+3] */
+	lwz	r10, 12(reg_Wp)
+	addi	r10, r10, 3
+	slwi	r10, r10, 2
+	lwzx	reg_a, r10, reg_W
+	b	_fetch
+
+_op251:	/* F_l3p0 + 4 */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = W[Wp[4]+3] */
+	lwz	r10, 16(reg_Wp)
+	addi	r10, r10, 3
+	slwi	r10, r10, 2
+	lwzx	reg_a, r10, reg_W
+	b	_fetch
+
+_op252:	/* F_l4p0 + 3 */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = W[Wp[3]+4] */
+	lwz	r10, 12(reg_Wp)
+	addi	r10, r10, 4
+	slwi	r10, r10, 2
+	lwzx	reg_a, r10, reg_W
+	b	_fetch
+_op253:	/* F_l4p0 + 4 */
+	/* b = a */
+	mr	reg_b, reg_a
+	/* a = W[Wp[4]+4] */
+	lwz	r10, 16(reg_Wp)
+	addi	r10, r10, 4
+	slwi	r10, r10, 2
+	lwzx	reg_a, r10, reg_W
+	b	_fetch
+
+	/* NOTREACHED */
+_negpc:
+	li	r3, 4
+_ret:
+	stw	reg_a, 0(reg_regs)
+	stw	reg_b, 4(reg_regs)
+	stw	reg_c, 8(reg_regs)
+	sub	reg_Wp, reg_Wp, reg_W
+	stw	reg_Wp, 12(reg_regs)
+	sub	reg_Wg, reg_Wg, reg_W
+	stw	reg_Wg, 16(reg_regs)
+	stw	reg_st, 20(reg_regs)
+	sub	reg_pc, reg_pc, reg_W
+	stw	reg_pc, 24(reg_regs)
+	stw	reg_count, 28(reg_regs)
+
+	/* Restore registers and stack frame */
+	lwz	r21, 8(r1)  /* branch table */
+	lwz	r22, 12(r1) /* regs */
+	lwz	r23, 16(r1)  /* W */
+	lwz	r24, 20(r1) /* temp variable */
+	lwz	r25, 24(r1) /* pc */
+	lwz	r26, 28(r1) /* st */
+	lwz	r27, 32(r1) /* g */
+	lwz	r28, 36(r1) /* Wp */
+	lwz	r29, 40(r1) /* c */
+	lwz	r30, 44(r1) /* b */
+	lwz	r31, 48(r1) /* a */
+	lwz	r1, 0(r1)
+	lwz	r0, 4(r1)
+	mtlr	r0
+	
+	/* The result will be in r3 */
+	blr
+
+_switch_targets:
+	.long _op0,	_op1,	_op2,	_op3,	_op4,	_op5,	_op6,	_op7
+	.long _op8,	_op9,	_op10,	_op11,	_op12,	_op13,	_op14,	_op15
+	.long _op16,	_op17,	_op18,	_op19,	_op20,	_op21,	_op22,	_op23
+	.long _op24,	_op25,	_op26,	_op27,	_op28,	_op29,	_op30,	_op31
+	.long _op32,	_op33,	_op34,	_op35,	_op36,	_op37,	_op38,	_op39
+	.long _op40,	_op41,	_op42,	_op43,	_op44,	_op45,	_op46,	_op47
+	.long _op48,	_op49,	_op50,	_op51,	_op52,	_op53,	_op54,	_op55
+	.long _op56,	_op57,	_op58,	_op59,	_op60,	_op61,	_op62,	_op63
+	.long _op64,	_op65,	_op66,	_op67,	_op68,	_op69,	_op70,	_op71
+	.long _op72,	_op73,	_op74,	_op75,	_op76,	_op77,	_op78,	_op79
+	.long _op80,	_op81,	_op82,	_op83,	_op84,	_op85,	_op86,	_op87
+	.long _op88,	_op89,	_op90,	_op91,	_op92,	_op93,	_op94,	_op95
+	.long _op96,	_op97,	_op98,	_op99,	_op100,	_op101,	_op102,	_op103
+	.long _op104,	_op105,	_op106,	_op107,	_op108,	_op109,	_op110,	_op111
+	.long _op112,	_op113,	_op114,	_op115,	_op116,	_op117,	_op118,	_op119
+	.long _op120,	_op121,	_op122,	_op123,	_op124,	_op125,	_op126,	_op127
+	.long _op128,	_op129,	_op130,	_op131,	_op132,	_op133,	_op134,	_op135
+	.long _op136,	_op137,	_op138,	_op139,	_op140,	_op141,	_op142,	_op143
+	.long _op144,	_op145,	_op146,	_op147,	_op148,	_op149,	_op150,	_op151
+	.long _op152,	_op153,	_op154,	_op155,	_op156,	_op157,	_op158,	_op159
+	.long _op160,	_op161,	_op162,	_op163,	_op164,	_op165,	_op166,	_op167
+	.long _op168,	_op169,	_op170,	_op171,	_op172,	_op173,	_op174,	_op175
+	.long _op176,	_op177,	_op178,	_op179,	_op180,	_op181,	_op182,	_op183
+	.long _op184,	_op185,	_op186,	_op187,	_op188,	_op189,	_op190,	_op191
+	.long _op192,	_op193,	_op194,	_op195,	_op196,	_op197,	_op198,	_op199
+	.long _op200,	_op201,	_op202,	_op203,	_op204,	_op205,	_op206,	_op207
+	.long _op208,	_op209,	_op210,	_op211,	_op212,	_op213,	_op214,	_op215
+	.long _op216,	_op217,	_op218,	_op219,	_op220,	_op221,	_op222,	_op223
+	.long _op224,	_op225,	_op226,	_op227,	_op228,	_op229,	_op230,	_op231
+	.long _op232,	_op233,	_op234,	_op235,	_op236,	_op237,	_op238,	_op239
+	.long _op240,	_op241,	_op242,	_op243,	_op244,	_op245,	_op246,	_op247
+	.long _op248,	_op249,	_op250,	_op251,	_op252,	_op253,	_op254,	_op255
+
+
+
+

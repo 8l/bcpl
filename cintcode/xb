@@ -1,0 +1,4 @@
+#!/home/mr/distribution/BCPL/cintcode/cintsys -s
+.k file/a,opt
+echo "xbcpl <file>.b to <file> hdrs BCPLHDRS <opt>"
+xbcpl <file>.b to <file> hdrs BCPLHDRS <opt>

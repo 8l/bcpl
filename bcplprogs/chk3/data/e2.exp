@@ -1,0 +1,40 @@
+# Sample problems from F.J. Pelletier,
+# Seventy-Five Problems for Testing Automatic Theorem Provers,
+# J. Automated Reasoning 2 (1986), 191-216.
+#
+
+v1 = 1
+
+# Associative laws of & and |
+
+v1 = (v10 & v11) & v12  =  v10 & (v11 & v12)
+
+v1 = (v20 | v21) | v22  =  v20 | (v21 | v22)
+
+# Distributive laws of & and |
+
+v1 = (v30 & v31) | v32  = (v30 | v32) & (v31 | v32)
+
+v1 = (v40 | v41) & v42  = (v40 & v42) | (v41 & v42)
+
+# Laws involving implication
+
+v1 = (v50|v51 -> v52) = (v50->v12) & (v51->v52)
+
+v1 = (v60 & v61 -> v62) = (v60-> (v61->v62))
+
+v1 = (v70 -> v71 & v72) = (v70->v71)  &  (v70->v72)
+
+# Classical theorems
+
+v1 = v80 | v81  ->  v80 | ~v80 & v81
+
+v1 = (v90->v91)&( ~v90->v92)  ->  (v90&v91 | v92)
+
+v1 = v100 & v101 | ~v100 & v102 =  (v100->v101) & (~v100->v102)
+
+v1 = (v110->v111) | (v110->v112) = (v110 -> v111 | v112)
+
+v1 = (v120 = v121) = (v121 = v120)
+
+

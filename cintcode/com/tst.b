@@ -1,0 +1,28 @@
+SECTION "tst"
+
+GET "libhdr"
+
+GLOBAL {
+  g200: 200
+  g201
+}
+
+STATIC { a=10; b=11 }
+
+LET f(x, y) = VALOF
+{ SWITCHON x INTO
+  { CASE 1000000: RESULTIS 123
+    CASE 2000000: RESULTIS 124
+    CASE 3000000: RESULTIS 125
+    CASE 4000000: RESULTIS 126
+  }
+  RESULTIS 999
+}
+
+LET clihook() = VALOF
+{ //LET a = 10.0
+  //LET b = #- a
+  result2 := 0
+  RESULTIS f(1000000,0)
+}
+

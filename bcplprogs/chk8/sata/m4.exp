@@ -1,0 +1,100 @@
+# This is a test to see if 77 can be factorised using a
+# 4-bit by 4-bit multiplier circuit.
+
+# The circuit is built up from cells as follows
+
+#                       a  r  b
+#                       |  |  |
+#                      ---------
+#                 co--|         |--ci
+#                      ---------
+#                          |
+#                          s
+
+#  a and b are two operand digit. The circuit adds the
+# three digit (a&b), r and cin to produce a two bit result (cout,s)
+
+#            (co,s) = (a&b) + r + ci
+#
+# ie
+#             co = (a&b) & r | (a&b) & ci | r & ci
+#             s  = (a&b) ~= r ~= ci
+
+
+#                                      4 0 5      3 0 5      2 0 5      1 0 5
+#                                      | | |      | | |      | | |      | | |
+#                                      -----      -----      -----      -----
+#                              ----18-|     |-17-|     |-16-|     |-15-|     |-0
+#                             |        -----      -----      -----      -----
+#                             |          |          |          |          |
+#                             |         14         13         12         11
+#                             |          |          |          |          |
+#                           4 | 6      3 | 6      2 | 6      1 | 6        |
+#                           | | |      | | |      | | |      | | |        |
+#                           -----      -----      -----      -----        |
+#                   ----28-|     |-27-|     |-26-|     |-25-|     |-0     |
+#                  |        -----      -----      -----      -----        |
+#                  |          |          |          |          |          |
+#                  |         24         23         22         21          |
+#                  |          |          |          |          |          |
+#                4 | 7      3 | 7      2 | 7      1 | 7        |          |
+#                | | |      | | |      | | |      | | |        |          |
+#                -----      -----      -----      -----        |          |
+#        ----38-|     |-37-|     |-36-|     |-35-|     |-0     |          |
+#       |        -----      -----      -----      -----        |          |
+#       |          |          |          |          |          |          |
+#       |         34         33         32         31          |          |
+#       |          |          |          |          |          |          |
+#     4 | 8      3 | 8      2 | 8      1 | 8        |          |          |
+#     | | |      | | |      | | |      | | |        |          |          |
+#     -----      -----      -----      -----        |          |          |
+#  --|     |-47-|     |-46-|     |-45-|     |-0     |          |          |
+# |   -----      -----      -----      -----        |          |          |
+# |     |          |          |          |          |          |          |
+#48    44         43         42         41         31         21         11
+# |     |          |          |          |          |          |          |
+# 0     1          0          0          1          1          0          1
+
+#                  co   s     r    ci    a    b
+24412441 82242441 v15  v11   v0    v0   v1   v5
+24412441 82242441 v16  v12   v0   v15   v2   v5
+24412441 82242441 v17  v13   v0   v16   v3   v5
+24412441 82242441 v18  v14   v0   v17   v4   v5
+
+24412441 82242441 v25  v21  v12    v0   v1   v6
+24412441 82242441 v26  v22  v13   v25   v2   v6
+24412441 82242441 v27  v23  v14   v26   v3   v6
+24412441 82242441 v28  v24  v18   v27   v4   v6
+
+24412441 82242441 v35  v31  v22    v0   v1   v7
+24412441 82242441 v36  v32  v23   v35   v2   v7
+24412441 82242441 v37  v33  v24   v36   v3   v7
+24412441 82242441 v38  v34  v28   v37   v4   v7
+
+24412441 82242441 v45  v41  v32    v0   v1   v8
+24412441 82242441 v46  v42  v33   v45   v2   v8
+24412441 82242441 v47  v43  v34   v46   v3   v8
+24412441 82242441 v48  v44  v38   v47   v4   v8
+
+# The result should be 77 = 01001101
+
+# v11 v21 v31 v41 v42 v43 v44 v48
+#  1   0   1   1   0   0   1   0
+
+# So the relation is:
+
+0 0 000002000 0 0 0 0 0   v11 v21 v31 v41 v42 v43 v44 v48
+
+# Finally  to exclude 1 and 77 as factors, variables 4,3 and 2 must not be
+# all zero, so
+
+000000FE v2 v3 v4
+
+# Similarly variables 6, 7 and 8 must not all be zero.
+
+000000FE v6 v7 v8
+
+# If these relations can be satisfied, the binary numbers consisting
+# of (v4,v3,v2,v1) and (v8,v7,v6,v5) will be factors of 77,
+# ie 0111 and 1011 or 1011 and 0111.
+

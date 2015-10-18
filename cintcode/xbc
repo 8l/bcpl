@@ -1,0 +1,5 @@
+#!/home/mr/distribution/BCPL/cintcode/cintsys -s
+.k file/a,arg
+echo "xbcpl com/<file>.b to cin/<file> hdrs BCPLHDRS <arg>"
+xbcpl com/<file>.b to cin/<file> hdrs BCPLHDRS <arg>
+

@@ -1,0 +1,6 @@
+.k dir/a,file/a
+echo "bcpl2sial <dir>/<file>.b to SIAL"
+bcpl2sial <dir>/<file>.b to SIAL
+echo "sial-sasm SIAL to sasm/<file>.sasm"
+sial-sasm SIAL to sasm/<file>.sasm
+

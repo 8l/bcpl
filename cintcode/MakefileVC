@@ -1,0 +1,234 @@
+# This is an NMAKE file to compile the BCPL Cintcode System for Windows
+# using the Microsoft Visual Studio tools (on my laptop solestreet).
+
+# Modified by Martin Richards (c) 21 Jan 2014
+
+# To use this Makefile you must be in the BCPL\cintcode directory.
+
+# First set the BCPL and Visual Studio environment variables
+# using a possibly modified version of VC8env.bat, VC9env.bat or VCnet.bat.
+# ie type:
+
+#      os/windows/VC8env.bat
+
+# The rebuild the complete BCPL system by the following two commands
+# (modifying MakefileVC and MakefileVCSDL if necessary).
+
+#      nmake /f MakefileVC clean
+#      nmake /f MakefileVC
+
+CC=cl -O2 -DforWIN32 -DSOUND -D_CRT_SECURE_NO_DEPRECATE -DEXTavail
+
+ENDER=litender
+
+run:    bcplready
+        cintsys
+
+run64:	bcplready64
+	cintsys64
+
+sys:	bin\cintsys.exe $(ENDER)
+	echo "bin\cintsys.exe is up to date"
+
+sys64:	bin\cintsys64.exe $(ENDER)64
+	echo "bin\cintsys64.exe is up to date"
+
+bcplready:	bin\cintsys.exe bin\rastsys.exe $(ENDER) allcompiled
+	echo touch >bcplready
+
+bcplready64:	bin\cintsys64.exe bin\rastsys64.exe $(ENDER)64 allcompiled64
+	echo touch >bcplready64
+
+allcompiled:
+	cintsys.exe -c c compall
+	echo touch >allcompiled
+
+allcompiled64:	bin\cintsys64.exe
+	cintsys64 -c c compall64
+	echo touch >allcompiled64
+
+sysc\INT.h:	sysc\mkint-h.c
+	$(CC) /Fe sysc\mkint-h.c
+	.\mkint-h >sysc\INT.h
+	del /q mkint-h.exe
+
+cintsys : bin\cintsys.exe
+
+bin\cintsys.exe : obj\cintsys.obj obj\kblib.obj obj\cinterp.obj \
+	obj\fasterp.obj obj\nrastlib.obj \
+	obj\sdlfn.obj obj\glfn.obj obj\extfn.obj
+        link -out:bin\cintsys.exe obj\cintsys.obj obj\kblib.obj \
+	 obj\sdlfn.obj obj\glfn.obj obj\extfn.obj \
+	  obj\cinterp.obj obj\fasterp.obj obj\nrastlib.obj winmm.lib
+
+bin\rastsys.exe : obj\cintsys.obj obj\kblib.obj obj\rasterp.obj \
+	obj\rastlib.obj \
+	obj\sdlfn.obj obj\glfn.obj obj\extfn.obj
+        link -out:bin\rastsys.exe obj\cintsys.obj obj\kblib.obj \
+	 obj\sdlfn.obj obj\glfn.obj obj\extfn.obj \
+	  obj\cinterp.obj obj\rastlib.obj obj\rasterp.obj winmm.lib
+
+obj\cintsys.obj:       sysc\cintsys.c sysc\cintsys.h sysc/INT.h sysc\soundfn.c
+        $(CC) /Foobj\cintsys.obj -c  sysc\cintsys.c
+
+obj\kblib.obj:	sysc\kblib.c sysc\cintsys.h sysc/INT.h
+	$(CC) /Foobj\kblib.obj -c sysc\kblib.c
+
+obj\sdlfn.obj:	sysc\sdlfn.c sysc\cintsys.h sysc/INT.h
+	$(CC) /Foobj\sdlfn.obj -c sysc\sdlfn.c
+
+obj\glfn.obj:	sysc\glfn.c sysc\cintsys.h sysc/INT.h
+	$(CC) /Foobj\glfn.obj -c sysc\glfn.c
+
+obj\extfn.obj:	sysc\extfn.c sysc\cintsys.h sysc/INT.h
+	$(CC) /Foobj\extfn.obj -c sysc\extfn.c
+
+obj\cinterp.obj:	sysc\cinterp.c sysc\cintsys.h sysc/INT.h
+	$(CC) /Foobj\cinterp.obj -c sysc\cinterp.c
+
+obj\fasterp.obj:        sysc\cinterp.c sysc\cintsys.h sysc/INT.h
+        $(CC) -DFASTyes /Foobj\fasterp.obj -c sysc\cinterp.c
+
+obj\rasterp.obj:	sysc\rasterp.c sysc\cintsys.h sysc/INT.h
+	$(CC) -DFASTyes /Foobj\rasterp.obj -c sysc\rasterp.c
+
+obj\nrastlib.obj:	sysc\nrastlib.c sysc\cintsys.h sysc/INT.h
+	$(CC) /Foobj\nrastlib.obj -c sysc\nrastlib.c
+
+obj\rastlib.obj:	sysc\rastlib.c sysc\cintsys.h sysc/INT.h
+	$(CC) /Foobj\rastlib.obj -c sysc\rastlib.c
+
+litender:
+	del /q bigender
+	copy enderlit\syslib cin\syscin
+	copy enderlit\BOOT cin\syscin
+	copy enderlit\BLIB cin\syscin
+	copy enderlit\DLIB cin\syscin
+	copy enderlit\CLI cin\syscin
+	copy enderlit\bcpl cin
+	copy enderlit\c cin
+	copy enderlit\echo cin
+	copy enderlit\logout cin
+	copy enderlit\bcb .
+	copy enderlit\bcl .
+	copy enderlit\bsb .
+	copy enderlit\bsl .
+        echo touch >litender
+
+litender64:
+	del /q bigender64
+	copy enderlit64\syslib cin64\syscin
+	copy enderlit64\BOOT cin64\syscin
+	copy enderlit64\BLIB cin64\syscin
+	copy enderlit64\DLIB cin64\syscin
+	copy enderlit64\CLI cin64\syscin
+	copy enderlit64\bcpl cin64
+	copy enderlit64\c cin64
+	copy enderlit64\echo cin64
+	copy enderlit64\logout cin64
+	copy enderlit64\b64 .
+	copy enderlit64\bc64 .
+	copy enderlit64\bs64 .
+	copy enderlit64\bcb64 .
+	copy enderlit64\bcl64 .
+	copy enderlit64\bsb64 .
+	copy enderlit64\bsl64 .
+        echo touch >litender64
+
+xref:	allcompiled rawxref
+	cintsys -c sortxref rawxref to xrefdata
+	cintsys -c sortxref rawxref to xreffns fns
+	del rawxref
+
+rawxref:
+	cintsys -c c compall xref >rawxref
+
+
+
+# Rule for the creation of cintsys64 and rastsys64
+
+
+obj\cintsys64.obj:	sysc\cintsys64.c sysc\cintsys64.h sysc\INT.h \
+	sysc\soundfn.c sysc\sdlfn.c
+	$(CC) -Foobj\cintsys64.obj -c sysc\cintsys64.c
+
+obj\cinterp64.obj:	sysc\cinterp64.c sysc\cintsys64.h sysc\INT.h
+	$(CC) -Foobj\cinterp64.obj -c sysc\cinterp64.c
+
+obj\fasterp64.obj:	sysc\cinterp64.c sysc\cintsys64.h sysc\INT.h
+	$(CC) -DFASTyes -Foobj\fasterp64.obj -c sysc\cinterp64.c
+
+obj\cintasm64.obj:	$(SYSM)/cintasm64.sx
+	gcc -c -Foobj\cintasm64.obj $(SYSM)/cintasm64.sx
+
+obj\rasterp64.obj:	sysc\rasterp64.c sysc\cintsys64.h sysc\INT.h
+	$(CC) -Foobj\rasterp64.obj -c sysc\rasterp64.c
+
+obj\nrastlib64.obj:	sysc\nrastlib64.c sysc\cintsys64.h sysc\INT.h
+	$(CC) -Foobj\nrastlib64.obj -c sysc\nrastlib64.c
+
+obj\rastlib64.obj:	sysc\rastlib64.c sysc\cintsys64.h sysc\INT.h
+	$(CC) -Foobj\rastlib64.obj -c sysc\rastlib64.c
+
+obj\kblib64.obj:	sysc\kblib64.c sysc\cintsys64.h sysc\INT.h
+	$(CC) -Foobj\kblib64.obj -c sysc\kblib64.c
+
+obj\cfuncs64.obj:	sysc\cfuncs64.c sysc\cintsys64.h sysc\INT.h
+	$(CC) -Foobj\cfuncs64.obj -c sysc\cfuncs64.c
+
+obj\sdlfn64.obj:	sysc\sdlfn.c sysc\cintsys64.h sysc\INT.h
+	$(CC) -Foobj\sdlfn64.obj -c sysc\sdlfn.c
+
+obj\sdldrawlib64.obj:	sysc\sdldrawlib.c sysc\cintsys64.h sysc\INT.h
+#	$(CC) -E sysc\sdldrawlib.c >sysc\sdldrawlib.txt
+	$(CC) -Foobj\sdldrawlib64.obj -c sysc\sdldrawlib.c
+
+
+
+bin\cintsys64.exe:	obj\cintsys64.obj obj\cinterp64.obj obj\kblib64.obj \
+	obj\fasterp64.obj obj\nrastlib64.obj obj\sdlfn64.obj
+	link -out:bin\cintsys64.exe obj\cintsys64.obj obj\cinterp64.obj \
+	obj\kblib64.obj obj\sdlfn64.obj obj\fasterp64.obj \
+	obj\nrastlib64.obj  winmm.lib
+
+bin\rastsys64.exe:	obj\cintsys64.obj obj\cinterp64.obj obj\kblib64.obj \
+	obj\rasterp64.obj obj\rastlib64.obj obj\sdlfn64.obj
+	link -out:bin\rastsys64.exe obj\cintsys64.obj obj\cinterp64.obj \
+	obj\kblib64.obj obj\sdlfn64.obj obj\rasterp64.obj \
+	obj\rastlib64.obj  winmm.lib
+
+
+clean:
+	echo > litender
+        echo > cintsys.exe
+        echo > rastsys.exe
+        echo > allcompiled
+        echo > bcplready
+	del /q litender
+	del /q obj\cfuncs.obj obj\cinterp.obj obj\cintsys.obj
+	del /q obj\fasterp.obj obj\kblib.obj obj\nrastlib.obj
+	del /q obj\rasterp.obj obj\rastlib.obj
+	del /q obj\sdldrawlib.obj  obj\sdlfn.obj obj\extfn.obj
+	del /q cintsys.exe rastsys.exe
+	del /q bin\cintsys.exe bin\rastsys.exe
+	del /q cintsys.gpu rastsys.gpu
+	del /q raster raster.ps stats analysis profile
+	del /q allcompiled bcplready
+
+clean64:
+	del /q ocode mcode comfile core all rawxref
+	del /q sial mial mintcode junk*
+	del /q litender64 bigender64
+	del /q obj\cfuncs64.obj obj\cinterp64.obj obj\cintsys64.obj
+	del /q obj\fasterp64.obj obj\kblib64.obj obj\nrastlib64.obj
+	del /q obj\rasterp64.obj obj\rastlib64.obj
+	del /q obj\sdldrawlib64.obj  obj\sdlfn64.obj
+	del /q cintsys64.exe rastsys64.exe
+	del /q bin\cintsys64 bin\rastsys64
+	del /q bin\cintsys64.exe bin\rastsys64.exe
+	del /q cintsys64.gpu rastsys64.gpu
+	del /q raster raster.ps stats analysis profile
+	del /q allcompiled64 bcplready64
+
+vclean:	clean clean64
+

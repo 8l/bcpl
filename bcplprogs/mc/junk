@@ -1,0 +1,98 @@
+as -a -o t1.o t1.s
+GAS LISTING t1.s 			page 1
+
+
+   1              	
+   2 0000 A2140000 	movb %al,20
+   2      00
+   3 0005 880D1400 	movb %cl,20
+   3      0000
+   4 000b 66A31400 	movw %ax,20
+   4      0000
+   5 0011 66890D14 	movw %cx,20
+   5      000000
+   6              		
+   7 0018 8803     	movb %al,0(%ebx)
+   8 001a 880B     	movb %cl,0(%ebx)
+   9 001c 668903   	movw %ax,0(%ebx)
+  10 001f 66890B   	movw %cx,0(%ebx)
+  11              		
+  12 0022 884314   	movb %al,20(%ebx)
+  13 0025 884B14   	movb %cl,20(%ebx)
+  14 0028 66894314 	movw %ax,20(%ebx)
+  15 002c 66894B14 	movw %cx,20(%ebx)
+  16              		
+  17 0030 8883FF01 	movb %al,511(%ebx)
+  17      0000
+  18 0036 888BFF01 	movb %cl,511(%ebx)
+  18      0000
+  19 003c 668983FF 	movw %ax,511(%ebx)
+  19      010000
+  20 0043 66898BFF 	movw %cx,511(%ebx)
+  20      010000
+  21              	
+  22              		
+  23 004a 884500   	movb %al,0(%ebp)
+  24 004d 884D00   	movb %cl,0(%ebp)
+  25 0050 66894500 	movw %ax,0(%ebp)
+  26 0054 66894D00 	movw %cx,0(%ebp)
+  27              		
+  28 0058 884514   	movb %al,20(%ebp)
+  29 005b 884D14   	movb %cl,20(%ebp)
+  30 005e 66894514 	movw %ax,20(%ebp)
+  31 0062 66894D14 	movw %cx,20(%ebp)
+  32              		
+  33 0066 8885FF01 	movb %al,511(%ebp)
+  33      0000
+  34 006c 888DFF01 	movb %cl,511(%ebp)
+  34      0000
+  35 0072 668985FF 	movw %ax,511(%ebp)
+  35      010000
+  36 0079 66898DFF 	movw %cx,511(%ebp)
+  36      010000
+  37              	
+  38              		
+  39 0080 C6051400 	movb $255,20
+  39      0000FF
+  40 0087 66C70514 	movw $1023,20
+  40      000000FF 
+  40      03
+  41              		
+  42 0090 C603FF   	movb $255,0(%ebx)
+GAS LISTING t1.s 			page 2
+
+
+  43 0093 66C703FF 	movw $1023,0(%ebx)
+  43      03
+  44              		
+  45 0098 C64314FF 	movb $255,20(%ebx)
+  46 009c 66C74314 	movw $1023,20(%ebx)
+  46      FF03
+  47              		
+  48 00a2 C683FF01 	movb $255,511(%ebx)
+  48      0000FF
+  49 00a9 66C783FF 	movw $1023,511(%ebx)
+  49      010000FF 
+  49      03
+  50              	
+  51              		
+  52 00b2 C64500FF 	movb $255,0(%ebp)
+  53 00b6 66C74500 	movw $1023,0(%ebp)
+  53      FF03
+  54              		
+  55 00bc C64514FF 	movb $255,20(%ebp)
+  56 00c0 66C74514 	movw $1023,20(%ebp)
+  56      FF03
+  57              		
+  58 00c6 C685FF01 	movb $255,511(%ebp)
+  58      0000FF
+  59 00cd 66C785FF 	movw $1023,511(%ebp)
+  59      010000FF 
+  59      03
+  60              	
+GAS LISTING t1.s 			page 3
+
+
+NO DEFINED SYMBOLS
+
+NO UNDEFINED SYMBOLS

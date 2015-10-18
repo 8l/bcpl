@@ -1,0 +1,13 @@
+# One way to set the BCPLROOT, BCPLPATH, BCPLHDRS and PATH environment
+# variables for the BCPL Cintcode system is as follows:
+
+# Edit the following line to specify the cintcode home directory
+# on your machine, and then execute the shell command:
+
+# . ./setenv
+
+export BCPLROOT=$HOME/distribution/BCPL/cintcode
+
+export BCPLPATH=$BCPLROOT/cin
+export BCPLHDRS=$BCPLROOT/g
+export PATH=$PATH:$BCPLROOT

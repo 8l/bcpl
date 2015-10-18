@@ -1,0 +1,29 @@
+EMACS
+
+
+My prefered text editor under both Linux and Windows is Emacs. An
+emacs package called bcpl.el is available to provide support for BCPL
+program development. Its main advantage is that it colours BCPL code
+appropriately.
+
+This directory contains the files bcpl.el and _emacs.
+
+Under Linux these should be copied to Elisp/bcpl.el and .emacs in the
+user's home directory where they will be automatically read when emacs
+starts up.
+
+Under Windows I put the executable for emacs in C:\Emacs and copied
+bcpl.el and _emacs into C:\Emacs\Elisp\bcpl.el and C:\Emacs\_emacs.
+The file title near the end of _emacs will need to be edited to
+reflect the location of bcpl.el. When emacs starts up these files will
+be automatically processed.
+
+The implementation of bcpl.el is neither elegant nor quite right but it
+is certainly better than nothing.
+
+Martin Richards
+25 May 2010
+
+
+
+

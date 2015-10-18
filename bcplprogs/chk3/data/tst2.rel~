@@ -1,0 +1,10 @@
+
+# Test data for chk8
+
+AB341234 12341234  v11 v12 v13 v14 v15 v16 v17 v18
+
+abcdef12 bcdef123  v11 v12 v13 v14 v15 v16 v17 v18
+
+00000009           v11 v12
+
+# End of relations

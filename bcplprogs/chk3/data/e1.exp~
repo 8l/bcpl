@@ -1,0 +1,7 @@
+# A simple set of terms
+
+v1 = 0
+
+v2 = 1
+
+v3 = v1 & v2

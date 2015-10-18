@@ -1,0 +1,55 @@
+
+[def\inc\{[eval\^1+1]}]`
+[def\dec\{[eval\^1-1]}]`
+
+[def\perm\{`
+   [perms\1\^1\\^2\`
+     [def\arg\{[list\`
+                 [def\S\{^}^1]`
+               ]`
+              }`
+     ]`
+     [def\ax\{[^1\^1\`
+                 [def\^1\{{\}[arg\^1]}]`
+                 [def\^2\]`
+              ]`
+             }`
+     ]`
+     [def\allbut\{[ax\^1\^2]`
+                  [^1\^1\^2\^3\`
+                    [def\^1\{[allbut\[inc\^1]\^2\^3]}]`
+                    [def\^3\]`
+                  ]`
+                 }`
+     ]`
+     [def\perms\{`
+       [^2\^1\^2\^3\^4\`
+         [def\list\{[}S^4{]}]`
+         [def\^2\{[perms\1\[dec\^2]\^3[arg\^1]\[allbut\1\^1\^2]]`
+                  [^1\^1\^2\^3\^4\`
+                    [def\^1\{[perms\[inc\^1]\^2\^3\^4]}]`
+                    [def\^2\][debug]`
+                  ]`
+                 }`
+         ]`
+         [def\0\^3
+`
+         ]`
+       ]`
+      }`
+     ]`
+   ]`
+ }`
+]` End of def perm
+
+[def\debug\]`
+
+Permuting A B C
+
+{[perm\3\{\A\B\C}]} =>
+[perm\3\{\A\B\C}]
+
+
+`{[perm\5\{\A\B\C\D\E}]} =>
+`[perm\5\{\A\B\C\D\E}]
+

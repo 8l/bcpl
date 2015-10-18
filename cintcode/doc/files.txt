@@ -1,0 +1,113 @@
+The Cintcode BCPL System
+
+This README file lives in the home directory of the BCPL 
+cintcode system (often with a name like ---/BCPL/cintcode).
+
+The most important files in this directory are:
+
+README          This README file.
+
+Makefile        To recompile the C and assembly language
+                components of the system, link them and
+                then enter the system. This version is
+                initially for Linux. Makefiles for other
+                architectures can be constructed by means
+                of minor edits to this file.
+
+bin/cintsys     The compiled form of the 32-bit Cintcode system.
+
+bin/cintsys64   The compiled form of the 64-bit Cintcode system.
+
+bin/wincintsys.exe
+                The compiled form of the 32-bit Cintcode system
+                for Windows systems.
+
+bin/wincintsys64.exe
+                The compiled form of the 64-bit Cintcode system
+                for Windows systems.
+
+bin/rasterp     A version of the the system capable of
+                generating a postscript version of a time
+                memory address diagram of the execution of
+                a program. It creates the file RASTER.ps.
+
+bin/winrastsys.exe
+                The compiled form of the rastsys for Windows systems.
+
+cin/syscin/     Contains blib, boot, cli, dlib and syslib which are
+                Cintcode modules loaded during system 
+                initialisation. syslib is a hand written library
+                containing the functions sys, muldiv and changeco.
+
+g/              This directory holds BCPL header files read by the GET
+                directive. The standard header file is libhdr.h and the
+                other headers are:
+
+                bcplfecg.h, mc.h, playmus.h, sial.h and sound.h
+
+bc, bs          Command command files for compilation of
+                BCPL programs in ../cintcode/com and 
+                ../cintcode/sys.
+                Typical usage:  c bc echo
+                                c bs BLIB
+
+b               A command command file for compilation of
+                user BCPL programs. Typical usage: 
+
+                     cd ../bcplprogs/demos
+                     cinterp
+                     c b queens
+                     queens
+
+bcl, bsl        Command commands for compilation of modules
+                for little-ender machines.
+
+bcb, bslb        Command commands for compilation of modules
+                for big-ender machines.
+
+enderbig and enderlit
+                These are directies containing Cintcode compilations
+                of the vital parts of the system for
+                big and little ender machines.
+
+compall         A command command to recompile all the BCPL
+                files constituting the 32-bit cintcode system.
+                It is invoked by: c compall
+
+compall64       A command command to recompile all the BCPL
+                files constituting the 64-bit cintcode system.
+                It is invoked by: c compall64
+
+doc             A directory containing documentation files,
+                such as doc/README, doc/notes and doc/changes.
+
+sysc/cintsys.h  Header file containing system/architecture
+                dependent #defines.
+
+sysc/cintsys.c, sys/cinterp.c, sys/kblib.c and sys/nullrastlib.c
+                The C components of the system.
+
+sysasm/LINUX/cintasm.s   An assembly language program equivalent to
+                sys/cinterp.c.
+
+sysc/rastsys.c sys/rastlib.c
+                Modules used by the raster generating version of
+                the system.
+
+sysb/           This directory holds the BCPL source of the resident
+                part of the system. The files are:
+                blib.b, boot.b, cli.b and dlib.b.
+
+sysasm/
+                This contains the directories ALPHA, MIPS, SUN4,
+                SPARC, MSDOS, MAC, OS2, ARM, BC4, CYGWIN32,
+                Win32 and shWinCE. These containing architecture
+                dependent files and (with luck) corresponding
+                README files.
+
+../bcplprogs    A directory containing directories of 
+                demonstration BCPL programs.
+
+
+Martin Richards                               28 May 2013
+

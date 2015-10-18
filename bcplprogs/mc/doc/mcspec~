@@ -1,0 +1,68 @@
+The Specification of the MC Abstract Machine
+
+The MC package is designed to allow the dynamic generation and
+execution of native machine code callable from the BCPL Cintcode
+system. It allows the programmer a machine indenpendent way to
+generate code for parts of his/her algorithm that will run, perhaps,
+10 to 20 times faster than it would under the Cintcode interpreter.
+
+MC instructions are be compiled into native code by calls such
+as:
+
+    mcRR(mc_ld, mc_A, mc_B)
+
+which compiles code to copy MC register B into A. If the mci386
+package is being used, this generates the following two bytes of
+machine code:
+
+    5A 07
+
+corresponding to the i386 instruction:
+
+    movl %ebx,%eax
+
+Currently only the mci386 package is available, but others are easily
+implemented and should be available in due course. Although target
+architectures may change, the MC Abstract Machine is meant to machine
+independent.
+
+As an illustration of how to use the MC system the following is a
+complete, but trivial, program that used the mci386 package.
+
+GET "libhdr"
+GET "mc.h"
+
+LET start() = VALOF
+{ // First load the MC package for the target architecture.
+  LET mc = globin(loadseg("mci386"))
+  UNLESS mc DO
+  { writef("Trouble with MC package: mci386*n")
+    GOTO fin
+  }
+
+  // Initialise the MC system to allow for up to 10 functions in
+  // a code area of 1000 bytes and data area of 40 bytes.
+  UNLESS mcinit(10, 1000, 40) DO
+  { writef("Trouble initialising MC package: mci386*n")
+    GOTO fin
+  }
+
+  mcK(mc_debug, 3)         // This is a directive to the debugging level to 3
+                           // This will cause a trace to be generated of all
+                           // MC statements, and corresponding i386 code both
+                           // in mnemonic form and as bytes.
+  mcKKK(mc_entry, 1, 3, 4) // Function 1 has 3 arguments and 4 local variables
+  mcRK(mc_lda,  mc_A, 0)   // A := arg0
+  mcRK(mc_mula, mc_A, 1)   // A := A + arg1
+  mcRK(mc_adda, mc_A, 2)   // A := A + arg2
+  mcF(mc_rtn)              // Return from function 1 with the result in A
+  mcF(mc_endfn)            // End of code for function 1
+
+  mcF(mc_done)             // End of code generation
+
+  writef("result is: %n*n",
+          mcCall3(1, 10, 20, 30)) // Call native function 1 with 3 args
+fin:
+  IF mc DO mcclose(mc)
+  RESULTIS 0
+}

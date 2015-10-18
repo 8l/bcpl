@@ -1,0 +1,1900 @@
+	.file	"cinterp.c"
+gcc2_compiled.:
+	.global .umul
+	.global .div
+	.global .rem
+.section	".text"
+	.align 4
+	.global cintasm
+	.type	 cintasm,#function
+	.proc	04
+cintasm:
+	save %sp,-112,%sp
+
+	mov %i0,%i3      ! regs
+	sll %i3,2,%o0
+	add %o0,%i1,%o0
+	ld [%o0+0],%l0   ! a
+	ld [%o0+4],%l3   ! b
+	ld [%o0+8],%l7   ! c
+	ld [%o0+12],%o1
+	sra %o1,2,%l2    ! p
+	ld [%o0+16],%o1
+	sra %o1,2,%l6    ! g
+
+	ld [%o0+24],%l1  ! pc
+
+	sll %l2,2,%o0
+	add %i1,%o0,%i0  ! Wp
+	sll %l6,2,%o0
+	add %i1,%o0,%l4  ! Wg
+	add %l4,1024,%l5 ! Wg1
+
+	sethi %hi(labtab),%i4
+	or %i4,%lo(labtab),%i4 ! address of labtab
+        b fetch
+	nop
+	
+ret1:
+	sll %i3,2,%o0
+	add %o0,%i1,%o0
+	st %l0,[%o0+0]
+	st %l3,[%o0+4]
+	st %l7,[%o0+8]
+	sll %l2,2,%o1
+	st %o1,[%o0+12]
+	sll %l6,2,%o1
+	st %o1,[%o0+16]
+
+	st %l1,[%o0+24]
+
+	ret
+	restore
+
+! At fetch:	
+
+! %i0  Wp      P pointer (m/c address)
+! %i1  mem     second arg of cintasm
+! %i2
+! %i3  regs    first arg of cintasm
+! %i4  address of labtab
+! %i5
+! %i6
+! %i7
+! %l0  A
+! %l1  PC
+! %l2  P
+! %l3  B
+! %l4  Wg      G pointer (m/c address)
+! %l5  Wg1     m/c address og G256
+! %l6
+! %l7  C
+! %o0
+! %o1
+! %o2
+! %o3
+! %o4
+! %o5
+! %o6
+! %o7
+
+	
+
+fetch:
+	ldub [%i1+%l1],%o1
+	sll %o1,2,%o1
+	ld [%o1+%i4],%o0
+	jmp %o0
+	add %l1,1,%l1
+
+	.align 4
+labtab:
+	.word	.F0
+	.word	.F1
+	.word	.LL30
+	.word	.LL177
+	.word	.LL176
+	.word	.LL175
+	.word	.LL174
+	.word	.LL173
+	.word	.LL172
+	.word	.LL171
+	
+	.word	.F10
+	.word	.LL168
+	.word	.LL133
+	.word	.LL132
+	.word	.LL130
+	.word	.LL126
+	.word	.LL125
+	.word	.LL124
+	.word	.LL123
+	.word	.LL122
+	
+	.word	.LL121
+	.word	.LL120
+	.word	.LL119
+	.word	.LL118
+	.word	.LL117
+	.word	.LL116
+	.word	.LL115
+	.word	.LL20
+	.word	.LL185
+	.word	.LL187
+	
+	.word	.LL190
+	.word	.LL192
+	.word	.LL179
+	.word	.LL181
+	.word	.LL183
+	.word	.LL166
+	.word	.LL165
+	.word	.LL164
+	.word	.LL163
+	.word	.LL162
+	
+	.word	.LL161
+	.word	.LL160
+	.word	.LL159
+	.word	.LL157
+	.word	.LL299
+	.word	.LL294
+	.word	.LL295
+	.word	.LL296
+	.word	.LL102
+	.word	.LL105
+	
+	.word	.LL108
+	.word	.LL251
+	.word	.LL12
+	.word	.LL13
+	.word	.LL15
+	.word	.LL28
+	.word	.LL112
+	.word	.LL111
+	.word	.LL110
+	.word	.LL109
+	
+	.word	.LL194
+	.word	.LL196
+	.word	.LL198
+	.word	.LL200
+	.word	.LL80
+	.word	.LL81
+	.word	.LL82
+	.word	.LL155
+	.word	.LL154
+	.word	.LL153
+	
+	.word	.LL152
+	.word	.LL151
+	.word	.LL150
+	.word	.LL149
+	.word	.LL148
+	.word	.LL146
+	.word	.LL298
+	.word	.LL291
+	.word	.LL292
+	.word	.LL293
+	
+	.word	.LL101
+	.word	.LL104
+	.word	.LL107
+	.word	.LL250
+	.word	.LL17
+	.word	.LL18
+	.word	.LL21
+	.word	.LL23
+	.word	.LL26
+	.word	.LL27
+	
+	.word	.LL114
+	.word	.LL113
+	.word	.LL202
+	.word	.LL204
+	.word	.LL206
+	.word	.LL208
+	.word	.LL127
+	.word	.LL128
+	.word	.LL129
+	.word	.LL143
+	
+	.word	.F100
+	.word	.LL141
+	.word	.LL140
+	.word	.LL139
+	.word	.LL138
+	.word	.LL137
+	.word	.LL136
+	.word	.LL134
+	.word	.LL297
+	.word	.LL288
+	
+	.word	.F110
+	.word	.F111
+	.word	.LL100
+	.word	.LL103
+	.word	.LL106
+	.word	.LL249
+	.word	.LL37
+	.word	.LL36
+	.word	.LL35
+	.word	.LL34
+	
+	.word	.F120
+	.word	.LL32
+	.word	.LL31
+	.word	.LL44
+	.word	.LL210
+	.word	.LL212
+	.word	.LL214
+	.word	.LL216
+	.word	.LL77
+	.word	.LL78
+	
+	.word	.F130
+	.word	.F131
+	.word	.F132
+	.word	.F133
+	.word	.F134
+	.word	.F135
+	.word	.F136
+	.word	.F137
+	.word	.F138
+	.word	.F139
+	
+	.word	.F140
+	.word	.F141
+	.word	.F142
+	.word	.F143
+	.word	.F144
+	.word	.LL61
+	.word	.LL52
+	.word	.LL59
+	.word	.LL41
+	.word	.LL40
+	
+	.word	.F150
+	.word	.LL38
+	.word	.LL302
+	.word	.LL301
+	.word	.LL300
+	.word	.LL29
+	.word	.LL218
+	.word	.LL220
+	.word	.LL222
+	.word	.LL224
+	
+	.word	.F160
+	.word	.LL98
+	.word	.LL99
+	.word	.F163
+	.word	.F164
+	.word	.F165
+	.word	.F166
+	.word	.F167
+	.word	.F168
+	.word	.F169
+	
+	.word	.F170
+	.word	.F171
+	.word	.F172
+	.word	.F173
+	.word	.F174
+	.word	.F175
+	.word	.F176
+	.word	.LL266
+	.word	.LL265
+	.word	.LL264
+	
+	.word	.F180
+	.word	.LL51
+	.word	.LL45
+	.word	.LL46
+	.word	.LL48
+	.word	.LL50
+	.word	.LL234
+	.word	.LL235
+	.word	.LL226
+	.word	.LL228
+	
+	.word	.F190
+	.word	.LL232
+	.word	.LL246
+	.word	.LL247
+	.word	.LL248
+	.word	.LL245
+	.word	.LL244
+	.word	.LL243
+	.word	.LL242
+	.word	.LL241
+
+	.word	.F200
+	.word	.LL239
+	.word	.LL238
+	.word	.LL237
+	.word	.LL236
+	.word	.LL47
+	.word	.LL131
+	.word	.LL49
+	.word	fetch
+	.word	.LL256
+	
+	.word	.F210
+	.word	.LL254
+	.word	.LL253
+	.word	.LL252
+	.word	.LL311
+	.word	.LL310
+	.word	.LL309
+	.word	.LL308
+	.word	.LL307
+	.word	.LL304
+	
+	.word	.F220
+	.word	.LL306
+	.word	.LL305
+	.word	.F223
+	.word	.LL258
+	.word	.LL259
+	.word	.LL260
+	.word	.LL276
+	.word	.LL275
+	.word	.LL274
+	
+	.word	.F230
+	.word	.LL272
+	.word	.LL271
+	.word	.LL270
+	.word	.LL269
+	.word	.LL268
+	.word	.LL267
+	.word	.LL261
+	.word	.LL262
+	.word	.LL43
+	
+	.word	.F240
+	.word	.LL19
+	.word	.LL25
+	.word	.LL280
+	.word	.LL279
+	.word	.LL278
+	.word	.LL277
+	.word	.LL283
+	.word	.LL282
+	.word	.LL281
+	
+	.word	.F250
+	.word	.F251
+	.word	.F252
+	.word	.F253
+	.word	.F254
+	.word	.F255
+.F0:	
+.F1:	
+.F223:	
+	mov 1,%i0
+	b ret1
+	add %l1,-1,%l1
+.LL12:
+	mov %l0,%o0
+	call .umul,0
+	mov %l3,%o1
+	b fetch
+	mov %o0,%l0
+.LL13:
+	cmp %l0,0
+	be .LL314
+	mov %l3,%o0
+	call .div,0
+	mov %l0,%o1
+	b fetch
+	mov %o0,%l0
+.LL15:
+	cmp %l0,0
+	bne .LL16
+	mov %l3,%o0
+.LL314:
+	mov 5,%i0
+	b ret1
+	add %l1,-1,%l1
+.LL16:
+	call .rem,0
+	mov %l0,%o1
+	b fetch
+	mov %o0,%l0
+.LL17:
+	b fetch
+	add %l0,%l3,%l0
+.LL18:
+	b fetch
+	sub %l3,%l0,%l0
+.LL19:
+	b fetch
+	sub %g0,%l0,%l0
+.LL20:
+	mov 0,%l0
+.LL376:
+	b fetch
+	add %l1,1,%l1
+.LL21:
+	cmp %l0,31
+	bg,a .LL22
+	mov 0,%l3
+.LL22:
+	b fetch
+	sll %l3,%l0,%l0
+.LL23:
+	cmp %l0,31
+	bg,a .LL24
+	mov 0,%l3
+.LL24:
+	b fetch
+	srl %l3,%l0,%l0
+.LL25:
+	b fetch
+	xnor %g0,%l0,%l0
+.LL26:
+	b fetch
+	and %l0,%l3,%l0
+.LL27:
+	b fetch
+	or %l0,%l3,%l0
+.LL28:
+	b fetch
+	xor %l0,%l3,%l0
+.LL29:
+	b fetch
+	mov %l0,%l1
+.LL30:
+	mov 2,%i0
+	b ret1
+	add %l1,-1,%l1
+.LL31:
+	sll %l0,2,%o0
+	add %o0,%i1,%o0
+	b fetch
+	ld [%o0+24],%l0
+.LL32:
+	sll %l0,2,%o0
+	add %o0,%i1,%o0
+	b fetch
+	ld [%o0+20],%l0
+.F120:
+	b .LL315
+	sll %l0,2,%o0
+.LL34:
+	b .LL316
+	sll %l0,2,%o0
+.LL35:
+	b .LL317
+	sll %l0,2,%o0
+.LL36:
+	b .LL318
+	sll %l0,2,%o0
+.LL37:
+	sll %l0,2,%o0
+	b fetch
+	ld [%i1+%o0],%l0
+.LL38:
+	sll %l0,2,%o0
+	add %o0,%i1,%o0
+	b fetch
+	st %l3,[%o0+12]
+.F150: ! st2
+	sll %l0,2,%o0
+	add %o0,%i1,%o0
+	b fetch
+	st %l3,[%o0+8]
+.LL40:
+	sll %l0,2,%o0
+	add %o0,%i1,%o0
+	b fetch
+	st %l3,[%o0+4]
+.LL41:
+	sll %l0,2,%o0
+	b fetch
+	st %l3,[%i1+%o0]
+.F240: ! chgco
+	ld [%l4+28],%o0
+	sll %o0,2,%o0
+	ld [%i0],%o1
+	st %o1,[%i1+%o0]
+	ld [%i0+4],%l1
+	ld [%i0+16],%o0
+	st %o0,[%l4+28]
+	ld [%i0+16],%o0
+	b .LL319
+	sll %o0,2,%o0
+.LL43:
+	ld [%i0+12],%o0
+	ld [%i0+16],%o1
+	call muldiv,0
+	ld [%i0+20],%o2
+	mov %o0,%l0
+	sethi %hi(result2),%o0
+	ld [%o0+%lo(result2)],%o0
+	st %o0,[%l4+40]
+.LL44:
+	ld [%i0+4],%l1
+	sll %l2,2,%o0
+.LL319:
+	ld [%i1+%o0],%o0
+	sra %o0,2,%l2
+	sll %l2,2,%o0
+	b fetch
+	add %i1,%o0,%i0
+.LL45:
+	sll %l3,2,%o0
+	add %l0,%o0,%o0
+	b fetch
+	ldub [%i1+%o0],%l0
+.LL46:
+	sll %l3,2,%o0
+	add %l0,%o0,%o0
+	b fetch
+	stb %l7,[%i1+%o0]
+.LL47:
+	sll %l0,2,%o0
+	add %l3,%o0,%o0
+	b fetch
+	stb %l7,[%i1+%o0]
+.LL48:
+	b fetch
+	mov %l0,%l7
+.LL49:
+	b fetch
+	mov %l3,%l7
+.LL50:
+	b fetch
+	mov %l0,%l3
+.LL51:
+	mov %l0,%o0
+	mov %l3,%l0
+	b fetch
+	mov %o0,%l3
+.LL52:
+	mov 1,%o3
+	add %l1,1,%o1
+	sra %o1,1,%o1
+	sll %o1,1,%o0
+	lduh [%i1+%o0],%o2
+.LL320:
+	cmp %o3,%o2
+.LL380:
+	bg,a .LL60
+	add %o1,1,%o1
+	sll %o3,1,%o3
+	add %o1,%o3,%o4
+	sll %o4,1,%o0
+	lduh [%i1+%o0],%o0
+	cmp %l0,%o0
+	be,a .LL321
+	mov %o4,%o1
+	bl,a .LL320
+	add %o3,1,%o3
+	b .LL380
+	cmp %o3,%o2
+.LL59:
+	add %l1,1,%o1
+	sra %o1,1,%o1
+	sll %o1,1,%o0
+	lduh [%i1+%o0],%o0
+	cmp %l0,0
+	bl .LL60
+	add %o1,1,%o1
+	cmp %l0,%o0
+	bge,a .LL381
+	sll %o1,1,%l1
+	add %o1,%l0,%o1
+.LL321:
+	add %o1,1,%o1
+.LL60:
+	sll %o1,1,%l1
+.LL381:
+	ldsh [%i1+%l1],%o0
+	b fetch
+	add %l1,%o0,%l1
+.LL61:
+	cmp %l0,0
+	bne .LL62a
+	mov %l2,%o0
+	b ret1
+	ld [%i0+16],%i0
+.LL62a:
+        cmp %l0,-1
+        bne .LL62
+        nop
+       	sll %i3,2,%o0
+	add %o0,%i1,%o0
+	ld [%o0+28],%l0       ! a := count
+        ld [%i0+16],%o1
+	st %o1,[%o0+28]       ! count := p!4
+        b ret1                ! res := -1
+        mov -1,%i0            ! GOTO ret
+
+.LL62:
+	call dosys,0
+	mov %l6,%o1
+	b fetch
+	mov %o0,%l0
+.F144: ! lp16
+	mov %l0,%l3
+	b fetch
+	ld [%i0+64],%l0
+.F143: ! lp15
+	mov %l0,%l3
+	b fetch
+	ld [%i0+60],%l0
+.F142: ! lp14
+	mov %l0,%l3
+	b fetch
+	ld [%i0+56],%l0
+.F141: ! lp13
+	mov %l0,%l3
+	b fetch
+	ld [%i0+52],%l0
+.F140: ! lp12
+	mov %l0,%l3
+	b fetch
+	ld [%i0+48],%l0
+.F139: ! lp11
+	mov %l0,%l3
+	b fetch
+	ld [%i0+44],%l0
+.F138: ! lp10
+	mov %l0,%l3
+	b fetch
+	ld [%i0+40],%l0
+.F137: ! lp9
+	mov %l0,%l3
+	b fetch
+	ld [%i0+36],%l0
+.F136: ! lp8
+	mov %l0,%l3
+	b fetch
+	ld [%i0+32],%l0
+.F135: ! lp7
+	mov %l0,%l3
+	b fetch
+	ld [%i0+28],%l0
+.F134: ! lp6
+	mov %l0,%l3
+	b fetch
+	ld [%i0+24],%l0
+.F133: ! lp5
+	mov %l0,%l3
+	b fetch
+	ld [%i0+20],%l0
+.F132: ! lp4
+	mov %l0,%l3
+	b fetch
+	ld [%i0+16],%l0
+.F131: ! lp3
+	mov %l0,%l3
+	b fetch
+	ld [%i0+12],%l0
+.LL77:
+	mov %l0,%l3
+	ldub [%i1+%l1],%o0
+	sll %o0,2,%o0
+	b .LL376
+	ld [%i0+%o0],%l0
+.LL78:
+	mov %l0,%l3
+	ldub [%i1+%l1],%o0
+	sll %o0,8,%o0
+	add %l1,%i1,%o1
+	ldub [%o1+1],%o1
+	or %o0,%o1,%o0
+	sll %o0,2,%o0
+	ld [%i0+%o0],%l0
+	b fetch
+	add %l1,2,%l1
+.F130: ! lpw
+	mov %l0,%l3
+	ldub [%i1+%l1],%o0
+	sll %o0,8,%o0
+	add %l1,%i1,%o2
+	ldub [%o2+1],%o1
+	or %o0,%o1,%o0
+	sll %o0,8,%o0
+	ldub [%o2+2],%o1
+	or %o0,%o1,%o0
+	sll %o0,8,%o0
+	ldub [%o2+3],%o1
+	or %o0,%o1,%o0
+	sll %o0,2,%o0
+	ld [%i0+%o0],%l0
+	b fetch
+	add %l1,4,%l1
+.LL80:
+	mov %l0,%l3
+	ldub [%i1+%l1],%o0
+	b .LL376
+	add %l2,%o0,%l0
+.LL81:
+	mov %l0,%l3
+	ldub [%i1+%l1],%o0
+	sll %o0,8,%o0
+	add %l1,%i1,%o1
+	ldub [%o1+1],%o1
+	or %o0,%o1,%o0
+	add %l2,%o0,%l0
+	b fetch
+	add %l1,2,%l1
+.LL82:
+	mov %l0,%l3
+	ldub [%i1+%l1],%o0
+	sll %o0,8,%o0
+	add %l1,%i1,%o2
+	ldub [%o2+1],%o1
+	or %o0,%o1,%o0
+	sll %o0,8,%o0
+	ldub [%o2+2],%o1
+	or %o0,%o1,%o0
+	sll %o0,8,%o0
+	ldub [%o2+3],%o1
+	or %o0,%o1,%o0
+	add %l2,%o0,%l0
+	b fetch
+	add %l1,4,%l1
+.F176: ! sp16
+	b fetch
+	st %l0,[%i0+64]
+.F175: ! sp15
+	b fetch
+	st %l0,[%i0+60]
+.F174: ! sp14
+	b fetch
+	st %l0,[%i0+56]
+.F173: ! sp13
+	b fetch
+	st %l0,[%i0+52]
+.F172: ! sp12
+	b fetch
+	st %l0,[%i0+48]
+.F171: ! sp11
+	b fetch
+	st %l0,[%i0+44]
+.F170: ! sp10
+	b fetch
+	st %l0,[%i0+40]
+.F169: ! sp9
+	b fetch
+	st %l0,[%i0+36]
+.F168: ! sp8
+	b fetch
+	st %l0,[%i0+32]
+.F167: ! sp7
+	b fetch
+	st %l0,[%i0+28]
+.F166: ! sp6
+	b fetch
+	st %l0,[%i0+24]
+.F165: ! sp5
+	b fetch
+	st %l0,[%i0+20]
+.F164: ! sp4
+	b fetch
+	st %l0,[%i0+16]
+.F163: ! sp3
+	b fetch
+	st %l0,[%i0+12]
+.F160: ! sp
+	ldub [%i1+%l1],%o0
+	sll %o0,2,%o0
+	b .LL376
+	st %l0,[%i0+%o0]
+.LL98:
+	ldub [%i1+%l1],%o0
+	sll %o0,8,%o0
+	add %l1,%i1,%o1
+	ldub [%o1+1],%o1
+	or %o0,%o1,%o0
+	sll %o0,2,%o0
+	st %l0,[%i0+%o0]
+	b fetch
+	add %l1,2,%l1
+.LL99:
+	ldub [%i1+%l1],%o0
+	sll %o0,8,%o0
+	add %l1,%i1,%o2
+	ldub [%o2+1],%o1
+	or %o0,%o1,%o0
+	sll %o0,8,%o0
+	ldub [%o2+2],%o1
+	or %o0,%o1,%o0
+	sll %o0,8,%o0
+	ldub [%o2+3],%o1
+	or %o0,%o1,%o0
+	sll %o0,2,%o0
+	st %l0,[%i0+%o0]
+	b fetch
+	add %l1,4,%l1
+.LL100:
+	mov %l0,%l3
+	ldub [%i1+%l1],%o0
+	sll %o0,8,%o0
+	add %l1,%i1,%o1
+	ldub [%o1+1],%o1
+	or %o0,%o1,%o0
+	sll %o0,2,%o0
+	ld [%l4+%o0],%l0
+	b fetch
+	add %l1,2,%l1
+.LL101:
+	mov %l0,%l3
+	ldub [%i1+%l1],%o0
+	sll %o0,2,%o0
+	b .LL376
+	ld [%l5+%o0],%l0
+.LL102:
+	mov %l0,%l3
+	ldub [%i1+%l1],%o0
+	sll %o0,2,%o0
+	b .LL376
+	ld [%l4+%o0],%l0
+.LL103:
+	ldub [%i1+%l1],%o0
+	sll %o0,8,%o0
+	add %l1,%i1,%o1
+	ldub [%o1+1],%o1
+	or %o0,%o1,%o0
+	sll %o0,2,%o0
+	st %l0,[%l4+%o0]
+	b fetch
+	add %l1,2,%l1
+.LL104:
+	ldub [%i1+%l1],%o0
+	sll %o0,2,%o0
+	b .LL376
+	st %l0,[%l5+%o0]
+.LL105:
+	ldub [%i1+%l1],%o0
+	sll %o0,2,%o0
+	b .LL376
+	st %l0,[%l4+%o0]
+.LL106:
+	mov %l0,%l3
+	ldub [%i1+%l1],%o0
+	sll %o0,8,%o0
+	add %l1,%i1,%o1
+	ldub [%o1+1],%o1
+	or %o0,%o1,%o0
+	add %l6,%o0,%l0
+	b fetch
+	add %l1,2,%l1
+.LL107:
+	mov %l0,%l3
+	ldub [%i1+%l1],%o0
+	b .LL322
+	add %o0,256,%o0
+.LL108:
+	mov %l0,%l3
+	ldub [%i1+%l1],%o0
+.LL322:
+	b .LL376
+	add %l6,%o0,%l0
+.LL109:
+	sra %l1,1,%o1
+	ldub [%i1+%l1],%o0
+	add %o1,%o0,%o1
+	sll %o1,1,%o1
+	ldsh [%i1+%o1],%o0
+	add %o1,%o0,%o1
+	mov %l0,%l3
+	b .LL323
+	and %o1,-4,%o0
+.LL110:
+	mov %l0,%l3
+	ldsb [%i1+%l1],%o0
+	add %l1,%o0,%o0
+	b .LL323
+	and %o0,-4,%o0
+.LL111:
+	sra %l1,1,%o1
+	ldub [%i1+%l1],%o0
+	add %o1,%o0,%o1
+	sll %o1,1,%o1
+	ldsh [%i1+%o1],%o0
+	add %o1,%o0,%o1
+	b .LL324
+	and %o1,-4,%o0
+.LL112:
+	ldsb [%i1+%l1],%o0
+	add %l1,%o0,%o0
+	b .LL324
+	and %o0,-4,%o0
+.LL113:
+	sra %l1,1,%o1
+	ldub [%i1+%l1],%o0
+	add %o1,%o0,%o1
+	sll %o1,1,%o1
+	ldsh [%i1+%o1],%o0
+	add %o1,%o0,%o1
+	mov %l0,%l3
+	b .LL376
+	sra %o1,2,%l0
+.LL114:
+	mov %l0,%l3
+	ldsb [%i1+%l1],%o0
+	add %l1,%o0,%l0
+	b .LL376
+	sra %l0,2,%l0
+.LL115:
+	mov %l0,%l3
+	b fetch
+	mov 10,%l0
+.LL116:
+	mov %l0,%l3
+	b fetch
+	mov 9,%l0
+.LL117:
+	mov %l0,%l3
+	b fetch
+	mov 8,%l0
+.LL118:
+	mov %l0,%l3
+	b fetch
+	mov 7,%l0
+.LL119:
+	mov %l0,%l3
+	b fetch
+	mov 6,%l0
+.LL120:
+	mov %l0,%l3
+	b fetch
+	mov 5,%l0
+.LL121:
+	mov %l0,%l3
+	b fetch
+	mov 4,%l0
+.LL122:
+	mov %l0,%l3
+	b fetch
+	mov 3,%l0
+.LL123:
+	mov %l0,%l3
+	b fetch
+	mov 2,%l0
+.LL124:
+	mov %l0,%l3
+	b fetch
+	mov 1,%l0
+.LL125:
+	mov %l0,%l3
+	b fetch
+	mov 0,%l0
+.LL126:
+	mov %l0,%l3
+	b fetch
+	mov -1,%l0
+.LL127:
+	mov %l0,%l3
+	b .LL376
+	ldub [%i1+%l1],%l0
+.LL128:
+	mov %l0,%l3
+	ldub [%i1+%l1],%l0
+	sll %l0,8,%l0
+	add %l1,%i1,%o0
+	ldub [%o0+1],%o0
+	or %l0,%o0,%l0
+	b fetch
+	add %l1,2,%l1
+.LL129:
+	mov %l0,%l3
+	ldub [%i1+%l1],%l0
+	sll %l0,8,%l0
+	add %l1,%i1,%o1
+	ldub [%o1+1],%o0
+	or %l0,%o0,%l0
+	sll %l0,8,%l0
+	ldub [%o1+2],%o0
+	or %l0,%o0,%l0
+	sll %l0,8,%l0
+	ldub [%o1+3],%o0
+	or %l0,%o0,%l0
+	b fetch
+	add %l1,4,%l1
+.LL130:
+	mov %l0,%l3
+	ldub [%i1+%l1],%l0
+	b .LL376
+	sub %g0,%l0,%l0
+.LL131:
+	mov %l0,%l3
+	ldub [%i1+%l1],%l0
+	sll %l0,8,%l0
+	add %l1,%i1,%o0
+	ldub [%o0+1],%o0
+	or %l0,%o0,%l0
+	sub %g0,%l0,%l0
+	b fetch
+	add %l1,2,%l1
+.LL132:
+	mov %l0,%l3
+	sra %l1,1,%l0
+	ldub [%i1+%l1],%o0
+	add %l0,%o0,%l0
+	sll %l0,1,%o1
+	ldsh [%i1+%o1],%o0
+	b .LL376
+	add %o1,%o0,%l0
+.LL133:
+	mov %l0,%l3
+	ldsb [%i1+%l1],%o0
+	b .LL376
+	add %l1,%o0,%l0
+.LL134:
+	sll %l2,2,%o0
+	st %o0,[%i0+44]
+	b .LL135
+	add %l2,11,%l2
+.LL136:
+	sll %l2,2,%o0
+	st %o0,[%i0+40]
+	b .LL135
+	add %l2,10,%l2
+.LL137:
+	sll %l2,2,%o0
+	st %o0,[%i0+36]
+	b .LL135
+	add %l2,9,%l2
+.LL138:
+	sll %l2,2,%o0
+	st %o0,[%i0+32]
+	b .LL135
+	add %l2,8,%l2
+.LL139:
+	sll %l2,2,%o0
+	st %o0,[%i0+28]
+	b .LL135
+	add %l2,7,%l2
+.LL140:
+	sll %l2,2,%o0
+	st %o0,[%i0+24]
+	b .LL135
+	add %l2,6,%l2
+.LL141:
+	sll %l2,2,%o0
+	st %o0,[%i0+20]
+	b .LL135
+	add %l2,5,%l2
+.F100: ! k4gh     frq=4633
+	sll %l2,2,%o0
+	st %o0,[%i0+16]
+	b .LL135
+	add %l2,4,%l2
+.LL143:
+	sll %l2,2,%o0
+	st %o0,[%i0+12]
+	add %l2,3,%l2
+.LL135:
+	sll %l2,2,%o0
+	add %i1,%o0,%i0
+	add %l1,2,%o0
+	st %o0,[%i0+4]
+	ldub [%i1+%l1],%o0
+	sll %o0,8,%o0
+	add %l1,%i1,%o1
+	ldub [%o1+1],%o1
+	or %o0,%o1,%o0
+	sll %o0,2,%o0
+	ld [%l4+%o0],%l1
+	st %l1,[%i0+8]
+	b .LL325
+	st %l0,[%i0+12]
+.LL146:
+	sll %l2,2,%o0
+	st %o0,[%i0+44]
+	b .LL147
+	add %l2,11,%l2
+.LL148:
+	sll %l2,2,%o0
+	st %o0,[%i0+40]
+	b .LL147
+	add %l2,10,%l2
+.LL149:
+	sll %l2,2,%o0
+	st %o0,[%i0+36]
+	b .LL147
+	add %l2,9,%l2
+.LL150:
+	sll %l2,2,%o0
+	st %o0,[%i0+32]
+	b .LL147
+	add %l2,8,%l2
+.LL151:
+	sll %l2,2,%o0
+	st %o0,[%i0+28]
+	b .LL147
+	add %l2,7,%l2
+.LL152:
+	sll %l2,2,%o0
+	st %o0,[%i0+24]
+	b .LL147
+	add %l2,6,%l2
+.LL153:
+	sll %l2,2,%o0
+	st %o0,[%i0+20]
+	b .LL147
+	add %l2,5,%l2
+.LL154:
+	sll %l2,2,%o0
+	st %o0,[%i0+16]
+	b .LL147
+	add %l2,4,%l2
+.LL155:
+	sll %l2,2,%o0
+	st %o0,[%i0+12]
+	add %l2,3,%l2
+.LL147:
+	sll %l2,2,%o0
+	add %i1,%o0,%i0
+	add %l1,1,%o0
+	st %o0,[%i0+4]
+	ldub [%i1+%l1],%o0
+	sll %o0,2,%o0
+	ld [%l5+%o0],%l1
+	st %l1,[%i0+8]
+	b .LL325
+	st %l0,[%i0+12]
+.LL157:
+	sll %l2,2,%o0
+	st %o0,[%i0+44]
+	b .LL158
+	add %l2,11,%l2
+.LL159:
+	sll %l2,2,%o0
+	st %o0,[%i0+40]
+	b .LL158
+	add %l2,10,%l2
+.LL160:
+	sll %l2,2,%o0
+	st %o0,[%i0+36]
+	b .LL158
+	add %l2,9,%l2
+.LL161:
+	sll %l2,2,%o0
+	st %o0,[%i0+32]
+	b .LL158
+	add %l2,8,%l2
+.LL162:
+	sll %l2,2,%o0
+	st %o0,[%i0+28]
+	b .LL158
+	add %l2,7,%l2
+.LL163:
+	sll %l2,2,%o0
+	st %o0,[%i0+24]
+	b .LL158
+	add %l2,6,%l2
+.LL164:
+	sll %l2,2,%o0
+	st %o0,[%i0+20]
+	b .LL158
+	add %l2,5,%l2
+.LL165:
+	sll %l2,2,%o0
+	st %o0,[%i0+16]
+	b .LL158
+	add %l2,4,%l2
+.LL166:
+	sll %l2,2,%o0
+	st %o0,[%i0+12]
+	add %l2,3,%l2
+.LL158:
+	sll %l2,2,%o0
+	add %i1,%o0,%i0
+	add %l1,1,%o0
+	st %o0,[%i0+4]
+	ldub [%i1+%l1],%o0
+	sll %o0,2,%o0
+	ld [%l4+%o0],%l1
+	st %l1,[%i0+8]
+	b .LL325
+	st %l0,[%i0+12]
+.LL168:
+	sll %l2,2,%o0
+	st %o0,[%i0+44]
+	b .LL169
+	add %l2,11,%l2
+.F10:  ! k10    frq=0
+	sll %l2,2,%o0
+	st %o0,[%i0+40]
+	b .LL169
+	add %l2,10,%l2
+.LL171:
+	sll %l2,2,%o0
+	st %o0,[%i0+36]
+	b .LL169
+	add %l2,9,%l2
+.LL172:
+	sll %l2,2,%o0
+	st %o0,[%i0+32]
+	b .LL169
+	add %l2,8,%l2
+.LL173:
+	sll %l2,2,%o0
+	st %o0,[%i0+28]
+	b .LL169
+	add %l2,7,%l2
+.LL174:
+	sll %l2,2,%o0
+	st %o0,[%i0+24]
+	b .LL169
+	add %l2,6,%l2
+.LL175:
+	sll %l2,2,%o0
+	st %o0,[%i0+20]
+	b .LL169
+	add %l2,5,%l2
+.LL176:
+	sll %l2,2,%o0
+	st %o0,[%i0+16]
+	b .LL169
+	add %l2,4,%l2
+.LL177:
+	sll %l2,2,%o0
+	st %o0,[%i0+12]
+	add %l2,3,%l2
+.LL169:
+	sll %l2,2,%o0
+	add %i1,%o0,%i0
+	b .LL326
+	st %l1,[%i0+4]
+.LL179:
+	ldub [%i1+%l1],%o2
+	sll %o2,2,%o1
+	sll %l2,2,%o0
+	st %o0,[%i0+%o1]
+	add %l2,%o2,%l2
+	sll %l2,2,%o0
+	add %i1,%o0,%i0
+	b .LL327
+	add %l1,1,%o0
+.LL181:
+	ldub [%i1+%l1],%o2
+	sll %o2,8,%o2
+	add %l1,%i1,%o0
+	ldub [%o0+1],%o0
+	or %o2,%o0,%o2
+	sll %o2,2,%o1
+	sll %l2,2,%o0
+	st %o0,[%i0+%o1]
+	add %l2,%o2,%l2
+	sll %l2,2,%o0
+	add %i1,%o0,%i0
+	b .LL327
+	add %l1,2,%o0
+.LL183:
+	ldub [%i1+%l1],%o2
+	sll %o2,8,%o2
+	add %l1,%i1,%o1
+	ldub [%o1+1],%o0
+	or %o2,%o0,%o2
+	sll %o2,8,%o2
+	ldub [%o1+2],%o0
+	or %o2,%o0,%o2
+	sll %o2,8,%o2
+	ldub [%o1+3],%o0
+	or %o2,%o0,%o2
+	sll %o2,2,%o1
+	sll %l2,2,%o0
+	st %o0,[%i0+%o1]
+	add %l2,%o2,%l2
+	sll %l2,2,%o0
+	add %i1,%o0,%i0
+	add %l1,4,%o0
+.LL327:
+	st %o0,[%i0+4]
+.LL326:
+	mov %l0,%l1
+	st %l1,[%i0+8]
+	mov %l3,%l0
+	st %l3,[%i0+12]
+.LL325:
+	cmp %l1,0
+	bge fetch
+	nop
+	b ret1
+	mov 4,%i0
+.LL185:
+	cmp %l3,%l0
+	be,a .LL383
+	ldsb [%i1+%l1],%o0
+	b fetch
+	add %l1,1,%l1
+.LL187:
+	b .LL329
+	cmp %l3,%l0
+.LL190:
+	cmp %l0,0
+	be,a .LL383
+	ldsb [%i1+%l1],%o0
+	b fetch
+	add %l1,1,%l1
+.LL192:
+	cmp %l0,0
+.LL329:
+	be .LL384
+	sra %l1,1,%o1
+	b fetch
+	add %l1,1,%l1
+.LL194:
+	cmp %l3,%l0
+	bne,a .LL383
+	ldsb [%i1+%l1],%o0
+	b fetch
+	add %l1,1,%l1
+.LL196:
+	b .LL330
+	cmp %l3,%l0
+.LL198:
+	cmp %l0,0
+	bne,a .LL383
+	ldsb [%i1+%l1],%o0
+	b fetch
+	add %l1,1,%l1
+.LL200:
+	cmp %l0,0
+.LL330:
+	bne .LL384
+	sra %l1,1,%o1
+	b fetch
+	add %l1,1,%l1
+.LL202:
+	cmp %l3,%l0
+	bl,a .LL383
+	ldsb [%i1+%l1],%o0
+	b fetch
+	add %l1,1,%l1
+.LL204:
+	b .LL331
+	cmp %l3,%l0
+.LL206:
+	cmp %l0,0
+	bl,a .LL383
+	ldsb [%i1+%l1],%o0
+	b fetch
+	add %l1,1,%l1
+.LL208:
+	cmp %l0,0
+.LL331:
+	bl .LL384
+	sra %l1,1,%o1
+	b fetch
+	add %l1,1,%l1
+.LL210:
+	cmp %l3,%l0
+	bg,a .LL383
+	ldsb [%i1+%l1],%o0
+	b fetch
+	add %l1,1,%l1
+.LL212:
+	b .LL332
+	cmp %l3,%l0
+.LL214:
+	cmp %l0,0
+	bg,a .LL383
+	ldsb [%i1+%l1],%o0
+	b fetch
+	add %l1,1,%l1
+.LL216:
+	cmp %l0,0
+.LL332:
+	bg .LL384
+	sra %l1,1,%o1
+	b fetch
+	add %l1,1,%l1
+.LL218:
+	cmp %l3,%l0
+	ble,a .LL383
+	ldsb [%i1+%l1],%o0
+	b fetch
+	add %l1,1,%l1
+.LL220:
+	b .LL333
+	cmp %l3,%l0
+.LL222:
+	cmp %l0,0
+	ble,a .LL383
+	ldsb [%i1+%l1],%o0
+	b fetch
+	add %l1,1,%l1
+.LL224:
+	cmp %l0,0
+.LL333:
+	ble .LL384
+	sra %l1,1,%o1
+	b fetch
+	add %l1,1,%l1
+.LL226:
+	cmp %l3,%l0
+	bge,a .LL383
+	ldsb [%i1+%l1],%o0
+	b fetch
+	add %l1,1,%l1
+.LL228:
+	b .LL334
+	cmp %l3,%l0
+.F190: ! jge0
+	cmp %l0,0
+	bge,a .LL383
+	ldsb [%i1+%l1],%o0
+	b fetch
+	add %l1,1,%l1
+.LL232:
+	cmp %l0,0
+.LL334:
+	bge .LL384
+	sra %l1,1,%o1
+	b fetch
+	add %l1,1,%l1
+.LL234:
+	ldsb [%i1+%l1],%o0
+.LL383:
+	b fetch
+	add %l1,%o0,%l1
+.LL235:
+	sra %l1,1,%o1
+.LL384:
+	ldub [%i1+%l1],%o0
+	add %o1,%o0,%l1
+	sll %l1,1,%o1
+	ldsh [%i1+%o1],%o0
+	b fetch
+	add %o1,%o0,%l1
+.LL236:
+	ld [%i0+48],%o0
+	b fetch
+	add %l0,%o0,%l0
+.LL237:
+	ld [%i0+44],%o0
+	b fetch
+	add %l0,%o0,%l0
+.LL238:
+	ld [%i0+40],%o0
+	b fetch
+	add %l0,%o0,%l0
+.LL239:
+	ld [%i0+36],%o0
+	b fetch
+	add %l0,%o0,%l0
+.F200: ! ap8
+	ld [%i0+32],%o0
+	b fetch
+	add %l0,%o0,%l0
+.LL241:
+	ld [%i0+28],%o0
+	b fetch
+	add %l0,%o0,%l0
+.LL242:
+	ld [%i0+24],%o0
+	b fetch
+	add %l0,%o0,%l0
+.LL243:
+	ld [%i0+20],%o0
+	b fetch
+	add %l0,%o0,%l0
+.LL244:
+	ld [%i0+16],%o0
+	b fetch
+	add %l0,%o0,%l0
+.LL245:
+	ld [%i0+12],%o0
+	b fetch
+	add %l0,%o0,%l0
+.LL246:
+	ldub [%i1+%l1],%o0
+	sll %o0,2,%o0
+	b .LL335
+	ld [%i0+%o0],%o0
+.LL247:
+	ldub [%i1+%l1],%o0
+	sll %o0,8,%o0
+	add %l1,%i1,%o1
+	ldub [%o1+1],%o1
+	or %o0,%o1,%o0
+	sll %o0,2,%o0
+	b .LL336
+	ld [%i0+%o0],%o0
+.LL248:
+	ldub [%i1+%l1],%o0
+	sll %o0,8,%o0
+	add %l1,%i1,%o2
+	ldub [%o2+1],%o1
+	or %o0,%o1,%o0
+	sll %o0,8,%o0
+	ldub [%o2+2],%o1
+	or %o0,%o1,%o0
+	sll %o0,8,%o0
+	ldub [%o2+3],%o1
+	or %o0,%o1,%o0
+	sll %o0,2,%o0
+	b .LL337
+	ld [%i0+%o0],%o0
+.LL249:
+	ldub [%i1+%l1],%o0
+	sll %o0,8,%o0
+	add %l1,%i1,%o1
+	ldub [%o1+1],%o1
+	or %o0,%o1,%o0
+	sll %o0,2,%o0
+	b .LL336
+	ld [%l4+%o0],%o0
+.LL250:
+	ldub [%i1+%l1],%o0
+	sll %o0,2,%o0
+	b .LL335
+	ld [%l5+%o0],%o0
+.LL251:
+	ldub [%i1+%l1],%o0
+	sll %o0,2,%o0
+	b .LL335
+	ld [%l4+%o0],%o0
+.LL252:
+	b fetch
+	add %l0,5,%l0
+.LL253:
+	b fetch
+	add %l0,4,%l0
+.LL254:
+	b fetch
+	add %l0,3,%l0
+.F210: ! a2
+	b fetch
+	add %l0,2,%l0
+.LL256:
+	b fetch
+	add %l0,1,%l0
+.LL258:
+	ldub [%i1+%l1],%o0
+.LL335:
+	b .LL376
+	add %l0,%o0,%l0
+.LL259:
+	ldub [%i1+%l1],%o0
+	sll %o0,8,%o0
+	add %l1,%i1,%o1
+	ldub [%o1+1],%o1
+	or %o0,%o1,%o0
+.LL336:
+	add %l0,%o0,%l0
+	b fetch
+	add %l1,2,%l1
+.LL260:
+	ldub [%i1+%l1],%o0
+	sll %o0,8,%o0
+	add %l1,%i1,%o2
+	ldub [%o2+1],%o1
+	or %o0,%o1,%o0
+	sll %o0,8,%o0
+	ldub [%o2+2],%o1
+	or %o0,%o1,%o0
+	sll %o0,8,%o0
+	ldub [%o2+3],%o1
+	or %o0,%o1,%o0
+.LL337:
+	add %l0,%o0,%l0
+	b fetch
+	add %l1,4,%l1
+.LL261:
+	ldub [%i1+%l1],%o0
+	b .LL376
+	sub %l0,%o0,%l0
+.LL262:
+	ldub [%i1+%l1],%o0
+	sll %o0,8,%o0
+	add %l1,%i1,%o1
+	ldub [%o1+1],%o1
+	or %o0,%o1,%o0
+	sub %l0,%o0,%l0
+	b fetch
+	add %l1,2,%l1
+.F180: ! s4
+	b fetch
+	add %l0,-4,%l0
+.LL264:
+	b fetch
+	add %l0,-3,%l0
+.LL265:
+	b fetch
+	add %l0,-2,%l0
+.LL266:
+	b fetch
+	add %l0,-1,%l0
+.LL267:
+	mov %l0,%l3
+	b .LL338
+	ld [%i0+48],%o0
+.LL268:
+	mov %l0,%l3
+	b .LL338
+	ld [%i0+44],%o0
+.LL269:
+	mov %l0,%l3
+	b .LL338
+	ld [%i0+40],%o0
+.LL270:
+	mov %l0,%l3
+	b .LL338
+	ld [%i0+36],%o0
+.LL271:
+	mov %l0,%l3
+	b .LL338
+	ld [%i0+32],%o0
+.LL272:
+	mov %l0,%l3
+	b .LL338
+	ld [%i0+28],%o0
+.F230: ! l0p6
+	mov %l0,%l3
+	b .LL338
+	ld [%i0+24],%o0
+.LL274:
+	mov %l0,%l3
+	b .LL338
+	ld [%i0+20],%o0
+.LL275:
+	mov %l0,%l3
+	b .LL338
+	ld [%i0+16],%o0
+.LL276:
+	mov %l0,%l3
+	b .LL338
+	ld [%i0+12],%o0
+.LL277:
+	mov %l0,%l3
+	b .LL339
+	ld [%i0+24],%o0
+.LL278:
+	mov %l0,%l3
+	b .LL339
+	ld [%i0+20],%o0
+.LL279:
+	mov %l0,%l3
+	b .LL339
+	ld [%i0+16],%o0
+.LL280:
+	mov %l0,%l3
+	ld [%i0+12],%o0
+.LL339:
+	sll %o0,2,%o0
+.LL318:
+	add %o0,%i1,%o0
+	b fetch
+	ld [%o0+4],%l0
+.LL281:
+	mov %l0,%l3
+	b .LL340
+	ld [%i0+20],%o0
+.LL282:
+	mov %l0,%l3
+	b .LL340
+	ld [%i0+16],%o0
+.LL283:
+	mov %l0,%l3
+	ld [%i0+12],%o0
+.LL340:
+	sll %o0,2,%o0
+.LL317:
+	add %o0,%i1,%o0
+	b fetch
+	ld [%o0+8],%l0
+.LL341:
+	sll %o0,2,%o0
+.LL316:
+	add %o0,%i1,%o0
+	b fetch
+	ld [%o0+12],%l0
+
+.LL315:
+	add %o0,%i1,%o0
+	b fetch
+	ld [%o0+16],%l0
+.LL288:
+	mov %l0,%l3
+	ldub [%i1+%l1],%o0
+	sll %o0,8,%o0
+	add %l1,%i1,%o1
+	ldub [%o1+1],%o1
+	or %o0,%o1,%o0
+	sll %o0,2,%o0
+	ld [%l4+%o0],%o0
+	sll %o0,2,%o0
+	ld [%i1+%o0],%l0
+	b fetch
+	add %l1,2,%l1
+.F110: ! l1gh
+	mov %l0,%l3
+	ldub [%i1+%l1],%o0
+	sll %o0,8,%o0
+	add %l1,%i1,%o1
+	ldub [%o1+1],%o1
+	or %o0,%o1,%o0
+	sll %o0,2,%o0
+	ld [%l4+%o0],%o0
+	sll %o0,2,%o0
+	add %o0,%i1,%o0
+	ld [%o0+4],%l0
+	b fetch
+	add %l1,2,%l1
+.F111: ! l2gh     frq=0
+	mov %l0,%l3
+	ldub [%i1+%l1],%o0
+	sll %o0,8,%o0
+	add %l1,%i1,%o1
+	ldub [%o1+1],%o1
+	or %o0,%o1,%o0
+	sll %o0,2,%o0
+	ld [%l4+%o0],%o0
+	sll %o0,2,%o0
+	add %o0,%i1,%o0
+	ld [%o0+8],%l0
+	b fetch
+	add %l1,2,%l1
+.LL291:
+	mov %l0,%l3
+	ldub [%i1+%l1],%o0
+	sll %o0,2,%o0
+	b .LL343
+	ld [%l5+%o0],%o0
+.LL292:
+	mov %l0,%l3
+	ldub [%i1+%l1],%o0
+	sll %o0,2,%o0
+	b .LL344
+	ld [%l5+%o0],%o0
+.LL293:
+	mov %l0,%l3
+	ldub [%i1+%l1],%o0
+	sll %o0,2,%o0
+	b .LL345
+	ld [%l5+%o0],%o0
+.LL294:
+	mov %l0,%l3
+	ldub [%i1+%l1],%o0
+	sll %o0,2,%o0
+	ld [%l4+%o0],%o0
+.LL343:
+	sll %o0,2,%o0
+.LL323:
+	b .LL376
+	ld [%i1+%o0],%l0
+.LL295:
+	mov %l0,%l3
+	ldub [%i1+%l1],%o0
+	sll %o0,2,%o0
+	ld [%l4+%o0],%o0
+.LL344:
+	sll %o0,2,%o0
+	add %o0,%i1,%o0
+	b .LL376
+	ld [%o0+4],%l0
+.LL296:
+	mov %l0,%l3
+	ldub [%i1+%l1],%o0
+	sll %o0,2,%o0
+	ld [%l4+%o0],%o0
+.LL345:
+	sll %o0,2,%o0
+	add %o0,%i1,%o0
+	b .LL376
+	ld [%o0+8],%l0
+.LL297:
+	ldub [%i1+%l1],%o0
+	sll %o0,8,%o0
+	add %l1,%i1,%o1
+	ldub [%o1+1],%o1
+	or %o0,%o1,%o0
+	sll %o0,2,%o0
+	ld [%l4+%o0],%o0
+	sll %o0,2,%o0
+	st %l0,[%i1+%o0]
+	b fetch
+	add %l1,2,%l1
+.LL298:
+	ldub [%i1+%l1],%o0
+	sll %o0,2,%o0
+	b .LL346
+	ld [%l5+%o0],%o0
+.LL299:
+	ldub [%i1+%l1],%o0
+	sll %o0,2,%o0
+	ld [%l4+%o0],%o0
+.LL346:
+	sll %o0,2,%o0
+.LL324:
+	b .LL376
+	st %l0,[%i1+%o0]
+.LL300:
+	b .LL348
+	ld [%i0+20],%o0
+.LL301:
+	b .LL348
+	ld [%i0+16],%o0
+.LL302:
+	ld [%i0+12],%o0
+.LL348:
+	add %l0,%o0,%o0
+	sll %o0,2,%o0
+	b fetch
+	st %l3,[%i1+%o0]
+.F220: ! st0p4
+	b .LL349
+	ld [%i0+16],%o0
+.LL304:
+	ld [%i0+12],%o0
+.LL349:
+	sll %o0,2,%o0
+	b fetch
+	st %l0,[%i1+%o0]
+.LL305:
+	b .LL350
+	ld [%i0+16],%o0
+.LL306:
+	ld [%i0+12],%o0
+.LL350:
+	sll %o0,2,%o0
+	add %o0,%i1,%o0
+	b fetch
+	st %l0,[%o0+4]
+.LL307:
+	b .LL351
+	ld [%i0+28],%o0
+.LL308:
+	b .LL351
+	ld [%i0+24],%o0
+.LL309:
+	b .LL351
+	ld [%i0+20],%o0
+.LL310:
+	b .LL351
+	ld [%i0+16],%o0
+.LL311:
+	ld [%i0+12],%o0
+.LL351:
+	add %l0,%o0,%o0
+.LL338:
+	sll %o0,2,%o0
+	b fetch
+	ld [%i1+%o0],%l0
+.F250: ! l3p3     frq=4185
+	mov %l0,%l3
+	ld [%i0+12],%o0
+	sll %o0,2,%o0
+	add %o0,%i1,%o0
+	b fetch
+	ld [%o0+12],%l0
+.F251: ! l3p4     frq=1
+	mov %l0,%l3
+	ld [%i0+16],%o0
+	sll %o0,2,%o0
+	add %o0,%i1,%o0
+	b fetch
+	ld [%o0+12],%l0
+.F252: ! l4p3     frq=449
+	mov %l0,%l3
+	ld [%i0+12],%o0
+	sll %o0,2,%o0
+	add %o0,%i1,%o0
+	b fetch
+	ld [%o0+16],%l0
+.F253: ! l4p4     frq=1
+	mov %l0,%l3
+	ld [%i0+16],%o0
+	sll %o0,2,%o0
+	add %o0,%i1,%o0
+	b fetch
+	ld [%o0+16],%l0
+.F254: ! Error     frq=0
+.F255: ! Error     frq=0
+	mov 1,%i0
+	b ret1
+	add %l1,-1,%l1
+.LLfe1:
+	.size	  cintasm,.LLfe1-cintasm
+	.ident	"GCC: (GNU) 2.6.3"

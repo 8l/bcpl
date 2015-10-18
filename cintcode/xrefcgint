@@ -1,0 +1,1767 @@
+Ass_dev M:4 DEF libhdr.h[626] Ass_dev=4
+Ass_dir M:2 DEF libhdr.h[624] Ass_dir=2
+Ass_link M:0 DEF libhdr.h[622] Ass_link=0
+Ass_name M:5 DEF libhdr.h[627] Ass_name=5
+Ass_task M:1 DEF libhdr.h[623] Ass_task=1
+Ass_type M:3 DEF libhdr.h[625] Ass_type=3
+B2Wsh M:2 DEF libhdr.h[203] B2Wsh=2
+B2Wsh M:2 MAN libhdr.h[209] bytesperword=1<<B2Wsh
+CloseObj M:1 DEF libhdr.h[254] CloseObj=1
+Dcb_arg M:4 DEF libhdr.h[567] Dcb_arg=4
+Dcb_cvp M:6 DEF libhdr.h[569] Dcb_cvp=6
+Dcb_devid M:1 DEF libhdr.h[564] Dcb_devid=1
+Dcb_flag M:9 DEF libhdr.h[575] Dcb_flag=9
+Dcb_intson M:7 DEF libhdr.h[573] Dcb_intson=7
+Dcb_irq M:8 DEF libhdr.h[574] Dcb_irq=8
+Dcb_op M:3 DEF libhdr.h[566] Dcb_op=3
+Dcb_threadp M:5 DEF libhdr.h[568] Dcb_threadp=5
+Dcb_type M:0 DEF libhdr.h[563] Dcb_type=0
+Dcb_upb M:15 DEF libhdr.h[584] Dcb_upb=
+Dcb_var0 M:10 DEF libhdr.h[579] Dcb_var0=10
+Dcb_var1 M:11 DEF libhdr.h[580] Dcb_var1=11
+Dcb_var2 M:12 DEF libhdr.h[581] Dcb_var2=12
+Dcb_var3 M:13 DEF libhdr.h[582] Dcb_var3=13
+Dcb_var4 M:14 DEF libhdr.h[583] Dcb_var4=14
+Dcb_wkq M:2 DEF libhdr.h[565] Dcb_wkq=2
+Devc_create M:1 DEF libhdr.h[594] Devc_create=1
+Devc_destroy M:2 DEF libhdr.h[595] Devc_destroy=2
+Devc_setintson M:5 DEF libhdr.h[598] Devc_setintson=5
+Devc_start M:3 DEF libhdr.h[596] Devc_start=3
+Devc_stop M:4 DEF libhdr.h[597] Devc_stop=4
+Devt_clk M:1 DEF libhdr.h[587] Devt_clk=1
+Devt_fileop M:4 DEF libhdr.h[590] Devt_fileop=4
+Devt_tcpdev M:5 DEF libhdr.h[591] Devt_tcpdev=5
+Devt_ttyin M:2 DEF libhdr.h[588] Devt_ttyin=2
+Devt_ttyout M:3 DEF libhdr.h[589] Devt_ttyout=3
+GB2312 M:-2 DEF libhdr.h[496] GB2312=-2
+InitObj M:0 DEF libhdr.h[253] InitObj=0
+State_dead M:12 DEF libhdr.h[613] State_dead=12
+State_hold M:2 DEF libhdr.h[610] State_hold=2
+State_int M:8 DEF libhdr.h[612] State_int=8
+State_pkt M:1 DEF libhdr.h[609] State_pkt=1
+State_wait M:4 DEF libhdr.h[611] State_wait=4
+Sys_buttons M:56 DEF libhdr.h[397] Sys_buttons=56
+Sys_callc M:59 DEF libhdr.h[400] Sys_callc=59
+Sys_callnative M:53 DEF libhdr.h[394] Sys_callnative=53
+Sys_close M:16 DEF libhdr.h[360] Sys_close=16
+Sys_cputime M:30 DEF libhdr.h[373] Sys_cputime=30
+Sys_datstamp M:44 DEF libhdr.h[385] Sys_datstamp=44
+Sys_delay M:57 DEF libhdr.h[398] Sys_delay=57
+Sys_deletefile M:17 DEF libhdr.h[361] Sys_deletefile=17
+Sys_devcom M:43 DEF libhdr.h[384] Sys_devcom=43
+Sys_dumpmem M:52 DEF libhdr.h[393] Sys_dumpmem=52
+Sys_filemodtime M:31 DEF libhdr.h[374] Sys_filemodtime=31
+Sys_filesize M:46 DEF libhdr.h[387] Sys_filesize=46
+Sys_flt M:63 DEF libhdr.h[405] Sys_flt=63
+Sys_freevec M:22 DEF libhdr.h[366] Sys_freevec=22
+Sys_getpid M:51 DEF libhdr.h[392] Sys_getpid=51
+Sys_getprefix M:33 DEF libhdr.h[376] Sys_getprefix=33
+Sys_getsysval M:48 DEF libhdr.h[389] Sys_getsysval=48
+Sys_gettrval M:62 DEF libhdr.h[404] Sys_gettrval=62
+Sys_getvec M:21 DEF libhdr.h[365] Sys_getvec=21
+Sys_globin M:24 DEF libhdr.h[368] Sys_globin=24
+Sys_graphics M:34 DEF libhdr.h[377] Sys_graphics=34
+Sys_inc M:55 DEF libhdr.h[396] Sys_inc=55
+Sys_incdcount M:65 DEF libhdr.h[407] Sys_incdcount=65
+Sys_interpret M:7 DEF libhdr.h[352] Sys_interpret=7
+Sys_intflag M:28 DEF libhdr.h[371] Sys_intflag=28
+Sys_loadseg M:23 DEF libhdr.h[367] Sys_loadseg=23
+Sys_lockirq M:41 DEF libhdr.h[382] Sys_lockirq=41
+Sys_muldiv M:26 DEF libhdr.h[370] Sys_muldiv=26
+Sys_openappend M:19 DEF libhdr.h[363] Sys_openappend=19
+Sys_openread M:14 DEF libhdr.h[358] Sys_openread=14
+Sys_openreadwrite M:47 DEF libhdr.h[388] Sys_openreadwrite=47
+Sys_openwrite M:15 DEF libhdr.h[359] Sys_openwrite=15
+Sys_platform M:54 DEF libhdr.h[395] Sys_platform=54
+Sys_pollsardch M:64 DEF libhdr.h[406] Sys_pollsardch=64
+Sys_putsysval M:49 DEF libhdr.h[390] Sys_putsysval=49
+Sys_quit M:0 DEF libhdr.h[345] Sys_quit=0
+Sys_read M:12 DEF libhdr.h[356] Sys_read=12
+Sys_renamefile M:18 DEF libhdr.h[362] Sys_renamefile=18
+Sys_rti M:1 DEF libhdr.h[346] Sys_rti=1
+Sys_sardch M:10 DEF libhdr.h[354] Sys_sardch=10
+Sys_saveregs M:2 DEF libhdr.h[347] Sys_saveregs=2
+Sys_sawrch M:11 DEF libhdr.h[355] Sys_sawrch=11
+Sys_sdl M:66 DEF libhdr.h[409] Sys_sdl=66
+Sys_seek M:38 DEF libhdr.h[379] Sys_seek=38
+Sys_setcount M:-1 DEF libhdr.h[344] Sys_setcount=-1
+Sys_setprefix M:32 DEF libhdr.h[375] Sys_setprefix=32
+Sys_setraster M:29 DEF libhdr.h[372] Sys_setraster=29
+Sys_setst M:3 DEF libhdr.h[348] Sys_setst=3
+Sys_settrcount M:61 DEF libhdr.h[403] Sys_settrcount=61
+Sys_shellcom M:50 DEF libhdr.h[391] Sys_shellcom=50
+Sys_sound M:58 DEF libhdr.h[399] Sys_sound=58
+Sys_tally M:6 DEF libhdr.h[351] Sys_tally=6
+Sys_tell M:39 DEF libhdr.h[380] Sys_tell=39
+Sys_tracing M:4 DEF libhdr.h[349] Sys_tracing=4
+Sys_trpush M:60 DEF libhdr.h[402] Sys_trpush=60
+Sys_unloadseg M:25 DEF libhdr.h[369] Sys_unloadseg=25
+Sys_unlockirq M:42 DEF libhdr.h[383] Sys_unlockirq=42
+Sys_waitirq M:40 DEF libhdr.h[381] Sys_waitirq=40
+Sys_watch M:5 DEF libhdr.h[350] Sys_watch=5
+Sys_write M:13 DEF libhdr.h[357] Sys_write=13
+Task_cli M:1 DEF libhdr.h[601] Task_cli=1
+Task_consolehandler M:3 DEF libhdr.h[603] Task_consolehandler=3
+Task_debug M:2 DEF libhdr.h[602] Task_debug=2
+Task_filehandler M:4 DEF libhdr.h[604] Task_filehandler=4
+Task_mbxhandler M:5 DEF libhdr.h[605] Task_mbxhandler=5
+Task_tcphandler M:6 DEF libhdr.h[606] Task_tcphandler=6
+UTF8 M:-1 DEF libhdr.h[495] UTF8=-1
+abort G:28 DEF libhdr.h[43] abort=28
+ac M:2 DEF com/cg-intcode.b[101] ac=
+ac M:2 MAN com/cg-intcode.b[223] CASE ac:.. 
+ac M:2 MAN com/cg-intcode.b[481] state,ssp:=ac,ssp-1
+ac M:2 MAN com/cg-intcode.b[495] state,ssp:=ac,ssp-1
+ac M:2 MAN com/cg-intcode.b[524] state:=ac
+ac M:2 MAN com/cg-intcode.b[599] state:=ac
+ac M:2 MAN com/cg-intcode.b[629] ssp,state:=n+1,ac
+ac M:2 MAN com/cg-intcode.b[747] CASE ac:.. 
+ac M:2 MAN com/cg-intcode.b[760] CASE ac:.. 
+ac M:2 MAN com/cg-intcode.b[780] state:=ac
+ac M:2 MAN com/cg-intcode.b[781] CASE ac:.. 
+ac M:2 MAN com/cg-intcode.b[791] CASE ac:.. 
+ac M:2 MAN com/cg-intcode.b[817] CASE ac:.. 
+ac M:2 MAN com/cg-intcode.b[838] state:=ac
+ac M:2 MAN com/cg-intcode.b[861] CASE ac:.. 
+acad M:3 DEF com/cg-intcode.b[102] acad=
+acad M:3 MAN com/cg-intcode.b[224] CASE acad:.. 
+acad M:3 MAN com/cg-intcode.b[743] CASE acad:.. 
+acad M:3 MAN com/cg-intcode.b[756] CASE acad:.. 
+acad M:3 MAN com/cg-intcode.b[776] CASE acad:.. 
+acad M:3 MAN com/cg-intcode.b[797] state:=acad
+acad M:3 MAN com/cg-intcode.b[798] CASE acad:.. 
+acad M:3 MAN com/cg-intcode.b[806] state:=acad
+acad M:3 MAN com/cg-intcode.b[822] CASE acad:.. 
+acad M:3 MAN com/cg-intcode.b[859] CASE acad:.. 
+acad M:3 MAN com/cg-intcode.b[861] state:=acad
+ad M:1 DEF com/cg-intcode.b[100] ad=
+ad M:1 MAN com/cg-intcode.b[222] CASE ad:.. 
+ad M:1 MAN com/cg-intcode.b[745] CASE ad:.. 
+ad M:1 MAN com/cg-intcode.b[765] state:=ad
+ad M:1 MAN com/cg-intcode.b[766] CASE ad:.. 
+ad M:1 MAN com/cg-intcode.b[778] CASE ad:.. 
+ad M:1 MAN com/cg-intcode.b[787] CASE ad:.. 
+ad M:1 MAN com/cg-intcode.b[813] CASE ad:.. 
+ad M:1 MAN com/cg-intcode.b[856] state:=ad
+ad M:1 MAN com/cg-intcode.b[860] CASE ad:.. 
+ad_a G:373 DEF com/cg-intcode.b[40] ad_a=
+ad_a G:373 LG com/cg-intcode.b[344] writef("IC-CG'AD_K=%s*n",statestr(state),ssp,...)
+ad_a G:373 LG com/cg-intcode.b[453] code(f_s,ad_a,ad_k)
+ad_a G:373 LG com/cg-intcode.b[479] code(f_l,ad_a,ad_k)
+ad_a G:373 LG com/cg-intcode.b[494] code(f_a,ad_a,ad_k)
+ad_a G:373 LG com/cg-intcode.b[522] code(f_l,ad_a,ad_k)
+ad_a G:373 LG com/cg-intcode.b[527] code(f_l,ad_a,ad_k)
+ad_a G:373 LG com/cg-intcode.b[537] code(f_j,ad_a,ad_k)
+ad_a G:373 LG com/cg-intcode.b[746] code(f_l,ad_a,ad_k)
+ad_a G:373 LG com/cg-intcode.b[779] code(f_l,ad_a,ad_k)
+ad_a G:373 LG com/cg-intcode.b[815] code(f_l,ad_a,ad_k)
+ad_a G:373 LG com/cg-intcode.b[832] TEST ad_a=ssp-1&(ad_k=m_p|ad_k=m_ip) THEN .. ELSE ..
+ad_a G:373 LG com/cg-intcode.b[835] code(f_l,ad_a,ad_k)
+ad_a G:373 LG com/cg-intcode.b[841] code(f_l,ad_a,ad_k)
+ad_a G:373 SG com/cg-intcode.b[1101] ad_a,ad_k:=0,m_n
+ad_a G:373 SG com/cg-intcode.b[763] ad_a:=ssp-1
+ad_a G:373 SG com/cg-intcode.b[795] ad_a:=ssp-1
+ad_a G:373 SG com/cg-intcode.b[846] ad_a:=ssp-2
+ad_a G:373 SG com/cg-intcode.b[862] ad_a,ad_k:=a,k
+ad_k G:374 DEF com/cg-intcode.b[41] ad_k=
+ad_k G:374 LG com/cg-intcode.b[344] writef("IC-CG'AD_K=%s*n",statestr(state),ssp,...)
+ad_k G:374 LG com/cg-intcode.b[453] code(f_s,ad_a,ad_k)
+ad_k G:374 LG com/cg-intcode.b[479] code(f_l,ad_a,ad_k)
+ad_k G:374 LG com/cg-intcode.b[494] code(f_a,ad_a,ad_k)
+ad_k G:374 LG com/cg-intcode.b[522] code(f_l,ad_a,ad_k)
+ad_k G:374 LG com/cg-intcode.b[527] code(f_l,ad_a,ad_k)
+ad_k G:374 LG com/cg-intcode.b[537] code(f_j,ad_a,ad_k)
+ad_k G:374 LG com/cg-intcode.b[746] code(f_l,ad_a,ad_k)
+ad_k G:374 LG com/cg-intcode.b[779] code(f_l,ad_a,ad_k)
+ad_k G:374 LG com/cg-intcode.b[815] code(f_l,ad_a,ad_k)
+ad_k G:374 LG com/cg-intcode.b[832] TEST ad_a=ssp-1&(ad_k=m_p|ad_k=m_ip) THEN .. ELSE ..
+ad_k G:374 LG com/cg-intcode.b[835] code(f_l,ad_a,ad_k)
+ad_k G:374 LG com/cg-intcode.b[841] code(f_l,ad_a,ad_k)
+ad_k G:374 SG com/cg-intcode.b[1101] ad_a,ad_k:=0,m_n
+ad_k G:374 SG com/cg-intcode.b[764] ad_k:=m_ip
+ad_k G:374 SG com/cg-intcode.b[796] ad_k:=m_ip
+ad_k G:374 SG com/cg-intcode.b[847] ad_k:=m_ip
+ad_k G:374 SG com/cg-intcode.b[862] ad_a,ad_k:=a,k
+appendstream G:66 DEF libhdr.h[81] appendstream=66
+bigender G:221 DEF bcplfecg.h[126] bigender=
+bining G:226 DEF bcplfecg.h[131] bining=
+binrdch G:39 DEF libhdr.h[54] binrdch=39
+binwrch G:42 DEF libhdr.h[57] binwrch=42
+bitsperbyte M:8 DEF libhdr.h[210] bitsperbyte=8
+bitsperbyte M:8 MAN libhdr.h[211] bitsperword=bitsperbyte*bytesperword
+bitsperword M:32 DEF libhdr.h[211] bitsperword=bitsperbyte*bytesperword
+bitsperword M:32 MAN libhdr.h[213] minint=1<<bitsperword-1
+bootregs M:11 DEF libhdr.h[411] bootregs=11
+bytesperword M:4 DEF libhdr.h[209] bytesperword=1<<B2Wsh
+bytesperword M:4 MAN libhdr.h[211] bitsperword=bitsperbyte*bytesperword
+bytesperword M:4 MAN libhdr.h[212] mcaddrinc=bytesperword
+bytesperword M:4 MAN libhdr.h[459] scb_nameeend=scb_name+scb_maxnamelen/bytesperword
+bytesperword M:4 MAN libhdr.h[560] tcb_upb=tcb_namebase+15/bytesperword+1
+callco G:19 DEF libhdr.h[34] callco=19
+callseg G:107 DEF libhdr.h[123] callseg=107
+capitalch G:96 DEF libhdr.h[112] capitalch=96
+cgerror G:406 DEF com/cg-intcode.b[76] cgerror=
+cgerror G:406 LG com/cg-intcode.b[1077] cgerror("Too l'orkspace")
+cgerror G:406 LG com/cg-intcode.b[912] cgerror("Too m'orkspace")
+cgg M:370 DEF bcplfecg.h[17] cgg=trng+60
+cgg M:370 MAN com/cg-intcode.b[37] cgsects=cgg
+cgsects G:370 DEF com/cg-intcode.b[37] cgsects=cgg
+cgsects G:370 RT com/cg-intcode.b[118] LET cgsects(workvec,vecsize)BE..
+cgstring G:395 DEF com/cg-intcode.b[65] cgstring=
+cgstring G:395 LG com/cg-intcode.b[395] cgstring(rdn())
+cgstring G:395 RT com/cg-intcode.b[872] LET cgstring(n)BE..
+changeco G:6 DEF libhdr.h[21] changeco=6
+changepri G:155 DEF libhdr.h[177] changepri=155
+checklab G:404 DEF com/cg-intcode.b[74] checklab=
+checklab G:404 RT com/cg-intcode.b[909] LET checklab()BE..
+cis G:12 DEF libhdr.h[27] cis=12
+clear_words G:115 DEF libhdr.h[131] clear_words=115
+cli_commanddir G:136 DEF libhdr.h[154] cli_commanddir=136
+cli_commandfile G:143 DEF libhdr.h[161] cli_commandfile=143
+cli_commandname G:138 DEF libhdr.h[156] cli_commandname=138
+cli_currentinput G:142 DEF libhdr.h[160] cli_currentinput=142
+cli_currentoutput G:146 DEF libhdr.h[165] cli_currentoutput=146
+cli_data G:135 DEF libhdr.h[153] cli_data=135
+cli_defaultstack G:147 DEF libhdr.h[166] cli_defaultstack=147
+cli_faillevel G:139 DEF libhdr.h[157] cli_faillevel=139
+cli_init G:133 DEF libhdr.h[151] cli_init=133
+cli_initialfaillevel M:10 DEF libhdr.h[504] cli_initialfaillevel=return_hard
+cli_initialstack M:50000 DEF libhdr.h[503] cli_initialstack=50000
+cli_module G:149 DEF libhdr.h[168] cli_module=149
+cli_module_gn M:149 DEF libhdr.h[502] cli_module_gn=149
+cli_preloadlist G:145 DEF libhdr.h[164] cli_preloadlist=145
+cli_prompt G:140 DEF libhdr.h[158] cli_prompt=140
+cli_result2 G:134 DEF libhdr.h[152] cli_result2=134
+cli_returncode G:137 DEF libhdr.h[155] cli_returncode=137
+cli_standardinput G:141 DEF libhdr.h[159] cli_standardinput=141
+cli_standardoutput G:148 DEF libhdr.h[167] cli_standardoutput=148
+cli_status G:144 DEF libhdr.h[163] cli_status=144
+cli_tallyflag G:132 DEF libhdr.h[150] cli_tallyflag=132
+clibit_comcom M:4 DEF libhdr.h[509] clibit_comcom=4
+clibit_endcli M:256 DEF libhdr.h[515] clibit_endcli=256
+clibit_eofdel M:2 DEF libhdr.h[508] clibit_eofdel=2
+clibit_maincli M:8 DEF libhdr.h[510] clibit_maincli=8
+clibit_mbxcli M:64 DEF libhdr.h[513] clibit_mbxcli=64
+clibit_newcli M:16 DEF libhdr.h[511] clibit_newcli=16
+clibit_noprompt M:1 DEF libhdr.h[507] clibit_noprompt=1
+clibit_runcli M:32 DEF libhdr.h[512] clibit_runcli=32
+clibit_tcpcli M:128 DEF libhdr.h[514] clibit_tcpcli=128
+clihook G:4 DEF libhdr.h[19] clihook=4
+cliregs M:21 DEF libhdr.h[412] cliregs=21
+co_c M:5 DEF libhdr.h[251] co_c=
+co_fn M:3 DEF libhdr.h[249] co_fn=
+co_list M:2 DEF libhdr.h[248] co_list=
+co_parent M:1 DEF libhdr.h[247] co_parent=
+co_pptr M:0 DEF libhdr.h[246] co_pptr=0
+co_size M:4 DEF libhdr.h[250] co_size=
+code G:398 DEF com/cg-intcode.b[68] code=
+code G:398 LG com/cg-intcode.b[453] code(f_s,ad_a,ad_k)
+code G:398 LG com/cg-intcode.b[465] code(f_l,ssp-3,m_p)
+code G:398 LG com/cg-intcode.b[466] code(f_x,opcode(s_putbyte),m_n)
+code G:398 LG com/cg-intcode.b[479] code(f_l,ad_a,ad_k)
+code G:398 LG com/cg-intcode.b[480] code(f_x,opcode(op),m_n)
+code G:398 LG com/cg-intcode.b[488] code(f_x,opcode(op),m_n)
+code G:398 LG com/cg-intcode.b[494] code(f_a,ad_a,ad_k)
+code G:398 LG com/cg-intcode.b[502] code(f_j,l,m_l)
+code G:398 LG com/cg-intcode.b[511] code(op=s_jt->f_t,f_f,l,m_l)
+code G:398 LG com/cg-intcode.b[522] code(f_l,ad_a,ad_k)
+code G:398 LG com/cg-intcode.b[523] code(f_x,opcode(s_minus),m_n)
+code G:398 LG com/cg-intcode.b[527] code(f_l,ad_a,ad_k)
+code G:398 LG com/cg-intcode.b[528] code(f_x,opcode(s_le),m_n)
+code G:398 LG com/cg-intcode.b[529] code(f_t,rdl(),m_l)
+code G:398 LG com/cg-intcode.b[537] code(f_j,ad_a,ad_k)
+code G:398 LG com/cg-intcode.b[596] code(f_k,k,m_n)
+code G:398 LG com/cg-intcode.b[612] code(f_x,opcode(s_rtrn),m_n)
+code G:398 LG com/cg-intcode.b[620] code(f_j,l,m_l)
+code G:398 LG com/cg-intcode.b[635] code(f_x,opcode(op),m_n)
+code G:398 LG com/cg-intcode.b[643] code(f_x,opcode(op),m_n)
+code G:398 LG com/cg-intcode.b[644] code(f_d,n,m_n)
+code G:398 LG com/cg-intcode.b[645] code(f_d,d,m_l)
+code G:398 LG com/cg-intcode.b[648] code(f_d,rdn(),m_n)
+code G:398 LG com/cg-intcode.b[649] code(f_d,rdl(),m_l)
+code G:398 LG com/cg-intcode.b[744] code(f_s,ssp-2,m_p)
+code G:398 LG com/cg-intcode.b[746] code(f_l,ad_a,ad_k)
+code G:398 LG com/cg-intcode.b[748] code(f_s,ssp-1,m_p)
+code G:398 LG com/cg-intcode.b[757] code(f_s,ssp-2,m_p)
+code G:398 LG com/cg-intcode.b[761] code(f_s,ssp-1,m_p)
+code G:398 LG com/cg-intcode.b[773] code(f_l,ssp-1,m_ip)
+code G:398 LG com/cg-intcode.b[777] code(f_s,ssp-2,m_p)
+code G:398 LG com/cg-intcode.b[779] code(f_l,ad_a,ad_k)
+code G:398 LG com/cg-intcode.b[788] code(f_l,ssp-2,m_ip)
+code G:398 LG com/cg-intcode.b[792] code(f_s,ssp-1,m_p)
+code G:398 LG com/cg-intcode.b[794] code(f_l,ssp-2,m_ip)
+code G:398 LG com/cg-intcode.b[810] code(f_l,ssp-1,m_ip)
+code G:398 LG com/cg-intcode.b[815] code(f_l,ad_a,ad_k)
+code G:398 LG com/cg-intcode.b[819] code(f_s,ssp-1,m_p)
+code G:398 LG com/cg-intcode.b[834] code(f_s,ssp,m_p)
+code G:398 LG com/cg-intcode.b[835] code(f_l,ad_a,ad_k)
+code G:398 LG com/cg-intcode.b[836] code(f_s,ssp-2,m_p)
+code G:398 LG com/cg-intcode.b[837] code(f_l,ssp,m_p)
+code G:398 LG com/cg-intcode.b[840] code(f_s,ssp-1,m_p)
+code G:398 LG com/cg-intcode.b[841] code(f_l,ad_a,ad_k)
+code G:398 LG com/cg-intcode.b[842] code(f_s,ssp-2,m_p)
+code G:398 LG com/cg-intcode.b[868] code(f_s,a,k)
+code G:398 LG com/cg-intcode.b[971] code(f_d,n,m_n)
+code G:398 LG com/cg-intcode.b[973] code(f_d,n,m_l)
+code G:398 LG com/cg-intcode.b[975] code(f_c,n,m_n)
+code G:398 RT com/cg-intcode.b[929] LET code(f,a,k)BE..
+codegenerate G:220 DEF bcplfecg.h[124] codegenerate=
+codegenerate G:220 RT com/cg-intcode.b[1071] LET codegenerate(workspace,workspacesize)BE..
+codewrch G:126 DEF libhdr.h[142] codewrch=126
+colist G:8 DEF libhdr.h[23] colist=8
+compch G:97 DEF libhdr.h[113] compch=97
+complab G:399 DEF com/cg-intcode.b[69] complab=
+complab G:399 LG com/cg-intcode.b[545] complab(l)
+complab G:399 LG com/cg-intcode.b[578] complab(l)
+complab G:399 LG com/cg-intcode.b[969] complab(n)
+complab G:399 RT com/cg-intcode.b[961] LET complab(n)BE..
+compstring G:98 DEF libhdr.h[114] compstring=98
+consoletask G:171 DEF libhdr.h[190] consoletask=171
+copy_bytes G:116 DEF libhdr.h[132] copy_bytes=116
+copy_words G:114 DEF libhdr.h[130] copy_words=114
+copydir G:79 DEF libhdr.h[94] copydir=79
+copyobj G:75 DEF libhdr.h[90] copyobj=75
+copystring G:99 DEF libhdr.h[115] copystring=99
+cos G:13 DEF libhdr.h[28] cos=13
+cos G:13 LG com/cg-intcode.b[1030] deplete(cos)
+cowait G:20 DEF libhdr.h[35] cowait=20
+createco G:17 DEF libhdr.h[32] createco=17
+createdev G:172 DEF libhdr.h[191] createdev=172
+createdir G:82 DEF libhdr.h[97] createdir=82
+createtask G:153 DEF libhdr.h[175] createtask=153
+currco G:7 DEF libhdr.h[22] currco=7
+current_language G:190 DEF libhdr.h[199] current_language=190
+currentdir G:14 DEF libhdr.h[29] currentdir=14
+dat_to_strings G:110 DEF libhdr.h[126] dat_to_strings=110
+data G:396 DEF com/cg-intcode.b[66] data=
+data G:396 LG com/cg-intcode.b[675] data(op,rdl())
+data G:396 LG com/cg-intcode.b[679] data(op,rdn())
+data G:396 LG com/cg-intcode.b[875] data(s_datalab,l)
+data G:396 LG com/cg-intcode.b[876] data(s_char,n)
+data G:396 LG com/cg-intcode.b[877] data(s_char,rdn())
+data G:396 RT com/cg-intcode.b[881] LET data(k,v)BE..
+datap G:376 DEF com/cg-intcode.b[43] datap=
+datap G:376 LG com/cg-intcode.b[658] FOR i=0 TO datap-2 BY 2 DO..
+datap G:376 LG com/cg-intcode.b[882] datap
+datap G:376 LG com/cg-intcode.b[884] datap:=datap+2
+datap G:376 LG com/cg-intcode.b[885] IF datap>datat DO ..
+datap G:376 SG com/cg-intcode.b[1102] datap,linep,param:=0,0,1000
+datap G:376 SG com/cg-intcode.b[884] datap:=datap+2
+datap G:376 SG com/cg-intcode.b[889] datap:=0
+datat G:377 DEF com/cg-intcode.b[44] datat=
+datat G:377 LG com/cg-intcode.b[885] IF datap>datat DO ..
+datat G:377 SG com/cg-intcode.b[1082] datav,datat:=workspace,workspacesize
+datav G:375 DEF com/cg-intcode.b[42] datav=
+datav G:375 LG com/cg-intcode.b[658] wrdata(datav!i,datav!(i+1))
+datav G:375 LG com/cg-intcode.b[883] datav!p,datav!(p+1):=k,v
+datav G:375 SG com/cg-intcode.b[1082] datav,datat:=workspace,workspacesize
+datstamp G:109 DEF libhdr.h[125] datstamp=109
+datstring G:108 DEF libhdr.h[124] datstring=108
+deadcode M:#xDEADC0DE DEF libhdr.h[233] deadcode=#xDEADC0DE
+debug G:223 DEF bcplfecg.h[128] debug=
+debug G:223 LG com/cg-intcode.b[343] IF debug>1 DO ..
+debug G:223 LG com/cg-intcode.b[355] IF debug>0 DO ..
+debug G:223 LG com/cg-intcode.b[368] IF debug>0 DO ..
+debug G:223 LG com/cg-intcode.b[375] IF debug>0 DO ..
+debug G:223 LG com/cg-intcode.b[382] IF debug>0 DO ..
+debug G:223 LG com/cg-intcode.b[389] IF debug>0 DO ..
+debug G:223 LG com/cg-intcode.b[399] IF debug>0 DO ..
+debug G:223 LG com/cg-intcode.b[404] IF debug>0 DO ..
+debug G:223 LG com/cg-intcode.b[410] IF debug>0 DO ..
+debug G:223 LG com/cg-intcode.b[417] IF debug>0 DO ..
+debug G:223 LG com/cg-intcode.b[424] IF debug>0 DO ..
+debug G:223 LG com/cg-intcode.b[431] IF debug>0 DO ..
+debug G:223 LG com/cg-intcode.b[438] IF debug>0 DO ..
+debug G:223 LG com/cg-intcode.b[445] IF debug>0 DO ..
+debug G:223 LG com/cg-intcode.b[451] IF debug>0 DO ..
+debug G:223 LG com/cg-intcode.b[463] IF debug>0 DO ..
+debug G:223 LG com/cg-intcode.b[477] IF debug>0 DO ..
+debug G:223 LG com/cg-intcode.b[486] IF debug>0 DO ..
+debug G:223 LG com/cg-intcode.b[492] IF debug>0 DO ..
+debug G:223 LG com/cg-intcode.b[500] IF debug>0 DO ..
+debug G:223 LG com/cg-intcode.b[509] IF debug>0 DO ..
+debug G:223 LG com/cg-intcode.b[520] IF debug>0 DO ..
+debug G:223 LG com/cg-intcode.b[535] IF debug>0 DO ..
+debug G:223 LG com/cg-intcode.b[543] IF debug>0 DO ..
+debug G:223 LG com/cg-intcode.b[550] IF debug>0 DO ..
+debug G:223 LG com/cg-intcode.b[558] IF debug>0 DO ..
+debug G:223 LG com/cg-intcode.b[562] IF debug>0 DO ..
+debug G:223 LG com/cg-intcode.b[569] IF debug>0 DO ..
+debug G:223 LG com/cg-intcode.b[584] IF debug>0 DO ..
+debug G:223 LG com/cg-intcode.b[588] IF debug>0 DO ..
+debug G:223 LG com/cg-intcode.b[594] IF debug>0 DO ..
+debug G:223 LG com/cg-intcode.b[611] IF debug>0 DO ..
+debug G:223 LG com/cg-intcode.b[618] IF debug>0 DO ..
+debug G:223 LG com/cg-intcode.b[627] IF debug>0 DO ..
+debug G:223 LG com/cg-intcode.b[634] IF debug>0 DO ..
+debug G:223 LG com/cg-intcode.b[641] IF debug>0 DO ..
+debug G:223 LG com/cg-intcode.b[656] IF debug>0 DO ..
+debug G:223 LG com/cg-intcode.b[874] IF debug>0 DO ..
+defaultencoding G:233 DEF bcplfecg.h[139] defaultencoding=
+delay G:128 DEF libhdr.h[144] delay=128
+delayuntil G:129 DEF libhdr.h[145] delayuntil=129
+deleteco G:18 DEF libhdr.h[33] deleteco=18
+deletedev G:173 DEF libhdr.h[192] deletedev=173
+deletefile G:76 DEF libhdr.h[91] deletefile=76
+deleteself G:125 DEF libhdr.h[141] deleteself=125
+deletetask G:154 DEF libhdr.h[176] deletetask=154
+deplete G:43 DEF libhdr.h[58] deplete=43
+deplete G:43 LG com/cg-intcode.b[1030] deplete(cos)
+encoding G:232 DEF bcplfecg.h[138] encoding=
+endread G:60 DEF libhdr.h[75] endread=60
+endstream G:62 DEF libhdr.h[77] endstream=62
+endstreamch M:-1 DEF libhdr.h[216] endstreamch=-1
+endtask G:162 DEF libhdr.h[184] endtask=162
+endwrite G:61 DEF libhdr.h[76] endwrite=61
+entryword M:57311 DEF libhdr.h[235] entryword=57311
+eqcases G:224 DEF bcplfecg.h[129] eqcases=
+errcount G:234 DEF bcplfecg.h[141] errcount=
+errcount G:234 LG com/cg-intcode.b[1078] errcount:=errcount+1
+errcount G:234 LG com/cg-intcode.b[913] errcount:=errcount+1
+errcount G:234 SG com/cg-intcode.b[1078] errcount:=errcount+1
+errcount G:234 SG com/cg-intcode.b[913] errcount:=errcount+1
+errmax G:235 DEF bcplfecg.h[141] errmax=
+exit.label F:342 LAB com/cg-intcode.b[1111] exit.label:RETURN
+f_a M:65 DEF com/cg-intcode.b[91] f_a=65
+f_a M:65 MAN com/cg-intcode.b[494] code(f_a,ad_a,ad_k)
+f_c M:67 DEF com/cg-intcode.b[98] f_c=67
+f_c M:67 MAN com/cg-intcode.b[975] code(f_c,n,m_n)
+f_d M:68 DEF com/cg-intcode.b[97] f_d=68
+f_d M:68 MAN com/cg-intcode.b[644] code(f_d,n,m_n)
+f_d M:68 MAN com/cg-intcode.b[645] code(f_d,d,m_l)
+f_d M:68 MAN com/cg-intcode.b[648] code(f_d,rdn(),m_n)
+f_d M:68 MAN com/cg-intcode.b[649] code(f_d,rdl(),m_l)
+f_d M:68 MAN com/cg-intcode.b[971] code(f_d,n,m_n)
+f_d M:68 MAN com/cg-intcode.b[973] code(f_d,n,m_l)
+f_f M:70 DEF com/cg-intcode.b[94] f_f=70
+f_f M:70 MAN com/cg-intcode.b[511] code(op=s_jt->f_t,f_f,l,m_l)
+f_j M:74 DEF com/cg-intcode.b[92] f_j=74
+f_j M:74 MAN com/cg-intcode.b[502] code(f_j,l,m_l)
+f_j M:74 MAN com/cg-intcode.b[537] code(f_j,ad_a,ad_k)
+f_j M:74 MAN com/cg-intcode.b[620] code(f_j,l,m_l)
+f_k M:75 DEF com/cg-intcode.b[95] f_k=75
+f_k M:75 MAN com/cg-intcode.b[596] code(f_k,k,m_n)
+f_l M:76 DEF com/cg-intcode.b[89] f_l=76
+f_l M:76 MAN com/cg-intcode.b[465] code(f_l,ssp-3,m_p)
+f_l M:76 MAN com/cg-intcode.b[479] code(f_l,ad_a,ad_k)
+f_l M:76 MAN com/cg-intcode.b[522] code(f_l,ad_a,ad_k)
+f_l M:76 MAN com/cg-intcode.b[527] code(f_l,ad_a,ad_k)
+f_l M:76 MAN com/cg-intcode.b[746] code(f_l,ad_a,ad_k)
+f_l M:76 MAN com/cg-intcode.b[773] code(f_l,ssp-1,m_ip)
+f_l M:76 MAN com/cg-intcode.b[779] code(f_l,ad_a,ad_k)
+f_l M:76 MAN com/cg-intcode.b[788] code(f_l,ssp-2,m_ip)
+f_l M:76 MAN com/cg-intcode.b[794] code(f_l,ssp-2,m_ip)
+f_l M:76 MAN com/cg-intcode.b[810] code(f_l,ssp-1,m_ip)
+f_l M:76 MAN com/cg-intcode.b[815] code(f_l,ad_a,ad_k)
+f_l M:76 MAN com/cg-intcode.b[835] code(f_l,ad_a,ad_k)
+f_l M:76 MAN com/cg-intcode.b[837] code(f_l,ssp,m_p)
+f_l M:76 MAN com/cg-intcode.b[841] code(f_l,ad_a,ad_k)
+f_s M:83 DEF com/cg-intcode.b[90] f_s=83
+f_s M:83 MAN com/cg-intcode.b[453] code(f_s,ad_a,ad_k)
+f_s M:83 MAN com/cg-intcode.b[744] code(f_s,ssp-2,m_p)
+f_s M:83 MAN com/cg-intcode.b[748] code(f_s,ssp-1,m_p)
+f_s M:83 MAN com/cg-intcode.b[757] code(f_s,ssp-2,m_p)
+f_s M:83 MAN com/cg-intcode.b[761] code(f_s,ssp-1,m_p)
+f_s M:83 MAN com/cg-intcode.b[777] code(f_s,ssp-2,m_p)
+f_s M:83 MAN com/cg-intcode.b[792] code(f_s,ssp-1,m_p)
+f_s M:83 MAN com/cg-intcode.b[819] code(f_s,ssp-1,m_p)
+f_s M:83 MAN com/cg-intcode.b[834] code(f_s,ssp,m_p)
+f_s M:83 MAN com/cg-intcode.b[836] code(f_s,ssp-2,m_p)
+f_s M:83 MAN com/cg-intcode.b[840] code(f_s,ssp-1,m_p)
+f_s M:83 MAN com/cg-intcode.b[842] code(f_s,ssp-2,m_p)
+f_s M:83 MAN com/cg-intcode.b[868] code(f_s,a,k)
+f_t M:84 DEF com/cg-intcode.b[93] f_t=84
+f_t M:84 MAN com/cg-intcode.b[511] code(op=s_jt->f_t,f_f,l,m_l)
+f_t M:84 MAN com/cg-intcode.b[529] code(f_t,rdl(),m_l)
+f_x M:88 DEF com/cg-intcode.b[96] f_x=88
+f_x M:88 MAN com/cg-intcode.b[466] code(f_x,opcode(s_putbyte),m_n)
+f_x M:88 MAN com/cg-intcode.b[480] code(f_x,opcode(op),m_n)
+f_x M:88 MAN com/cg-intcode.b[488] code(f_x,opcode(op),m_n)
+f_x M:88 MAN com/cg-intcode.b[523] code(f_x,opcode(s_minus),m_n)
+f_x M:88 MAN com/cg-intcode.b[528] code(f_x,opcode(s_le),m_n)
+f_x M:88 MAN com/cg-intcode.b[612] code(f_x,opcode(s_rtrn),m_n)
+f_x M:88 MAN com/cg-intcode.b[635] code(f_x,opcode(op),m_n)
+f_x M:88 MAN com/cg-intcode.b[643] code(f_x,opcode(op),m_n)
+fault G:174 DEF libhdr.h[193] fault=174
+feg M:250 DEF bcplfecg.h[15] feg=intg+50
+feg M:250 MAN bcplfecg.h[16] trng=feg+60
+fin_l G:203 DEF bcplfecg.h[108] fin_l=
+fin_l G:203 LG com/cg-intcode.b[1079] longjump(fin_p,fin_l)
+fin_l G:203 LG com/cg-intcode.b[914] longjump(fin_p,fin_l)
+fin_p G:202 DEF bcplfecg.h[108] fin_p=
+fin_p G:202 LG com/cg-intcode.b[1079] longjump(fin_p,fin_l)
+fin_p G:202 LG com/cg-intcode.b[914] longjump(fin_p,fin_l)
+findappend G:130 DEF libhdr.h[146] findappend=130
+findarg G:104 DEF libhdr.h[120] findarg=104
+findinoutput G:50 DEF libhdr.h[65] findinoutput=50
+findinput G:48 DEF libhdr.h[63] findinput=48
+findoutput G:49 DEF libhdr.h[64] findoutput=49
+findstream G:52 DEF libhdr.h[67] findstream=52
+findupdate G:51 DEF libhdr.h[66] findupdate=51
+fl_abs M:5 DEF libhdr.h[468] fl_abs=
+fl_acos M:20 DEF libhdr.h[472] fl_acos=20
+fl_asin M:21 DEF libhdr.h[473] fl_asin=
+fl_atan M:22 DEF libhdr.h[474] fl_atan=
+fl_atan2 M:23 DEF libhdr.h[475] fl_atan2=
+fl_avail M:0 DEF libhdr.h[466] fl_avail=0
+fl_ceil M:38 DEF libhdr.h[490] fl_ceil=
+fl_cos M:24 DEF libhdr.h[476] fl_cos=
+fl_cosh M:27 DEF libhdr.h[479] fl_cosh=
+fl_div M:7 DEF libhdr.h[469] fl_div=
+fl_eq M:12 DEF libhdr.h[470] fl_eq=
+fl_exp M:30 DEF libhdr.h[482] fl_exp=
+fl_fix M:4 DEF libhdr.h[468] fl_fix=
+fl_float M:3 DEF libhdr.h[468] fl_float=
+fl_floor M:39 DEF libhdr.h[491] fl_floor=
+fl_fmod M:40 DEF libhdr.h[492] fl_fmod=
+fl_frexp M:31 DEF libhdr.h[483] fl_frexp=
+fl_ge M:17 DEF libhdr.h[470] fl_ge=
+fl_gr M:15 DEF libhdr.h[470] fl_gr=
+fl_ldexp M:32 DEF libhdr.h[484] fl_ldexp=
+fl_le M:16 DEF libhdr.h[470] fl_le=
+fl_log M:33 DEF libhdr.h[485] fl_log=
+fl_log10 M:34 DEF libhdr.h[486] fl_log10=
+fl_ls M:14 DEF libhdr.h[470] fl_ls=
+fl_minus M:9 DEF libhdr.h[469] fl_minus=
+fl_mk M:1 DEF libhdr.h[467] fl_mk=
+fl_modf M:35 DEF libhdr.h[487] fl_modf=
+fl_mult M:6 DEF libhdr.h[469] fl_mult=
+fl_ne M:13 DEF libhdr.h[470] fl_ne=
+fl_neg M:11 DEF libhdr.h[469] fl_neg=
+fl_plus M:8 DEF libhdr.h[469] fl_plus=
+fl_pos M:10 DEF libhdr.h[469] fl_pos=
+fl_pow M:36 DEF libhdr.h[488] fl_pow=
+fl_sin M:25 DEF libhdr.h[477] fl_sin=
+fl_sinh M:28 DEF libhdr.h[480] fl_sinh=
+fl_sqrt M:37 DEF libhdr.h[489] fl_sqrt=
+fl_tan M:26 DEF libhdr.h[478] fl_tan=
+fl_tanh M:29 DEF libhdr.h[481] fl_tanh=
+fl_unmk M:2 DEF libhdr.h[467] fl_unmk=
+flag_a M:1 DEF libhdr.h[615] flag_a=1<<0
+flag_b M:2 DEF libhdr.h[616] flag_b=1<<1
+flag_c M:4 DEF libhdr.h[617] flag_c=1<<2
+flag_d M:8 DEF libhdr.h[618] flag_d=1<<3
+flag_e M:16 DEF libhdr.h[619] flag_e=1<<4
+flopname G:208 DEF bcplfecg.h[114] flopname=
+force_ac G:390 DEF com/cg-intcode.b[60] force_ac=
+force_ac G:390 LG com/cg-intcode.b[487] force_ac()
+force_ac G:390 LG com/cg-intcode.b[510] force_ac()
+force_ac G:390 LG com/cg-intcode.b[595] force_ac()
+force_ac G:390 LG com/cg-intcode.b[608] force_ac()
+force_ac G:390 LG com/cg-intcode.b[619] force_ac()
+force_ac G:390 LG com/cg-intcode.b[642] force_ac()
+force_ac G:390 LG com/cg-intcode.b[860] force_ac()
+force_ac G:390 LG com/cg-intcode.b[867] force_ac()
+force_ac G:390 RT com/cg-intcode.b[769] LET force_ac()BE..
+force_acad G:391 DEF com/cg-intcode.b[61] force_acad=
+force_acad G:391 LG com/cg-intcode.b[452] force_acad()
+force_acad G:391 LG com/cg-intcode.b[478] force_acad()
+force_acad G:391 LG com/cg-intcode.b[493] force_acad()
+force_acad G:391 LG com/cg-intcode.b[521] force_acad()
+force_acad G:391 RT com/cg-intcode.b[784] LET force_acad()BE..
+force_ad G:389 DEF com/cg-intcode.b[59] force_ad=
+force_ad G:389 LG com/cg-intcode.b[536] force_ad()
+force_ad G:389 RT com/cg-intcode.b[753] LET force_ad()BE..
+force_nil G:388 DEF com/cg-intcode.b[58] force_nil=
+force_nil G:388 LG com/cg-intcode.b[464] force_nil()
+force_nil G:388 LG com/cg-intcode.b[501] force_nil()
+force_nil G:388 LG com/cg-intcode.b[544] force_nil()
+force_nil G:388 LG com/cg-intcode.b[551] force_nil()
+force_nil G:388 LG com/cg-intcode.b[556] force_nil()
+force_nil G:388 LG com/cg-intcode.b[563] force_nil()
+force_nil G:388 LG com/cg-intcode.b[628] force_nil()
+force_nil G:388 RT com/cg-intcode.b[740] LET force_nil()BE..
+freeobj G:78 DEF libhdr.h[93] freeobj=78
+freevec G:27 DEF libhdr.h[42] freevec=27
+g_colist M:8 DEF libhdr.h[241] g_colist=8
+g_currco M:7 DEF libhdr.h[240] g_currco=7
+g_globsize M:0 DEF libhdr.h[238] g_globsize=0
+g_rootnode M:9 DEF libhdr.h[242] g_rootnode=9
+g_sdlbase M:450 DEF libhdr.h[630] g_sdlbase=450
+g_sndbase M:400 DEF libhdr.h[629] g_sndbase=400
+g_sys M:3 DEF libhdr.h[239] g_sys=3
+gdefsing G:228 DEF bcplfecg.h[133] gdefsing=
+gencode G:387 DEF com/cg-intcode.b[57] gencode=
+gencode G:387 LG com/cg-intcode.b[1104] gencode()
+gencode G:387 RT com/cg-intcode.b[340] LET gencode()BE..
+get_index_record G:73 DEF libhdr.h[88] get_index_record=73
+get_record G:71 DEF libhdr.h[86] get_record=71
+get_text G:93 DEF libhdr.h[109] get_text=93
+get_textblib G:93 DEF libhdr.h[108] get_textblib=93
+getlogname G:118 DEF libhdr.h[134] getlogname=118
+getremipaddr G:54 DEF libhdr.h[69] getremipaddr=54
+getvec G:25 DEF libhdr.h[40] getvec=25
+getword G:32 DEF libhdr.h[47] getword=32
+globin G:24 DEF libhdr.h[39] globin=24
+globsize G:0 DEF libhdr.h[15] globsize=0
+globword M:#x8F8F0000 DEF libhdr.h[231] globword=#x8F8F0000
+gostream G:239 DEF bcplfecg.h[143] gostream=
+gostream G:239 LG com/cg-intcode.b[1009] selectoutput(gostream)
+gostream G:239 LG com/cg-intcode.b[1086] selectoutput(gostream)
+gostream G:239 LG com/cg-intcode.b[350] selectoutput(gostream)
+gostream G:239 LG com/cg-intcode.b[888] selectoutput(gostream)
+gostream G:239 LG com/cg-intcode.b[901] selectoutput(gostream)
+h1 M:0 DEF bcplfecg.h[20] h1=0
+h2 M:1 DEF bcplfecg.h[20] h2=
+h3 M:2 DEF bcplfecg.h[20] h3=
+h4 M:3 DEF bcplfecg.h[20] h4=
+h5 M:4 DEF bcplfecg.h[20] h5=
+h6 M:5 DEF bcplfecg.h[20] h6=
+h7 M:6 DEF bcplfecg.h[20] h7=
+hard G:229 DEF bcplfecg.h[134] hard=
+hold G:158 DEF libhdr.h[180] hold=158
+id_appendscb M:132 DEF libhdr.h[420] id_appendscb=132
+id_inoutscb M:131 DEF libhdr.h[419] id_inoutscb=131
+id_inscb M:129 DEF libhdr.h[417] id_inscb=129
+id_outscb M:130 DEF libhdr.h[418] id_outscb=130
+initco G:22 DEF libhdr.h[37] initco=22
+initio G:46 DEF libhdr.h[61] initio=46
+input G:58 DEF libhdr.h[73] input=58
+instrcount G:121 DEF libhdr.h[137] instrcount=121
+intflag G:119 DEF libhdr.h[135] intflag=119
+intg M:200 DEF bcplfecg.h[13] intg=ug
+intg M:200 MAN bcplfecg.h[107] nametable=intg
+intg M:200 MAN bcplfecg.h[15] feg=intg+50
+isrregs M:41 DEF libhdr.h[415] isrregs=41
+klibregs M:21 DEF libhdr.h[413] klibregs=21
+l F:237 LAB com/cg-intcode.b[765] l:state:=ad
+l F:237 LF com/cg-intcode.b[758] GOTO l
+l F:244 LAB com/cg-intcode.b[780] l:state:=ac
+l F:244 LF com/cg-intcode.b[774] GOTO l
+l F:251 LAB com/cg-intcode.b[797] l:state:=acad
+l F:251 LF com/cg-intcode.b[789] GOTO l
+labnumber G:405 DEF com/cg-intcode.b[75] labnumber=
+labnumber G:405 LG com/cg-intcode.b[909] IF maxlab>=labnumber DO ..
+labnumber G:405 LG com/cg-intcode.b[911] writef("check'mber=%n*n",maxlab,labnumber)
+level G:15 DEF libhdr.h[30] level=15
+linep G:379 DEF com/cg-intcode.b[46] linep=
+linep G:379 LG com/cg-intcode.b[1022] IF linep=71 DO ..
+linep G:379 LG com/cg-intcode.b[1028] linep:=linep+1
+linep G:379 SG com/cg-intcode.b[1018] linep:=0
+linep G:379 SG com/cg-intcode.b[1025] linep:=0
+linep G:379 SG com/cg-intcode.b[1028] linep:=linep+1
+linep G:379 SG com/cg-intcode.b[1102] datap,linep,param:=0,0,1000
+load G:393 DEF com/cg-intcode.b[63] load=
+load G:393 LG com/cg-intcode.b[369] load(p,m_ip)
+load G:393 LG com/cg-intcode.b[376] load(g,m_ig)
+load G:393 LG com/cg-intcode.b[383] load(l,m_il)
+load G:393 LG com/cg-intcode.b[390] load(n,m_n)
+load G:393 LG com/cg-intcode.b[400] load(-1,m_n)
+load G:393 LG com/cg-intcode.b[405] load(0,m_n)
+load G:393 LG com/cg-intcode.b[411] load(p,m_p)
+load G:393 LG com/cg-intcode.b[418] load(g,m_g)
+load G:393 LG com/cg-intcode.b[425] load(l,m_l)
+load G:393 LG com/cg-intcode.b[526] load(0,m_n)
+load G:393 LG com/cg-intcode.b[878] load(l,m_l)
+load G:393 RT com/cg-intcode.b[850] LET load(a,k)BE..
+loadseg G:105 DEF libhdr.h[121] loadseg=105
+locatedir G:80 DEF libhdr.h[95] locatedir=80
+locateobj G:81 DEF libhdr.h[96] locateobj=81
+longjump G:16 DEF libhdr.h[31] longjump=16
+longjump G:16 LG com/cg-intcode.b[1079] longjump(fin_p,fin_l)
+longjump G:16 LG com/cg-intcode.b[914] longjump(fin_p,fin_l)
+m F:266 LAB com/cg-intcode.b[862] m:ad_a,ad_k:=a,k
+m F:266 LF com/cg-intcode.b[857] GOTO m
+m_g M:6 DEF com/cg-intcode.b[87] m_g=
+m_g M:6 MAN com/cg-intcode.b[214] CASE m_g:.. 
+m_g M:6 MAN com/cg-intcode.b[418] load(g,m_g)
+m_g M:6 MAN com/cg-intcode.b[439] storein(g,m_g)
+m_g M:6 MAN com/cg-intcode.b[946] CASE m_g:.. 
+m_i M:1 DEF com/cg-intcode.b[82] m_i=
+m_i M:1 MAN com/cg-intcode.b[209] CASE m_i:.. 
+m_i M:1 MAN com/cg-intcode.b[942] CASE m_i:.. 
+m_ig M:7 DEF com/cg-intcode.b[88] m_ig=
+m_ig M:7 MAN com/cg-intcode.b[215] CASE m_ig:.. 
+m_ig M:7 MAN com/cg-intcode.b[376] load(g,m_ig)
+m_ig M:7 MAN com/cg-intcode.b[945] CASE m_ig:.. 
+m_il M:5 DEF com/cg-intcode.b[86] m_il=
+m_il M:5 MAN com/cg-intcode.b[213] CASE m_il:.. 
+m_il M:5 MAN com/cg-intcode.b[383] load(l,m_il)
+m_il M:5 MAN com/cg-intcode.b[952] CASE m_il:.. 
+m_ip M:3 DEF com/cg-intcode.b[84] m_ip=
+m_ip M:3 MAN com/cg-intcode.b[211] CASE m_ip:.. 
+m_ip M:3 MAN com/cg-intcode.b[369] load(p,m_ip)
+m_ip M:3 MAN com/cg-intcode.b[764] ad_k:=m_ip
+m_ip M:3 MAN com/cg-intcode.b[773] code(f_l,ssp-1,m_ip)
+m_ip M:3 MAN com/cg-intcode.b[788] code(f_l,ssp-2,m_ip)
+m_ip M:3 MAN com/cg-intcode.b[794] code(f_l,ssp-2,m_ip)
+m_ip M:3 MAN com/cg-intcode.b[796] ad_k:=m_ip
+m_ip M:3 MAN com/cg-intcode.b[810] code(f_l,ssp-1,m_ip)
+m_ip M:3 MAN com/cg-intcode.b[832] TEST ad_a=ssp-1&(ad_k=m_p|ad_k=m_ip) THEN .. ELSE ..
+m_ip M:3 MAN com/cg-intcode.b[847] ad_k:=m_ip
+m_ip M:3 MAN com/cg-intcode.b[949] CASE m_ip:.. 
+m_l M:4 DEF com/cg-intcode.b[85] m_l=
+m_l M:4 MAN com/cg-intcode.b[212] CASE m_l:.. 
+m_l M:4 MAN com/cg-intcode.b[425] load(l,m_l)
+m_l M:4 MAN com/cg-intcode.b[446] storein(l,m_l)
+m_l M:4 MAN com/cg-intcode.b[502] code(f_j,l,m_l)
+m_l M:4 MAN com/cg-intcode.b[511] code(op=s_jt->f_t,f_f,l,m_l)
+m_l M:4 MAN com/cg-intcode.b[529] code(f_t,rdl(),m_l)
+m_l M:4 MAN com/cg-intcode.b[620] code(f_j,l,m_l)
+m_l M:4 MAN com/cg-intcode.b[645] code(f_d,d,m_l)
+m_l M:4 MAN com/cg-intcode.b[649] code(f_d,rdl(),m_l)
+m_l M:4 MAN com/cg-intcode.b[878] load(l,m_l)
+m_l M:4 MAN com/cg-intcode.b[953] CASE m_l:.. 
+m_l M:4 MAN com/cg-intcode.b[973] code(f_d,n,m_l)
+m_n M:0 DEF com/cg-intcode.b[81] m_n=0
+m_n M:0 MAN com/cg-intcode.b[1101] ad_a,ad_k:=0,m_n
+m_n M:0 MAN com/cg-intcode.b[208] CASE m_n:.. 
+m_n M:0 MAN com/cg-intcode.b[390] load(n,m_n)
+m_n M:0 MAN com/cg-intcode.b[400] load(-1,m_n)
+m_n M:0 MAN com/cg-intcode.b[405] load(0,m_n)
+m_n M:0 MAN com/cg-intcode.b[466] code(f_x,opcode(s_putbyte),m_n)
+m_n M:0 MAN com/cg-intcode.b[480] code(f_x,opcode(op),m_n)
+m_n M:0 MAN com/cg-intcode.b[488] code(f_x,opcode(op),m_n)
+m_n M:0 MAN com/cg-intcode.b[523] code(f_x,opcode(s_minus),m_n)
+m_n M:0 MAN com/cg-intcode.b[526] load(0,m_n)
+m_n M:0 MAN com/cg-intcode.b[528] code(f_x,opcode(s_le),m_n)
+m_n M:0 MAN com/cg-intcode.b[596] code(f_k,k,m_n)
+m_n M:0 MAN com/cg-intcode.b[612] code(f_x,opcode(s_rtrn),m_n)
+m_n M:0 MAN com/cg-intcode.b[635] code(f_x,opcode(op),m_n)
+m_n M:0 MAN com/cg-intcode.b[643] code(f_x,opcode(op),m_n)
+m_n M:0 MAN com/cg-intcode.b[644] code(f_d,n,m_n)
+m_n M:0 MAN com/cg-intcode.b[648] code(f_d,rdn(),m_n)
+m_n M:0 MAN com/cg-intcode.b[943] CASE m_n:.. 
+m_n M:0 MAN com/cg-intcode.b[971] code(f_d,n,m_n)
+m_n M:0 MAN com/cg-intcode.b[975] code(f_c,n,m_n)
+m_p M:2 DEF com/cg-intcode.b[83] m_p=
+m_p M:2 MAN com/cg-intcode.b[210] CASE m_p:.. 
+m_p M:2 MAN com/cg-intcode.b[411] load(p,m_p)
+m_p M:2 MAN com/cg-intcode.b[432] storein(p,m_p)
+m_p M:2 MAN com/cg-intcode.b[465] code(f_l,ssp-3,m_p)
+m_p M:2 MAN com/cg-intcode.b[744] code(f_s,ssp-2,m_p)
+m_p M:2 MAN com/cg-intcode.b[748] code(f_s,ssp-1,m_p)
+m_p M:2 MAN com/cg-intcode.b[757] code(f_s,ssp-2,m_p)
+m_p M:2 MAN com/cg-intcode.b[761] code(f_s,ssp-1,m_p)
+m_p M:2 MAN com/cg-intcode.b[777] code(f_s,ssp-2,m_p)
+m_p M:2 MAN com/cg-intcode.b[792] code(f_s,ssp-1,m_p)
+m_p M:2 MAN com/cg-intcode.b[819] code(f_s,ssp-1,m_p)
+m_p M:2 MAN com/cg-intcode.b[832] TEST ad_a=ssp-1&(ad_k=m_p|ad_k=m_ip) THEN .. ELSE ..
+m_p M:2 MAN com/cg-intcode.b[834] code(f_s,ssp,m_p)
+m_p M:2 MAN com/cg-intcode.b[836] code(f_s,ssp-2,m_p)
+m_p M:2 MAN com/cg-intcode.b[837] code(f_l,ssp,m_p)
+m_p M:2 MAN com/cg-intcode.b[840] code(f_s,ssp-1,m_p)
+m_p M:2 MAN com/cg-intcode.b[842] code(f_s,ssp-2,m_p)
+m_p M:2 MAN com/cg-intcode.b[950] CASE m_p:.. 
+maxgn G:381 DEF com/cg-intcode.b[49] maxgn=
+maxgn G:381 LG com/cg-intcode.b[189] IF maxgn<g DO ..
+maxgn G:381 SG com/cg-intcode.b[189] maxgn:=g
+maxint M:#x7FFFFFFF DEF libhdr.h[214] maxint=minint-1
+maxlab G:382 DEF com/cg-intcode.b[50] maxlab=
+maxlab G:382 LG com/cg-intcode.b[909] IF maxlab>=labnumber DO ..
+maxlab G:382 LG com/cg-intcode.b[911] writef("check'mber=%n*n",maxlab,labnumber)
+maxssp G:383 DEF com/cg-intcode.b[51] maxssp=
+mcaddrinc M:4 DEF libhdr.h[212] mcaddrinc=bytesperword
+minint M:#x80000000 DEF libhdr.h[213] minint=1<<bitsperword-1
+minint M:#x80000000 MAN libhdr.h[214] maxint=minint-1
+mkramstream G:123 DEF libhdr.h[139] mkramstream=123
+modestr F:10 FN com/cg-intcode.b[205] LET modestr(m)=..
+modestr F:10 LF com/cg-intcode.b[344] writef("IC-CG'AD_K=%s*n",statestr(state),ssp,...)
+muldiv G:5 DEF libhdr.h[20] muldiv=5
+nametable G:200 DEF bcplfecg.h[107] nametable=intg
+nametablesize G:201 DEF bcplfecg.h[107] nametablesize=
+naming G:222 DEF bcplfecg.h[127] naming=
+newline G:84 DEF libhdr.h[99] newline=84
+newline G:84 LG com/cg-intcode.b[572] newline()
+newpage G:120 DEF libhdr.h[136] newpage=120
+nextparam G:397 DEF com/cg-intcode.b[67] nextparam=
+nextparam G:397 FN com/cg-intcode.b[894] LET nextparam()=..
+nextparam G:397 LG com/cg-intcode.b[873] nextparam()
+nil M:0 DEF com/cg-intcode.b[99] nil=0
+nil M:0 MAN com/cg-intcode.b[1100] ssp,state:=2,nil
+nil M:0 MAN com/cg-intcode.b[221] CASE nil:.. 
+nil M:0 MAN com/cg-intcode.b[454] ssp,state:=ssp-2,nil
+nil M:0 MAN com/cg-intcode.b[468] state:=nil
+nil M:0 MAN com/cg-intcode.b[512] ssp,state:=ssp-1,nil
+nil M:0 MAN com/cg-intcode.b[531] state:=nil
+nil M:0 MAN com/cg-intcode.b[538] ssp,state:=ssp-1,nil
+nil M:0 MAN com/cg-intcode.b[602] state:=nil
+nil M:0 MAN com/cg-intcode.b[613] state:=nil
+nil M:0 MAN com/cg-intcode.b[621] ssp,state:=ssp-1,nil
+nil M:0 MAN com/cg-intcode.b[646] ssp,state:=ssp-1,nil
+nil M:0 MAN com/cg-intcode.b[749] state:=nil
+nil M:0 MAN com/cg-intcode.b[750] CASE nil:.. 
+nil M:0 MAN com/cg-intcode.b[762] CASE nil:.. 
+nil M:0 MAN com/cg-intcode.b[772] CASE nil:.. 
+nil M:0 MAN com/cg-intcode.b[793] CASE nil:.. 
+nil M:0 MAN com/cg-intcode.b[808] CASE nil:.. 
+nil M:0 MAN com/cg-intcode.b[843] state:=nil
+nil M:0 MAN com/cg-intcode.b[856] CASE nil:.. 
+nil M:0 MAN com/cg-intcode.b[869] ssp,state:=ssp-1,nil
+note G:63 DEF libhdr.h[78] note=63
+notinuse M:-1 DEF libhdr.h[518] notinuse=-1
+objline1 G:230 DEF bcplfecg.h[136] objline1=
+objline1written G:231 DEF bcplfecg.h[137] objline1written=
+obuf G:210 DEF bcplfecg.h[118] obuf=
+obufp G:211 DEF bcplfecg.h[118] obufp=
+obufq G:212 DEF bcplfecg.h[118] obufq=
+obufsize G:214 DEF bcplfecg.h[118] obufsize=
+obuft G:213 DEF bcplfecg.h[118] obuft=
+ocodeout G:238 DEF bcplfecg.h[142] ocodeout=
+op G:384 DEF com/cg-intcode.b[53] op=
+op G:384 LG com/cg-intcode.b[1091] IF op=0 DO ..
+op G:384 LG com/cg-intcode.b[1093] IF op=s_section DO ..
+op G:384 LG com/cg-intcode.b[1106] .. REPEATUNTIL op=s_end
+op G:384 LG com/cg-intcode.b[118] UNTIL op=0 DO ..
+op G:384 LG com/cg-intcode.b[346] SWITCHON op INTO..
+op G:384 LG com/cg-intcode.b[349] writef("IC-CG'er:  %N*n",op)
+op G:384 LG com/cg-intcode.b[355] writef("*n// %s*n",opstr(op))
+op G:384 LG com/cg-intcode.b[368] writef("*n// %s P%n*n",opstr(op),p)
+op G:384 LG com/cg-intcode.b[375] writef("*n// %s G%n*n",opstr(op),g)
+op G:384 LG com/cg-intcode.b[382] writef("*n// %s L%n*n",opstr(op),l)
+op G:384 LG com/cg-intcode.b[389] writef("*n// %s %n*n",opstr(op),n)
+op G:384 LG com/cg-intcode.b[399] writef("*n// %s*n",opstr(op))
+op G:384 LG com/cg-intcode.b[404] writef("*n// %s*n",opstr(op))
+op G:384 LG com/cg-intcode.b[410] writef("*n// %s P%n*n",opstr(op),p)
+op G:384 LG com/cg-intcode.b[417] writef("*n// %s G%n*n",opstr(op),g)
+op G:384 LG com/cg-intcode.b[424] writef("*n// %s L%n*n",opstr(op),l)
+op G:384 LG com/cg-intcode.b[431] writef("*n// %s P%n*n",opstr(op),p)
+op G:384 LG com/cg-intcode.b[438] writef("*n// %s G%n*n",opstr(op),g)
+op G:384 LG com/cg-intcode.b[445] writef("*n// %s L%n*n",opstr(op),l)
+op G:384 LG com/cg-intcode.b[451] writef("*n// %s*n",opstr(op))
+op G:384 LG com/cg-intcode.b[463] writef("*n// %s*n",opstr(op))
+op G:384 LG com/cg-intcode.b[477] writef("*n// %s*n",opstr(op))
+op G:384 LG com/cg-intcode.b[480] code(f_x,opcode(op),m_n)
+op G:384 LG com/cg-intcode.b[486] writef("*n// %s*n",opstr(op))
+op G:384 LG com/cg-intcode.b[488] code(f_x,opcode(op),m_n)
+op G:384 LG com/cg-intcode.b[492] writef("*n// %s*n",opstr(op))
+op G:384 LG com/cg-intcode.b[500] writef("*n// %s L%n*n",opstr(op),l)
+op G:384 LG com/cg-intcode.b[509] writef("*n// %s L%n*n",opstr(op),l)
+op G:384 LG com/cg-intcode.b[511] code(op=s_jt->f_t,f_f,l,m_l)
+op G:384 LG com/cg-intcode.b[520] writef("*n// %s*n",opstr(op))
+op G:384 LG com/cg-intcode.b[535] writef("*n// %s*n",opstr(op))
+op G:384 LG com/cg-intcode.b[543] writef("*n// %s L%n*n",opstr(op),l)
+op G:384 LG com/cg-intcode.b[550] writef("*n// %s*n",opstr(op))
+op G:384 LG com/cg-intcode.b[558] writef("*n// %s %n*n",opstr(op),ssp)
+op G:384 LG com/cg-intcode.b[562] writef("*n// %s*n",opstr(op))
+op G:384 LG com/cg-intcode.b[570] writef("*n// %s L%n %n",opstr(op),l,n)
+op G:384 LG com/cg-intcode.b[584] writef("*n// %s %n*n",opstr(op),ssp)
+op G:384 LG com/cg-intcode.b[588] writef("*n// %s*n",opstr(op))
+op G:384 LG com/cg-intcode.b[594] writef("*n// %s %n*n",opstr(op),k)
+op G:384 LG com/cg-intcode.b[597] TEST op=s_fnap THEN .. ELSE ..
+op G:384 LG com/cg-intcode.b[611] writef("*n// %s*n",opstr(op))
+op G:384 LG com/cg-intcode.b[618] writef("*n// %s L%n*n",opstr(op),l)
+op G:384 LG com/cg-intcode.b[627] writef("*n// %s %n*n",opstr(op),n)
+op G:384 LG com/cg-intcode.b[634] writef("*n// %s*n",opstr(op))
+op G:384 LG com/cg-intcode.b[635] code(f_x,opcode(op),m_n)
+op G:384 LG com/cg-intcode.b[641] writef("*n// %s %n L%n*n",opstr(op),n,d)
+op G:384 LG com/cg-intcode.b[643] code(f_x,opcode(op),m_n)
+op G:384 LG com/cg-intcode.b[656] writef("*n// %s %n*n",opstr(op),n)
+op G:384 LG com/cg-intcode.b[675] data(op,rdl())
+op G:384 LG com/cg-intcode.b[679] data(op,rdn())
+op G:384 LG com/cg-intcode.b[874] writef("*n// %s %n*n",opstr(op),n)
+op G:384 SG com/cg-intcode.b[1089] op:=readop()
+op G:384 SG com/cg-intcode.b[1098] op:=readop()
+op G:384 SG com/cg-intcode.b[683] op:=readop()
+opcode G:400 DEF com/cg-intcode.b[70] opcode=
+opcode G:400 FN com/cg-intcode.b[978] LET opcode(op)=..
+opcode G:400 LG com/cg-intcode.b[466] code(f_x,opcode(s_putbyte),m_n)
+opcode G:400 LG com/cg-intcode.b[480] code(f_x,opcode(op),m_n)
+opcode G:400 LG com/cg-intcode.b[488] code(f_x,opcode(op),m_n)
+opcode G:400 LG com/cg-intcode.b[523] code(f_x,opcode(s_minus),m_n)
+opcode G:400 LG com/cg-intcode.b[528] code(f_x,opcode(s_le),m_n)
+opcode G:400 LG com/cg-intcode.b[612] code(f_x,opcode(s_rtrn),m_n)
+opcode G:400 LG com/cg-intcode.b[635] code(f_x,opcode(op),m_n)
+opcode G:400 LG com/cg-intcode.b[643] code(f_x,opcode(op),m_n)
+opname G:207 DEF bcplfecg.h[112] opname=
+opstr F:30 FN com/cg-intcode.b[227] LET opstr(op)=..
+opstr F:30 LF com/cg-intcode.b[355] writef("*n// %s*n",opstr(op))
+opstr F:30 LF com/cg-intcode.b[368] writef("*n// %s P%n*n",opstr(op),p)
+opstr F:30 LF com/cg-intcode.b[375] writef("*n// %s G%n*n",opstr(op),g)
+opstr F:30 LF com/cg-intcode.b[382] writef("*n// %s L%n*n",opstr(op),l)
+opstr F:30 LF com/cg-intcode.b[389] writef("*n// %s %n*n",opstr(op),n)
+opstr F:30 LF com/cg-intcode.b[399] writef("*n// %s*n",opstr(op))
+opstr F:30 LF com/cg-intcode.b[404] writef("*n// %s*n",opstr(op))
+opstr F:30 LF com/cg-intcode.b[410] writef("*n// %s P%n*n",opstr(op),p)
+opstr F:30 LF com/cg-intcode.b[417] writef("*n// %s G%n*n",opstr(op),g)
+opstr F:30 LF com/cg-intcode.b[424] writef("*n// %s L%n*n",opstr(op),l)
+opstr F:30 LF com/cg-intcode.b[431] writef("*n// %s P%n*n",opstr(op),p)
+opstr F:30 LF com/cg-intcode.b[438] writef("*n// %s G%n*n",opstr(op),g)
+opstr F:30 LF com/cg-intcode.b[445] writef("*n// %s L%n*n",opstr(op),l)
+opstr F:30 LF com/cg-intcode.b[451] writef("*n// %s*n",opstr(op))
+opstr F:30 LF com/cg-intcode.b[463] writef("*n// %s*n",opstr(op))
+opstr F:30 LF com/cg-intcode.b[477] writef("*n// %s*n",opstr(op))
+opstr F:30 LF com/cg-intcode.b[486] writef("*n// %s*n",opstr(op))
+opstr F:30 LF com/cg-intcode.b[492] writef("*n// %s*n",opstr(op))
+opstr F:30 LF com/cg-intcode.b[500] writef("*n// %s L%n*n",opstr(op),l)
+opstr F:30 LF com/cg-intcode.b[509] writef("*n// %s L%n*n",opstr(op),l)
+opstr F:30 LF com/cg-intcode.b[520] writef("*n// %s*n",opstr(op))
+opstr F:30 LF com/cg-intcode.b[535] writef("*n// %s*n",opstr(op))
+opstr F:30 LF com/cg-intcode.b[543] writef("*n// %s L%n*n",opstr(op),l)
+opstr F:30 LF com/cg-intcode.b[550] writef("*n// %s*n",opstr(op))
+opstr F:30 LF com/cg-intcode.b[558] writef("*n// %s %n*n",opstr(op),ssp)
+opstr F:30 LF com/cg-intcode.b[562] writef("*n// %s*n",opstr(op))
+opstr F:30 LF com/cg-intcode.b[570] writef("*n// %s L%n %n",opstr(op),l,n)
+opstr F:30 LF com/cg-intcode.b[584] writef("*n// %s %n*n",opstr(op),ssp)
+opstr F:30 LF com/cg-intcode.b[588] writef("*n// %s*n",opstr(op))
+opstr F:30 LF com/cg-intcode.b[594] writef("*n// %s %n*n",opstr(op),k)
+opstr F:30 LF com/cg-intcode.b[611] writef("*n// %s*n",opstr(op))
+opstr F:30 LF com/cg-intcode.b[618] writef("*n// %s L%n*n",opstr(op),l)
+opstr F:30 LF com/cg-intcode.b[627] writef("*n// %s %n*n",opstr(op),n)
+opstr F:30 LF com/cg-intcode.b[634] writef("*n// %s*n",opstr(op))
+opstr F:30 LF com/cg-intcode.b[641] writef("*n// %s %n L%n*n",opstr(op),n,d)
+opstr F:30 LF com/cg-intcode.b[656] writef("*n// %s %n*n",opstr(op),n)
+opstr F:30 LF com/cg-intcode.b[874] writef("*n// %s %n*n",opstr(op),n)
+output G:59 DEF libhdr.h[74] output=59
+packstring G:30 DEF libhdr.h[45] packstring=30
+param G:380 DEF com/cg-intcode.b[47] param=
+param G:380 LG com/cg-intcode.b[895] param:=param-1
+param G:380 LG com/cg-intcode.b[897] IF param<0 DO ..
+param G:380 LG com/cg-intcode.b[906] RESULTIS param
+param G:380 SG com/cg-intcode.b[1102] datap,linep,param:=0,0,1000
+param G:380 SG com/cg-intcode.b[895] param:=param-1
+param G:380 SG com/cg-intcode.b[903] param:=100
+pathfindinput G:53 DEF libhdr.h[68] pathfindinput=53
+peercom G:179 DEF libhdr.h[196] peercom=179
+pkt_a1 M:5 DEF libhdr.h[527] pkt_a1=5
+pkt_a2 M:6 DEF libhdr.h[528] pkt_a2=6
+pkt_a3 M:7 DEF libhdr.h[529] pkt_a3=7
+pkt_a4 M:8 DEF libhdr.h[530] pkt_a4=8
+pkt_a5 M:9 DEF libhdr.h[531] pkt_a5=9
+pkt_a6 M:10 DEF libhdr.h[532] pkt_a6=10
+pkt_arg1 M:5 DEF libhdr.h[527] pkt_arg1=5
+pkt_arg2 M:6 DEF libhdr.h[528] pkt_arg2=6
+pkt_arg3 M:7 DEF libhdr.h[529] pkt_arg3=7
+pkt_arg4 M:8 DEF libhdr.h[530] pkt_arg4=8
+pkt_arg5 M:9 DEF libhdr.h[531] pkt_arg5=9
+pkt_arg6 M:10 DEF libhdr.h[532] pkt_arg6=10
+pkt_devid M:1 DEF libhdr.h[523] pkt_devid=1
+pkt_devtaskid M:1 DEF libhdr.h[523] pkt_devtaskid=1
+pkt_id M:1 DEF libhdr.h[523] pkt_id=1
+pkt_link M:0 DEF libhdr.h[522] pkt_link=0
+pkt_op M:2 DEF libhdr.h[524] pkt_op=2
+pkt_r1 M:3 DEF libhdr.h[525] pkt_r1=3
+pkt_r2 M:4 DEF libhdr.h[526] pkt_r2=4
+pkt_res1 M:3 DEF libhdr.h[525] pkt_res1=3
+pkt_res2 M:4 DEF libhdr.h[526] pkt_res2=4
+pkt_taskid M:1 DEF libhdr.h[523] pkt_taskid=1
+pkt_type M:2 DEF libhdr.h[524] pkt_type=2
+plist G:204 DEF bcplfecg.h[108] plist=
+point G:64 DEF libhdr.h[79] point=64
+pollingch M:-3 DEF libhdr.h[218] pollingch=-3
+proglength G:378 DEF com/cg-intcode.b[45] proglength=
+proglength G:378 LG com/cg-intcode.b[1109] writef("Progr'n words*n",proglength)
+proglength G:378 LG com/cg-intcode.b[958] proglength:=proglength+1
+proglength G:378 SG com/cg-intcode.b[1084] proglength:=0
+proglength G:378 SG com/cg-intcode.b[958] proglength:=proglength+1
+prtree G:225 DEF bcplfecg.h[130] prtree=
+put_index_record G:74 DEF libhdr.h[89] put_index_record=74
+put_record G:72 DEF libhdr.h[87] put_record=72
+putword G:33 DEF libhdr.h[48] putword=33
+qpkt G:161 DEF libhdr.h[183] qpkt=161
+randno G:34 DEF libhdr.h[49] randno=34
+randseed G:127 DEF libhdr.h[143] randseed=127
+rdargs G:102 DEF libhdr.h[118] rdargs=102
+rdch G:38 DEF libhdr.h[53] rdch=38
+rdgn F:7 FN com/cg-intcode.b[187] LET rdgn()=..
+rditem G:103 DEF libhdr.h[119] rditem=103
+rdl G:386 DEF com/cg-intcode.b[56] rdl=
+rdl G:386 FN com/cg-intcode.b[180] LET rdl()=..
+rdl G:386 LG com/cg-intcode.b[381] rdl()
+rdl G:386 LG com/cg-intcode.b[423] rdl()
+rdl G:386 LG com/cg-intcode.b[444] rdl()
+rdl G:386 LG com/cg-intcode.b[499] rdl()
+rdl G:386 LG com/cg-intcode.b[508] rdl()
+rdl G:386 LG com/cg-intcode.b[529] code(f_t,rdl(),m_l)
+rdl G:386 LG com/cg-intcode.b[542] rdl()
+rdl G:386 LG com/cg-intcode.b[567] rdl()
+rdl G:386 LG com/cg-intcode.b[617] rdl()
+rdl G:386 LG com/cg-intcode.b[626] rdl()
+rdl G:386 LG com/cg-intcode.b[640] rdl()
+rdl G:386 LG com/cg-intcode.b[649] code(f_d,rdl(),m_l)
+rdl G:386 LG com/cg-intcode.b[664] wrk(rdl())
+rdl G:386 LG com/cg-intcode.b[675] data(op,rdl())
+rdn G:215 DEF bcplfecg.h[119] rdn=
+rdn G:215 LG com/cg-intcode.b[1096] FOR i=1 TO rdn() DO..
+rdn G:215 LG com/cg-intcode.b[1096] wrch(rdn())
+rdn G:215 LG com/cg-intcode.b[177] rdn()
+rdn G:215 LG com/cg-intcode.b[181] rdn()
+rdn G:215 LG com/cg-intcode.b[188] rdn()
+rdn G:215 LG com/cg-intcode.b[362] FOR i=1 TO rdn() DO..
+rdn G:215 LG com/cg-intcode.b[362] wrch(rdn())
+rdn G:215 LG com/cg-intcode.b[367] rdn()
+rdn G:215 LG com/cg-intcode.b[374] rdn()
+rdn G:215 LG com/cg-intcode.b[388] rdn()
+rdn G:215 LG com/cg-intcode.b[395] cgstring(rdn())
+rdn G:215 LG com/cg-intcode.b[409] rdn()
+rdn G:215 LG com/cg-intcode.b[416] rdn()
+rdn G:215 LG com/cg-intcode.b[430] rdn()
+rdn G:215 LG com/cg-intcode.b[437] rdn()
+rdn G:215 LG com/cg-intcode.b[557] ssp:=rdn()
+rdn G:215 LG com/cg-intcode.b[568] rdn()
+rdn G:215 LG com/cg-intcode.b[571] writef(" %n",rdn())
+rdn G:215 LG com/cg-intcode.b[583] ssp:=rdn()
+rdn G:215 LG com/cg-intcode.b[593] rdn()
+rdn G:215 LG com/cg-intcode.b[639] rdn()
+rdn G:215 LG com/cg-intcode.b[648] code(f_d,rdn(),m_n)
+rdn G:215 LG com/cg-intcode.b[655] rdn()
+rdn G:215 LG com/cg-intcode.b[662] wrk(rdn())
+rdn G:215 LG com/cg-intcode.b[679] data(op,rdn())
+rdn G:215 LG com/cg-intcode.b[877] data(s_char,rdn())
+readn G:83 DEF libhdr.h[98] readn=83
+readop G:385 DEF com/cg-intcode.b[54] readop=
+readop G:385 FN com/cg-intcode.b[177] LET readop()=..
+readop G:385 LG com/cg-intcode.b[1089] op:=readop()
+readop G:385 LG com/cg-intcode.b[1098] op:=readop()
+readop G:385 LG com/cg-intcode.b[683] op:=readop()
+readwords G:44 DEF libhdr.h[59] readwords=44
+recordnote G:70 DEF libhdr.h[85] recordnote=70
+recordpoint G:69 DEF libhdr.h[84] recordpoint=69
+release G:159 DEF libhdr.h[181] release=159
+renamefile G:77 DEF libhdr.h[92] renamefile=77
+result2 G:10 DEF libhdr.h[25] result2=10
+resumeco G:21 DEF libhdr.h[36] resumeco=21
+return_hard M:10 DEF libhdr.h[499] return_hard=10
+return_hard M:10 MAN libhdr.h[504] cli_initialfaillevel=return_hard
+return_ok M:0 DEF libhdr.h[501] return_ok=0
+return_severe M:20 DEF libhdr.h[498] return_severe=20
+return_soft M:5 DEF libhdr.h[500] return_soft=5
+returncode G:11 DEF libhdr.h[26] returncode=11
+returnpkt G:169 DEF libhdr.h[188] returnpkt=169
+rewindstream G:65 DEF libhdr.h[80] rewindstream=65
+rootnode G:9 DEF libhdr.h[24] rootnode=9
+rootnodeaddr M:100 DEF libhdr.h[258] rootnodeaddr=100
+rtn_abortcode M:27 DEF libhdr.h[294] rtn_abortcode=
+rtn_adjclock M:33 DEF libhdr.h[312] rtn_adjclock=
+rtn_blib M:19 DEF libhdr.h[283] rtn_blib=
+rtn_blklist M:4 DEF libhdr.h[265] rtn_blklist=
+rtn_boot M:17 DEF libhdr.h[281] rtn_boot=
+rtn_boottrace M:39 DEF libhdr.h[327] rtn_boottrace=
+rtn_bptaddr M:9 DEF libhdr.h[272] rtn_bptaddr=
+rtn_bptinstr M:10 DEF libhdr.h[273] rtn_bptinstr=
+rtn_clkintson M:6 DEF libhdr.h[268] rtn_clkintson=
+rtn_clwkq M:12 DEF libhdr.h[276] rtn_clwkq=
+rtn_context M:28 DEF libhdr.h[295] rtn_context=
+rtn_crntask M:3 DEF libhdr.h[264] rtn_crntask=
+rtn_days M:40 DEF libhdr.h[330] rtn_days=
+rtn_dbgvars M:11 DEF libhdr.h[274] rtn_dbgvars=
+rtn_dcountv M:34 DEF libhdr.h[314] rtn_dcountv=
+rtn_devtab M:1 DEF libhdr.h[262] rtn_devtab=
+rtn_dumpflag M:25 DEF libhdr.h[291] rtn_dumpflag=
+rtn_envlist M:26 DEF libhdr.h[292] rtn_envlist=
+rtn_hdrsvar M:37 DEF libhdr.h[323] rtn_hdrsvar=
+rtn_idletcb M:32 DEF libhdr.h[311] rtn_idletcb=
+rtn_info M:15 DEF libhdr.h[279] rtn_info=
+rtn_insadebug M:8 DEF libhdr.h[270] rtn_insadebug=
+rtn_intflag M:24 DEF libhdr.h[290] rtn_intflag=
+rtn_keyboard M:20 DEF libhdr.h[284] rtn_keyboard=
+rtn_klib M:18 DEF libhdr.h[282] rtn_klib=
+rtn_lastch M:7 DEF libhdr.h[269] rtn_lastch=
+rtn_lastg M:30 DEF libhdr.h[304] rtn_lastg=
+rtn_lastp M:29 DEF libhdr.h[303] rtn_lastp=
+rtn_lastst M:31 DEF libhdr.h[305] rtn_lastst=
+rtn_mc0 M:43 DEF libhdr.h[335] rtn_mc0=
+rtn_mc1 M:44 DEF libhdr.h[337] rtn_mc1=
+rtn_mc2 M:45 DEF libhdr.h[338] rtn_mc2=
+rtn_mc3 M:46 DEF libhdr.h[339] rtn_mc3=
+rtn_membase M:13 DEF libhdr.h[277] rtn_membase=
+rtn_memsize M:14 DEF libhdr.h[278] rtn_memsize=
+rtn_mins M:41 DEF libhdr.h[332] rtn_mins=rtn_msecs
+rtn_msecs M:41 DEF libhdr.h[331] rtn_msecs=
+rtn_msecs M:41 MAN libhdr.h[332] rtn_mins=rtn_msecs
+rtn_pathvar M:36 DEF libhdr.h[321] rtn_pathvar=
+rtn_rootvar M:35 DEF libhdr.h[319] rtn_rootvar=
+rtn_screen M:21 DEF libhdr.h[285] rtn_screen=
+rtn_scriptsvar M:38 DEF libhdr.h[325] rtn_scriptsvar=
+rtn_sys M:16 DEF libhdr.h[280] rtn_sys=
+rtn_tallyv M:5 DEF libhdr.h[266] rtn_tallyv=
+rtn_tasktab M:0 DEF libhdr.h[261] rtn_tasktab=0
+rtn_tcblist M:2 DEF libhdr.h[263] rtn_tcblist=
+rtn_ticks M:42 DEF libhdr.h[333] rtn_ticks=
+rtn_upb M:50 DEF libhdr.h[341] rtn_upb=50
+rtn_vecstatsv M:22 DEF libhdr.h[287] rtn_vecstatsv=
+rtn_vecstatsvupb M:23 DEF libhdr.h[288] rtn_vecstatsvupb=
+s_abs M:13 DEF bcplfecg.h[28] s_abs=
+s_abs M:13 MAN com/cg-intcode.b[1005] CASE s_abs:.. 
+s_abs M:13 MAN com/cg-intcode.b[230] CASE s_abs:.. 
+s_abs M:13 MAN com/cg-intcode.b[485] CASE s_abs:.. 
+s_and M:66 DEF bcplfecg.h[43] s_and=
+s_ass M:41 DEF bcplfecg.h[36] s_ass=
+s_assdiv M:145 DEF bcplfecg.h[73] s_assdiv=
+s_asseqv M:157 DEF bcplfecg.h[76] s_asseqv=
+s_assfdiv M:150 DEF bcplfecg.h[74] s_assfdiv=
+s_assfminus M:152 DEF bcplfecg.h[74] s_assfminus=
+s_assfmult M:149 DEF bcplfecg.h[74] s_assfmult=
+s_assfplus M:151 DEF bcplfecg.h[74] s_assfplus=
+s_asslogand M:155 DEF bcplfecg.h[76] s_asslogand=
+s_asslogor M:156 DEF bcplfecg.h[76] s_asslogor=
+s_asslshift M:153 DEF bcplfecg.h[75] s_asslshift=
+s_assminus M:148 DEF bcplfecg.h[73] s_assminus=
+s_assmult M:144 DEF bcplfecg.h[73] s_assmult=
+s_assneqv M:158 DEF bcplfecg.h[76] s_assneqv=
+s_assplus M:147 DEF bcplfecg.h[73] s_assplus=
+s_assrem M:146 DEF bcplfecg.h[73] s_assrem=
+s_assrshift M:154 DEF bcplfecg.h[75] s_assrshift=
+s_assvecap M:143 DEF bcplfecg.h[72] s_assvecap=
+s_be M:78 DEF bcplfecg.h[48] s_be=
+s_break M:57 DEF bcplfecg.h[41] s_break=
+s_by M:85 DEF bcplfecg.h[49] s_by=
+s_byteap M:27 DEF bcplfecg.h[32] s_byteap=
+s_case M:62 DEF bcplfecg.h[42] s_case=
+s_char M:200 DEF com/cg-intcode.b[22] s_char=200
+s_char M:200 MAN com/cg-intcode.b[876] data(s_char,n)
+s_char M:200 MAN com/cg-intcode.b[877] data(s_char,rdn())
+s_char M:200 MAN com/cg-intcode.b[975] CASE s_char:.. 
+s_colon M:45 DEF bcplfecg.h[37] s_colon=
+s_comma M:37 DEF bcplfecg.h[34] s_comma=
+s_cond M:36 DEF bcplfecg.h[34] s_cond=
+s_const M:73 DEF bcplfecg.h[44] s_const=
+s_constdef M:72 DEF bcplfecg.h[44] s_constdef=
+s_datalab M:122 DEF bcplfecg.h[59] s_datalab=
+s_datalab M:122 MAN com/cg-intcode.b[231] CASE s_datalab:.. 
+s_datalab M:122 MAN com/cg-intcode.b[673] CASE s_datalab:.. 
+s_datalab M:122 MAN com/cg-intcode.b[875] data(s_datalab,l)
+s_datalab M:122 MAN com/cg-intcode.b[969] CASE s_datalab:.. 
+s_default M:63 DEF bcplfecg.h[42] s_default=
+s_div M:15 DEF bcplfecg.h[29] s_div=
+s_div M:15 MAN com/cg-intcode.b[232] CASE s_div:.. 
+s_div M:15 MAN com/cg-intcode.b[471] CASE s_div:.. 
+s_div M:15 MAN com/cg-intcode.b[985] CASE s_div:.. 
+s_do M:86 DEF bcplfecg.h[49] s_do=
+s_dot M:93 DEF bcplfecg.h[50] s_dot=
+s_else M:87 DEF bcplfecg.h[49] s_else=
+s_end M:0 DEF com/cg-intcode.b[24] s_end=0
+s_end M:0 MAN com/cg-intcode.b[1106] .. REPEATUNTIL op=s_end
+s_end M:0 MAN com/cg-intcode.b[233] CASE s_end:.. 
+s_end M:0 MAN com/cg-intcode.b[354] CASE s_end:.. 
+s_endcase M:60 DEF bcplfecg.h[42] s_endcase=
+s_endfor M:112 DEF bcplfecg.h[57] s_endfor=
+s_endfor M:112 MAN com/cg-intcode.b[234] CASE s_endfor:.. 
+s_endfor M:112 MAN com/cg-intcode.b[516] CASE s_endfor:.. 
+s_endproc M:124 DEF bcplfecg.h[60] s_endproc=
+s_endproc M:124 MAN com/cg-intcode.b[235] CASE s_endproc:.. 
+s_endproc M:124 MAN com/cg-intcode.b[587] CASE s_endproc:.. 
+s_entry M:117 DEF bcplfecg.h[58] s_entry=
+s_entry M:117 MAN com/cg-intcode.b[236] CASE s_entry:.. 
+s_entry M:117 MAN com/cg-intcode.b[566] CASE s_entry:.. 
+s_eof M:94 DEF bcplfecg.h[50] s_eof=
+s_eq M:19 DEF bcplfecg.h[30] s_eq=
+s_eq M:19 MAN com/cg-intcode.b[237] CASE s_eq:.. 
+s_eq M:19 MAN com/cg-intcode.b[472] CASE s_eq:.. 
+s_eq M:19 MAN com/cg-intcode.b[989] CASE s_eq:.. 
+s_eqv M:34 DEF bcplfecg.h[34] s_eqv=
+s_eqv M:34 MAN com/cg-intcode.b[1000] CASE s_eqv:.. 
+s_eqv M:34 MAN com/cg-intcode.b[238] CASE s_eqv:.. 
+s_eqv M:34 MAN com/cg-intcode.b[476] CASE s_eqv:.. 
+s_fabs M:130 DEF bcplfecg.h[67] s_fabs=
+s_false M:5 DEF bcplfecg.h[25] s_false=
+s_false M:5 MAN com/cg-intcode.b[239] CASE s_false:.. 
+s_false M:5 MAN com/cg-intcode.b[403] CASE s_false:.. 
+s_fdiv M:132 DEF bcplfecg.h[68] s_fdiv=
+s_feq M:137 DEF bcplfecg.h[69] s_feq=
+s_fge M:142 DEF bcplfecg.h[69] s_fge=
+s_fgr M:140 DEF bcplfecg.h[69] s_fgr=
+s_finish M:59 DEF bcplfecg.h[41] s_finish=
+s_finish M:59 MAN com/cg-intcode.b[1001] CASE s_finish:.. 
+s_finish M:59 MAN com/cg-intcode.b[240] CASE s_finish:.. 
+s_finish M:59 MAN com/cg-intcode.b[633] CASE s_finish:.. 
+s_fix M:129 DEF bcplfecg.h[67] s_fix=
+s_fle M:141 DEF bcplfecg.h[69] s_fle=
+s_float M:128 DEF bcplfecg.h[67] s_float=
+s_fls M:139 DEF bcplfecg.h[69] s_fls=
+s_fltop M:161 DEF bcplfecg.h[81] s_fltop=
+s_fminus M:134 DEF bcplfecg.h[68] s_fminus=
+s_fmult M:131 DEF bcplfecg.h[68] s_fmult=
+s_fnap M:10 DEF bcplfecg.h[26] s_fnap=
+s_fnap M:10 MAN com/cg-intcode.b[241] CASE s_fnap:.. 
+s_fnap M:10 MAN com/cg-intcode.b[592] CASE s_fnap:.. 
+s_fnap M:10 MAN com/cg-intcode.b[597] TEST op=s_fnap THEN .. ELSE ..
+s_fndef M:74 DEF bcplfecg.h[45] s_fndef=
+s_fne M:138 DEF bcplfecg.h[69] s_fne=
+s_fneg M:136 DEF bcplfecg.h[68] s_fneg=
+s_fnrn M:119 DEF bcplfecg.h[59] s_fnrn=
+s_fnrn M:119 MAN com/cg-intcode.b[242] CASE s_fnrn:.. 
+s_fnrn M:119 MAN com/cg-intcode.b[607] CASE s_fnrn:.. 
+s_fnum M:127 DEF bcplfecg.h[66] s_fnum=
+s_for M:47 DEF bcplfecg.h[38] s_for=
+s_fplus M:133 DEF bcplfecg.h[68] s_fplus=
+s_fpos M:135 DEF bcplfecg.h[68] s_fpos=
+s_ge M:24 DEF bcplfecg.h[30] s_ge=
+s_ge M:24 MAN com/cg-intcode.b[243] CASE s_ge:.. 
+s_ge M:24 MAN com/cg-intcode.b[474] CASE s_ge:.. 
+s_ge M:24 MAN com/cg-intcode.b[992] CASE s_ge:.. 
+s_get M:81 DEF bcplfecg.h[48] s_get=
+s_getbyte M:125 DEF bcplfecg.h[60] s_getbyte=
+s_getbyte M:125 MAN com/cg-intcode.b[1003] CASE s_getbyte:.. 
+s_getbyte M:125 MAN com/cg-intcode.b[244] CASE s_getbyte:.. 
+s_getbyte M:125 MAN com/cg-intcode.b[476] CASE s_getbyte:.. 
+s_global M:68 DEF bcplfecg.h[43] s_global=
+s_global M:68 MAN com/cg-intcode.b[245] CASE s_global:.. 
+s_global M:68 MAN com/cg-intcode.b[654] CASE s_global:.. 
+s_goto M:43 DEF bcplfecg.h[37] s_goto=
+s_goto M:43 MAN com/cg-intcode.b[246] CASE s_goto:.. 
+s_goto M:43 MAN com/cg-intcode.b[534] CASE s_goto:.. 
+s_gr M:22 DEF bcplfecg.h[30] s_gr=
+s_gr M:22 MAN com/cg-intcode.b[247] CASE s_gr:.. 
+s_gr M:22 MAN com/cg-intcode.b[473] CASE s_gr:.. 
+s_gr M:22 MAN com/cg-intcode.b[993] CASE s_gr:.. 
+s_if M:48 DEF bcplfecg.h[38] s_if=
+s_into M:83 DEF bcplfecg.h[49] s_into=
+s_iteml M:201 DEF com/cg-intcode.b[23] s_iteml=
+s_iteml M:201 MAN com/cg-intcode.b[674] CASE s_iteml:.. 
+s_iteml M:201 MAN com/cg-intcode.b[973] CASE s_iteml:.. 
+s_itemn M:123 DEF bcplfecg.h[59] s_itemn=
+s_itemn M:123 MAN com/cg-intcode.b[248] CASE s_itemn:.. 
+s_itemn M:123 MAN com/cg-intcode.b[678] CASE s_itemn:.. 
+s_itemn M:123 MAN com/cg-intcode.b[971] CASE s_itemn:.. 
+s_jf M:111 DEF bcplfecg.h[57] s_jf=
+s_jf M:111 MAN com/cg-intcode.b[249] CASE s_jf:.. 
+s_jf M:111 MAN com/cg-intcode.b[507] CASE s_jf:.. 
+s_jt M:110 DEF bcplfecg.h[57] s_jt=
+s_jt M:110 MAN com/cg-intcode.b[250] CASE s_jt:.. 
+s_jt M:110 MAN com/cg-intcode.b[506] CASE s_jt:.. 
+s_jt M:110 MAN com/cg-intcode.b[511] code(op=s_jt->f_t,f_f,l,m_l)
+s_jump M:109 DEF bcplfecg.h[57] s_jump=
+s_jump M:109 MAN com/cg-intcode.b[251] CASE s_jump:.. 
+s_jump M:109 MAN com/cg-intcode.b[498] CASE s_jump:.. 
+s_lab M:113 DEF bcplfecg.h[58] s_lab=
+s_lab M:113 MAN com/cg-intcode.b[252] CASE s_lab:.. 
+s_lab M:113 MAN com/cg-intcode.b[541] CASE s_lab:.. 
+s_label M:77 DEF bcplfecg.h[45] s_label=
+s_le M:23 DEF bcplfecg.h[30] s_le=
+s_le M:23 MAN com/cg-intcode.b[253] CASE s_le:.. 
+s_le M:23 MAN com/cg-intcode.b[473] CASE s_le:.. 
+s_le M:23 MAN com/cg-intcode.b[528] code(f_x,opcode(s_le),m_n)
+s_le M:23 MAN com/cg-intcode.b[994] CASE s_le:.. 
+s_let M:65 DEF bcplfecg.h[43] s_let=
+s_lf M:96 DEF bcplfecg.h[56] s_lf=
+s_lf M:96 MAN com/cg-intcode.b[254] CASE s_lf:.. 
+s_lg M:98 DEF bcplfecg.h[56] s_lg=
+s_lg M:98 MAN com/cg-intcode.b[255] CASE s_lg:.. 
+s_lg M:98 MAN com/cg-intcode.b[373] CASE s_lg:.. 
+s_ll M:101 DEF bcplfecg.h[56] s_ll=
+s_ll M:101 MAN com/cg-intcode.b[256] CASE s_ll:.. 
+s_ll M:101 MAN com/cg-intcode.b[380] CASE s_ll:.. 
+s_llg M:103 DEF bcplfecg.h[56] s_llg=
+s_llg M:103 MAN com/cg-intcode.b[257] CASE s_llg:.. 
+s_llg M:103 MAN com/cg-intcode.b[415] CASE s_llg:.. 
+s_lll M:104 DEF bcplfecg.h[56] s_lll=
+s_lll M:104 MAN com/cg-intcode.b[258] CASE s_lll:.. 
+s_lll M:104 MAN com/cg-intcode.b[422] CASE s_lll:.. 
+s_llp M:102 DEF bcplfecg.h[56] s_llp=
+s_llp M:102 MAN com/cg-intcode.b[259] CASE s_llp:.. 
+s_llp M:102 MAN com/cg-intcode.b[408] CASE s_llp:.. 
+s_ln M:99 DEF bcplfecg.h[56] s_ln=
+s_ln M:99 MAN com/cg-intcode.b[260] CASE s_ln:.. 
+s_ln M:99 MAN com/cg-intcode.b[387] CASE s_ln:.. 
+s_local M:76 DEF bcplfecg.h[45] s_local=
+s_logand M:32 DEF bcplfecg.h[33] s_logand=
+s_logand M:32 MAN com/cg-intcode.b[261] CASE s_logand:.. 
+s_logand M:32 MAN com/cg-intcode.b[475] CASE s_logand:.. 
+s_logand M:32 MAN com/cg-intcode.b[997] CASE s_logand:.. 
+s_logor M:33 DEF bcplfecg.h[33] s_logor=
+s_logor M:33 MAN com/cg-intcode.b[262] CASE s_logor:.. 
+s_logor M:33 MAN com/cg-intcode.b[475] CASE s_logor:.. 
+s_logor M:33 MAN com/cg-intcode.b[998] CASE s_logor:.. 
+s_loop M:56 DEF bcplfecg.h[41] s_loop=
+s_lp M:97 DEF bcplfecg.h[56] s_lp=
+s_lp M:97 MAN com/cg-intcode.b[263] CASE s_lp:.. 
+s_lp M:97 MAN com/cg-intcode.b[366] CASE s_lp:.. 
+s_lparen M:89 DEF bcplfecg.h[50] s_lparen=
+s_ls M:21 DEF bcplfecg.h[30] s_ls=
+s_ls M:21 MAN com/cg-intcode.b[264] CASE s_ls:.. 
+s_ls M:21 MAN com/cg-intcode.b[473] CASE s_ls:.. 
+s_ls M:21 MAN com/cg-intcode.b[991] CASE s_ls:.. 
+s_lsect M:79 DEF bcplfecg.h[48] s_lsect=
+s_lshift M:30 DEF bcplfecg.h[33] s_lshift=
+s_lshift M:30 MAN com/cg-intcode.b[265] CASE s_lshift:.. 
+s_lshift M:30 MAN com/cg-intcode.b[474] CASE s_lshift:.. 
+s_lshift M:30 MAN com/cg-intcode.b[995] CASE s_lshift:.. 
+s_lstr M:100 DEF bcplfecg.h[56] s_lstr=
+s_lstr M:100 MAN com/cg-intcode.b[266] CASE s_lstr:.. 
+s_lstr M:100 MAN com/cg-intcode.b[394] CASE s_lstr:.. 
+s_lv M:7 DEF bcplfecg.h[26] s_lv=
+s_manifest M:67 DEF bcplfecg.h[43] s_manifest=
+s_minus M:18 DEF bcplfecg.h[29] s_minus=
+s_minus M:18 MAN com/cg-intcode.b[267] CASE s_minus:.. 
+s_minus M:18 MAN com/cg-intcode.b[472] CASE s_minus:.. 
+s_minus M:18 MAN com/cg-intcode.b[523] code(f_x,opcode(s_minus),m_n)
+s_minus M:18 MAN com/cg-intcode.b[988] CASE s_minus:.. 
+s_mthap M:28 DEF bcplfecg.h[32] s_mthap=
+s_mult M:14 DEF bcplfecg.h[29] s_mult=
+s_mult M:14 MAN com/cg-intcode.b[268] CASE s_mult:.. 
+s_mult M:14 MAN com/cg-intcode.b[471] CASE s_mult:.. 
+s_mult M:14 MAN com/cg-intcode.b[984] CASE s_mult:.. 
+s_name M:2 DEF bcplfecg.h[25] s_name=
+s_ne M:20 DEF bcplfecg.h[30] s_ne=
+s_ne M:20 MAN com/cg-intcode.b[269] CASE s_ne:.. 
+s_ne M:20 MAN com/cg-intcode.b[472] CASE s_ne:.. 
+s_ne M:20 MAN com/cg-intcode.b[990] CASE s_ne:.. 
+s_needs M:39 DEF bcplfecg.h[35] s_needs=
+s_needs M:39 MAN com/cg-intcode.b[359] CASE s_needs:.. 
+s_neg M:12 DEF bcplfecg.h[28] s_neg=
+s_neg M:12 MAN com/cg-intcode.b[270] CASE s_neg:.. 
+s_neg M:12 MAN com/cg-intcode.b[484] CASE s_neg:.. 
+s_neg M:12 MAN com/cg-intcode.b[981] CASE s_neg:.. 
+s_neqv M:35 DEF bcplfecg.h[34] s_neqv=
+s_neqv M:35 MAN com/cg-intcode.b[271] CASE s_neqv:.. 
+s_neqv M:35 MAN com/cg-intcode.b[475] CASE s_neqv:.. 
+s_neqv M:35 MAN com/cg-intcode.b[999] CASE s_neqv:.. 
+s_none M:95 DEF bcplfecg.h[53] s_none=
+s_none M:95 MAN com/cg-intcode.b[272] CASE s_none:.. 
+s_none M:95 MAN com/cg-intcode.b[353] CASE s_none:.. 
+s_not M:29 DEF bcplfecg.h[33] s_not=
+s_not M:29 MAN com/cg-intcode.b[273] CASE s_not:.. 
+s_not M:29 MAN com/cg-intcode.b[484] CASE s_not:.. 
+s_not M:29 MAN com/cg-intcode.b[982] CASE s_not:.. 
+s_number M:1 DEF bcplfecg.h[24] s_number=1
+s_of M:26 DEF bcplfecg.h[31] s_of=
+s_plus M:17 DEF bcplfecg.h[29] s_plus=
+s_plus M:17 MAN com/cg-intcode.b[274] CASE s_plus:.. 
+s_plus M:17 MAN com/cg-intcode.b[491] CASE s_plus:.. 
+s_plus M:17 MAN com/cg-intcode.b[987] CASE s_plus:.. 
+s_putbyte M:126 DEF bcplfecg.h[60] s_putbyte=
+s_putbyte M:126 MAN com/cg-intcode.b[1004] CASE s_putbyte:.. 
+s_putbyte M:126 MAN com/cg-intcode.b[275] CASE s_putbyte:.. 
+s_putbyte M:126 MAN com/cg-intcode.b[457] CASE s_putbyte:.. 
+s_putbyte M:126 MAN com/cg-intcode.b[466] code(f_x,opcode(s_putbyte),m_n)
+s_query M:11 DEF bcplfecg.h[27] s_query=
+s_query M:11 MAN com/cg-intcode.b[276] CASE s_query:.. 
+s_query M:11 MAN com/cg-intcode.b[549] CASE s_query:.. 
+s_rem M:16 DEF bcplfecg.h[29] s_rem=
+s_rem M:16 MAN com/cg-intcode.b[277] CASE s_rem:.. 
+s_rem M:16 MAN com/cg-intcode.b[471] CASE s_rem:.. 
+s_rem M:16 MAN com/cg-intcode.b[986] CASE s_rem:.. 
+s_repeat M:52 DEF bcplfecg.h[39] s_repeat=
+s_repeatuntil M:54 DEF bcplfecg.h[39] s_repeatuntil=
+s_repeatwhile M:53 DEF bcplfecg.h[39] s_repeatwhile=
+s_res M:121 DEF bcplfecg.h[59] s_res=
+s_res M:121 MAN com/cg-intcode.b[278] CASE s_res:.. 
+s_res M:121 MAN com/cg-intcode.b[616] CASE s_res:.. 
+s_resultis M:44 DEF bcplfecg.h[37] s_resultis=
+s_return M:58 DEF bcplfecg.h[41] s_return=
+s_rparen M:90 DEF bcplfecg.h[50] s_rparen=
+s_rsect M:80 DEF bcplfecg.h[48] s_rsect=
+s_rshift M:31 DEF bcplfecg.h[33] s_rshift=
+s_rshift M:31 MAN com/cg-intcode.b[279] CASE s_rshift:.. 
+s_rshift M:31 MAN com/cg-intcode.b[474] CASE s_rshift:.. 
+s_rshift M:31 MAN com/cg-intcode.b[996] CASE s_rshift:.. 
+s_rstack M:116 DEF bcplfecg.h[58] s_rstack=
+s_rstack M:116 MAN com/cg-intcode.b[280] CASE s_rstack:.. 
+s_rstack M:116 MAN com/cg-intcode.b[625] CASE s_rstack:.. 
+s_rtap M:42 DEF bcplfecg.h[37] s_rtap=
+s_rtap M:42 MAN com/cg-intcode.b[281] CASE s_rtap:.. 
+s_rtap M:42 MAN com/cg-intcode.b[591] CASE s_rtap:.. 
+s_rtdef M:75 DEF bcplfecg.h[45] s_rtdef=
+s_rtrn M:120 DEF bcplfecg.h[59] s_rtrn=
+s_rtrn M:120 MAN com/cg-intcode.b[282] CASE s_rtrn:.. 
+s_rtrn M:120 MAN com/cg-intcode.b[610] CASE s_rtrn:.. 
+s_rtrn M:120 MAN com/cg-intcode.b[612] code(f_x,opcode(s_rtrn),m_n)
+s_rtrn M:120 MAN com/cg-intcode.b[983] CASE s_rtrn:.. 
+s_rv M:8 DEF bcplfecg.h[26] s_rv=
+s_rv M:8 MAN com/cg-intcode.b[283] CASE s_rv:.. 
+s_rv M:8 MAN com/cg-intcode.b[484] CASE s_rv:.. 
+s_rv M:8 MAN com/cg-intcode.b[980] CASE s_rv:.. 
+s_save M:118 DEF bcplfecg.h[59] s_save=
+s_save M:118 MAN com/cg-intcode.b[284] CASE s_save:.. 
+s_save M:118 MAN com/cg-intcode.b[582] CASE s_save:.. 
+s_sbra M:91 DEF bcplfecg.h[50] s_sbra=
+s_section M:40 DEF bcplfecg.h[35] s_section=
+s_section M:40 MAN com/cg-intcode.b[1093] IF op=s_section DO ..
+s_section M:40 MAN com/cg-intcode.b[285] CASE s_section:.. 
+s_selld M:159 DEF bcplfecg.h[79] s_selld=
+s_selst M:160 DEF bcplfecg.h[79] s_selst=
+s_semicolon M:82 DEF bcplfecg.h[49] s_semicolon=
+s_seq M:64 DEF bcplfecg.h[43] s_seq=
+s_sg M:106 DEF bcplfecg.h[57] s_sg=
+s_sg M:106 MAN com/cg-intcode.b[286] CASE s_sg:.. 
+s_sg M:106 MAN com/cg-intcode.b[436] CASE s_sg:.. 
+s_sket M:92 DEF bcplfecg.h[50] s_sket=
+s_skip M:55 DEF bcplfecg.h[40] s_skip=
+s_sl M:107 DEF bcplfecg.h[57] s_sl=
+s_sl M:107 MAN com/cg-intcode.b[287] CASE s_sl:.. 
+s_sl M:107 MAN com/cg-intcode.b[443] CASE s_sl:.. 
+s_slct M:25 DEF bcplfecg.h[31] s_slct=
+s_sp M:105 DEF bcplfecg.h[57] s_sp=
+s_sp M:105 MAN com/cg-intcode.b[288] CASE s_sp:.. 
+s_sp M:105 MAN com/cg-intcode.b[429] CASE s_sp:.. 
+s_stack M:114 DEF bcplfecg.h[58] s_stack=
+s_stack M:114 MAN com/cg-intcode.b[289] CASE s_stack:.. 
+s_stack M:114 MAN com/cg-intcode.b[555] CASE s_stack:.. 
+s_static M:69 DEF bcplfecg.h[43] s_static=
+s_stind M:108 DEF bcplfecg.h[57] s_stind=
+s_stind M:108 MAN com/cg-intcode.b[290] CASE s_stind:.. 
+s_stind M:108 MAN com/cg-intcode.b[450] CASE s_stind:.. 
+s_store M:115 DEF bcplfecg.h[58] s_store=
+s_store M:115 MAN com/cg-intcode.b[291] CASE s_store:.. 
+s_store M:115 MAN com/cg-intcode.b[561] CASE s_store:.. 
+s_string M:3 DEF bcplfecg.h[25] s_string=
+s_switchon M:61 DEF bcplfecg.h[42] s_switchon=
+s_switchon M:61 MAN com/cg-intcode.b[1002] CASE s_switchon:.. 
+s_switchon M:61 MAN com/cg-intcode.b[292] CASE s_switchon:.. 
+s_switchon M:61 MAN com/cg-intcode.b[638] CASE s_switchon:.. 
+s_table M:38 DEF bcplfecg.h[34] s_table=
+s_test M:46 DEF bcplfecg.h[38] s_test=
+s_to M:84 DEF bcplfecg.h[49] s_to=
+s_true M:4 DEF bcplfecg.h[25] s_true=
+s_true M:4 MAN com/cg-intcode.b[293] CASE s_true:.. 
+s_true M:4 MAN com/cg-intcode.b[398] CASE s_true:.. 
+s_unless M:49 DEF bcplfecg.h[38] s_unless=
+s_until M:51 DEF bcplfecg.h[39] s_until=
+s_valdef M:70 DEF bcplfecg.h[44] s_valdef=
+s_valof M:6 DEF bcplfecg.h[26] s_valof=
+s_vec M:88 DEF bcplfecg.h[50] s_vec=
+s_vecap M:9 DEF bcplfecg.h[26] s_vecap=
+s_vecdef M:71 DEF bcplfecg.h[44] s_vecdef=
+s_while M:50 DEF bcplfecg.h[39] s_while=
+sardch G:36 DEF libhdr.h[51] sardch=36
+saveregs M:31 DEF libhdr.h[414] saveregs=31
+savespacesize G:219 DEF bcplfecg.h[123] savespacesize=
+sawrch G:37 DEF libhdr.h[52] sawrch=37
+sawritef G:95 DEF libhdr.h[111] sawritef=95
+scb_blength M:14 DEF libhdr.h[445] scb_blength=
+scb_block M:9 DEF libhdr.h[440] scb_block=
+scb_buf M:3 DEF libhdr.h[434] scb_buf=
+scb_bufend M:11 DEF libhdr.h[442] scb_bufend=
+scb_encoding M:19 DEF libhdr.h[455] scb_encoding=
+scb_end M:5 DEF libhdr.h[436] scb_end=
+scb_endfn M:8 DEF libhdr.h[439] scb_endfn=
+scb_fd M:16 DEF libhdr.h[447] scb_fd=
+scb_id M:0 DEF libhdr.h[431] scb_id=0
+scb_lblock M:12 DEF libhdr.h[443] scb_lblock=
+scb_ldata M:13 DEF libhdr.h[444] scb_ldata=
+scb_maxnamelen M:31 DEF libhdr.h[429] scb_maxnamelen=31
+scb_maxnamelen M:31 MAN libhdr.h[459] scb_nameeend=scb_name+scb_maxnamelen/bytesperword
+scb_name M:20 DEF libhdr.h[457] scb_name=
+scb_name M:20 MAN libhdr.h[459] scb_nameeend=scb_name+scb_maxnamelen/bytesperword
+scb_nameeend M:27 DEF libhdr.h[459] scb_nameeend=scb_name+scb_maxnamelen/bytesperword
+scb_pos M:4 DEF libhdr.h[435] scb_pos=
+scb_rdfn M:6 DEF libhdr.h[437] scb_rdfn=
+scb_reclen M:15 DEF libhdr.h[446] scb_reclen=
+scb_size M:28 DEF libhdr.h[462] scb_size=
+scb_size M:28 MAN libhdr.h[463] scb_upb=scb_size-1
+scb_task M:2 DEF libhdr.h[433] scb_task=
+scb_timeout M:17 DEF libhdr.h[448] scb_timeout=
+scb_timeoutact M:18 DEF libhdr.h[451] scb_timeoutact=
+scb_type M:1 DEF libhdr.h[432] scb_type=
+scb_upb M:27 DEF libhdr.h[463] scb_upb=scb_size-1
+scb_wrfn M:7 DEF libhdr.h[438] scb_wrfn=
+scb_write M:10 DEF libhdr.h[441] scb_write=
+scbt_console M:-1 DEF libhdr.h[425] scbt_console=-1
+scbt_file M:1 DEF libhdr.h[423] scbt_file=1
+scbt_mbx M:-2 DEF libhdr.h[426] scbt_mbx=-2
+scbt_net M:2 DEF libhdr.h[422] scbt_net=2
+scbt_ram M:0 DEF libhdr.h[424] scbt_ram=0
+scbt_tcp M:-3 DEF libhdr.h[427] scbt_tcp=-3
+sectword M:64991 DEF libhdr.h[234] sectword=64991
+selectinput G:56 DEF libhdr.h[71] selectinput=56
+selectoutput G:57 DEF libhdr.h[72] selectoutput=57
+selectoutput G:57 LG com/cg-intcode.b[1007] selectoutput(sysprint)
+selectoutput G:57 LG com/cg-intcode.b[1009] selectoutput(gostream)
+selectoutput G:57 LG com/cg-intcode.b[1086] selectoutput(gostream)
+selectoutput G:57 LG com/cg-intcode.b[1108] selectoutput(sysprint)
+selectoutput G:57 LG com/cg-intcode.b[348] selectoutput(sysprint)
+selectoutput G:57 LG com/cg-intcode.b[350] selectoutput(gostream)
+selectoutput G:57 LG com/cg-intcode.b[886] selectoutput(sysprint)
+selectoutput G:57 LG com/cg-intcode.b[888] selectoutput(gostream)
+selectoutput G:57 LG com/cg-intcode.b[899] selectoutput(sysprint)
+selectoutput G:57 LG com/cg-intcode.b[901] selectoutput(gostream)
+sendpkt G:165 DEF libhdr.h[186] sendpkt=165
+set_process_name G:175 DEF libhdr.h[194] set_process_name=175
+setbit G:112 DEF libhdr.h[128] setbit=112
+setbulk G:122 DEF libhdr.h[138] setbulk=122
+setflags G:156 DEF libhdr.h[178] setflags=156
+setlogname G:117 DEF libhdr.h[133] setlogname=117
+setrecordlength G:68 DEF libhdr.h[83] setrecordlength=68
+setseed G:35 DEF libhdr.h[50] setseed=35
+settimeout G:55 DEF libhdr.h[70] settimeout=55
+settimeoutact G:124 DEF libhdr.h[140] settimeoutact=124
+sf_div M:7 DEF bcplfecg.h[92] sf_div=
+sf_eqv M:15 DEF bcplfecg.h[100] sf_eqv=
+sf_fdiv M:3 DEF bcplfecg.h[88] sf_fdiv=
+sf_fminus M:5 DEF bcplfecg.h[90] sf_fminus=
+sf_fmult M:2 DEF bcplfecg.h[87] sf_fmult=
+sf_fplus M:4 DEF bcplfecg.h[89] sf_fplus=
+sf_logand M:13 DEF bcplfecg.h[98] sf_logand=
+sf_logor M:14 DEF bcplfecg.h[99] sf_logor=
+sf_lshift M:11 DEF bcplfecg.h[96] sf_lshift=
+sf_minus M:10 DEF bcplfecg.h[95] sf_minus=
+sf_mult M:6 DEF bcplfecg.h[91] sf_mult=
+sf_neqv M:16 DEF bcplfecg.h[101] sf_neqv=
+sf_none M:0 DEF bcplfecg.h[85] sf_none=0
+sf_plus M:9 DEF bcplfecg.h[94] sf_plus=
+sf_rem M:8 DEF bcplfecg.h[93] sf_rem=
+sf_rshift M:12 DEF bcplfecg.h[97] sf_rshift=
+sf_vecap M:1 DEF bcplfecg.h[86] sf_vecap=
+sfname G:209 DEF bcplfecg.h[115] sfname=
+sourcenamev G:240 DEF bcplfecg.h[144] sourcenamev=
+sourcestream G:236 DEF bcplfecg.h[142] sourcestream=
+splitname G:47 DEF libhdr.h[62] splitname=47
+srchwk G:150 DEF libhdr.h[172] srchwk=150
+ssp G:371 DEF com/cg-intcode.b[38] ssp=
+ssp G:371 LG com/cg-intcode.b[344] writef("IC-CG'AD_K=%s*n",statestr(state),ssp,...)
+ssp G:371 LG com/cg-intcode.b[454] ssp,state:=ssp-2,nil
+ssp G:371 LG com/cg-intcode.b[465] code(f_l,ssp-3,m_p)
+ssp G:371 LG com/cg-intcode.b[467] ssp:=ssp-3
+ssp G:371 LG com/cg-intcode.b[481] state,ssp:=ac,ssp-1
+ssp G:371 LG com/cg-intcode.b[495] state,ssp:=ac,ssp-1
+ssp G:371 LG com/cg-intcode.b[512] ssp,state:=ssp-1,nil
+ssp G:371 LG com/cg-intcode.b[525] ssp:=ssp-1
+ssp G:371 LG com/cg-intcode.b[530] ssp:=ssp-2
+ssp G:371 LG com/cg-intcode.b[538] ssp,state:=ssp-1,nil
+ssp G:371 LG com/cg-intcode.b[552] ssp:=ssp+1
+ssp G:371 LG com/cg-intcode.b[558] writef("*n// %s %n*n",opstr(op),ssp)
+ssp G:371 LG com/cg-intcode.b[584] writef("*n// %s %n*n",opstr(op),ssp)
+ssp G:371 LG com/cg-intcode.b[609] ssp:=ssp-1
+ssp G:371 LG com/cg-intcode.b[621] ssp,state:=ssp-1,nil
+ssp G:371 LG com/cg-intcode.b[646] ssp,state:=ssp-1,nil
+ssp G:371 LG com/cg-intcode.b[744] code(f_s,ssp-2,m_p)
+ssp G:371 LG com/cg-intcode.b[748] code(f_s,ssp-1,m_p)
+ssp G:371 LG com/cg-intcode.b[757] code(f_s,ssp-2,m_p)
+ssp G:371 LG com/cg-intcode.b[761] code(f_s,ssp-1,m_p)
+ssp G:371 LG com/cg-intcode.b[763] ad_a:=ssp-1
+ssp G:371 LG com/cg-intcode.b[773] code(f_l,ssp-1,m_ip)
+ssp G:371 LG com/cg-intcode.b[777] code(f_s,ssp-2,m_p)
+ssp G:371 LG com/cg-intcode.b[788] code(f_l,ssp-2,m_ip)
+ssp G:371 LG com/cg-intcode.b[792] code(f_s,ssp-1,m_p)
+ssp G:371 LG com/cg-intcode.b[794] code(f_l,ssp-2,m_ip)
+ssp G:371 LG com/cg-intcode.b[795] ad_a:=ssp-1
+ssp G:371 LG com/cg-intcode.b[810] code(f_l,ssp-1,m_ip)
+ssp G:371 LG com/cg-intcode.b[819] code(f_s,ssp-1,m_p)
+ssp G:371 LG com/cg-intcode.b[832] TEST ad_a=ssp-1&(ad_k=m_p|ad_k=m_ip) THEN .. ELSE ..
+ssp G:371 LG com/cg-intcode.b[834] code(f_s,ssp,m_p)
+ssp G:371 LG com/cg-intcode.b[836] code(f_s,ssp-2,m_p)
+ssp G:371 LG com/cg-intcode.b[837] code(f_l,ssp,m_p)
+ssp G:371 LG com/cg-intcode.b[840] code(f_s,ssp-1,m_p)
+ssp G:371 LG com/cg-intcode.b[842] code(f_s,ssp-2,m_p)
+ssp G:371 LG com/cg-intcode.b[846] ad_a:=ssp-2
+ssp G:371 LG com/cg-intcode.b[863] ssp:=ssp+1
+ssp G:371 LG com/cg-intcode.b[869] ssp,state:=ssp-1,nil
+ssp G:371 SG com/cg-intcode.b[1100] ssp,state:=2,nil
+ssp G:371 SG com/cg-intcode.b[454] ssp,state:=ssp-2,nil
+ssp G:371 SG com/cg-intcode.b[467] ssp:=ssp-3
+ssp G:371 SG com/cg-intcode.b[481] state,ssp:=ac,ssp-1
+ssp G:371 SG com/cg-intcode.b[495] state,ssp:=ac,ssp-1
+ssp G:371 SG com/cg-intcode.b[512] ssp,state:=ssp-1,nil
+ssp G:371 SG com/cg-intcode.b[525] ssp:=ssp-1
+ssp G:371 SG com/cg-intcode.b[530] ssp:=ssp-2
+ssp G:371 SG com/cg-intcode.b[538] ssp,state:=ssp-1,nil
+ssp G:371 SG com/cg-intcode.b[552] ssp:=ssp+1
+ssp G:371 SG com/cg-intcode.b[557] ssp:=rdn()
+ssp G:371 SG com/cg-intcode.b[583] ssp:=rdn()
+ssp G:371 SG com/cg-intcode.b[598] ssp:=k+1
+ssp G:371 SG com/cg-intcode.b[601] ssp:=k
+ssp G:371 SG com/cg-intcode.b[609] ssp:=ssp-1
+ssp G:371 SG com/cg-intcode.b[621] ssp,state:=ssp-1,nil
+ssp G:371 SG com/cg-intcode.b[629] ssp,state:=n+1,ac
+ssp G:371 SG com/cg-intcode.b[646] ssp,state:=ssp-1,nil
+ssp G:371 SG com/cg-intcode.b[863] ssp:=ssp+1
+ssp G:371 SG com/cg-intcode.b[869] ssp,state:=ssp-1,nil
+stackword M:#xABCD1234 DEF libhdr.h[232] stackword=#xABCD1234
+start G:1 DEF libhdr.h[16] start=1
+startco G:23 DEF libhdr.h[38] startco=23
+state G:372 DEF com/cg-intcode.b[39] state=
+state G:372 LG com/cg-intcode.b[344] writef("IC-CG'AD_K=%s*n",statestr(state),ssp,...)
+state G:372 LG com/cg-intcode.b[740] SWITCHON state INTO..
+state G:372 LG com/cg-intcode.b[753] SWITCHON state INTO..
+state G:372 LG com/cg-intcode.b[769] SWITCHON state INTO..
+state G:372 LG com/cg-intcode.b[784] SWITCHON state INTO..
+state G:372 LG com/cg-intcode.b[807] SWITCHON state INTO..
+state G:372 LG com/cg-intcode.b[850] SWITCHON state INTO..
+state G:372 SG com/cg-intcode.b[1100] ssp,state:=2,nil
+state G:372 SG com/cg-intcode.b[454] ssp,state:=ssp-2,nil
+state G:372 SG com/cg-intcode.b[468] state:=nil
+state G:372 SG com/cg-intcode.b[481] state,ssp:=ac,ssp-1
+state G:372 SG com/cg-intcode.b[495] state,ssp:=ac,ssp-1
+state G:372 SG com/cg-intcode.b[512] ssp,state:=ssp-1,nil
+state G:372 SG com/cg-intcode.b[524] state:=ac
+state G:372 SG com/cg-intcode.b[531] state:=nil
+state G:372 SG com/cg-intcode.b[538] ssp,state:=ssp-1,nil
+state G:372 SG com/cg-intcode.b[599] state:=ac
+state G:372 SG com/cg-intcode.b[602] state:=nil
+state G:372 SG com/cg-intcode.b[613] state:=nil
+state G:372 SG com/cg-intcode.b[621] ssp,state:=ssp-1,nil
+state G:372 SG com/cg-intcode.b[629] ssp,state:=n+1,ac
+state G:372 SG com/cg-intcode.b[646] ssp,state:=ssp-1,nil
+state G:372 SG com/cg-intcode.b[749] state:=nil
+state G:372 SG com/cg-intcode.b[765] state:=ad
+state G:372 SG com/cg-intcode.b[780] state:=ac
+state G:372 SG com/cg-intcode.b[797] state:=acad
+state G:372 SG com/cg-intcode.b[806] state:=acad
+state G:372 SG com/cg-intcode.b[838] state:=ac
+state G:372 SG com/cg-intcode.b[843] state:=nil
+state G:372 SG com/cg-intcode.b[856] state:=ad
+state G:372 SG com/cg-intcode.b[861] state:=acad
+state G:372 SG com/cg-intcode.b[869] ssp,state:=ssp-1,nil
+statestr F:22 FN com/cg-intcode.b[218] LET statestr(s)=..
+statestr F:22 LF com/cg-intcode.b[344] writef("IC-CG'AD_K=%s*n",statestr(state),ssp,...)
+stepstream G:67 DEF libhdr.h[82] stepstream=67
+stop G:2 DEF libhdr.h[17] stop=2
+storein G:394 DEF com/cg-intcode.b[64] storein=
+storein G:394 LG com/cg-intcode.b[432] storein(p,m_p)
+storein G:394 LG com/cg-intcode.b[439] storein(g,m_g)
+storein G:394 LG com/cg-intcode.b[446] storein(l,m_l)
+storein G:394 RT com/cg-intcode.b[866] LET storein(a,k)BE..
+str2numb G:101 DEF libhdr.h[117] str2numb=101
+string_to_dat G:111 DEF libhdr.h[127] string_to_dat=111
+string_to_number G:100 DEF libhdr.h[116] string_to_number=100
+swap G:392 DEF com/cg-intcode.b[62] swap=
+swap G:392 RT com/cg-intcode.b[802] LET swap()BE..
+sys G:3 DEF libhdr.h[18] sys=3
+sysabort G:29 DEF libhdr.h[44] sysabort=29
+sysprint G:237 DEF bcplfecg.h[142] sysprint=
+sysprint G:237 LG com/cg-intcode.b[1007] selectoutput(sysprint)
+sysprint G:237 LG com/cg-intcode.b[1108] selectoutput(sysprint)
+sysprint G:237 LG com/cg-intcode.b[348] selectoutput(sysprint)
+sysprint G:237 LG com/cg-intcode.b[886] selectoutput(sysprint)
+sysprint G:237 LG com/cg-intcode.b[899] selectoutput(sysprint)
+t_bhunk M:3000 DEF libhdr.h[228] t_bhunk=3000
+t_bhunk64 M:4000 DEF libhdr.h[229] t_bhunk64=4000
+t_end M:1002 DEF libhdr.h[224] t_end=1002
+t_end64 M:2002 DEF libhdr.h[227] t_end64=2002
+t_hunk M:1000 DEF libhdr.h[222] t_hunk=1000
+t_hunk64 M:2000 DEF libhdr.h[225] t_hunk64=2000
+t_reloc M:1001 DEF libhdr.h[223] t_reloc=1001
+t_reloc64 M:2001 DEF libhdr.h[226] t_reloc64=2001
+taskid G:152 DEF libhdr.h[174] taskid=152
+taskwait G:160 DEF libhdr.h[182] taskwait=160
+tcb G:151 DEF libhdr.h[173] tcb=151
+tcb_a M:11 DEF libhdr.h[549] tcb_a=tcb_regs
+tcb_active M:10 DEF libhdr.h[546] tcb_active=10
+tcb_b M:12 DEF libhdr.h[550] tcb_b=12
+tcb_c M:13 DEF libhdr.h[551] tcb_c=13
+tcb_count M:18 DEF libhdr.h[556] tcb_count=18
+tcb_flags M:5 DEF libhdr.h[541] tcb_flags=5
+tcb_g M:15 DEF libhdr.h[553] tcb_g=15
+tcb_gbase M:8 DEF libhdr.h[544] tcb_gbase=8
+tcb_link M:0 DEF libhdr.h[536] tcb_link=0
+tcb_namebase M:19 DEF libhdr.h[558] tcb_namebase=19
+tcb_namebase M:19 MAN libhdr.h[560] tcb_upb=tcb_namebase+15/bytesperword+1
+tcb_p M:14 DEF libhdr.h[552] tcb_p=14
+tcb_pc M:17 DEF libhdr.h[555] tcb_pc=17
+tcb_pri M:2 DEF libhdr.h[538] tcb_pri=2
+tcb_regs M:11 DEF libhdr.h[548] tcb_regs=11
+tcb_regs M:11 MAN libhdr.h[549] tcb_a=tcb_regs
+tcb_sbase M:9 DEF libhdr.h[545] tcb_sbase=9
+tcb_seglist M:7 DEF libhdr.h[543] tcb_seglist=7
+tcb_st M:16 DEF libhdr.h[554] tcb_st=16
+tcb_state M:4 DEF libhdr.h[540] tcb_state=4
+tcb_stsiz M:6 DEF libhdr.h[542] tcb_stsiz=6
+tcb_taskid M:1 DEF libhdr.h[537] tcb_taskid=1
+tcb_upb M:23 DEF libhdr.h[560] tcb_upb=tcb_namebase+15/bytesperword+1
+tcb_wkq M:3 DEF libhdr.h[539] tcb_wkq=3
+testbit G:113 DEF libhdr.h[129] testbit=113
+testflags G:157 DEF libhdr.h[179] testflags=157
+tg M:190 DEF libhdr.h[206] tg=190
+timeoutch M:-2 DEF libhdr.h[217] timeoutch=-2
+translate G:218 DEF bcplfecg.h[122] translate=
+treep G:205 DEF bcplfecg.h[108] treep=
+treevec G:206 DEF bcplfecg.h[108] treevec=
+trnerr G:217 DEF bcplfecg.h[121] trnerr=
+trng M:310 DEF bcplfecg.h[16] trng=feg+60
+trng M:310 MAN bcplfecg.h[17] cgg=trng+60
+ug M:200 DEF libhdr.h[207] ug=200
+ug M:200 MAN bcplfecg.h[13] intg=ug
+unhold G:159 DEF libhdr.h[181] unhold=159
+unloadseg G:106 DEF libhdr.h[122] unloadseg=106
+unpackstring G:31 DEF libhdr.h[46] unpackstring=31
+unrdch G:40 DEF libhdr.h[55] unrdch=40
+wr G:401 DEF com/cg-intcode.b[71] wr=
+wr G:401 LG com/cg-intcode.b[1036] wr(45)
+wr G:401 LG com/cg-intcode.b[1040] wr(n MOD 10+48)
+wr G:401 LG com/cg-intcode.b[1049] wr(45)
+wr G:401 LG com/cg-intcode.b[1050] wr(t!j+48)
+wr G:401 LG com/cg-intcode.b[1094] wr(10)
+wr G:401 LG com/cg-intcode.b[1097] wr(10)
+wr G:401 LG com/cg-intcode.b[360] wr(10)
+wr G:401 LG com/cg-intcode.b[363] wr(10)
+wr G:401 LG com/cg-intcode.b[574] wr(10)
+wr G:401 LG com/cg-intcode.b[575] wr(36)
+wr G:401 LG com/cg-intcode.b[577] wr(32)
+wr G:401 LG com/cg-intcode.b[657] wr(10)
+wr G:401 LG com/cg-intcode.b[659] wr(10)
+wr G:401 LG com/cg-intcode.b[661] wr(71)
+wr G:401 LG com/cg-intcode.b[663] wr(76)
+wr G:401 LG com/cg-intcode.b[665] wr(32)
+wr G:401 LG com/cg-intcode.b[667] wr(10)
+wr G:401 LG com/cg-intcode.b[668] wr(90)
+wr G:401 LG com/cg-intcode.b[669] wr(10)
+wr G:401 LG com/cg-intcode.b[940] wr(f)
+wr G:401 LG com/cg-intcode.b[942] wr(73)
+wr G:401 LG com/cg-intcode.b[945] wr(73)
+wr G:401 LG com/cg-intcode.b[946] wr(71)
+wr G:401 LG com/cg-intcode.b[949] wr(73)
+wr G:401 LG com/cg-intcode.b[950] wr(80)
+wr G:401 LG com/cg-intcode.b[952] wr(73)
+wr G:401 LG com/cg-intcode.b[953] wr(76)
+wr G:401 LG com/cg-intcode.b[957] wr(32)
+wr G:401 LG com/cg-intcode.b[964] wr(32)
+wr G:401 RT com/cg-intcode.b[1014] LET wr(ch)BE..
+wrch G:41 DEF libhdr.h[56] wrch=41
+wrch G:41 LG com/cg-intcode.b[1017] wrch(10)
+wrch G:41 LG com/cg-intcode.b[1023] wrch(47)
+wrch G:41 LG com/cg-intcode.b[1024] wrch(10)
+wrch G:41 LG com/cg-intcode.b[1029] wrch(ch)
+wrch G:41 LG com/cg-intcode.b[1096] wrch(rdn())
+wrch G:41 LG com/cg-intcode.b[362] wrch(rdn())
+wrdata G:403 DEF com/cg-intcode.b[73] wrdata=
+wrdata G:403 LG com/cg-intcode.b[658] wrdata(datav!i,datav!(i+1))
+wrdata G:403 RT com/cg-intcode.b[967] LET wrdata(k,n)BE..
+writed G:85 DEF libhdr.h[100] writed=85
+writef G:94 DEF libhdr.h[110] writef=94
+writef G:94 LG com/cg-intcode.b[1008] writef("IC-CG'n op %N*n",op)
+writef G:94 LG com/cg-intcode.b[1109] writef("Progr'n words*n",proglength)
+writef G:94 LG com/cg-intcode.b[344] writef("IC-CG'AD_K=%s*n",statestr(state),ssp,...)
+writef G:94 LG com/cg-intcode.b[349] writef("IC-CG'er:  %N*n",op)
+writef G:94 LG com/cg-intcode.b[355] writef("*n// %s*n",opstr(op))
+writef G:94 LG com/cg-intcode.b[368] writef("*n// %s P%n*n",opstr(op),p)
+writef G:94 LG com/cg-intcode.b[375] writef("*n// %s G%n*n",opstr(op),g)
+writef G:94 LG com/cg-intcode.b[382] writef("*n// %s L%n*n",opstr(op),l)
+writef G:94 LG com/cg-intcode.b[389] writef("*n// %s %n*n",opstr(op),n)
+writef G:94 LG com/cg-intcode.b[399] writef("*n// %s*n",opstr(op))
+writef G:94 LG com/cg-intcode.b[404] writef("*n// %s*n",opstr(op))
+writef G:94 LG com/cg-intcode.b[410] writef("*n// %s P%n*n",opstr(op),p)
+writef G:94 LG com/cg-intcode.b[417] writef("*n// %s G%n*n",opstr(op),g)
+writef G:94 LG com/cg-intcode.b[424] writef("*n// %s L%n*n",opstr(op),l)
+writef G:94 LG com/cg-intcode.b[431] writef("*n// %s P%n*n",opstr(op),p)
+writef G:94 LG com/cg-intcode.b[438] writef("*n// %s G%n*n",opstr(op),g)
+writef G:94 LG com/cg-intcode.b[445] writef("*n// %s L%n*n",opstr(op),l)
+writef G:94 LG com/cg-intcode.b[451] writef("*n// %s*n",opstr(op))
+writef G:94 LG com/cg-intcode.b[463] writef("*n// %s*n",opstr(op))
+writef G:94 LG com/cg-intcode.b[477] writef("*n// %s*n",opstr(op))
+writef G:94 LG com/cg-intcode.b[486] writef("*n// %s*n",opstr(op))
+writef G:94 LG com/cg-intcode.b[492] writef("*n// %s*n",opstr(op))
+writef G:94 LG com/cg-intcode.b[500] writef("*n// %s L%n*n",opstr(op),l)
+writef G:94 LG com/cg-intcode.b[509] writef("*n// %s L%n*n",opstr(op),l)
+writef G:94 LG com/cg-intcode.b[520] writef("*n// %s*n",opstr(op))
+writef G:94 LG com/cg-intcode.b[535] writef("*n// %s*n",opstr(op))
+writef G:94 LG com/cg-intcode.b[543] writef("*n// %s L%n*n",opstr(op),l)
+writef G:94 LG com/cg-intcode.b[550] writef("*n// %s*n",opstr(op))
+writef G:94 LG com/cg-intcode.b[558] writef("*n// %s %n*n",opstr(op),ssp)
+writef G:94 LG com/cg-intcode.b[562] writef("*n// %s*n",opstr(op))
+writef G:94 LG com/cg-intcode.b[570] writef("*n// %s L%n %n",opstr(op),l,n)
+writef G:94 LG com/cg-intcode.b[571] writef(" %n",rdn())
+writef G:94 LG com/cg-intcode.b[584] writef("*n// %s %n*n",opstr(op),ssp)
+writef G:94 LG com/cg-intcode.b[588] writef("*n// %s*n",opstr(op))
+writef G:94 LG com/cg-intcode.b[594] writef("*n// %s %n*n",opstr(op),k)
+writef G:94 LG com/cg-intcode.b[611] writef("*n// %s*n",opstr(op))
+writef G:94 LG com/cg-intcode.b[618] writef("*n// %s L%n*n",opstr(op),l)
+writef G:94 LG com/cg-intcode.b[627] writef("*n// %s %n*n",opstr(op),n)
+writef G:94 LG com/cg-intcode.b[634] writef("*n// %s*n",opstr(op))
+writef G:94 LG com/cg-intcode.b[641] writef("*n// %s %n L%n*n",opstr(op),n,d)
+writef G:94 LG com/cg-intcode.b[656] writef("*n// %s %n*n",opstr(op),n)
+writef G:94 LG com/cg-intcode.b[874] writef("*n// %s %n*n",opstr(op),n)
+writef G:94 LG com/cg-intcode.b[911] writef("check'mber=%n*n",maxlab,labnumber)
+writehex G:87 DEF libhdr.h[102] writehex=87
+writen G:86 DEF libhdr.h[101] writen=86
+writeoct G:88 DEF libhdr.h[103] writeoct=88
+writes G:89 DEF libhdr.h[104] writes=89
+writes G:89 LG com/cg-intcode.b[1075] writes("cg-in'pt 2012*n")
+writes G:89 LG com/cg-intcode.b[1095] writes("/ SECTION ")
+writes G:89 LG com/cg-intcode.b[361] writes("/ NEEDS ")
+writes G:89 LG com/cg-intcode.b[887] writes("IC-CG'nstants*n")
+writes G:89 LG com/cg-intcode.b[900] writes("IC-CG'els (!)*n")
+writet G:90 DEF libhdr.h[105] writet=90
+writeu G:91 DEF libhdr.h[106] writeu=91
+writewords G:45 DEF libhdr.h[60] writewords=45
+writez G:92 DEF libhdr.h[107] writez=92
+wrk G:402 DEF com/cg-intcode.b[72] wrk=
+wrk G:402 LG com/cg-intcode.b[1039] wrk(n/10)
+wrk G:402 LG com/cg-intcode.b[662] wrk(rdn())
+wrk G:402 LG com/cg-intcode.b[664] wrk(rdl())
+wrk G:402 LG com/cg-intcode.b[956] wrk(a)
+wrk G:402 LG com/cg-intcode.b[963] wrk(n)
+wrk G:402 RT com/cg-intcode.b[1034] LET wrk(n)BE..
+wrn G:216 DEF bcplfecg.h[119] wrn=
+wrn1 F:285 RT com/cg-intcode.b[1043] LET wrn1(n)BE..
+xrefing G:227 DEF bcplfecg.h[132] xrefing=

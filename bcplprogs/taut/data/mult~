@@ -1,0 +1,133 @@
+/*
+This fragment of program constructs test data for a tautology checker.
+It declares some relations over 5 boolean variables that
+correspond to the circuit for 3-bit x 3-bit => 6-bit multiplier
+
+The operands and result (in binary) are
+         a2 a1 a0 x b2 b1 b0 => r5 r4 r3 r2 r1 r0
+ eg       0  1  1  x 1  0  1  => 0  0  1  1  1  1
+
+The terms include a test to see if 15 (=001111) can be factorised.
+
+The circuit uses the relations:
+
+and  (?, ?, c, d, c&d)
+adder(a, b, c, a XOR b XOR c, (a+b+c)>1)
+eq   (?, ?, ?, d, d)
+
+The circuit is as follows:
+
+and(?, ?, a0, b0, s00)
+and(?, ?, a1, b0, s10)
+and(?, ?, a2, b0, s20)
+and(?, ?, a0, b1, s01)
+and(?, ?, a1, b1, s11)
+and(?, ?, a2, b1, s21)
+and(?, ?, a0, b2, s02)
+and(?, ?, a1, b2, s12)
+and(?, ?, a2, b2, s22)
+
+                                    s20  0        s10  0        s00  0
+                                     |   |         |   |         |   |
+                                     -----         -----         -----
+                            ---c20--|adder|<-c10--|adder|<-c00--|adder|<--0
+                           |         -----         -----         -----
+                           |             |r20          |r10          |r00
+                      s21  |        s11  |        s01  |             |
+                       |   |         |   |         |   |             |
+                       -----         -----         -----             |
+              ---c21--|adder|<-c11--|adder|<-c01--|adder|<--0        |
+             |         -----         -----         -----             |
+             |             |r21          |r11          |r01          |
+        s22  |        s12  |        s02  |             |             |
+         |   |         |   |         |   |             |             |
+         -----         -----         -----             |             |
+ --c22--|adder|<-c12--|adder|<-c02--|adder|<--0        |             |
+|        -----         -----         -----             |             |
+|            |r22          |r12          |r02          |             |
+|            |             |             |             |             |
+r5           r4            r3            r2            r1            r0
+
+adder(s00,   0,   0,  r0, c00)
+adder(s10,   0, c00, r10, c10)
+adder(s20,   0, c10, r20, c20)
+
+adder(s01, r10,   0,  r1, c01)
+adder(s11, r20, c01, r11, c11)
+adder(s21, c20, c11, r21, c21)
+
+adder(s02, r11,   0,  r2, c02)
+adder(s12, r21, c02,  r3, c12)
+adder(s22, c21, c12 , r4,  r5)
+*/
+
+MANIFEST {
+ // The variables
+
+ F=0; T=1
+ a0; a1; a2
+ b0; b1; b2
+ r0; r1; r2; r3; r3; r5
+ s00; s01; s02
+ s10; s11; s12
+ s20; s21; s22
+ c00; c01; c02
+ c10; c11; c12
+ c20; c21; c22
+ r00; r01; r02
+ r10; r11; r12
+ r20; r21; r22
+
+ // The relations
+
+  Eq     = 1 << #b000_0_0 |
+           1 << #b000_1_1
+
+  And    = 1 << #b00_00_0 |
+           1 << #b00_01_0 |
+           1 << #b00_01_0 |
+           1 << #b00_11_1
+
+  Adder  = 1 << #b000_0_0 |
+           1 << #b001_1_0 |
+           1 << #b010_1_0 |
+           1 << #b011_0_1 |
+           1 << #b100_1_0 |
+           1 << #b101_0_1 |
+           1 << #b110_0_1 |
+           1 << #b111_1_1
+}
+
+LET mkterms() BE
+{ mkterm(And, 0, 0, a0, b0, s00)
+  mkterm(And, 0, 0, a1, b0, s10)
+  mkterm(And, 0, 0, a2, b0, s20)
+  mkterm(And, 0, 0, a0, b1, s01)
+  mkterm(And, 0, 0, a1, b1, s11)
+  mkterm(And, 0, 0, a2, b1, s21)
+  mkterm(And, 0, 0, a0, b2, s02)
+  mkterm(And, 0, 0, a1, b2, s12)
+  mkterm(And, 0, 0, a2, b2, s22)
+
+  mkterm(Adder, s00,   0,   0,  r0, c00)
+  mkterm(Adder, s10,   0, c00, r10, c10)
+  mkterm(Adder, s20,   0, c10, r20, c20)
+
+  mkterm(Adder, s01, r10,   0,  r1, c01)
+  mkterm(Adder, s11, r20, c01, r11, c11)
+  mkterm(Adder, s21, c20, c11, r21, c21)
+
+  mkterm(Adder, s02, r11,   0,  r2, c02)
+  mkterm(Adder, s12, r21, c02,  r3, c12)
+  mkterm(Adder, s22, c21, c12 , r4,  r5)
+
+  // Set the answer to 15 (= 001111)
+  mkterm(Eq,      0,   0,   0,   0,  r5)
+  mkterm(Eq,      0,   0,   0,   0,  r4)
+  mkterm(Eq,      0,   0,   0,   1,  r3)
+  mkterm(Eq,      0,   0,   0,   1,  r2)
+  mkterm(Eq,      0,   0,   0,   1,  r1)
+  mkterm(Eq,      0,   0,   0,   1,  r0)
+}
+
+// If these terms can be simultaneously satisfied the 15 can be factorised.

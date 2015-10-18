@@ -1,0 +1,2414 @@
+And M:27 DEF com/pal70.b[60] And=
+And M:27 MAN com/pal70.b[1140] CASE And:.. 
+And M:27 MAN com/pal70.b[1275] CASE And:.. 
+And M:27 MAN com/pal70.b[1621] CASE And:.. 
+And M:27 MAN com/pal70.b[1686] CASE And:.. 
+And M:27 MAN com/pal70.b[1723] CASE And:.. 
+And M:27 MAN com/pal70.b[1758] CASE And:.. 
+And M:27 MAN com/pal70.b[1786] CASE And:.. 
+And M:27 MAN com/pal70.b[1837] h1!x=And|h1!x=Comma->h2!x,1
+And M:27 MAN com/pal70.b[425] dsw("and",And)
+And M:27 MAN com/pal70.b[779] CASE And:.. 
+And M:27 MAN com/pal70.b[784] WHILE token=And DO ..
+And M:27 MAN com/pal70.b[790] a!0,a!1,a!2:=And,i+1,b
+Apply M:53 DEF com/pal70.b[70] Apply=
+Apply M:53 MAN com/pal70.b[1013] a:=mk4(Apply,b,a,ln)
+Apply M:53 MAN com/pal70.b[1141] CASE Apply:.. 
+Apply M:53 MAN com/pal70.b[1270] CASE Apply:.. 
+Apply M:53 MAN com/pal70.b[1402] CASE Apply:.. 
+Apply M:53 MAN com/pal70.b[1405] outf(Apply)
+Apply M:53 MAN com/pal70.b[934] a:=mk4(Apply,a,...,ln)
+Apply M:53 MAN com/pal70.b[946] a:=mk4(Apply,a,b,ln)
+Ass M:19 DEF com/pal70.b[56] Ass=
+Ass M:19 MAN com/pal70.b[1061] IF token=Ass DO ..
+Ass M:19 MAN com/pal70.b[1061] RESULTIS mk4(Ass,a,...,ln)
+Ass M:19 MAN com/pal70.b[1139] CASE Ass:.. 
+Ass M:19 MAN com/pal70.b[1270] CASE Ass:.. 
+Ass M:19 MAN com/pal70.b[1529] CASE Ass:.. 
+Ass M:19 MAN com/pal70.b[368] token:=Ass
+Aug M:39 DEF com/pal70.b[67] Aug=
+Aug M:39 MAN com/pal70.b[1142] CASE Aug:.. 
+Aug M:39 MAN com/pal70.b[1267] CASE Aug:.. 
+Aug M:39 MAN com/pal70.b[1394] CASE Aug:.. 
+Aug M:39 MAN com/pal70.b[1397] outf(Aug)
+Aug M:39 MAN com/pal70.b[426] dsw("aug",Aug)
+Aug M:39 MAN com/pal70.b[965] CASE Aug:.. 
+Aug M:39 MAN com/pal70.b[967] a:=mk4(Aug,a,...,ln)
+B2Wsh M:2 DEF libhdr.h[153] B2Wsh=2
+B2Wsh M:2 MAN libhdr.h[159] bytesperword=1<<B2Wsh
+Bar M:1 DEF com/pal70.b[50] Bar=1
+Bar M:1 MAN com/pal70.b[1143] CASE Bar:.. 
+Bar M:1 MAN com/pal70.b[327] token:=Bar
+Bar M:1 MAN com/pal70.b[973] checkfor(Bar,"Bad c'pression")
+Blocklink M:80 DEF com/pal70.b[80] Blocklink=
+Blocklink M:80 MAN com/pal70.b[1144] CASE Blocklink:.. 
+Blocklink M:80 MAN com/pal70.b[1370] outfl(Blocklink,lab1)
+Blocklink M:80 MAN com/pal70.b[1649] outfl(Blocklink,lab1)
+CloseObj M:1 DEF libhdr.h[204] CloseObj=1
+Colon M:21 DEF com/pal70.b[57] Colon=
+Colon M:21 MAN com/pal70.b[1043] CASE Colon:.. 
+Colon M:21 MAN com/pal70.b[1046] a:=mk5(Colon,a,...,...)
+Colon M:21 MAN com/pal70.b[1145] CASE Colon:.. 
+Colon M:21 MAN com/pal70.b[1259] CASE Colon:.. 
+Colon M:21 MAN com/pal70.b[1447] CASE Colon:.. 
+Colon M:21 MAN com/pal70.b[1586] CASE Colon:.. 
+Colon M:21 MAN com/pal70.b[369] token:=Colon
+Comma M:24 DEF com/pal70.b[59] Comma=
+Comma M:24 MAN com/pal70.b[1012] a:=mk4(Comma,2,a,...)
+Comma M:24 MAN com/pal70.b[1146] CASE Comma:.. 
+Comma M:24 MAN com/pal70.b[1275] CASE Comma:.. 
+Comma M:24 MAN com/pal70.b[1423] CASE Comma:.. 
+Comma M:24 MAN com/pal70.b[1680] CASE Comma:.. 
+Comma M:24 MAN com/pal70.b[1724] CASE Comma:.. 
+Comma M:24 MAN com/pal70.b[1759] CASE Comma:.. 
+Comma M:24 MAN com/pal70.b[1795] CASE Comma:.. 
+Comma M:24 MAN com/pal70.b[1837] h1!x=And|h1!x=Comma->h2!x,1
+Comma M:24 MAN com/pal70.b[325] token:=Comma
+Comma M:24 MAN com/pal70.b[721] IF token=Comma DO ..
+Comma M:24 MAN com/pal70.b[826] UNLESS token=Comma DO ..
+Comma M:24 MAN com/pal70.b[827] WHILE token=Comma DO ..
+Comma M:24 MAN com/pal70.b[834] h1!a,h2!a,h3!a:=Comma,i,b
+Comma M:24 MAN com/pal70.b[949] CASE Comma:.. 
+Comma M:24 MAN com/pal70.b[953] WHILE token=Comma DO ..
+Comma M:24 MAN com/pal70.b[959] a!0,a!1,a!2:=Comma,i,b
+Cond M:23 DEF com/pal70.b[58] Cond=
+Cond M:23 MAN com/pal70.b[1106] RESULTIS mk5(Cond,a,b,...)
+Cond M:23 MAN com/pal70.b[1111] RESULTIS mk5(Cond,a,...,...)
+Cond M:23 MAN com/pal70.b[1122] RESULTIS mk5(Cond,a,...,...)
+Cond M:23 MAN com/pal70.b[1147] CASE Cond:.. 
+Cond M:23 MAN com/pal70.b[1262] CASE Cond:.. 
+Cond M:23 MAN com/pal70.b[1498] CASE Cond:.. 
+Cond M:23 MAN com/pal70.b[1596] CASE Cond:.. 
+Cond M:23 MAN com/pal70.b[363] token:=Cond
+Cond M:23 MAN com/pal70.b[970] CASE Cond:.. 
+Cond M:23 MAN com/pal70.b[974] a:=mk5(Cond,a,b,...)
+Decllabel M:78 DEF com/pal70.b[80] Decllabel=
+Decllabel M:78 MAN com/pal70.b[1148] CASE Decllabel:.. 
+Decllabel M:78 MAN com/pal70.b[1589] outfsl(Decllabel,h2!x,lab)
+Declname M:74 DEF com/pal70.b[79] Declname=
+Declname M:74 MAN com/pal70.b[1149] CASE Declname:.. 
+Declname M:74 MAN com/pal70.b[1472] outf(Declname)
+Declname M:74 MAN com/pal70.b[1675] outf(Declname)
+Declname M:74 MAN com/pal70.b[1755] outf(Declname)
+Declnames M:75 DEF com/pal70.b[79] Declnames=
+Declnames M:75 MAN com/pal70.b[1150] CASE Declnames:.. 
+Declnames M:75 MAN com/pal70.b[1681] outfn(Declnames,length(x))
+Def M:12 DEF com/pal70.b[55] Def=
+Def M:12 MAN com/pal70.b[1151] CASE Def:.. 
+Def M:12 MAN com/pal70.b[1271] CASE Def:.. 
+Def M:12 MAN com/pal70.b[1377] CASE Def:.. 
+Def M:12 MAN com/pal70.b[427] dsw("def",Def)
+Def M:12 MAN com/pal70.b[686] CASE Def:.. 
+Def M:12 MAN com/pal70.b[688] a:=mk4(Def,d,...,ln)
+Div M:49 DEF com/pal70.b[69] Div=
+Div M:49 MAN com/pal70.b[1152] CASE Div:.. 
+Div M:49 MAN com/pal70.b[1265] CASE Div:.. 
+Div M:49 MAN com/pal70.b[1384] CASE Div:.. 
+Div M:49 MAN com/pal70.b[344] token:=Div
+Div M:49 MAN com/pal70.b[997] CASE Div:.. 
+Do M:11 DEF com/pal70.b[52] Do=
+Do M:11 MAN com/pal70.b[1120] checkfor(Do,"'do' expected")
+Do M:11 MAN com/pal70.b[1153] CASE Do:.. 
+Do M:11 MAN com/pal70.b[428] dsw("do",Do)
+Dot M:4 DEF com/pal70.b[50] Dot=
+Dot M:4 MAN com/pal70.b[1083] checkfor(Dot,"'.' m'onstruct")
+Dot M:4 MAN com/pal70.b[1154] CASE Dot:.. 
+Dot M:4 MAN com/pal70.b[332] token:=Dot
+Dummy M:88 DEF com/pal70.b[85] Dummy=
+Dummy M:88 MAN com/pal70.b[1155] CASE Dummy:.. 
+Dummy M:88 MAN com/pal70.b[1293] CASE Dummy:.. 
+Dummy M:88 MAN com/pal70.b[1524] outf(Dummy)
+Dummy M:88 MAN com/pal70.b[1546] CASE Dummy:.. 
+Dummy M:88 MAN com/pal70.b[429] dsw("dummy",Dummy)
+Eof M:2 DEF com/pal70.b[50] Eof=
+Eof M:2 MAN com/pal70.b[1156] CASE Eof:.. 
+Eof M:2 MAN com/pal70.b[395] token:=Eof
+Eof M:2 MAN com/pal70.b[635] IF token=Eof DO ..
+Eof M:2 MAN com/pal70.b[641] UNLESS token=Eof DO ..
+Eof M:2 MAN com/pal70.b[683] CASE Eof:.. 
+Eof M:2 MAN com/pal70.b[696] UNLESS token=Eof DO ..
+Eq M:42 DEF com/pal70.b[68] Eq=
+Eq M:42 MAN com/pal70.b[1157] CASE Eq:.. 
+Eq M:42 MAN com/pal70.b[1266] CASE Eq:.. 
+Eq M:42 MAN com/pal70.b[1385] CASE Eq:.. 
+Eq M:42 MAN com/pal70.b[432] dsw("eq",Eq)
+Eq M:42 MAN com/pal70.b[987] CASE Eq:.. 
+Equ M:87 DEF com/pal70.b[82] Equ=
+False M:91 DEF com/pal70.b[85] False=
+False M:91 MAN com/pal70.b[1160] CASE False:.. 
+False M:91 MAN com/pal70.b[1291] CASE False:.. 
+False M:91 MAN com/pal70.b[1548] CASE False:.. 
+False M:91 MAN com/pal70.b[433] dsw("false",False)
+False M:91 MAN com/pal70.b[864] CASE False:.. 
+False M:91 MAN com/pal70.b[929] CASE False:.. 
+FormClosure M:63 DEF com/pal70.b[75] FormClosure=
+FormClosure M:63 MAN com/pal70.b[1161] CASE FormClosure:.. 
+FormClosure M:63 MAN com/pal70.b[1437] outfl(FormClosure,lab1)
+FormLvalue M:64 DEF com/pal70.b[75] FormLvalue=
+FormLvalue M:64 MAN com/pal70.b[1162] CASE FormLvalue:.. 
+FormLvalue M:64 MAN com/pal70.b[1354] outf(FormLvalue)
+FormLvalue M:64 MAN com/pal70.b[1391] outf(FormLvalue)
+FormLvalue M:64 MAN com/pal70.b[1399] outf(FormLvalue)
+FormLvalue M:64 MAN com/pal70.b[1415] outf(FormLvalue)
+FormLvalue M:64 MAN com/pal70.b[1420] outf(FormLvalue)
+FormLvalue M:64 MAN com/pal70.b[1429] outf(FormLvalue)
+FormLvalue M:64 MAN com/pal70.b[1443] outf(FormLvalue)
+FormLvalue M:64 MAN com/pal70.b[1471] outf(FormLvalue)
+FormLvalue M:64 MAN com/pal70.b[1525] outf(FormLvalue)
+FormLvalue M:64 MAN com/pal70.b[1536] outf(FormLvalue)
+FormLvalue M:64 MAN com/pal70.b[1552] outf(FormLvalue)
+FormLvalue M:64 MAN com/pal70.b[1575] outf(FormLvalue)
+FormLvalue M:64 MAN com/pal70.b[1626] outf(FormLvalue)
+FormLvalue M:64 MAN com/pal70.b[1720] outf(FormLvalue)
+FormLvalue M:64 MAN com/pal70.b[1729] outf(FormLvalue)
+FormRvalue M:65 DEF com/pal70.b[75] FormRvalue=
+FormRvalue M:65 MAN com/pal70.b[1163] CASE FormRvalue:.. 
+FormRvalue M:65 MAN com/pal70.b[1407] outf(FormRvalue)
+FormRvalue M:65 MAN com/pal70.b[1482] outf(FormRvalue)
+GB2312 M:-2 DEF libhdr.h[438] GB2312=-2
+Ge M:47 DEF com/pal70.b[68] Ge=
+Ge M:47 MAN com/pal70.b[1164] CASE Ge:.. 
+Ge M:47 MAN com/pal70.b[1266] CASE Ge:.. 
+Ge M:47 MAN com/pal70.b[1385] CASE Ge:.. 
+Ge M:47 MAN com/pal70.b[353] token:=Ge
+Ge M:47 MAN com/pal70.b[436] dsw("ge",Ge)
+Ge M:47 MAN com/pal70.b[987] CASE Ge:.. 
+Goto M:31 DEF com/pal70.b[64] Goto=
+Goto M:31 MAN com/pal70.b[1126] CASE Goto:.. 
+Goto M:31 MAN com/pal70.b[1127] RESULTIS mk3(Goto,rnexp(38),ln)
+Goto M:31 MAN com/pal70.b[1165] CASE Goto:.. 
+Goto M:31 MAN com/pal70.b[1285] CASE Goto:.. 
+Goto M:31 MAN com/pal70.b[1492] CASE Goto:.. 
+Goto M:31 MAN com/pal70.b[1494] outf(Goto)
+Goto M:31 MAN com/pal70.b[437] dsw("goto",Goto)
+Gt M:46 DEF com/pal70.b[68] Gt=
+Gt M:46 MAN com/pal70.b[1166] CASE Gt:.. 
+Gt M:46 MAN com/pal70.b[1266] CASE Gt:.. 
+Gt M:46 MAN com/pal70.b[1385] CASE Gt:.. 
+Gt M:46 MAN com/pal70.b[354] token:=Gt
+Gt M:46 MAN com/pal70.b[438] dsw("gt",Gt)
+Gt M:46 MAN com/pal70.b[987] CASE Gt:.. 
+Halt M:83 DEF com/pal70.b[81] Halt=
+Halt M:83 MAN com/pal70.b[1167] CASE Halt:.. 
+Halt M:83 MAN com/pal70.b[1336] outf(Halt)
+Halt M:83 MAN com/pal70.b[1987] CASE Halt:.. 
+If M:17 DEF com/pal70.b[56] If=
+If M:17 MAN com/pal70.b[1116] CASE If:.. 
+If M:17 MAN com/pal70.b[1121] TEST op=If THEN .. ELSE ..
+If M:17 MAN com/pal70.b[1168] CASE If:.. 
+If M:17 MAN com/pal70.b[1272] CASE If:.. 
+If M:17 MAN com/pal70.b[439] dsw("if",If)
+Ifnot M:10 DEF com/pal70.b[52] Ifnot=
+Ifnot M:10 MAN com/pal70.b[1105] checkfor(Ifnot,"'ifno'expected")
+Ifnot M:10 MAN com/pal70.b[1108] CASE Ifnot:.. 
+Ifnot M:10 MAN com/pal70.b[1158] CASE Ifnot:.. 
+Ifnot M:10 MAN com/pal70.b[431] dsw("else",Ifnot)
+Ifnot M:10 MAN com/pal70.b[440] dsw("ifnot",Ifnot)
+Ifso M:9 DEF com/pal70.b[52] Ifso=
+Ifso M:9 MAN com/pal70.b[1103] CASE Ifso:.. 
+Ifso M:9 MAN com/pal70.b[1110] checkfor(Ifso,"'ifno'expected")
+Ifso M:9 MAN com/pal70.b[1220] CASE Ifso:.. 
+Ifso M:9 MAN com/pal70.b[441] dsw("ifso",Ifso)
+In M:7 DEF com/pal70.b[51] In=
+In M:7 MAN com/pal70.b[1068] checkfor(In,"'in' 'onstruct")
+In M:7 MAN com/pal70.b[1169] CASE In:.. 
+In M:7 MAN com/pal70.b[442] dsw("in",In)
+In M:7 MAN com/pal70.b[692] CASE In:.. 
+InitObj M:0 DEF libhdr.h[203] InitObj=0
+Initname M:76 DEF com/pal70.b[79] Initname=
+Initname M:76 MAN com/pal70.b[1170] CASE Initname:.. 
+Initname M:76 MAN com/pal70.b[1782] outf(Initname)
+Initnames M:77 DEF com/pal70.b[79] Initnames=
+Initnames M:77 MAN com/pal70.b[1171] CASE Initnames:.. 
+Initnames M:77 MAN com/pal70.b[1790] outfn(Initnames,len)
+Initnames M:77 MAN com/pal70.b[1797] outfn(Initnames,len)
+Int M:92 DEF com/pal70.b[85] Int=
+Int M:92 MAN com/pal70.b[1172] CASE Int:.. 
+Int M:92 MAN com/pal70.b[1243] CASE Int:.. 
+Int M:92 MAN com/pal70.b[1561] CASE Int:.. 
+Int M:92 MAN com/pal70.b[484] Int,0,FALSE
+Int M:92 MAN com/pal70.b[493] TEST tok=Int THEN .. ELSE ..
+Int M:92 MAN com/pal70.b[500] TEST tok=Int THEN .. ELSE ..
+Int M:92 MAN com/pal70.b[621] IF token=Int DO ..
+Int M:92 MAN com/pal70.b[882] CASE Int:.. 
+Int M:92 MAN com/pal70.b[883] a:=mk2(Int,lexval)
+Int M:92 MAN com/pal70.b[903] TEST h1!a=Int|h1!a=Real THEN .. ELSE ..
+Int M:92 MAN com/pal70.b[930] CASE Int:.. 
+Integer M:84 DEF com/pal70.b[82] Integer=
+Jj M:89 DEF com/pal70.b[85] Jj=
+Jj M:89 MAN com/pal70.b[1173] CASE Jj:.. 
+Jj M:89 MAN com/pal70.b[1470] outf(Jj)
+Jump M:67 DEF com/pal70.b[77] Jump=
+Jump M:67 MAN com/pal70.b[1174] CASE Jump:.. 
+Jump M:67 MAN com/pal70.b[1439] outfl(Jump,lab2)
+Jump M:67 MAN com/pal70.b[1505] outfl(Jump,lab2)
+Jump M:67 MAN com/pal70.b[1522] outfl(Jump,lab2)
+JumpF M:68 DEF com/pal70.b[77] JumpF=
+JumpF M:68 MAN com/pal70.b[1175] CASE JumpF:.. 
+JumpF M:68 MAN com/pal70.b[1502] outfl(JumpF,lab1)
+JumpF M:68 MAN com/pal70.b[1518] outfl(JumpF,lab1)
+Lab M:85 DEF com/pal70.b[82] Lab=
+Lab M:85 MAN com/pal70.b[1176] CASE Lab:.. 
+Lab M:85 MAN com/pal70.b[1269] CASE Lab:.. 
+Lambda M:14 DEF com/pal70.b[55] Lambda=
+Lambda M:14 MAN com/pal70.b[1072] CASE Lambda:.. 
+Lambda M:14 MAN com/pal70.b[1087] a:=mk4(Lambda,v!i,a,ln)
+Lambda M:14 MAN com/pal70.b[1177] CASE Lambda:.. 
+Lambda M:14 MAN com/pal70.b[1270] CASE Lambda:.. 
+Lambda M:14 MAN com/pal70.b[1433] CASE Lambda:.. 
+Lambda M:14 MAN com/pal70.b[435] dsw("fn",Lambda)
+Lambda M:14 MAN com/pal70.b[744] b:=mk4(Lambda,v!i,b,ln)
+Le M:45 DEF com/pal70.b[68] Le=
+Le M:45 MAN com/pal70.b[1178] CASE Le:.. 
+Le M:45 MAN com/pal70.b[1266] CASE Le:.. 
+Le M:45 MAN com/pal70.b[1385] CASE Le:.. 
+Le M:45 MAN com/pal70.b[348] token:=Le
+Le M:45 MAN com/pal70.b[444] dsw("le",Le)
+Le M:45 MAN com/pal70.b[987] CASE Le:.. 
+Let M:13 DEF com/pal70.b[55] Let=
+Let M:13 MAN com/pal70.b[1065] CASE Let:.. 
+Let M:13 MAN com/pal70.b[1069] RESULTIS mk4(Let,a,...,ln)
+Let M:13 MAN com/pal70.b[1179] CASE Let:.. 
+Let M:13 MAN com/pal70.b[1268] CASE Let:.. 
+Let M:13 MAN com/pal70.b[1365] CASE Let:.. 
+Let M:13 MAN com/pal70.b[445] dsw("let",Let)
+LoadE M:56 DEF com/pal70.b[73] LoadE=
+LoadE M:56 MAN com/pal70.b[1180] CASE LoadE:.. 
+LoadE M:56 MAN com/pal70.b[1635] outf(LoadE)
+LoadF M:59 DEF com/pal70.b[73] LoadF=
+LoadF M:59 MAN com/pal70.b[1181] CASE LoadF:.. 
+LoadF M:59 MAN com/pal70.b[1567] outfn(LoadF,h2!x,h3!x)
+LoadGuess M:62 DEF com/pal70.b[74] LoadGuess=
+LoadGuess M:62 MAN com/pal70.b[1182] CASE LoadGuess:.. 
+LoadGuess M:62 MAN com/pal70.b[1753] outf(LoadGuess)
+LoadJ M:60 DEF com/pal70.b[73] LoadJ=
+LoadJ M:60 MAN com/pal70.b[1183] CASE LoadJ:.. 
+LoadL M:54 DEF com/pal70.b[73] LoadL=
+LoadL M:54 MAN com/pal70.b[1184] CASE LoadL:.. 
+LoadL M:54 MAN com/pal70.b[1556] outf(mode=Val->LoadR,LoadL)
+LoadN M:58 DEF com/pal70.b[73] LoadN=
+LoadN M:58 MAN com/pal70.b[1185] CASE LoadN:.. 
+LoadN M:58 MAN com/pal70.b[1562] outfn(LoadN,h2!x)
+LoadR M:55 DEF com/pal70.b[73] LoadR=
+LoadR M:55 MAN com/pal70.b[1186] CASE LoadR:.. 
+LoadR M:55 MAN com/pal70.b[1556] outf(mode=Val->LoadR,LoadL)
+LoadR M:55 MAN com/pal70.b[1718] outf(LoadR)
+LoadS M:57 DEF com/pal70.b[73] LoadS=
+LoadS M:57 MAN com/pal70.b[1187] CASE LoadS:.. 
+LoadS M:57 MAN com/pal70.b[1572] outf(LoadS)
+Logand M:41 DEF com/pal70.b[67] Logand=
+Logand M:41 MAN com/pal70.b[1188] CASE Logand:.. 
+Logand M:41 MAN com/pal70.b[1267] CASE Logand:.. 
+Logand M:41 MAN com/pal70.b[1386] CASE Logand:.. 
+Logand M:41 MAN com/pal70.b[326] token:=Logand
+Logand M:41 MAN com/pal70.b[447] dsw("logand",Logand)
+Logand M:41 MAN com/pal70.b[982] CASE Logand:.. 
+Logor M:40 DEF com/pal70.b[67] Logor=
+Logor M:40 MAN com/pal70.b[1189] CASE Logor:.. 
+Logor M:40 MAN com/pal70.b[1267] CASE Logor:.. 
+Logor M:40 MAN com/pal70.b[1386] CASE Logor:.. 
+Logor M:40 MAN com/pal70.b[453] dsw("or",Logor)
+Logor M:40 MAN com/pal70.b[977] CASE Logor:.. 
+Lose1 M:72 DEF com/pal70.b[78] Lose1=
+Lose1 M:72 MAN com/pal70.b[1190] CASE Lose1:.. 
+Lose1 M:72 MAN com/pal70.b[1457] outf(Lose1)
+Lose1 M:72 MAN com/pal70.b[1521] outf(Lose1)
+Lparen M:5 DEF com/pal70.b[51] Lparen=
+Lparen M:5 MAN com/pal70.b[1078] UNLESS token=Lparen|token=Name DO ..
+Lparen M:5 MAN com/pal70.b[1191] CASE Lparen:.. 
+Lparen M:5 MAN com/pal70.b[320] token:=Lparen
+Lparen M:5 MAN com/pal70.b[736] UNLESS token=Lparen|token=Name DO ..
+Lparen M:5 MAN com/pal70.b[750] CASE Lparen:.. 
+Lparen M:5 MAN com/pal70.b[808] checkfor(Lparen,"'(' expected")
+Lparen M:5 MAN com/pal70.b[873] CASE Lparen:.. 
+Lparen M:5 MAN com/pal70.b[937] CASE Lparen:.. 
+Lt M:44 DEF com/pal70.b[68] Lt=
+Lt M:44 MAN com/pal70.b[1192] CASE Lt:.. 
+Lt M:44 MAN com/pal70.b[1266] CASE Lt:.. 
+Lt M:44 MAN com/pal70.b[1385] CASE Lt:.. 
+Lt M:44 MAN com/pal70.b[349] token:=Lt
+Lt M:44 MAN com/pal70.b[448] dsw("lt",Lt)
+Lt M:44 MAN com/pal70.b[987] CASE Lt:.. 
+Members M:66 DEF com/pal70.b[76] Members=
+Members M:66 MAN com/pal70.b[1193] CASE Members:.. 
+Members M:66 MAN com/pal70.b[1688] outfn(Members,len)
+Members M:66 MAN com/pal70.b[1788] outfn(Members,len)
+Minus M:38 DEF com/pal70.b[66] Minus=
+Minus M:38 MAN com/pal70.b[1194] CASE Minus:.. 
+Minus M:38 MAN com/pal70.b[1265] CASE Minus:.. 
+Minus M:38 MAN com/pal70.b[1384] CASE Minus:.. 
+Minus M:38 MAN com/pal70.b[364] token:=Minus
+Minus M:38 MAN com/pal70.b[900] CASE Minus:.. 
+Minus M:38 MAN com/pal70.b[992] CASE Minus:.. 
+Mpt M:29 DEF com/pal70.b[61] Mpt=
+Mpt M:29 MAN com/pal70.b[1195] CASE Mpt:.. 
+Mpt M:29 MAN com/pal70.b[1292] CASE Mpt:.. 
+Mpt M:29 MAN com/pal70.b[1703] CASE Mpt:.. 
+Mpt M:29 MAN com/pal70.b[615] mptnode:=mk1(Mpt)
+Mult M:48 DEF com/pal70.b[69] Mult=
+Mult M:48 MAN com/pal70.b[1196] CASE Mult:.. 
+Mult M:48 MAN com/pal70.b[1265] CASE Mult:.. 
+Mult M:48 MAN com/pal70.b[1384] CASE Mult:.. 
+Mult M:48 MAN com/pal70.b[336] token:=Mult
+Mult M:48 MAN com/pal70.b[997] CASE Mult:.. 
+Name M:36 DEF com/pal70.b[65] Name=
+Name M:36 MAN com/pal70.b[1010] UNLESS token=Name DO ..
+Name M:36 MAN com/pal70.b[1044] UNLESS h1!a=Name&n<=8 DO ..
+Name M:36 MAN com/pal70.b[1078] UNLESS token=Lparen|token=Name DO ..
+Name M:36 MAN com/pal70.b[1197] CASE Name:.. 
+Name M:36 MAN com/pal70.b[1245] CASE Name:.. 
+Name M:36 MAN com/pal70.b[1473] outname(Name,0,"**RES**")
+Name M:36 MAN com/pal70.b[1555] CASE Name:.. 
+Name M:36 MAN com/pal70.b[1674] CASE Name:.. 
+Name M:36 MAN com/pal70.b[1717] CASE Name:.. 
+Name M:36 MAN com/pal70.b[1752] CASE Name:.. 
+Name M:36 MAN com/pal70.b[1781] CASE Name:.. 
+Name M:36 MAN com/pal70.b[414] h1!wordnode,h2!wordnode:=Name,nametable!hashval
+Name M:36 MAN com/pal70.b[623] IF token=Name DO ..
+Name M:36 MAN com/pal70.b[717] CASE Name:.. 
+Name M:36 MAN com/pal70.b[736] UNLESS token=Lparen|token=Name DO ..
+Name M:36 MAN com/pal70.b[807] IF token=Name DO ..
+Name M:36 MAN com/pal70.b[822] UNLESS token=Name DO ..
+Name M:36 MAN com/pal70.b[829] UNLESS token=Name DO ..
+Name M:36 MAN com/pal70.b[841] checkfor(Name,"Name expected")
+Name M:36 MAN com/pal70.b[865] CASE Name:.. 
+Name M:36 MAN com/pal70.b[933] CASE Name:.. 
+Ne M:43 DEF com/pal70.b[68] Ne=
+Ne M:43 MAN com/pal70.b[1198] CASE Ne:.. 
+Ne M:43 MAN com/pal70.b[1266] CASE Ne:.. 
+Ne M:43 MAN com/pal70.b[1385] CASE Ne:.. 
+Ne M:43 MAN com/pal70.b[358] token:=Ne
+Ne M:43 MAN com/pal70.b[449] dsw("ne",Ne)
+Ne M:43 MAN com/pal70.b[987] CASE Ne:.. 
+Neg M:52 DEF com/pal70.b[70] Neg=
+Neg M:52 MAN com/pal70.b[1199] CASE Neg:.. 
+Neg M:52 MAN com/pal70.b[1411] CASE Neg:.. 
+Neg M:52 MAN com/pal70.b[905] a:=mk2(Neg,a)
+Nil M:34 DEF com/pal70.b[65] Nil=
+Nil M:34 MAN com/pal70.b[1200] CASE Nil:.. 
+Nil M:34 MAN com/pal70.b[1292] CASE Nil:.. 
+Nil M:34 MAN com/pal70.b[1352] outf(Nil)
+Nil M:34 MAN com/pal70.b[1545] CASE Nil:.. 
+Nil M:34 MAN com/pal70.b[450] dsw("nil",Nil)
+Nil M:34 MAN com/pal70.b[866] CASE Nil:.. 
+Nil M:34 MAN com/pal70.b[927] CASE Nil:.. 
+Noshare M:22 DEF com/pal70.b[58] Noshare=
+Noshare M:22 MAN com/pal70.b[1223] CASE Noshare:.. 
+Noshare M:22 MAN com/pal70.b[1282] CASE Noshare:.. 
+Noshare M:22 MAN com/pal70.b[1418] CASE Noshare:.. 
+Noshare M:22 MAN com/pal70.b[331] token:=Noshare
+Noshare M:22 MAN com/pal70.b[892] CASE Noshare:.. 
+Not M:33 DEF com/pal70.b[65] Not=
+Not M:33 MAN com/pal70.b[1201] CASE Not:.. 
+Not M:33 MAN com/pal70.b[1412] CASE Not:.. 
+Not M:33 MAN com/pal70.b[359] token:=Not
+Not M:33 MAN com/pal70.b[452] dsw("not",Not)
+Not M:33 MAN com/pal70.b[908] CASE Not:.. 
+Not M:33 MAN com/pal70.b[910] RESULTIS mk2(Not,rnexp(26))
+Number M:95 DEF com/pal70.b[86] Number=
+Param M:86 DEF com/pal70.b[82] Param=
+Paren M:30 DEF com/pal70.b[61] Paren=
+Paren M:30 MAN com/pal70.b[1202] CASE Paren:.. 
+Paren M:30 MAN com/pal70.b[1288] CASE Paren:.. 
+Paren M:30 MAN com/pal70.b[1540] CASE Paren:.. 
+Paren M:30 MAN com/pal70.b[1593] CASE Paren:.. 
+Paren M:30 MAN com/pal70.b[879] a:=mk3(Paren,a,ln)
+Percent M:8 DEF com/pal70.b[51] Percent=
+Percent M:8 MAN com/pal70.b[1007] CASE Percent:.. 
+Percent M:8 MAN com/pal70.b[1203] CASE Percent:.. 
+Percent M:8 MAN com/pal70.b[1262] CASE Percent:.. 
+Percent M:8 MAN com/pal70.b[323] token:=Percent
+Plus M:37 DEF com/pal70.b[66] Plus=
+Plus M:37 MAN com/pal70.b[1204] CASE Plus:.. 
+Plus M:37 MAN com/pal70.b[1265] CASE Plus:.. 
+Plus M:37 MAN com/pal70.b[1384] CASE Plus:.. 
+Plus M:37 MAN com/pal70.b[324] token:=Plus
+Plus M:37 MAN com/pal70.b[896] CASE Plus:.. 
+Plus M:37 MAN com/pal70.b[992] CASE Plus:.. 
+Pos M:51 DEF com/pal70.b[70] Pos=
+Pos M:51 MAN com/pal70.b[1410] CASE Pos:.. 
+Power M:50 DEF com/pal70.b[69] Power=
+Power M:50 MAN com/pal70.b[1002] CASE Power:.. 
+Power M:50 MAN com/pal70.b[1159] CASE Power:.. 
+Power M:50 MAN com/pal70.b[1265] CASE Power:.. 
+Power M:50 MAN com/pal70.b[1384] CASE Power:.. 
+Power M:50 MAN com/pal70.b[329] token:=Power
+Power M:50 MAN com/pal70.b[335] token:=Power
+Real M:93 DEF com/pal70.b[85] Real=
+Real M:93 MAN com/pal70.b[1205] CASE Real:.. 
+Real M:93 MAN com/pal70.b[1244] CASE Real:.. 
+Real M:93 MAN com/pal70.b[1566] CASE Real:.. 
+Real M:93 MAN com/pal70.b[508] IF tok=Real DO ..
+Real M:93 MAN com/pal70.b[509] tok,ok:=Real,FALSE
+Real M:93 MAN com/pal70.b[514] TEST tok=Real THEN .. ELSE ..
+Real M:93 MAN com/pal70.b[622] IF token=Real DO ..
+Real M:93 MAN com/pal70.b[887] CASE Real:.. 
+Real M:93 MAN com/pal70.b[888] a:=mk3(Real,lexval,exponent)
+Real M:93 MAN com/pal70.b[903] TEST h1!a=Int|h1!a=Real THEN .. ELSE ..
+Real M:93 MAN com/pal70.b[931] CASE Real:.. 
+Rec M:26 DEF com/pal70.b[60] Rec=
+Rec M:26 MAN com/pal70.b[1206] CASE Rec:.. 
+Rec M:26 MAN com/pal70.b[1283] CASE Rec:.. 
+Rec M:26 MAN com/pal70.b[1634] CASE Rec:.. 
+Rec M:26 MAN com/pal70.b[1694] CASE Rec:.. 
+Rec M:26 MAN com/pal70.b[1733] CASE Rec:.. 
+Rec M:26 MAN com/pal70.b[1763] CASE Rec:.. 
+Rec M:26 MAN com/pal70.b[1803] CASE Rec:.. 
+Rec M:26 MAN com/pal70.b[454] dsw("rec",Rec)
+Rec M:26 MAN com/pal70.b[756] CASE Rec:.. 
+Rec M:26 MAN com/pal70.b[759] RESULTIS mk3(Rec,rnbdef(2),ln)
+Ref M:1 DEF com/pal70.b[89] Ref=
+Ref M:1 MAN com/pal70.b[1354] IF mode=Ref DO ..
+Ref M:1 MAN com/pal70.b[1391] IF mode=Ref DO ..
+Ref M:1 MAN com/pal70.b[1395] trans(h3!x,Ref)
+Ref M:1 MAN com/pal70.b[1399] IF mode=Ref DO ..
+Ref M:1 MAN com/pal70.b[1403] trans(h3!x,Ref)
+Ref M:1 MAN com/pal70.b[1404] trans(h2!x,Ref)
+Ref M:1 MAN com/pal70.b[1415] IF mode=Ref DO ..
+Ref M:1 MAN com/pal70.b[1420] IF mode=Ref DO ..
+Ref M:1 MAN com/pal70.b[1425] trans(x,Ref)
+Ref M:1 MAN com/pal70.b[1429] IF mode=Ref DO ..
+Ref M:1 MAN com/pal70.b[1441] transscope(x,lab3,Ref)
+Ref M:1 MAN com/pal70.b[1443] IF mode=Ref DO ..
+Ref M:1 MAN com/pal70.b[1475] trans(h2!x,Ref)
+Ref M:1 MAN com/pal70.b[1487] trans(h2!x,Ref)
+Ref M:1 MAN com/pal70.b[1525] IF mode=Ref DO ..
+Ref M:1 MAN com/pal70.b[1532] trans(h2!x,Ref)
+Ref M:1 MAN com/pal70.b[1536] IF mode=Ref DO ..
+Ref M:1 MAN com/pal70.b[1552] IF mode=Ref DO ..
+Ref M:1 MAN com/pal70.b[1575] IF mode=Ref DO ..
+Ref M:1 MAN com/pal70.b[1631] trans(h3!x,Ref)
+Res M:32 DEF com/pal70.b[64] Res=
+Res M:32 MAN com/pal70.b[1129] CASE Res:.. 
+Res M:32 MAN com/pal70.b[1130] RESULTIS mk3(Res,rnexp(14),ln)
+Res M:32 MAN com/pal70.b[1207] CASE Res:.. 
+Res M:32 MAN com/pal70.b[1286] CASE Res:.. 
+Res M:32 MAN com/pal70.b[1486] CASE Res:.. 
+Res M:32 MAN com/pal70.b[1488] outf(Res)
+Res M:32 MAN com/pal70.b[455] dsw("res",Res)
+Reslink M:81 DEF com/pal70.b[80] Reslink=
+Reslink M:81 MAN com/pal70.b[1208] CASE Reslink:.. 
+Reslink M:81 MAN com/pal70.b[1464] outfl(Reslink,lab1)
+RestoreE1 M:61 DEF com/pal70.b[74] RestoreE1=
+RestoreE1 M:61 MAN com/pal70.b[1209] CASE RestoreE1:.. 
+RestoreE1 M:61 MAN com/pal70.b[1641] outf(RestoreE1)
+Return M:70 DEF com/pal70.b[77] Return=
+Return M:70 MAN com/pal70.b[1210] CASE Return:.. 
+Return M:70 MAN com/pal70.b[1476] outf(Return)
+Return M:70 MAN com/pal70.b[1656] outf(Return)
+Return M:70 MAN com/pal70.b[1821] outf(Return)
+Rparen M:6 DEF com/pal70.b[51] Rparen=
+Rparen M:6 MAN com/pal70.b[1211] CASE Rparen:.. 
+Rparen M:6 MAN com/pal70.b[322] token:=Rparen
+Rparen M:6 MAN com/pal70.b[752] checkfor(Rparen,"Bad definition")
+Rparen M:6 MAN com/pal70.b[809] IF token=Rparen DO ..
+Rparen M:6 MAN com/pal70.b[814] checkfor(Rparen,"Bad b'ble list")
+Rparen M:6 MAN com/pal70.b[875] TEST token=Rparen THEN .. ELSE ..
+Rparen M:6 MAN com/pal70.b[878] checkfor(Rparen,"')' missing")
+Rparen M:6 MAN com/pal70.b[939] IF token=Rparen DO ..
+Rparen M:6 MAN com/pal70.b[945] checkfor(Rparen,"')' expected")
+Save M:69 DEF com/pal70.b[77] Save=
+Save M:69 MAN com/pal70.b[1212] CASE Save:.. 
+Save M:69 MAN com/pal70.b[1469] outfl(Save,lab2)
+Save M:69 MAN com/pal70.b[1653] outfl(Save,lab2)
+Save M:69 MAN com/pal70.b[1817] outfn(Save,n)
+Seq M:20 DEF com/pal70.b[57] Seq=
+Seq M:20 MAN com/pal70.b[1033] CASE Seq:.. 
+Seq M:20 MAN com/pal70.b[1035] a:=mk4(Seq,a,...,ln)
+Seq M:20 MAN com/pal70.b[1213] CASE Seq:.. 
+Seq M:20 MAN com/pal70.b[1271] CASE Seq:.. 
+Seq M:20 MAN com/pal70.b[1455] CASE Seq:.. 
+Seq M:20 MAN com/pal70.b[1603] CASE Seq:.. 
+Seq M:20 MAN com/pal70.b[330] token:=Seq
+SetlabEs M:79 DEF com/pal70.b[80] SetlabEs=
+SetlabEs M:79 MAN com/pal70.b[1214] CASE SetlabEs:.. 
+SetlabEs M:79 MAN com/pal70.b[1611] outf(SetlabEs,n)
+Setup M:82 DEF com/pal70.b[81] Setup=
+Setup M:82 MAN com/pal70.b[1215] CASE Setup:.. 
+Setup M:82 MAN com/pal70.b[1330] outfl(Setup,n)
+Stringconst M:35 DEF com/pal70.b[65] Stringconst=
+Stringconst M:35 MAN com/pal70.b[1216] CASE Stringconst:.. 
+Stringconst M:35 MAN com/pal70.b[1246] CASE Stringconst:.. 
+Stringconst M:35 MAN com/pal70.b[1571] CASE Stringconst:.. 
+Stringconst M:35 MAN com/pal70.b[1862] outfn(Stringconst,len)
+Stringconst M:35 MAN com/pal70.b[384] h1!wordnode:=Stringconst
+Stringconst M:35 MAN com/pal70.b[386] token:=Stringconst
+Stringconst M:35 MAN com/pal70.b[624] IF token=Stringconst DO ..
+Stringconst M:35 MAN com/pal70.b[867] CASE Stringconst:.. 
+Stringconst M:35 MAN com/pal70.b[932] CASE Stringconst:.. 
+Sys M:94 DEF com/pal70.b[85] Sys=
+Sys M:94 MAN com/pal70.b[1217] CASE Sys:.. 
+Sys M:94 MAN com/pal70.b[1287] CASE Sys:.. 
+Sys M:94 MAN com/pal70.b[1549] CASE Sys:.. 
+Sys M:94 MAN com/pal70.b[457] dsw("sys",Sys)
+Sys M:94 MAN com/pal70.b[868] CASE Sys:.. 
+Sys_atom M:19 DEF com/pal70.b[110] Sys_atom=
+Sys_buttons M:56 DEF libhdr.h[344] Sys_buttons=56
+Sys_callc M:59 DEF libhdr.h[347] Sys_callc=59
+Sys_callnative M:53 DEF libhdr.h[341] Sys_callnative=53
+Sys_close M:16 DEF libhdr.h[308] Sys_close=16
+Sys_conc M:11 DEF com/pal70.b[102] Sys_conc=
+Sys_cputime M:30 DEF libhdr.h[320] Sys_cputime=30
+Sys_datstamp M:44 DEF libhdr.h[332] Sys_datstamp=44
+Sys_delay M:57 DEF libhdr.h[345] Sys_delay=57
+Sys_deletefile M:17 DEF libhdr.h[309] Sys_deletefile=17
+Sys_devcom M:43 DEF libhdr.h[331] Sys_devcom=43
+Sys_dumpmem M:52 DEF libhdr.h[340] Sys_dumpmem=52
+Sys_filemodtime M:31 DEF libhdr.h[321] Sys_filemodtime=31
+Sys_filesize M:46 DEF libhdr.h[334] Sys_filesize=46
+Sys_flt M:63 DEF libhdr.h[352] Sys_flt=63
+Sys_freevec M:22 DEF libhdr.h[313] Sys_freevec=22
+Sys_getpid M:51 DEF libhdr.h[339] Sys_getpid=51
+Sys_getprefix M:33 DEF libhdr.h[323] Sys_getprefix=33
+Sys_getsysval M:48 DEF libhdr.h[336] Sys_getsysval=48
+Sys_gettrval M:62 DEF libhdr.h[351] Sys_gettrval=62
+Sys_getvec M:21 DEF libhdr.h[312] Sys_getvec=21
+Sys_globin M:24 DEF libhdr.h[315] Sys_globin=24
+Sys_graphics M:34 DEF libhdr.h[324] Sys_graphics=34
+Sys_inc M:55 DEF libhdr.h[343] Sys_inc=55
+Sys_interpret M:7 DEF libhdr.h[300] Sys_interpret=7
+Sys_intflag M:28 DEF libhdr.h[318] Sys_intflag=28
+Sys_isboolean M:1 DEF com/pal70.b[92] Sys_isboolean=1
+Sys_isfunction M:3 DEF com/pal70.b[94] Sys_isfunction=
+Sys_isinteger M:8 DEF com/pal70.b[99] Sys_isinteger=
+Sys_islabel M:5 DEF com/pal70.b[96] Sys_islabel=
+Sys_isprogramclosure M:4 DEF com/pal70.b[95] Sys_isprogramclosure=
+Sys_isreal M:7 DEF com/pal70.b[98] Sys_isreal=
+Sys_isstring M:2 DEF com/pal70.b[93] Sys_isstring=
+Sys_istuple M:6 DEF com/pal70.b[97] Sys_istuple=
+Sys_itor M:12 DEF com/pal70.b[103] Sys_itor=
+Sys_loadseg M:23 DEF libhdr.h[314] Sys_loadseg=23
+Sys_lockirq M:41 DEF libhdr.h[329] Sys_lockirq=41
+Sys_lookupinj M:15 DEF com/pal70.b[106] Sys_lookupinj=
+Sys_muldiv M:26 DEF libhdr.h[317] Sys_muldiv=26
+Sys_null M:20 DEF com/pal70.b[111] Sys_null=
+Sys_openread M:14 DEF libhdr.h[306] Sys_openread=14
+Sys_openreadwrite M:47 DEF libhdr.h[335] Sys_openreadwrite=47
+Sys_openwrite M:15 DEF libhdr.h[307] Sys_openwrite=15
+Sys_order M:16 DEF com/pal70.b[107] Sys_order=
+Sys_platform M:54 DEF libhdr.h[342] Sys_platform=54
+Sys_print M:17 DEF com/pal70.b[108] Sys_print=
+Sys_putsysval M:49 DEF libhdr.h[337] Sys_putsysval=49
+Sys_quit M:0 DEF libhdr.h[293] Sys_quit=0
+Sys_read M:12 DEF libhdr.h[304] Sys_read=12
+Sys_readch M:18 DEF com/pal70.b[109] Sys_readch=
+Sys_renamefile M:18 DEF libhdr.h[310] Sys_renamefile=18
+Sys_rti M:1 DEF libhdr.h[294] Sys_rti=1
+Sys_rtoi M:13 DEF com/pal70.b[104] Sys_rtoi=
+Sys_sardch M:10 DEF libhdr.h[302] Sys_sardch=10
+Sys_saveregs M:2 DEF libhdr.h[295] Sys_saveregs=2
+Sys_sawrch M:11 DEF libhdr.h[303] Sys_sawrch=11
+Sys_seek M:38 DEF libhdr.h[326] Sys_seek=38
+Sys_setcount M:-1 DEF libhdr.h[292] Sys_setcount=-1
+Sys_setprefix M:32 DEF libhdr.h[322] Sys_setprefix=32
+Sys_setraster M:29 DEF libhdr.h[319] Sys_setraster=29
+Sys_setst M:3 DEF libhdr.h[296] Sys_setst=3
+Sys_settrcount M:61 DEF libhdr.h[350] Sys_settrcount=61
+Sys_share M:21 DEF com/pal70.b[112] Sys_share=
+Sys_shellcom M:50 DEF libhdr.h[338] Sys_shellcom=50
+Sys_sound M:58 DEF libhdr.h[346] Sys_sound=58
+Sys_stem M:9 DEF com/pal70.b[100] Sys_stem=
+Sys_stern M:10 DEF com/pal70.b[101] Sys_stern=
+Sys_stoi M:14 DEF com/pal70.b[105] Sys_stoi=
+Sys_tally M:6 DEF libhdr.h[299] Sys_tally=6
+Sys_tell M:39 DEF libhdr.h[327] Sys_tell=39
+Sys_tracing M:4 DEF libhdr.h[297] Sys_tracing=4
+Sys_trpush M:60 DEF libhdr.h[349] Sys_trpush=60
+Sys_unloadseg M:25 DEF libhdr.h[316] Sys_unloadseg=25
+Sys_unlockirq M:42 DEF libhdr.h[330] Sys_unlockirq=42
+Sys_waitirq M:40 DEF libhdr.h[328] Sys_waitirq=40
+Sys_watch M:5 DEF libhdr.h[298] Sys_watch=5
+Sys_write M:13 DEF libhdr.h[305] Sys_write=13
+Test M:16 DEF com/pal70.b[55] Test=
+Test M:16 MAN com/pal70.b[1096] CASE Test:.. 
+Test M:16 MAN com/pal70.b[1218] CASE Test:.. 
+Test M:16 MAN com/pal70.b[1262] CASE Test:.. 
+Test M:16 MAN com/pal70.b[458] dsw("test",Test)
+TestEmpty M:71 DEF com/pal70.b[78] TestEmpty=
+TestEmpty M:71 MAN com/pal70.b[1219] CASE TestEmpty:.. 
+TestEmpty M:71 MAN com/pal70.b[1704] outf(TestEmpty)
+True M:90 DEF com/pal70.b[85] True=
+True M:90 MAN com/pal70.b[1221] CASE True:.. 
+True M:90 MAN com/pal70.b[1291] CASE True:.. 
+True M:90 MAN com/pal70.b[1547] CASE True:.. 
+True M:90 MAN com/pal70.b[460] dsw("true",True)
+True M:90 MAN com/pal70.b[863] CASE True:.. 
+True M:90 MAN com/pal70.b[928] CASE True:.. 
+Tuple M:96 DEF com/pal70.b[86] Tuple=
+Tuple M:96 MAN com/pal70.b[1222] CASE Tuple:.. 
+Tuple M:96 MAN com/pal70.b[1271] CASE Tuple:.. 
+Tuple M:96 MAN com/pal70.b[1427] outfn(Tuple,len)
+Tuple M:96 MAN com/pal70.b[1624] outfn(Tuple,len)
+Tuple M:96 MAN com/pal70.b[1727] outfn(Tuple,len)
+UTF8 M:-1 DEF libhdr.h[437] UTF8=-1
+Update M:73 DEF com/pal70.b[78] Update=
+Update M:73 MAN com/pal70.b[1224] CASE Update:.. 
+Update M:73 MAN com/pal70.b[1534] outfn(Update,len)
+Val M:0 DEF com/pal70.b[89] Val=0
+Val M:0 MAN com/pal70.b[1334] trans(x,Val)
+Val M:0 MAN com/pal70.b[1381] trans(h3!x,Val)
+Val M:0 MAN com/pal70.b[1387] trans(h3!x,Val)
+Val M:0 MAN com/pal70.b[1388] trans(h2!x,Val)
+Val M:0 MAN com/pal70.b[1396] trans(h2!x,Val)
+Val M:0 MAN com/pal70.b[1407] IF mode=Val DO ..
+Val M:0 MAN com/pal70.b[1413] trans(h2!x,Val)
+Val M:0 MAN com/pal70.b[1419] trans(h2!x,Val)
+Val M:0 MAN com/pal70.b[1456] trans(h2!x,Val)
+Val M:0 MAN com/pal70.b[1482] IF mode=Val DO ..
+Val M:0 MAN com/pal70.b[1493] trans(h2!x,Val)
+Val M:0 MAN com/pal70.b[1501] trans(h2!x,Val)
+Val M:0 MAN com/pal70.b[1517] trans(h2!x,Val)
+Val M:0 MAN com/pal70.b[1520] trans(h3!x,Val)
+Val M:0 MAN com/pal70.b[1533] trans(h3!x,Val)
+Val M:0 MAN com/pal70.b[1556] outf(mode=Val->LoadR,LoadL)
+Valdef M:25 DEF com/pal70.b[59] Valdef=
+Valdef M:25 MAN com/pal70.b[1225] CASE Valdef:.. 
+Valdef M:25 MAN com/pal70.b[1271] CASE Valdef:.. 
+Valdef M:25 MAN com/pal70.b[1630] CASE Valdef:.. 
+Valdef M:25 MAN com/pal70.b[1695] CASE Valdef:.. 
+Valdef M:25 MAN com/pal70.b[1734] CASE Valdef:.. 
+Valdef M:25 MAN com/pal70.b[1764] CASE Valdef:.. 
+Valdef M:25 MAN com/pal70.b[1804] CASE Valdef:.. 
+Valdef M:25 MAN com/pal70.b[328] token:=Valdef
+Valdef M:25 MAN com/pal70.b[725] checkfor(Valdef,"Bad definition")
+Valdef M:25 MAN com/pal70.b[726] RESULTIS mk4(Valdef,names,...,ln)
+Valdef M:25 MAN com/pal70.b[729] IF token=Valdef DO ..
+Valdef M:25 MAN com/pal70.b[729] RESULTIS mk4(Valdef,names,...,ln)
+Valdef M:25 MAN com/pal70.b[740] UNLESS i~=0&token=Valdef DO ..
+Valdef M:25 MAN com/pal70.b[746] RESULTIS mk4(Valdef,names,b,ln)
+Valof M:15 DEF com/pal70.b[55] Valof=
+Valof M:15 MAN com/pal70.b[1092] CASE Valof:.. 
+Valof M:15 MAN com/pal70.b[1226] CASE Valof:.. 
+Valof M:15 MAN com/pal70.b[1284] CASE Valof:.. 
+Valof M:15 MAN com/pal70.b[1461] CASE Valof:.. 
+Valof M:15 MAN com/pal70.b[463] dsw("valof",Valof)
+Where M:3 DEF com/pal70.b[50] Where=
+Where M:3 MAN com/pal70.b[1038] CASE Where:.. 
+Where M:3 MAN com/pal70.b[1040] a:=mk4(Where,a,...,ln)
+Where M:3 MAN com/pal70.b[1227] CASE Where:.. 
+Where M:3 MAN com/pal70.b[1268] CASE Where:.. 
+Where M:3 MAN com/pal70.b[464] dsw("where",Where)
+While M:18 DEF com/pal70.b[56] While=
+While M:18 MAN com/pal70.b[1115] CASE While:.. 
+While M:18 MAN com/pal70.b[1123] RESULTIS mk5(While,a,...,ln)
+While M:18 MAN com/pal70.b[1513] CASE While:.. 
+While M:18 MAN com/pal70.b[1600] CASE While:.. 
+Within M:28 DEF com/pal70.b[60] Within=
+Within M:28 MAN com/pal70.b[1228] CASE Within:.. 
+Within M:28 MAN com/pal70.b[1268] CASE Within:.. 
+Within M:28 MAN com/pal70.b[1645] CASE Within:.. 
+Within M:28 MAN com/pal70.b[1699] CASE Within:.. 
+Within M:28 MAN com/pal70.b[1738] CASE Within:.. 
+Within M:28 MAN com/pal70.b[1768] CASE Within:.. 
+Within M:28 MAN com/pal70.b[1808] CASE Within:.. 
+Within M:28 MAN com/pal70.b[465] dsw("within",Within)
+Within M:28 MAN com/pal70.b[795] CASE Within:.. 
+Within M:28 MAN com/pal70.b[798] a:=mk4(Within,a,...,ln)
+abort G:28 DEF libhdr.h[43] abort=28
+addname G:319 DEF com/pal70.b[146] addname=
+appendstream G:66 DEF libhdr.h[81] appendstream=66
+assign G:323 DEF com/pal70.b[148] assign=
+binrdch G:39 DEF libhdr.h[54] binrdch=39
+binwrch G:42 DEF libhdr.h[57] binwrch=42
+bitsperbyte M:8 DEF libhdr.h[160] bitsperbyte=8
+bitsperbyte M:8 MAN libhdr.h[161] bitsperword=bitsperbyte*bytesperword
+bitsperword M:32 DEF libhdr.h[161] bitsperword=bitsperbyte*bytesperword
+bitsperword M:32 MAN libhdr.h[163] minint=1<<bitsperword-1
+bootregs M:11 DEF libhdr.h[354] bootregs=11
+bytesperword M:4 DEF libhdr.h[159] bytesperword=1<<B2Wsh
+bytesperword M:4 MAN com/pal70.b[231] LET b=VEC 64/bytesperword
+bytesperword M:4 MAN com/pal70.b[383] wordnode:=newvec(len/bytesperword+2)
+bytesperword M:4 MAN com/pal70.b[413] wordnode:=newvec(len/bytesperword+3)
+bytesperword M:4 MAN com/pal70.b[610] charv:=newvec(256/bytesperword)
+bytesperword M:4 MAN libhdr.h[161] bitsperword=bitsperbyte*bytesperword
+bytesperword M:4 MAN libhdr.h[162] mcaddrinc=bytesperword
+bytesperword M:4 MAN libhdr.h[401] scb_nameeend=scb_name+scb_maxnamelen/bytesperword
+c_newline M:10 DEF com/pal70.b[168] c_newline=10
+c_tab M:9 DEF com/pal70.b[167] c_tab=9
+callco G:19 DEF libhdr.h[34] callco=19
+callseg G:107 DEF libhdr.h[123] callseg=107
+capitalch G:96 DEF libhdr.h[112] capitalch=96
+cellwithname G:320 DEF com/pal70.b[146] cellwithname=
+ch G:226 DEF com/pal70.b[124] ch=
+ch G:226 LG com/pal70.b[292] SWITCHON ch INTO..
+ch G:226 LG com/pal70.b[335] IF ch=42 DO ..
+ch G:226 LG com/pal70.b[340] IF ch=47 DO ..
+ch G:226 LG com/pal70.b[341] .. REPEATUNTIL ch=10|ch=endstreamch
+ch G:226 LG com/pal70.b[348] IF ch=61 DO ..
+ch G:226 LG com/pal70.b[353] IF ch=61 DO ..
+ch G:226 LG com/pal70.b[358] IF ch=61 DO ..
+ch G:226 LG com/pal70.b[363] IF ch=62|ch=42 DO ..
+ch G:226 LG com/pal70.b[368] IF ch=61 DO ..
+ch G:226 LG com/pal70.b[376] UNTIL ch=39 DO ..
+ch G:226 LG com/pal70.b[390] UNLESS ch=endstreamch DO ..
+ch G:226 LG com/pal70.b[391] ch
+ch G:226 LG com/pal70.b[471] chbuf%(chcount&63):=ch
+ch G:226 LG com/pal70.b[487] WHILE 48<=ch&ch<=57 DO ..
+ch G:226 LG com/pal70.b[489] TEST ch=48 THEN .. ELSE ..
+ch G:226 LG com/pal70.b[503] lexval:=10*lexval+ch-48
+ch G:226 LG com/pal70.b[507] WHILE ch=46 DO ..
+ch G:226 LG com/pal70.b[533] WHILE ...&...|...&...|48<=ch&ch<=57|ch=95 DO ..
+ch G:226 LG com/pal70.b[536] charv%len:=ch
+ch G:226 LG com/pal70.b[544] ch
+ch G:226 LG com/pal70.b[545] IF ch=10|ch=12 DO ..
+ch G:226 LG com/pal70.b[549] IF ch=42 DO ..
+ch G:226 LG com/pal70.b[551] SWITCHON ch INTO..
+ch G:226 LG com/pal70.b[553] res:=ch
+ch G:226 LG com/pal70.b[661] UNTIL ch=10|ch=endstreamch DO ..
+ch G:226 SG com/pal70.b[392] ch:=32
+ch G:226 SG com/pal70.b[469] ch:=rdch()
+changeco G:6 DEF libhdr.h[21] changeco=6
+charv G:225 DEF com/pal70.b[124] charv=
+charv G:225 LG com/pal70.b[379] charv%len:=rdstrch()
+charv G:225 LG com/pal70.b[382] charv%0:=len
+charv G:225 LG com/pal70.b[385] @h2!wordnode%i:=charv%i
+charv G:225 LG com/pal70.b[536] charv%len:=ch
+charv G:225 LG com/pal70.b[539] charv%0:=len
+charv G:225 LG com/pal70.b[540] RESULTIS charv
+charv G:225 LG com/pal70.b[612] UNLESS charv&nametable DO ..
+charv G:225 LG com/pal70.b[623] writef("      %s",charv)
+charv G:225 LG com/pal70.b[626] FOR i=1 TO charv%0 DO..
+charv G:225 LG com/pal70.b[626] SWITCHON charv%i INTO..
+charv G:225 LG com/pal70.b[627] wrch(charv%i)
+charv G:225 SG com/pal70.b[610] charv:=newvec(256/bytesperword)
+chbuf G:224 DEF com/pal70.b[124] chbuf=
+chbuf G:224 LG com/pal70.b[233] chbuf%i:=0
+chbuf G:224 LG com/pal70.b[471] chbuf%(chcount&63):=ch
+chbuf G:224 LG com/pal70.b[477] chbuf%(p&63)
+chbuf G:224 SG com/pal70.b[232] chbuf:=b
+chcount G:239 DEF com/pal70.b[127] chcount=
+chcount G:239 LG com/pal70.b[470] chcount:=chcount+1
+chcount G:239 LG com/pal70.b[471] chbuf%(chcount&63):=ch
+chcount G:239 LG com/pal70.b[476] FOR p=chcount-63 TO chcount DO..
+chcount G:239 SG com/pal70.b[234] chcount,lineno:=0,1
+chcount G:239 SG com/pal70.b[470] chcount:=chcount+1
+checkdistinct G:318 DEF com/pal70.b[146] checkdistinct=
+checkfor G:249 DEF com/pal70.b[132] checkfor=
+checkfor G:249 LG com/pal70.b[1068] checkfor(In,"'in' 'onstruct")
+checkfor G:249 LG com/pal70.b[1083] checkfor(Dot,"'.' m'onstruct")
+checkfor G:249 LG com/pal70.b[1105] checkfor(Ifnot,"'ifno'expected")
+checkfor G:249 LG com/pal70.b[1110] checkfor(Ifso,"'ifno'expected")
+checkfor G:249 LG com/pal70.b[1120] checkfor(Do,"'do' expected")
+checkfor G:249 LG com/pal70.b[725] checkfor(Valdef,"Bad definition")
+checkfor G:249 LG com/pal70.b[752] checkfor(Rparen,"Bad definition")
+checkfor G:249 LG com/pal70.b[808] checkfor(Lparen,"'(' expected")
+checkfor G:249 LG com/pal70.b[814] checkfor(Rparen,"Bad b'ble list")
+checkfor G:249 LG com/pal70.b[841] checkfor(Name,"Name expected")
+checkfor G:249 LG com/pal70.b[878] checkfor(Rparen,"')' missing")
+checkfor G:249 LG com/pal70.b[945] checkfor(Rparen,"')' expected")
+checkfor G:249 LG com/pal70.b[973] checkfor(Bar,"Bad c'pression")
+checkfor G:249 RT com/pal70.b[667] LET checkfor(tok,mess)BE..
+cis G:12 DEF libhdr.h[27] cis=12
+clear_words G:115 DEF libhdr.h[131] clear_words=115
+clihook G:4 DEF libhdr.h[19] clihook=4
+cliregs M:21 DEF libhdr.h[355] cliregs=21
+co_c M:5 DEF libhdr.h[201] co_c=
+co_fn M:3 DEF libhdr.h[199] co_fn=
+co_list M:2 DEF libhdr.h[198] co_list=
+co_parent M:1 DEF libhdr.h[197] co_parent=
+co_pptr M:0 DEF libhdr.h[196] co_pptr=0
+co_size M:4 DEF libhdr.h[200] co_size=
+codep G:363 DEF com/pal70.b[157] codep=
+codep G:363 LG com/pal70.b[1341] writef("*nProg'ze: %n*n*n",codep,datap)
+codep G:363 LG com/pal70.b[1899] setlab(lab,codep)
+codep G:363 LG com/pal70.b[1910] setlab(l1,codep)
+codep G:363 LG com/pal70.b[1925] TEST codep>codet THEN .. ELSE ..
+codep G:363 LG com/pal70.b[1927] codev!codep:=w
+codep G:363 LG com/pal70.b[1928] codep:=codep+1
+codep G:363 LG com/pal70.b[1937] TEST codep>codet THEN .. ELSE ..
+codep G:363 LG com/pal70.b[1939] codev!codep:=refv!lab
+codep G:363 LG com/pal70.b[1940] refv!lab:=codep
+codep G:363 LG com/pal70.b[1941] codep:=codep+1
+codep G:363 SG com/pal70.b[1928] codep:=codep+1
+codep G:363 SG com/pal70.b[1941] codep:=codep+1
+codep G:363 SG com/pal70.b[213] codep:=0
+codet G:364 DEF com/pal70.b[157] codet=
+codet G:364 LG com/pal70.b[1925] TEST codep>codet THEN .. ELSE ..
+codet G:364 LG com/pal70.b[1937] TEST codep>codet THEN .. ELSE ..
+codet G:364 LG com/pal70.b[252] FOR i=0 TO codet DO..
+codet G:364 SG com/pal70.b[214] codet:=codesize
+codev G:362 DEF com/pal70.b[157] codev=
+codev G:362 LG com/pal70.b[1927] codev!codep:=w
+codev G:362 LG com/pal70.b[1939] codev!codep:=refv!lab
+codev G:362 LG com/pal70.b[1959] codev!p
+codev G:362 LG com/pal70.b[1960] codev!p,p:=labval,np
+codev G:362 LG com/pal70.b[1974] codev!pc
+codev G:362 LG com/pal70.b[224] UNLESS treevec&codev&datav&labv&refv DO ..
+codev G:362 LG com/pal70.b[252] codev!i:=0
+codev G:362 SG com/pal70.b[212] codev:=getvec(codesize)
+codewrch G:126 DEF libhdr.h[142] codewrch=126
+colist G:8 DEF libhdr.h[23] colist=8
+comline G:332 DEF com/pal70.b[150] comline=
+comline G:332 LG com/pal70.b[1312] IF comline DO ..
+comline G:332 LG com/pal70.b[1312] writef(" near line %n",comline)
+comline G:332 SG com/pal70.b[1324] comline,procname,labnumber:=1,0,0
+comline G:332 SG com/pal70.b[1368] comline:=h5!x
+comline G:332 SG com/pal70.b[1531] comline:=h4!x
+compch G:97 DEF libhdr.h[113] compch=97
+compstring G:98 DEF libhdr.h[114] compstring=98
+copy_bytes G:116 DEF libhdr.h[132] copy_bytes=116
+copy_words G:114 DEF libhdr.h[130] copy_words=114
+copydir G:79 DEF libhdr.h[94] copydir=79
+copyobj G:75 DEF libhdr.h[90] copyobj=75
+copystring G:99 DEF libhdr.h[115] copystring=99
+cos G:13 DEF libhdr.h[28] cos=13
+count G:358 DEF com/pal70.b[155] count=
+count G:358 LG com/pal70.b[1980] IF count<=0 DO ..
+count G:358 LG com/pal70.b[1981] count:=count-1
+count G:358 LG com/pal70.b[274] writef("*nInst'ted: %n*n",maxint-count)
+count G:358 SG com/pal70.b[1981] count:=count-1
+count G:358 SG com/pal70.b[267] count:=maxint
+cowait G:20 DEF libhdr.h[35] cowait=20
+createco G:17 DEF libhdr.h[32] createco=17
+createdir G:82 DEF libhdr.h[97] createdir=82
+currco G:7 DEF libhdr.h[22] currco=7
+currentdir G:14 DEF libhdr.h[29] currentdir=14
+dat_to_strings G:110 DEF libhdr.h[126] dat_to_strings=110
+datap G:366 DEF com/pal70.b[158] datap=
+datap G:366 LG com/pal70.b[1341] writef("*nProg'ze: %n*n*n",codep,datap)
+datap G:366 LG com/pal70.b[1915] setlab(lab,datap)
+datap G:366 LG com/pal70.b[1921] setlab(lab,datap)
+datap G:366 LG com/pal70.b[1931] TEST datap>datat THEN .. ELSE ..
+datap G:366 LG com/pal70.b[1933] datav!datap:=w
+datap G:366 LG com/pal70.b[1934] datap:=datap+1
+datap G:366 SG com/pal70.b[1934] datap:=datap+1
+datap G:366 SG com/pal70.b[217] datap:=0
+datat G:367 DEF com/pal70.b[158] datat=
+datat G:367 LG com/pal70.b[1931] TEST datap>datat THEN .. ELSE ..
+datat G:367 LG com/pal70.b[253] FOR i=0 TO datat DO..
+datat G:367 SG com/pal70.b[218] datat:=datasize
+datav G:365 DEF com/pal70.b[158] datav=
+datav G:365 LG com/pal70.b[1933] datav!datap:=w
+datav G:365 LG com/pal70.b[224] UNLESS treevec&codev&datav&labv&refv DO ..
+datav G:365 LG com/pal70.b[253] datav!i:=0
+datav G:365 SG com/pal70.b[216] datav:=getvec(datasize)
+datstamp G:109 DEF libhdr.h[125] datstamp=109
+datstring G:108 DEF libhdr.h[124] datstring=108
+deadcode M:-559038242 DEF libhdr.h[183] deadcode=#xDEADC0DE
+decldyn G:316 DEF com/pal70.b[145] decldyn=
+declguesses G:308 DEF com/pal70.b[143] declguesses=
+declguesses G:308 LG com/pal70.b[1637] declguesses(h2!x)
+declguesses G:308 LG com/pal70.b[1760] mapf(declguesses,x)
+declguesses G:308 LG com/pal70.b[1765] declguesses(h2!x)
+declguesses G:308 LG com/pal70.b[1769] declguesses(h3!x)
+declguesses G:308 RT com/pal70.b[1745] LET declguesses(x)BE..
+declnames F:603 LF com/pal70.b[1379] declnames(h2!x)
+declnames F:603 LF com/pal70.b[1654] declnames(h2!x)
+declnames F:603 LF com/pal70.b[1690] mapf(declnames,x)
+declnames F:603 LF com/pal70.b[1696] declnames(h2!x)
+declnames F:603 LF com/pal70.b[1700] declnames(h3!x)
+declnames F:603 LF com/pal70.b[1818] declnames(h2!x)
+declnames F:603 RT com/pal70.b[1667] LET declnames(x)BE..
+declstatnames G:317 DEF com/pal70.b[146] declstatnames=
+declsyswords G:242 DEF com/pal70.b[128] declsyswords=
+declsyswords G:242 LG com/pal70.b[614] declsyswords()
+declsyswords G:242 RT com/pal70.b[423] LET declsyswords()BE..
+delay G:128 DEF libhdr.h[144] delay=128
+delayuntil G:129 DEF libhdr.h[145] delayuntil=129
+deleteco G:18 DEF libhdr.h[33] deleteco=18
+deletefile G:76 DEF libhdr.h[91] deletefile=76
+deleteself G:125 DEF libhdr.h[141] deleteself=125
+deplete G:43 DEF libhdr.h[58] deplete=43
+dsw G:241 DEF com/pal70.b[128] dsw=
+dsw G:241 LG com/pal70.b[425] dsw("and",And)
+dsw G:241 LG com/pal70.b[426] dsw("aug",Aug)
+dsw G:241 LG com/pal70.b[427] dsw("def",Def)
+dsw G:241 LG com/pal70.b[428] dsw("do",Do)
+dsw G:241 LG com/pal70.b[429] dsw("dummy",Dummy)
+dsw G:241 LG com/pal70.b[431] dsw("else",Ifnot)
+dsw G:241 LG com/pal70.b[432] dsw("eq",Eq)
+dsw G:241 LG com/pal70.b[433] dsw("false",False)
+dsw G:241 LG com/pal70.b[435] dsw("fn",Lambda)
+dsw G:241 LG com/pal70.b[436] dsw("ge",Ge)
+dsw G:241 LG com/pal70.b[437] dsw("goto",Goto)
+dsw G:241 LG com/pal70.b[438] dsw("gt",Gt)
+dsw G:241 LG com/pal70.b[439] dsw("if",If)
+dsw G:241 LG com/pal70.b[440] dsw("ifnot",Ifnot)
+dsw G:241 LG com/pal70.b[441] dsw("ifso",Ifso)
+dsw G:241 LG com/pal70.b[442] dsw("in",In)
+dsw G:241 LG com/pal70.b[444] dsw("le",Le)
+dsw G:241 LG com/pal70.b[445] dsw("let",Let)
+dsw G:241 LG com/pal70.b[447] dsw("logand",Logand)
+dsw G:241 LG com/pal70.b[448] dsw("lt",Lt)
+dsw G:241 LG com/pal70.b[449] dsw("ne",Ne)
+dsw G:241 LG com/pal70.b[450] dsw("nil",Nil)
+dsw G:241 LG com/pal70.b[452] dsw("not",Not)
+dsw G:241 LG com/pal70.b[453] dsw("or",Logor)
+dsw G:241 LG com/pal70.b[454] dsw("rec",Rec)
+dsw G:241 LG com/pal70.b[455] dsw("res",Res)
+dsw G:241 LG com/pal70.b[457] dsw("sys",Sys)
+dsw G:241 LG com/pal70.b[458] dsw("test",Test)
+dsw G:241 LG com/pal70.b[460] dsw("true",True)
+dsw G:241 LG com/pal70.b[463] dsw("valof",Valof)
+dsw G:241 LG com/pal70.b[464] dsw("where",Where)
+dsw G:241 LG com/pal70.b[465] dsw("within",Within)
+dsw G:241 RT com/pal70.b[421] LET dsw(word,tok)BE..
+dummynode G:236 DEF com/pal70.b[126] dummynode=
+dummynode G:236 LG com/pal70.b[1122] RESULTIS mk5(Cond,a,...,...)
+dummynode G:236 SG com/pal70.b[430] dummynode:=wordnode
+dump G:357 DEF com/pal70.b[155] dump=
+dump G:357 SG com/pal70.b[266] dump:=0
+dvec G:328 DEF com/pal70.b[149] dvec=
+dvece G:329 DEF com/pal70.b[149] dvece=
+dvecp G:330 DEF com/pal70.b[149] dvecp=
+dvect G:331 DEF com/pal70.b[149] dvect=
+endread G:60 DEF libhdr.h[75] endread=60
+endread G:60 LG com/pal70.b[283] endread()
+endstream G:62 DEF libhdr.h[77] endstream=62
+endstreamch M:-1 DEF libhdr.h[166] endstreamch=-1
+endstreamch M:-1 MAN com/pal70.b[341] .. REPEATUNTIL ch=10|ch=endstreamch
+endstreamch M:-1 MAN com/pal70.b[390] UNLESS ch=endstreamch DO ..
+endstreamch M:-1 MAN com/pal70.b[661] UNTIL ch=10|ch=endstreamch DO ..
+endwrite G:61 DEF libhdr.h[76] endwrite=61
+endwrite G:61 LG com/pal70.b[285] endwrite()
+entryword M:57311 DEF libhdr.h[185] entryword=57311
+env G:356 DEF com/pal70.b[155] env=
+env G:356 SG com/pal70.b[265] env:=0
+errcount G:207 DEF com/pal70.b[117] errcount=
+errcount G:207 LG com/pal70.b[1316] errcount:=errcount+1
+errcount G:207 LG com/pal70.b[1317] IF errcount>=errmax DO ..
+errcount G:207 LG com/pal70.b[248] IF errcount DO ..
+errcount G:207 LG com/pal70.b[260] IF errcount DO ..
+errcount G:207 LG com/pal70.b[288] RESULTIS errcount=0->0,20
+errcount G:207 LG com/pal70.b[649] errcount:=errcount+1
+errcount G:207 LG com/pal70.b[657] errcount:=errcount+1
+errcount G:207 LG com/pal70.b[658] IF errcount>=errmax DO ..
+errcount G:207 SG com/pal70.b[1316] errcount:=errcount+1
+errcount G:207 SG com/pal70.b[181] errcount:=0
+errcount G:207 SG com/pal70.b[649] errcount:=errcount+1
+errcount G:207 SG com/pal70.b[657] errcount:=errcount+1
+errmax G:208 DEF com/pal70.b[117] errmax=
+errmax G:208 LG com/pal70.b[1317] IF errcount>=errmax DO ..
+errmax G:208 LG com/pal70.b[658] IF errcount>=errmax DO ..
+errmax G:208 SG com/pal70.b[180] errmax:=2
+exponent G:231 DEF com/pal70.b[125] exponent=
+exponent G:231 LG com/pal70.b[498] exponent:=exponent-1
+exponent G:231 LG com/pal70.b[504] exponent:=exponent-1
+exponent G:231 LG com/pal70.b[519] IF exponent=0 DO ..
+exponent G:231 LG com/pal70.b[622] writef("      %ne%n",lexval,exponent)
+exponent G:231 LG com/pal70.b[888] a:=mk3(Real,lexval,exponent)
+exponent G:231 SG com/pal70.b[485] lexval,exponent:=0,0
+exponent G:231 SG com/pal70.b[498] exponent:=exponent-1
+exponent G:231 SG com/pal70.b[504] exponent:=exponent-1
+exponent G:231 SG com/pal70.b[510] exponent:=zeroes
+falsenode G:235 DEF com/pal70.b[126] falsenode=
+falsenode G:235 SG com/pal70.b[434] falsenode:=wordnode
+fatalerr G:204 DEF com/pal70.b[117] fatalerr=
+fatalerr G:204 LG com/pal70.b[1317] fatalerr("*nComp'aborted*n")
+fatalerr G:204 LG com/pal70.b[189] fatalerr("Bad arguments*n")
+fatalerr G:204 LG com/pal70.b[1948] fatalerr("More 'e needed")
+fatalerr G:204 LG com/pal70.b[197] fatalerr("Troub'file %s*n",argv!0)
+fatalerr G:204 LG com/pal70.b[203] fatalerr("Troub'file %s*n",argv!1)
+fatalerr G:204 LG com/pal70.b[225] fatalerr("Insuf' memory*n")
+fatalerr G:204 LG com/pal70.b[566] fatalerr("More 'e needed")
+fatalerr G:204 LG com/pal70.b[612] fatalerr("More 'e needed")
+fatalerr G:204 LG com/pal70.b[641] fatalerr("Incor'mination")
+fatalerr G:204 LG com/pal70.b[658] fatalerr("Too m'y errors")
+fatalerr G:204 RT com/pal70.b[645] LET fatalerr(mess,a)BE..
+fin F:3 LAB com/pal70.b[278] fin:IF treevec DO ..
+fin F:3 LF com/pal70.b[182] fin_p,fin_l:=level(),fin
+fin F:3 LF com/pal70.b[241] GOTO fin
+fin F:3 LF com/pal70.b[248] GOTO fin
+fin F:3 LF com/pal70.b[260] GOTO fin
+fin_l G:203 DEF com/pal70.b[116] fin_l=
+fin_l G:203 LG com/pal70.b[650] longjump(fin_p,fin_l)
+fin_l G:203 SG com/pal70.b[182] fin_p,fin_l:=level(),fin
+fin_p G:202 DEF com/pal70.b[116] fin_p=
+fin_p G:202 LG com/pal70.b[650] longjump(fin_p,fin_l)
+fin_p G:202 SG com/pal70.b[182] fin_p,fin_l:=level(),fin
+findarg G:104 DEF libhdr.h[120] findarg=104
+findinoutput G:50 DEF libhdr.h[65] findinoutput=50
+findinput G:48 DEF libhdr.h[63] findinput=48
+findinput G:48 LG com/pal70.b[195] progstream:=findinput(argv!0)
+findlabels G:304 DEF com/pal70.b[142] findlabels=
+findlabels G:304 FN com/pal70.b[1580] LET findlabels(x)=..
+findlabels G:304 LG com/pal70.b[1590] RESULTIS 1+findlabels(h3!x)
+findlabels G:304 LG com/pal70.b[1594] RESULTIS findlabels(h2!x)
+findlabels G:304 LG com/pal70.b[1597] RESULTIS findlabels(h3!x)+findlabels(h4!x)
+findlabels G:304 LG com/pal70.b[1601] RESULTIS findlabels(h3!x)
+findlabels G:304 LG com/pal70.b[1604] RESULTIS findlabels(h2!x)+findlabels(h3!x)
+findlabels G:304 LG com/pal70.b[1610] findlabels(x)
+findoutput G:49 DEF libhdr.h[64] findoutput=49
+findoutput G:49 LG com/pal70.b[202] tostream:=findoutput(argv!1)
+findstream G:52 DEF libhdr.h[67] findstream=52
+findupdate G:51 DEF libhdr.h[66] findupdate=51
+fl_abs M:5 DEF libhdr.h[410] fl_abs=
+fl_acos M:20 DEF libhdr.h[414] fl_acos=20
+fl_asin M:21 DEF libhdr.h[415] fl_asin=
+fl_atan M:22 DEF libhdr.h[416] fl_atan=
+fl_atan2 M:23 DEF libhdr.h[417] fl_atan2=
+fl_avail M:0 DEF libhdr.h[408] fl_avail=0
+fl_ceil M:38 DEF libhdr.h[432] fl_ceil=
+fl_cos M:24 DEF libhdr.h[418] fl_cos=
+fl_cosh M:27 DEF libhdr.h[421] fl_cosh=
+fl_div M:7 DEF libhdr.h[411] fl_div=
+fl_eq M:12 DEF libhdr.h[412] fl_eq=
+fl_exp M:30 DEF libhdr.h[424] fl_exp=
+fl_fix M:4 DEF libhdr.h[410] fl_fix=
+fl_float M:3 DEF libhdr.h[410] fl_float=
+fl_floor M:39 DEF libhdr.h[433] fl_floor=
+fl_fmod M:40 DEF libhdr.h[434] fl_fmod=
+fl_frexp M:31 DEF libhdr.h[425] fl_frexp=
+fl_ge M:17 DEF libhdr.h[412] fl_ge=
+fl_gr M:15 DEF libhdr.h[412] fl_gr=
+fl_ldexp M:32 DEF libhdr.h[426] fl_ldexp=
+fl_le M:16 DEF libhdr.h[412] fl_le=
+fl_log M:33 DEF libhdr.h[427] fl_log=
+fl_log10 M:34 DEF libhdr.h[428] fl_log10=
+fl_ls M:14 DEF libhdr.h[412] fl_ls=
+fl_minus M:9 DEF libhdr.h[411] fl_minus=
+fl_mk M:1 DEF libhdr.h[409] fl_mk=
+fl_modf M:35 DEF libhdr.h[429] fl_modf=
+fl_mult M:6 DEF libhdr.h[411] fl_mult=
+fl_ne M:13 DEF libhdr.h[412] fl_ne=
+fl_neg M:11 DEF libhdr.h[411] fl_neg=
+fl_plus M:8 DEF libhdr.h[411] fl_plus=
+fl_pos M:10 DEF libhdr.h[411] fl_pos=
+fl_pow M:36 DEF libhdr.h[430] fl_pow=
+fl_sin M:25 DEF libhdr.h[419] fl_sin=
+fl_sinh M:28 DEF libhdr.h[422] fl_sinh=
+fl_sqrt M:37 DEF libhdr.h[431] fl_sqrt=
+fl_tan M:26 DEF libhdr.h[420] fl_tan=
+fl_tanh M:29 DEF libhdr.h[423] fl_tanh=
+fl_unmk M:2 DEF libhdr.h[409] fl_unmk=
+fnbody G:325 DEF com/pal70.b[148] fnbody=
+formtree G:257 DEF com/pal70.b[135] formtree=
+formtree G:257 FN com/pal70.b[606] LET formtree()=..
+formtree G:257 LG com/pal70.b[239] tree:=formtree()
+freeobj G:78 DEF libhdr.h[93] freeobj=78
+freevec G:27 DEF libhdr.h[42] freevec=27
+freevec G:27 LG com/pal70.b[279] freevec(treevec)
+freevec G:27 LG com/pal70.b[280] freevec(mem)
+freevec G:27 LG com/pal70.b[281] freevec(labv)
+freevec G:27 LG com/pal70.b[282] freevec(refv)
+g_colist M:8 DEF libhdr.h[191] g_colist=8
+g_currco M:7 DEF libhdr.h[190] g_currco=7
+g_globsize M:0 DEF libhdr.h[188] g_globsize=0
+g_rootnode M:9 DEF libhdr.h[192] g_rootnode=9
+g_sys M:3 DEF libhdr.h[189] g_sys=3
+get_index_record G:73 DEF libhdr.h[88] get_index_record=73
+get_record G:71 DEF libhdr.h[86] get_record=71
+get_text G:93 DEF libhdr.h[109] get_text=93
+get_textblib G:93 DEF libhdr.h[108] get_textblib=93
+getlogname G:118 DEF libhdr.h[134] getlogname=118
+getremipaddr G:54 DEF libhdr.h[69] getremipaddr=54
+getvec G:25 DEF libhdr.h[40] getvec=25
+getvec G:25 LG com/pal70.b[211] treevec:=getvec(treesize)
+getvec G:25 LG com/pal70.b[212] codev:=getvec(codesize)
+getvec G:25 LG com/pal70.b[216] datav:=getvec(datasize)
+getvec G:25 LG com/pal70.b[220] labv:=getvec(1000)
+getvec G:25 LG com/pal70.b[221] refv:=getvec(1000)
+getword G:32 DEF libhdr.h[47] getword=32
+globin G:24 DEF libhdr.h[39] globin=24
+globsize G:0 DEF libhdr.h[15] globsize=0
+globword M:-1886453760 DEF libhdr.h[181] globword=#x8F8F0000
+h1 M:0 DEF com/pal70.b[47] h1=0
+h1 M:0 MAN com/pal70.b[1044] UNLESS h1!a=Name&n<=8 DO ..
+h1 M:0 MAN com/pal70.b[1237] op:=h1!x
+h1 M:0 MAN com/pal70.b[1304] plist(h1!(...-1),n+1,d)
+h1 M:0 MAN com/pal70.b[1348] h1!x
+h1 M:0 MAN com/pal70.b[1582] SWITCHON h1!x INTO..
+h1 M:0 MAN com/pal70.b[1617] SWITCHON h1!x INTO..
+h1 M:0 MAN com/pal70.b[1669] SWITCHON h1!x INTO..
+h1 M:0 MAN com/pal70.b[1712] SWITCHON h1!x INTO..
+h1 M:0 MAN com/pal70.b[1747] SWITCHON h1!x INTO..
+h1 M:0 MAN com/pal70.b[1776] SWITCHON h1!x INTO..
+h1 M:0 MAN com/pal70.b[1837] h1!x=And|h1!x=Comma->h2!x,1
+h1 M:0 MAN com/pal70.b[384] h1!wordnode:=Stringconst
+h1 M:0 MAN com/pal70.b[414] h1!wordnode,h2!wordnode:=Name,nametable!hashval
+h1 M:0 MAN com/pal70.b[418] RESULTIS h1!wordnode
+h1 M:0 MAN com/pal70.b[421] h1!wordnode:=tok
+h1 M:0 MAN com/pal70.b[834] h1!a,h2!a,h3!a:=Comma,i,b
+h1 M:0 MAN com/pal70.b[903] TEST h1!a=Int|h1!a=Real THEN .. ELSE ..
+h2 M:1 DEF com/pal70.b[47] h2=1
+h2 M:1 MAN com/pal70.b[1243] writef("Int %n",h2!x)
+h2 M:1 MAN com/pal70.b[1244] writef("Real %ne%n",h2!x,h3!x)
+h2 M:1 MAN com/pal70.b[1277] size:=h2!x+1
+h2 M:1 MAN com/pal70.b[1369] transrhs(h2!x)
+h2 M:1 MAN com/pal70.b[1378] transrhs(h2!x)
+h2 M:1 MAN com/pal70.b[1379] declnames(h2!x)
+h2 M:1 MAN com/pal70.b[1388] trans(h2!x,Val)
+h2 M:1 MAN com/pal70.b[1396] trans(h2!x,Val)
+h2 M:1 MAN com/pal70.b[1404] trans(h2!x,Ref)
+h2 M:1 MAN com/pal70.b[1413] trans(h2!x,Val)
+h2 M:1 MAN com/pal70.b[1419] trans(h2!x,Val)
+h2 M:1 MAN com/pal70.b[1449] trnerr("Label'rly used",h3!h2!x)
+h2 M:1 MAN com/pal70.b[1456] trans(h2!x,Val)
+h2 M:1 MAN com/pal70.b[1474] translabels(h2!x)
+h2 M:1 MAN com/pal70.b[1475] trans(h2!x,Ref)
+h2 M:1 MAN com/pal70.b[1487] trans(h2!x,Ref)
+h2 M:1 MAN com/pal70.b[1493] trans(h2!x,Val)
+h2 M:1 MAN com/pal70.b[1501] trans(h2!x,Val)
+h2 M:1 MAN com/pal70.b[1517] trans(h2!x,Val)
+h2 M:1 MAN com/pal70.b[1530] length(h2!x)
+h2 M:1 MAN com/pal70.b[1532] trans(h2!x,Ref)
+h2 M:1 MAN com/pal70.b[1541] translabels(h2!x)
+h2 M:1 MAN com/pal70.b[1542] trans(h2!x,mode)
+h2 M:1 MAN com/pal70.b[1562] outfn(LoadN,h2!x)
+h2 M:1 MAN com/pal70.b[1567] outfn(LoadF,h2!x,h3!x)
+h2 M:1 MAN com/pal70.b[1589] outfsl(Decllabel,h2!x,lab)
+h2 M:1 MAN com/pal70.b[1594] RESULTIS findlabels(h2!x)
+h2 M:1 MAN com/pal70.b[1604] RESULTIS findlabels(h2!x)+findlabels(h3!x)
+h2 M:1 MAN com/pal70.b[1637] declguesses(h2!x)
+h2 M:1 MAN com/pal70.b[1638] transrhs(h2!x)
+h2 M:1 MAN com/pal70.b[1639] initnames(h2!x)
+h2 M:1 MAN com/pal70.b[1640] loaddefinee(h2!x)
+h2 M:1 MAN com/pal70.b[1648] transrhs(h2!x)
+h2 M:1 MAN com/pal70.b[1654] declnames(h2!x)
+h2 M:1 MAN com/pal70.b[1696] declnames(h2!x)
+h2 M:1 MAN com/pal70.b[1735] loaddefinee(h2!x)
+h2 M:1 MAN com/pal70.b[1765] declguesses(h2!x)
+h2 M:1 MAN com/pal70.b[1805] initnames(h2!x)
+h2 M:1 MAN com/pal70.b[1818] declnames(h2!x)
+h2 M:1 MAN com/pal70.b[1828] h2!x
+h2 M:1 MAN com/pal70.b[1833] h2!x
+h2 M:1 MAN com/pal70.b[1837] h1!x=And|h1!x=Comma->h2!x,1
+h2 M:1 MAN com/pal70.b[385] @h2!wordnode%i:=charv%i
+h2 M:1 MAN com/pal70.b[411] wordnode,i:=h2!wordnode,0
+h2 M:1 MAN com/pal70.b[414] h1!wordnode,h2!wordnode:=Name,nametable!hashval
+h2 M:1 MAN com/pal70.b[834] h1!a,h2!a,h3!a:=Comma,i,b
+h2 M:1 MAN com/pal70.b[904] h2!a:=-h2!a
+h3 M:2 DEF com/pal70.b[47] h3=2
+h3 M:2 MAN com/pal70.b[1244] writef("Real %ne%n",h2!x,h3!x)
+h3 M:2 MAN com/pal70.b[1289] size,ln:=2,h3!x
+h3 M:2 MAN com/pal70.b[1311] writef(" in %s",@h3!procname)
+h3 M:2 MAN com/pal70.b[1380] translabels(h3!x)
+h3 M:2 MAN com/pal70.b[1381] trans(h3!x,Val)
+h3 M:2 MAN com/pal70.b[1387] trans(h3!x,Val)
+h3 M:2 MAN com/pal70.b[1395] trans(h3!x,Ref)
+h3 M:2 MAN com/pal70.b[1403] trans(h3!x,Ref)
+h3 M:2 MAN com/pal70.b[1449] trnerr("Label'rly used",h3!h2!x)
+h3 M:2 MAN com/pal70.b[1452] trans(h3!x,mode)
+h3 M:2 MAN com/pal70.b[1458] trans(h3!x,mode)
+h3 M:2 MAN com/pal70.b[1504] trans(h3!x,mode)
+h3 M:2 MAN com/pal70.b[1520] trans(h3!x,Val)
+h3 M:2 MAN com/pal70.b[1533] trans(h3!x,Val)
+h3 M:2 MAN com/pal70.b[1567] outfn(LoadF,h2!x,h3!x)
+h3 M:2 MAN com/pal70.b[1590] RESULTIS 1+findlabels(h3!x)
+h3 M:2 MAN com/pal70.b[1597] RESULTIS findlabels(h3!x)+findlabels(h4!x)
+h3 M:2 MAN com/pal70.b[1601] RESULTIS findlabels(h3!x)
+h3 M:2 MAN com/pal70.b[1604] RESULTIS findlabels(h2!x)+findlabels(h3!x)
+h3 M:2 MAN com/pal70.b[1631] trans(h3!x,Ref)
+h3 M:2 MAN com/pal70.b[1655] transrhs(h3!x)
+h3 M:2 MAN com/pal70.b[1700] declnames(h3!x)
+h3 M:2 MAN com/pal70.b[1739] loaddefinee(h3!x)
+h3 M:2 MAN com/pal70.b[1769] declguesses(h3!x)
+h3 M:2 MAN com/pal70.b[1809] initnames(h3!x)
+h3 M:2 MAN com/pal70.b[1819] translabels(h3!x)
+h3 M:2 MAN com/pal70.b[1820] trans(h3!x,mode)
+h3 M:2 MAN com/pal70.b[1852] @h3!x
+h3 M:2 MAN com/pal70.b[1860] @h3!x
+h3 M:2 MAN com/pal70.b[409] TEST @h3!wordnode%i=word%i THEN .. ELSE ..
+h3 M:2 MAN com/pal70.b[415] @h3!wordnode%i:=word%i
+h3 M:2 MAN com/pal70.b[834] h1!a,h2!a,h3!a:=Comma,i,b
+h4 M:3 DEF com/pal70.b[47] h4=3
+h4 M:3 MAN com/pal70.b[1273] size,ln:=3,h4!x
+h4 M:3 MAN com/pal70.b[1448] IF h4!x=0 DO ..
+h4 M:3 MAN com/pal70.b[1451] outlab(h4!x)
+h4 M:3 MAN com/pal70.b[1508] trans(h4!x,mode)
+h4 M:3 MAN com/pal70.b[1531] comline:=h4!x
+h4 M:3 MAN com/pal70.b[1588] h4!x:=lab
+h4 M:3 MAN com/pal70.b[1597] RESULTIS findlabels(h3!x)+findlabels(h4!x)
+h5 M:4 DEF com/pal70.b[47] h5=4
+h5 M:4 MAN com/pal70.b[1260] size,ln:=3,h5!x
+h5 M:4 MAN com/pal70.b[1263] size,ln:=4,h5!x
+h5 M:4 MAN com/pal70.b[1368] comline:=h5!x
+h6 M:5 DEF com/pal70.b[47] h6=5
+hasOperand G:353 DEF com/pal70.b[154] hasOperand=
+hasOperand G:353 FN com/pal70.b[2078] LET hasOperand(op)=..
+id_inoutscb M:131 DEF libhdr.h[362] id_inoutscb=131
+id_inscb M:129 DEF libhdr.h[360] id_inscb=129
+id_outscb M:130 DEF libhdr.h[361] id_outscb=130
+initco G:22 DEF libhdr.h[37] initco=22
+initio G:46 DEF libhdr.h[61] initio=46
+initnames G:309 DEF com/pal70.b[143] initnames=
+initnames G:309 LG com/pal70.b[1639] initnames(h2!x)
+initnames G:309 LG com/pal70.b[1791] mapf(initnames,x)
+initnames G:309 LG com/pal70.b[1805] initnames(h2!x)
+initnames G:309 LG com/pal70.b[1809] initnames(h3!x)
+initnames G:309 RT com/pal70.b[1774] LET initnames(x)BE..
+input G:58 DEF libhdr.h[73] input=58
+instrcount G:121 DEF libhdr.h[137] instrcount=121
+interpret G:379 DEF com/pal70.b[162] interpret=
+interpret G:379 FN com/pal70.b[1964] LET interpret(regs,mem)=..
+interpret G:379 LG com/pal70.b[272] interpret()
+intflag G:119 DEF libhdr.h[135] intflag=119
+isrregs M:41 DEF libhdr.h[358] isrregs=41
+jumpcond G:322 DEF com/pal70.b[147] jumpcond=
+klibregs M:21 DEF libhdr.h[356] klibregs=21
+labmax G:370 DEF com/pal70.b[160] labmax=
+labmax G:370 LG com/pal70.b[1322] FOR i=0 TO labmax DO..
+labmax G:370 LG com/pal70.b[1947] TEST labnumber>=labmax THEN .. ELSE ..
+labmax G:370 SG com/pal70.b[222] labmax:=1000
+labnumber G:377 DEF com/pal70.b[161] labnumber=
+labnumber G:377 LG com/pal70.b[1947] TEST labnumber>=labmax THEN .. ELSE ..
+labnumber G:377 LG com/pal70.b[1949] labnumber:=labnumber+1
+labnumber G:377 LG com/pal70.b[1950] RESULTIS labnumber
+labnumber G:377 LG com/pal70.b[1954] FOR lab=1 TO labnumber DO..
+labnumber G:377 SG com/pal70.b[1324] comline,procname,labnumber:=1,0,0
+labnumber G:377 SG com/pal70.b[1949] labnumber:=labnumber+1
+labv G:368 DEF com/pal70.b[160] labv=
+labv G:368 LG com/pal70.b[1322] labv!i,refv!i:=-1,0
+labv G:368 LG com/pal70.b[1944] labv!lab:=addr
+labv G:368 LG com/pal70.b[1956] labv!lab
+labv G:368 LG com/pal70.b[224] UNLESS treevec&codev&datav&labv&refv DO ..
+labv G:368 LG com/pal70.b[281] IF labv DO ..
+labv G:368 LG com/pal70.b[281] freevec(labv)
+labv G:368 SG com/pal70.b[184] treevec,labv,refv,mem:=0,0,0,0
+labv G:368 SG com/pal70.b[220] labv:=getvec(1000)
+length G:313 DEF com/pal70.b[144] length=
+length G:313 FN com/pal70.b[1837] LET length(x)=..
+length G:313 LG com/pal70.b[1424] length(x)
+length G:313 LG com/pal70.b[1530] length(h2!x)
+length G:313 LG com/pal70.b[1622] length(x)
+length G:313 LG com/pal70.b[1681] outfn(Declnames,length(x))
+length G:313 LG com/pal70.b[1687] length(x)
+length G:313 LG com/pal70.b[1725] length(x)
+length G:313 LG com/pal70.b[1787] length(x)
+length G:313 LG com/pal70.b[1796] length(x)
+level G:15 DEF libhdr.h[30] level=15
+level G:15 LG com/pal70.b[182] fin_p,fin_l:=level(),fin
+level G:15 LG com/pal70.b[608] rec_p,rec_l:=level(),recover
+lex G:228 DEF com/pal70.b[124] lex=
+lex G:228 LG com/pal70.b[1009] lex()
+lex G:228 LG com/pal70.b[1020] lex()
+lex G:228 LG com/pal70.b[1076] lex()
+lex G:228 LG com/pal70.b[617] lex()
+lex G:228 LG com/pal70.b[636] lex()
+lex G:228 LG com/pal70.b[662] lex()
+lex G:228 LG com/pal70.b[669] lex()
+lex G:228 LG com/pal70.b[702] lex()
+lex G:228 LG com/pal70.b[757] lex()
+lex G:228 LG com/pal70.b[763] lex()
+lex G:228 LG com/pal70.b[810] lex()
+lex G:228 LG com/pal70.b[828] lex()
+lex G:228 LG com/pal70.b[870] lex()
+lex G:228 LG com/pal70.b[874] lex()
+lex G:228 LG com/pal70.b[884] lex()
+lex G:228 LG com/pal70.b[889] lex()
+lex G:228 LG com/pal70.b[914] lex()
+lex G:228 LG com/pal70.b[938] lex()
+lex G:228 LG com/pal70.b[941] lex()
+lex G:228 RT com/pal70.b[291] LET lex()BE..
+lexval G:230 DEF com/pal70.b[125] lexval=
+lexval G:230 LG com/pal70.b[493] IF lexval>maxint/10 DO ..
+lexval G:230 LG com/pal70.b[496] lexval:=10*lexval
+lexval G:230 LG com/pal70.b[500] IF lexval>maxint/10 DO ..
+lexval G:230 LG com/pal70.b[503] lexval:=10*lexval+ch-48
+lexval G:230 LG com/pal70.b[517] IF lexval>#x05F5E0FF DO ..
+lexval G:230 LG com/pal70.b[523] IF lexval>maxint/10 DO ..
+lexval G:230 LG com/pal70.b[524] lexval:=10*lexval
+lexval G:230 LG com/pal70.b[621] writef("       %n",lexval)
+lexval G:230 LG com/pal70.b[622] writef("      %ne%n",lexval,exponent)
+lexval G:230 LG com/pal70.b[883] a:=mk2(Int,lexval)
+lexval G:230 LG com/pal70.b[888] a:=mk3(Real,lexval,exponent)
+lexval G:230 SG com/pal70.b[485] lexval,exponent:=0,0
+lexval G:230 SG com/pal70.b[496] lexval:=10*lexval
+lexval G:230 SG com/pal70.b[503] lexval:=10*lexval+ch-48
+lexval G:230 SG com/pal70.b[524] lexval:=10*lexval
+lineno G:240 DEF com/pal70.b[127] lineno=
+lineno G:240 LG com/pal70.b[1027] token,lineno
+lineno G:240 LG com/pal70.b[1055] token,lineno,0,0
+lineno G:240 LG com/pal70.b[1060] ln:=lineno
+lineno G:240 LG com/pal70.b[294] lineno:=lineno+1
+lineno G:240 LG com/pal70.b[546] lineno:=lineno+1
+lineno G:240 LG com/pal70.b[654] writef("*nErro'ne %n:  ",lineno)
+lineno G:240 LG com/pal70.b[676] 0,lineno
+lineno G:240 LG com/pal70.b[711] token,lineno
+lineno G:240 LG com/pal70.b[719] ln:=lineno
+lineno G:240 LG com/pal70.b[772] token,lineno
+lineno G:240 LG com/pal70.b[819] 0,n,1,lineno
+lineno G:240 LG com/pal70.b[846] 0,lineno
+lineno G:240 LG com/pal70.b[856] 0,token,lineno
+lineno G:240 LG com/pal70.b[919] token,lineno
+lineno G:240 SG com/pal70.b[234] chcount,lineno:=0,1
+lineno G:240 SG com/pal70.b[294] lineno:=lineno+1
+lineno G:240 SG com/pal70.b[546] lineno:=lineno+1
+load G:324 DEF com/pal70.b[148] load=
+load G:324 LG com/pal70.b[1362] load(x)
+loaddefinee G:307 DEF com/pal70.b[143] loaddefinee=
+loaddefinee G:307 LG com/pal70.b[1640] loaddefinee(h2!x)
+loaddefinee G:307 LG com/pal70.b[1726] mapb(loaddefinee,x)
+loaddefinee G:307 LG com/pal70.b[1735] loaddefinee(h2!x)
+loaddefinee G:307 LG com/pal70.b[1739] loaddefinee(h3!x)
+loaddefinee G:307 RT com/pal70.b[1710] LET loaddefinee(x)BE..
+loadlist G:326 DEF com/pal70.b[148] loadlist=
+loadseg G:105 DEF libhdr.h[121] loadseg=105
+locatedir G:80 DEF libhdr.h[95] locatedir=80
+locateobj G:81 DEF libhdr.h[96] locateobj=81
+longjump G:16 DEF libhdr.h[31] longjump=16
+longjump G:16 LG com/pal70.b[650] longjump(fin_p,fin_l)
+longjump G:16 LG com/pal70.b[664] longjump(rec_p,rec_l)
+lookupword G:245 DEF com/pal70.b[128] lookupword=
+lookupword G:245 FN com/pal70.b[402] LET lookupword(word)=..
+lookupword G:245 LG com/pal70.b[316] token:=lookupword(rdtag())
+lookupword G:245 LG com/pal70.b[421] lookupword(word)
+mapb G:311 DEF com/pal70.b[144] mapb=
+mapb G:311 LG com/pal70.b[1426] mapb(r,x)
+mapb G:311 LG com/pal70.b[1623] mapb(transrhs,x)
+mapb G:311 LG com/pal70.b[1726] mapb(loaddefinee,x)
+mapb G:311 RT com/pal70.b[1832] LET mapb(r,x)BE..
+mapf G:312 DEF com/pal70.b[144] mapf=
+mapf G:312 LG com/pal70.b[1683] mapf(outname,x)
+mapf G:312 LG com/pal70.b[1690] mapf(declnames,x)
+mapf G:312 LG com/pal70.b[1760] mapf(declguesses,x)
+mapf G:312 LG com/pal70.b[1791] mapf(initnames,x)
+mapf G:312 LG com/pal70.b[1799] mapf(outname,x)
+mapf G:312 RT com/pal70.b[1827] LET mapf(r,x)BE..
+maxint M:2147483647 DEF libhdr.h[164] maxint=minint-1
+maxint M:2147483647 MAN com/pal70.b[267] count:=maxint
+maxint M:2147483647 MAN com/pal70.b[274] writef("*nInst'ted: %n*n",maxint-count)
+maxint M:2147483647 MAN com/pal70.b[493] IF lexval>maxint/10 DO ..
+maxint M:2147483647 MAN com/pal70.b[500] IF lexval>maxint/10 DO ..
+maxint M:2147483647 MAN com/pal70.b[523] IF lexval>maxint/10 DO ..
+mcaddrinc M:4 DEF libhdr.h[162] mcaddrinc=bytesperword
+mem G:359 DEF com/pal70.b[156] mem=
+mem G:359 LG com/pal70.b[280] IF mem DO ..
+mem G:359 LG com/pal70.b[280] freevec(mem)
+mem G:359 SG com/pal70.b[184] treevec,labv,refv,mem:=0,0,0,0
+memt G:360 DEF com/pal70.b[156] memt=
+minint M:-2147483648 DEF libhdr.h[163] minint=1<<bitsperword-1
+minint M:-2147483648 MAN libhdr.h[164] maxint=minint-1
+mk1 G:211 DEF com/pal70.b[119] mk1=
+mk1 G:211 FN com/pal70.b[570] LET mk1(a)=..
+mk1 G:211 LG com/pal70.b[615] mptnode:=mk1(Mpt)
+mk2 G:212 DEF com/pal70.b[119] mk2=
+mk2 G:212 FN com/pal70.b[576] LET mk2(a,b)=..
+mk2 G:212 LG com/pal70.b[883] a:=mk2(Int,lexval)
+mk2 G:212 LG com/pal70.b[905] a:=mk2(Neg,a)
+mk2 G:212 LG com/pal70.b[910] RESULTIS mk2(Not,rnexp(26))
+mk3 G:213 DEF com/pal70.b[119] mk3=
+mk3 G:213 FN com/pal70.b[582] LET mk3(a,b,c)=..
+mk3 G:213 LG com/pal70.b[1094] RESULTIS mk3(op,rncom(6),ln)
+mk3 G:213 LG com/pal70.b[1127] RESULTIS mk3(Goto,rnexp(38),ln)
+mk3 G:213 LG com/pal70.b[1130] RESULTIS mk3(Res,rnexp(14),ln)
+mk3 G:213 LG com/pal70.b[759] RESULTIS mk3(Rec,rnbdef(2),ln)
+mk3 G:213 LG com/pal70.b[879] a:=mk3(Paren,a,ln)
+mk3 G:213 LG com/pal70.b[888] a:=mk3(Real,lexval,exponent)
+mk3 G:213 LG com/pal70.b[894] RESULTIS mk3(op,rnexp(38),ln)
+mk4 G:214 DEF com/pal70.b[119] mk4=
+mk4 G:214 FN com/pal70.b[588] LET mk4(a,b,c,d)=..
+mk4 G:214 LG com/pal70.b[1004] a:=mk4(op,a,...,ln)
+mk4 G:214 LG com/pal70.b[1012] a:=mk4(Comma,2,a,...)
+mk4 G:214 LG com/pal70.b[1013] a:=mk4(Apply,b,a,ln)
+mk4 G:214 LG com/pal70.b[1035] a:=mk4(Seq,a,...,ln)
+mk4 G:214 LG com/pal70.b[1040] a:=mk4(Where,a,...,ln)
+mk4 G:214 LG com/pal70.b[1061] RESULTIS mk4(Ass,a,...,ln)
+mk4 G:214 LG com/pal70.b[1069] RESULTIS mk4(Let,a,...,ln)
+mk4 G:214 LG com/pal70.b[1087] a:=mk4(Lambda,v!i,a,ln)
+mk4 G:214 LG com/pal70.b[688] a:=mk4(Def,d,...,ln)
+mk4 G:214 LG com/pal70.b[726] RESULTIS mk4(Valdef,names,...,ln)
+mk4 G:214 LG com/pal70.b[729] RESULTIS mk4(Valdef,names,...,ln)
+mk4 G:214 LG com/pal70.b[744] b:=mk4(Lambda,v!i,b,ln)
+mk4 G:214 LG com/pal70.b[746] RESULTIS mk4(Valdef,names,b,ln)
+mk4 G:214 LG com/pal70.b[798] a:=mk4(Within,a,...,ln)
+mk4 G:214 LG com/pal70.b[934] a:=mk4(Apply,a,...,ln)
+mk4 G:214 LG com/pal70.b[946] a:=mk4(Apply,a,b,ln)
+mk4 G:214 LG com/pal70.b[967] a:=mk4(Aug,a,...,ln)
+mk4 G:214 LG com/pal70.b[979] a:=mk4(op,a,...,ln)
+mk4 G:214 LG com/pal70.b[984] a:=mk4(op,a,...,ln)
+mk4 G:214 LG com/pal70.b[989] a:=mk4(op,a,...,ln)
+mk4 G:214 LG com/pal70.b[994] a:=mk4(op,a,...,ln)
+mk4 G:214 LG com/pal70.b[999] a:=mk4(op,a,...,ln)
+mk5 G:215 DEF com/pal70.b[119] mk5=
+mk5 G:215 FN com/pal70.b[594] LET mk5(a,b,c,d,e)=..
+mk5 G:215 LG com/pal70.b[1046] a:=mk5(Colon,a,...,...)
+mk5 G:215 LG com/pal70.b[1106] RESULTIS mk5(Cond,a,b,...)
+mk5 G:215 LG com/pal70.b[1111] RESULTIS mk5(Cond,a,...,...)
+mk5 G:215 LG com/pal70.b[1122] RESULTIS mk5(Cond,a,...,...)
+mk5 G:215 LG com/pal70.b[1123] RESULTIS mk5(While,a,...,ln)
+mk5 G:215 LG com/pal70.b[974] a:=mk5(Cond,a,b,...)
+mk6 G:216 DEF com/pal70.b[119] mk6=
+mk6 G:216 FN com/pal70.b[600] LET mk6(a,b,c,d,e,f)=..
+mkramstream G:123 DEF libhdr.h[139] mkramstream=123
+mptnode G:237 DEF com/pal70.b[126] mptnode=
+mptnode G:237 LG com/pal70.b[811] RESULTIS mptnode
+mptnode G:237 SG com/pal70.b[615] mptnode:=mk1(Mpt)
+msp G:336 DEF com/pal70.b[150] msp=
+msp G:336 LG com/pal70.b[1337] outlabset(n,msp)
+msp G:336 LG com/pal70.b[1371] IF ssp=msp DO ..
+msp G:336 LG com/pal70.b[1466] IF ssp>=msp DO ..
+msp G:336 LG com/pal70.b[1467] ssp,msp
+msp G:336 LG com/pal70.b[1478] outlabset(lab2,msp)
+msp G:336 LG com/pal70.b[1650] IF ssp=msp DO ..
+msp G:336 LG com/pal70.b[1651] ssp,msp
+msp G:336 LG com/pal70.b[1658] outlabset(lab2,msp)
+msp G:336 LG com/pal70.b[1754] IF ssp=msp DO ..
+msp G:336 LG com/pal70.b[1815] ssp,msp
+msp G:336 LG com/pal70.b[1823] outlabset(n,msp)
+msp G:336 LG com/pal70.b[1841] IF ssp>msp DO ..
+msp G:336 SG com/pal70.b[1325] ssp,msp:=0,1
+msp G:336 SG com/pal70.b[1371] msp:=ssp+1
+msp G:336 SG com/pal70.b[1466] msp:=ssp+1
+msp G:336 SG com/pal70.b[1468] ssp,msp:=0,1
+msp G:336 SG com/pal70.b[1479] ssp,msp:=a,b
+msp G:336 SG com/pal70.b[1650] msp:=ssp+1
+msp G:336 SG com/pal70.b[1652] ssp,msp:=0,1
+msp G:336 SG com/pal70.b[1659] ssp,msp:=a,b
+msp G:336 SG com/pal70.b[1754] msp:=ssp+1
+msp G:336 SG com/pal70.b[1816] ssp,msp:=1,1
+msp G:336 SG com/pal70.b[1824] ssp,msp:=a,b
+msp G:336 SG com/pal70.b[1841] msp:=ssp
+muldiv G:5 DEF libhdr.h[20] muldiv=5
+namestart G:243 DEF com/pal70.b[128] namestart=
+nametable G:244 DEF com/pal70.b[128] nametable=
+nametable G:244 LG com/pal70.b[407] wordnode:=nametable!hashval
+nametable G:244 LG com/pal70.b[414] h1!wordnode,h2!wordnode:=Name,nametable!hashval
+nametable G:244 LG com/pal70.b[416] nametable!hashval:=wordnode
+nametable G:244 LG com/pal70.b[612] UNLESS charv&nametable DO ..
+nametable G:244 LG com/pal70.b[613] nametable!i:=0
+nametable G:244 SG com/pal70.b[611] nametable:=newvec(nametablesize)
+nametablesize M:541 DEF com/pal70.b[166] nametablesize=541
+nametablesize M:541 MAN com/pal70.b[406] hashval:=hashval REM nametablesize
+nametablesize M:541 MAN com/pal70.b[611] nametable:=newvec(nametablesize)
+nametablesize M:541 MAN com/pal70.b[613] FOR i=0 TO nametablesize DO..
+newline G:84 DEF libhdr.h[99] newline=84
+newline G:84 LG com/pal70.b[1300] newline()
+newline G:84 LG com/pal70.b[1315] newline()
+newline G:84 LG com/pal70.b[1978] newline()
+newline G:84 LG com/pal70.b[245] newline()
+newline G:84 LG com/pal70.b[480] newline()
+newline G:84 LG com/pal70.b[634] newline()
+newpage G:120 DEF libhdr.h[136] newpage=120
+newvec G:217 DEF com/pal70.b[120] newvec=
+newvec G:217 FN com/pal70.b[564] LET newvec(n)=..
+newvec G:217 LG com/pal70.b[383] wordnode:=newvec(len/bytesperword+2)
+newvec G:217 LG com/pal70.b[413] wordnode:=newvec(len/bytesperword+3)
+newvec G:217 LG com/pal70.b[571] newvec(0)
+newvec G:217 LG com/pal70.b[577] newvec(1)
+newvec G:217 LG com/pal70.b[583] newvec(2)
+newvec G:217 LG com/pal70.b[589] newvec(3)
+newvec G:217 LG com/pal70.b[595] newvec(4)
+newvec G:217 LG com/pal70.b[601] newvec(5)
+newvec G:217 LG com/pal70.b[610] charv:=newvec(256/bytesperword)
+newvec G:217 LG com/pal70.b[611] nametable:=newvec(nametablesize)
+newvec G:217 LG com/pal70.b[789] a:=newvec(i+1)
+newvec G:217 LG com/pal70.b[833] a:=newvec(i+1)
+newvec G:217 LG com/pal70.b[958] a:=newvec(i+1)
+nextlab G:376 DEF com/pal70.b[161] nextlab=
+nextlab G:376 FN com/pal70.b[1946] LET nextlab()=..
+nextlab G:376 LG com/pal70.b[1329] n:=nextlab()
+nextlab G:376 LG com/pal70.b[1366] nextlab()
+nextlab G:376 LG com/pal70.b[1367] nextlab()
+nextlab G:376 LG com/pal70.b[1434] nextlab()
+nextlab G:376 LG com/pal70.b[1435] nextlab()
+nextlab G:376 LG com/pal70.b[1436] nextlab()
+nextlab G:376 LG com/pal70.b[1462] nextlab()
+nextlab G:376 LG com/pal70.b[1463] nextlab()
+nextlab G:376 LG com/pal70.b[1499] nextlab()
+nextlab G:376 LG com/pal70.b[1500] nextlab()
+nextlab G:376 LG com/pal70.b[1514] nextlab()
+nextlab G:376 LG com/pal70.b[1515] nextlab()
+nextlab G:376 LG com/pal70.b[1587] nextlab()
+nextlab G:376 LG com/pal70.b[1646] nextlab()
+nextlab G:376 LG com/pal70.b[1647] nextlab()
+nilnode G:233 DEF com/pal70.b[126] nilnode=
+nilnode G:233 LG com/pal70.b[876] a:=nilnode
+nilnode G:233 LG com/pal70.b[942] RESULTIS nilnode
+nilnode G:233 SG com/pal70.b[451] nilnode:=wordnode
+note G:63 DEF libhdr.h[78] note=63
+opstr G:352 DEF com/pal70.b[154] opstr=
+opstr G:352 FN com/pal70.b[1135] LET opstr(op)=..
+opstr G:352 LG com/pal70.b[1241] writef("Default op=%s*n",opstr(op))
+opstr G:352 LG com/pal70.b[1298] writef("%s",opstr(op))
+opstr G:352 LG com/pal70.b[1847] wrf("%s*n",opstr(op))
+opstr G:352 LG com/pal70.b[1868] wrf("%s %s*n",opstr(op),var)
+opstr G:352 LG com/pal70.b[1878] wrf("%s %n*n",opstr(op),a)
+opstr G:352 LG com/pal70.b[1883] wrf("%s %n %n*n",opstr(op),a,b)
+opstr G:352 LG com/pal70.b[1888] wrf("%s %s L%n*n",opstr(op),a,b)
+opstr G:352 LG com/pal70.b[1893] wrf("%s L%n*n",opstr(op),lab)
+opstr G:352 LG com/pal70.b[1976] writef("%i5: %t8",pc,opstr(op))
+opstr G:352 LG com/pal70.b[620] writef("token = %i3 %s",token,opstr(token))
+opstr G:352 LG com/pal70.b[847] sawritef("rarg:'oken=%s*n",opstr(token))
+optCode G:222 DEF com/pal70.b[121] optCode=
+optCode G:222 LG com/pal70.b[1327] IF optCode DO ..
+optCode G:222 LG com/pal70.b[1844] IF optCode DO ..
+optCode G:222 LG com/pal70.b[1856] IF optCode DO ..
+optCode G:222 LG com/pal70.b[1864] IF optCode DO ..
+optCode G:222 SG com/pal70.b[208] optCode:=argv!4
+optTokens G:220 DEF com/pal70.b[121] optTokens=
+optTokens G:220 LG com/pal70.b[241] IF optTokens DO ..
+optTokens G:220 LG com/pal70.b[619] IF optTokens DO ..
+optTokens G:220 SG com/pal70.b[206] optTokens:=argv!2
+optTrace G:223 DEF com/pal70.b[121] optTrace=
+optTrace G:223 LG com/pal70.b[1975] IF optTrace DO ..
+optTrace G:223 SG com/pal70.b[209] optTrace:=argv!5
+optTree G:221 DEF com/pal70.b[121] optTree=
+optTree G:221 LG com/pal70.b[243] IF optTree DO ..
+optTree G:221 SG com/pal70.b[207] optTree:=argv!3
+outentry G:346 DEF com/pal70.b[152] outentry=
+outentry G:346 RT com/pal70.b[1907] LET outentry(l1,l2)BE..
+outf G:337 DEF com/pal70.b[151] outf=
+outf G:337 LG com/pal70.b[1336] outf(Halt)
+outf G:337 LG com/pal70.b[1352] outf(Nil)
+outf G:337 LG com/pal70.b[1354] outf(FormLvalue)
+outf G:337 LG com/pal70.b[1389] outf(op)
+outf G:337 LG com/pal70.b[1391] outf(FormLvalue)
+outf G:337 LG com/pal70.b[1397] outf(Aug)
+outf G:337 LG com/pal70.b[1399] outf(FormLvalue)
+outf G:337 LG com/pal70.b[1405] outf(Apply)
+outf G:337 LG com/pal70.b[1407] outf(FormRvalue)
+outf G:337 LG com/pal70.b[1414] outf(op)
+outf G:337 LG com/pal70.b[1415] outf(FormLvalue)
+outf G:337 LG com/pal70.b[1420] outf(FormLvalue)
+outf G:337 LG com/pal70.b[1429] outf(FormLvalue)
+outf G:337 LG com/pal70.b[1443] outf(FormLvalue)
+outf G:337 LG com/pal70.b[1457] outf(Lose1)
+outf G:337 LG com/pal70.b[1470] outf(Jj)
+outf G:337 LG com/pal70.b[1471] outf(FormLvalue)
+outf G:337 LG com/pal70.b[1472] outf(Declname)
+outf G:337 LG com/pal70.b[1476] outf(Return)
+outf G:337 LG com/pal70.b[1482] outf(FormRvalue)
+outf G:337 LG com/pal70.b[1488] outf(Res)
+outf G:337 LG com/pal70.b[1494] outf(Goto)
+outf G:337 LG com/pal70.b[1521] outf(Lose1)
+outf G:337 LG com/pal70.b[1524] outf(Dummy)
+outf G:337 LG com/pal70.b[1525] outf(FormLvalue)
+outf G:337 LG com/pal70.b[1536] outf(FormLvalue)
+outf G:337 LG com/pal70.b[1550] outf(op)
+outf G:337 LG com/pal70.b[1552] outf(FormLvalue)
+outf G:337 LG com/pal70.b[1556] outf(mode=Val->LoadR,LoadL)
+outf G:337 LG com/pal70.b[1572] outf(LoadS)
+outf G:337 LG com/pal70.b[1575] outf(FormLvalue)
+outf G:337 LG com/pal70.b[1611] outf(SetlabEs,n)
+outf G:337 LG com/pal70.b[1626] outf(FormLvalue)
+outf G:337 LG com/pal70.b[1635] outf(LoadE)
+outf G:337 LG com/pal70.b[1641] outf(RestoreE1)
+outf G:337 LG com/pal70.b[1656] outf(Return)
+outf G:337 LG com/pal70.b[1675] outf(Declname)
+outf G:337 LG com/pal70.b[1704] outf(TestEmpty)
+outf G:337 LG com/pal70.b[1718] outf(LoadR)
+outf G:337 LG com/pal70.b[1720] outf(FormLvalue)
+outf G:337 LG com/pal70.b[1729] outf(FormLvalue)
+outf G:337 LG com/pal70.b[1753] outf(LoadGuess)
+outf G:337 LG com/pal70.b[1755] outf(Declname)
+outf G:337 LG com/pal70.b[1782] outf(Initname)
+outf G:337 LG com/pal70.b[1821] outf(Return)
+outf G:337 RT com/pal70.b[1846] LET outf(op)BE..
+outfl G:344 DEF com/pal70.b[152] outfl=
+outfl G:344 LG com/pal70.b[1330] outfl(Setup,n)
+outfl G:344 LG com/pal70.b[1370] outfl(Blocklink,lab1)
+outfl G:344 LG com/pal70.b[1437] outfl(FormClosure,lab1)
+outfl G:344 LG com/pal70.b[1439] outfl(Jump,lab2)
+outfl G:344 LG com/pal70.b[1464] outfl(Reslink,lab1)
+outfl G:344 LG com/pal70.b[1469] outfl(Save,lab2)
+outfl G:344 LG com/pal70.b[1502] outfl(JumpF,lab1)
+outfl G:344 LG com/pal70.b[1505] outfl(Jump,lab2)
+outfl G:344 LG com/pal70.b[1518] outfl(JumpF,lab1)
+outfl G:344 LG com/pal70.b[1522] outfl(Jump,lab2)
+outfl G:344 LG com/pal70.b[1649] outfl(Blocklink,lab1)
+outfl G:344 LG com/pal70.b[1653] outfl(Save,lab2)
+outfl G:344 RT com/pal70.b[1892] LET outfl(op,lab)BE..
+outfn G:341 DEF com/pal70.b[151] outfn=
+outfn G:341 LG com/pal70.b[1427] outfn(Tuple,len)
+outfn G:341 LG com/pal70.b[1534] outfn(Update,len)
+outfn G:341 LG com/pal70.b[1562] outfn(LoadN,h2!x)
+outfn G:341 LG com/pal70.b[1567] outfn(LoadF,h2!x,h3!x)
+outfn G:341 LG com/pal70.b[1624] outfn(Tuple,len)
+outfn G:341 LG com/pal70.b[1681] outfn(Declnames,length(x))
+outfn G:341 LG com/pal70.b[1688] outfn(Members,len)
+outfn G:341 LG com/pal70.b[1727] outfn(Tuple,len)
+outfn G:341 LG com/pal70.b[1788] outfn(Members,len)
+outfn G:341 LG com/pal70.b[1790] outfn(Initnames,len)
+outfn G:341 LG com/pal70.b[1797] outfn(Initnames,len)
+outfn G:341 LG com/pal70.b[1817] outfn(Save,n)
+outfn G:341 LG com/pal70.b[1862] outfn(Stringconst,len)
+outfn G:341 RT com/pal70.b[1877] LET outfn(op,a)BE..
+outfnn G:343 DEF com/pal70.b[152] outfnn=
+outfnn G:343 RT com/pal70.b[1882] LET outfnn(op,a,b)BE..
+outfs G:345 DEF com/pal70.b[152] outfs=
+outfsl G:342 DEF com/pal70.b[151] outfsl=
+outfsl G:342 LG com/pal70.b[1589] outfsl(Decllabel,h2!x,lab)
+outfsl G:342 RT com/pal70.b[1887] LET outfsl(op,a,b)BE..
+outfv G:340 DEF com/pal70.b[151] outfv=
+outfv G:340 RT com/pal70.b[1867] LET outfv(op,var)BE..
+outlab G:347 DEF com/pal70.b[153] outlab=
+outlab G:347 LG com/pal70.b[1373] outlab(lab1)
+outlab G:347 LG com/pal70.b[1440] outlab(lab1)
+outlab G:347 LG com/pal70.b[1442] outlab(lab2)
+outlab G:347 LG com/pal70.b[1451] outlab(h4!x)
+outlab G:347 LG com/pal70.b[1481] outlab(lab1)
+outlab G:347 LG com/pal70.b[1506] outlab(lab1)
+outlab G:347 LG com/pal70.b[1509] outlab(lab2)
+outlab G:347 LG com/pal70.b[1516] outlab(lab2)
+outlab G:347 LG com/pal70.b[1523] outlab(lab1)
+outlab G:347 LG com/pal70.b[1661] outlab(lab1)
+outlab G:347 RT com/pal70.b[1897] LET outlab(lab)BE..
+outlabset G:348 DEF com/pal70.b[153] outlabset=
+outlabset G:348 LG com/pal70.b[1337] outlabset(n,msp)
+outlabset G:348 LG com/pal70.b[1478] outlabset(lab2,msp)
+outlabset G:348 LG com/pal70.b[1658] outlabset(lab2,msp)
+outlabset G:348 LG com/pal70.b[1823] outlabset(n,msp)
+outlabset G:348 RT com/pal70.b[1902] LET outlabset(lab,val)BE..
+outn F:617 RT com/pal70.b[1872] LET outn(a)BE..
+outname G:338 DEF com/pal70.b[151] outname=
+outname G:338 LG com/pal70.b[1473] outname(Name,0,"**RES**")
+outname G:338 LG com/pal70.b[1557] outname(x)
+outname G:338 LG com/pal70.b[1676] outname(x)
+outname G:338 LG com/pal70.b[1683] mapf(outname,x)
+outname G:338 LG com/pal70.b[1718] outname(x)
+outname G:338 LG com/pal70.b[1755] outname(x)
+outname G:338 LG com/pal70.b[1782] outname(x)
+outname G:338 LG com/pal70.b[1799] mapf(outname,x)
+outname G:338 RT com/pal70.b[1851] LET outname(x)BE..
+output G:59 DEF libhdr.h[74] output=59
+output G:59 LG com/pal70.b[178] output()
+outstatvec G:350 DEF com/pal70.b[153] outstatvec=
+outstatvec G:350 RT com/pal70.b[1913] LET outstatvec(lab,a)BE..
+outstring G:339 DEF com/pal70.b[151] outstring=
+outstring G:351 DEF com/pal70.b[153] outstring=
+outstring G:351 LG com/pal70.b[1573] outstring(x)
+outstring G:351 RT com/pal70.b[1859] LET outstring(x)BE..
+outvar G:349 DEF com/pal70.b[153] outvar=
+outvar G:349 RT com/pal70.b[1919] LET outvar(lab)BE..
+packstring G:30 DEF libhdr.h[45] packstring=30
+pathfindinput G:53 DEF libhdr.h[68] pathfindinput=53
+pc G:354 DEF com/pal70.b[155] pc=
+pc G:354 LG com/pal70.b[1974] codev!pc
+pc G:354 LG com/pal70.b[1976] writef("%i5: %t8",pc,opstr(op))
+pc G:354 LG com/pal70.b[1982] pc:=pc+1
+pc G:354 SG com/pal70.b[1982] pc:=pc+1
+pc G:354 SG com/pal70.b[264] pc:=0
+plist G:258 DEF com/pal70.b[135] plist=
+plist G:258 LG com/pal70.b[1304] plist(h1!(...-1),n+1,d)
+plist G:258 LG com/pal70.b[244] plist(tree,0,20)
+plist G:258 RT com/pal70.b[1231] LET plist(x,n,d)BE..
+point G:64 DEF libhdr.h[79] point=64
+pollingch M:-3 DEF libhdr.h[168] pollingch=-3
+printf G:380 DEF com/pal70.b[162] printf=
+printf G:380 RT com/pal70.b[2046] LET printf(mem,form,p)BE..
+procname G:333 DEF com/pal70.b[150] procname=
+procname G:333 LG com/pal70.b[1311] IF procname DO ..
+procname G:333 LG com/pal70.b[1311] writef(" in %s",@h3!procname)
+procname G:333 SG com/pal70.b[1324] comline,procname,labnumber:=1,0,0
+progstream G:209 DEF com/pal70.b[118] progstream=
+progstream G:209 LG com/pal70.b[197] IF progstream=0 DO ..
+progstream G:209 LG com/pal70.b[199] selectinput(progstream)
+progstream G:209 LG com/pal70.b[283] IF progstream DO ..
+progstream G:209 LG com/pal70.b[283] selectinput(progstream)
+progstream G:209 SG com/pal70.b[185] progstream,tostream:=0,0
+progstream G:209 SG com/pal70.b[195] progstream:=findinput(argv!0)
+put_index_record G:74 DEF libhdr.h[89] put_index_record=74
+put_record G:72 DEF libhdr.h[87] put_record=72
+putc G:371 DEF com/pal70.b[160] putc=
+putc G:371 LG com/pal70.b[1848] putc(op)
+putc G:371 LG com/pal70.b[1855] putc(name%i)
+putc G:371 LG com/pal70.b[1863] putc(name%i)
+putc G:371 LG com/pal70.b[1869] putc(op)
+putc G:371 LG com/pal70.b[1869] putc(var)
+putc G:371 LG com/pal70.b[1874] putc(a)
+putc G:371 LG com/pal70.b[1879] putc(a)
+putc G:371 LG com/pal70.b[1879] putc(op)
+putc G:371 LG com/pal70.b[1884] putc(a)
+putc G:371 LG com/pal70.b[1884] putc(b)
+putc G:371 LG com/pal70.b[1884] putc(op)
+putc G:371 LG com/pal70.b[1889] putc(a)
+putc G:371 LG com/pal70.b[1889] putc(b)
+putc G:371 LG com/pal70.b[1889] putc(op)
+putc G:371 LG com/pal70.b[1894] putc(op)
+putc G:371 RT com/pal70.b[1925] LET putc(w)BE..
+putd G:372 DEF com/pal70.b[160] putd=
+putd G:372 LG com/pal70.b[1916] putd(0)
+putd G:372 LG com/pal70.b[1922] putd(0)
+putd G:372 RT com/pal70.b[1931] LET putd(w)BE..
+putref G:373 DEF com/pal70.b[160] putref=
+putref G:373 LG com/pal70.b[1894] putref(lab)
+putref G:373 LG com/pal70.b[1909] putref(l2)
+putref G:373 RT com/pal70.b[1937] LET putref(lab)BE..
+putword G:33 DEF libhdr.h[48] putword=33
+r F:670 LF com/pal70.b[1426] mapb(r,x)
+r F:670 RT com/pal70.b[1425] LET r(x)BE..
+randno G:34 DEF libhdr.h[49] randno=34
+randseed G:127 DEF libhdr.h[143] randseed=127
+rarg F:260 FN com/pal70.b[845] LET rarg()=..
+rbcom G:265 DEF com/pal70.b[137] rbcom=
+rbcom G:265 FN com/pal70.b[1054] LET rbcom(n)=..
+rbcom G:265 LG com/pal70.b[1025] rbcom(n)
+rbdef G:254 DEF com/pal70.b[134] rbdef=
+rbdef G:254 FN com/pal70.b[706] LET rbdef(n)=..
+rbdef G:254 LG com/pal70.b[703] RESULTIS rbdef(n)
+rbdef G:254 LG com/pal70.b[769] rbdef(0)
+rbexp G:262 DEF com/pal70.b[136] rbexp=
+rbexp G:262 FN com/pal70.b[855] LET rbexp(n)=..
+rbexp G:262 LG com/pal70.b[917] rbexp(n),0,0
+rbexp G:262 LG com/pal70.b[934] a:=mk4(Apply,a,...,ln)
+rbv F:257 FN com/pal70.b[804] LET rbv()=..
+rbv F:257 LF com/pal70.b[1079] v!i:=rbv()
+rbv F:257 LF com/pal70.b[737] v!i:=rbv()
+rch G:227 DEF com/pal70.b[124] rch=
+rch G:227 LG com/pal70.b[235] rch()
+rch G:227 LG com/pal70.b[296] rch()
+rch G:227 LG com/pal70.b[334] rch()
+rch G:227 LG com/pal70.b[339] rch()
+rch G:227 LG com/pal70.b[341] rch()
+rch G:227 LG com/pal70.b[347] rch()
+rch G:227 LG com/pal70.b[352] rch()
+rch G:227 LG com/pal70.b[357] rch()
+rch G:227 LG com/pal70.b[362] rch()
+rch G:227 LG com/pal70.b[367] rch()
+rch G:227 LG com/pal70.b[374] rch()
+rch G:227 LG com/pal70.b[399] rch()
+rch G:227 LG com/pal70.b[506] rch()
+rch G:227 LG com/pal70.b[511] rch()
+rch G:227 LG com/pal70.b[537] rch()
+rch G:227 LG com/pal70.b[550] rch()
+rch G:227 LG com/pal70.b[560] rch()
+rch G:227 LG com/pal70.b[661] rch()
+rch G:227 RT com/pal70.b[468] LET rch()BE..
+rcom G:264 DEF com/pal70.b[137] rcom=
+rcom G:264 FN com/pal70.b[1024] LET rcom(n)=..
+rcom G:264 LG com/pal70.b[1021] RESULTIS rcom(n)
+rcom G:264 LG com/pal70.b[1069] RESULTIS mk4(Let,a,...,ln)
+rcom G:264 LG com/pal70.b[1084] a:=rcom(0)
+rcom G:264 LG com/pal70.b[1122] RESULTIS mk5(Cond,a,...,...)
+rcom G:264 LG com/pal70.b[1123] RESULTIS mk5(While,a,...,ln)
+rcom G:264 LG com/pal70.b[680] a:=rcom(0)
+rcom G:264 LG com/pal70.b[726] RESULTIS mk4(Valdef,names,...,ln)
+rcom G:264 LG com/pal70.b[877] a:=rcom(0)
+rcom G:264 LG com/pal70.b[944] b:=rcom(0)
+rdargs G:102 DEF libhdr.h[118] rdargs=102
+rdargs G:102 LG com/pal70.b[189] IF rdargs(argform,argv,50)=0 DO ..
+rdch G:38 DEF libhdr.h[53] rdch=38
+rdch G:38 LG com/pal70.b[469] ch:=rdch()
+rdef G:256 DEF com/pal70.b[134] rdef=
+rdef G:256 FN com/pal70.b[765] LET rdef(n)=..
+rdef G:256 LG com/pal70.b[763] RESULTIS rdef(n)
+rditem G:103 DEF libhdr.h[119] rditem=103
+rdnamelist G:251 DEF com/pal70.b[133] rdnamelist=
+rdnamelist G:251 FN com/pal70.b[818] LET rdnamelist(n)=..
+rdnamelist G:251 LG com/pal70.b[724] names:=rdnamelist(names)
+rdnamelist G:251 LG com/pal70.b[813] a:=rdnamelist(0)
+rdnbdef G:253 DEF com/pal70.b[134] rdnbdef=
+rdnumber G:246 DEF com/pal70.b[129] rdnumber=
+rdnumber G:246 FN com/pal70.b[483] LET rdnumber()=..
+rdnumber G:246 LG com/pal70.b[301] token:=rdnumber()
+rdprog G:250 DEF com/pal70.b[132] rdprog=
+rdprog G:250 FN com/pal70.b[672] LET rdprog()=..
+rdprog G:250 LG com/pal70.b[640] res:=rdprog()
+rdprog G:250 LG com/pal70.b[688] a:=mk4(Def,d,...,ln)
+rdstrch G:247 DEF com/pal70.b[129] rdstrch=
+rdstrch G:247 FN com/pal70.b[543] LET rdstrch()=..
+rdstrch G:247 LG com/pal70.b[379] charv%len:=rdstrch()
+rdtag G:248 DEF com/pal70.b[129] rdtag=
+rdtag G:248 FN com/pal70.b[531] LET rdtag()=..
+rdtag G:248 LG com/pal70.b[316] token:=lookupword(rdtag())
+readn G:83 DEF libhdr.h[98] readn=83
+readwords G:44 DEF libhdr.h[59] readwords=44
+rec_l G:201 DEF com/pal70.b[116] rec_l=
+rec_l G:201 LG com/pal70.b[664] longjump(rec_p,rec_l)
+rec_l G:201 SG com/pal70.b[608] rec_p,rec_l:=level(),recover
+rec_p G:200 DEF com/pal70.b[116] rec_p=ug
+rec_p G:200 LG com/pal70.b[664] longjump(rec_p,rec_l)
+rec_p G:200 SG com/pal70.b[608] rec_p,rec_l:=level(),recover
+recordnote G:70 DEF libhdr.h[85] recordnote=70
+recordpoint G:69 DEF libhdr.h[84] recordpoint=69
+recover F:224 LAB com/pal70.b[639] recover:res:=rdprog()
+recover F:224 LF com/pal70.b[608] rec_p,rec_l:=level(),recover
+refv G:369 DEF com/pal70.b[160] refv=
+refv G:369 LG com/pal70.b[1322] labv!i,refv!i:=-1,0
+refv G:369 LG com/pal70.b[1939] codev!codep:=refv!lab
+refv G:369 LG com/pal70.b[1940] refv!lab:=codep
+refv G:369 LG com/pal70.b[1955] refv!lab
+refv G:369 LG com/pal70.b[224] UNLESS treevec&codev&datav&labv&refv DO ..
+refv G:369 LG com/pal70.b[282] IF refv DO ..
+refv G:369 LG com/pal70.b[282] freevec(refv)
+refv G:369 SG com/pal70.b[184] treevec,labv,refv,mem:=0,0,0,0
+refv G:369 SG com/pal70.b[221] refv:=getvec(1000)
+regs G:361 DEF com/pal70.b[156] regs=
+regs G:361 SG com/pal70.b[250] regs:=10
+renamefile G:77 DEF libhdr.h[92] renamefile=77
+resolvelabels G:378 DEF com/pal70.b[161] resolvelabels=
+resolvelabels G:378 RT com/pal70.b[1954] LET resolvelabels()BE..
+result2 G:10 DEF libhdr.h[25] result2=10
+resultlab G:334 DEF com/pal70.b[150] resultlab=
+resumeco G:21 DEF libhdr.h[36] resumeco=21
+returncode G:11 DEF libhdr.h[26] returncode=11
+rewindstream G:65 DEF libhdr.h[80] rewindstream=65
+rexp G:260 DEF com/pal70.b[136] rexp=
+rexp G:260 FN com/pal70.b[916] LET rexp(n)=..
+rexp G:260 LG com/pal70.b[1012] a:=mk4(Comma,2,a,...)
+rexp G:260 LG com/pal70.b[1059] a:=rexp(n)
+rexp G:260 LG com/pal70.b[914] RESULTIS rexp(n)
+rexp G:260 LG com/pal70.b[974] a:=mk5(Cond,a,b,...)
+rname G:252 DEF com/pal70.b[133] rname=
+rname G:252 FN com/pal70.b[839] LET rname()=..
+rname G:252 LG com/pal70.b[1011] b:=rname()
+rname G:252 LG com/pal70.b[718] rname()
+rname G:252 LG com/pal70.b[807] RESULTIS rname()
+rname G:252 LG com/pal70.b[824] b:=rname()
+rname G:252 LG com/pal70.b[830] v!i:=rname()
+rnbdef F:253 FN com/pal70.b[701] LET rnbdef(n)=..
+rnbdef F:253 LF com/pal70.b[1040] a:=mk4(Where,a,...,ln)
+rnbdef F:253 LF com/pal70.b[759] RESULTIS mk3(Rec,rnbdef(2),ln)
+rnbdef F:253 LF com/pal70.b[785] v!i:=rnbdef(0)
+rnbexp G:261 DEF com/pal70.b[136] rnbexp=
+rncom G:263 DEF com/pal70.b[137] rncom=
+rncom G:263 FN com/pal70.b[1019] LET rncom(n)=..
+rncom G:263 LG com/pal70.b[1035] a:=mk4(Seq,a,...,ln)
+rncom G:263 LG com/pal70.b[1046] a:=mk5(Colon,a,...,...)
+rncom G:263 LG com/pal70.b[1094] RESULTIS mk3(op,rncom(6),ln)
+rncom G:263 LG com/pal70.b[1104] b:=rncom(8)
+rncom G:263 LG com/pal70.b[1106] RESULTIS mk5(Cond,a,b,...)
+rncom G:263 LG com/pal70.b[1109] b:=rncom(8)
+rncom G:263 LG com/pal70.b[1111] RESULTIS mk5(Cond,a,...,...)
+rncom G:263 LG com/pal70.b[693] a:=rncom(0)
+rncom G:263 LG com/pal70.b[729] RESULTIS mk4(Valdef,names,...,ln)
+rncom G:263 LG com/pal70.b[741] b:=rncom(0)
+rndef G:255 DEF com/pal70.b[134] rndef=
+rndef G:255 FN com/pal70.b[763] LET rndef(n)=..
+rndef G:255 LG com/pal70.b[1067] a:=rndef(0)
+rndef G:255 LG com/pal70.b[687] rndef()
+rndef G:255 LG com/pal70.b[751] rndef(0)
+rndef G:255 LG com/pal70.b[798] a:=mk4(Within,a,...,ln)
+rnexp G:259 DEF com/pal70.b[136] rnexp=
+rnexp G:259 FN com/pal70.b[914] LET rnexp(n)=..
+rnexp G:259 LG com/pal70.b[1004] a:=mk4(op,a,...,ln)
+rnexp G:259 LG com/pal70.b[1061] RESULTIS mk4(Ass,a,...,ln)
+rnexp G:259 LG com/pal70.b[1098] a:=rnexp(20)
+rnexp G:259 LG com/pal70.b[1119] a:=rnexp(20)
+rnexp G:259 LG com/pal70.b[1127] RESULTIS mk3(Goto,rnexp(38),ln)
+rnexp G:259 LG com/pal70.b[1130] RESULTIS mk3(Res,rnexp(14),ln)
+rnexp G:259 LG com/pal70.b[894] RESULTIS mk3(op,rnexp(38),ln)
+rnexp G:259 LG com/pal70.b[898] RESULTIS rnexp(32)
+rnexp G:259 LG com/pal70.b[902] a:=rnexp(32)
+rnexp G:259 LG com/pal70.b[910] RESULTIS mk2(Not,rnexp(26))
+rnexp G:259 LG com/pal70.b[954] v!i:=rnexp(16)
+rnexp G:259 LG com/pal70.b[967] a:=mk4(Aug,a,...,ln)
+rnexp G:259 LG com/pal70.b[972] b:=rnexp(18)
+rnexp G:259 LG com/pal70.b[979] a:=mk4(op,a,...,ln)
+rnexp G:259 LG com/pal70.b[984] a:=mk4(op,a,...,ln)
+rnexp G:259 LG com/pal70.b[989] a:=mk4(op,a,...,ln)
+rnexp G:259 LG com/pal70.b[994] a:=mk4(op,a,...,ln)
+rnexp G:259 LG com/pal70.b[999] a:=mk4(op,a,...,ln)
+rootnode G:9 DEF libhdr.h[24] rootnode=9
+rootnodeaddr M:100 DEF libhdr.h[208] rootnodeaddr=100
+rtn_abortcode M:27 DEF libhdr.h[244] rtn_abortcode=
+rtn_adjclock M:33 DEF libhdr.h[262] rtn_adjclock=
+rtn_blib M:19 DEF libhdr.h[233] rtn_blib=
+rtn_blklist M:4 DEF libhdr.h[215] rtn_blklist=
+rtn_boot M:17 DEF libhdr.h[231] rtn_boot=
+rtn_boottrace M:39 DEF libhdr.h[277] rtn_boottrace=
+rtn_bptaddr M:9 DEF libhdr.h[222] rtn_bptaddr=
+rtn_bptinstr M:10 DEF libhdr.h[223] rtn_bptinstr=
+rtn_clkintson M:6 DEF libhdr.h[218] rtn_clkintson=
+rtn_clwkq M:12 DEF libhdr.h[226] rtn_clwkq=
+rtn_context M:28 DEF libhdr.h[245] rtn_context=
+rtn_crntask M:3 DEF libhdr.h[214] rtn_crntask=
+rtn_days M:40 DEF libhdr.h[280] rtn_days=
+rtn_dbgvars M:11 DEF libhdr.h[224] rtn_dbgvars=
+rtn_dcountv M:34 DEF libhdr.h[264] rtn_dcountv=
+rtn_devtab M:1 DEF libhdr.h[212] rtn_devtab=
+rtn_dumpflag M:25 DEF libhdr.h[241] rtn_dumpflag=
+rtn_envlist M:26 DEF libhdr.h[242] rtn_envlist=
+rtn_hdrsvar M:37 DEF libhdr.h[273] rtn_hdrsvar=
+rtn_idletcb M:32 DEF libhdr.h[261] rtn_idletcb=
+rtn_info M:15 DEF libhdr.h[229] rtn_info=
+rtn_insadebug M:8 DEF libhdr.h[220] rtn_insadebug=
+rtn_intflag M:24 DEF libhdr.h[240] rtn_intflag=
+rtn_keyboard M:20 DEF libhdr.h[234] rtn_keyboard=
+rtn_klib M:18 DEF libhdr.h[232] rtn_klib=
+rtn_lastch M:7 DEF libhdr.h[219] rtn_lastch=
+rtn_lastg M:30 DEF libhdr.h[254] rtn_lastg=
+rtn_lastp M:29 DEF libhdr.h[253] rtn_lastp=
+rtn_lastst M:31 DEF libhdr.h[255] rtn_lastst=
+rtn_mc0 M:42 DEF libhdr.h[283] rtn_mc0=
+rtn_mc1 M:43 DEF libhdr.h[285] rtn_mc1=
+rtn_mc2 M:44 DEF libhdr.h[286] rtn_mc2=
+rtn_mc3 M:45 DEF libhdr.h[287] rtn_mc3=
+rtn_membase M:13 DEF libhdr.h[227] rtn_membase=
+rtn_memsize M:14 DEF libhdr.h[228] rtn_memsize=
+rtn_msecs M:41 DEF libhdr.h[281] rtn_msecs=
+rtn_pathvar M:36 DEF libhdr.h[271] rtn_pathvar=
+rtn_rootvar M:35 DEF libhdr.h[269] rtn_rootvar=
+rtn_screen M:21 DEF libhdr.h[235] rtn_screen=
+rtn_scriptsvar M:38 DEF libhdr.h[275] rtn_scriptsvar=
+rtn_sys M:16 DEF libhdr.h[230] rtn_sys=
+rtn_tallyv M:5 DEF libhdr.h[216] rtn_tallyv=
+rtn_tasktab M:0 DEF libhdr.h[211] rtn_tasktab=0
+rtn_tcblist M:2 DEF libhdr.h[213] rtn_tcblist=
+rtn_upb M:50 DEF libhdr.h[289] rtn_upb=50
+rtn_vecstatsv M:22 DEF libhdr.h[237] rtn_vecstatsv=
+rtn_vecstatsvupb M:23 DEF libhdr.h[238] rtn_vecstatsvupb=
+sardch G:36 DEF libhdr.h[51] sardch=36
+saveregs M:31 DEF libhdr.h[357] saveregs=31
+sawrch G:37 DEF libhdr.h[52] sawrch=37
+sawritef G:95 DEF libhdr.h[111] sawritef=95
+sawritef G:95 LG com/pal70.b[1136] sawritef("opstr' op: %n*n",op)
+sawritef G:95 LG com/pal70.b[847] sawritef("rarg:'oken=%s*n",opstr(token))
+scb_blength M:14 DEF libhdr.h[387] scb_blength=
+scb_block M:9 DEF libhdr.h[382] scb_block=
+scb_buf M:3 DEF libhdr.h[376] scb_buf=
+scb_bufend M:11 DEF libhdr.h[384] scb_bufend=
+scb_encoding M:19 DEF libhdr.h[397] scb_encoding=
+scb_end M:5 DEF libhdr.h[378] scb_end=
+scb_endfn M:8 DEF libhdr.h[381] scb_endfn=
+scb_fd M:16 DEF libhdr.h[389] scb_fd=
+scb_id M:0 DEF libhdr.h[373] scb_id=0
+scb_lblock M:12 DEF libhdr.h[385] scb_lblock=
+scb_ldata M:13 DEF libhdr.h[386] scb_ldata=
+scb_maxnamelen M:31 DEF libhdr.h[371] scb_maxnamelen=31
+scb_maxnamelen M:31 MAN libhdr.h[401] scb_nameeend=scb_name+scb_maxnamelen/bytesperword
+scb_name M:20 DEF libhdr.h[399] scb_name=
+scb_name M:20 MAN libhdr.h[401] scb_nameeend=scb_name+scb_maxnamelen/bytesperword
+scb_nameeend M:27 DEF libhdr.h[401] scb_nameeend=scb_name+scb_maxnamelen/bytesperword
+scb_pos M:4 DEF libhdr.h[377] scb_pos=
+scb_rdfn M:6 DEF libhdr.h[379] scb_rdfn=
+scb_reclen M:15 DEF libhdr.h[388] scb_reclen=
+scb_size M:28 DEF libhdr.h[404] scb_size=
+scb_size M:28 MAN libhdr.h[405] scb_upb=scb_size-1
+scb_task M:2 DEF libhdr.h[375] scb_task=
+scb_timeout M:17 DEF libhdr.h[390] scb_timeout=
+scb_timeoutact M:18 DEF libhdr.h[393] scb_timeoutact=
+scb_type M:1 DEF libhdr.h[374] scb_type=
+scb_upb M:27 DEF libhdr.h[405] scb_upb=scb_size-1
+scb_wrfn M:7 DEF libhdr.h[380] scb_wrfn=
+scb_write M:10 DEF libhdr.h[383] scb_write=
+scbt_console M:-1 DEF libhdr.h[367] scbt_console=-1
+scbt_file M:1 DEF libhdr.h[365] scbt_file=1
+scbt_mbx M:-2 DEF libhdr.h[368] scbt_mbx=-2
+scbt_net M:2 DEF libhdr.h[364] scbt_net=2
+scbt_ram M:0 DEF libhdr.h[366] scbt_ram=0
+scbt_tcp M:-3 DEF libhdr.h[369] scbt_tcp=-3
+sectword M:64991 DEF libhdr.h[184] sectword=64991
+selectinput G:56 DEF libhdr.h[71] selectinput=56
+selectinput G:56 LG com/pal70.b[199] selectinput(progstream)
+selectinput G:56 LG com/pal70.b[283] selectinput(progstream)
+selectoutput G:57 DEF libhdr.h[72] selectoutput=57
+selectoutput G:57 LG com/pal70.b[228] selectoutput(tostream)
+selectoutput G:57 LG com/pal70.b[284] selectoutput(tostream)
+selectoutput G:57 LG com/pal70.b[287] selectoutput(stdout)
+setbit G:112 DEF libhdr.h[128] setbit=112
+setbulk G:122 DEF libhdr.h[138] setbulk=122
+setlab G:374 DEF com/pal70.b[161] setlab=
+setlab G:374 LG com/pal70.b[1899] setlab(lab,codep)
+setlab G:374 LG com/pal70.b[1904] setlab(lab,val)
+setlab G:374 LG com/pal70.b[1910] setlab(l1,codep)
+setlab G:374 LG com/pal70.b[1915] setlab(lab,datap)
+setlab G:374 LG com/pal70.b[1921] setlab(lab,datap)
+setlab G:374 RT com/pal70.b[1944] LET setlab(lab,addr)BE..
+setlabval G:375 DEF com/pal70.b[161] setlabval=
+setlogname G:117 DEF libhdr.h[133] setlogname=117
+setrecordlength G:68 DEF libhdr.h[83] setrecordlength=68
+setseed G:35 DEF libhdr.h[50] setseed=35
+settimeout G:55 DEF libhdr.h[70] settimeout=55
+settimeoutact G:124 DEF libhdr.h[140] settimeoutact=124
+sp G:355 DEF com/pal70.b[155] sp=
+sp G:355 SG com/pal70.b[263] sp:=0
+splitname G:47 DEF libhdr.h[62] splitname=47
+ssp G:335 DEF com/pal70.b[150] ssp=
+ssp G:335 LG com/pal70.b[1335] UNLESS ssp=1 DO ..
+ssp G:335 LG com/pal70.b[1371] IF ssp=msp DO ..
+ssp G:335 LG com/pal70.b[1371] msp:=ssp+1
+ssp G:335 LG com/pal70.b[1390] ssp:=ssp-1
+ssp G:335 LG com/pal70.b[1398] ssp:=ssp-1
+ssp G:335 LG com/pal70.b[1406] ssp:=ssp-1
+ssp G:335 LG com/pal70.b[1428] ssp:=ssp-len+1
+ssp G:335 LG com/pal70.b[1465] ssp:=ssp+1
+ssp G:335 LG com/pal70.b[1466] IF ssp>=msp DO ..
+ssp G:335 LG com/pal70.b[1466] msp:=ssp+1
+ssp G:335 LG com/pal70.b[1467] ssp,msp
+ssp G:335 LG com/pal70.b[1477] UNLESS ssp=1 DO ..
+ssp G:335 LG com/pal70.b[1489] ssp:=ssp-1
+ssp G:335 LG com/pal70.b[1495] ssp:=ssp-1
+ssp G:335 LG com/pal70.b[1503] ssp:=ssp-1
+ssp G:335 LG com/pal70.b[1507] ssp:=ssp-1
+ssp G:335 LG com/pal70.b[1519] ssp:=ssp-1
+ssp G:335 LG com/pal70.b[1535] ssp:=ssp-1
+ssp G:335 LG com/pal70.b[1625] ssp:=ssp-len+1
+ssp G:335 LG com/pal70.b[1642] ssp:=ssp-1
+ssp G:335 LG com/pal70.b[1650] IF ssp=msp DO ..
+ssp G:335 LG com/pal70.b[1650] msp:=ssp+1
+ssp G:335 LG com/pal70.b[1651] ssp,msp
+ssp G:335 LG com/pal70.b[1657] UNLESS ssp=1 DO ..
+ssp G:335 LG com/pal70.b[1677] ssp:=ssp-1
+ssp G:335 LG com/pal70.b[1682] ssp:=ssp-1
+ssp G:335 LG com/pal70.b[1705] ssp:=ssp-1
+ssp G:335 LG com/pal70.b[1728] ssp:=ssp-len+1
+ssp G:335 LG com/pal70.b[1754] IF ssp=msp DO ..
+ssp G:335 LG com/pal70.b[1754] msp:=ssp+1
+ssp G:335 LG com/pal70.b[1783] ssp:=ssp-1
+ssp G:335 LG com/pal70.b[1798] ssp:=ssp-1
+ssp G:335 LG com/pal70.b[1815] ssp,msp
+ssp G:335 LG com/pal70.b[1822] UNLESS ssp=1 DO ..
+ssp G:335 LG com/pal70.b[1840] ssp:=ssp+x
+ssp G:335 LG com/pal70.b[1841] IF ssp>msp DO ..
+ssp G:335 LG com/pal70.b[1841] msp:=ssp
+ssp G:335 SG com/pal70.b[1325] ssp,msp:=0,1
+ssp G:335 SG com/pal70.b[1390] ssp:=ssp-1
+ssp G:335 SG com/pal70.b[1398] ssp:=ssp-1
+ssp G:335 SG com/pal70.b[1406] ssp:=ssp-1
+ssp G:335 SG com/pal70.b[1428] ssp:=ssp-len+1
+ssp G:335 SG com/pal70.b[1465] ssp:=ssp+1
+ssp G:335 SG com/pal70.b[1468] ssp,msp:=0,1
+ssp G:335 SG com/pal70.b[1479] ssp,msp:=a,b
+ssp G:335 SG com/pal70.b[1489] ssp:=ssp-1
+ssp G:335 SG com/pal70.b[1495] ssp:=ssp-1
+ssp G:335 SG com/pal70.b[1503] ssp:=ssp-1
+ssp G:335 SG com/pal70.b[1507] ssp:=ssp-1
+ssp G:335 SG com/pal70.b[1519] ssp:=ssp-1
+ssp G:335 SG com/pal70.b[1535] ssp:=ssp-1
+ssp G:335 SG com/pal70.b[1625] ssp:=ssp-len+1
+ssp G:335 SG com/pal70.b[1642] ssp:=ssp-1
+ssp G:335 SG com/pal70.b[1652] ssp,msp:=0,1
+ssp G:335 SG com/pal70.b[1659] ssp,msp:=a,b
+ssp G:335 SG com/pal70.b[1677] ssp:=ssp-1
+ssp G:335 SG com/pal70.b[1682] ssp:=ssp-1
+ssp G:335 SG com/pal70.b[1705] ssp:=ssp-1
+ssp G:335 SG com/pal70.b[1728] ssp:=ssp-len+1
+ssp G:335 SG com/pal70.b[1783] ssp:=ssp-1
+ssp G:335 SG com/pal70.b[1798] ssp:=ssp-1
+ssp G:335 SG com/pal70.b[1816] ssp,msp:=1,1
+ssp G:335 SG com/pal70.b[1824] ssp,msp:=a,b
+ssp G:335 SG com/pal70.b[1840] ssp:=ssp+x
+stackword M:-1412623820 DEF libhdr.h[182] stackword=#xABCD1234
+start G:1 DEF libhdr.h[16] start=1
+start G:1 FN com/pal70.b[171] LET start()=..
+startco G:23 DEF libhdr.h[38] startco=23
+stepstream G:67 DEF libhdr.h[82] stepstream=67
+stop G:2 DEF libhdr.h[17] stop=2
+str2numb G:101 DEF libhdr.h[117] str2numb=101
+string_to_dat G:111 DEF libhdr.h[127] string_to_dat=111
+string_to_number G:100 DEF libhdr.h[116] string_to_number=100
+synerr G:205 DEF com/pal70.b[117] synerr=
+synerr G:205 LG com/pal70.b[1010] synerr("Name 'onstruct")
+synerr G:205 LG com/pal70.b[1045] synerr("Synta'in label")
+synerr G:205 LG com/pal70.b[1066] synerr("'let'' context")
+synerr G:205 LG com/pal70.b[1075] synerr("'fn' ' context")
+synerr G:205 LG com/pal70.b[1082] synerr("No bo'ter 'fn'")
+synerr G:205 LG com/pal70.b[1093] synerr("'valo' context")
+synerr G:205 LG com/pal70.b[1097] synerr("'test' context")
+synerr G:205 LG com/pal70.b[1101] synerr("Bad '' command")
+synerr G:205 LG com/pal70.b[1118] synerr("'if' ' context")
+synerr G:205 LG com/pal70.b[377] synerr("Bad s'constant")
+synerr G:205 LG com/pal70.b[393] synerr("Illeg'cter %x2",badch)
+synerr G:205 LG com/pal70.b[494] synerr("Integ'oo large")
+synerr G:205 LG com/pal70.b[495] synerr("Too m't digits")
+synerr G:205 LG com/pal70.b[501] synerr("Integ'oo large")
+synerr G:205 LG com/pal70.b[502] synerr("Too m't digits")
+synerr G:205 LG com/pal70.b[508] synerr("Bad r'l number")
+synerr G:205 LG com/pal70.b[516] synerr("No di'al point")
+synerr G:205 LG com/pal70.b[518] synerr("More 'l number")
+synerr G:205 LG com/pal70.b[520] synerr("No di'l number")
+synerr G:205 LG com/pal70.b[523] synerr("Numbe'oo large")
+synerr G:205 LG com/pal70.b[535] synerr("Name too long")
+synerr G:205 LG com/pal70.b[547] synerr("Unesc'haracter")
+synerr G:205 LG com/pal70.b[552] synerr("Bad s'constant")
+synerr G:205 LG com/pal70.b[668] synerr(mess)
+synerr G:205 LG com/pal70.b[696] synerr("Incor'mination")
+synerr G:205 LG com/pal70.b[715] synerr("Bad d'expected")
+synerr G:205 LG com/pal70.b[740] synerr("Bad definition")
+synerr G:205 LG com/pal70.b[758] synerr("Redun'nt 'rec'")
+synerr G:205 LG com/pal70.b[780] synerr("Defin're 'and'")
+synerr G:205 LG com/pal70.b[796] synerr("Defin''within'")
+synerr G:205 LG com/pal70.b[823] synerr("Bad name list")
+synerr G:205 LG com/pal70.b[829] synerr("A nam' missing")
+synerr G:205 LG com/pal70.b[861] synerr("Error'pression")
+synerr G:205 LG com/pal70.b[893] synerr("'$' o' context")
+synerr G:205 LG com/pal70.b[897] synerr("'+' o' context")
+synerr G:205 LG com/pal70.b[901] synerr("'-' o' context")
+synerr G:205 LG com/pal70.b[909] synerr("'not'' context")
+synerr G:205 RT com/pal70.b[653] LET synerr(mess,a)BE..
+sys G:3 DEF libhdr.h[18] sys=3
+sysabort G:29 DEF libhdr.h[44] sysabort=29
+t_bhunk M:3000 DEF libhdr.h[178] t_bhunk=3000
+t_bhunk64 M:4000 DEF libhdr.h[179] t_bhunk64=4000
+t_end M:1002 DEF libhdr.h[174] t_end=1002
+t_end64 M:2002 DEF libhdr.h[177] t_end64=2002
+t_hunk M:1000 DEF libhdr.h[172] t_hunk=1000
+t_hunk64 M:2000 DEF libhdr.h[175] t_hunk64=2000
+t_reloc M:1001 DEF libhdr.h[173] t_reloc=1001
+t_reloc64 M:2001 DEF libhdr.h[176] t_reloc64=2001
+taskid M:1 DEF libhdr.h[440] taskid=1
+testbit G:113 DEF libhdr.h[129] testbit=113
+tg M:190 DEF libhdr.h[156] tg=190
+timeoutch M:-2 DEF libhdr.h[167] timeoutch=-2
+token G:229 DEF com/pal70.b[125] token=
+token G:229 LG com/pal70.b[1010] UNLESS token=Name DO ..
+token G:229 LG com/pal70.b[1027] token,lineno
+token G:229 LG com/pal70.b[1055] token,lineno,0,0
+token G:229 LG com/pal70.b[1061] IF token=Ass DO ..
+token G:229 LG com/pal70.b[1078] UNLESS token=Lparen|token=Name DO ..
+token G:229 LG com/pal70.b[1099] SWITCHON token INTO..
+token G:229 LG com/pal70.b[1117] token
+token G:229 LG com/pal70.b[620] writef("token = %i3 %s",token,opstr(token))
+token G:229 LG com/pal70.b[621] IF token=Int DO ..
+token G:229 LG com/pal70.b[622] IF token=Real DO ..
+token G:229 LG com/pal70.b[623] IF token=Name DO ..
+token G:229 LG com/pal70.b[624] IF token=Stringconst DO ..
+token G:229 LG com/pal70.b[635] IF token=Eof DO ..
+token G:229 LG com/pal70.b[641] UNLESS token=Eof DO ..
+token G:229 LG com/pal70.b[668] UNLESS token=tok DO ..
+token G:229 LG com/pal70.b[678] SWITCHON token INTO..
+token G:229 LG com/pal70.b[696] UNLESS token=Eof DO ..
+token G:229 LG com/pal70.b[711] token,lineno
+token G:229 LG com/pal70.b[721] IF token=Comma DO ..
+token G:229 LG com/pal70.b[729] IF token=Valdef DO ..
+token G:229 LG com/pal70.b[736] UNLESS token=Lparen|token=Name DO ..
+token G:229 LG com/pal70.b[740] UNLESS i~=0&token=Valdef DO ..
+token G:229 LG com/pal70.b[772] token,lineno
+token G:229 LG com/pal70.b[784] WHILE token=And DO ..
+token G:229 LG com/pal70.b[807] IF token=Name DO ..
+token G:229 LG com/pal70.b[809] IF token=Rparen DO ..
+token G:229 LG com/pal70.b[822] UNLESS token=Name DO ..
+token G:229 LG com/pal70.b[826] UNLESS token=Comma DO ..
+token G:229 LG com/pal70.b[827] WHILE token=Comma DO ..
+token G:229 LG com/pal70.b[829] UNLESS token=Name DO ..
+token G:229 LG com/pal70.b[847] sawritef("rarg:'oken=%s*n",opstr(token))
+token G:229 LG com/pal70.b[848] SWITCHON token INTO..
+token G:229 LG com/pal70.b[856] 0,token,lineno
+token G:229 LG com/pal70.b[875] TEST token=Rparen THEN .. ELSE ..
+token G:229 LG com/pal70.b[919] token,lineno
+token G:229 LG com/pal70.b[939] IF token=Rparen DO ..
+token G:229 LG com/pal70.b[953] WHILE token=Comma DO ..
+token G:229 SG com/pal70.b[301] token:=rdnumber()
+token G:229 SG com/pal70.b[316] token:=lookupword(rdtag())
+token G:229 SG com/pal70.b[320] token:=Lparen
+token G:229 SG com/pal70.b[322] token:=Rparen
+token G:229 SG com/pal70.b[323] token:=Percent
+token G:229 SG com/pal70.b[324] token:=Plus
+token G:229 SG com/pal70.b[325] token:=Comma
+token G:229 SG com/pal70.b[326] token:=Logand
+token G:229 SG com/pal70.b[327] token:=Bar
+token G:229 SG com/pal70.b[328] token:=Valdef
+token G:229 SG com/pal70.b[329] token:=Power
+token G:229 SG com/pal70.b[330] token:=Seq
+token G:229 SG com/pal70.b[331] token:=Noshare
+token G:229 SG com/pal70.b[332] token:=Dot
+token G:229 SG com/pal70.b[335] token:=Power
+token G:229 SG com/pal70.b[336] token:=Mult
+token G:229 SG com/pal70.b[344] token:=Div
+token G:229 SG com/pal70.b[348] token:=Le
+token G:229 SG com/pal70.b[349] token:=Lt
+token G:229 SG com/pal70.b[353] token:=Ge
+token G:229 SG com/pal70.b[354] token:=Gt
+token G:229 SG com/pal70.b[358] token:=Ne
+token G:229 SG com/pal70.b[359] token:=Not
+token G:229 SG com/pal70.b[363] token:=Cond
+token G:229 SG com/pal70.b[364] token:=Minus
+token G:229 SG com/pal70.b[368] token:=Ass
+token G:229 SG com/pal70.b[369] token:=Colon
+token G:229 SG com/pal70.b[386] token:=Stringconst
+token G:229 SG com/pal70.b[395] token:=Eof
+tostream G:210 DEF com/pal70.b[118] tostream=
+tostream G:210 LG com/pal70.b[203] IF tostream=0 DO ..
+tostream G:210 LG com/pal70.b[227] UNLESS tostream DO ..
+tostream G:210 LG com/pal70.b[228] selectoutput(tostream)
+tostream G:210 LG com/pal70.b[284] IF tostream DO ..
+tostream G:210 LG com/pal70.b[284] selectoutput(tostream)
+tostream G:210 LG com/pal70.b[285] UNLESS tostream=stdout DO ..
+tostream G:210 SG com/pal70.b[185] progstream,tostream:=0,0
+tostream G:210 SG com/pal70.b[202] tostream:=findoutput(argv!1)
+tostream G:210 SG com/pal70.b[227] tostream:=stdout
+trans G:303 DEF com/pal70.b[141] trans=
+trans G:303 LG com/pal70.b[1334] trans(x,Val)
+trans G:303 LG com/pal70.b[1381] trans(h3!x,Val)
+trans G:303 LG com/pal70.b[1387] trans(h3!x,Val)
+trans G:303 LG com/pal70.b[1388] trans(h2!x,Val)
+trans G:303 LG com/pal70.b[1395] trans(h3!x,Ref)
+trans G:303 LG com/pal70.b[1396] trans(h2!x,Val)
+trans G:303 LG com/pal70.b[1403] trans(h3!x,Ref)
+trans G:303 LG com/pal70.b[1404] trans(h2!x,Ref)
+trans G:303 LG com/pal70.b[1413] trans(h2!x,Val)
+trans G:303 LG com/pal70.b[1419] trans(h2!x,Val)
+trans G:303 LG com/pal70.b[1425] trans(x,Ref)
+trans G:303 LG com/pal70.b[1452] trans(h3!x,mode)
+trans G:303 LG com/pal70.b[1456] trans(h2!x,Val)
+trans G:303 LG com/pal70.b[1458] trans(h3!x,mode)
+trans G:303 LG com/pal70.b[1475] trans(h2!x,Ref)
+trans G:303 LG com/pal70.b[1487] trans(h2!x,Ref)
+trans G:303 LG com/pal70.b[1493] trans(h2!x,Val)
+trans G:303 LG com/pal70.b[1501] trans(h2!x,Val)
+trans G:303 LG com/pal70.b[1504] trans(h3!x,mode)
+trans G:303 LG com/pal70.b[1508] trans(h4!x,mode)
+trans G:303 LG com/pal70.b[1517] trans(h2!x,Val)
+trans G:303 LG com/pal70.b[1520] trans(h3!x,Val)
+trans G:303 LG com/pal70.b[1532] trans(h2!x,Ref)
+trans G:303 LG com/pal70.b[1533] trans(h3!x,Val)
+trans G:303 LG com/pal70.b[1542] trans(h2!x,mode)
+trans G:303 LG com/pal70.b[1631] trans(h3!x,Ref)
+trans G:303 LG com/pal70.b[1820] trans(h3!x,mode)
+trans G:303 RT com/pal70.b[1345] LET trans(x,mode)BE..
+translabels G:305 DEF com/pal70.b[142] translabels=
+translabels G:305 LG com/pal70.b[1332] translabels(x)
+translabels G:305 LG com/pal70.b[1380] translabels(h3!x)
+translabels G:305 LG com/pal70.b[1474] translabels(h2!x)
+translabels G:305 LG com/pal70.b[1541] translabels(h2!x)
+translabels G:305 LG com/pal70.b[1819] translabels(h3!x)
+translabels G:305 RT com/pal70.b[1609] LET translabels(x)BE..
+transname G:327 DEF com/pal70.b[148] transname=
+transrhs G:306 DEF com/pal70.b[142] transrhs=
+transrhs G:306 LG com/pal70.b[1369] transrhs(h2!x)
+transrhs G:306 LG com/pal70.b[1378] transrhs(h2!x)
+transrhs G:306 LG com/pal70.b[1623] mapb(transrhs,x)
+transrhs G:306 LG com/pal70.b[1638] transrhs(h2!x)
+transrhs G:306 LG com/pal70.b[1648] transrhs(h2!x)
+transrhs G:306 LG com/pal70.b[1655] transrhs(h3!x)
+transrhs G:306 RT com/pal70.b[1614] LET transrhs(x)BE..
+transscope G:310 DEF com/pal70.b[143] transscope=
+transscope G:310 LG com/pal70.b[1372] transscope(x,lab2,mode)
+transscope G:310 LG com/pal70.b[1441] transscope(x,lab3,Ref)
+transscope G:310 RT com/pal70.b[1814] LET transscope(x,n,mode)BE..
+trcom G:315 DEF com/pal70.b[145] trcom=
+trdecl G:321 DEF com/pal70.b[147] trdecl=
+trdef G:302 DEF com/pal70.b[141] trdef=
+treep G:218 DEF com/pal70.b[120] treep=
+treep G:218 LG com/pal70.b[565] treep:=treep-n-1
+treep G:218 LG com/pal70.b[566] IF treep<=treevec DO ..
+treep G:218 LG com/pal70.b[567] RESULTIS treep
+treep G:218 SG com/pal70.b[237] treep:=treevec+treesize
+treep G:218 SG com/pal70.b[565] treep:=treep-n-1
+treevec G:219 DEF com/pal70.b[120] treevec=
+treevec G:219 LG com/pal70.b[224] UNLESS treevec&codev&datav&labv&refv DO ..
+treevec G:219 LG com/pal70.b[237] treep:=treevec+treesize
+treevec G:219 LG com/pal70.b[279] IF treevec DO ..
+treevec G:219 LG com/pal70.b[279] freevec(treevec)
+treevec G:219 LG com/pal70.b[566] IF treep<=treevec DO ..
+treevec G:219 SG com/pal70.b[184] treevec,labv,refv,mem:=0,0,0,0
+treevec G:219 SG com/pal70.b[211] treevec:=getvec(treesize)
+trnerr G:206 DEF com/pal70.b[117] trnerr=
+trnerr G:206 LG com/pal70.b[1449] trnerr("Label'rly used",h3!h2!x)
+trnerr G:206 LG com/pal70.b[1477] trnerr("SSP Error")
+trnerr G:206 LG com/pal70.b[1657] trnerr("SSP error")
+trnerr G:206 LG com/pal70.b[1671] trnerr("Bad b'ble list")
+trnerr G:206 LG com/pal70.b[1714] trnerr("Bad definition")
+trnerr G:206 LG com/pal70.b[1749] trnerr("Bad definition")
+trnerr G:206 LG com/pal70.b[1778] trnerr("Bad definition")
+trnerr G:206 LG com/pal70.b[1822] trnerr("SSP error")
+trnerr G:206 LG com/pal70.b[1926] trnerr("More 'e needed")
+trnerr G:206 LG com/pal70.b[1932] trnerr("More 'e needed")
+trnerr G:206 LG com/pal70.b[1938] trnerr("More 'e needed")
+trnerr G:206 LG com/pal70.b[1957] trnerr("start' defined")
+trnerr G:206 LG com/pal70.b[1958] trnerr("Label %n unset",lab)
+trnerr G:206 RT com/pal70.b[1309] LET trnerr(mess,a)BE..
+trnext G:300 DEF com/pal70.b[141] trnext=300
+trprog G:301 DEF com/pal70.b[141] trprog=
+trprog G:301 LG com/pal70.b[255] trprog(tree)
+trprog G:301 RT com/pal70.b[1320] LET trprog(x)BE..
+truenode G:234 DEF com/pal70.b[126] truenode=
+truenode G:234 SG com/pal70.b[461] truenode:=wordnode
+ug M:200 DEF libhdr.h[157] ug=200
+ug M:200 MAN com/pal70.b[116] rec_p=ug
+unloadseg G:106 DEF libhdr.h[122] unloadseg=106
+unpackstring G:31 DEF libhdr.h[46] unpackstring=31
+unrdch G:40 DEF libhdr.h[55] unrdch=40
+upssp G:314 DEF com/pal70.b[144] upssp=
+upssp G:314 LG com/pal70.b[1353] upssp(1)
+upssp G:314 LG com/pal70.b[1438] upssp(1)
+upssp G:314 LG com/pal70.b[1551] upssp(1)
+upssp G:314 LG com/pal70.b[1558] upssp(1)
+upssp G:314 LG com/pal70.b[1563] upssp(1)
+upssp G:314 LG com/pal70.b[1568] upssp(1)
+upssp G:314 LG com/pal70.b[1574] upssp(1)
+upssp G:314 LG com/pal70.b[1636] upssp(1)
+upssp G:314 LG com/pal70.b[1689] upssp(len-1)
+upssp G:314 LG com/pal70.b[1719] upssp(1)
+upssp G:314 LG com/pal70.b[1789] upssp(len-1)
+upssp G:314 RT com/pal70.b[1839] LET upssp(x)BE..
+wordnode G:232 DEF com/pal70.b[125] wordnode=
+wordnode G:232 LG com/pal70.b[384] h1!wordnode:=Stringconst
+wordnode G:232 LG com/pal70.b[385] @h2!wordnode%i:=charv%i
+wordnode G:232 LG com/pal70.b[409] TEST @h3!wordnode%i=word%i THEN .. ELSE ..
+wordnode G:232 LG com/pal70.b[409] WHILE wordnode&i<=len DO ..
+wordnode G:232 LG com/pal70.b[411] wordnode,i:=h2!wordnode,0
+wordnode G:232 LG com/pal70.b[412] IF wordnode=0 DO ..
+wordnode G:232 LG com/pal70.b[414] h1!wordnode,h2!wordnode:=Name,nametable!hashval
+wordnode G:232 LG com/pal70.b[415] @h3!wordnode%i:=word%i
+wordnode G:232 LG com/pal70.b[416] nametable!hashval:=wordnode
+wordnode G:232 LG com/pal70.b[418] RESULTIS h1!wordnode
+wordnode G:232 LG com/pal70.b[421] h1!wordnode:=tok
+wordnode G:232 LG com/pal70.b[430] dummynode:=wordnode
+wordnode G:232 LG com/pal70.b[434] falsenode:=wordnode
+wordnode G:232 LG com/pal70.b[451] nilnode:=wordnode
+wordnode G:232 LG com/pal70.b[461] truenode:=wordnode
+wordnode G:232 LG com/pal70.b[840] wordnode
+wordnode G:232 LG com/pal70.b[869] a:=wordnode
+wordnode G:232 SG com/pal70.b[383] wordnode:=newvec(len/bytesperword+2)
+wordnode G:232 SG com/pal70.b[407] wordnode:=nametable!hashval
+wordnode G:232 SG com/pal70.b[411] wordnode,i:=h2!wordnode,0
+wordnode G:232 SG com/pal70.b[413] wordnode:=newvec(len/bytesperword+3)
+wrch G:41 DEF libhdr.h[56] wrch=41
+wrch G:41 LG com/pal70.b[1250] wrch(s%i)
+wrch G:41 LG com/pal70.b[2061] wrch(k)
+wrch G:41 LG com/pal70.b[2067] wrch(k)
+wrch G:41 LG com/pal70.b[2074] wrch(32)
+wrch G:41 LG com/pal70.b[2075] wrch(s%i)
+wrch G:41 LG com/pal70.b[478] wrch(k)
+wrch G:41 LG com/pal70.b[627] wrch(charv%i)
+wrchbuf G:238 DEF com/pal70.b[127] wrchbuf=
+wrchbuf G:238 LG com/pal70.b[656] wrchbuf()
+wrchbuf G:238 RT com/pal70.b[474] LET wrchbuf()BE..
+wrf F:612 LF com/pal70.b[1847] wrf("%s*n",opstr(op))
+wrf F:612 LF com/pal70.b[1868] wrf("%s %s*n",opstr(op),var)
+wrf F:612 LF com/pal70.b[1873] wrf("%n*n",a)
+wrf F:612 LF com/pal70.b[1878] wrf("%s %n*n",opstr(op),a)
+wrf F:612 LF com/pal70.b[1883] wrf("%s %n %n*n",opstr(op),a,b)
+wrf F:612 LF com/pal70.b[1888] wrf("%s %s L%n*n",opstr(op),a,b)
+wrf F:612 LF com/pal70.b[1893] wrf("%s L%n*n",opstr(op),lab)
+wrf F:612 LF com/pal70.b[1898] wrf("Lab L%n*n",lab)
+wrf F:612 LF com/pal70.b[1903] wrf("L%n=%n*n",lab,val)
+wrf F:612 LF com/pal70.b[1908] wrf("Entry L%n L%n*n",l1,l2)
+wrf F:612 LF com/pal70.b[1914] wrf("Statv' L%n %n*n",lab,a)
+wrf F:612 LF com/pal70.b[1920] wrf("Var L%n*n",lab)
+wrf F:612 RT com/pal70.b[1844] LET wrf(form,a,b,c)BE..
+writed G:85 DEF libhdr.h[100] writed=85
+writed G:85 LG com/pal70.b[2062] writed(!p,n)
+writef G:94 DEF libhdr.h[110] writef=94
+writef G:94 LG com/pal70.b[1241] writef("Default op=%s*n",opstr(op))
+writef G:94 LG com/pal70.b[1243] writef("Int %n",h2!x)
+writef G:94 LG com/pal70.b[1244] writef("Real %ne%n",h2!x,h3!x)
+writef G:94 LG com/pal70.b[1245] writef("Name %s",x+2)
+writef G:94 LG com/pal70.b[1248] writef("Stringconst '")
+writef G:94 LG com/pal70.b[1255] writef("'")
+writef G:94 LG com/pal70.b[1298] writef("%s",opstr(op))
+writef G:94 LG com/pal70.b[1299] writef("  -- line %n",ln)
+writef G:94 LG com/pal70.b[1311] writef(" in %s",@h3!procname)
+writef G:94 LG com/pal70.b[1312] writef(" near line %n",comline)
+writef G:94 LG com/pal70.b[1314] writef(mess,a)
+writef G:94 LG com/pal70.b[1327] writef("*nComp' code:*n*n")
+writef G:94 LG com/pal70.b[1335] writef("*nSSP error*n")
+writef G:94 LG com/pal70.b[1341] writef("*nProg'ze: %n*n*n",codep,datap)
+writef G:94 LG com/pal70.b[1844] writef(form,a,b,c)
+writef G:94 LG com/pal70.b[1856] writef(" %s*n",name)
+writef G:94 LG com/pal70.b[1864] writef(" %s",name)
+writef G:94 LG com/pal70.b[187] writef("*nPAL 't 2010)*n")
+writef G:94 LG com/pal70.b[1976] writef("%i5: %t8",pc,opstr(op))
+writef G:94 LG com/pal70.b[270] writef("*nStar'preter*n*n")
+writef G:94 LG com/pal70.b[273] writef("Retur'code %n*n",ret)
+writef G:94 LG com/pal70.b[274] writef("*nInst'ted: %n*n",maxint-count)
+writef G:94 LG com/pal70.b[620] writef("token = %i3 %s",token,opstr(token))
+writef G:94 LG com/pal70.b[621] writef("       %n",lexval)
+writef G:94 LG com/pal70.b[622] writef("      %ne%n",lexval,exponent)
+writef G:94 LG com/pal70.b[623] writef("      %s",charv)
+writef G:94 LG com/pal70.b[625] writef("    '")
+writef G:94 LG com/pal70.b[632] writef("'")
+writef G:94 LG com/pal70.b[646] writef("*nFata'error:  ")
+writef G:94 LG com/pal70.b[647] writef(mess,a)
+writef G:94 LG com/pal70.b[654] writef("*nErro'ne %n:  ",lineno)
+writef G:94 LG com/pal70.b[655] writef(mess,a)
+writehex G:87 DEF libhdr.h[102] writehex=87
+writehex G:87 LG com/pal70.b[2064] writehex(!p,n)
+writen G:86 DEF libhdr.h[101] writen=86
+writeoct G:88 DEF libhdr.h[103] writeoct=88
+writes G:89 DEF libhdr.h[104] writes=89
+writes G:89 LG com/pal70.b[1235] writes("Null")
+writes G:89 LG com/pal70.b[1251] writes("**n")
+writes G:89 LG com/pal70.b[1252] writes("**p")
+writes G:89 LG com/pal70.b[1253] writes("**t")
+writes G:89 LG com/pal70.b[1297] writes("Etc")
+writes G:89 LG com/pal70.b[1301] writes(v!j)
+writes G:89 LG com/pal70.b[1302] writes("**-")
+writes G:89 LG com/pal70.b[1310] writes("Error")
+writes G:89 LG com/pal70.b[1313] writes(":   ")
+writes G:89 LG com/pal70.b[1351] writes("*nExpr'missing*n")
+writes G:89 LG com/pal70.b[243] writes("*nParse Tree*n*n")
+writes G:89 LG com/pal70.b[475] writes("*n...")
+writes G:89 LG com/pal70.b[628] writes("**n")
+writes G:89 LG com/pal70.b[629] writes("**p")
+writes G:89 LG com/pal70.b[630] writes("**t")
+writes G:89 LG com/pal70.b[648] writes("*nComp'aborted*n")
+writet G:90 DEF libhdr.h[105] writet=90
+writeu G:91 DEF libhdr.h[106] writeu=91
+writewords G:45 DEF libhdr.h[60] writewords=45
+writez G:92 DEF libhdr.h[107] writez=92
+wrs F:635 LF com/pal70.b[2063] wrs(mem+!p,n)
+wrs F:635 RT com/pal70.b[2071] LET wrs(s,n)BE..

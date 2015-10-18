@@ -1,0 +1,10 @@
+.k arg
+
+c b mci386 <arg>
+c b mctest <arg>
+c b mcver <arg>
+
+
+
+
+

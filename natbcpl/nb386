@@ -1,0 +1,6 @@
+.k dir/a,file/a
+echo "bcpl2sial <dir>/<file>.b to sial/<file>.sial"
+bcpl2sial <dir>/<file>.b to sial/<file>.sial
+echo "sial-386 -t sial/<file>.sial to temps/<file>.s"
+sial-386 -t sial/<file>.sial to temps/<file>.s
+

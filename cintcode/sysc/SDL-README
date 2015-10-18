@@ -1,0 +1,6 @@
+The SDL_draw package by Mario Palomo, Jose M. de la Huerga Fern ez and
+Pepe Gonz z Mora has been used as the basis for simple SDL drawing
+primitives for BCPL. They have made it available under the GNU Library
+General Public Licence. See sdldraw.h, sdldrawlib.c and COPYING for
+more details.
+

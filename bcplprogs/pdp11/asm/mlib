@@ -1,0 +1,475 @@
+;*********************************************************
+;                                                        *
+; This is the assembly language library for TRIPOS on    *
+; a DEC PDP-11                                           *
+;                                                        *
+; Authors:  Martin Richards   December 1976              *
+;           Alasdair Scott    April    1977              *
+;           Brian Knight      November 1977              *
+;           Adrian Aylward    January  1978              *
+;                                                        *
+;*********************************************************
+
+;
+; System wide constants
+;
+G       =           R4          ; Holds m/c addr of G zero
+P       =           R5          ; BCPL stack pointer
+PS      =       177776          ; Processor status word
+LIBWORD =        23456.         ; Marks library routines
+SECWORD =        12345.         ; Marks BCPL sections
+;
+; States and device registers
+;
+LOCKOUT =          340          ; priority 7
+RDYFL   =          200          ; ready or done flag bit
+COKCSW  =       177560          ; console keybd status reg
+COPCSW  =       177564          ; console printer
+;
+; Coroutine stack symbols
+;
+;               0               ; link to next coroutine
+C.CLLR  =       2               ; caller coroutine
+C.SEND  =       4               ; stack end
+C.RESP  =       6               ; resumption ptr
+C.FUNC  =       8.              ; function
+;              10.              ; PC dump
+C.RTRN  =      12.              ; return link for STOP
+;
+; Global Vector symbols
+;
+G.RES2   =     10. * 2          ; RESULT2 for errors etc.
+G.RC     =     11. * 2          ; RETURNCODE for STOP
+G.SBASE  =     12. * 2          ; Current stack base
+;
+; Kernel Primitives
+;
+G.FVEC    =    30. * 2          ; FREEVEC
+G.GVEC    =    29. * 2          ; GETVEC
+;
+; Machine code library routines
+;
+G.APT     =    20. * 2          ; APTOVEC
+G.CALCO   =    25. * 2          ; CALLCO
+G.CKST    =     3. * 2          ;  checkstack
+G.COWAIT  =    26. * 2          ; COWAIT
+G.CRCO    =    23. * 2          ; CREATECO
+G.DELCO   =    24. * 2          ; DELETECO
+G.GBYTE   =    15. * 2          ; GETBYTE
+G.LEVEL   =    17. * 2          ; LEVEL
+G.LJUMP   =    18. * 2          ; LONGJUMP
+G.MULDIV  =    19. * 2          ; MULDIV
+G.PBYTE   =    16. * 2          ; PUTBYTE
+G.RESCO   =    27. * 2          ; RESUMECO
+G.SARDCH  =    21. * 2          ; SARDCH
+G.SAWRCH  =    22. * 2          ; SAWRCH
+G.STOP    =     2. * 2          ; STOP
+
+;
+; Section header
+;
+
+MLIB:   .WORD   <MLBEND-MLIB>/2; Sect length in words
+        .WORD   SECWORD
+
+        .BYTE   17.
+        .ASCII  /MLIB   /
+        .ASCII  / 31-Mar-79/
+
+;*********************************************************
+;                                                        *
+;               APTOVEC(FUNCTION, UPPERBOUND)            *
+;                                                        *
+;*********************************************************
+
+        .ASCII  <7>/aptovec/
+
+APTOVC: ADD     @0(SP),P        ; Standard BCPL entry
+        MOV     (SP)+,(P)+
+        MOV     PC,-4(P)
+        MOV     R0,(P)+         ; Put args on stack for
+        MOV     R1,(P)+         ; BACKTRACE()'s benefit
+        MOV     R0,R2           ; save routine entry pt
+        MOV     R1,R3           ; Copy vector size
+        INC     R3              ; True vector size
+        ASL     R3              ; in bytes
+        MOV     P,R0            ; Vector base is first arg
+        CLC                     ; so convert to word addr
+        ROR     R0
+        ADD     R3,P            ; Move P past vector
+        MOV     P,-(SP)         ; and store as return addr
+        ADD     #12.,R3         ; Stk frame size - 2 in R3
+        MOV     R3,(P)+         ; Pretend called from stak
+        MOV     #JMP+37,(P)+    ; Insert code to get back
+        MOV     #RET,(P)+       ; JMP @#RET
+        SUB     R3,P            ; Restore P
+        TST     (P)+
+        JMP     (R2)            ; call the routine
+
+;*********************************************************
+;                                                        *
+;               LEVEL()                                  *
+;                                                        *
+;*********************************************************
+
+        .WORD   LIBWORD
+        .ASCII  <7>/level  /
+
+LEVEL:  MOV     P,R0
+        BR      MCX
+
+;*********************************************************
+;                                                        *
+;               LONGJUMP(LEVEL, LABEL)                   *
+;                                                        *
+;*********************************************************
+
+        .WORD   LIBWORD
+        .ASCII  <7>/longjum/
+
+LONGJ:  MOV     R0,P
+        RTS     R1
+
+;*********************************************************
+;                                                        *
+;               MULDIV(A, B, C)                          *
+;                                                        *
+; Returns A*B/C and puts A*B REM C in global RESULT2.    *
+; A*B is calculated as a two word integer.               *
+;                                                        *
+;*********************************************************
+
+        .WORD   LIBWORD
+        .ASCII  <7>/muldiv /
+
+MULDIV: MUL     R1,R0           ; B*A
+        DIV     R2,R0           ; /C
+        MOV     R1,G.RES2(G)    ; Remainder
+        BR      MCX             ; Return quotient
+
+;*********************************************************
+;                                                        *
+;               GETBYTE(VECTOR, OFFSET)                  *
+;                                                        *
+;*********************************************************
+
+        .WORD   LIBWORD
+        .ASCII  <7>/getbyte/
+
+GETBYT: ADD     R0,R0
+        ADD     R0,R1
+        CLR     R0
+        BISB    (R1),R0         ; (MOV extends the sign!)
+        BR      MCX
+
+;*********************************************************
+;                                                        *
+;               PUTBYTE(VECTOR, OFFSET, BYTE)            *
+;                                                        *
+;*********************************************************
+
+        .WORD   LIBWORD
+        .ASCII  <7>/putbyte/
+
+PUTBYT: ADD     R0,R0
+        ADD     R0,R1
+        MOVB    R2,(R1)
+        BR      MCX
+
+;*********************************************************
+;                                                        *
+;               CHECKSTACK()                             *
+;                                                        *
+; Used to implement the codegenerator stack checking     *
+; option.                                                *
+;                                                        *
+;*********************************************************
+
+CHEKST: MOV     G.SBASE(G),R3   ; conts of R3 are lost
+        ASL     R3              ; (the CG loses R3 anyway)
+        MOV     C.SEND(R3),R3
+        ASL     R3              ; MC stack end
+        SUB     P,R3            ; number of bytes left
+        CMP     R3,@0(SP)       ; CMP v. # of bytes req.
+        BGE     MCX
+        TRAP    97.             ; overflow abort
+
+; standard machine code exit
+
+MCX:    MOV     (SP)+,R3
+        JMP     2(R3)
+
+;*********************************************************
+;                                                        *
+;               SARDCH()                                 *
+;                                                        *
+; Standalone RDCH from the console keyboard. Interrupt   *
+; status is saved and restored.                          *
+;                                                        *
+;*********************************************************
+
+        .WORD   LIBWORD
+        .ASCII  <7>/sardch /
+
+SARDCH: MOV     @#PS,R3         ; save interrupt status
+        BIS     #LOCKOUT,@#PS   ; interrupts off
+SARD1:  BIT     #RDYFL,@#COKCSW ; wait for char
+        BEQ     SARD1
+        MOV     @#COKCSW+2,R0   ; get the char
+        BIC     #177600,R0      ; mask to 7 bits
+        CMP     R0,#15          ; CR is returned
+        BNE     SAWR1
+        MOV     #12,R0          ;  as *N
+        BR      SAWR1           ; echo the char
+
+;*********************************************************
+;                                                        *
+;               SAWRCH(CH)                               *
+;                                                        *
+; Standalone WRCH to the console printer. Interrupt      *
+; status is saved and restored.                          *
+;                                                        *
+;*********************************************************
+
+        .WORD   LIBWORD
+        .ASCII  <7>/sawrch /
+
+SAWRCH: MOV     @#PS,R3         ; save interrupt status
+        BIS     #LOCKOUT,@#PS   ; interrupts off
+SAWR1:  BIT     #RDYFL,@#COPCSW ; wait until ready
+        BEQ     SAWR1
+        CMP     R0,#12          ; *N (LF) is preceeded
+        BNE     SAWR3
+        MOV     #15,@#COPCSW+2  ;  by CR
+SAWR2:  BIT     #RDYFL,@#COPCSW ; wait until ready again
+        BEQ     SAWR2
+SAWR3:  MOV     R0,@#COPCSW+2   ; print the char
+SAWR4:  BIT     #RDYFL,@#COPCSW ; wait until done
+        BEQ     SAWR4
+        MOV     R3,@#PS         ; restore interrupt status
+        BR      MCX             ; and return
+
+;*********************************************************
+;                                                        *
+;               CREATECO(FN,STSIZE)                      *
+;                                                        *
+; This function creates a coroutine with body FN, stack  *
+; size STSIZE and returns a pointer to its stack base.   *
+;                                                        *
+;*********************************************************
+
+        .ASCII  <7>/createc/
+
+CREATC: ADD     @0(SP),P        ; standard BCPL entry
+        MOV     (SP)+,(P)+
+        MOV     PC,-4(P)
+        MOV     R0,(P)          ; save arguments
+        MOV     R1,2(P)
+        MOV     R1,R0           ; put size in R0
+        JSR     PC,@G.GVEC(G)   ; get store for stack
+        .WORD   6
+        TST     R0
+        BEQ     RET             ; no store
+        MOV     R0,R2
+        ADD     2(P),R2         ; BCPL stack end
+        MOV     R2,R3
+        ASL     R3              ; R3 = MC stack end
+        MOV     R0,R1
+        ASL     R1              ; R1 = MC stack base
+        TST     (R3)+
+CRC1:   CLR     -(R3)           ; zero the stack
+        CMP     R3,R1
+        BHI     CRC1
+        MOV     G.SBASE(G),R3   ; get current coroutine
+        MOV     R3,C.CLLR(R1)   ; set the caller
+        ASL     R3              ; MC current coroutine ptr
+        MOV     (R3),(R1)       ; link in new coroutine
+        MOV     R0,(R3)         ; after current
+        MOV     P,C.RESP(R3)    ; save resumption ptr
+        MOV     (P),C.FUNC(R1)  ; set FN
+        SUB     #50.,R2         ; safety margin of 50
+        MOV     R2,C.SEND(R1)   ; set the stack end
+        MOV     R0,G.SBASE(G)   ; set STACKBASE
+        MOV     R1,P            ; set up new stack
+CRC2:   JSR     PC,COWAIT       ; R := FN(COWAIT(R))
+        .WORD   C.RTRN
+        JSR     PC,@C.FUNC(P)
+        .WORD   C.RTRN
+        BR      CRC2            ; REPEAT
+
+;*********************************************************
+;                                                        *
+;               DELETECO(CPTR)                           *
+;                                                        *
+; This routine deletes the coroutine represented by      *
+; CPTR.                                                  *
+;                                                        *
+;*********************************************************
+
+        .ASCII  <7>/deletec/
+
+DELETC: ADD     @0(SP),P        ; standard BCPL entry
+        MOV     (SP)+,(P)+
+        MOV     PC,-4(P)
+        MOV     R0,R1
+        ASL     R1              ; MC coroutine ptr
+        TST     C.CLLR(R1)      ; still active ?
+        BNE     COERR           ; yes - error
+        MOV     G.SBASE(G),R3   ; locate on cortn chain
+
+; first descend to the root coroutine
+
+DC1:    MOV     R3,R2
+        ASL     R3
+        MOV     C.CLLR(R3),R3   ; get caller
+        BGT     DC1             ; loop until root
+
+; then locate the coroutine on the chain
+
+DC2:    ASL     R2
+        MOV     R2,R3
+        MOV     (R2),R2         ; next coroutine
+        BEQ     COERR           ; end of chain
+        CMP     R2,R0           ; found it ?
+        BNE     DC2             ; no, chain on
+        MOV     (R1),(R3)       ; yes, unlink it
+        JSR     PC,@G.FVEC(G)   ; and free the store
+        .WORD   2
+        BR      RET
+
+; error in coroutine call etc.
+
+COERR:  TRAP    195.            ; abort the task
+
+; BCPL function return
+
+RET:    MOV     -(P),R3
+        SUB     (R3)+,P
+        JMP     (R3)
+
+;*********************************************************
+;                                                        *
+;               CALLCO(CPTR,ARG)                         *
+;                                                        *
+; This function calls the coroutine represented by CPTR, *
+; passing the  argument ARG.                             *
+;                                                        *
+;*********************************************************
+
+        .ASCII  <7>/callco /
+
+CALLCO: ADD     @0(SP),P        ; standard BCPL entry
+        MOV     (SP)+,(P)+
+        MOV     PC,-4(P)
+        MOV     R0,R3
+        ASL     R3              ; MC new coroutine ptr
+        TST     C.CLLR(R3)      ; already active ?
+        BNE     COERR
+        MOV     G.SBASE(G),R2
+        MOV     R2,C.CLLR(R3)   ; activate new coroutine
+        ASL     R2              ; MC old coroutine ptr
+COENT:  MOV     R0,G.SBASE(G)   ; set up STACKBASE
+        MOV     R1,R0           ; arg in R0
+COSWP:  MOV     P,C.RESP(R2)    ; save resumption ptr
+        MOV     C.RESP(R3),P    ; new stack
+        BR      RET
+
+;*********************************************************
+;                                                        *
+;               RESUMECO(CPTR,ARG)                       *
+;                                                        *
+; This function deactivates the current coroutine and    *
+; resumes the coroutine represented by CPTR, passing     *
+; the argument ARG.                                      *
+;                                                        *
+;*********************************************************
+
+        .ASCII  <7>/resumec/
+
+RESUME: ADD     @0(SP),P        ; standard BCPL entry
+        MOV     (SP)+,(P)+
+        MOV     PC,-4(P)
+        MOV     R0,R3
+        ASL     R3              ; MC new coroutine ptr
+        MOV     G.SBASE(G),R2
+        ASL     R2              ; MC old coroutine ptr
+        CMP     R2,R3           ; new=old ?
+        BEQ     COENT           ; yes - bypass checks
+        TST     C.CLLR(R3)      ; new already active ?
+        BNE     COERR           ; yes - error
+        TST     C.CLLR(R2)      ; old=root ?
+        BMI     COERR           ; yes - error
+        MOV     C.CLLR(R2),C.CLLR(R3); activate new cortn
+        CLR     C.CLLR(R2)      ; deactivate old
+        BR      COENT
+
+;*********************************************************
+;                                                        *
+;               COWAIT(ARG)                              *
+;                                                        *
+; This function returns from the current coroutine,      *
+; passing the argument ARG.                              *
+;                                                        *
+;*********************************************************
+
+        .ASCII  <7>/cowait /
+
+COWAIT: ADD     @0(SP),P        ; standard BCPL entry
+        MOV     (SP)+,(P)+
+        MOV     PC,-4(P)
+        MOV     G.SBASE(G),R2
+        ASL     R2              ; MC old coroutine ptr
+        MOV     C.CLLR(R2),R3   ; get caller
+        BMI     COERR           ; -1 => root coroutine
+        MOV     R3,G.SBASE(G)   ; set up STACKBASE
+        ASL     R3              ; MC new coroutine ptr
+        CLR     C.CLLR(R2)      ; deactivate old coroutine
+        BR      COSWP
+
+;*********************************************************
+;                                                        *
+;               STOP(ARG)                                *
+;                                                        *
+; This function returns from the current coroutine or    *
+; task, setting RETURNCODE and passing the argument ARG. *
+;                                                        *
+;*********************************************************
+
+        LIBWORD
+        .ASCII  <7>/stop   /
+
+STOP:   TST     (SP)+           ; discard return address
+        MOV     R0,G.RC(G)      ; set return code
+        MOV     G.SBASE(G),P    ; find stack base
+        ASL     P
+        TST     C.CLLR(P)       ; find caller
+        BMI     STP1            ; -1 => root stack
+        JMP     CRC2            ; return from coroutine
+
+STP1:   MOV     C.RTRN(P),R3    ; return to task
+        JMP     2(R3)           ;  deactivation
+
+; Globals to be initialised
+
+        .WORD   0               ; End of init list
+        .WORD   G.APT/2,      <APTOVC  - MLIB>/2
+        .WORD   G.LEVEL/2,    <LEVEL   - MLIB>/2
+        .WORD   G.LJUMP/2,    <LONGJ   - MLIB>/2
+        .WORD   G.MULDIV/2,   <MULDIV  - MLIB>/2
+        .WORD   G.GBYTE/2,    <GETBYT  - MLIB>/2
+        .WORD   G.PBYTE/2,    <PUTBYT  - MLIB>/2
+        .WORD   G.CKST/2,     <CHEKST  - MLIB>/2
+        .WORD   G.SARDCH/2,   <SARDCH  - MLIB>/2
+        .WORD   G.SAWRCH/2,   <SAWRCH  - MLIB>/2
+        .WORD   G.CRCO/2,     <CREATC  - MLIB>/2
+        .WORD   G.DELCO/2,    <DELETC  - MLIB>/2
+        .WORD   G.CALCO/2,    <CALLCO  - MLIB>/2
+        .WORD   G.RESCO/2,    <RESUME  - MLIB>/2
+        .WORD   G.COWAIT/2,   <COWAIT  - MLIB>/2
+        .WORD   G.STOP/2,     <STOP    - MLIB>/2
+        .WORD   99.             ; Highest referenced G
+
+MLBEND: .END
+
+
+

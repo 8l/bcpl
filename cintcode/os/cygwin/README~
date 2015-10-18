@@ -1,0 +1,51 @@
+To install and run Cintcode BCPL under Cygwin, first install
+Cygwin typically in C:\cycwin. I am currently using Cygwin 1.7 which
+is a significant upgrade from Cygwin 1.5.
+
+Extract the BCPL system (either bcpl.zip or bcpl.tgz available
+from www.cl.cam.ac.uk/users/mr) into, say,
+
+C:\cygwin\home\mr10\distribution\BCPL
+
+Copy cintcode\os\cygwin\cygwin.bat into C:\cygwin and edit it if necessary.
+
+Create a desktop shortcut with target: C:\cygwin\cygwin.bat
+
+Double-click on the shortcut
+
+Type:
+
+cd distribution/BCPL/cintcode
+cp os/cygwin/MakefileCygwin Makefile
+make clean
+make
+
+This should rebuild Cintcode BCPL and enter it.
+
+test the system by typing
+
+echo hello
+bcpl com/bcpl.b to junk
+junk com/bcpl.b to junk
+c compall
+bench100
+
+If this fails the most common fault is in the setting of
+environment variables in cygwin.bat or the location of the
+BCPL directories.
+
+To diagnose the problem double-click on the Cygwin shortcut
+and type the following:
+
+cd distribution/BCPL/cintcode
+cintsys -f
+
+This traces which files are being loaded.
+
+cintsys -f -v
+
+gives a more detailed trace.
+
+Good luck!
+
+

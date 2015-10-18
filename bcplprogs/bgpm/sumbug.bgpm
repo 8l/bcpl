@@ -1,0 +1,58 @@
+Testing the definition of Sum given in 
+
+General Purpose Macrogenerator
+by C. Strachey
+CJ Vol.8 No.3, Oct 1965
+
+Modified to run under bgpm by Martin Richards 2013
+
+This version contains the same bug in the definition of
+Successor as it appears in Strachey's paper.
+
+To see the problem turn on bgpm tracing as in
+
+     bgpm sumbug.bgpm -t
+
+`Notice that near the end the trace, the def macro is called with
+`too many arguments because Successor expanded to a string containing
+`the argument separator (\) which should have been enclosed in quotes.
+ 
+`Calling macro
+`arg  0: def
+`arg  1: 0
+`arg  2: [S\3
+`arg  3: 5\1]
+
+ 
+[def\Suc\{[1\2\3\4\5\6\7\8\9\10\[def\1\{^}^1]]}]`
+
+`{[Suc\0]} => [Suc\0]
+`{[Suc\1]} => [Suc\1]
+`{[Suc\2]} => [Suc\2]
+`{[Suc\9]} => [Suc\9]
+
+[def\Successor\{[^2\[def\^2\^1{\[Suc\}^2{]}]`
+                    [def\9\{[Suc\}^1{]\0}]]}]`
+
+
+
+`{[Successor\3\4]} => [Successor\3\4]
+`{[Successor\3\9]} => [Successor\3\9]
+
+[def\Sum\{[S\^1\^2\0\`
+            [def\S\`
+              {[^3\`
+                 [def\^3\{[S\}[Successor\^1\^2]{\}[Suc\^3]{]}]`
+                 [def\}^3{\^1{\}^2]`
+               ]`
+              }`
+            ]`
+          ]`
+         }`
+]`
+
+{[Sum\3\4\2]} => [Sum\3\4\2]
+`{[Sum\3\8\3]} => [Sum\3\8\3]
+
+
+

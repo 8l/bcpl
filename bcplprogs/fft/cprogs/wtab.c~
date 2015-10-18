@@ -1,0 +1,29 @@
+/*
+
+This program is meant to generate a table of sin x for x = 0 to pi/2. The
+numbers will be given as 32-bit unsigned fixed point fractions in hex (with one
+exceptionally given as #xFFFFFFFF)
+*/
+
+#include <stdio.h>
+#include <math.h>
+
+#define Pi 3.14159265358979323846264338327950l
+
+#define k 16
+
+void pr(double y) {
+  printf("%19.17f \n", y);
+}
+
+int main() {
+  int i;
+
+  for (i=0; i<=16; i++) {
+    //double y = sin((double)Pi*i/(2.0*k));
+    double y = sin(Pi/4);
+
+    pr(y);
+  }
+  return 0;
+}

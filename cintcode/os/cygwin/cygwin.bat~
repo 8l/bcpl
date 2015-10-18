@@ -1,0 +1,32 @@
+@echo off
+echo Initialising Cintcode BCPL environment
+
+SET HOME=/home/mr10
+
+SET BCPLROOT=%HOME%/distribution/BCPL/cintcode
+SET BCPLPATH=%BCPLROOT%/cin
+SET BCPLHDRS=%BCPLROOT%/g
+
+SET BCPL64ROOT=%HOME%/distribution/BCPL64/cintcode
+SET BCPL64PATH=%BCPL64ROOT%/cin
+SET BCPL64HDRS=%BCPL64ROOT%/g
+
+SET POSROOT=%HOME%/distribution/Cintpos/cintpos
+SET POSPATH=%POSROOT%/cin
+SET POSHDRS=%POSROOT%/g
+
+SET MCPLROOT=%HOME%/distribution/MCPL/mintcode
+SET MCPLPATH=%MCPLROOT%/min
+SET MCPLHDRS=%MCPLROOT%/g
+
+SET PVSROOT=%HOME%/PVS
+SET PVSPATH=%PVSROOT%/fordpos/bin:%PVSROOT%/fordpos/commobj:%PVSROOT%/fordpos/taskobj
+SET PVSHDRS=%PVSROOT%/pvshdr
+
+SET PATH=.;%BCPLROOT%/bin;%POSROOT%/bin;%MCPLROOT%;C:\cygwin\home\mr10\bin;e:\devkitGP2X\bin
+
+C:
+chdir C:\cygwin\bin
+
+bash --login -i
+

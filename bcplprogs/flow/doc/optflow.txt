@@ -1,0 +1,30 @@
+Dataflow analysis of the FLOW graph
+
+This is done by the program optflow.b.  It reads in the FLOW form of
+all the section of a program including blib and syslib and then analyses
+how each value id is used.
+
+The following vectors are used:
+
+charv    A character vector to hold names and strings. It increases in
+         size as needed.
+charp    Next position in the charv
+chart    The upperbound of charv
+
+spacev   A vector used for node allocation
+spacet   Pointer to the last element of spacev
+spacep   Pointer to the latest node allocated. These are allocated
+         from the end. Allocation is done by mk(n, a, b, c,...)
+
+refs     refs!i is a list of FLOW statements in which Vi occurs
+names    names!i is a subscript into charv for the name of Vi if known
+props    props!i is a bit pattern summarising some of the properties of Vi
+dpndson  dpndson!i is a list of variables that may affect the value of Vi
+val      val!i is a structure limiting the possible values that Vi might have.
+
+flowlist List of flow statements
+flowlast Pointer to last statement (or link field)
+
+Statements are of the form [link, flags, work, op, x, y, z, ... ]
+
+

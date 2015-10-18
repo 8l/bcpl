@@ -1,0 +1,13 @@
+This works with both GPM and BGPM
+
+
+{Calling [def\a\{[def\b\[c]xxx[d]]}]}  [def\a\{[def\b\[c]xxx[d]]}]
+
+{Calling [def\c\old c][def\d\old d]} [def\c\old c][def\d\old d]
+
+{Calling [a\[def\c\ccc][def\d\ddd]]}  [a\[def\c\ccc][def\d\ddd]]
+{Calling [b]} => [b]
+{Calling [c]} => [c]
+{Calling [d]} => [d]
+
+

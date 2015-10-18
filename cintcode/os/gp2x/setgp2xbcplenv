@@ -1,0 +1,29 @@
+# One way to set the BCPLROOT, BCPLPATH, BCPLHDRS and PATH environment
+# variables for the BCPL Cintcode system run on the GP2X machine is 
+# as follows:
+
+# Edit the line to specifying the cintcode root directory
+# and then execute the bash shell command:
+
+# . ./setgp2xbcplenv
+
+export BCPLROOT=/mnt/sd/bcpl/cintcode
+
+export BCPLPATH=$BCPLROOT/cin
+export BCPLHDRS=$BCPLROOT/g
+export PATH=$PATH:$BCPLROOT
+
+# Under the C-shell the following might be better. Execute
+
+#    source setbcplenv
+
+#    where the file setbcplenv is:
+
+#    setenv BCPLROOT /mnt/sd/BCPL/cintcode
+
+#    setenv BCPLPATH ${BCPLROOT}/cin
+#    setenv BCPLHDRS ${BCPLROOT}/g
+#    setenv PATH     ${PATH}:${BCPLROOT}
+
+
+# Note that BCPLROOT must be the absolute filename of the cintcode directory.

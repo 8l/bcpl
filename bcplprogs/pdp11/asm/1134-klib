@@ -1,0 +1,1889 @@
+;*********************************************************
+;                                                        *
+;        (C) Copyright 1979 Tripos Research Group        *
+;            University of Cambridge                     *
+;            Computer Laboratory                         *
+;                                                        *
+;*********************************************************
+
+;*********************************************************
+;                                                        *
+; This is the kernel of TRIPOS for the PDP-11/34         *
+;                                                        *
+; Authors:  Martin Richards   December 1976              *
+;           Alasdair Scott    April    1977              *
+;           Brian Knight      November 1977              *
+;           Adrian Aylward    January  1978              *
+;                                                        *
+;  Last updated 9 October 1979 (by Brian Knight)         *
+;                                                        *
+; Model dependent features:                              *
+;           Use of RTT instruction                       *
+;           KW11-L real time clock                       *
+;                                                        *
+;*********************************************************
+
+;
+; Standard symbols
+;
+G       =           R4          ; Global vector pointer
+P       =           R5          ; BCPL stack pointer
+PS      =       177776          ; Processor status word
+LIBWORD =        23456.         ; Marks library routines
+SECWORD =        12345.         ; Marks a BCPL section
+NOTINUSE=           -1.         ; Link wd of dequeued pkts
+;
+; Processor states
+;
+LOCKOUT =          340          ; Priority 7
+TBIT    =           20          ; T bit of PS
+;
+; KW11-L clock
+;
+CLKCSW  =       177546          ; C&S reg for KW11-L clock
+CLKEN   =          100          ; Clock enable
+CLKMON  =          200          ; Bit set on each int
+MTICKS  =       50.*60.         ; No. of ticks per minute
+;
+; Device driver symbols
+;
+D.INIT  =       2               ; Initialisation rtn
+D.UNIN  =       4               ; Uninitialisation rtn
+;
+; Device control block symbols
+;
+;               0               ; Device driver ptr (BCPL)
+D.ID    =       2               ; Device id
+D.WKQ   =       4               ; Work queue
+D.START =       6               ; Start routine - for QPKT
+D.STOP  =       8.              ; Stop routine - for DQPKT
+D.JSR   =      10.              ; Subroutine jump to
+D.INT   =      12.              ; Interrupt routine
+;
+; Task control block symbols
+;
+T.ID    =       2               ; Task id
+T.PRI   =       4               ; Priority
+T.WKQ   =       6               ; Work Q
+T.STATE =       8.              ; State
+T.FLAGS =      10.              ; Flags for break etc.
+T.STSIZ =      12.              ; Stack size
+T.SEGL  =      14.              ; Segment list
+T.GBASE =      16.              ; Global vector base
+T.SBASE =      18.              ; Root stack base
+; save area. The peculiar order is useful!
+T.G     =      20.              ; Register 4
+T.P     =      22.              ; Register 5
+T.SP    =      24.              ; Register 6
+T.R0    =      26.
+T.R1    =      28.
+T.R2    =      30.
+T.SSAV  =      32.              ; One wd of sys stack
+T.PC    =      34.              ; Register 7
+T.PS    =      36.              ; Processor status
+T.R3    =      38.
+T.UPB   =      19.              ; Upperbound
+;
+; Task states
+;
+S.PKT   =       1               ; Pkt on work Q
+S.HOLD  =       2               ; Held
+S.WAIT  =       4               ; Wait
+S.INT   =      10               ; Interrupted
+S.DEAD  =      14               ; Dead
+;
+; Packet symbols
+;
+P.ID    =       2               ; Task or device id
+P.TYPE  =       4               ; Type or action
+P.RES1  =       6               ; First result
+P.RES2  =       8.              ; Second result
+P.A1    =      10.              ; Argument 1
+;
+; Coroutine stack symbols
+;
+;               0               ; Link to next coroutine
+C.CLLR  =       2               ; Caller coroutine
+C.SEND  =       4               ; Stack end - 50
+C.RESP  =       6               ; Resumption ptr
+C.FUNC  =       8.              ; Function
+;              10.              ; PC dump
+C.RTRN  =      12.              ; Return link for STOP
+;
+; Global Vector symbols
+;
+;               0. * 2          ; Global vector size
+G.START   =     1. * 2          ; START
+G.RES2    =    10. * 2          ; Used for error codes
+G.RC      =    11. * 2          ; RETURNCODE for STOP
+G.SBASE   =    12. * 2          ; Current stack base
+G.TCB     =    13. * 2          ; Taskblock pointer
+G.TID     =    14. * 2          ; Task id
+;
+; Kernel Primitives
+;
+G.ABORT   =    38. * 2          ; ABORT
+G.CPRI    =    35. * 2          ; CHANGEPRI
+G.CDEV    =    31. * 2          ; CREATEDEV
+G.CTASK   =    33. * 2          ; CREATETASK
+G.DDEV    =    32. * 2          ; DELETEDEV
+G.DTASK   =    34. * 2          ; DELETETASK
+G.DQPKT   =    43. * 2          ; DQPKT
+G.FVEC    =    30. * 2          ; FREEVEC
+G.GLOBIN  =    28. * 2          ; GLOBIN
+G.GVEC    =    29. * 2          ; GETVEC
+G.HOLD    =    39. * 2          ; HOLD
+G.QPKT    =    42. * 2          ; QPKT
+G.RELEASE =    40. * 2          ; RELEASE
+G.SFLAGS  =    36. * 2          ; SETFLAGS
+G.TWAIT   =    41. * 2          ; TASKWAIT
+G.TFLAGS  =    37. * 2          ; TESTFLAGS
+
+;*********************************************************
+;                                                        *
+;         Interrupt vectors                              *
+;                                                        *
+;*********************************************************
+
+        .ASECT
+        .=0
+
+        JMP     @#UNASGL        ; unassigned global trap
+
+ERRVEC: .WORD   ERRINT,LOCKOUT  ;     error trap
+        .WORD   ERRINT,LOCKOUT  ;  10
+BPTVEC: .WORD   BPTINT,LOCKOUT  ;     breakpoint trap
+        .WORD   ERRINT,LOCKOUT  ;  20
+        .WORD   ERRINT,LOCKOUT
+        .WORD   ERRINT,LOCKOUT  ;  30
+        .WORD   TRPINT,LOCKOUT  ;     TRAP trap
+        JMP     @#SADEB         ;     standalone DEBUG
+        TRAP    96.             ;     restart trap
+        .WORD   0
+        .WORD   ERRINT,LOCKOUT  ;  50
+        .WORD   ERRINT,LOCKOUT
+        .WORD   ERRINT,LOCKOUT  ;  60
+        .WORD   ERRINT,LOCKOUT
+        .WORD   ERRINT,LOCKOUT  ;  70
+        .WORD   ERRINT,LOCKOUT
+CLKVEC: .WORD   CLKINT,LOCKOUT  ; 100 - KW11-L clock
+        .WORD   ERRINT,LOCKOUT
+        .WORD   ERRINT,LOCKOUT  ; 110
+        .WORD   ERRINT,LOCKOUT
+        .WORD   ERRINT,LOCKOUT  ; 120
+        .WORD   ERRINT,LOCKOUT
+        .WORD   ERRINT,LOCKOUT  ; 130
+        .WORD   ERRINT,LOCKOUT
+        .WORD   ERRINT,LOCKOUT  ; 140
+        .WORD   ERRINT,LOCKOUT
+        .WORD   ERRINT,LOCKOUT  ; 150
+        .WORD   ERRINT,LOCKOUT
+        .WORD   ERRINT,LOCKOUT  ; 160
+        .WORD   ERRINT,LOCKOUT
+        .WORD   ERRINT,LOCKOUT  ; 170
+        .WORD   ERRINT,LOCKOUT
+        .WORD   ERRINT,LOCKOUT  ; 200
+        .WORD   ERRINT,LOCKOUT
+        .WORD   ERRINT,LOCKOUT  ; 210
+        .WORD   ERRINT,LOCKOUT
+        .WORD   ERRINT,LOCKOUT  ; 220
+        .WORD   ERRINT,LOCKOUT
+        .WORD   ERRINT,LOCKOUT  ; 230
+        .WORD   ERRINT,LOCKOUT
+        .WORD   ERRINT,LOCKOUT  ; 240
+        .WORD   ERRINT,LOCKOUT
+        .WORD   ERRINT,LOCKOUT  ; 250
+        .WORD   ERRINT,LOCKOUT
+        .WORD   ERRINT,LOCKOUT  ; 260
+        .WORD   ERRINT,LOCKOUT
+        .WORD   ERRINT,LOCKOUT  ; 270
+        .WORD   ERRINT,LOCKOUT
+        .WORD   ERRINT,LOCKOUT  ; 300
+        .WORD   ERRINT,LOCKOUT
+        .WORD   ERRINT,LOCKOUT  ; 310
+        .WORD   ERRINT,LOCKOUT
+        .WORD   ERRINT,LOCKOUT  ; 320
+        .WORD   ERRINT,LOCKOUT
+        .WORD   ERRINT,LOCKOUT  ; 330
+        .WORD   ERRINT,LOCKOUT
+        .WORD   ERRINT,LOCKOUT  ; 340
+        .WORD   ERRINT,LOCKOUT
+        .WORD   ERRINT,LOCKOUT  ; 350
+        .WORD   ERRINT,LOCKOUT
+        .WORD   ERRINT,LOCKOUT  ; 360
+        .WORD   ERRINT,LOCKOUT
+        .WORD   ERRINT,LOCKOUT  ; 370
+        .WORD   ERRINT,LOCKOUT
+
+;*********************************************************
+;                                                        *
+;         The System Stack and Root Node                 *
+;                                                        *
+;*********************************************************
+
+; The system stack occupies locations 400 - 444
+
+        .=400
+
+        .WORD 0,0,0,0,0,0,0,0
+        .WORD 0,0,0,0,0,0,0,0
+        .WORD 0,0,0,0
+
+SSWORD  =  444  ; This word is saved on a task switch
+SSBASE  =  446  ; System stack base - one word is left
+                ; free in case of underflow.
+
+; The root node follows
+
+RTNODE  =  450
+
+TSKTAB  =  450 ; Ptr to task table
+DEVTAB  =  452 ; Ptr to device table
+TCBLIST =  454 ; Beginning of TCB prioriy list
+CRNTSK  =  456 ; Ptr to current TCB
+BLKLIST =  460 ; Beginning of store block list
+DEBTSK  =  462 ; Ptr to DEBUG TCB
+DAYS    =  464 ; Count of days
+MINS    =  466 ; Count of minutes
+TICKS   =  470 ; Count of ticks
+CLWKQ   =  472 ; Ptr to first timer pkt
+MEMSIZ  =  474 ; Memory size (set by SYSLINK)
+INFO    =  476 ; Ptr to info vec (set by SYSLINK)
+RN.KST  =  500 ; Kernel start address
+DEVMVP  =  502 ; MOVPKT for device drivers (MC addr)
+DEVINT  =  504 ; INTENT for device drivers (MC addr)
+DEVRET  =  506 ; INTRET for device drivers (MC addr)
+
+        .=RTNODE
+
+        .WORD   0       ; TSKTAB
+        .WORD   0       ; DEVTAB
+        .WORD   0       ; TCBLIST
+        .WORD   0       ; CRNTSK
+        .WORD   0       ; BLKLIST
+        .WORD   KSTART  ; DEBTSK - also start address
+        .WORD   0       ; DATE
+        .WORD   0       ; TIME
+        .WORD   0       ; TICKS
+        .WORD   0       ; CLWKQ
+        .WORD   0       ; MEMSIZ
+        .WORD   0       ; INFO
+        .WORD   KSTART  ; RN.KST
+        .WORD   MOVPKT  ; DEVMVP
+        .WORD   INTENT  ; DEVINT
+        .WORD   INTRET  ; DEVRET
+
+;*********************************************************
+;                                                        *
+;             This is the entry point.                   *
+;                                                        *
+;*********************************************************
+
+        .CSECT
+
+KLIB:   .WORD   <KLBEND-KLIB>/2 ; Section length
+        .WORD   SECWORD
+        .BYTE   17.
+        .ASCII  /KLIB   /
+        .ASCII  / 09-Oct-79/
+
+KSTART: RESET
+        BIS     #LOCKOUT,@#PS   ; interrupts off
+        MOV     #SSBASE,SP      ; set up system stack
+;;;;        CLR     @#177774        ; set stack limit reg
+        MOV     #CLKEN,@#CLKCSW ; start the clock
+        MOV     #1,R0           ; initialise other devices
+KST1:   INC     R0              ; next device
+        MOV     @#DEVTAB,R1     ; get device table
+        ASL     R1
+        CMP     R0,(R1)         ; compare with UPB
+        BGT     KST2            ; end of table
+        ADD     R0,R1
+        ADD     R0,R1
+        MOV     (R1),R2
+        BEQ     KST1            ; this slot empty
+        ASL     R2              ; MC DCB ptr in R2
+        MOV     (R2),R1
+        ASL     R1              ; MC driver ptr
+        NEG     R0              ; id in R0
+        MOV     R0,D.ID(R2)     ; set id in DCB
+        CLR     D.WKQ(R2)       ; clear work queue
+        JSR     PC,@D.INIT(R1)  ; call initialisation rtn
+        NEG     R0              ; make id positive again
+        BR      KST1
+
+KST2:   MOV     #TCBLIST,R0     ; get the TCB chain
+KST3:   TST     (R0)            ; look for the end
+        BEQ     KST4
+        MOV     (R0),R0         ; not there, chain on
+        ASL     R0
+        BR      KST3
+
+KST4:   MOV     #IDLTCB,(R0)    ; link in the IDLE TCB
+        ROR     (R0)            ; at the end
+
+        MOV     @#BLKLIST,R0    ; get the  store chain
+        ASL     R0
+KST5:   MOV     (R0),R1         ; get size of block
+        BEQ     KST7            ; end of chain
+        MOV     R0,R2           ; MC start of block
+        ADD     R1,R0
+        ADD     R1,R0           ; MC end of block
+        BIT     #1,R1           ; is it free ?
+        BEQ     KST5            ; no - chain on
+        TST     -(R0)           ; yes - correct end ptr
+        TST     (R2)+           ; leave the size
+KST6:   CLR     (R2)+           ; zero the block
+        CMP     R2,R0
+        BLO     KST6            ; loop until end
+        BR      KST5
+
+KST7:   CLR     @#DEBTSK        ; clear DEBUG TCB ptr
+        MOV     @#CRNTSK,R0     ; find initial task
+        ASL     R0
+        MOV     #IPKT,T.WKQ(R0) ; give it a packet
+        CLC
+        ROR     T.WKQ(R0)
+        JMP     ACTIV           ; activate the task
+
+IPKT:   .WORD   0               ; initial packet
+        .WORD   0               ; from task zero
+
+; DEBUG'S standalone mode stack overlays the
+; initialisation code. its length is 100 words.
+
+DEBSAS  =       KSTART
+
+        .=KSTART+200.
+
+;*********************************************************
+;                                                        *
+; Standalone DEBUG restart. DEBUG's TCB is found, and    *
+; DEBUG entered in standalone mode                       *
+;                                                        *
+;*********************************************************
+
+SADEB:  RESET
+        BIS     #LOCKOUT,@#PS   ; interrupts off
+        MOV     #SSBASE,SP      ; set up sytem stack
+        MOV     #SAD1,P         ; return addr for FNDEB
+        JMP     FNDEB           ; use TRSAVE to find DEBUG
+SAD1:   CLR     (R0)            ; MODE=0 for sa restart
+        ROR     R0              ; BCPL ptr to DEBPKT
+        JSR     PC,@G.START(G)  ; START(PKT)
+        .WORD   2
+        BR      SADEB
+
+;*********************************************************
+;                                                        *
+;      The Idle task                                     *
+;                                                        *
+;*********************************************************
+
+IDLE:   BR      IDLE
+
+; Task control block for idle task
+
+IDLTCB: .WORD   0               ; link - end of chain
+        .WORD   0               ; taskid
+        .WORD   0               ; priority
+        .WORD   0               ; no work queue
+IDLST:  .WORD   S.INT           ; interrupted state
+        .WORD   0               ; flags
+        .WORD   0               ; stack size
+        .WORD   0               ; no segment list
+        .WORD   0               ;  or global vector
+        .WORD   0               ;  or stack
+        .WORD   0               ; G
+        .WORD   0               ; P
+        .WORD   SSBASE          ; SP
+        .WORD   0               ; R0
+        .WORD   0               ; SSAV
+        .WORD   0               ; R1
+        .WORD   0               ; R2
+        .WORD   IDLE            ; PC
+        .WORD   0               ; PS
+        .WORD   0               ; R3
+
+;*********************************************************
+;                                                        *
+; The following code implements the task selection       *
+; algorithm - it is entered with a pointer to the        *
+; highest priority task that could be free to run        *
+; The task list is searched in order of decreasing       *
+; priority until a task is found that is free to run.    *
+;                                                        *
+;*********************************************************
+
+SRCHWK: MOV     @R0,R0          ; chain down 1 task
+SRCHW1: MOV     R0,@#CRNTSK     ; BCPL ptr to current task
+SRCHW2: ASL     R0              ; get MC ptr
+        MOV     T.STATE(R0),R2  ; get state (table driver)
+        ASL     R2              ; get table offset
+        JMP     @SRCHTAB(R2)    ; and do your work
+
+; The action to be taken is determined from the task
+; state - each permissible state corresponds to a unique
+; entry in the table - for reasons of efficiency the
+; value of the state is not checked.
+; Therefore, except in rare debugging cases individuals
+; should not attempt to modify the state directly.
+
+SRCHTAB:.WORD   RENTER          ; Run
+        .WORD   RENTER          ; Run with Pkt
+        .WORD   SRCHWK          ; Run/held
+        .WORD   SRCHWK          ; Run with Pkt/held
+        .WORD   SRCHWK          ; Wait
+        .WORD   UNWAIT          ; Wait with Pkt
+        .WORD   SRCHWK          ; Wait/held
+        .WORD   SRCHWK          ; Wait with Pkt/held
+        .WORD   UNINT           ; Interrupted
+        .WORD   UNINT           ; Interrupted with Pkt
+        .WORD   SRCHWK          ; Interrupted/held
+        .WORD   SRCHWK          ; Interrupted + Pkt/held
+        .WORD   SRCHWK          ; Dead
+        .WORD   ACTIV           ; Dead with Pkt (restart)
+        .WORD   SRCHWK          ; Dead/held
+        .WORD   SRCHWK          ; Active/held
+
+; A task in wait state that receives a packet is
+; reentered. The packet address is returned in R0
+; and the link set to NOTINUSE.
+
+UNWAIT: JSR     PC,NXTPKT       ; get next packet
+        MOV     R1,T.R0(R0)     ; so pkt addr is returned
+
+; A task that is to be directly reentered (e.g. held
+; up due to QPKT, RELEASE, etc.) needs only G, P, SP
+; and R0 restored.
+
+RENTER: ADD     #T.G,R0         ; addr of saved G
+        MOV     (R0)+,G
+        MOV     (R0)+,P
+        MOV     (R0)+,SP
+        MOV     (R0),R0
+ULRET:  CLR     @#PS            ; enable interrupts
+RET:    MOV     -(P),R3         ; standard BCPL exit
+        SUB     (R3)+,P
+        JMP     (R3)
+
+; An interrupted task is reentered here.
+; All the registers and the system stack word are
+; restored from the TCB before the task is resumed.
+
+UNINT:  BIC     #S.INT,T.STATE(R0) ; clear int state
+        MOV     R0,R3
+        ADD     #T.G,R3         ; ptr to saved G
+        MOV     (R3)+,G         ; being the first word
+        MOV     (R3)+,P         ; of the TCB save area
+        MOV     (R3)+,SP
+        MOV     (R3)+,R0
+        MOV     (R3)+,R1
+        MOV     (R3)+,R2
+        MOV     (R3)+,@#SSWORD  ; system stack word
+        TST     -(SP)
+        MOV     (R3)+,-(SP)     ; set up PC
+        MOV     (R3)+,2(SP)     ;  and PS for RTT inst
+        MOV     (R3),R3
+        RTT
+
+; A dead task with a packet will be activated. The size
+; of the global vector is calculated, then it and the
+; stack are allocated and the globals are initialised,
+; before calling START with the packet as argument
+
+ACTIV:  MOV     #SSBASE,SP      ; standard system stack
+        JSR     PC,NXTPKT       ; get the packet
+        CLR     @#PS            ; allow interrupts
+        MOV     R0,R5           ; MC TCB ptr
+        MOV     R1,T.SBASE(R5)  ; save pkt
+        MOV     T.SEGL(R5),R0   ; get segment list
+        MOV     R0,R1
+        ASL     R0              ; MC segment list
+        ADD     (R0),R1
+        ASL     R1              ; MC list end
+        CLR     R4              ; zero highest global
+        BR      ACT4
+
+ACT1:   MOV     R0,R2           ; new segment
+        BR      ACT3
+
+ACT2:   MOV     2(R2),R3        ; new section
+        ASL     R3              ; MC section length
+        ADD     R2,R3           ; MC section end
+        CMP     (R3),R4         ; highest global yet ?
+        BLE     ACT3
+        MOV     (R3),R4         ; yes, update h.r.g.
+ACT3:   MOV     (R2),R2         ; get next section
+        ASL     R2
+        BNE     ACT2
+
+ACT4:   TST     (R0)+           ; get next segment
+        CMP     R0,R1
+        BLOS    ACT1
+
+        MOV     R4,T.GBASE(R5)  ; save g.v. size in TCB
+        CLR     R4              ; no g.v. for GETVEC
+ACT5:   MOV     T.GBASE(R5),R0
+        JSR     PC,GVEC         ; get global vector
+        TST     R0
+        BEQ     ACTE1           ; check it was got
+        MOV     R0,G
+        ASL     G               ; set up global vector
+        MOV     T.GBASE(R5),R1  ; global vector size
+        MOV     R0,T.GBASE(R5)  ; set GBASE in TCB
+        ADD     R1,R0
+        ASL     R0              ; MC top of g.v.
+        TST     (R0)+
+ACT6:   CLR     -(R0)           ; zero the globals
+        CMP     R0,G
+        BHI     ACT6
+        MOV     R1,(G)          ; GLOBSIZE
+        MOV     @#CRNTSK,G.TCB(G);TCB
+        MOV     T.ID(R5),G.TID(G) ; TASKID
+ACT7:   MOV     T.STSIZE(R5),R0
+        JSR     PC,GVEC         ; get stack
+        TST     R0
+        BEQ     ACTE2           ; check it was got
+        MOV     R0,G.SBASE(G)   ; STACKBASE
+        MOV     T.SEGL(R5),R1   ; get segment list
+        MOV     T.STSIZ(R5),R2  ;  and stack size
+        MOV     T.SBASE(R5),R3  ;  and pkt
+        MOV     R0,T.SBASE(R5)  ; set SBASE in TCB
+        MOV     R0,P
+        ASL     P               ; set up stack
+        ADD     R0,R2           ; BCPL stack end
+        MOV     R2,R0
+        ASL     R0              ; MC stack end
+        TST     (R0)+
+ACT8:   CLR     -(R0)           ; zero the stack
+        CMP     R0,P
+        BHI     ACT8
+        MOV     #-1,C.CLLR(P)   ; -1 => root coroutine
+        SUB     #50.,R2         ; safety margin
+        MOV     R2,C.SEND(P)    ; stack end - 50
+        MOV     R3,10.(P)       ; the PKT again
+        MOV     R1,12.(P)       ; SEGLIST
+        MOV     R1,14.(P)
+        ASL     R1
+        ADD     (R1),14.(P)     ; ptr to last segment
+        BR      ACT10
+
+ACT9:   ASL     R0
+        MOV     (R0),R0
+        JSR     PC,GBIN         ; initialise the globals
+ACT10:  INC     12.(P)          ; next segment
+        MOV     12.(P),R0
+        CMP     R0,14.(P)
+        BLE     ACT9
+
+        MOV     10.(P),R0       ; recover PKT again
+        JSR     PC,@G.START(G)  ; off we go
+        .WORD   12.
+
+        BIS     #LOCKOUT,@#PS   ; interrupts off
+        MOV     @#CRNTSK,R3
+        ASL     R3
+        BIS     #S.DEAD,T.STATE(R3) ; set dead state
+DEACT:  MOV     T.SBASE(R3),R0  ; free the stack
+        JSR     PC,FVEC
+        MOV     T.GBASE(R3),R0  ; free the global vector
+        JSR     PC,FVEC
+        MOV     @#CRNTSK,R0     ; enter the scheduler
+        JMP     SRCHW2
+
+ACTE1:  TRAP    196.            ; can't get global vector
+        BR      ACT5
+
+ACTE2:  TRAP    196.            ; can't get stack
+        BR      ACT7
+
+;*********************************************************
+;                                                        *
+;               JSR PC,NXTPKT                            *
+;                                                        *
+; This subroutine removes the first packet from a tasks  *
+; work queue. It is entered with the MC TCB ptr in R0    *
+; and returns the BCPL addr of the packet in R1. It must *
+; be called in lockout.                                  *
+;                                                        *
+;*********************************************************
+
+NXTPKT: BIC     #S.DEAD,T.STATE(R0) ; set run state
+        MOV     T.WKQ(R0),R1    ; top of work Q
+        ASL     R1              ; DQ Pkt from wkq
+        MOV     (R1),T.WKQ(R0)
+        BNE     NXP1            ; unless more packets
+        BIC     #S.PKT,T.STATE(R0)  ;  clear Pkt state
+NXP1:   MOV     #NOTINUSE,(R1)  ; indicate pkt not queued
+        CLC
+        ROR     R1
+        RTS     PC
+
+;*********************************************************
+;                                                        *
+; This is a common point for all interrupts which may    *
+; cause a higher priority task to start. Need to save    *
+; in the TCB all the registers, the system sack word,    *
+; and the PSW.                                           *
+; R1 holds MC new TCB - a task swop will occurr unless   *
+; this is the current TCB                                *
+; On the system stack are  R3, R0, R1, R2, PC, PS        *
+;                                                        *
+;*********************************************************
+
+INTENT: MOV     @#CRNTSK,R2     ; get current task
+        ASL     R2
+        CMP     R2,R1           ; task swop ?
+        BEQ     INTRET          ; no - return
+        BIS     #S.INT,T.STATE(R2) ; mark as interrupted
+        ADD     #T.G,R2         ; reg save area in TCB
+        MOV     G,(R2)+
+        MOV     P,(R2)+
+        MOV     SP,(R2)         ; SP is 6 words out
+        ADD     #12.,(R2)+      ; so correct it
+        MOV     (SP)+,R3        ; pop R3 off SS
+        MOV     (SP)+,(R2)+     ; R0
+        MOV     (SP)+,(R2)+     ; R1
+        MOV     (SP)+,(R2)+     ; R2
+        MOV     @#SSWORD,(R2)+  ; system stack word
+        MOV     (SP)+,(R2)+     ; PC
+        MOV     (SP)+,(R2)+     ; PS
+        MOV     R3,(R2)+        ; R3
+        MOV     R1,R0           ; MC addr of new TCB
+        CLC
+        ROR     R0              ; BCPL ptr for SRCHWK
+        JMP     SRCHW1
+
+;*********************************************************
+;                                                        *
+; This is a common exit point for interrupts that do not *
+; cause a task swop. R3, R0, R1, R2, PC, PS are restored *
+; from the SS.                                           *
+;                                                        *
+;*********************************************************
+
+INTRET: MOV     (SP)+,R3
+        MOV     (SP)+,R0
+        MOV     (SP)+,R1
+INTRT2: MOV     (SP)+,R2
+        RTT
+
+;*********************************************************
+;                                                        *
+; KW11-L line clock                                      *
+; Real Time Clock interrupt service routine              *
+; The absolute time is incremented and any expired pkts  *
+; held on the timer queue are moved to the calling task  *
+; If any of the tasks has a higher priority than the     *
+; current task then the task selector is entered.        *
+;                                                        *
+;*********************************************************
+
+CLKINT: MOV     R2,-(SP)        ; save R2 on SS
+        BIC     #CLKMON,@#CLKCSW; Reset monitor bit
+        MOV     #TICKS,R2       ; ptr to timer words
+        INC     (R2)            ; increment TICKS
+        CMP     (R2),#MTICKS    ; end of minute ?
+        BLO     CLK1            ; no
+        CLR     (R2)            ; yes - clear TICKS
+        INC     -(R2)           ;   increment MINS
+        CMP     (R2),#60.*24.   ; end of day ?
+        BLO     CLK1            ; no
+        CLR     (R2)            ; yes - clear MINS
+        INC     -(R2)           ;   increment DAYS
+CLK1:   MOV     @#CLWKQ,R2      ; get work queue
+        BEQ     INTRT2          ; is empty
+        ASL     R2
+        DEC     P.RES1(R2)      ; decrement top pkt
+        BGT     INTRT2          ; not expired yet
+        MOV     R1,-(SP)        ; save more regs
+        MOV     R0,-(SP)
+        MOV     R3,-(SP)
+        MOV     @#CRNTSK,R1     ; get current task
+        ASL     R1
+CLK2:   MOV     (R2),@#CLWKQ    ; unchain top pkt
+        MOV     #-1,R3          ; devtaskid for MOVPKT
+        JSR     PC,MOVPKT       ; send pkt back
+        MOV     @#CLWKQ,R2      ; try next pkt
+        BEQ     INTENT          ; no more pkts
+        ASL     R2
+        TST     P.RES1(R2)      ; is also expired ?
+        BGT     INTENT          ; no - exit
+        BR      CLK2            ; yes - send it back
+
+;*********************************************************
+;                                                        *
+; Trap interrupt handlers. Miscellaneous error traps are *
+; received by ERRINT, TRAP interrupts, which are used    *
+; for aborts, by TRPINT, and BPT traps and T bit traps   *
+; are received by BPTINT. The registers are saved and    *
+; DEBUG located by TRSAVE, and DEBUG is entered in       *
+; standalone mode                                        *
+;                                                        *
+;*********************************************************
+
+; miscellaneous traps come here
+
+ERRINT: TST     SP              ; was SP corrupt ?
+        BEQ     ERR1            ; yes - odd SP or SS ovf
+        JSR     P,TRSAVE
+        MOV     #99.,R2         ; abort CODE=99
+        BR      TRP2
+
+ERR1:   MOV     #SSBASE,SP      ; SP corrupt, so reset it
+        MOV     @#2,-(SP)       ; SS was set up in
+        MOV     @#0,-(SP)       ; locations 0,2
+        JSR     P,TRSAVE
+        MOV     #95.,R2         ; abort CODE=95
+        BR      TRP2
+
+; TRAP n traps come here
+
+TRPINT: JSR     P,TRSAVE
+        ASL     R3              ; MC addr of TRAP inst
+        MOV     (R3),R2         ; the error CODE is given
+        SUB     #TRAP,R2        ; by the TRAP number
+        BNE     TRP1            ; unless zero when
+        MOV     DEBR0,R2        ; CODE was in R0
+TRP1:   MOV     DEBR1,R3        ; and ARG in R1
+TRP2:   MOV     #1,(R0)         ; MODE=1 for aborts
+TRP3:   MOV     R2,DEBCDE       ; set CODE and ARG in
+        MOV     R3,DEBARG       ; the DEBUG dummy packet
+TRPBRK: CLC
+        ROR     R0              ; BCPL ptr to DEBPKT
+        JSR     PC,@G.START(G)  ; DEBUG: START(PKT)
+        .WORD 2
+        CMP     DEBPKT,#2       ; was it a breakpoint ?
+        BEQ     BPT2            ; yes
+
+TRPHLD: JSR     PC,TCBST1       ; find task to be held
+        BEQ     TRPH1           ; doesn't exist or zero
+        BIS     #S.HOLD,T.STATE(R0) ; set the HOLD bit
+TRPH1:  MOV     DEBTAS,R0       ; TASK from DEBPKT - the
+        JSR     PC,TCBST1       ; task that was running
+        BEQ     TRPCNT          ; wasn't a non zero task
+        BIS     #S.INT,T.STATE(R0)  ; mark it interrupted
+        MOV     #DEBR0,R1       ; store the registers
+        MOV     (R1)+,T.R0(R0)
+        MOV     (R1)+,T.R1(R0)
+        MOV     (R1)+,T.R2(R0)
+        MOV     (R1)+,T.R3(R0)
+        MOV     (R1)+,T.G(R0)
+        MOV     (R1)+,T.P(R0)
+        MOV     (R1)+,T.SP(R0)
+        MOV     (R1)+,T.PC(R0)
+        MOV     (R1)+,T.PS(R0)  ; and PS
+        MOV     @#SSWORD,T.SSAV(R0); system stack word
+        MOV     #SSBASE,SP      ; reset SS
+        MOV     @#TCBLIST,R0    ; beginning of TCB chain
+        JMP     SRCHW1          ; enter the scheduler
+
+TRPCNT: MOV     #DEBR0,SP       ; continue after trap
+        MOV     (SP)+,R0        ; restore the registers
+        MOV     (SP)+,R1
+        MOV     (SP)+,R2
+        MOV     (SP)+,R3
+        MOV     (SP)+,G
+        MOV     (SP)+,P
+        MOV     (SP),SP         ; SS now reset
+        MOV     DEBPS,-(SP)     ; push PS and PC
+        MOV     DEBPC,-(SP)
+        RTT                     ; return from the trap
+
+; breakpoint traps come here. They occur either through a
+; BPT instruction or after execution of an instruction
+; with the T bit set
+
+BPTINT: BIT     #TBIT,2(SP)     ; was the T bit set ?
+        BEQ     BPT1
+        BIC     #TBIT,2(SP)     ; yes - cont after bpt
+        MOV     #BPT,@DEBARG    ; restore the BPT inst
+        RTT                     ; and resume execution
+
+BPT1:   JSR     P,TRSAVE
+        SUB     #2,DEBPC        ; back up PC to BPT inst
+        MOV     #2,(R0)         ; MODE=2 for breakpoint
+        BR      TRP3
+
+BPT2:   TST     R0              ; continue after bpt ?
+        BNE     TRPHLD          ; no - hold the task
+        ASL     DEBARG          ; yes
+        BEQ     TRPCNT          ; bpt no longer exists
+        MOV     DEBCDE,@DEBARG  ; restore the instruction
+        BIS     #TBIT,DEBPS     ; set the T bit
+        BR      TRPCNT          ; and execute the inst
+
+; Unassigned global routine
+
+UNASGL: MOV     (SP)+,R3        ; get return address
+        MOV     -(R3),R1        ; last word is probably
+        ASR     R1              ;  2*global no.
+        CMP     -(R3),#GLCALL   ; last inst a glbl call ?
+        BEQ     UNAS1
+        MOV     #-1,R1          ; no - global no. := -1
+UNAS1:  TRAP    98.             ; unassigned global abort
+
+GLCALL = 004774                 ;  JSR PC,@...(G)
+
+;*********************************************************
+;                                                        *
+;               JSR P,TRSAVE                             *
+;                                                        *
+; Saves regs and locates DEBUG after a trap. It returns  *
+; with the MC addr of DEBPKT in R0, the BCPL addr of the *
+; trapped instruction in R3, G and P  set up ready for   *
+; DEBUG, and DEBTAS set to the current task id, or zero  *
+; if interrupts were off.                                *
+;                                                        *
+;*********************************************************
+
+TRSAVE: MOV     R0,DEBR0        ; save the registers
+        MOV     #DEBR1,R0
+        MOV     R1,(R0)+
+        MOV     R2,(R0)+
+        MOV     R3,(R0)+
+        MOV     G,(R0)+
+        MOV     (SP)+,(R0)+     ; P
+        MOV     SP,(R0)         ; SP
+        ADD     #4,(R0)+        ; correct the stored SP
+        MOV     (SP)+,R3        ; PC
+        MOV     R3,(R0)+
+        TST     -(R3)           ; address of trap instr
+        ROR     R3
+        CLR     DEBTAS          ; find current task id
+        BIT     #LOCKOUT,(SP)   ; were interrupts off ?
+        BNE     TRSV1
+        MOV     @#CRNTSK,R1     ; yes - use current task
+        ASL     R1
+        MOV     T.ID(R1),DEBTAS ; get its id
+TRSV1:  MOV     (SP)+,(R0)+     ; save PS
+FNDEB:  MOV     #DEBPKT,R0      ; MC ptr to DEBPKT
+        MOV     #DEBSAS,-(SP)   ; push DEBUG's  P ptr
+        MOV     @#DEBTSK,R1     ; find DEBUG'S TCB
+        ASL     R1
+        BEQ     FND2            ; not there
+        MOV     T.GBASE(R1),G   ; pick up global vector
+        ASL     G
+        RTS     P               ; set up P and return
+
+FND2:   MOV     #DEBGLB,G       ; no DEBUG task
+        RTS     P
+
+DEBGLB  = .-G.START             ; dummy global vector
+        DEBHLT                  ; used if no DEBUG task
+
+DEBHLT: HALT                    ; stops here if no DEBUG
+
+; DEBUG'S dummy packet and register save area
+
+DEBPKT: .WORD   0               ; dummy pkt for sa debug
+DEBTAS: .WORD   0               ; TASK
+DEBCDE: .WORD   0               ; CODE
+DEBARG: .WORD   0               ; ARG
+DEBR0:  .WORD   0               ; register save area
+DEBR1:  .WORD   0
+        .WORD   0
+        .WORD   0
+        .WORD   0               ; G
+        .WORD   0               ; P
+        .WORD   0               ; SP
+DEBPC:  .WORD   0
+DEBPS:  .WORD   0
+
+;*********************************************************
+;                                                        *
+;               Kernel Primitives                        *
+;                                                        *
+;*********************************************************
+
+;*********************************************************
+;                                                        *
+;               GLOBIN(SEG)                              *
+;                                                        *
+; This function initialises the globals defined in the   *
+; given segment. It returns -1, or 0 if an error is      *
+; detected - if an attempt is made to initialise a       *
+; a global beyond the upperbound given by GLOBSIZE. It   *
+; is included amongst the kernel primitives as it is     *
+; called by the task activation code - as JSR PC,GBIN    *
+;                                                        *
+;*********************************************************
+
+        .WORD   LIBWORD
+        .ASCII  <7>/globin /
+
+GLOBIN: ADD     #2,(SP)         ; skip frame size
+GBIN:   MOV     R0,R1           ; copy SEG
+        MOV     #-1,R0          ; set result to -1
+GLBIN1: ASL     R1              ; MC section list ptr
+        BEQ     FVCRET          ; end of list - return
+        MOV     2(R1),R2        ; section length
+        ASL     R2
+        ADD     R1,R2           ; MC section end
+GLBIN2: TST     -(R2)           ; test word offset
+        BEQ     GLBIN4          ; zero - end of globals
+        MOV     -(R2),R3        ; global number
+        BLE     GLBIN3          ; error unless positive
+        CMP     R3,(G)
+        BGT     GLBIN3          ; too big - error
+        ASL     R3
+        ADD     G,R3            ; address in global vector
+        MOV     2(R2),(R3)      ; word offset
+        INC     (R3)            ; allow for link word
+        ASL     (R3)
+        ADD     R1,(R3)         ; add section base - 1
+        BR      GLBIN2
+
+GLBIN3: CLR     R0              ; indicate error
+        MOV     #111.,G.RES2(G) ; set RESULT2
+        BR      GLBIN2          ; continue with next
+
+GLBIN4: MOV     (R1),R1         ; next section
+        BR      GLBIN1
+
+;*********************************************************
+;                                                        *
+;               GETVEC(UPPERBOUND)                       *
+;                                                        *
+; This function is BCPL callable.                        *
+; Returns the word address of a vector with at least the *
+; given upper bound. (In fact, the upperbound is rounded *
+; up to the next even number.) The word at offset -1 of  *
+; the vector contains the length of the store block and  *
+; should not be touched by the user.                     *
+; Runs with interrupts disabled, but reenables and       *
+; disables them each time round the search loop,         *
+; so that they will not be locked out for the whole      *
+; of a lengthy search.                                   *
+; It may be called fom machine code as JSR PC,GVEC , in  *
+; which case R5 is preserved and no frame size is        *
+; required. If no global vector has been set up R4 must  *
+; be zero.                                               *
+;                                                        *
+;*********************************************************
+
+        .WORD   LIBWORD
+        .ASCII  <7>/getvec /
+
+GETVEC: ADD     #2,(SP)         ; skip frame size
+GVEC:   INC     R0              ; true vector size
+        TST     R0              ; check sign of UPPERBOUND
+        BLE     GVC7            ; error if negative
+        BIS     #1,R0           ; round up to odd number
+        INC     R0              ; blk size = vec size+1
+        ASL     R0              ; block size in bytes
+        BIS     #LOCKOUT,@#PS   ; interrupts off
+GVCRTY: MOV     @#CRNTSK,GVTSK  ; record the caller task
+        MOV     @#BLKLIST,R2    ; start of block list
+        ASL     R2
+
+GVC1:   CLR     @#PS            ; interrupts on
+
+; At this point interrupts are enabled. This is because
+; the search for a suitable free block may be long.
+; If any other task is run and calls GETVEC then GVTSK
+; will be reset, and the search must start again at
+; the beginning of the block list in case it has been
+; updated meanwhile.
+
+        BIS     #LOCKOUT,@#PS   ; interrupts off
+        CMP     GVTSK,@#CRNTSK  ; any other callers ?
+        BNE     GVCRTY          ; yes - restart the search
+        MOV     (R2),R3         ; start to find a free blk
+        BLE     GVC6            ; end of list or error
+        BIT     #1,R3           ; allocated or  free ?
+        BNE     GVC2            ; jump if free
+        ASL     R3              ; get size in bytes
+        ADD     R3,R2           ; get addr of next block
+        BR      GVC1            ;  and continue down list
+
+GVC2:   MOV     R2,R1           ; MC addr of free blk
+GVC3:   DEC     R3              ; calculate its size
+        ASL     R3              ; in bytes
+        ADD     R3,R2           ; get MC addr of next blk
+        MOV     (R2),R3         ; get size and marker
+        BEQ     GVC4            ; last block
+        BMI     ERRSTOR         ; loop in free store
+        BIT     #1,R3
+        BNE     GVC3            ; J if blk free
+
+; At this point: R0 = size required in bytes
+;                R1 = byte addr of start of free area
+;                R2 = byte addr of end of area
+
+GVC4:   MOV     R2,R3
+        SUB     R1,R3           ; calculate size in bytes
+        MOV     R3,(R1)         ; amalglamate blocks
+        ROR     (R1)            ; BCPL size (know C bit=0)
+        INC     (R1)            ; mark as free
+        SUB     R0,R3           ; split block
+        BLO     GVC1            ; can't be done
+        BEQ     GVC5            ; J if exact fit
+        SUB     R3,R2           ; find upper part and
+        ROR     R3              ;  calculate its size
+        INC     R3              ;  as a free block
+        MOV     R3,(R2)         ; plant its size
+GVC5:   ROR     R0              ; BCPL size of alloc blk
+        MOV     R0,(R1)+        ; plant the size
+        ROR     R1
+        MOV     R1,R0           ; BCPL vector address
+        BR      MCRET           ; unlock and return
+
+GVC6:   BMI     ERRSTOR         ; loop in free store
+GVC7:   MOV     #103.,R0        ; insufficient store
+        TST     G               ; if no global vector
+        BEQ     MCERRZ          ;  then can't set RESULT2
+        BR      MCERR           ; error return
+
+ERRSTOR:TRAP    197.            ; free store corrupt
+        BR      GVCRTY          ; abort and try again
+
+GVTSK: .WORD    0               ; caller task
+
+;*********************************************************
+;                                                        *
+;               FREEVEC(V)                               *
+;                                                        *
+; This BCPL callable routine frees the vector V, which   *
+; should have been obtained by GETVEC. It aborts the     *
+; task if an error is detected. It may be called from    *
+; machine code as JSR PC,FVEC , in which case registers  *
+; R1 to R5 are preserved and no frame size is required.  *
+; It may be called with interrupts on or off.            *
+;                                                        *
+;*********************************************************
+
+        .WORD   LIBWORD
+        .ASCII  <7>/freevec/
+
+FREEVEC:ADD     #2,(SP)         ; skip frame size
+FVEC:   ASL     R0              ; get MC address of blk
+        BEQ     FVCRET          ; zero => do nothing
+        BIT     #100001,-(R0)   ; check -ve or free bit
+        BNE     FVC1            ; error
+        INC     (R0)            ; mark as free
+FVCRET: RTS     PC
+
+FVC1:   TRAP    199.            ; abort the task
+        RTS     PC
+
+;*********************************************************
+;                                                        *
+;               CREATEDEV(DCB)                           *
+;                                                        *
+; This function creates a device using the first free    *
+; slot in the device table. The DCB should have already  *
+; been linked to a device driver. It returns the devid,  *
+; or zero on error.                                      *
+;                                                        *
+;*********************************************************
+
+        .WORD   LIBWORD
+        .ASCII  <7>/created/
+
+CRDEV:  ADD     #2,(SP)         ; skip frame size
+        BIS     #LOCKOUT,@#PS   ; interrupts off
+        MOV     @#DEVTAB,R1     ; get device table
+        ASL     R1
+        MOV     (R1)+,R2        ; get upperbound
+        MOV     #1,R3
+        TST     (R1)+           ; skip dev 1 (clock)
+CRD1:   INC     R3              ; next slot
+        CMP     R3,R2           ; compare with devtab UPB
+        BGT     CRD2            ; device table full
+        TST     (R1)+           ; is slot empty
+        BNE     CRD1            ; no - try next
+        MOV     R0,-(R1)        ; fill the slot
+        MOV     R0,R2
+        ASL     R2              ; MC DCB in R2
+        MOV     (R2),R1
+        ASL     R1              ; MC driver in R1
+        MOV     R3,R0
+        NEG     R0              ; id in R0
+        MOV     R0,D.ID(R2)     ; set id in DCB
+        CLR     D.WKQ(R2)       ; clear work queue
+        JSR     PC,@D.INIT(R1)  ; initialise the device
+        BR      MCRET           ; unlock and return
+
+CRD2:   MOV     #104.,R0        ; device table full
+        BR      MCERR           ; error
+
+;*********************************************************
+;                                                        *
+;               DELETEDEV(DEVID)                         *
+;                                                        *
+; This function deletes a device, which must have an     *
+; empty work queue. It returns the DCB, or zero on error *
+;                                                        *
+;*********************************************************
+
+        .WORD   LIBWORD
+        .ASCII  <7>/deleted/
+
+DELDEV: ADD     #2,(SP)         ; skip frame size
+        BIS     #LOCKOUT,@#PS   ; interrupts off
+        MOV     @#DEVTAB,R1     ; get device table
+        ASL     R1
+        NEG     R0              ; make id positive
+        BLE     DELD1           ; invalid id
+        CMP     R0,(R1)         ; compare with devtab UPB
+        BGT     DELD1           ; invalid id
+        ASL     R0
+        ADD     R0,R1           ; get devtab entry ptr
+        MOV     (R1),R2
+        BEQ     DELD1           ; no such device
+        ASL     R2              ; MC DCB ptr in R2
+        TST     D.WKQ(R2)       ; is work queue empty ?
+        BNE     DELD2           ; no - error
+        CLR     (R1)            ; clear devtab entry
+        MOV     (R2),R1
+        ASL     R1              ; MC driver in R1
+        JSR     PC,@D.UNIN(R1)  ; uninitialise the device
+        MOV     R2,R0
+        CLC
+        ROR     R0              ; returns BCPL DCB ptr
+        BR      MCRET           ; unlock and return
+
+DELD1:  MOV     #101.,R0        ; invalid id
+        BR      MCERR
+
+DELD2:  MOV     #107.,R0        ; device not deletable
+
+MCERR:  MOV     R0,G.RES2(G)    ; error - set RESULT2
+MCERRZ: CLR     R0              ; and return zero
+
+MCRET:  CLR     @#PS            ; unlock and return
+        RTS     PC
+
+;*********************************************************
+;                                                        *
+;               CREATETASK(SEGLIST,STSIZE,PRI)           *
+;                                                        *
+; This function creates a task using the first free slot *
+; in the task table. It gets space for a copy of the     *
+; segment list and a TCB, initialises then, and inserts  *
+; the TCB in the task table and priority chain. It       *
+; returns the taskid, or zero on error.                  *
+;                                                        *
+;*********************************************************
+
+        .ASCII  <7>/createt/
+
+CRTASK: ADD     @0(SP),P        ; standard BCPL entry
+        MOV     (SP)+,(P)+
+        MOV     PC,-4(P)
+        MOV     P,R3            ; save the arguments
+        MOV     R0,(R3)+
+        MOV     R1,(R3)+
+        MOV     R2,(R3)+
+        BLE     PRERR1          ; invalid priority
+        ASL     R0              ; MC segment list
+        BEQ     CRT2            ; is null
+        MOV     (R0),R0         ; get upperbound
+        JSR     PC,GVEC         ; get space for seglist
+        TST     R0              ; check space was got
+        BEQ     CRT8
+        MOV     (P),R1          ; arg seg list
+        MOV     R0,(P)          ; new seg list
+        ASL     R1
+        ASL     R0
+        MOV     (R1),R3         ; counts size
+CRT1:   MOV     (R1)+,(R0)+     ; copy the list
+        DEC     R3
+        BGE     CRT1            ; loop until done
+CRT2:   MOV     #T.UPB,R0
+        JSR     PC,GVEC         ; get TCB space
+        TST     R0              ; check space was got
+        BEQ     CRT7
+
+; look for a vacant task table slot
+
+        BIS     #LOCKOUT,@#PS   ; interrupts off
+        MOV     @#TSKTAB,R1
+        ASL     R1              ; MC task table
+        MOV     (R1)+,R2        ; upperbound
+        CLR     R3              ; taskid counter
+CRT3:   INC     R3              ; next entry
+        TST     (R1)+           ; is it unused ?
+        BEQ     CRT4            ; yes - found a slot
+        DEC     R2
+        BGT     CRT3            ; loop until end of table
+        MOV     #105.,G.RES2(G) ; task table full
+        BR      CRT6
+
+; fill the slot and initialise the TCB
+
+CRT4:   MOV     R0,-(R1)        ; set the entry
+        MOV     R0,R1
+        ASL     R1              ; MC TCB ptr
+        MOV     R1,R2
+        TST     (R2)+           ; link
+        MOV     R3,(R2)+        ; id
+        MOV     4(P),(R2)+      ; priority
+        CLR     (R2)+           ; work queue
+        MOV     #S.DEAD,(R2)+   ; state
+        CLR     (R2)+           ; flags
+        MOV     2(P),(R2)+      ; stsize
+        MOV     (P),(R2)+       ; seglist
+        CLR     (R2)+           ; gbase
+        CLR     (R2)+           ; sbase
+
+; now link the TCB into the priority chain
+
+        MOV     #TCBLIST,R3     ; top of chain
+CRT5:   MOV     R3,R2           ; save last ptr
+        MOV     (R3),R3         ; chain down one
+        ASL     R3
+        CMP     T.PRI(R3),T.PRI(R1) ; compare priorities
+        BGT     CRT5            ; chain still higher
+        BEQ     CRTX            ; equal priority
+        MOV     (R2),(R1)       ; insert
+        MOV     R0,(R2)
+        MOV     T.ID(R1),R0     ; result is id
+        JMP     ULRET           ; unlock and return
+
+CRTX:   MOV     @#TSKTAB,R2     ; find task table entry
+        ADD     T.ID(R1),R2
+        ASL     R2
+        CLR     (R2)            ; clear the slot
+        MOV     #102.,G.RES2(G)
+
+CRT6:   JSR     PC,FVEC         ; free the TCB
+CRT7:   MOV     (P),R0
+        JSR     PC,FVEC         ; free the seg list
+CRT8:   JMP     ULERRZ          ; error return
+
+PRERR1: JMP     PRERR           ; invalid priority
+
+;*********************************************************
+;                                                        *
+;               DELETETASK(TASKID)                       *
+;                                                        *
+; This function deletes a task, which must have an empty *
+; work queue and either be the current task, or be dead. *
+; Its segment list is freed and the TCB removed from the *
+; priority chain and the task table, and then freed. If  *
+; it was the current task the task deactivation code is  *
+; entered to free the stack and global vector. It        *
+; returns a non zero result unless an error occurs - or  *
+; the current task is deleted.                           *
+;                                                        *
+;*********************************************************
+
+        .ASCII  <7>/deletet/
+
+DELTSK: ADD     @0(SP),P        ; standard BCPL entry
+        MOV     (SP)+,(P)+
+        MOV     PC,-4(P)
+        JSR     PC,TCBSET       ; locate the TCB, set R3
+        BEQ     IDERR5          ; invalid id
+        BIT     #S.PKT,T.STATE(R0) ; has it a packet ?
+        BNE     DELT3           ; yes - can't delete
+        MOV     R0,R1
+        CLC
+        ROR     R1              ; BCPL TCB ptr
+        CMP     R1,@#CRNTSK     ; is it current task ?
+        BEQ     DELT1           ; yes - OK to delete
+        CMP     #S.DEAD,T.STATE(R0); dead & not held ?
+        BNE     DELT3           ; no - can't delete
+
+; unlink the TCB and free it
+
+DELT1:  CLR     (R3)            ; clear task table slot
+        MOV     #TCBLIST,R3     ; top of TCB chain
+DELT2:  MOV     R3,R2           ; save last ptr
+        MOV     (R3),R3         ; chain on one
+        ASL     R3
+        CMP     R3,R0           ; found it ?
+        BNE     DELT2           ; not yet - loop
+        MOV     (R3),(R2)       ; delete it
+        MOV     T.SEGL(R3),R0
+        JSR     PC,FVEC         ; free the segment list
+        MOV     R1,R0
+        JSR     PC,FVEC         ; free the TCB
+        CMP     R1,@#CRNTSK     ; deleting current task ?
+        BNE     ULRET2          ; no - unlock and return
+        MOV     (R2),@#CRNTSK   ; yes - schedule next task
+        JMP     DEACT           ;  after deactivating
+
+DELT3:  MOV     #108.,R0        ; task not deletable
+        BR      ULERR2
+
+;*********************************************************
+;                                                        *
+;               CHANGEPRI(TASKID,PRI)                    *
+;                                                        *
+; This routine alters the priority of a task. Its TCB is *
+; moved to the new position in the priority chain, and   *
+; the task scheduler entered if necessary. It returns    *
+; non zero, or zero on error.                            *
+;                                                        *
+;*********************************************************
+
+        .ASCII  <7>/changep/
+
+CHNGPRI:ADD     @0(SP),P        ; standard BCPL entry
+        MOV     (SP)+,(P)+
+        MOV     PC,-4(P)
+        JSR     PC,TCBSET       ; locate TCB
+IDERR5: BEQ     IDERR4          ; invalid id
+        TST     R1              ; check valid priority
+        BLE     PRERR           ; invalid priority
+
+; First delete TCB from old position in chain
+
+        MOV     #TCBLIST,R3     ; top of TCB chain
+CHNGP1: MOV     R3,R2           ; save last ptr
+        MOV     (R3),R3         ; chain on one
+        ASL     R3
+        CMP     R3,R0           ; found it ?
+        BNE     CHNGP1          ; no - loop
+        MOV     (R0),(R2)       ; yes - unlink it
+        MOV     R2,(P)          ; save old position
+
+; Now insert in correct position at new priority
+
+        MOV     #TCBLIST,R3     ; start at top of chain
+CHNGP2: MOV     R3,R2           ; save last ptr
+        MOV     (R3),R3         ; chain on one
+        ASL     R3
+        CMP     T.PRI(R3),R1    ; compare priorities
+        BGT     CHNGP2          ; chain still higher
+        BEQ     CHNGPX          ; equal priority
+        MOV     T.PRI(R0),R3    ; save old priority
+        MOV     R1,T.PRI(R0)    ; set new priority
+        MOV     (R2),(R0)       ; link into chain
+        MOV     R0,R1           ; MC TCB ptr for TSAV
+        CLC
+        ROR     R0              ; BCPL TCB ptr
+        MOV     R0,(R2)         ; complete insertion
+        MOV     @#CRNTSK,R2
+        ASL     R2              ; MC current task
+        CMP     R1,R2           ; changing own priority ?
+        BEQ     CHNGP3
+        CMP     T.PRI(R1),R3    ; no - compare priorities
+        BLT     ULRET2          ; new<old.   no swop
+        CMP     T.PRI(R1),T.PRI(R2) ; compare with current
+        BLT     ULRET2          ; new<curr.  no swop
+        JMP     TSAV            ; new>=curr. task swop
+
+CHNGP3: CMP     T.PRI(R1),R3    ; yes - compare priorities
+        BLT     RELSAV          ; new<old.   task swop
+ULRET2: JMP     ULRET           ; new>=old.  no swop
+
+CHNGPX: CLC
+        ROR     R0              ; relink
+        MOV     R0,@0(P)        ; at old position
+
+PRERR:  MOV     #102.,R0        ; invalid priority
+ULERR2: BR      ULERR1          ; error
+
+;*********************************************************
+;                                                        *
+;               SETFLAGS(TASKID,FLAGS)                   *
+;                                                        *
+; Sets flags in the TCB of the specified task            *
+; Returns: non-zero, or zero on error.                   *
+;                                                        *
+;*********************************************************
+
+        .WORD   LIBWORD
+        .ASCII  <7>/setflag/
+
+SETFLG: ADD     @0(SP),P        ; BCPL entry but no PC
+        MOV     (SP)+,(P)+      ; dump since no interrupts
+        JSR     PC,TCBSET       ; locate TCB
+IDERR4: BEQ     IDERR3          ; invalid id
+        BIS     R1,T.FLAGS(R0)  ; OR in the flags
+        BR      ULRET2          ; unlock and return
+
+;*********************************************************
+;                                                        *
+;               TESTFLAGS(FLAGS)                         *
+;                                                        *
+; Tests and clears flags of the current task.            *
+; Returns TRUE if any of the specified flags were set,   *
+; FALSE otherwise. The cleared flags are set in RESULT2  *
+;                                                        *
+;*********************************************************
+
+        .WORD   LIBWORD
+        .ASCII  <7>/testfla/
+
+TSTFLG: ADD     @0(SP),P        ; BCPL entry but no PC
+        MOV     (SP)+,(P)+      ; dump since no interrupts
+        BIS     #LOCKOUT,@#PS   ; interrupts off
+        MOV     @#CRNTSK,R1
+        ASL     R1              ; ptr to current TCB
+        MOV     T.FLAGS(R1),R2  ; save the flag bits
+        BIC     R0,T.FLAGS(R1)  ; clear specified bits
+        COM     R2
+        BIC     R2,R0           ; get the cleared bits
+        MOV     R0,G.RES2(G)    ; store them in RESULT2
+        BEQ     ULRET2          ; returns -1 or 0
+        MOV     #-1,R0
+        BR      ULRET2
+
+;*********************************************************
+;                                                        *
+;               ABORT(CODE,ARG)                          *
+;                                                        *
+; This BCPL callable routine aborts the current task and *
+; enters DEBUG in standalone mode with arguments CODE,   *
+; ARG. DEBUG will usually hold the task on exit          *
+;                                                        *
+;*********************************************************
+
+        .ASCII  <7>/abort  /
+
+ABORT:  ADD     @0(SP),P        ; standard BCPL entry
+        MOV     (SP)+,(P)+      ;  for backtrace
+        MOV     PC,-4(P)
+        TRAP    0               ; args in R0 and R1
+        JMP     RET
+
+;*********************************************************
+;                                                        *
+;               HOLD(TASKID)                             *
+;                                                        *
+; This function prevents the specified task from being   *
+; reentered - even though it may have highest priority.  *
+; It returns non zero, or zero on error.                 *
+;                                                        *
+;*********************************************************
+
+        .ASCII  <7>/hold   /
+
+HOLD:   ADD     @0(SP),P        ; standard BCPL entry
+        MOV     (SP)+,(P)+
+        MOV     PC,-4(P)
+        JSR     PC,TCBSET       ; locate TCB
+IDERR3: BEQ     IDERR2          ; invalid id
+        BIT     #S.HOLD,T.STATE(R0) ; already held ?
+        BNE     HLD1                ; yes - error
+        BIS     #S.HOLD,T.STATE(R0) ; set held state
+        BR      RELSAV
+
+HLD1:   MOV     #110.,R0        ; task already held
+ULERR1: JMP     ULERR
+
+;*********************************************************
+;                                                        *
+;               RELEASE(TASKID)                          *
+;                                                        *
+; This function releases a held task. The task selector  *
+; is then entered. It returns non zero, or zero on error *
+;                                                        *
+;*********************************************************
+
+        .ASCII  <7>/release/
+
+RELEASE:ADD     @0(SP),P        ; standard BCPL entry
+        MOV     (SP)+,(P)+
+        MOV     PC,-4(P)
+        JSR     PC,TCBSET       ; locate TCB
+IDERR2: BEQ     IDERR1          ; invalid id
+        BIC     #S.HOLD,T.STATE(R0) ; clear held state
+RELSAV: MOV     @#TCBLIST,R1    ; beginning of chain - not
+        ASL     R1              ; worth optimising
+        BR      QPTSAV          ; enter scheduler
+
+;*********************************************************
+;                                                        *
+;               TASKWAIT()                               *
+;                                                        *
+; This is a BCPL callable function with no arguments     *
+; The current task is suspended as long as it has an     *
+; empty work queue                                       *
+;                                                        *
+;*********************************************************
+
+        .ASCII  <7>/taskwai/
+;
+TASKWAI:ADD     @0(SP),P        ; standard BCPL entry
+        MOV     (SP)+,(P)+
+        MOV     PC,-4(P)
+        BIS     #LOCKOUT,@#PS   ; interrupts off
+        MOV     @#CRNTSK,R2
+        ASL     R2
+        BIS     #S.WAIT,T.STATE(R2) ; set wait state
+        MOV     R2,R1           ; new TCB = old
+
+; A task which interrupts itself (with TASKWAIT,
+; QPKT etc.) needs to save G, P, SP and the
+; return code (R0). The other registers will be
+; assumed lost over a function call.
+; R1 points to the new TCB.
+; R2 points to the current TCB (both m/c addresses)
+
+TSAV:   ADD     #T.G,R2         ; MC address of save
+        MOV     G,(R2)+         ;  area for G in TCB
+        MOV     P,(R2)+         ; the others follow
+        MOV     SP,(R2)+
+        MOV     R0,(R2)
+        MOV     R1,R0           ; set up word address
+        CLC                     ;  of TCB for SRCHWK
+        ROR     R0
+        JMP     SRCHW1          ; enter scheduler
+
+;*********************************************************
+;                                                        *
+;               QPKT(PKT)                                *
+;                                                        *
+; This BCPL callable function queues the packet onto the *
+; work queue of its destination task or device.          *
+; PKT offset P.ID > 0 => destination is a task           *
+;                = -1 =>    "   "     " clock            *
+;                < -1 =>    "   "     " a device         *
+; If the packet is succesfully queued, then the task     *
+; number of the sender is inserted in this field.        *
+; A zero return indicates error - code in RESULT2.       *
+;                                                        *
+;*********************************************************
+
+        .ASCII  <7>/qpkt   /
+
+QPKT:   ADD     @0(SP),P        ; standard BCPL entry
+        MOV     (SP)+,(P)+
+        MOV     PC,-4(P)
+        BIS     #LOCKOUT,@#PS   ; interrupts off
+        ASL     R0              ; pkt
+        CMP     #NOTINUSE,(R0)  ; check not in use
+        BNE     ERRQPKT
+        MOV     @#CRNTSK,R1     ; current task
+        ASL     R1
+        MOV     T.ID(R1),R3     ; get taskid of sender
+        MOV     P.ID(R0),R2     ; get destination in R2
+        CMP     R2,#-1          ; examine destination
+        BGT     QPTSK           ; > -1 is a task
+        BLT     QPDEV           ; < -1 is a device
+
+; Destination is the clock.
+; The timer packet must be inserted in the correct
+; place in the work queue. A requested delay of zero is
+; a special case: the packet is returned immediately.
+; The delays of any previous packets on the queue must
+; be subtracted.
+; Arrive here with byte address of packet in R0,
+; current task number in R3
+
+QPCLK:  MOV     R3,P.ID(R0)     ; record sender
+        MOV     P.A1(R0),P.RES1(R0)   ; put delay in RES1
+        BLE     QPCLK4          ; delay <= 0
+        MOV     #CLWKQ,R3       ; head of work queue
+QPCLK1: MOV     R3,R2           ; save old ptr
+        MOV     (R3),R3         ; chain on one
+        BEQ     QPCLK3          ; end of queue
+        ASL     R3
+        CMP     P.RES1(R3),P.RES1(R0) ; insert yet ?
+        BGE     QPCLK2          ; yes - insert here
+        SUB     P.RES1(R3),P.RES1(R0) ; subtract the delay
+        BR      QPCLK1          ; and continue down queue
+
+QPCLK2: SUB     P.RES1(R0),P.RES1(R3) ; insert the pkt
+QPCLK3: MOV     (R2),(R0)       ; link it in
+        CLC
+        ROR     R0
+        MOV     R0,(R2)
+        BR      ULRET1          ; unlock and return
+
+QPCLK4: MOV     #-1,R3          ; return immediately
+                                ; as if from clock
+
+; Destination is a task
+; Note that the invalid destination zero will be
+; trapped in MOVPKT.
+
+QPTSK:  MOV     R0,R2           ; pkt addr for MOVPKT
+        JSR     PC,MOVPKT       ; Q the pkt
+IDERR1: BEQ     IDERR           ; invalid id
+        TST     R3              ; =0 if other task to go
+        BNE     ULRET1          ; return if no change
+QPTSAV: MOV     @#CRNTSK,R2     ; get current TCB
+        ASL     R2
+        BR      TSAV
+
+; Destination is a device
+; Arrive here with MC address of packet in R0,
+; device id in R2, current task id in R3
+
+QPDEV:  MOV     @#DEVTAB,R1     ; ptr to device table
+        ASL     R1
+        NEG     R2              ; as devids are -ve
+        CMP     (R1),R2         ; comp with table upb
+        BLT     IDERR           ; invalid id
+        ASL     R2              ; add offset to table
+        ADD     R1,R2
+        MOV     (R2),R2         ; get DCB pointer
+        BEQ     IDERR           ; invalid id
+        ASL     R2
+        MOV     R3,P.ID(R0)     ; record sender
+        CLR     (R0)            ; clear link field
+        CLC
+        ROR     R0              ; BCPL pkt ptr
+        MOV     D.WKQ(R2),R1    ; inspect work queue
+        BNE     QPDEV2          ; J if not empty
+
+; device start - the packet was sent to a device with
+; an empty work queue.
+
+        MOV     R0,D.WKQ(R2)    ; queue packet
+        JSR     PC,@D.START(R2) ; start device
+        BR      ULRET1
+
+; append the packet to the device work queue.
+
+QPDEV1: MOV     (R1),R1         ; next pkt from wkq
+QPDEV2: ASL     R1              ; end of queue ?
+        TST     (R1)
+        BNE     QPDEV1          ; J if not end
+        MOV     R0,(R1)         ; append packet
+
+ULRET1: JMP     ULRET           ; unlock and return
+
+ERRQPKT:CLR     @#PS
+        TRAP    198.            ; packet already in use
+
+IDERR:  MOV     #101.,R0        ; invalid id
+
+ULERR:  MOV     R0,G.RES2(G)    ; set RESULT2
+ULERRZ: CLR     R0              ; error - return zero
+        BR      ULRET1
+
+;*********************************************************
+;                                                        *
+;               DQPKT(ID, PKT)                           *
+;                                                        *
+; Attempts to dequeue PACKET from the work queue of      *
+; the specified device or task. If not found there,      *
+; then it attempts to remove the packet from the         *
+; work queue of the calling task. It returns the ID of   *
+; the task or device on which the packet was found, or   *
+; zero, and resets DEVTASKID of the packet if it was     *
+; found on a queue other than the calling task's work    *
+; queue.                                                 *
+;                                                        *
+;*********************************************************
+
+        .ASCII <7>/dqpkt  /
+
+DQPKT:  ADD     @0(SP),P        ; standard BCPL entry
+        MOV     (SP)+,(P)+
+        MOV     PC,-4(P)
+        BIS     #LOCKOUT,@#PS   ; interrupts off
+        MOV     R0,R2           ; copy devtaskid
+        CMP     R0,#-1          ; device, clock, task ?
+        BGT     DQPTSK          ; > -1 for task
+        BEQ     DQPCLK          ; = -1 for clock
+
+; Packet expected to be on a device work queue
+
+        MOV     @#DEVTAB,R3     ; ptr to device table
+        ASL     R3
+        NEG     R2              ; make devid +ve
+        CMP     (R3),R2         ; comp with table upb
+        BLT     IDERR           ; invalid id
+        ASL     R2
+        ADD     R2,R3           ; add to table ptr
+        MOV     (R3),R2         ; DCB pointer
+        BEQ     IDERR           ; invalid id
+        ASL     R2
+        MOV     R2,R3
+        ADD     #D.WKQ,R3       ; addr of wkq
+        BR      PKTDQ           ; look on device queue
+
+; Packet expected to be on clock work queue.
+
+DQPCLK: MOV     #CLWKQ,R3       ; Addr of work Q
+        CLR     R2              ; no TCB or DCB
+        BR      PKTDQ
+
+; Packet expected to be on a task work queue
+
+DQPTSK: JSR     PC,TCBST1       ; locate the TCB
+        BEQ     IDERR           ; invalid id
+        MOV     R0,R3           ; copy TCB ptr
+DQPT1:  MOV     R3,R2
+        MOV     T.ID(R2),R0     ; taskid
+        ADD     #T.WKQ,R3       ; wkq address
+
+; now try to find the packet on the queue.
+; queue's task or device id in R0
+; BCPL pkt ptr in R1
+; queue's TCB or DCB in R2
+; MC work queue addr in R3
+
+PKTDQ:  TST     R3              ; end of chain ?
+        BEQ     DQPCNT          ; yes - not on queue
+        CMP     (R3),R1         ; found it yet ?
+        BEQ     PKTFND          ; yes
+        MOV     (R3),R3         ; no - chain on one
+        ASL     R3              ;  and try again
+        BR      PKTDQ
+
+; Found the packet. Unless it was on the current task work
+; queue its id field must be reset
+
+PKTFND: ASL     R1              ; MC addr of pkt
+        MOV     @#CRNTSK,-(SP)
+        ASL     (SP)
+        CMP     R2,(SP)+        ; current task ?
+        BEQ     PKTF1           ; yes - leave id
+        MOV     R0,P.ID(R1)     ; no  - reset id
+PKTF1:  CMP     R0,#-1          ; task, clock, device ?
+        BGT     PKTF6           ; > -1 for task
+        BEQ     PKTF3           ; = -1 for clock
+
+; Found on a device work queue. If it was the head packet
+; the device stop routine is called, the packet unlinked,
+; and if there are any more packets the device start
+; routine is called.
+
+        MOV     D.WKQ(R2),-(SP)
+        ASL     (SP)
+        CMP     R1,(SP)+        ; was it the head pkt ?
+        BNE     PKTF4           ; no
+        JSR     PC,@D.STOP(R2)  ; yes - call stop routine
+        MOV     (R1),R0         ; get next pkt
+        MOV     R0,D.WKQ(R2)    ; unlink the pkt
+        BEQ     PKTF2           ; no more pkts
+        MOV     R1,-(SP)        ; save pkt
+        JSR     PC,@D.START(R2) ; restart the device
+        MOV     (SP)+,R1
+PKTF2:  MOV     P.ID(R1),R0     ; returns queue id
+        BR      PKTF5
+
+; Found on the clock work queue. The next packet must be
+; corrected.
+
+PKTF3:  MOV     (R1),R2         ; find next pkt
+        BEQ     PKTF4           ; no more pkts
+        ASL     R2
+        ADD     P.RES1(R1),P.RES1(R2) ; correct next pkt
+PKTF4:  MOV     (R1),(R3)       ; unlink the pkt
+PKTF5:  MOV     #NOTINUSE,(R1)  ; mark it not queued
+        BR      ULRET1
+
+
+; Found on a task work queue. If it was the only packet
+; then the packet bit must be cleared in the task state.
+
+PKTF6:  MOV     (R1),(R3)       ; unlink the packet
+        TST     T.WKQ(R2)       ; wkq now empty ?
+        BNE     PKTF5           ; no
+        BIC     #S.PKT,T.STATE(R2) ; yes - clear PKT bit
+        BR      PKTF5
+
+; Packet not found. Try the current task, unless we were
+; looking at the current task's work queue already.
+
+DQPCNT: MOV     @#CRNTSK,R3     ; current TCB ptr
+        ASL     R3
+        CMP     R2,R3           ; looking at curr task ?
+        BNE     DQPT1           ; no - try curr task
+        MOV     #109.,R0        ; yes - DQPKT failed
+        BR      ULERR           ; error return
+
+;*********************************************************
+;                                                        *
+;               JSR PC,TCBSET                            *
+;                                                        *
+; This subroutine will convert a taskid in R0 to a TCB   *
+; pointer. It returns zero on error, with the Z bit set. *
+; It turns off interrupts on entry, but may be entered   *
+; at TCBST1 if they are off already.                     *
+;                                                        *
+;*********************************************************
+
+TCBSET: BIS     #LOCKOUT,@#PS   ; interrupts off
+TCBST1: MOV     @#TSKTAB,R3     ; address of task table
+        ASL     R3              ; as MC pointer
+        TST     R0              ; Is task number valid?
+        BLE     TCBERR          ; If <=0
+        CMP     (R3),R0         ; >= entries in table?
+        BLT     TCBERR          ; As that is not allowed
+        ASL     R0              ; PDP11 offset
+        ADD     R0,R3           ; Addr of entry in table
+        MOV     (R3),R0         ; BCPL TCB ptr (or zero)
+        ASL     R0
+        RTS     PC              ; return
+
+TCBERR: CLR     R0              ; return with R0=0, Z=1
+        RTS     PC
+
+;*********************************************************
+;                                                        *
+;               JSR PC,MOVPKT                            *
+;                                                        *
+; This subroutine moves a packet pointed to by R2 to     *
+; the end of the destination task work queue.            *
+; It sets the packet received bit in the task status     *
+; and compares the priority to that of the task pointed  *
+; to by R1.                                              *
+; The id field of the packet is loaded from R3,          *
+; which should contain the identity of the sender.       *
+; It is entered in lockout.                              *
+; On exit:                                               *
+;    R0 contains the byte addr of the destination TCB    *
+;    R1 contains the byte addr of the next current TCB   *
+;    R2 is a word pointer to the packet                  *
+;    R3 is zero if a task change is needed               *
+;    Z is set if and only if there was an error          *
+;                                                        *
+;*********************************************************
+
+MOVPKT: MOV     P.ID(R2),R0     ; taskid
+        MOV     R3,-(SP)        ; save sender's id
+        JSR     PC,TCBST1       ; locate TCB
+        BEQ     MOVPK5          ; error
+        MOV     (SP)+,P.ID(R2)     ; record sender
+        CLR     (R2)            ; clear link
+        ROR     R2
+        BIS     #S.PKT,T.STATE(R0) ; set pkt flag
+        MOV     R0,R3           ; get pointer to
+        ADD     #T.WKQ,R3       ;  start of work queue
+        BR      MOVPK2
+
+MOVPK1: MOV     (R3),R3         ; chain down one
+        ASL     R3
+MOVPK2: TST     (R3)            ; test for end of chain
+        BNE     MOVPK1
+        MOV     R2,(R3)         ; add packet to end
+        MOV     R1,R3           ; set R3 to current TCB
+MOVPK3: CMP     T.PRI(R0),T.PRI(R3); priority of dest
+        BLT     MOVPK4          ;  < current. no change
+        CLR     R3              ;  >= current. task swop
+        MOV     R0,R1           ; set new TCB
+MOVPK4: MOV     (SP)+,PC        ; clear Z and return
+
+MOVPK5: CLR     (SP)+           ; set Z and pop stack
+        RTS     PC
+
+
+; Globals to be initialised
+
+        .WORD   0               ; End of init list
+        .WORD   G.GLOBIN/2,   <GLOBIN  - KLIB>/2
+        .WORD   G.GVEC/2,     <GETVEC  - KLIB>/2
+        .WORD   G.FVEC/2,     <FREEVEC - KLIB>/2
+        .WORD   G.CDEV/2,     <CRDEV   - KLIB>/2
+        .WORD   G.DDEV/2,     <DELDEV  - KLIB>/2
+        .WORD   G.CTASK/2,    <CRTASK  - KLIB>/2
+        .WORD   G.DTASK/2,    <DELTSK  - KLIB>/2
+        .WORD   G.CPRI/2,     <CHNGPRI - KLIB>/2
+        .WORD   G.SFLAGS/2,   <SETFLG  - KLIB>/2
+        .WORD   G.TFLAGS/2,   <TSTFLG  - KLIB>/2
+        .WORD   G.ABORT/2,    <ABORT   - KLIB>/2
+        .WORD   G.HOLD/2,     <HOLD    - KLIB>/2
+        .WORD   G.RELEASE/2,  <RELEASE - KLIB>/2
+        .WORD   G.TWAIT/2,    <TASKWAI - KLIB>/2
+        .WORD   G.QPKT/2,     <QPKT    - KLIB>/2
+        .WORD   G.DQPKT/2,    <DQPKT   - KLIB>/2
+        .WORD   99.             ; highest referenced G
+
+KLBEND: .END
+
+
+
+

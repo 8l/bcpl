@@ -1,0 +1,73 @@
+This is a brief description of how bgpm works
+
+by Martin Richards (c) May 2013
+
+Bgpm is a general purpose macrogenerator based on Strachey's GPM
+described in gpm.txt. Unlike GPM, bgpm uses two stacks working from
+opposite ends of memory.  The S stack grows upwards and hold
+incomplete macro calls still awaiting more argument data before they
+can be called. The T stacks works down from the other end of memory
+and holds complete macro calls with all their argument still being
+executed. It also holds the name value pair of currently defined
+macros linked together in the environment chain.
+
+The macrogenerator processes input taken either from standard input or
+from the body of a defined macro. This input is either actively
+scanned performing special operations when certain warning characters
+are encountered, or it just copied when the input material is in
+quotes.  The output is either sent to standard output, or stored
+internally in the S stack. A typical macro call is [xxx\yyy\zzz]. If
+this is encounter while in quotes it is just copied. But if the
+macrogenerator was scanning, the character [ causes it to start
+forming a macro call in the S stack. It then reads the arguments xxx,
+yyy and zzz seperated by \s. The character ] causes the completed
+macro call to be executed by moving it into the T stack, looking up
+the macro name (xxx) in the environment and then selecting input from
+the body of that macro. Macro text can be quoted by enclosing in in {
+and } brackets which can be nested. While scanning the body of a
+macro, the arguments of the call can be accessed by substitution items
+such as ^0, ^1, ^2, etc. These are replaced by copies (not scanned) of
+the corresponding arguments. Some macros such as def, val and set are
+predefined to have special effects. These are called machine
+macros. When scanning reaches the end of the macro body, the completed
+macro call (and possibly some definitions) are removed from the T
+stack.
+
+The main variables used by bgpm are held in the global vector as are
+as follows.
+
+s       This points to the most recently loaded value on the S stack.
+        This value is normally a character but may be an argument length,
+        or possibly a pointer.
+
+h       This is zero if output is currently being sent the standard
+        output. If non zero it points to the start of the latest argument 
+        being formed in the S stack. It actually points to where the
+        length (ie !h) of the argument will be placed when the argument
+        is complete. This happens when either \ or ] are encountered.
+
+f       This is either zero or it points to the position in the S stack
+        of start of the macro call that is currently being formed. In which
+        case !f holds the previous value of f, f!1 hold h at the time [ was
+        encountered. These values allows f and h to be reinstated when the
+        macro is complete and moved to the T stack on encountering ]. f!2
+        will be filled in with the value of t when ] is encounters, and f!3
+        holds the value of t at the moment [ was encountered. These two value
+        help the macrogenerator clean up the T stack when the macro has 
+        completed execution.
+
+t       This points to the next position to be used on the T stack. Every
+        time a value is pushed onto the T stack, t is decremented.
+
+p       This points to the start of the macro call that is currently being
+        executed. The call with all its arguments have been moved from the
+        S stack to the T stack when ] was encountered. The previous value
+        of p is held in !p, the previous control pointer c is held in p!1,
+        p!2 holds the value of t when ] was encountered and p!3 holds the
+        value of t when [ was encountered. The space in the T stack between
+        these two pointer is used to hold local definitions that were made
+        when the arguments of the call were being laid out. These local
+        are definitions removed from the T stack and the environment chain
+        when the executions of the macro completes. Othe definitions including
+        those that were made during the execution of the macro are retained.
+ 

@@ -1,0 +1,3 @@
+.k file/a
+echo "compiling :com:<file>.b to <file>"
+bcpl :com:<file>.b to <file>

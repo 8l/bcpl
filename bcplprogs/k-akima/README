@@ -1,0 +1,13 @@
+This directory contains three fun BCPL programs kindly submitted by
+Kiyoshi Akima. One will calculate Pi to many decimal places, one in a
+poor man's grep program and the last faithfully emulates both the
+three- and four-rotor Enigma cipher machines. There is PDF
+documantation of each program.
+
+I have made some minor layout edits to his BCPL programs.
+
+The original sources can be found via
+
+  http://kiyoshiakima.tripod.com/funprogs/
+
+MR 28 April 2006

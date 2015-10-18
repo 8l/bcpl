@@ -1,0 +1,68 @@
+
+row  9
+row  2  5
+row  2  7
+row  2  9
+row  3 12
+row  3 13
+row  1  5  1  7
+row  2  2  1  2  3
+row  1  1  1  1  3  3
+row  2  2  2  1  2  1  3
+row  2  2  2  2  3
+row  4  5  1  3  3
+row  2  1  5  2  3  4
+row  3  4  1  2  3  2  2
+row  1  5  1  2  6  2
+row  2  5  4  6  2
+row  2  4  3  6  2
+row  1  7  7  2
+row  4  1  5  1  6  2
+row  3  4  5  1  5  2
+row  5  4  5  4  4
+row  7 10  2  5
+row  9  2  3  3  5
+row 12  5  9
+row 11  3  2  7  2
+row 10  4  2 10
+row 10  7  2  3  1
+row  9  7  2  1
+row  8  7  2  2
+row  7  5  2  4
+row  6  4  2  3  3
+row  1  1  1  2  1  1
+row  2  8  1  2  2
+row  1  1  9  1  2
+row  1  2  9  5
+
+
+col  5
+col  8
+col  2 10
+col  7 11
+col  2  1  4  9
+col  1  3  1  9  3
+col  1  1 12
+col  2  2  1  9  1
+col  5  1  9  2
+col  4  2  2  2  8  1
+col  2 10  1  2 10
+col  2  2  7  4  2  3
+col  1  2  2 12  5  4
+col  1  3  1  9  1  8  3
+col  1  3  2 14  3
+col  1  8 11  6  3
+col  1  4  1  9  5  3
+col  7  7  2  7  1  2
+col  6  4  5  5  2  2
+col 12  1  3  2  2
+col 20  8  1
+col  6  1 10  6  2
+col  5  1 10  3  2  1  1
+col  6  8  3  4  1
+col 16  5  2  2
+col 13  6  1  3
+col  4  7  1  1
+col 12  1  1  2
+col 10  4  1
+col  2  2  1

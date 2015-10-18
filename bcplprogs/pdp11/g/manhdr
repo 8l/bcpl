@@ -1,0 +1,110 @@
+// SYSTEM MANIFESTS
+// Aborts
+// Actions
+// Errors
+
+MANIFEST
+$(
+   Abort.Impossible             = 299   // aborts mostly used by FH3
+   Abort.ActionNotKnown         = 298   // and some only used by FH2
+   Abort.KeyOutOfRange          = 297
+   Abort.DiscError              = 296
+   Abort.BadFreeLock            = 295
+   Abort.DiscFull               = 294
+   Abort.InvalidCheckSum        = 293
+   Abort.LoadSegFailure         = 292
+   Abort.CreateTaskFailure      = 291
+   Abort.KeyAlreadyAllocated    = 290
+   Abort.KeyAlreadyFree         = 289
+   Abort.ObjectTooLarge         = 288
+   Abort.BitMapCorrupt          = 287
+   Abort.sequence.error         = 286
+
+   Action.Nil                   = 0
+   Action.StartUp               = 1
+   Action.GetBlock              = 2
+   Action.UntilFree             = 3
+   Action.SetMap                = 4
+   Action.Die                   = 5
+// 6
+   Action.ResumeWork            = 7
+   Action.LocateObject          = 8
+// 9
+   Action.SetAccess             = 10
+   Action.Write                 = 11
+   Action.Read                  = 12
+   Action.CloseInput            = 13
+   Action.CloseOutput           = 14
+   Action.FreeLock              = 15
+   Action.DeleteObject          = 16
+   Action.RenameObject          = 17
+// 18
+   Action.CopyDir               = 19
+   action.note                  = 20
+   action.point                 = 21
+   Action.CreateDir             = 22
+   Action.ExamineObject         = 23
+   Action.ExamineNext           = 24
+   Action.DiscInfo              = 25
+   action.findinput             = 26    // WARNING: do not confuse with
+   action.findoutput            = 27    // act.findinput and act.findoutput
+   action.setcomment            = 28    // special version of FH3
+   action.aliasobject           = 29
+   action.setroot               = 30
+   action.rewind                = 31
+   action.endtoinput            = 32
+   action.refine                = 33
+   action.alter                 = 34
+   action.setuserpuid           = 35    // set PUID of current user
+   action.linkobject            = 36    // like alias but cross pack links OK
+   action.setheader             = 37    // FM : alter file header information
+
+   envec.szblk                  = 1     // manifests used when starting FH3
+   envec.secorg                 = 2
+   envec.nsur                   = 3
+   envec.nsecblk                = 4
+   envec.nblktrk                = 5
+   envec.nresblk                = 6
+   envec.prefac                 = 7
+   envec.intfac                 = 8
+   envec.lowcyl                 = 9
+   envec.upcyl                  = 10
+   envec.nbuffers               = 11
+
+
+   Error.GetVecFailure          = 103
+   Error.NoDefaultDir           = 201
+   Error.ObjectInUse            = 202
+   Error.ObjectExists           = 203
+   Error.DirNotFound            = 204
+   Error.ObjectNotFound         = 205
+   Error.BadStreamName          = 206
+   Error.ObjectTooLarge         = 207
+   Error.Busy                   = 208
+   Error.ActionNotKnown         = 209
+   Error.InvalidComponentName   = 210
+   Error.InvalidLock            = 211
+   Error.ObjectWrongType        = 212
+   Error.DiscNotValidated       = 213
+   Error.DiscWriteProtected     = 214
+   Error.RenameAcrossDevices    = 215
+   Error.DirectoryNotEmpty      = 216
+   Error.TooManyLevels          = 217
+   Error.device.not.mounted     = 218
+   Error.point.error            = 219
+   Error.commenttoobig          = 220
+
+   // Fileserver filing system errors
+
+   error.InsufficientAccess     = 230
+   Error.NoMoreEntries          = 232
+   Error.IllegalDelete          = 233
+   Error.file.in.root           = 234  // Attempt to create file in root dir
+
+   error.discfull               = 294
+
+   Error.Open.In.FS             = 2214
+   Error.Invalid.UID            = 2217
+$)
+
+

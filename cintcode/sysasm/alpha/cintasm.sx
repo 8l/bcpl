@@ -1,0 +1,1942 @@
+ # This is an assembly language version of cinterp for the DEC Alpha
+ # machines.
+ #
+ # Written by Martin Richards  (c) September 1993
+
+ # It uses the following linkage conventions:
+ #
+ # $0       v0       The returned value
+ # $1-$8    t0 - t7  Temporary registers
+ # $9-$15   s0 - s6  Must be preserved
+ # $16-$21  a0 - a5  The first six conforming arguments
+ # $22-$25  t8 - t11 Temporary registers
+ # $26      ra       The return address
+ # $27      t12      Temporary registers (or procedure value)
+ # $28      at       May be used by the assembler
+ # $29      gp       Global pointer
+ # $30      sp       Points to stack location of first argument on entry
+ # $31      zero     Always has value zero
+
+#include <regdef.h>
+
+	.ugen
+
+	.extern result2 4
+
+	.text
+	.align	4
+	.globl	cintasm
+
+	.ent	cintasm 2
+cintasm:
+	ldgp	gp, 0(pv)
+	lda	sp, -128(sp)
+	stq	ra, 120(sp)
+	stq	s0, 112(sp)
+	stq	s1, 104(sp)
+	stq	s2, 96(sp)
+	stq	s3, 88(sp)
+	stq	s4, 80(sp)
+	stq	s5, 72(sp)
+	stq	s6, 64(sp)
+
+	addl	a0, 0, t7 	# regs
+	s4addq	t7, a1, t7	# m/c addr of regs vector
+	stq	t7, 56(sp)
+	bis	a1, a1, t8 	# mem = m/c addr of cintcode memory
+	stq	t8, 48(sp)
+
+	ldl	s0,0(t7)	# A
+	ldl	s1,4(t7)	# B
+	ldl	s2,8(t7)	# C
+	ldl	s3,12(t7)
+	addq	t8,s3,s3	# m/c addr P
+	ldl	s5,16(t7)
+	addq	t8,s5,s4	# m/c address of G0
+	srl	s5,2,s5		# bcpl pointer to G0
+	ldl	s6,24(t7)
+	addq	t8,s6,s6	# m/c address PC
+	lda	ra,runtbl
+	
+ # The register usage is as follows:
+
+ # s0   A
+ # s1   B
+ # s2   C
+ # s3   m/c addr P
+ # s4   m/c addr G
+ # s5   bcpl pointer G
+ # s6   m/c addr PC
+
+ # t7   m/c address of regs vector -- saved in 56(sp)
+ # t8   m/c address of base of Cintcode memory -- saved in 48(sp)
+ # ra   = runtbl
+
+
+	# To single step cintasm:	set count to -2 (0-2sr7)
+	# then use the c command. This will execute one cintcode
+	# instruction and then cause fault 10.
+
+	ldq_u	t12,0(s6)	# prefetch
+	extbl	t12,s6,t0
+	br	fetch1
+
+ret10:	ldil	v0,10
+	br	ret
+	
+ret:				# Result in v0
+	ldq	t7,56(sp)	# t7 = addr of regs vector
+
+	stl	s0,0(t7)	# A
+	stl	s1,4(t7)	# B
+	stl	s2,8(t7)	# C
+	subq	s3,t8,s3	# m/c addr P
+	stl	s3,12(t7)
+	subq	s6,t8,s6	# m/c address PC
+	stl	s6,24(t7)
+
+	ldq	s6,64(sp)	# restore registers
+	ldq	s5,72(sp)
+	ldq	s4,80(sp)
+	ldq	s3,88(sp)
+	ldq	s2,96(sp)
+	ldq	s1,104(sp)
+	ldq	s0,112(sp)
+	ldq	ra,120(sp)
+
+	lda	sp,128(sp)
+	ret	zero,(ra),1
+
+	.align 4
+
+runtbl:
+	br   L0;br   L1;br   L2;br   L3;br   L4;br   L5;br   L6;br   L7
+	br   L8;br   L9;br  L10;br  L11;br  L12;br  L13;br  L14;br  L15
+	br  L16;br  L17;br  L18;br  L19;br  L20;br  L21;br  L22;br  L23
+	br  L24;br  L25;br  L26;br  L27;br  L28;br  L29;br  L30;br  L31
+	br  L32;br  L33;br  L34;br  L35;br  L36;br  L37;br  L38;br  L39
+	br  L40;br  L41;br  L42;br  L43;br  L44;br  L45;br  L46;br  L47
+	br  L48;br  L49;br  L50;br  L51;br  L52;br  L53;br  L54;br  L55
+	br  L56;br  L57;br  L58;br  L59;br  L60;br  L61;br  L62;br  L63
+	br  L64;br  L65;br  L66;br  L67;br  L68;br  L69;br  L70;br  L71
+	br  L72;br  L73;br  L74;br  L75;br  L76;br  L77;br  L78;br  L79
+	br  L80;br  L81;br  L82;br  L83;br  L84;br  L85;br  L86;br  L87
+	br  L88;br  L89;br  L90;br  L91;br  L92;br  L93;br  L94;br  L95
+	br  L96;br  L97;br  L98;br  L99;br L100;br L101;br L102;br L103
+	br L104;br L105;br L106;br L107;br L108;br L109;br L110;br L111
+	br L112;br L113;br L114;br L115;br L116;br L117;br L118;br L119
+	br L120;br L121;br L122;br L123;br L124;br L125;br L126;br L127
+	br L128;br L129;br L130;br L131;br L132;br L133;br L134;br L135
+	br L136;br L137;br L138;br L139;br L140;br L141;br L142;br L143
+	br L144;br L145;br L146;br L147;br L148;br L149;br L150;br L151
+	br L152;br L153;br L154;br L155;br L156;br L157;br L158;br L159
+	br L160;br L161;br L162;br L163;br L164;br L165;br L166;br L167
+	br L168;br L169;br L170;br L171;br L172;br L173;br L174;br L175
+	br L176;br L177;br L178;br L179;br L180;br L181;br L182;br L183
+	br L184;br L185;br L186;br L187;br L188;br L189;br L190;br L191
+	br L192;br L193;br L194;br L195;br L196;br L197;br L198;br L199
+	br L200;br L201;br L202;br L203;br L204;br L205;br L206;br L207
+	br L208;br L209;br L210;br L211;br L212;br L213;br L214;br L215
+	br L216;br L217;br L218;br L219;br L220;br L221;br L222;br L223
+	br L224;br L225;br L226;br L227;br L228;br L229;br L230;br L231
+	br L232;br L233;br L234;br L235;br L236;br L237;br L238;br L239
+	br L240;br L241;br L242;br L243;br L244;br L245;br L246;br L247
+	br L248;br L249;br L250;br L251;br L252;br L253;br L254;br L255
+
+ # At fetch:
+ # s6   m/c addr of cintcode instruction whose bytes are F, A, ...
+ # t0   = F
+
+ # At the jump
+ # s6   m/c addr of A (ie it has been incremented)
+ # v0   = F
+ # t0   = A
+ # t12  is the 8 byte word containing A
+
+	.align	4		# Align on a 16 byte boundary
+fetch:
+	#ldq	t7,56(sp)	# comment out when debugged
+	#ldl	t6,28(t7)	# comment out when debugged
+	#addl	t6,2,t6		# comment out when debugged
+	#beq	t6,ret10	# comment out when debugged
+
+fetch1:	ldq_u	t12,1(s6)	# t12 = 8 byte word containing A
+	addq	s6,1,s6		# pc++
+	s4addq	t0,ra,a0	# a0 = runtbl + 4 * F
+	mov	t0,v0		# v0 = F (the op code)
+	extbl	t12,s6,t0	# t0 = A
+	jmp	zero,(a0),L131
+
+
+ # frq=nnn  give the frequency of execution of each
+ #          cintcode operation when the bcpl compiler
+ #          compiles itself
+
+L0:   # Error     frq=0
+L1:   # Error     frq=0
+	ldil	v0,1
+	subq	s6,1,s6
+	br	ret
+
+L2:   # brk     frq=0
+	ldil	v0,2
+	subq	s6,1,s6
+	br	ret
+
+L3:   # k3     frq=3002
+L4:   # k4     frq=7738
+L5:   # k5     frq=4520
+L6:   # k6     frq=1
+L7:   # k7     frq=480
+L8:   # k8     frq=10
+L9:   # k9     frq=0
+L10:  # k10    frq=0
+L11:  # k11    frq=28
+	mov	s0,a0	# the entry point
+	mov	s1,s0	# the first arg
+	br	apply
+
+	.align	3
+
+apply:		# v0 = k
+		# a0 = entry point
+		# s0 = first argument
+                # s6 = return address
+	blt	a0,ret4		# Error 4 if entry point negative
+	s4addq	v0,s3,a1	# new P
+	subq	s3,t8,s3
+	stl	s3,0(a1)	# p[k] := p
+	mov	a1,s3		# p := p+k
+	subq	s6,t8,s6
+	stl	s6,4(s3)	# p[1] := pc
+	stl	a0,8(s3)	# p[2] := entry point
+	addq	a0,t8,s6	# pc := entry point (as m/c address)
+	stl	s0,12(s3)	# p[3] := a
+	ldq_u	t12,0(s6)	# prefetch
+	extbl	t12,s6,t0
+	br	fetch
+ret4:	
+	ldil	v0,4		# negative pc fault
+	br	ret
+
+L12:  # lf      frq=11729
+	mov	s0,s1		# b := a
+	sll	t0,56,s0
+	sra	s0,56,s0	# s0 = SB[pc]
+	addq	s0,s6,s0
+	subq	s0,t8,s0	# a := pc + SB[pc]
+	ldq_u	t12,1(s6)	# prefetch
+	addq	s6,1,s6 	# pc++
+	extbl	t12,s6,t0
+	br	fetch
+
+L13:  # lf$     frq=4338
+	mov	s0,s1		# b := a
+	and	s6,-2,s0	# a := pc & #xFFFFFFFE
+	ldq_u	t12,1(s6)	# prefetch
+	addq	s6,1,s6		# pc++
+	addq	t0,s0,s0
+	addq	t0,s0,s0	# a := a + 2*B[pc]
+	ldq_u	v0,0(s0)
+	extwl	v0,s0,v0
+	sll	v0,48,v0
+	sra	v0,48,v0	# v0 = SH[a]
+	addl	s0,v0,s0
+	subl	s0,t8,s0	# a := a + SH[a]
+	extbl	t12,s6,t0
+	br	fetch
+
+	.align 3
+L14:  # lm      frq=598248
+	ldq_u	t12,1(s6)	# prefetch
+	addq	s6,1,s6		# pc++
+	mov	s0,s1		# b := a
+	subl	zero,t0,s0	# a := - B[pc++]
+	extbl	t12,s6,t0
+	br	fetch
+
+	.align	3
+L15:  # lm1     frq=163150
+L16:  # l0      frq=244421
+L17:  # l1      frq=740929
+L18:  # l2      frq=38430
+L19:  # l3      frq=49815
+L20:  # l4      frq=83246
+L21:  # l5      frq=1224
+L22:  # l6      frq=54857
+L23:  # l7      frq=8683
+L24:  # l8      frq=13745
+L25:  # l9      frq=96877
+L26:  # l10     frq=253528
+	mov	s0,s1		# b := a
+	subl	v0,16,s0
+	br	fetch
+
+L27:  # fhop     frq=2295
+	ldq_u	t12,1(s6)	# prefetch
+	addq	s6,1,s6		# pc++
+	mov	zero,s0		# a := 0
+	extbl	t12,s6,t0
+	br	fetch
+
+	.align	3
+L28:  # jeq     frq=758839
+	cmpeq	s1,s0,t5
+	bne	t5,jump
+	ldq_u	t12,1(s6)	# prefetch
+	addq	s6,1,s6		# pc++
+	extbl	t12,s6,t0
+	br	fetch
+
+L29:  # jeq$     frq=0
+	cmpeq	s1,s0,t5
+	bne	t5,indjump
+	ldq_u	t12,1(s6)	# prefetch
+	addq	s6,1,s6		# pc++
+	extbl	t12,s6,t0
+	br	fetch
+
+	.align	3
+L30:  # jeq0     frq=253477
+	beq	s0,jump
+	ldq_u	t12,1(s6)	# prefetch
+	addq	s6,1,s6		# pc++
+	extbl	t12,s6,t0
+	br	fetch
+
+L31:  # jeq0$     frq=2926
+	beq	s0,indjump
+	ldq_u	t12,1(s6)	# prefetch
+	addq	s6,1,s6		# pc++
+	extbl	t12,s6,t0
+	br	fetch
+
+L32:  # k     frq=35172
+	mov	t0,v0
+	addq	s6,1,s6
+	mov	s0,a0
+	mov	s1,s0
+	br	apply
+
+L33:  # kh     frq=0
+	ldq_u	t10,1(s6)
+	extwl	t12,s6,v0
+	extwh	t10,s6,t10
+	or	t10,v0,v0	# v0 = H[pc]
+	addq	s6,2,s6
+	mov	s0,a0
+	mov	s1,s0
+	br	apply
+
+L34:  # kw     frq=0
+	ldq_u	t10,3(s6)
+	extll	t12,s6,v0
+	extlh	t10,s6,t10
+	or	t10,v0,v0
+	addq	s6,4,s6
+	mov	s0,a0
+	mov	s1,s0
+	br	apply
+
+	.align	3
+L35:  # k3g      frq=204783
+L36:  # k4g      frq=135269
+L37:  # k5g      frq=263407
+L38:  # k6g      frq=13337
+L39:  # k7g      frq=4992
+L40:  # k8g      frq=4660
+L41:  # k9g      frq=1689
+L42:  # k10g     frq=310
+L43:  # k11g     frq=9
+	s4addq	t0,s4,t0	# t0 = g + 4*B[pc]
+	subq	v0,32,v0	# v0 = k
+	addq	s6,1,s6		# s6 = return address
+	ldl	a0,0(t0)	# a0 = g!n
+	br	apply
+
+	.align	3
+L44:  # s0g     frq=401845
+	s4addq	t0,s4,v0	# v0 = g + 4*B[pc]
+	ldq_u	t12,1(s6)	# prefetch
+	ldl	v0,0(v0)
+	addq	s6,1,s6		# pc++
+	s4addq	v0,t8,v0
+	extbl	t12,s6,t0
+	stl	s0,0(v0)	# g!n!0 := a
+	br	fetch
+
+	.align	3
+L45:  # l0g     frq=411817
+	s4addq	t0,s4,v0	# v0 = g + 4*B[pc]
+	ldq_u	t12,1(s6)	# prefetch
+	ldl	v0,0(v0)
+	addq	s6,1,s6		# pc++
+	mov	s0,s1		# b := a
+	s4addq	v0,t8,v0
+	extbl	t12,s6,t0
+	ldl	s0,0(v0)	# a := g!n!0
+	br	fetch
+
+	.align	3
+L46:  # l1g     frq=409459
+	s4addq	t0,s4,v0	# v0 = g + 4*B[pc]
+	ldq_u	t12,1(s6)	# prefetch
+	ldl	v0,0(v0)
+	addq	s6,1,s6		# pc++
+	mov	s0,s1		# b := a
+	s4addq	v0,t8,v0
+	extbl	t12,s6,t0
+	ldl	s0,4*1(v0)	# a := g!n!1
+	br	fetch
+
+L47:  # l2g     frq=3
+	s4addq	t0,s4,v0	# v0 = g + 4*B[pc]
+	ldq_u	t12,1(s6)	# prefetch
+	ldl	v0,0(v0)
+	addq	s6,1,s6		# pc++
+	mov	s0,s1		# b := a
+	s4addq	v0,t8,v0
+	extbl	t12,s6,t0
+	ldl	s0,4*2(v0)	# a := g!n!2
+	br	fetch
+
+	.align	3
+L48:  # lg     frq=1365544
+	s4addq	t0,s4,v0
+	ldq_u	t12,1(s6)	# prefetch
+	addq	s6,1,s6
+	mov	s0,s1		# b := a
+	ldl	s0,0(v0)	# a = g!(B[pc++])
+	extbl	t12,s6,t0
+	br	fetch
+
+	.align	3
+L49:  # sg     frq=324122
+	s4addq	t0,s4,v0
+	ldq_u	t12,1(s6)	# prefetch
+	addq	s6,1,s6
+	stl	s0,0(v0)	# g!(B[pc++]) := a
+	extbl	t12,s6,t0
+	br	fetch
+
+L50:  # llg     frq=0
+	ldq_u	t12,1(s6)	# prefetch
+	addq	s6,1,s6
+	mov	s0,s1		# b := a
+	addq	t0,s5,s0	# a := g + B[pc++]
+	extbl	t12,s6,t0
+	br	fetch
+
+L51:  # ag     frq=7
+	s4addq	t0,s4,v0
+	ldq_u	t12,1(s6)	# prefetch
+	addq	s6,1,s6
+	ldl	v0,0(v0)
+	addq	s0,v0,s0	# a += g!(B[pc++])
+	extbl	t12,s6,t0
+	br	fetch
+
+	.align	3
+L52:  # mul     frq=132122
+	mull	s1,s0,s0
+	br	fetch
+
+L53:  # div     frq=74675
+	beq	s0,diverr
+	divl	s1,s0,s0
+	br	fetch
+
+L54:  # rem     frq=92754
+	beq	s0,diverr
+	reml	s1,s0,s0
+	br	fetch
+
+diverr:
+	subq	s6,1,s6
+	ldil	v0,5
+	br	ret
+
+L55:  # xor     frq=56780
+	xor	s0,s1,s0
+	br	fetch
+
+L56:  # sl     frq=0
+	sll	t0,56,v0
+	ldq_u	t12,1(s6)	# prefetch
+	sra	v0,56,v0	# v0 = SB[pc]
+	addq	v0,s6,v0
+	addq	s6,1,s6		# pc++
+	extbl	t12,s6,t0
+	stl	s0,0(v0)	# W[pc + SB[pc]] := a
+	br	fetch
+
+L57:  # sl$     frq=0
+	and	s6,-2,a0	# a0 := pc & #xFFFFFFFE
+	ldq_u	t12,1(s6)	# prefetch
+	addq	t0,a0,a0
+	addq	t0,a0,a0	# a0 := a0 + 2*B[pc]
+	ldq_u	v0,0(a0)
+	addq	s6,1,s6		# pc++
+	extwl	v0,a0,v0
+	sll	v0,48,v0
+	sra	v0,48,v0	# v0 :	= SH[a0]
+	addq	a0,v0,a0
+	extbl	t12,s6,t0
+	stl	s0,0(a0)	# W[t0+SH[t0]] := a
+	br	fetch
+
+L58:  # ll     frq=0
+	mov	s0,s1		# b := a
+	sll	t0,56,v0
+	ldq_u	t12,1(s6)	# prefetch
+	sra	v0,56,v0	# v0 :	= SB[pc]
+	addq	v0,s6,v0
+	addq	s6,1,s6		# pc++
+	ldl	s0,0(v0)	# a := W[pc + SB[pc]]
+	extbl	t12,s6,t0
+	br	fetch
+
+L59:  # ll$     frq=0
+	mov	s0,s1		# b := a
+	and	s6,-2,a0	# a0 := pc & #xFFFFFFFE
+	ldq_u	t12,1(s6)	# prefetch
+	addq	t0,a0,a0
+	addq	t0,a0,a0	# a0 := a0 + 2*B[pc]
+	addq	s6,1,s6		# pc++
+	ldq_u	v0,0(a0)
+	extwl	v0,a0,v0
+	sll	v0,48,v0
+	sra	v0,48,v0	# v0 := SB[t0]
+	addq	a0,v0,a0
+	extbl	t12,s6,t0
+	ldl	s0,0(a0)	# a := W[x+SH[x]]
+	br	fetch
+
+	.align	3
+L60:  # jne     frq=412167
+	cmpeq	s1,s0,t5
+	beq	t5,jump
+	ldq_u	t12,1(s6)	# prefetch
+	addq	s6,1,s6		# pc++
+	extbl	t12,s6,t0
+	br	fetch
+
+L61:  # jne$     frq=17329
+	cmpeq	s1,s0,t5
+	beq	t5,indjump
+	ldq_u	t12,1(s6)	# prefetch
+	addq	s6,1,s6		# pc++
+	extbl	t12,s6,t0
+	br	fetch
+
+	.align	3
+L62:  # jne0     frq=673057
+	bne	s0,jump
+	ldq_u	t12,1(s6)	# prefetch
+	addq	s6,1,s6		# pc++
+	extbl	t12,s6,t0
+	br	fetch
+
+L63:  # jne0$     frq=8593
+	bne	s0,indjump
+	ldq_u	t12,1(s6)	# prefetch
+	addq	s6,1,s6		# pc++
+	extbl	t12,s6,t0
+	br	fetch
+
+L64:  # llp     frq=10685
+	ldq_u	t12,1(s6)	# prefetch
+	mov	s0,s1		# b := a
+	subq	s3,t8,s0
+	srl	s0,2,s0
+	addq	s6,1,s6		# pc++
+	addl	s0,t0,s0	# a := p + B[pc++]
+	extbl	t12,s6,t0
+	br	fetch
+
+L65:  # llph     frq=0
+	mov	s0,s1		# b := a
+	subq	s3,t8,s0
+	srl	s0,2,s0
+	ldq_u	t10,1(s6)
+	extwl	t12,s6,v0
+	extwh	t10,s6,t10
+	or	t10,v0,v0
+	ldq_u	t12,2(s6)	# prefetch
+	addq	s6,2,s6
+	addl	s0,v0,s0	# a := p + H[pc]; pc += 2
+	extbl	t12,s6,t0
+	br	fetch
+
+L66:  # llpw     frq=0
+	mov	s0,s1		# b := a
+	subq	s3,t8,s0
+	srl	s0,2,s0
+	ldq_u	t10,3(s6)
+	extll	t12,s6,v0
+	extlh	t10,s6,t10
+	ldq_u	t12,4(s6)	# prefetch
+	or	t10,v0,v0
+	addq	s6,4,s6
+	addl	s0,v0,s0	# a := p + W[pc]; pc += 4
+	extbl	t12,s6,t0
+	br	fetch
+
+	.align	3
+L67:  # k3g1     frq=62815
+L68:  # k4g1     frq=312332
+L69:  # k5g1     frq=93172
+L70:  # k6g1     frq=33086
+L71:  # k7g1     frq=56780
+L72:  # k8g1     frq=15758
+L73:  # k9g1     frq=25517
+L74:  # k10g1     frq=2673
+L75:  # k11g1     frq=3440
+	subq	v0,64,v0	# v0 = k
+	addq	s6,1,s6		# s6 = return address
+	s4addq	t0,s4,t0
+	ldl	a0,4*256(t0)	# a0 = g!(n+256)
+	br	apply
+
+L76:  # s0g1     frq=1639
+	s4addq	t0,s4,v0
+	ldq_u	t12,1(s6)	# prefetch
+	ldl	v0,4*256(v0)
+	addq	s6,1,s6
+	s4addq	v0,t8,v0
+	extbl	t12,s6,t0
+	stl	s0,4*0(v0)	# !(g!(n+256)) := a
+	br	fetch
+ 
+L77:  # l0g1     frq=724
+	s4addq	t0,s4,v0
+	ldq_u	t12,1(s6)	# prefetch
+	addq	s6,1,s6
+	ldl	v0,4*256(v0)
+	mov	s0,s1		# b := a
+	s4addq	v0,t8,v0
+	extbl	t12,s6,t0
+	ldl	s0,4*0(v0)	# a := 0!(g!(n+256))
+	br	fetch
+
+L78:  # l1g1     frq=724
+	s4addq	t0,s4,v0
+	ldq_u	t12,1(s6)	# prefetch
+	addq	s6,1,s6
+	ldl	v0,4*256(v0)
+	mov	s0,s1		# b := a
+	s4addq	v0,t8,v0
+	extbl	t12,s6,t0
+	ldl	s0,4*1(v0)	# a := 1!(g!(n+256))
+	br	fetch
+
+L79:  # l2g1     frq=724
+	s4addq	t0,s4,v0
+	ldq_u	t12,1(s6)	# prefetch
+	addq	s6,1,s6
+	ldl	v0,4*256(v0)
+	mov	s0,s1		# b := a
+	s4addq	v0,t8,v0
+	extbl	t12,s6,t0
+	ldl	s0,4*2(v0)	# a := 2!(g!(n+256))
+	br	fetch
+
+	.align	3
+L80:  # lg1     frq=249497
+	s4addq	t0,s4,v0
+	ldq_u	t12,1(s6)	# prefetch
+	addq	s6,1,s6		# pc++
+	mov	s0,s1		# b := a
+	ldl	s0,4*256(v0)	# a := g!(n+256)
+	extbl	t12,s6,t0
+	br	fetch
+
+	.align	3
+L81:  # sg1     frq=155081
+	s4addq	t0,s4,v0
+	ldq_u	t12,1(s6)	# prefetch
+	addq	s6,1,s6		# pc++
+	stl	s0,4*256(v0)	# g!(n+256) := a
+	extbl	t12,s6,t0
+	br	fetch
+
+L82:  # llg1     frq=0
+	ldq_u	t12,1(s6)	# prefetch
+	addq	s6,1,s6		# pc++
+	addl	t0,s5,v0
+	mov	s0,s1		# b := a
+	addl	v0,256,s0	# a := @ g!(n+256)
+	extbl	t12,s6,t0
+	br	fetch
+
+L83:  # ag1     frq=1290
+	s4addq	t0,s4,v0
+	ldq_u	t12,1(s6)	# prefetch
+	ldl	v0,4*256(v0)
+	addq	s6,1,s6		# pc++
+	extbl	t12,s6,t0
+	addl	s0,v0,s0	# a += g!(n+256)
+	br	fetch
+
+L84:  # add     frq=51328
+	addl	s0,s1,s0	# a := b + a
+	br	fetch
+
+L85:  # sub     frq=51606
+	subl	s1,s0,s0	# a := b - a
+	br	fetch
+
+L86:  # lsh     frq=23772
+	sll	s1,s0,s0
+	addl	s0,0,s0		# a := b<<a
+	br	fetch
+
+L87:  # rsh     frq=65180
+	zapnot	s1,15,v0
+	srl	v0,s0,s0
+	addl	s0,0,s0		# a := b>>a
+	br	fetch
+
+	.align	3
+L88:  # and     frq=192985
+	and	s1,s0,s0	# a := b & a
+	br	fetch
+
+L89:  # or     frq=24123
+	or	s1,s0,s0	# a := b | a
+	br	fetch
+
+L90:  # lll     frq=57746
+	sll	t0,56,v0
+	ldq_u	t12,1(s6)	# prefetch
+	sra	v0,56,v0	# x := SB[pc]
+	mov	s0,s1		# b := a
+	addq	v0,s6,v0
+	addq	s6,1,s6		# pc++
+	subl	v0,t8,s0
+	extbl	t12,s6,t0
+	srl	s0,2,s0		# a := (x + pc) >> 2
+	br	fetch
+
+L91:  # lll$     frq=189
+	and	s6,-2,a0	# a0 := pc & #xFFFFFFFE
+	ldq_u	t12,1(s6)	# prefetch
+	addq	t0,a0,a0
+	addq	s6,1,s6		# pc++
+	addq	t0,a0,a0	# a0 := a0 + 2*B[pc]
+	ldq_u	v0,0(a0)
+	mov	s0,s1		# b := a
+	extbl	t12,s6,t0
+	extwl	v0,a0,v0
+	sll	v0,48,v0
+	sra	v0,48,v0	# v0 := SH[t0]
+	addq	a0,v0,s0
+	subl	s0,t8,s0
+	srl	s0,2,s0		# a := (t0 + SH[t0]) >> 2
+	br	fetch
+
+	.align	3
+L92:  # jls     frq=293452
+	cmplt	s1,s0,t5
+	bne	t5,jump
+	ldq_u	t12,1(s6)	# prefetch
+	addq	s6,1,s6		# pc++
+	extbl	t12,s6,t0
+	br	fetch
+
+L93:  # jls$     frq=6421
+	cmplt	s1,s0,t5
+	bne	t5,indjump
+	ldq_u	t12,1(s6)	# prefetch
+	addq	s6,1,s6		# pc++
+	extbl	t12,s6,t0
+	br	fetch
+
+L94:  # jls0     frq=3102
+	blt	s0,jump
+	ldq_u	t12,1(s6)	# prefetch
+	addq	s6,1,s6		# pc++
+	extbl	t12,s6,t0
+	br	fetch
+
+L95:  # jls0$     frq=0
+	blt	s0,indjump
+	ldq_u	t12,1(s6)	# prefetch
+	addq	s6,1,s6		# pc++
+	extbl	t12,s6,t0
+	br	fetch
+
+	.align	3
+L96:  # l     frq=1098722
+	ldq_u	t12,1(s6)	# prefetch
+	addq	s6,1,s6		# pc++
+	mov	s0,s1		# b := a
+	mov	t0,s0		# a := B[pc]
+	extbl	t12,s6,t0
+	br	fetch
+
+L97:  # lh     frq=84529
+	ldq_u	t10,1(s6)
+	mov	s0,s1		# b := a
+	extwl	t12,s6,s0
+	extwh	t10,s6,t10
+	ldq_u	t12,2(s6)	# prefetch
+	addq	s6,2,s6		# a := H[pc]; pc += 2
+	or	t10,s0,s0
+	extbl	t12,s6,t0
+	br	fetch
+
+L98:  # lw     frq=0
+	ldq_u	t10,3(s6)
+	mov	s0,s1		# b := a
+	extll	t12,s6,s0
+	ldq_u	t12,4(s6)	# prefetch
+	extlh	t10,s6,t10
+	addq	s6,4,s6		# pc += 4
+	or	t10,s0,s0
+	addl	zero,s0,s0	# sign extend value
+   	extbl	t12,s6,t0
+	br	fetch
+
+L99:  # k3gh     frq=320
+L100: # k4gh     frq=4633
+L101: # k5gh     frq=6808
+L102: # k6gh     frq=8806
+L103: # k7gh     frq=9358
+L104: # k8gh     frq=17
+L105: # k9gh     frq=0
+L106: # k10gh     frq=169
+L107: # k11gh     frq=0
+	subq	v0,96,v0	# v0 = k
+	ldq_u	t10,1(s6)
+	extwl	t12,s6,t0
+	extwh	t10,s6,t10
+	or	t10,t0,t0	# n = H[pc]
+	addq	s6,2,s6		# s6 = return address
+	s4addq	t0,s4,t0
+	ldl	a0,0(t0)	# a0 = g!n
+	br	apply
+
+L108: # s0gh     frq=15601
+	ldq_u	t10,1(s6)
+	extwl	t12,s6,v0
+	ldq_u	t12,2(s6)	# prefetch
+	extwh	t10,s6,t10
+	or	t10,v0,v0
+	addq	s6,2,s6
+	s4addq	v0,s4,v0
+	ldl	v0,0(v0)
+	s4addq	v0,t8,v0
+	extbl	t12,s6,t0
+	stl	s0,0(v0)	# 0!(g!(H[pc])) := a; pc += 2
+	br	fetch
+
+L109: # l0gh     frq=9924
+	ldq_u	t10,1(s6)
+	extwl	t12,s6,v0
+	ldq_u	t12,2(s6)	# prefetch
+	extwh	t10,s6,t10
+	mov	s0,s1		# b := a
+	or	t10,v0,v0
+	addq	s6,2,s6
+	s4addq	v0,s4,v0
+	ldl	v0,0(v0)
+	s4addq	v0,t8,v0
+	extbl	t12,s6,t0
+	ldl	s0,0(v0)	# a := 0!(g!(H[pc])); pc += 2
+	br	fetch
+
+L110: # l1gh     frq=5952
+	ldq_u	t10,1(s6)
+	extwl	t12,s6,v0
+	ldq_u	t12,2(s6)	# prefetch
+	extwh	t10,s6,t10
+	mov	s0,s1		# b := a
+	or	t10,v0,v0
+	addq	s6,2,s6
+	s4addq	v0,s4,v0
+	ldl	v0,0(v0)
+	s4addq	v0,t8,v0
+	extbl	t12,s6,t0
+	ldl	s0,4*1(v0)	# a := 1!(g!(H[pc])); pc += 2
+	br	fetch
+
+L111: # l2gh     frq=0
+	ldq_u	t10,1(s6)
+	extwl	t12,s6,v0
+	ldq_u	t12,2(s6)	# prefetch
+	extwh	t10,s6,t10
+	mov	s0,s1		# b := a
+	or	t10,v0,v0
+	addq	s6,2,s6
+	s4addq	v0,s4,v0
+	ldl	v0,0(v0)
+	s4addq	v0,t8,v0
+	extbl	t12,s6,t0
+	ldl	s0,4*2(v0)	# a := 2!(g!(H[pc])); pc += 2
+	br	fetch
+
+	.align	3
+L112: # lgh     frq=700955
+	ldq_u	t10,1(s6)
+	extwl	t12,s6,v0
+	ldq_u	t12,2(s6)	# prefetch
+	extwh	t10,s6,t10
+	mov	s0,s1		# b := a
+	or	t10,v0,v0
+	addq	s6,2,s6
+	s4addq	v0,s4,v0
+	extbl	t12,s6,t0
+	ldl	s0,0(v0)	# a := g!(H[pc]); pc += 2
+	br	fetch
+
+	.align	3
+L113: # sgh     frq=297790
+	ldq_u	t10,1(s6)
+	extwl	t12,s6,v0
+	ldq_u	t12,2(s6)	# prefetch
+	extwh	t10,s6,t10
+	or	t10,v0,v0
+	addq	s6,2,s6
+	s4addq	v0,s4,v0
+	extbl	t12,s6,t0
+	stl	s0,0(v0)	# g!(H[pc]) := a; pc += 2
+	br	fetch
+
+L114: # llgh     frq=14161
+	ldq_u	t10,1(s6)
+	extwl	t12,s6,v0
+	ldq_u	t12,2(s6)	# prefetch
+	extwh	t10,s6,t10
+	mov	s0,s1		# b := a
+	addq	s6,2,s6
+	or	t10,v0,v0
+	extbl	t12,s6,t0
+	addq	v0,s5,s0	# a := @ g!(H[pc]); pc += 2
+	br	fetch
+
+L115: # agh     frq=90488
+	ldq_u	t10,1(s6)
+	extwl	t12,s6,v0
+	ldq_u	t12,2(s6)	# prefetch
+	extwh	t10,s6,t10
+	or	t10,v0,v0
+	addq	s6,2,s6
+	s4addq	v0,s4,v0
+	ldl	v0,0(v0)
+	extbl	t12,s6,t0
+	addl	s0,v0,s0	# a += g!(H[pc]); pc += 2
+	br	fetch
+
+L116: # rv      frq=81916
+	s4addq	s0,t8,v0
+	ldl	s0,0(v0)	# a := a!0
+	br	fetch
+
+L117: # rv1     frq=18677
+	s4addq	s0,t8,v0
+	ldl	s0,4*1(v0)	# a := a!1
+	br	fetch
+
+L118: # rv2     frq=24044
+	s4addq	s0,t8,v0
+	ldl	s0,4*2(v0)	# a := a!2
+	br	fetch
+
+L119: # rv3     frq=942
+	s4addq	s0,t8,v0
+	ldl	s0,4*3(v0)	# a := a!3
+	br	fetch
+
+L120: # rv4     frq=0
+	s4addq	s0,t8,v0
+	ldl	s0,4*4(v0)	# a := a!4
+	br	fetch
+
+L121: # rv5     frq=303
+	s4addq	s0,t8,v0
+	ldl	s0,4*5(v0)	# a := a!5
+	br	fetch
+
+L122: # rv6     frq=392
+	s4addq	s0,t8,v0
+	ldl	s0,4*6(v0)	# a := a!6
+	br	fetch
+
+	.align	3
+L123: # rtn     frq=1315089
+	ldl	s6,4(s3)
+	addq	s6,t8,s6	# make pc a m/c address
+	ldl	s3,0(s3)
+	ldq_u	t12,0(s6)	# prefetch
+	addq	s3,t8,s3	# make p a m/c address
+	extbl	t12,s6,t0
+	br	fetch
+
+	.align	3
+L124: # jgr     frq=234567
+	cmple	s1,s0,t5
+	beq	t5,jump
+	ldq_u	t12,1(s6)	# prefetch
+	addq	s6,1,s6		# pc++
+	extbl	t12,s6,t0
+	br	fetch
+
+L125: # jgr$     frq=0
+	cmple	s1,s0,t5
+	beq	t5,indjump
+	ldq_u	t12,1(s6)	# prefetch
+	addq	s6,1,s6		# pc++
+	extbl	t12,s6,t0
+	br	fetch
+
+L126: # jgr0     frq=1664
+	bgt	s0,jump
+	ldq_u	t12,1(s6)	# prefetch
+	addq	s6,1,s6		# pc++
+	extbl	t12,s6,t0
+	br	fetch
+
+L127: # jgr0$     frq=0
+	bgt	s0,indjump
+	ldq_u	t12,1(s6)	# prefetch
+	addq	s6,1,s6		# pc++
+	extbl	t12,s6,t0
+	br	fetch
+
+L128: # lp     frq=32473
+	s4addq	t0,s3,v0
+	ldq_u	t12,1(s6)	# prefetch
+	addq	s6,1,s6		# pc++
+	mov	s0,s1		# b := a
+	ldl	s0,0(v0)	# a := p!(B[pc])
+	extbl	t12,s6,t0
+	br	fetch
+
+L129: # lph     frq=0
+	mov	s0,s1		# b := a
+	ldq_u	t10,1(s6)
+	extwl	t12,s6,v0
+	ldq_u	t12,2(s6)	# prefetch
+	extwh	t10,s6,t10
+	addq	s6,2,s6
+	or	t10,v0,v0
+	s4addq	v0,s3,v0
+	extbl	t12,s6,t0
+	ldl	s0,0(v0)	# a := p!(B[pc]); pc += 2
+	br	fetch
+
+L130: # lpw     frq=0
+	mov	s0,s1		# b := a
+	ldq_u	t10,3(s6)
+	extll	t12,s6,v0
+	ldq_u	t12,4(s6)	# prefetch
+	extlh	t10,s6,t10
+	addq	s6,4,s6		# pc += 4
+	or	t10,v0,v0
+	s4addq	v0,s3,v0
+	ldl	s0,0(v0)	# a := p!(W[pc])
+	extbl	t12,s6,t0
+	br	fetch
+
+	.align	3
+L131: # lp3     frq=1681284
+	mov	s0,s1		# b := a
+	ldl	s0,4*3(s3)
+	br	fetch
+
+	.align	3
+L132: # lp4     frq=593132
+	mov	s0,s1		# b := a
+	ldl	s0,4*4(s3)
+	br	fetch
+
+	.align	3
+L133: # lp5     frq=355769
+	mov	s0,s1		# b := a
+	ldl	s0,4*5(s3)
+	br	fetch
+
+	.align	3
+L134: # lp6     frq=200287
+	mov	s0,s1		# b := a
+	ldl	s0,4*6(s3)
+	br	fetch
+
+	.align	3
+L135: # lp7     frq=228093
+	mov	s0,s1		# b := a
+	ldl	s0,4*7(s3)
+	br	fetch
+
+	.align	3
+L136: # lp8     frq=126649
+	mov	s0,s1		# b := a
+	ldl	s0,4*8(s3)
+	br	fetch
+
+L137: # lp9     frq=24237
+	mov	s0,s1		# b := a
+	ldl	s0,4*9(s3)
+	br	fetch
+
+L138: # lp10     frq=11740
+	mov	s0,s1		# b := a
+	ldl	s0,4*10(s3)
+	br	fetch
+
+L139: # lp11     frq=8112
+	mov	s0,s1		# b := a
+	ldl	s0,4*11(s3)
+	br	fetch
+
+L140: # lp12     frq=1283
+	mov	s0,s1		# b := a
+	ldl	s0,4*12(s3)
+	br	fetch
+
+L141: # lp13     frq=121
+	mov	s0,s1		# b := a
+	ldl	s0,4*13(s3)
+	br	fetch
+
+L142: # lp14     frq=214
+	mov	s0,s1		# b := a
+	ldl	s0,4*14(s3)
+	br	fetch
+
+L143: # lp15     frq=13779
+	mov	s0,s1		# b := a
+	ldl	s0,4*15(s3)
+	br	fetch
+
+L144: # lp16     frq=45432
+	mov	s0,s1		# b := a
+	ldl	s0,4*16(s3)
+	br	fetch
+
+L145: # sys     frq=554
+	bne	s0,sys1		# IF a==0 DO
+	ldl	v0,4*4(s3)	#   { res := p!4; GOTO ret }
+	br	ret 
+sys1:
+        subq    s0,-1,v0
+        bne     v0,sys2         # IF a==-1 DO
+        ldq     t7,56(sp)
+        ldl     s0,4*7(t7)      # { a := count
+        ldl     v0,4*4(s3)
+        stl     v0,4*7(t7)      #   count := p!4
+        ldil    v0,-1           #   res := -1
+        br      ret             #   GOTO ret
+                                # }
+
+sys2: 
+	mov	s5,a1		# g as a BCPL pointer
+	subq	s3,t8,a0
+	srl	a0,2,a0		# p as a BCPL pointer
+	jsr	ra,dosys
+	ldgp	gp,0(ra)
+	ldq_u	t12,0(s6)	# prefetch
+	mov	v0,s0		# a := dosys(p, g)
+	ldq	t8,48(sp)	# restore m/c addr of cintcode memory
+	lda	ra,runtbl
+	extbl	t12,s6,t0
+	br	fetch
+
+L146: # swb     frq=48805
+	addq	s6,1,s6
+	and	s6,-2,s6	# pc := (pc+1) & #xFFFFFFFE
+	ldq_u	a0,0(s6)
+	ldil	a1,1		# i = 1
+	extwl	a0,s6,a0	# n := H[pc]
+
+swb1:
+	s4addq	a1,s6,v0	# {
+	ldq_u	t0,0(v0)
+	extwl	t0,v0,t0	#   t0 := H[pc+4*i]
+	cmpeq	s0,t0,t5	
+	beq	t5,swb2		#   IF a=t0 DO
+				#   {  // case found
+	addq	v0,2,v0		#      v0 := pc+4*i+2
+	ldq_u	t0,0(v0)
+	extwl	t0,v0,t0
+	sll	t0,48,t0
+	sra	t0,48,t0	#      t0 := SH[v0]
+	addq	v0,t0,s6	#      pc := v0 + SH[v0]
+	ldq_u	t12,0(s6)	# prefetch
+	extbl	t12,s6,t0
+	br	fetch		#      GOTO fetch
+				#   }
+
+swb2:
+	addq	a1,a1,a1	#   i := 2*i
+	cmplt	s0,t0,v0
+	addq	a1,v0,a1	#   IF a < t0 DO i++
+	cmple	a1,a0,t5
+	bne	t5,swb1		# } repeatwhile i<=n
+	addq	s6,2,s6		# case not found
+	ldq_u	v0,0(s6)
+	extwl	v0,s6,v0
+	sll	v0,48,v0
+	sra	v0,48,v0	# v0 := SH[pc]
+	addq	s6,v0,s6	# pc := pc + SH[pc]
+	ldq_u	t12,0(s6)	# prefetch
+	extbl	t12,s6,t0
+	br	fetch
+
+L147: # swl     frq=85714
+	addq	s6,1,s6
+	and	s6,-2,s6	# pc := (pc+1) & #xFFFFFFFE
+	blt	s0,swl1		# J if a too small	
+	ldq_u	a0,0(s6)
+	extwl	a0,s6,a0	# n := H[pc]
+	cmplt	s0,a0,t5
+	beq	t5,swl1		# J if a too large
+	addq	s6,4,s6
+	addq	s0,s6,s6
+	addq	s0,s6,s6	# pc := pc+2*a+4
+	ldq_u	v0,0(s6)
+	extwl	v0,s6,v0
+	sll	v0,48,v0
+	sra	v0,48,v0	# v0 := SH[pc]
+	addq	s6,v0,s6	# pc := pc + SH[pc]
+	ldq_u	t12,0(s6)	# prefetch
+	extbl	t12,s6,t0
+	br	fetch
+
+swl1:
+	addq	s6,2,s6		# pc := pc + 2
+	ldq_u	v0,0(s6)
+	extwl	v0,s6,v0
+	sll	v0,48,v0
+	sra	v0,48,v0	# v0 := SH[pc]
+	addq	s6,v0,s6	# pc := pc + SH[pc]
+	ldq_u	t12,0(s6)	# prefetch
+	extbl	t12,s6,t0
+	br	fetch
+
+L148: # st     frq=53452
+	s4addq	s0,t8,v0
+	stl	s1,0(v0)	# a!0 := b
+	br	fetch
+
+L149: # st1     frq=36925
+	s4addq	s0,t8,v0
+	stl	s1,4*1(v0)	# a!1 := b
+	br	fetch
+
+L150: # st2     frq=32011
+	s4addq	s0,t8,v0
+	stl	s1,4*2(v0)	# a!2 := b
+	br	fetch
+
+L151: # st3     frq=5530
+	s4addq	s0,t8,v0
+	stl	s1,4*3(v0)	# a!3 := b
+	br	fetch
+
+L152: # stp3     frq=2182
+	ldl	v0,4*3(s3)
+	addq	v0,s0,v0
+	s4addq	v0,t8,v0
+	stl	s1,0(v0)	# p!3!a := b
+	br	fetch
+
+L153: # stp4     frq=780
+	ldl	v0,4*4(s3)
+	addq	v0,s0,v0
+	s4addq	v0,t8,v0
+	stl	s1,0(v0)	# p!4!a := b
+	br	fetch
+
+L154: # stp5     frq=20
+	ldl	v0,4*5(s3)
+	addq	v0,s0,v0
+	s4addq	v0,t8,v0
+	stl	s1,0(v0)	# p!5!a := b
+	br	fetch
+
+L155: # goto     frq=0
+	addq	s0,t8,s6
+	ldq_u	t12,0(s6)	# prefetch
+	extbl	t12,s6,t0
+	br	fetch
+
+	.align	3
+L156: # jle     frq=575294
+	cmple	s1,s0,t5
+	bne	t5,jump
+	ldq_u	t12,1(s6)	# prefetch
+	addq	s6,1,s6		# pc++
+	extbl	t12,s6,t0
+	br	fetch
+
+L157: # jle$     frq=12919
+	cmple	s1,s0,t5
+	bne	t5,indjump
+	ldq_u	t12,1(s6)	# prefetch
+	addq	s6,1,s6		# pc++
+	extbl	t12,s6,t0
+	br	fetch
+
+L158: # jle0     frq=13814
+	ble	s0,jump
+	ldq_u	t12,1(s6)	# prefetch
+	addq	s6,1,s6		# pc++
+	extbl	t12,s6,t0
+	br	fetch
+
+L159: # jle0$     frq=0
+	ble	s0,indjump
+	ldq_u	t12,1(s6)	# prefetch
+	addq	s6,1,s6		# pc++
+	extbl	t12,s6,t0
+	br	fetch
+
+L160: # sp     frq=57497
+	ldq_u	t12,1(s6)	# prefetch
+	s4addq	t0,s3,v0
+	addq	s6,1,s6
+	stl	s0,0(v0)	# p!(B[pc++]) := a
+	extbl	t12,s6,t0
+	br	fetch
+
+L161: # sph     frq=0
+	ldq_u	t10,1(s6)
+	extwl	t12,s6,v0
+	ldq_u	t12,2(s6)	# prefetch
+	extwh	t10,s6,t10
+	addq	s6,2,s6
+	or	t10,v0,v0
+	s4addq	v0,s3,v0
+	extbl	t12,s6,t0
+	stl	s0,0(v0)	# p!(H[pc]) := a; pc += 2
+	br	fetch
+
+L162: # spw     frq=0
+	ldq_u	t10,3(s6)
+	extll	t12,s6,v0
+	ldq_u	t12,4(s6)	# prefetch
+	extlh	t10,s6,t10
+	addq	s6,4,s6
+	or	t10,v0,v0
+	s4addq	v0,s3,v0
+	extbl	t12,s6,t0
+	stl	s0,0(v0)	# p!(W[pc]) := a; pc += 4
+	br	fetch
+
+	.align	3
+L163: # sp3     frq=448052
+	stl	s0,4*3(s3)	# p!3 := a
+	br	fetch
+
+	.align	3
+L164: # sp4     frq=988190
+	stl	s0,4*4(s3)	# p!4 := a
+	br	fetch
+
+L165: # sp5     frq=344005
+	stl	s0,4*5(s3)	# p!5 := a
+	br	fetch
+
+L166: # sp6     frq=163718
+	stl	s0,4*6(s3)	# p!6 := a
+	br	fetch
+
+	.align	3
+L167: # sp7     frq=233850
+	stl	s0,4*7(s3)	# p!7 := a
+	br	fetch
+
+	.align	3
+L168: # sp8     frq=109584
+	stl	s0,4*8(s3)	# p!8 := a
+	br	fetch
+
+L169: # sp9     frq=110121
+	stl	s0,4*9(s3)	# p!9 := a
+	br	fetch
+
+L170: # sp10     frq=56154
+	stl	s0,4*10(s3)	# p!10 := a
+	br	fetch
+
+L171: # sp11     frq=50794
+	stl	s0,4*11(s3)	# p!11 := a
+	br	fetch
+
+L172: # sp12     frq=20524
+	stl	s0,4*12(s3)	# p!12 := a
+	br	fetch
+
+L173: # sp13     frq=15806
+	stl	s0,4*13(s3)	# p!13 := a
+	br	fetch
+
+L174: # sp14     frq=4839
+	stl	s0,4*14(s3)	# p!14 := a
+	br	fetch
+
+L175: # sp15     frq=16120
+	stl	s0,4*15(s3)	# p!15 := a
+	br	fetch
+
+L176: # sp16     frq=33499
+	stl	s0,4*16(s3)	# p!16 := a
+	br	fetch
+
+L177: # s1     frq=34291
+	subq	s0,1,s0		# a := a - 1
+	br	fetch
+
+L178: # s2     frq=4205
+	subq	s0,2,s0		# a := a - 2
+	br	fetch
+
+L179: # s3     frq=26048
+	subq	s0,3,s0		# a := a - 3
+	br	fetch
+
+L180: # s4     frq=3
+	subq	s0,4,s0		# a := a - 4
+	br	fetch
+
+	.align	3
+L181: # xch     frq=1761584
+	mov	s0,v0
+	mov	s1,s0
+	mov	v0,s1
+	br	fetch
+
+	.align	3
+L182: # gbyt     frq=504790
+	s4addq	s1,s0,v0
+	addq	v0,t8,v0
+	ldq_u	s0,0(v0)
+	extbl	s0,v0,s0	# a := b%a
+	br	fetch
+
+	.align	3
+L183: # pbyt     frq=395227
+	s4addq	s1,s0,v0
+	addq	v0,t8,v0
+	ldq_u	a0, 0(v0)
+	insbl	s2, v0, t2
+	mskbl	a0, v0, a0
+	bis	a0, t2, a0
+	stq_u	a0, 0(v0)	# b%a := c
+	br	fetch
+
+	.align	3
+L184: # atc     frq=395227
+	mov	s0,s2		# c := a
+	br	fetch
+
+L185: # atb     frq=0
+	mov	s0,s1		# b := a
+	br	fetch
+
+	.align	3
+L186: # j     frq=302744
+jump:
+	sll	t0,56,v0
+	sra	v0,56,v0	# v0 := SB[pc]
+	addq	s6,v0,s6	# pc += SB[pc]
+	ldq_u	t12,0(s6)	# prefetch
+	extbl	t12,s6,t0
+	br	fetch
+
+	.align	3
+L187: # j$     frq=150058
+indjump:
+	addq	t0,s6,s6
+	addq	t0,s6,s6	# pc := pc + 2*B[pc]
+	and	s6,-2,s6	# pc &= #xFFFFFFFE
+	ldq_u	a0,0(s6)
+	extwl	a0,s6,a0
+	sll	a0,48,a0
+	sra	a0,48,a0	# a0 := SH[pc]
+	addq	s6,a0,s6	# pc := pc + SH[pc]
+	ldq_u	t12,0(s6)	# prefetch
+	extbl	t12,s6,t0
+	br	fetch
+
+	.align	3
+L188: # jge     frq=301004
+	cmplt	s1,s0,t5
+	beq	t5,jump
+	ldq_u	t12,1(s6)	# prefetch
+	addq	s6,1,s6		# pc++
+	extbl	t12,s6,t0
+	br	fetch
+
+L189: # jge$     frq=0
+	cmplt	s1,s0,t5
+	beq	t5,indjump
+	ldq_u	t12,1(s6)	# prefetch
+	addq	s6,1,s6		# pc++
+	extbl	t12,s6,t0
+	br	fetch
+
+L190: # jge0     frq=47832
+	bge	s0,jump
+	ldq_u	t12,1(s6)	# prefetch
+	addq	s6,1,s6		# pc++
+	extbl	t12,s6,t0
+	br	fetch
+
+L191: # jge0$     frq=0
+	bge	s0,indjump
+	ldq_u	t12,1(s6)	# prefetch
+	addq	s6,1,s6		# pc++
+	extbl	t12,s6,t0
+	br	fetch
+
+L192: # ap     frq=6416
+	addq	s6,1,s6
+	s4addq	t0,s3,v0
+	ldl	v0,0(v0)
+	addl	s0,v0,s0	# a += p!(B[pc++])
+	ldq_u	t12,0(s6)	# prefetch
+	extbl	t12,s6,t0
+	br	fetch
+
+L193: # aph     frq=0
+	ldq_u	t10,1(s6)
+	extwl	t12,s6,v0
+	ldq_u	t12,2(s6)	# prefetch
+	extwh	t10,s6,t10
+	or	t10,v0,v0
+	addq	s6,2,s6
+	s4addq	v0,s3,v0
+	ldl	v0,0(v0)
+	extbl	t12,s6,t0
+	addl	s0,v0,s0	# a += p!(H[pc]); pc += 2
+	br	fetch
+
+L194: # apw     frq=0
+	ldq_u	t10,3(s6)
+	extll	t12,s6,v0
+	ldq_u	t12,4(s6)	# prefetch
+	extlh	t10,s6,t10
+	or	t10,v0,v0
+	addq	s6,4,s6
+	s4addq	v0,s3,v0
+	ldl	v0,0(v0)
+	extbl	t12,s6,t0
+	addl	s0,v0,s0	# a += p!(W[pc]); pc += 4
+	br	fetch
+
+	.align	3
+L195: # ap3     frq=283379
+	ldl	v0,4*3(s3)
+	addl	s0,v0,s0	# a += p!3
+	br	fetch
+
+	.align	3
+L196: # ap4     frq=832703
+	ldl	v0,4*4(s3)
+	addl	s0,v0,s0	# a += p!4
+	br	fetch
+
+L197: # ap5     frq=65255
+	ldl	v0,4*5(s3)
+	addl	s0,v0,s0	# a += p!5
+	br	fetch
+
+L198: # ap6     frq=11097
+	ldl	v0,4*6(s3)
+	addl	s0,v0,s0	# a += p!6
+	br	fetch
+
+	.align	3
+L199: # ap7     frq=106439
+	ldl	v0,4*7(s3)
+	addl	s0,v0,s0	# a += p!7
+	br	fetch
+
+L200: # ap8     frq=3583
+	ldl	v0,4*8(s3)
+	addl	s0,v0,s0	# a += p!8
+	br	fetch
+
+L201: # ap9     frq=47609
+	ldl	v0,4*9(s3)
+	addl	s0,v0,s0	# a += p!9
+	br	fetch
+
+L202: # ap10     frq=1439
+	ldl	v0,4*10(s3)
+	addl	s0,v0,s0	# a += p!10
+	br	fetch
+
+L203: # ap11     frq=0
+	ldl	v0,4*11(s3)
+	addl	s0,v0,s0	# a += p!11
+	br	fetch
+
+L204: # ap12     frq=21
+	ldl	v0,4*12(s3)
+	addl	s0,v0,s0	# a += p!12
+	br	fetch
+
+	.align	3
+L205: # xpbyt     frq=326298
+	s4addq	s0,s1,v0
+	addq	v0,t8,v0
+	ldq_u	a0, 0(v0)
+	insbl	s2, v0, t2
+	mskbl	a0, v0, a0
+	bis	a0, t2, a0
+	stq_u	a0, 0(v0)	# a%b := c
+	br	fetch
+
+L206: # lmh     frq=1269
+	mov	s0,s1		# b := a
+	ldq_u	t10,1(s6)
+	extwl	t12,s6,v0
+	ldq_u	t12,2(s6)	# prefetch
+	extwh	t10,s6,t10
+	addq	s6,2,s6
+	or	t10,v0,v0
+	extbl	t12,s6,t0
+	subl	zero,v0,s0	# a := -H[pc]; pc += 2
+	br	fetch
+
+L207: # btc     frq=184802
+	mov	s1,s2		#  c := b
+	br	fetch
+
+L208: # nop     frq=0
+	br	fetch
+
+	.align	3
+L209: # a1     frq=319289
+	addl	s0,1,s0		# a := a + 1
+	br	fetch
+
+L210: # a2     frq=69342
+	addl	s0,2,s0		# a := a + 2
+	br	fetch
+
+L211: # a3     frq=44520
+	addl	s0,3,s0		# a := a + 3
+	br	fetch
+
+L212: # a4     frq=5224
+	addl	s0,4,s0		# a := a + 4
+	br	fetch
+
+L213: # a5     frq=0
+	addl	s0,5,s0		# a := a + 5
+	br	fetch
+
+L214: # rvp3     frq=1108
+	ldl	v0,4*3(s3)
+	addq	v0,s0,v0
+	s4addq	v0,t8,v0
+	ldl	s0,0(v0)	# a := p!3!a
+	br	fetch
+
+L215: # rvp4     frq=1582
+	ldl	v0,4*4(s3)
+	addq	v0,s0,v0
+	s4addq	v0,t8,v0
+	ldl	s0,0(v0)	# a := p!4!a
+	br	fetch
+
+L216: # rvp5     frq=30
+	ldl	v0,4*5(s3)
+	addq	v0,s0,v0
+	s4addq	v0,t8,v0
+	ldl	s0,0(v0)	# a := p!5!a
+	br	fetch
+
+L217: # rvp6     frq=12697
+	ldl	v0,4*6(s3)
+	addq	v0,s0,v0
+	s4addq	v0,t8,v0
+	ldl	s0,0(v0)	# a := p!6!a
+	br	fetch
+
+L218: # rvp7     frq=1449
+	ldl	v0,4*7(s3)
+	addq	v0,s0,v0
+	s4addq	v0,t8,v0
+	ldl	s0,0(v0)	# a := p!7!a
+	br	fetch
+
+L219: # st0p3     frq=10619
+	ldl	v0,4*3(s3)
+	s4addq	v0,t8,v0
+	stl	s0,0(v0)	# p!3!0 := a
+	br	fetch
+
+L220: # st0p4     frq=7637
+	ldl	v0,4*4(s3)
+	s4addq	v0,t8,v0
+	stl	s0,0(v0)	# p!4!0 := a
+	br	fetch
+
+L221: # st1p3     frq=1455
+	ldl	v0,4*3(s3)
+	s4addq	v0,t8,v0
+	stl	s0,4*1(v0)	# p!3!1 := a
+	br	fetch
+
+L222: # st1p4     frq=0
+	ldl	v0,4*4(s3)
+	s4addq	v0,t8,v0
+	stl	s0,4*1(v0)	# p!4!1 := a
+	br	fetch
+
+L223: # Error     frq=0
+	subq	s6,1,s6
+	ldil	v0,1		# res := 1
+	br	ret
+
+L224: # a     frq=74587
+	ldq_u	t12,1(s6)	# prefetch
+	addq	s6,1,s6
+	addl	s0,t0,s0	# a += B[pc++]
+	extbl	t12,s6,t0
+	br	fetch
+
+L225: # ah     frq=6
+	ldq_u	t10,1(s6)
+	extwl	t12,s6,v0
+	ldq_u	t12,2(s6)	# prefetch
+	extwh	t10,s6,t10
+	addq	s6,2,s6
+	or	t10,v0,v0	# v0 := H[pc]
+	extbl	t12,s6,t0
+	addl	s0,v0,s0	# a += H[pc]; pc += 2
+	br	fetch
+
+L226: # aw        frq=0
+	ldq_u	t10,3(s6)
+	extll	t12,s6,v0
+	ldq_u	t12,4(s6)	# prefetch
+	extlh	t10,s6,t10
+	addq	s6,4,s6
+	or	t10,v0,v0	# v0 := W[pc]
+	extbl	t12,s6,t0
+	addl	s0,v0,s0	# a += W[pc]; pc += 4
+	br	fetch
+
+L227: # l0p3      frq=65102
+	mov	s0,s1		# b := a
+	ldl	v0,4*3(s3)
+	s4addq	v0,t8,v0
+	ldl	s0,0(v0)	# a := p!3!0
+	br	fetch
+
+	.align	3
+L228: # l0p4      frq=612068
+	mov	s0,s1		# b := a
+	ldl	v0,4*4(s3)
+	s4addq	v0,t8,v0
+	ldl	s0,0(v0)	# a := p!4!0
+	br	fetch
+
+L229: # l0p5      frq=17186
+	mov	s0,s1		# b := a
+	ldl	v0,4*5(s3)
+	s4addq	v0,t8,v0
+	ldl	s0,0(v0)	# a := p!5!0
+	br	fetch
+
+L230: # l0p6      frq=8430
+	mov	s0,s1		# b := a
+	ldl	v0,4*6(s3)
+	s4addq	v0,t8,v0
+	ldl	s0,0(v0)	# a := p!6!0
+	br	fetch
+
+L231: # l0p7      frq=30505
+	mov	s0,s1		# b := a
+	ldl	v0,4*7(s3)
+	s4addq	v0,t8,v0
+	ldl	s0,0(v0)	# a := p!7!0
+	br	fetch
+
+L232: # l0p8      frq=14744
+	mov	s0,s1		# b := a
+	ldl	v0,4*8(s3)
+	s4addq	v0,t8,v0
+	ldl	s0,0(v0)	# a := p!8!0
+	br	fetch
+
+L233: # l0p9      frq=0
+	mov	s0,s1		# b := a
+	ldl	v0,4*9(s3)
+	s4addq	v0,t8,v0
+	ldl	s0,0(v0)	# a := p!9!0
+	br	fetch
+
+L234: # l0p10     frq=0
+	mov	s0,s1		# b := a
+	ldl	v0,4*10(s3)
+	s4addq	v0,t8,v0
+	ldl	s0,0(v0)	# a := p!10!0
+	br	fetch
+
+L235: # l0p11     frq=0
+	mov	s0,s1		# b := a
+	ldl	v0,4*11(s3)
+	s4addq	v0,t8,v0
+	ldl	s0,0(v0)	# a := p!11!0
+	br	fetch
+
+L236: # l0p12     frq=0
+	mov	s0,s1		# b := a
+	ldl	v0,4*12(s3)
+	s4addq	v0,t8,v0
+	ldl	s0,0(v0)	# a := p!12!0
+	br	fetch
+
+L237: # s      frq=130833
+	ldq_u	t12,1(s6)	# prefetch
+	addq	s6,1,s6		# pc++
+	subl	s0,t0,s0	# a -= B[pc++]
+	extbl	t12,s6,t0
+	br	fetch
+
+L238: # sh     frq=0
+	ldq_u	t10,1(s6)
+	extwl	t12,s6,v0
+	ldq_u	t12,2(s6)	# prefetch
+	extwh	t10,s6,t10
+	addq	s6,2,s6
+	or	t10,v0,v0
+	extbl	t12,s6,t0
+	subl	s0,v0,s0	# a -= H[pc]; pc += 2
+	br	fetch
+
+L239: # mdiv     frq=0
+	ldl	a0,4*3(s3)
+	ldl	a1,4*4(s3)
+	ldl	a2,4*5(s3)
+	jsr	muldiv
+	ldgp	gp, 0(ra)
+	mov	v0,s0
+	ldl	v0,result2
+	stl	v0,4*10(s4)	# G[10] := result2
+	lda	ra,runtbl
+	ldq	t8,48(sp)	# restore m/c addr of cintcode memory
+	ldl	s6,4(s3)	# and return
+	addq	s6,t8,s6	# make pc a m/c address
+	ldq_u	t12,0(s6)	# prefetch
+	ldl	s3,0(s3)
+	addq	s3,t8,s3	# make p a m/c address
+	extbl	t12,s6,t0
+	br	fetch
+
+L240: # chgco     frq=2
+	ldl	a0,0(s3)
+	ldl	v0,4*7(s4)
+	s4addq	v0,t8,v0
+	stl	a0,0(v0)	# !currco := !p
+	ldl	s6,4(s3)
+	addq	s6,t8,s6	# pc := p!1
+	ldl	v0,4*4(s3)
+	stl	v0,4*7(s4)	# currco := cptr
+	ldq_u	t12,0(s6)	# prefetch
+	s4addq	v0,t8,v0
+	ldl	v0,0(v0)
+	addq	v0,t8,s3	# p := !cptr
+	extbl	t12,s6,t0
+	br	fetch
+
+L241: # neg     frq=297
+	subl	zero,s0,s0	# a := -a
+	br	fetch
+
+L242: # not     frq=196
+	ornot	zero,s0,s0
+	br	fetch
+
+L243: # l1p3     frq=35547
+	ldl	v0,4*3(s3)
+	mov	s0,s1		# b := a
+	s4addq	v0,t8,v0
+	ldl	s0,4*1(v0)	# a := p!3!1
+	br	fetch
+
+L244: # l1p4     frq=3525
+	ldl	v0,4*4(s3)
+	mov	s0,s1		# b := a
+	s4addq	v0,t8,v0
+	ldl	s0,4*1(v0)	# a := p!4!1
+	br	fetch
+
+L245: # l1p5     frq=20773
+	ldl	v0,4*5(s3)
+	mov	s0,s1		# b := a
+	s4addq	v0,t8,v0
+	ldl	s0,4*1(v0)	# a := p!5!1
+	br	fetch
+
+L246: # l1p6     frq=414
+	ldl	v0,4*6(s3)
+	mov	s0,s1		# b := a
+	s4addq	v0,t8,v0
+	ldl	s0,4*1(v0)	# a := p!6!1
+	br	fetch
+
+L247: # l2p3     frq=22841
+	ldl	v0,4*3(s3)
+	mov	s0,s1		# b := a
+	s4addq	v0,t8,v0
+	ldl	s0,4*2(v0)	# a := p!3!2
+	br	fetch
+
+L248: # l2p4     frq=5310
+	ldl	v0,4*4(s3)
+	mov	s0,s1		# b := a
+	s4addq	v0,t8,v0
+	ldl	s0,4*2(v0)	# a := p!4!2
+	br	fetch
+
+L249: # l2p5     frq=32256
+	ldl	v0,4*5(s3)
+	mov	s0,s1		# b := a
+	s4addq	v0,t8,v0
+	ldl	s0,4*2(v0)	# a := p!5!2
+	br	fetch
+
+L250: # l3p3     frq=4185
+	ldl	v0,4*3(s3)
+	mov	s0,s1		# b := a
+	s4addq	v0,t8,v0
+	ldl	s0,4*3(v0)	# a := p!3!3
+	br	fetch
+
+L251: # l3p4     frq=1
+	ldl	v0,4*4(s3)
+	mov	s0,s1		# b := a
+	s4addq	v0,t8,v0
+	ldl	s0,4*3(v0)	# a := p!4!3
+	br	fetch
+
+L252: # l4p3     frq=449
+	ldl	v0,4*3(s3)
+	mov	s0,s1		# b := a
+	s4addq	v0,t8,v0
+	ldl	s0,4*4(v0)	# a := p!3!4
+	br	fetch
+
+L253: # l4p4     frq=1
+	ldl	v0,4*4(s3)
+	mov	s0,s1		# b := a
+	s4addq	v0,t8,v0
+	ldl	s0,4*4(v0)	# a := p!4!4
+	br	fetch
+
+L254: # Error     frq=0
+L255: # Error     frq=0
+	subq	s6,1,s6
+	ldil	v0,1
+	br	ret
+
+	.end	cintasm

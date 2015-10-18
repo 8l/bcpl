@@ -1,0 +1,2192 @@
+Ass_dev M:4 DEF libhdr.h[648] Ass_dev=4
+Ass_dir M:2 DEF libhdr.h[646] Ass_dir=2
+Ass_link M:0 DEF libhdr.h[644] Ass_link=0
+Ass_name M:5 DEF libhdr.h[649] Ass_name=5
+Ass_task M:1 DEF libhdr.h[645] Ass_task=1
+Ass_type M:3 DEF libhdr.h[647] Ass_type=3
+B2Wsh M:2 DEF libhdr.h[18] B2Wsh=1+32/32
+B2Wsh M:2 MAN libhdr.h[218] bytesperword=1<<B2Wsh
+BR0 M:8 DEF rubik.b[62] BR0=4<<1|0
+BR0 M:8 MAN rubik.b[1016] RESULTIS BR0
+BR0 M:8 MAN rubik.b[1167] CASE BR0:.. 
+BR0 M:8 MAN rubik.b[1231] IF cube%iBR=BR0 DO ..
+BR0 M:8 MAN rubik.b[773] edgecostv!BR0:=TABLE x,x,x,...
+BR1 M:9 DEF rubik.b[62] BR1=4<<1|1
+BR1 M:9 MAN rubik.b[1017] RESULTIS BR1
+BR1 M:9 MAN rubik.b[1168] CASE BR1:.. 
+BR1 M:9 MAN rubik.b[774] edgecostv!BR1:=TABLE x,x,x,...
+CloseObj M:1 DEF libhdr.h[267] CloseObj=1
+DEDAULT F:290 LAB rubik.b[1122] DEDAULT:writef("Syste'iece=%n*n",piece)
+Dcb_arg M:4 DEF libhdr.h[589] Dcb_arg=4
+Dcb_cvp M:6 DEF libhdr.h[591] Dcb_cvp=6
+Dcb_devid M:1 DEF libhdr.h[586] Dcb_devid=1
+Dcb_flag M:9 DEF libhdr.h[597] Dcb_flag=9
+Dcb_intson M:7 DEF libhdr.h[595] Dcb_intson=7
+Dcb_irq M:8 DEF libhdr.h[596] Dcb_irq=8
+Dcb_op M:3 DEF libhdr.h[588] Dcb_op=3
+Dcb_threadp M:5 DEF libhdr.h[590] Dcb_threadp=5
+Dcb_type M:0 DEF libhdr.h[585] Dcb_type=0
+Dcb_upb M:15 DEF libhdr.h[606] Dcb_upb=
+Dcb_var0 M:10 DEF libhdr.h[601] Dcb_var0=10
+Dcb_var1 M:11 DEF libhdr.h[602] Dcb_var1=11
+Dcb_var2 M:12 DEF libhdr.h[603] Dcb_var2=12
+Dcb_var3 M:13 DEF libhdr.h[604] Dcb_var3=13
+Dcb_var4 M:14 DEF libhdr.h[605] Dcb_var4=14
+Dcb_wkq M:2 DEF libhdr.h[587] Dcb_wkq=2
+Devc_create M:1 DEF libhdr.h[616] Devc_create=1
+Devc_destroy M:2 DEF libhdr.h[617] Devc_destroy=2
+Devc_setintson M:5 DEF libhdr.h[620] Devc_setintson=5
+Devc_start M:3 DEF libhdr.h[618] Devc_start=3
+Devc_stop M:4 DEF libhdr.h[619] Devc_stop=4
+Devt_clk M:1 DEF libhdr.h[609] Devt_clk=1
+Devt_fileop M:4 DEF libhdr.h[612] Devt_fileop=4
+Devt_tcpdev M:5 DEF libhdr.h[613] Devt_tcpdev=5
+Devt_ttyin M:2 DEF libhdr.h[610] Devt_ttyin=2
+Devt_ttyout M:3 DEF libhdr.h[611] Devt_ttyout=3
+GB2312 M:-2 DEF libhdr.h[518] GB2312=-2
+GO0 M:12 DEF rubik.b[64] GO0=6<<1|0
+GO0 M:12 MAN rubik.b[1020] RESULTIS GO0
+GO0 M:12 MAN rubik.b[1171] CASE GO0:.. 
+GO0 M:12 MAN rubik.b[1233] IF cube%iGO=GO0 DO ..
+GO0 M:12 MAN rubik.b[779] edgecostv!GO0:=TABLE x,x,x,...
+GO1 M:13 DEF rubik.b[64] GO1=6<<1|1
+GO1 M:13 MAN rubik.b[1021] RESULTIS GO1
+GO1 M:13 MAN rubik.b[1172] CASE GO1:.. 
+GO1 M:13 MAN rubik.b[780] edgecostv!GO1:=TABLE x,x,x,...
+InitObj M:0 DEF libhdr.h[266] InitObj=0
+OB0 M:10 DEF rubik.b[63] OB0=5<<1|0
+OB0 M:10 MAN rubik.b[1018] RESULTIS OB0
+OB0 M:10 MAN rubik.b[1169] CASE OB0:.. 
+OB0 M:10 MAN rubik.b[1232] IF cube%iOB=OB0 DO ..
+OB0 M:10 MAN rubik.b[776] edgecostv!OB0:=TABLE x,x,x,...
+OB1 M:11 DEF rubik.b[63] OB1=5<<1|1
+OB1 M:11 MAN rubik.b[1019] RESULTIS OB1
+OB1 M:11 MAN rubik.b[1170] CASE OB1:.. 
+OB1 M:11 MAN rubik.b[777] edgecostv!OB1:=TABLE x,x,x,...
+RG0 M:14 DEF rubik.b[65] RG0=7<<1|0
+RG0 M:14 MAN rubik.b[1022] RESULTIS RG0
+RG0 M:14 MAN rubik.b[1173] CASE RG0:.. 
+RG0 M:14 MAN rubik.b[1234] IF cube%iRG=RG0 DO ..
+RG0 M:14 MAN rubik.b[782] edgecostv!RG0:=TABLE x,x,x,...
+RG1 M:15 DEF rubik.b[65] RG1=7<<1|1
+RG1 M:15 MAN rubik.b[1023] RESULTIS RG1
+RG1 M:15 MAN rubik.b[1174] CASE RG1:.. 
+RG1 M:15 MAN rubik.b[783] edgecostv!RG1:=TABLE x,x,x,...
+State_dead M:12 DEF libhdr.h[635] State_dead=12
+State_hold M:2 DEF libhdr.h[632] State_hold=2
+State_int M:8 DEF libhdr.h[634] State_int=8
+State_pkt M:1 DEF libhdr.h[631] State_pkt=1
+State_wait M:4 DEF libhdr.h[633] State_wait=4
+Sys_buttons M:56 DEF libhdr.h[410] Sys_buttons=56
+Sys_callc M:59 DEF libhdr.h[413] Sys_callc=59
+Sys_callnative M:53 DEF libhdr.h[407] Sys_callnative=53
+Sys_close M:16 DEF libhdr.h[373] Sys_close=16
+Sys_cputime M:30 DEF libhdr.h[386] Sys_cputime=30
+Sys_datstamp M:44 DEF libhdr.h[398] Sys_datstamp=44
+Sys_delay M:57 DEF libhdr.h[411] Sys_delay=57
+Sys_deletefile M:17 DEF libhdr.h[374] Sys_deletefile=17
+Sys_devcom M:43 DEF libhdr.h[397] Sys_devcom=43
+Sys_dumpmem M:52 DEF libhdr.h[406] Sys_dumpmem=52
+Sys_ext M:68 DEF libhdr.h[424] Sys_ext=68
+Sys_filemodtime M:31 DEF libhdr.h[387] Sys_filemodtime=31
+Sys_filesize M:46 DEF libhdr.h[400] Sys_filesize=46
+Sys_flt M:63 DEF libhdr.h[418] Sys_flt=63
+Sys_freevec M:22 DEF libhdr.h[379] Sys_freevec=22
+Sys_getpid M:51 DEF libhdr.h[405] Sys_getpid=51
+Sys_getprefix M:33 DEF libhdr.h[389] Sys_getprefix=33
+Sys_getsysval M:48 DEF libhdr.h[402] Sys_getsysval=48
+Sys_gettrval M:62 DEF libhdr.h[417] Sys_gettrval=62
+Sys_getvec M:21 DEF libhdr.h[378] Sys_getvec=21
+Sys_gl M:67 DEF libhdr.h[423] Sys_gl=67
+Sys_globin M:24 DEF libhdr.h[381] Sys_globin=24
+Sys_graphics M:34 DEF libhdr.h[390] Sys_graphics=34
+Sys_inc M:55 DEF libhdr.h[409] Sys_inc=55
+Sys_incdcount M:65 DEF libhdr.h[420] Sys_incdcount=65
+Sys_interpret M:7 DEF libhdr.h[365] Sys_interpret=7
+Sys_intflag M:28 DEF libhdr.h[384] Sys_intflag=28
+Sys_loadseg M:23 DEF libhdr.h[380] Sys_loadseg=23
+Sys_lockirq M:41 DEF libhdr.h[395] Sys_lockirq=41
+Sys_muldiv M:26 DEF libhdr.h[383] Sys_muldiv=26
+Sys_openappend M:19 DEF libhdr.h[376] Sys_openappend=19
+Sys_openread M:14 DEF libhdr.h[371] Sys_openread=14
+Sys_openreadwrite M:47 DEF libhdr.h[401] Sys_openreadwrite=47
+Sys_openwrite M:15 DEF libhdr.h[372] Sys_openwrite=15
+Sys_platform M:54 DEF libhdr.h[408] Sys_platform=54
+Sys_pollsardch M:64 DEF libhdr.h[419] Sys_pollsardch=64
+Sys_putsysval M:49 DEF libhdr.h[403] Sys_putsysval=49
+Sys_quit M:0 DEF libhdr.h[358] Sys_quit=0
+Sys_read M:12 DEF libhdr.h[369] Sys_read=12
+Sys_renamefile M:18 DEF libhdr.h[375] Sys_renamefile=18
+Sys_rti M:1 DEF libhdr.h[359] Sys_rti=1
+Sys_sardch M:10 DEF libhdr.h[367] Sys_sardch=10
+Sys_saveregs M:2 DEF libhdr.h[360] Sys_saveregs=2
+Sys_sawrch M:11 DEF libhdr.h[368] Sys_sawrch=11
+Sys_sdl M:66 DEF libhdr.h[422] Sys_sdl=66
+Sys_seek M:38 DEF libhdr.h[392] Sys_seek=38
+Sys_setcount M:-1 DEF libhdr.h[357] Sys_setcount=-1
+Sys_setprefix M:32 DEF libhdr.h[388] Sys_setprefix=32
+Sys_setraster M:29 DEF libhdr.h[385] Sys_setraster=29
+Sys_setst M:3 DEF libhdr.h[361] Sys_setst=3
+Sys_settrcount M:61 DEF libhdr.h[416] Sys_settrcount=61
+Sys_shellcom M:50 DEF libhdr.h[404] Sys_shellcom=50
+Sys_sound M:58 DEF libhdr.h[412] Sys_sound=58
+Sys_tally M:6 DEF libhdr.h[364] Sys_tally=6
+Sys_tell M:39 DEF libhdr.h[393] Sys_tell=39
+Sys_tracing M:4 DEF libhdr.h[362] Sys_tracing=4
+Sys_trpush M:60 DEF libhdr.h[415] Sys_trpush=60
+Sys_unloadseg M:25 DEF libhdr.h[382] Sys_unloadseg=25
+Sys_unlockirq M:42 DEF libhdr.h[396] Sys_unlockirq=42
+Sys_waitirq M:40 DEF libhdr.h[394] Sys_waitirq=40
+Sys_watch M:5 DEF libhdr.h[363] Sys_watch=5
+Sys_write M:13 DEF libhdr.h[370] Sys_write=13
+Task_cli M:1 DEF libhdr.h[623] Task_cli=1
+Task_consolehandler M:3 DEF libhdr.h[625] Task_consolehandler=3
+Task_debug M:2 DEF libhdr.h[624] Task_debug=2
+Task_filehandler M:4 DEF libhdr.h[626] Task_filehandler=4
+Task_mbxhandler M:5 DEF libhdr.h[627] Task_mbxhandler=5
+Task_tcphandler M:6 DEF libhdr.h[628] Task_tcphandler=6
+UTF8 M:-1 DEF libhdr.h[517] UTF8=-1
+WB0 M:2 DEF rubik.b[57] WB0=1<<1|0
+WB0 M:2 MAN rubik.b[1009] RESULTIS WB0
+WB0 M:2 MAN rubik.b[1160] CASE WB0:.. 
+WB0 M:2 MAN rubik.b[1199] IF cube%iWB=WB0 DO ..
+WB0 M:2 MAN rubik.b[764] edgecostv!WB0:=TABLE x,x,x,...
+WB1 M:3 DEF rubik.b[57] WB1=1<<1|1
+WB1 M:3 MAN rubik.b[1010] RESULTIS WB1
+WB1 M:3 MAN rubik.b[1161] CASE WB1:.. 
+WB1 M:3 MAN rubik.b[765] edgecostv!WB1:=TABLE x,x,x,...
+WBO0 M:4 DEF rubik.b[34] WBO0=1<<2|0
+WBO0 M:4 MAN rubik.b[1127] CASE WBO0:.. 
+WBO0 M:4 MAN rubik.b[1215] IF cube%iWBO=WBO0 DO ..
+WBO0 M:4 MAN rubik.b[576] CASE WBO0:.. 
+WBO0 M:4 MAN rubik.b[588] CASE WBO0:.. 
+WBO0 M:4 MAN rubik.b[732] corncostv!WBO0:=TABLE x,x,x,...
+WBO0 M:4 MAN rubik.b[973] RESULTIS WBO0
+WBO1 M:5 DEF rubik.b[34] WBO1=1<<2|1
+WBO1 M:5 MAN rubik.b[1128] CASE WBO1:.. 
+WBO1 M:5 MAN rubik.b[570] CASE WBO1:.. 
+WBO1 M:5 MAN rubik.b[588] CASE WBO1:.. 
+WBO1 M:5 MAN rubik.b[733] corncostv!WBO1:=TABLE x,x,x,...
+WBO1 M:5 MAN rubik.b[974] RESULTIS WBO1
+WBO2 M:6 DEF rubik.b[34] WBO2=1<<2|2
+WBO2 M:6 MAN rubik.b[1129] CASE WBO2:.. 
+WBO2 M:6 MAN rubik.b[570] CASE WBO2:.. 
+WBO2 M:6 MAN rubik.b[594] CASE WBO2:.. 
+WBO2 M:6 MAN rubik.b[734] corncostv!WBO2:=TABLE x,x,x,...
+WBO2 M:6 MAN rubik.b[975] RESULTIS WBO2
+WG0 M:6 DEF rubik.b[59] WG0=3<<1|0
+WG0 M:6 MAN rubik.b[1013] RESULTIS WG0
+WG0 M:6 MAN rubik.b[1164] CASE WG0:.. 
+WG0 M:6 MAN rubik.b[1201] IF cube%iWG=WG0 DO ..
+WG0 M:6 MAN rubik.b[770] edgecostv!WG0:=TABLE x,x,x,...
+WG1 M:7 DEF rubik.b[59] WG1=3<<1|1
+WG1 M:7 MAN rubik.b[1014] RESULTIS WG1
+WG1 M:7 MAN rubik.b[1165] CASE WG1:.. 
+WG1 M:7 MAN rubik.b[771] edgecostv!WG1:=TABLE x,x,x,...
+WGR0 M:12 DEF rubik.b[36] WGR0=3<<2|0
+WGR0 M:12 MAN rubik.b[1133] CASE WGR0:.. 
+WGR0 M:12 MAN rubik.b[1217] IF cube%iWGR=WGR0 DO ..
+WGR0 M:12 MAN rubik.b[576] CASE WGR0:.. 
+WGR0 M:12 MAN rubik.b[589] CASE WGR0:.. 
+WGR0 M:12 MAN rubik.b[740] corncostv!WGR0:=TABLE x,x,x,...
+WGR0 M:12 MAN rubik.b[981] RESULTIS WGR0
+WGR1 M:13 DEF rubik.b[36] WGR1=3<<2|1
+WGR1 M:13 MAN rubik.b[1134] CASE WGR1:.. 
+WGR1 M:13 MAN rubik.b[571] CASE WGR1:.. 
+WGR1 M:13 MAN rubik.b[589] CASE WGR1:.. 
+WGR1 M:13 MAN rubik.b[741] corncostv!WGR1:=TABLE x,x,x,...
+WGR1 M:13 MAN rubik.b[982] RESULTIS WGR1
+WGR2 M:14 DEF rubik.b[36] WGR2=3<<2|2
+WGR2 M:14 MAN rubik.b[1135] CASE WGR2:.. 
+WGR2 M:14 MAN rubik.b[571] CASE WGR2:.. 
+WGR2 M:14 MAN rubik.b[594] CASE WGR2:.. 
+WGR2 M:14 MAN rubik.b[742] corncostv!WGR2:=TABLE x,x,x,...
+WGR2 M:14 MAN rubik.b[983] RESULTIS WGR2
+WO0 M:4 DEF rubik.b[58] WO0=2<<1|0
+WO0 M:4 MAN rubik.b[1011] RESULTIS WO0
+WO0 M:4 MAN rubik.b[1162] CASE WO0:.. 
+WO0 M:4 MAN rubik.b[1200] IF cube%iWO=WO0 DO ..
+WO0 M:4 MAN rubik.b[767] edgecostv!WO0:=TABLE x,x,x,...
+WO1 M:5 DEF rubik.b[58] WO1=2<<1|1
+WO1 M:5 MAN rubik.b[1012] RESULTIS WO1
+WO1 M:5 MAN rubik.b[1163] CASE WO1:.. 
+WO1 M:5 MAN rubik.b[768] edgecostv!WO1:=TABLE x,x,x,...
+WOG0 M:8 DEF rubik.b[35] WOG0=2<<2|0
+WOG0 M:8 MAN rubik.b[1130] CASE WOG0:.. 
+WOG0 M:8 MAN rubik.b[1216] IF cube%iWOG=WOG0 DO ..
+WOG0 M:8 MAN rubik.b[576] CASE WOG0:.. 
+WOG0 M:8 MAN rubik.b[589] CASE WOG0:.. 
+WOG0 M:8 MAN rubik.b[736] corncostv!WOG0:=TABLE x,x,x,...
+WOG0 M:8 MAN rubik.b[977] RESULTIS WOG0
+WOG1 M:9 DEF rubik.b[35] WOG1=2<<2|1
+WOG1 M:9 MAN rubik.b[1131] CASE WOG1:.. 
+WOG1 M:9 MAN rubik.b[571] CASE WOG1:.. 
+WOG1 M:9 MAN rubik.b[589] CASE WOG1:.. 
+WOG1 M:9 MAN rubik.b[737] corncostv!WOG1:=TABLE x,x,x,...
+WOG1 M:9 MAN rubik.b[978] RESULTIS WOG1
+WOG2 M:10 DEF rubik.b[35] WOG2=2<<2|2
+WOG2 M:10 MAN rubik.b[1132] CASE WOG2:.. 
+WOG2 M:10 MAN rubik.b[571] CASE WOG2:.. 
+WOG2 M:10 MAN rubik.b[594] CASE WOG2:.. 
+WOG2 M:10 MAN rubik.b[738] corncostv!WOG2:=TABLE x,x,x,...
+WOG2 M:10 MAN rubik.b[979] RESULTIS WOG2
+WR0 M:0 DEF rubik.b[56] WR0=0<<1|0
+WR0 M:0 MAN rubik.b[1007] RESULTIS WR0
+WR0 M:0 MAN rubik.b[1158] CASE WR0:.. 
+WR0 M:0 MAN rubik.b[1198] IF cube%iWR=WR0 DO ..
+WR0 M:0 MAN rubik.b[761] edgecostv!WR0:=TABLE x,x,x,...
+WR1 M:1 DEF rubik.b[56] WR1=0<<1|1
+WR1 M:1 MAN rubik.b[1008] RESULTIS WR1
+WR1 M:1 MAN rubik.b[1159] CASE WR1:.. 
+WR1 M:1 MAN rubik.b[762] edgecostv!WR1:=TABLE x,x,x,...
+WRB0 M:0 DEF rubik.b[33] WRB0=0<<2|0
+WRB0 M:0 MAN rubik.b[1124] CASE WRB0:.. 
+WRB0 M:0 MAN rubik.b[1214] IF cube%iWRB=WRB0 DO ..
+WRB0 M:0 MAN rubik.b[576] CASE WRB0:.. 
+WRB0 M:0 MAN rubik.b[588] CASE WRB0:.. 
+WRB0 M:0 MAN rubik.b[728] corncostv!WRB0:=TABLE 0,1,2,...
+WRB0 M:0 MAN rubik.b[969] RESULTIS WRB0
+WRB1 M:1 DEF rubik.b[33] WRB1=0<<2|1
+WRB1 M:1 MAN rubik.b[1125] CASE WRB1:.. 
+WRB1 M:1 MAN rubik.b[570] CASE WRB1:.. 
+WRB1 M:1 MAN rubik.b[588] CASE WRB1:.. 
+WRB1 M:1 MAN rubik.b[729] corncostv!WRB1:=TABLE x,x,x,...
+WRB1 M:1 MAN rubik.b[970] RESULTIS WRB1
+WRB2 M:2 DEF rubik.b[33] WRB2=0<<2|2
+WRB2 M:2 MAN rubik.b[1126] CASE WRB2:.. 
+WRB2 M:2 MAN rubik.b[570] CASE WRB2:.. 
+WRB2 M:2 MAN rubik.b[594] CASE WRB2:.. 
+WRB2 M:2 MAN rubik.b[730] corncostv!WRB2:=TABLE x,x,x,...
+WRB2 M:2 MAN rubik.b[971] RESULTIS WRB2
+YB0 M:18 DEF rubik.b[69] YB0=9<<1|0
+YB0 M:18 MAN rubik.b[1027] RESULTIS YB0
+YB0 M:18 MAN rubik.b[1178] CASE YB0:.. 
+YB0 M:18 MAN rubik.b[1247] IF cube%iYB=YB0 DO ..
+YB0 M:18 MAN rubik.b[788] edgecostv!YB0:=TABLE x,x,x,...
+YB1 M:19 DEF rubik.b[69] YB1=9<<1|1
+YB1 M:19 MAN rubik.b[1028] RESULTIS YB1
+YB1 M:19 MAN rubik.b[1179] CASE YB1:.. 
+YB1 M:19 MAN rubik.b[789] edgecostv!YB1:=TABLE x,x,x,...
+YBR0 M:16 DEF rubik.b[38] YBR0=4<<2|0
+YBR0 M:16 MAN rubik.b[1137] CASE YBR0:.. 
+YBR0 M:16 MAN rubik.b[1262] IF cube%iYBR=YBR0 DO ..
+YBR0 M:16 MAN rubik.b[577] CASE YBR0:.. 
+YBR0 M:16 MAN rubik.b[590] CASE YBR0:.. 
+YBR0 M:16 MAN rubik.b[744] corncostv!YBR0:=TABLE x,x,x,...
+YBR0 M:16 MAN rubik.b[985] RESULTIS YBR0
+YBR1 M:17 DEF rubik.b[38] YBR1=4<<2|1
+YBR1 M:17 MAN rubik.b[1138] CASE YBR1:.. 
+YBR1 M:17 MAN rubik.b[572] CASE YBR1:.. 
+YBR1 M:17 MAN rubik.b[590] CASE YBR1:.. 
+YBR1 M:17 MAN rubik.b[745] corncostv!YBR1:=TABLE x,x,x,...
+YBR1 M:17 MAN rubik.b[986] RESULTIS YBR1
+YBR2 M:18 DEF rubik.b[38] YBR2=4<<2|2
+YBR2 M:18 MAN rubik.b[1139] CASE YBR2:.. 
+YBR2 M:18 MAN rubik.b[572] CASE YBR2:.. 
+YBR2 M:18 MAN rubik.b[595] CASE YBR2:.. 
+YBR2 M:18 MAN rubik.b[746] corncostv!YBR2:=TABLE x,x,x,...
+YBR2 M:18 MAN rubik.b[987] RESULTIS YBR2
+YG0 M:22 DEF rubik.b[71] YG0=11<<1|0
+YG0 M:22 MAN rubik.b[1031] RESULTIS YG0
+YG0 M:22 MAN rubik.b[1182] CASE YG0:.. 
+YG0 M:22 MAN rubik.b[1249] IF cube%iYG=YG0 DO ..
+YG0 M:22 MAN rubik.b[794] edgecostv!YG0:=TABLE x,x,x,...
+YG1 M:23 DEF rubik.b[71] YG1=11<<1|1
+YG1 M:23 MAN rubik.b[1032] RESULTIS YG1
+YG1 M:23 MAN rubik.b[1183] CASE YG1:.. 
+YG1 M:23 MAN rubik.b[73] edgecostvupb=YG1
+YG1 M:23 MAN rubik.b[795] edgecostv!YG1:=TABLE x,x,x,...
+YGO0 M:24 DEF rubik.b[40] YGO0=6<<2|0
+YGO0 M:24 MAN rubik.b[1143] CASE YGO0:.. 
+YGO0 M:24 MAN rubik.b[1264] IF cube%iYGO=YGO0 DO ..
+YGO0 M:24 MAN rubik.b[577] CASE YGO0:.. 
+YGO0 M:24 MAN rubik.b[591] CASE YGO0:.. 
+YGO0 M:24 MAN rubik.b[752] corncostv!YGO0:=TABLE x,x,x,...
+YGO0 M:24 MAN rubik.b[993] RESULTIS YGO0
+YGO1 M:25 DEF rubik.b[40] YGO1=6<<2|1
+YGO1 M:25 MAN rubik.b[1144] CASE YGO1:.. 
+YGO1 M:25 MAN rubik.b[573] CASE YGO1:.. 
+YGO1 M:25 MAN rubik.b[591] CASE YGO1:.. 
+YGO1 M:25 MAN rubik.b[753] corncostv!YGO1:=TABLE x,x,x,...
+YGO1 M:25 MAN rubik.b[994] RESULTIS YGO1
+YGO2 M:26 DEF rubik.b[40] YGO2=6<<2|2
+YGO2 M:26 MAN rubik.b[1145] CASE YGO2:.. 
+YGO2 M:26 MAN rubik.b[573] CASE YGO2:.. 
+YGO2 M:26 MAN rubik.b[595] CASE YGO2:.. 
+YGO2 M:26 MAN rubik.b[754] corncostv!YGO2:=TABLE x,x,x,...
+YGO2 M:26 MAN rubik.b[995] RESULTIS YGO2
+YO0 M:20 DEF rubik.b[70] YO0=10<<1|0
+YO0 M:20 MAN rubik.b[1029] RESULTIS YO0
+YO0 M:20 MAN rubik.b[1180] CASE YO0:.. 
+YO0 M:20 MAN rubik.b[1248] IF cube%iYO=YO0 DO ..
+YO0 M:20 MAN rubik.b[791] edgecostv!YO0:=TABLE x,x,x,...
+YO1 M:21 DEF rubik.b[70] YO1=10<<1|1
+YO1 M:21 MAN rubik.b[1030] RESULTIS YO1
+YO1 M:21 MAN rubik.b[1181] CASE YO1:.. 
+YO1 M:21 MAN rubik.b[792] edgecostv!YO1:=TABLE x,x,x,...
+YOB0 M:20 DEF rubik.b[39] YOB0=5<<2|0
+YOB0 M:20 MAN rubik.b[1140] CASE YOB0:.. 
+YOB0 M:20 MAN rubik.b[1263] IF cube%iYOB=YOB0 DO ..
+YOB0 M:20 MAN rubik.b[577] CASE YOB0:.. 
+YOB0 M:20 MAN rubik.b[590] CASE YOB0:.. 
+YOB0 M:20 MAN rubik.b[748] corncostv!YOB0:=TABLE x,x,x,...
+YOB0 M:20 MAN rubik.b[989] RESULTIS YOB0
+YOB1 M:21 DEF rubik.b[39] YOB1=5<<2|1
+YOB1 M:21 MAN rubik.b[1141] CASE YOB1:.. 
+YOB1 M:21 MAN rubik.b[572] CASE YOB1:.. 
+YOB1 M:21 MAN rubik.b[590] CASE YOB1:.. 
+YOB1 M:21 MAN rubik.b[749] corncostv!YOB1:=TABLE x,x,x,...
+YOB1 M:21 MAN rubik.b[990] RESULTIS YOB1
+YOB2 M:22 DEF rubik.b[39] YOB2=5<<2|2
+YOB2 M:22 MAN rubik.b[1142] CASE YOB2:.. 
+YOB2 M:22 MAN rubik.b[572] CASE YOB2:.. 
+YOB2 M:22 MAN rubik.b[595] CASE YOB2:.. 
+YOB2 M:22 MAN rubik.b[750] corncostv!YOB2:=TABLE x,x,x,...
+YOB2 M:22 MAN rubik.b[991] RESULTIS YOB2
+YR0 M:16 DEF rubik.b[68] YR0=8<<1|0
+YR0 M:16 MAN rubik.b[1025] RESULTIS YR0
+YR0 M:16 MAN rubik.b[1176] CASE YR0:.. 
+YR0 M:16 MAN rubik.b[1246] IF cube%iYR=YR0 DO ..
+YR0 M:16 MAN rubik.b[785] edgecostv!YR0:=TABLE x,x,x,...
+YR1 M:17 DEF rubik.b[68] YR1=8<<1|1
+YR1 M:17 MAN rubik.b[1026] RESULTIS YR1
+YR1 M:17 MAN rubik.b[1177] CASE YR1:.. 
+YR1 M:17 MAN rubik.b[786] edgecostv!YR1:=TABLE x,x,x,...
+YRG0 M:28 DEF rubik.b[41] YRG0=7<<2|0
+YRG0 M:28 MAN rubik.b[1146] CASE YRG0:.. 
+YRG0 M:28 MAN rubik.b[1265] IF cube%iYRG=YRG0 DO ..
+YRG0 M:28 MAN rubik.b[577] CASE YRG0:.. 
+YRG0 M:28 MAN rubik.b[591] CASE YRG0:.. 
+YRG0 M:28 MAN rubik.b[756] corncostv!YRG0:=TABLE x,x,x,...
+YRG0 M:28 MAN rubik.b[997] RESULTIS YRG0
+YRG1 M:29 DEF rubik.b[41] YRG1=7<<2|1
+YRG1 M:29 MAN rubik.b[1147] CASE YRG1:.. 
+YRG1 M:29 MAN rubik.b[573] CASE YRG1:.. 
+YRG1 M:29 MAN rubik.b[591] CASE YRG1:.. 
+YRG1 M:29 MAN rubik.b[757] corncostv!YRG1:=TABLE x,x,x,...
+YRG1 M:29 MAN rubik.b[998] RESULTIS YRG1
+YRG2 M:30 DEF rubik.b[41] YRG2=7<<2|2
+YRG2 M:30 MAN rubik.b[1148] CASE YRG2:.. 
+YRG2 M:30 MAN rubik.b[43] corncostvupb=YRG2
+YRG2 M:30 MAN rubik.b[573] CASE YRG2:.. 
+YRG2 M:30 MAN rubik.b[595] CASE YRG2:.. 
+YRG2 M:30 MAN rubik.b[758] corncostv!YRG2:=TABLE x,x,x,...
+YRG2 M:30 MAN rubik.b[999] RESULTIS YRG2
+abort G:28 DEF libhdr.h[54] abort=28
+abort G:28 LG rubik.b[1156] abort(999)
+abort G:28 LG rubik.b[167] abort(999)
+abort G:28 LG rubik.b[200] abort(999)
+abort G:28 LG rubik.b[239] abort(999)
+abort G:28 LG rubik.b[457] abort(2003)
+abort G:28 LG rubik.b[567] abort(999)
+abort G:28 LG rubik.b[584] abort(999)
+appendstream G:66 DEF libhdr.h[92] appendstream=66
+atgoal F:50 FN rubik.b[1187] LET atgoal(cube,goal)=..
+atgoal F:50 LF rubik.b[429] IF atgoal(root,goal) DO ..
+atgoal F:50 LF rubik.b[455] IF atgoal(node,goal) DO ..
+atgoal F:50 LF rubik.b[501] IF node&atgoal(node,goal) DO ..
+binrdch G:39 DEF libhdr.h[65] binrdch=39
+binwrch G:42 DEF libhdr.h[68] binwrch=42
+bitsperbyte M:8 DEF libhdr.h[219] bitsperbyte=8
+bitsperbyte M:8 MAN libhdr.h[220] bitsperword=bitsperbyte*bytesperword
+bitsperword M:32 DEF libhdr.h[220] bitsperword=bitsperbyte*bytesperword
+bitsperword M:32 MAN libhdr.h[222] minint=1<<bitsperword-1
+bootregs M:11 DEF libhdr.h[426] bootregs=11
+bytesperword M:4 DEF libhdr.h[218] bytesperword=1<<B2Wsh
+bytesperword M:4 MAN libhdr.h[220] bitsperword=bitsperbyte*bytesperword
+bytesperword M:4 MAN libhdr.h[221] mcaddrinc=bytesperword
+bytesperword M:4 MAN libhdr.h[474] scb_nameeend=scb_name+scb_maxnamelen/bytesperword
+bytesperword M:4 MAN libhdr.h[582] tcb_upb=tcb_namebase+15/bytesperword+1
+bytesperword M:4 MAN rubik.b[93] s_chain=iYG/bytesperword+1
+cWBO M:1 DEF rubik.b[76] cWBO=
+cWBO M:1 MAN rubik.b[805] c:=c+corncostv!pWBO!cWBO
+cWGR M:3 DEF rubik.b[76] cWGR=
+cWGR M:3 MAN rubik.b[807] c:=c+corncostv!pWGR!cWGR
+cWOG M:2 DEF rubik.b[76] cWOG=
+cWOG M:2 MAN rubik.b[806] c:=c+corncostv!pWOG!cWOG
+cWRB M:0 DEF rubik.b[76] cWRB=0
+cWRB M:0 MAN rubik.b[804] c:=corncostv!pWRB!cWRB
+cYBR M:4 DEF rubik.b[77] cYBR=
+cYBR M:4 MAN rubik.b[808] c:=c+corncostv!pYBR!cYBR
+cYGO M:6 DEF rubik.b[77] cYGO=
+cYGO M:6 MAN rubik.b[810] c:=c+corncostv!pYGO!cYGO
+cYOB M:5 DEF rubik.b[77] cYOB=
+cYOB M:5 MAN rubik.b[809] c:=c+corncostv!pYOB!cYOB
+cYRG M:7 DEF rubik.b[77] cYRG=
+cYRG M:7 MAN rubik.b[811] c:=c+corncostv!pYRG!cYRG
+callco G:19 DEF libhdr.h[45] callco=19
+callseg G:107 DEF libhdr.h[134] callseg=107
+capitalch G:96 DEF libhdr.h[123] capitalch=96
+changeco G:6 DEF libhdr.h[32] changeco=6
+changepri G:155 DEF libhdr.h[188] changepri=155
+cis G:12 DEF libhdr.h[38] cis=12
+clear_words G:115 DEF libhdr.h[142] clear_words=115
+cli_commanddir G:136 DEF libhdr.h[165] cli_commanddir=136
+cli_commandfile G:143 DEF libhdr.h[172] cli_commandfile=143
+cli_commandname G:138 DEF libhdr.h[167] cli_commandname=138
+cli_currentinput G:142 DEF libhdr.h[171] cli_currentinput=142
+cli_currentoutput G:146 DEF libhdr.h[176] cli_currentoutput=146
+cli_data G:135 DEF libhdr.h[164] cli_data=135
+cli_defaultstack G:147 DEF libhdr.h[177] cli_defaultstack=147
+cli_faillevel G:139 DEF libhdr.h[168] cli_faillevel=139
+cli_init G:133 DEF libhdr.h[162] cli_init=133
+cli_initialfaillevel M:10 DEF libhdr.h[526] cli_initialfaillevel=return_hard
+cli_initialstack M:50000 DEF libhdr.h[525] cli_initialstack=50000
+cli_module G:149 DEF libhdr.h[179] cli_module=149
+cli_module_gn M:149 DEF libhdr.h[524] cli_module_gn=149
+cli_preloadlist G:145 DEF libhdr.h[175] cli_preloadlist=145
+cli_prompt G:140 DEF libhdr.h[169] cli_prompt=140
+cli_result2 G:134 DEF libhdr.h[163] cli_result2=134
+cli_returncode G:137 DEF libhdr.h[166] cli_returncode=137
+cli_standardinput G:141 DEF libhdr.h[170] cli_standardinput=141
+cli_standardoutput G:148 DEF libhdr.h[178] cli_standardoutput=148
+cli_status G:144 DEF libhdr.h[174] cli_status=144
+cli_tallyflag G:132 DEF libhdr.h[161] cli_tallyflag=132
+clibit_comcom M:4 DEF libhdr.h[531] clibit_comcom=4
+clibit_endcli M:256 DEF libhdr.h[537] clibit_endcli=256
+clibit_eofdel M:2 DEF libhdr.h[530] clibit_eofdel=2
+clibit_maincli M:8 DEF libhdr.h[532] clibit_maincli=8
+clibit_mbxcli M:64 DEF libhdr.h[535] clibit_mbxcli=64
+clibit_newcli M:16 DEF libhdr.h[533] clibit_newcli=16
+clibit_noprompt M:1 DEF libhdr.h[529] clibit_noprompt=1
+clibit_runcli M:32 DEF libhdr.h[534] clibit_runcli=32
+clibit_tcpcli M:128 DEF libhdr.h[536] clibit_tcpcli=128
+clihook G:4 DEF libhdr.h[30] clihook=4
+cliregs M:21 DEF libhdr.h[427] cliregs=21
+co_c M:5 DEF libhdr.h[264] co_c=
+co_fn M:3 DEF libhdr.h[262] co_fn=
+co_list M:2 DEF libhdr.h[261] co_list=
+co_parent M:1 DEF libhdr.h[260] co_parent=
+co_pptr M:0 DEF libhdr.h[259] co_pptr=0
+co_size M:4 DEF libhdr.h[263] co_size=
+codewrch G:126 DEF libhdr.h[153] codewrch=126
+colist G:8 DEF libhdr.h[34] colist=8
+colour G:250 DEF rubik.b[146] colour=
+colour G:250 LG rubik.b[264] UNLESS cube&colour&listv&corncostv&edgecostv DO ..
+colour G:250 LG rubik.b[277] colour!i:=87
+colour G:250 LG rubik.b[278] colour!i:=82
+colour G:250 LG rubik.b[279] colour!i:=66
+colour G:250 LG rubik.b[280] colour!i:=79
+colour G:250 LG rubik.b[281] colour!i:=71
+colour G:250 LG rubik.b[282] colour!i:=89
+colour G:250 LG rubik.b[305] cols2cube(colour,cube)
+colour G:250 LG rubik.b[900] cube2cols(cube,colour)
+colour G:250 LG rubik.b[903] writef("%c%c%'c%c%c%c ",colour!0,...,...)
+colour G:250 LG rubik.b[907] writef("%c%c%'c%c%c%c ",colour!36,...,...)
+colour G:250 LG rubik.b[911] writef("%c%c%'c%c%c%c ",colour!9,...,...)
+colour G:250 LG rubik.b[915] writef("%c%c%'c%c%c%c ",colour!18,...,...)
+colour G:250 LG rubik.b[919] writef("%c%c%'c%c%c%c ",colour!27,...,...)
+colour G:250 LG rubik.b[923] writef("%c%c%'c%c%c%c*n",colour!45,...,...)
+colour G:250 LG rubik.b[930] writef("     'c %c %c*n",colour!0,...,...)
+colour G:250 LG rubik.b[931] writef("     'c %c %c*n",colour!3,...,...)
+colour G:250 LG rubik.b[932] writef("     'c %c %c*n",colour!6,...,...)
+colour G:250 LG rubik.b[934] writef(" %c %c %c  ",colour!36,...,...)
+colour G:250 LG rubik.b[935] writef(" %c %c %c  ",colour!9,...,...)
+colour G:250 LG rubik.b[936] writef(" %c %c %c  ",colour!18,...,...)
+colour G:250 LG rubik.b[937] writef(" %c %c %c*n",colour!27,...,...)
+colour G:250 LG rubik.b[939] writef(" %c %c %c  ",colour!39,...,...)
+colour G:250 LG rubik.b[940] writef(" %c %c %c  ",colour!12,...,...)
+colour G:250 LG rubik.b[941] writef(" %c %c %c  ",colour!21,...,...)
+colour G:250 LG rubik.b[942] writef(" %c %c %c*n",colour!30,...,...)
+colour G:250 LG rubik.b[944] writef(" %c %c %c  ",colour!42,...,...)
+colour G:250 LG rubik.b[945] writef(" %c %c %c  ",colour!15,...,...)
+colour G:250 LG rubik.b[946] writef(" %c %c %c  ",colour!24,...,...)
+colour G:250 LG rubik.b[947] writef(" %c %c %c*n",colour!33,...,...)
+colour G:250 LG rubik.b[949] writef("     'c %c %c*n",colour!45,...,...)
+colour G:250 LG rubik.b[950] writef("     'c %c %c*n",colour!48,...,...)
+colour G:250 LG rubik.b[951] writef("     'c %c %c*n",colour!51,...,...)
+colour G:250 LG rubik.b[956] @colour!(9*n)
+colour G:250 SG rubik.b[259] colour:=mkvec(6*9-1)
+cols2cube F:46 LF rubik.b[305] cols2cube(colour,cube)
+cols2cube F:46 RT rubik.b[1035] LET cols2cube(cv,cube)BE..
+compact G:258 DEF rubik.b[154] compact=
+compact G:258 LG rubik.b[902] IF compact DO ..
+compact G:258 SG rubik.b[303] compact:=argv!10
+compch G:97 DEF libhdr.h[124] compch=97
+compstring G:98 DEF libhdr.h[125] compstring=98
+consoletask G:171 DEF libhdr.h[201] consoletask=171
+copy_bytes G:116 DEF libhdr.h[143] copy_bytes=116
+copy_words G:114 DEF libhdr.h[141] copy_words=114
+copydir G:79 DEF libhdr.h[105] copydir=79
+copyobj G:75 DEF libhdr.h[101] copyobj=75
+copystring G:99 DEF libhdr.h[126] copystring=99
+corncostv G:240 DEF rubik.b[132] corncostv=
+corncostv G:240 LG rubik.b[264] UNLESS cube&colour&listv&corncostv&edgecostv DO ..
+corncostv G:240 LG rubik.b[728] corncostv!WRB0:=TABLE 0,1,2,...
+corncostv G:240 LG rubik.b[729] corncostv!WRB1:=TABLE x,x,x,...
+corncostv G:240 LG rubik.b[730] corncostv!WRB2:=TABLE x,x,x,...
+corncostv G:240 LG rubik.b[732] corncostv!WBO0:=TABLE x,x,x,...
+corncostv G:240 LG rubik.b[733] corncostv!WBO1:=TABLE x,x,x,...
+corncostv G:240 LG rubik.b[734] corncostv!WBO2:=TABLE x,x,x,...
+corncostv G:240 LG rubik.b[736] corncostv!WOG0:=TABLE x,x,x,...
+corncostv G:240 LG rubik.b[737] corncostv!WOG1:=TABLE x,x,x,...
+corncostv G:240 LG rubik.b[738] corncostv!WOG2:=TABLE x,x,x,...
+corncostv G:240 LG rubik.b[740] corncostv!WGR0:=TABLE x,x,x,...
+corncostv G:240 LG rubik.b[741] corncostv!WGR1:=TABLE x,x,x,...
+corncostv G:240 LG rubik.b[742] corncostv!WGR2:=TABLE x,x,x,...
+corncostv G:240 LG rubik.b[744] corncostv!YBR0:=TABLE x,x,x,...
+corncostv G:240 LG rubik.b[745] corncostv!YBR1:=TABLE x,x,x,...
+corncostv G:240 LG rubik.b[746] corncostv!YBR2:=TABLE x,x,x,...
+corncostv G:240 LG rubik.b[748] corncostv!YOB0:=TABLE x,x,x,...
+corncostv G:240 LG rubik.b[749] corncostv!YOB1:=TABLE x,x,x,...
+corncostv G:240 LG rubik.b[750] corncostv!YOB2:=TABLE x,x,x,...
+corncostv G:240 LG rubik.b[752] corncostv!YGO0:=TABLE x,x,x,...
+corncostv G:240 LG rubik.b[753] corncostv!YGO1:=TABLE x,x,x,...
+corncostv G:240 LG rubik.b[754] corncostv!YGO2:=TABLE x,x,x,...
+corncostv G:240 LG rubik.b[756] corncostv!YRG0:=TABLE x,x,x,...
+corncostv G:240 LG rubik.b[757] corncostv!YRG1:=TABLE x,x,x,...
+corncostv G:240 LG rubik.b[758] corncostv!YRG2:=TABLE x,x,x,...
+corncostv G:240 LG rubik.b[804] c:=corncostv!pWRB!cWRB
+corncostv G:240 LG rubik.b[805] c:=c+corncostv!pWBO!cWBO
+corncostv G:240 LG rubik.b[806] c:=c+corncostv!pWOG!cWOG
+corncostv G:240 LG rubik.b[807] c:=c+corncostv!pWGR!cWGR
+corncostv G:240 LG rubik.b[808] c:=c+corncostv!pYBR!cYBR
+corncostv G:240 LG rubik.b[809] c:=c+corncostv!pYOB!cYOB
+corncostv G:240 LG rubik.b[810] c:=c+corncostv!pYGO!cYGO
+corncostv G:240 LG rubik.b[811] c:=c+corncostv!pYRG!cYRG
+corncostv G:240 SG rubik.b[261] corncostv:=mkvec(corncostvupb)
+corncostvupb M:30 DEF rubik.b[43] corncostvupb=YRG2
+corncostvupb M:30 MAN rubik.b[261] corncostv:=mkvec(corncostvupb)
+corner F:44 FN rubik.b[964] LET corner(a,b,c)=..
+corner F:44 LF rubik.b[1048] cube%iWRB:=corner(cv!8,cv!11,cv!18)
+corner F:44 LF rubik.b[1049] cube%iWBO:=corner(cv!2,cv!20,cv!27)
+corner F:44 LF rubik.b[1050] cube%iWOG:=corner(cv!0,cv!29,cv!36)
+corner F:44 LF rubik.b[1051] cube%iWGR:=corner(cv!6,cv!38,cv!9)
+corner F:44 LF rubik.b[1052] cube%iYBR:=corner(cv!47,cv!24,cv!17)
+corner F:44 LF rubik.b[1053] cube%iYOB:=corner(cv!53,cv!33,cv!26)
+corner F:44 LF rubik.b[1054] cube%iYGO:=corner(cv!51,cv!42,cv!35)
+corner F:44 LF rubik.b[1055] cube%iYRG:=corner(cv!45,cv!15,cv!44)
+cos G:13 DEF libhdr.h[39] cos=13
+costfn G:255 DEF rubik.b[151] costfn=
+costfn G:255 FN rubik.b[798] LET costfn()=..
+cowait G:20 DEF libhdr.h[46] cowait=20
+createco G:17 DEF libhdr.h[43] createco=17
+createdev G:172 DEF libhdr.h[202] createdev=172
+createdir G:82 DEF libhdr.h[108] createdir=82
+createtask G:153 DEF libhdr.h[186] createtask=153
+cube G:249 DEF rubik.b[145] cube=
+cube G:249 LG rubik.b[264] UNLESS cube&colour&listv&corncostv&edgecostv DO ..
+cube G:249 LG rubik.b[305] cols2cube(colour,cube)
+cube G:249 LG rubik.b[306] cube2pieces(cube,@pWRB)
+cube G:249 LG rubik.b[355] pieces2cube(@pWRB,cube)
+cube G:249 LG rubik.b[359] prnode(cube)
+cube G:249 LG rubik.b[382] root:=newnode(cube,0,0,0)
+cube G:249 LG rubik.b[498] pieces2cube(@qWRB,cube)
+cube G:249 LG rubik.b[499] node:=newnode(cube,prev,...,move)
+cube G:249 SG rubik.b[258] cube:=mkvec(nodeupb)
+cube2cols F:47 LF rubik.b[900] cube2cols(cube,colour)
+cube2cols F:47 RT rubik.b[1073] LET cube2cols(cube,cv)BE..
+cube2pieces F:18 LF rubik.b[306] cube2pieces(cube,@pWRB)
+cube2pieces F:18 LF rubik.b[470] cube2pieces(node,@pWRB)
+cube2pieces F:18 RT rubik.b[538] LET cube2pieces(cube,pieces)BE..
+currco G:7 DEF libhdr.h[33] currco=7
+current_language G:190 DEF libhdr.h[210] current_language=190
+currentdir G:14 DEF libhdr.h[40] currentdir=14
+dat_to_strings G:110 DEF libhdr.h[137] dat_to_strings=110
+datstamp G:109 DEF libhdr.h[136] datstamp=109
+datstring G:108 DEF libhdr.h[135] datstring=108
+deadcode M:#xDEADC0DE DEF libhdr.h[242] deadcode=#xDEADC0DE
+delay G:128 DEF libhdr.h[155] delay=128
+delayuntil G:129 DEF libhdr.h[156] delayuntil=129
+deleteco G:18 DEF libhdr.h[44] deleteco=18
+deletedev G:173 DEF libhdr.h[203] deletedev=173
+deletefile G:76 DEF libhdr.h[102] deletefile=76
+deleteself G:125 DEF libhdr.h[152] deleteself=125
+deletetask G:154 DEF libhdr.h[187] deletetask=154
+deplete G:43 DEF libhdr.h[69] deplete=43
+dist G:253 DEF rubik.b[149] dist=
+dist G:253 LG rubik.b[433] writef("explo'ed = %n*n",goal,dist,...)
+dist G:253 LG rubik.b[439] listv!dist:=root
+dist G:253 LG rubik.b[441] IF explorelist(dist,goal) DO ..
+dist G:253 SG rubik.b[379] dist:=0
+dist G:253 SG rubik.b[431] dist:=s_dist!node
+eBR M:4 DEF rubik.b[81] eBR=
+eBR M:4 MAN rubik.b[818] c:=c+edgecostv!pBR!eBR
+eGO M:6 DEF rubik.b[81] eGO=
+eGO M:6 MAN rubik.b[820] c:=c+edgecostv!pGO!eGO
+eOB M:5 DEF rubik.b[81] eOB=
+eOB M:5 MAN rubik.b[819] c:=c+edgecostv!pOB!eOB
+eRG M:7 DEF rubik.b[81] eRG=
+eRG M:7 MAN rubik.b[821] c:=c+edgecostv!pRG!eRG
+eWB M:1 DEF rubik.b[80] eWB=
+eWB M:1 MAN rubik.b[814] c:=c+edgecostv!pWB!eWB
+eWG M:3 DEF rubik.b[80] eWG=
+eWG M:3 MAN rubik.b[816] c:=c+edgecostv!pWG!eWG
+eWO M:2 DEF rubik.b[80] eWO=
+eWO M:2 MAN rubik.b[815] c:=c+edgecostv!pWO!eWO
+eWR M:0 DEF rubik.b[80] eWR=0
+eWR M:0 MAN rubik.b[813] c:=c+edgecostv!pWR!eWR
+eYB M:9 DEF rubik.b[82] eYB=
+eYB M:9 MAN rubik.b[824] c:=c+edgecostv!pYB!eYB
+eYG M:11 DEF rubik.b[82] eYG=
+eYG M:11 MAN rubik.b[826] c:=c+edgecostv!pYG!eYG
+eYO M:10 DEF rubik.b[82] eYO=
+eYO M:10 MAN rubik.b[825] c:=c+edgecostv!pYO!eYO
+eYR M:8 DEF rubik.b[82] eYR=
+eYR M:8 MAN rubik.b[823] c:=c+edgecostv!pYR!eYR
+edge F:45 FN rubik.b[1002] LET edge(a,b)=..
+edge F:45 LF rubik.b[1057] cube%iWR:=edge(cv!7,cv!10)
+edge F:45 LF rubik.b[1058] cube%iWB:=edge(cv!5,cv!19)
+edge F:45 LF rubik.b[1059] cube%iWO:=edge(cv!1,cv!28)
+edge F:45 LF rubik.b[1060] cube%iWG:=edge(cv!3,cv!37)
+edge F:45 LF rubik.b[1062] cube%iBR:=edge(cv!21,cv!14)
+edge F:45 LF rubik.b[1063] cube%iOB:=edge(cv!30,cv!23)
+edge F:45 LF rubik.b[1064] cube%iGO:=edge(cv!39,cv!32)
+edge F:45 LF rubik.b[1065] cube%iRG:=edge(cv!12,cv!41)
+edge F:45 LF rubik.b[1067] cube%iYR:=edge(cv!46,cv!16)
+edge F:45 LF rubik.b[1068] cube%iYB:=edge(cv!50,cv!25)
+edge F:45 LF rubik.b[1069] cube%iYO:=edge(cv!52,cv!34)
+edge F:45 LF rubik.b[1070] cube%iYG:=edge(cv!48,cv!43)
+edgecostv G:241 DEF rubik.b[136] edgecostv=
+edgecostv G:241 LG rubik.b[264] UNLESS cube&colour&listv&corncostv&edgecostv DO ..
+edgecostv G:241 LG rubik.b[761] edgecostv!WR0:=TABLE x,x,x,...
+edgecostv G:241 LG rubik.b[762] edgecostv!WR1:=TABLE x,x,x,...
+edgecostv G:241 LG rubik.b[764] edgecostv!WB0:=TABLE x,x,x,...
+edgecostv G:241 LG rubik.b[765] edgecostv!WB1:=TABLE x,x,x,...
+edgecostv G:241 LG rubik.b[767] edgecostv!WO0:=TABLE x,x,x,...
+edgecostv G:241 LG rubik.b[768] edgecostv!WO1:=TABLE x,x,x,...
+edgecostv G:241 LG rubik.b[770] edgecostv!WG0:=TABLE x,x,x,...
+edgecostv G:241 LG rubik.b[771] edgecostv!WG1:=TABLE x,x,x,...
+edgecostv G:241 LG rubik.b[773] edgecostv!BR0:=TABLE x,x,x,...
+edgecostv G:241 LG rubik.b[774] edgecostv!BR1:=TABLE x,x,x,...
+edgecostv G:241 LG rubik.b[776] edgecostv!OB0:=TABLE x,x,x,...
+edgecostv G:241 LG rubik.b[777] edgecostv!OB1:=TABLE x,x,x,...
+edgecostv G:241 LG rubik.b[779] edgecostv!GO0:=TABLE x,x,x,...
+edgecostv G:241 LG rubik.b[780] edgecostv!GO1:=TABLE x,x,x,...
+edgecostv G:241 LG rubik.b[782] edgecostv!RG0:=TABLE x,x,x,...
+edgecostv G:241 LG rubik.b[783] edgecostv!RG1:=TABLE x,x,x,...
+edgecostv G:241 LG rubik.b[785] edgecostv!YR0:=TABLE x,x,x,...
+edgecostv G:241 LG rubik.b[786] edgecostv!YR1:=TABLE x,x,x,...
+edgecostv G:241 LG rubik.b[788] edgecostv!YB0:=TABLE x,x,x,...
+edgecostv G:241 LG rubik.b[789] edgecostv!YB1:=TABLE x,x,x,...
+edgecostv G:241 LG rubik.b[791] edgecostv!YO0:=TABLE x,x,x,...
+edgecostv G:241 LG rubik.b[792] edgecostv!YO1:=TABLE x,x,x,...
+edgecostv G:241 LG rubik.b[794] edgecostv!YG0:=TABLE x,x,x,...
+edgecostv G:241 LG rubik.b[795] edgecostv!YG1:=TABLE x,x,x,...
+edgecostv G:241 LG rubik.b[813] c:=c+edgecostv!pWR!eWR
+edgecostv G:241 LG rubik.b[814] c:=c+edgecostv!pWB!eWB
+edgecostv G:241 LG rubik.b[815] c:=c+edgecostv!pWO!eWO
+edgecostv G:241 LG rubik.b[816] c:=c+edgecostv!pWG!eWG
+edgecostv G:241 LG rubik.b[818] c:=c+edgecostv!pBR!eBR
+edgecostv G:241 LG rubik.b[819] c:=c+edgecostv!pOB!eOB
+edgecostv G:241 LG rubik.b[820] c:=c+edgecostv!pGO!eGO
+edgecostv G:241 LG rubik.b[821] c:=c+edgecostv!pRG!eRG
+edgecostv G:241 LG rubik.b[823] c:=c+edgecostv!pYR!eYR
+edgecostv G:241 LG rubik.b[824] c:=c+edgecostv!pYB!eYB
+edgecostv G:241 LG rubik.b[825] c:=c+edgecostv!pYO!eYO
+edgecostv G:241 LG rubik.b[826] c:=c+edgecostv!pYG!eYG
+edgecostv G:241 SG rubik.b[262] edgecostv:=mkvec(edgecostvupb)
+edgecostvupb M:23 DEF rubik.b[73] edgecostvupb=YG1
+edgecostvupb M:23 MAN rubik.b[262] edgecostv:=mkvec(edgecostvupb)
+endread G:60 DEF libhdr.h[86] endread=60
+endstream G:62 DEF libhdr.h[88] endstream=62
+endstreamch M:-1 DEF libhdr.h[225] endstreamch=-1
+endtask G:162 DEF libhdr.h[195] endtask=162
+endwrite G:61 DEF libhdr.h[87] endwrite=61
+entryword M:57311 DEF libhdr.h[244] entryword=57311
+errors G:251 DEF rubik.b[147] errors=
+errors G:251 LG rubik.b[352] IF errors DO ..
+errors G:251 SG rubik.b[1004] errors:=TRUE
+errors G:251 SG rubik.b[269] errors:=FALSE
+errors G:251 SG rubik.b[312] errors:=TRUE
+errors G:251 SG rubik.b[959] errors:=TRUE
+errors G:251 SG rubik.b[966] errors:=TRUE
+explorelist F:15 FN rubik.b[445] LET explorelist(dist,goal)=..
+explorelist F:15 LF rubik.b[441] IF explorelist(dist,goal) DO ..
+exploreroot F:14 FN rubik.b[422] LET exploreroot(root,goal)=..
+exploreroot F:14 LF rubik.b[394] root:=exploreroot(root,5)
+exploreroot F:14 LF rubik.b[398] root:=exploreroot(root,9)
+exploreroot F:14 LF rubik.b[399] root:=exploreroot(root,10)
+exploreroot F:14 LF rubik.b[400] root:=exploreroot(root,11)
+exploreroot F:14 LF rubik.b[401] root:=exploreroot(root,12)
+exploreroot F:14 LF rubik.b[402] root:=exploreroot(root,13)
+exploreroot F:14 LF rubik.b[403] root:=exploreroot(root,14)
+exploreroot F:14 LF rubik.b[404] root:=exploreroot(root,15)
+fault G:174 DEF libhdr.h[204] fault=174
+findappend G:130 DEF libhdr.h[157] findappend=130
+findarg G:104 DEF libhdr.h[131] findarg=104
+findinoutput G:50 DEF libhdr.h[76] findinoutput=50
+findinput G:48 DEF libhdr.h[74] findinput=48
+findoutput G:49 DEF libhdr.h[75] findoutput=49
+findstream G:52 DEF libhdr.h[78] findstream=52
+findupdate G:51 DEF libhdr.h[77] findupdate=51
+fl_F2N M:42 DEF libhdr.h[512] fl_F2N=
+fl_N2F M:41 DEF libhdr.h[511] fl_N2F=
+fl_abs M:5 DEF libhdr.h[485] fl_abs=
+fl_acos M:20 DEF libhdr.h[489] fl_acos=20
+fl_add M:8 DEF libhdr.h[486] fl_add=
+fl_asin M:21 DEF libhdr.h[490] fl_asin=
+fl_atan M:22 DEF libhdr.h[491] fl_atan=
+fl_atan2 M:23 DEF libhdr.h[492] fl_atan2=
+fl_avail M:0 DEF libhdr.h[483] fl_avail=0
+fl_ceil M:38 DEF libhdr.h[507] fl_ceil=
+fl_cos M:24 DEF libhdr.h[493] fl_cos=
+fl_cosh M:27 DEF libhdr.h[496] fl_cosh=
+fl_div M:7 DEF libhdr.h[486] fl_div=
+fl_eq M:12 DEF libhdr.h[487] fl_eq=
+fl_exp M:30 DEF libhdr.h[499] fl_exp=
+fl_fix M:4 DEF libhdr.h[485] fl_fix=
+fl_float M:3 DEF libhdr.h[485] fl_float=
+fl_floor M:39 DEF libhdr.h[508] fl_floor=
+fl_fmod M:40 DEF libhdr.h[509] fl_fmod=
+fl_frexp M:31 DEF libhdr.h[500] fl_frexp=
+fl_ge M:17 DEF libhdr.h[487] fl_ge=
+fl_gr M:15 DEF libhdr.h[487] fl_gr=
+fl_ldexp M:32 DEF libhdr.h[501] fl_ldexp=
+fl_le M:16 DEF libhdr.h[487] fl_le=
+fl_log M:33 DEF libhdr.h[502] fl_log=
+fl_log10 M:34 DEF libhdr.h[503] fl_log10=
+fl_ls M:14 DEF libhdr.h[487] fl_ls=
+fl_mk M:1 DEF libhdr.h[484] fl_mk=
+fl_modf M:35 DEF libhdr.h[504] fl_modf=
+fl_mul M:6 DEF libhdr.h[486] fl_mul=
+fl_ne M:13 DEF libhdr.h[487] fl_ne=
+fl_neg M:11 DEF libhdr.h[486] fl_neg=
+fl_pos M:10 DEF libhdr.h[486] fl_pos=
+fl_pow M:36 DEF libhdr.h[505] fl_pow=
+fl_radius2 M:43 DEF libhdr.h[513] fl_radius2=
+fl_radius3 M:44 DEF libhdr.h[514] fl_radius3=
+fl_sin M:25 DEF libhdr.h[494] fl_sin=
+fl_sinh M:28 DEF libhdr.h[497] fl_sinh=
+fl_sqrt M:37 DEF libhdr.h[506] fl_sqrt=
+fl_sub M:9 DEF libhdr.h[486] fl_sub=
+fl_tan M:26 DEF libhdr.h[495] fl_tan=
+fl_tanh M:29 DEF libhdr.h[498] fl_tanh=
+fl_unmk M:2 DEF libhdr.h[484] fl_unmk=
+flag_a M:1 DEF libhdr.h[637] flag_a=1<<0
+flag_b M:2 DEF libhdr.h[638] flag_b=1<<1
+flag_c M:4 DEF libhdr.h[639] flag_c=1<<2
+flag_d M:8 DEF libhdr.h[640] flag_d=1<<3
+flag_e M:16 DEF libhdr.h[641] flag_e=1<<4
+flip F:21 FN rubik.b[599] LET flip(piece)=..
+flip F:21 LF rubik.b[641] qWR,qBR,qYR,qRG:=flip(pRG),pWR,pBR,flip(pYR)
+flip F:21 LF rubik.b[650] qWR,qBR,qYR,qRG:=pBR,pYR,flip(pRG),flip(pWR)
+flip F:21 LF rubik.b[659] qWO,qGO,qYO,qOB:=flip(pOB),pWO,pGO,flip(pYO)
+flip F:21 LF rubik.b[668] qWO,qGO,qYO,qOB:=pGO,pYO,flip(pOB),flip(pWO)
+flip F:21 LF rubik.b[677] qWB,qOB,qYB,qBR:=flip(pBR),pWB,pOB,flip(pYB)
+flip F:21 LF rubik.b[686] qWB,qOB,qYB,qBR:=pOB,pYB,flip(pBR),flip(pWB)
+flip F:21 LF rubik.b[695] qWG,qRG,qYG,qGO:=flip(pGO),pWG,pRG,flip(pYG)
+flip F:21 LF rubik.b[704] qWG,qRG,qYG,qGO:=pRG,pYG,flip(pGO),flip(pWG)
+freeobj G:78 DEF libhdr.h[104] freeobj=78
+freevec G:27 DEF libhdr.h[53] freevec=27
+freevec G:27 LG rubik.b[418] freevec(spacev)
+g_colist M:8 DEF libhdr.h[250] g_colist=8
+g_currco M:7 DEF libhdr.h[249] g_currco=7
+g_extbase M:950 DEF libhdr.h[655] g_extbase=950
+g_glbase M:450 DEF libhdr.h[654] g_glbase=450
+g_globsize M:0 DEF libhdr.h[247] g_globsize=0
+g_grfbase M:400 DEF libhdr.h[651] g_grfbase=400
+g_keyboard M:20 DEF libhdr.h[254] g_keyboard=20
+g_memsize M:14 DEF libhdr.h[253] g_memsize=14
+g_rootnode M:9 DEF libhdr.h[251] g_rootnode=9
+g_screen M:21 DEF libhdr.h[255] g_screen=21
+g_sdlbase M:450 DEF libhdr.h[653] g_sdlbase=450
+g_sndbase M:400 DEF libhdr.h[652] g_sndbase=400
+g_sys M:3 DEF libhdr.h[248] g_sys=3
+get_index_record G:73 DEF libhdr.h[99] get_index_record=73
+get_record G:71 DEF libhdr.h[97] get_record=71
+get_text G:93 DEF libhdr.h[120] get_text=93
+get_textblib G:93 DEF libhdr.h[119] get_textblib=93
+getlogname G:118 DEF libhdr.h[145] getlogname=118
+getremipaddr G:54 DEF libhdr.h[80] getremipaddr=54
+getvec G:25 DEF libhdr.h[51] getvec=25
+getvec G:25 LG rubik.b[249] spacev:=getvec(spacevupb)
+getword G:32 DEF libhdr.h[58] getword=32
+globin G:24 DEF libhdr.h[50] globin=24
+globsize G:0 DEF libhdr.h[26] globsize=0
+globword M:#x8F8F0000 DEF libhdr.h[240] globword=#x8F8F0000
+hashfn F:1 FN rubik.b[158] LET hashfn(node)=..
+hashfn F:1 LF rubik.b[179] hashfn(cube)
+hashtab G:247 DEF rubik.b[143] hashtab=
+hashtab G:247 LG rubik.b[180] hashtab!hashval
+hashtab G:247 LG rubik.b[219] s_chain!node:=hashtab!hashval
+hashtab G:247 LG rubik.b[220] hashtab!hashval:=node
+hashtab G:247 LG rubik.b[366] hashtab!i:=0
+hashtab G:247 SG rubik.b[365] hashtab:=mkvec(hashtabupb)
+hashtabsize M:17389 DEF rubik.b[101] hashtabsize=17389
+hashtabsize M:17389 MAN rubik.b[102] hashtabupb=hashtabsize-1
+hashtabsize M:17389 MAN rubik.b[161] w MOD hashtabsize
+hashtabupb M:17388 DEF rubik.b[102] hashtabupb=hashtabsize-1
+hashtabupb M:17388 MAN rubik.b[162] UNLESS 0<=h&h<=hashtabupb DO ..
+hashtabupb M:17388 MAN rubik.b[365] hashtab:=mkvec(hashtabupb)
+hashtabupb M:17388 MAN rubik.b[366] FOR i=0 TO hashtabupb DO..
+hold G:158 DEF libhdr.h[191] hold=158
+iBR M:12 DEF rubik.b[90] iBR=
+iBR M:12 MAN rubik.b[1062] cube%iBR:=edge(cv!21,cv!14)
+iBR M:12 MAN rubik.b[1107] setedgecols(cv,cube%iBR,21,14)
+iBR M:12 MAN rubik.b[1231] IF cube%iBR=BR0 DO ..
+iBR M:12 MAN rubik.b[527] cube%iBR:=pieces!iBR
+iBR M:12 MAN rubik.b[553] pieces!iBR:=cube%iBR
+iGO M:14 DEF rubik.b[90] iGO=
+iGO M:14 MAN rubik.b[1064] cube%iGO:=edge(cv!39,cv!32)
+iGO M:14 MAN rubik.b[1109] setedgecols(cv,cube%iGO,39,32)
+iGO M:14 MAN rubik.b[1233] IF cube%iGO=GO0 DO ..
+iGO M:14 MAN rubik.b[529] cube%iGO:=pieces!iGO
+iGO M:14 MAN rubik.b[555] pieces!iGO:=cube%iGO
+iOB M:13 DEF rubik.b[90] iOB=
+iOB M:13 MAN rubik.b[1063] cube%iOB:=edge(cv!30,cv!23)
+iOB M:13 MAN rubik.b[1108] setedgecols(cv,cube%iOB,30,23)
+iOB M:13 MAN rubik.b[1232] IF cube%iOB=OB0 DO ..
+iOB M:13 MAN rubik.b[528] cube%iOB:=pieces!iOB
+iOB M:13 MAN rubik.b[554] pieces!iOB:=cube%iOB
+iRG M:15 DEF rubik.b[90] iRG=
+iRG M:15 MAN rubik.b[1065] cube%iRG:=edge(cv!12,cv!41)
+iRG M:15 MAN rubik.b[1110] setedgecols(cv,cube%iRG,12,41)
+iRG M:15 MAN rubik.b[1234] IF cube%iRG=RG0 DO ..
+iRG M:15 MAN rubik.b[530] cube%iRG:=pieces!iRG
+iRG M:15 MAN rubik.b[556] pieces!iRG:=cube%iRG
+iWB M:9 DEF rubik.b[89] iWB=
+iWB M:9 MAN rubik.b[1058] cube%iWB:=edge(cv!5,cv!19)
+iWB M:9 MAN rubik.b[1103] setedgecols(cv,cube%iWB,5,19)
+iWB M:9 MAN rubik.b[1199] IF cube%iWB=WB0 DO ..
+iWB M:9 MAN rubik.b[523] cube%iWB:=pieces!iWB
+iWB M:9 MAN rubik.b[549] pieces!iWB:=cube%iWB
+iWBO M:1 DEF rubik.b[85] iWBO=
+iWBO M:1 MAN rubik.b[1049] cube%iWBO:=corner(cv!2,cv!20,cv!27)
+iWBO M:1 MAN rubik.b[1094] setcornercols(cv,cube%iWBO,2,...)
+iWBO M:1 MAN rubik.b[1215] IF cube%iWBO=WBO0 DO ..
+iWBO M:1 MAN rubik.b[514] cube%iWBO:=pieces!iWBO
+iWBO M:1 MAN rubik.b[540] pieces!iWBO:=cube%iWBO
+iWG M:11 DEF rubik.b[89] iWG=
+iWG M:11 MAN rubik.b[1060] cube%iWG:=edge(cv!3,cv!37)
+iWG M:11 MAN rubik.b[1105] setedgecols(cv,cube%iWG,3,37)
+iWG M:11 MAN rubik.b[1201] IF cube%iWG=WG0 DO ..
+iWG M:11 MAN rubik.b[525] cube%iWG:=pieces!iWG
+iWG M:11 MAN rubik.b[551] pieces!iWG:=cube%iWG
+iWGR M:3 DEF rubik.b[85] iWGR=
+iWGR M:3 MAN rubik.b[1051] cube%iWGR:=corner(cv!6,cv!38,cv!9)
+iWGR M:3 MAN rubik.b[1096] setcornercols(cv,cube%iWGR,6,...)
+iWGR M:3 MAN rubik.b[1217] IF cube%iWGR=WGR0 DO ..
+iWGR M:3 MAN rubik.b[516] cube%iWGR:=pieces!iWGR
+iWGR M:3 MAN rubik.b[542] pieces!iWGR:=cube%iWGR
+iWO M:10 DEF rubik.b[89] iWO=
+iWO M:10 MAN rubik.b[1059] cube%iWO:=edge(cv!1,cv!28)
+iWO M:10 MAN rubik.b[1104] setedgecols(cv,cube%iWO,1,28)
+iWO M:10 MAN rubik.b[1200] IF cube%iWO=WO0 DO ..
+iWO M:10 MAN rubik.b[524] cube%iWO:=pieces!iWO
+iWO M:10 MAN rubik.b[550] pieces!iWO:=cube%iWO
+iWOG M:2 DEF rubik.b[85] iWOG=
+iWOG M:2 MAN rubik.b[1050] cube%iWOG:=corner(cv!0,cv!29,cv!36)
+iWOG M:2 MAN rubik.b[1095] setcornercols(cv,cube%iWOG,0,...)
+iWOG M:2 MAN rubik.b[1216] IF cube%iWOG=WOG0 DO ..
+iWOG M:2 MAN rubik.b[515] cube%iWOG:=pieces!iWOG
+iWOG M:2 MAN rubik.b[541] pieces!iWOG:=cube%iWOG
+iWR M:8 DEF rubik.b[89] iWR=
+iWR M:8 MAN rubik.b[1057] cube%iWR:=edge(cv!7,cv!10)
+iWR M:8 MAN rubik.b[1102] setedgecols(cv,cube%iWR,7,10)
+iWR M:8 MAN rubik.b[1198] IF cube%iWR=WR0 DO ..
+iWR M:8 MAN rubik.b[522] cube%iWR:=pieces!iWR
+iWR M:8 MAN rubik.b[548] pieces!iWR:=cube%iWR
+iWRB M:0 DEF rubik.b[85] iWRB=0
+iWRB M:0 MAN rubik.b[1048] cube%iWRB:=corner(cv!8,cv!11,cv!18)
+iWRB M:0 MAN rubik.b[1093] setcornercols(cv,cube%iWRB,8,...)
+iWRB M:0 MAN rubik.b[1214] IF cube%iWRB=WRB0 DO ..
+iWRB M:0 MAN rubik.b[513] cube%iWRB:=pieces!iWRB
+iWRB M:0 MAN rubik.b[539] pieces!iWRB:=cube%iWRB
+iYB M:17 DEF rubik.b[91] iYB=
+iYB M:17 MAN rubik.b[1068] cube%iYB:=edge(cv!50,cv!25)
+iYB M:17 MAN rubik.b[1113] setedgecols(cv,cube%iYB,50,25)
+iYB M:17 MAN rubik.b[1247] IF cube%iYB=YB0 DO ..
+iYB M:17 MAN rubik.b[533] cube%iYB:=pieces!iYB
+iYB M:17 MAN rubik.b[559] pieces!iYB:=cube%iYB
+iYBR M:4 DEF rubik.b[86] iYBR=
+iYBR M:4 MAN rubik.b[1052] cube%iYBR:=corner(cv!47,cv!24,cv!17)
+iYBR M:4 MAN rubik.b[1097] setcornercols(cv,cube%iYBR,47,...)
+iYBR M:4 MAN rubik.b[1262] IF cube%iYBR=YBR0 DO ..
+iYBR M:4 MAN rubik.b[517] cube%iYBR:=pieces!iYBR
+iYBR M:4 MAN rubik.b[543] pieces!iYBR:=cube%iYBR
+iYG M:19 DEF rubik.b[91] iYG=
+iYG M:19 MAN rubik.b[1070] cube%iYG:=edge(cv!48,cv!43)
+iYG M:19 MAN rubik.b[1115] setedgecols(cv,cube%iYG,48,43)
+iYG M:19 MAN rubik.b[1249] IF cube%iYG=YG0 DO ..
+iYG M:19 MAN rubik.b[535] cube%iYG:=pieces!iYG
+iYG M:19 MAN rubik.b[561] pieces!iYG:=cube%iYG
+iYG M:19 MAN rubik.b[93] s_chain=iYG/bytesperword+1
+iYGO M:6 DEF rubik.b[86] iYGO=
+iYGO M:6 MAN rubik.b[1054] cube%iYGO:=corner(cv!51,cv!42,cv!35)
+iYGO M:6 MAN rubik.b[1099] setcornercols(cv,cube%iYGO,51,...)
+iYGO M:6 MAN rubik.b[1264] IF cube%iYGO=YGO0 DO ..
+iYGO M:6 MAN rubik.b[519] cube%iYGO:=pieces!iYGO
+iYGO M:6 MAN rubik.b[545] pieces!iYGO:=cube%iYGO
+iYO M:18 DEF rubik.b[91] iYO=
+iYO M:18 MAN rubik.b[1069] cube%iYO:=edge(cv!52,cv!34)
+iYO M:18 MAN rubik.b[1114] setedgecols(cv,cube%iYO,52,34)
+iYO M:18 MAN rubik.b[1248] IF cube%iYO=YO0 DO ..
+iYO M:18 MAN rubik.b[534] cube%iYO:=pieces!iYO
+iYO M:18 MAN rubik.b[560] pieces!iYO:=cube%iYO
+iYOB M:5 DEF rubik.b[86] iYOB=
+iYOB M:5 MAN rubik.b[1053] cube%iYOB:=corner(cv!53,cv!33,cv!26)
+iYOB M:5 MAN rubik.b[1098] setcornercols(cv,cube%iYOB,53,...)
+iYOB M:5 MAN rubik.b[1263] IF cube%iYOB=YOB0 DO ..
+iYOB M:5 MAN rubik.b[518] cube%iYOB:=pieces!iYOB
+iYOB M:5 MAN rubik.b[544] pieces!iYOB:=cube%iYOB
+iYR M:16 DEF rubik.b[91] iYR=
+iYR M:16 MAN rubik.b[1067] cube%iYR:=edge(cv!46,cv!16)
+iYR M:16 MAN rubik.b[1112] setedgecols(cv,cube%iYR,46,16)
+iYR M:16 MAN rubik.b[1246] IF cube%iYR=YR0 DO ..
+iYR M:16 MAN rubik.b[532] cube%iYR:=pieces!iYR
+iYR M:16 MAN rubik.b[558] pieces!iYR:=cube%iYR
+iYRG M:7 DEF rubik.b[86] iYRG=
+iYRG M:7 MAN rubik.b[1055] cube%iYRG:=corner(cv!45,cv!15,cv!44)
+iYRG M:7 MAN rubik.b[1100] setcornercols(cv,cube%iYRG,45,...)
+iYRG M:7 MAN rubik.b[1265] IF cube%iYRG=YRG0 DO ..
+iYRG M:7 MAN rubik.b[520] cube%iYRG:=pieces!iYRG
+iYRG M:7 MAN rubik.b[546] pieces!iYRG:=cube%iYRG
+id_appendscb M:132 DEF libhdr.h[435] id_appendscb=132
+id_inoutscb M:131 DEF libhdr.h[434] id_inoutscb=131
+id_inscb M:129 DEF libhdr.h[432] id_inscb=129
+id_outscb M:130 DEF libhdr.h[433] id_outscb=130
+initco G:22 DEF libhdr.h[48] initco=22
+initcostfn G:254 DEF rubik.b[150] initcostfn=
+initcostfn G:254 LG rubik.b[363] initcostfn()
+initcostfn G:254 RT rubik.b[725] LET initcostfn()BE..
+initio G:46 DEF libhdr.h[72] initio=46
+input G:58 DEF libhdr.h[84] input=58
+instrcount G:121 DEF libhdr.h[148] instrcount=121
+intflag G:119 DEF libhdr.h[146] intflag=119
+isrregs M:41 DEF libhdr.h[430] isrregs=41
+klibregs M:21 DEF libhdr.h[428] klibregs=21
+level G:15 DEF libhdr.h[41] level=15
+listv G:248 DEF rubik.b[144] listv=
+listv G:248 LG rubik.b[215] s_link!node:=listv!dist
+listv G:248 LG rubik.b[216] listv!dist:=node
+listv G:248 LG rubik.b[264] UNLESS cube&colour&listv&corncostv&edgecostv DO ..
+listv G:248 LG rubik.b[370] listv!i:=0
+listv G:248 LG rubik.b[380] listv!0:=0
+listv G:248 LG rubik.b[439] listv!dist:=root
+listv G:248 LG rubik.b[449] listv!dist
+listv G:248 LG rubik.b[451] listv!dist:=0
+listv G:248 LG rubik.b[832] listv!n
+listv G:248 SG rubik.b[260] listv:=mkvec(listvupb)
+listv G:248 SG rubik.b[369] listv:=mkvec(listvupb)
+listvupb M:200 DEF rubik.b[103] listvupb=200
+listvupb M:200 MAN rubik.b[260] listv:=mkvec(listvupb)
+listvupb M:200 MAN rubik.b[369] listv:=mkvec(listvupb)
+listvupb M:200 MAN rubik.b[370] FOR i=0 TO listvupb DO..
+loadseg G:105 DEF libhdr.h[132] loadseg=105
+locatedir G:80 DEF libhdr.h[106] locatedir=80
+locateobj G:81 DEF libhdr.h[107] locateobj=81
+longjump G:16 DEF libhdr.h[42] longjump=16
+mBa M:98 DEF rubik.b[112] mBa=98
+mBa M:98 MAN rubik.b[479] IF try(rotateBa,node,mBa,goal) DO ..
+mBc M:66 DEF rubik.b[112] mBc=66
+mBc M:66 MAN rubik.b[478] IF try(rotateBc,node,mBc,goal) DO ..
+mDa M:100 DEF rubik.b[114] mDa=100
+mDa M:100 MAN rubik.b[483] IF try(rotateDa,node,mDa,goal) DO ..
+mDc M:68 DEF rubik.b[114] mDc=68
+mDc M:68 MAN rubik.b[482] IF try(rotateDc,node,mDc,goal) DO ..
+mFa M:102 DEF rubik.b[110] mFa=102
+mFa M:102 MAN rubik.b[475] IF try(rotateFa,node,mFa,goal) DO ..
+mFc M:70 DEF rubik.b[110] mFc=70
+mFc M:70 MAN rubik.b[474] IF try(rotateFc,node,mFc,goal) DO ..
+mLa M:108 DEF rubik.b[113] mLa=108
+mLa M:108 MAN rubik.b[481] IF try(rotateLa,node,mLa,goal) DO ..
+mLc M:76 DEF rubik.b[113] mLc=76
+mLc M:76 MAN rubik.b[480] IF try(rotateLc,node,mLc,goal) DO ..
+mRa M:114 DEF rubik.b[111] mRa=114
+mRa M:114 MAN rubik.b[477] IF try(rotateRa,node,mRa,goal) DO ..
+mRc M:82 DEF rubik.b[111] mRc=82
+mRc M:82 MAN rubik.b[476] IF try(rotateRc,node,mRc,goal) DO ..
+mUa M:117 DEF rubik.b[109] mUa=117
+mUa M:117 MAN rubik.b[473] IF try(rotateUa,node,mUa,goal) DO ..
+mUc M:85 DEF rubik.b[109] mUc=85
+mUc M:85 MAN rubik.b[472] IF try(rotateUc,node,mUc,goal) DO ..
+maxint M:#x7FFFFFFF DEF libhdr.h[223] maxint=minint-1
+mcaddrinc M:4 DEF libhdr.h[221] mcaddrinc=bytesperword
+minint M:#x80000000 DEF libhdr.h[222] minint=1<<bitsperword-1
+minint M:#x80000000 MAN libhdr.h[223] maxint=minint-1
+mkvec G:245 DEF rubik.b[141] mkvec=
+mkvec G:245 FN rubik.b[234] LET mkvec(upb)=..
+mkvec G:245 LG rubik.b[197] node:=mkvec(nodeupb)
+mkvec G:245 LG rubik.b[258] cube:=mkvec(nodeupb)
+mkvec G:245 LG rubik.b[259] colour:=mkvec(6*9-1)
+mkvec G:245 LG rubik.b[260] listv:=mkvec(listvupb)
+mkvec G:245 LG rubik.b[261] corncostv:=mkvec(corncostvupb)
+mkvec G:245 LG rubik.b[262] edgecostv:=mkvec(edgecostvupb)
+mkvec G:245 LG rubik.b[365] hashtab:=mkvec(hashtabupb)
+mkvec G:245 LG rubik.b[369] listv:=mkvec(listvupb)
+movecubep2q F:34 RT rubik.b[709] LET movecubep2q()BE..
+movecubeq2p F:35 LF rubik.b[328] movecubeq2p()
+movecubeq2p F:35 LF rubik.b[349] movecubeq2p()
+movecubeq2p F:35 RT rubik.b[717] LET movecubeq2p()BE..
+moves G:252 DEF rubik.b[148] moves=
+moves G:252 LG rubik.b[309] FOR i=1 TO moves%0 DO..
+moves G:252 LG rubik.b[309] IF moves DO ..
+moves G:252 LG rubik.b[310] SWITCHON moves%i INTO..
+moves G:252 LG rubik.b[311] writef("Bad i'oves %s*n",moves)
+moves G:252 SG rubik.b[292] moves:=argv!6
+muldiv G:5 DEF libhdr.h[31] muldiv=5
+newline G:84 DEF libhdr.h[110] newline=84
+newline G:84 LG rubik.b[360] newline()
+newline G:84 LG rubik.b[859] newline()
+newline G:84 LG rubik.b[872] newline()
+newnode F:2 FN rubik.b[171] LET newnode(cube,prev,dist,move)=..
+newnode F:2 LF rubik.b[382] root:=newnode(cube,0,0,0)
+newnode F:2 LF rubik.b[499] node:=newnode(cube,prev,...,move)
+newpage G:120 DEF libhdr.h[147] newpage=120
+nodecount G:246 DEF rubik.b[142] nodecount=
+nodecount G:246 LG rubik.b[222] nodecount:=nodecount+1
+nodecount G:246 LG rubik.b[226] writef("Inser'ount=%n*n",node,dist,nodecount)
+nodecount G:246 LG rubik.b[414] writef("*nnode'nt = %n*n",nodecount)
+nodecount G:246 SG rubik.b[222] nodecount:=nodecount+1
+nodecount G:246 SG rubik.b[372] nodecount:=0
+nodeupb M:9 DEF rubik.b[98] nodeupb=s_move
+nodeupb M:9 MAN rubik.b[197] node:=mkvec(nodeupb)
+nodeupb M:9 MAN rubik.b[258] cube:=mkvec(nodeupb)
+note G:63 DEF libhdr.h[89] note=63
+notinuse M:-1 DEF libhdr.h[540] notinuse=-1
+output G:59 DEF libhdr.h[85] output=59
+pBR G:212 DEF rubik.b[122] pBR=
+pBR G:212 LG rubik.b[606] qBR,qOB,qGO,qRG:=pBR,pOB,pGO,pRG
+pBR G:212 LG rubik.b[615] qBR,qOB,qGO,qRG:=pBR,pOB,pGO,pRG
+pBR G:212 LG rubik.b[624] qBR,qOB,qGO,qRG:=pBR,pOB,pGO,pRG
+pBR G:212 LG rubik.b[633] qBR,qOB,qGO,qRG:=pBR,pOB,pGO,pRG
+pBR G:212 LG rubik.b[641] qWR,qBR,qYR,qRG:=flip(pRG),pWR,pBR,flip(pYR)
+pBR G:212 LG rubik.b[650] qWR,qBR,qYR,qRG:=pBR,pYR,flip(pRG),flip(pWR)
+pBR G:212 LG rubik.b[661] qWR,qRG,qYR,qBR:=pWR,pRG,pYR,pBR
+pBR G:212 LG rubik.b[670] qWR,qRG,qYR,qBR:=pWR,pRG,pYR,pBR
+pBR G:212 LG rubik.b[677] qWB,qOB,qYB,qBR:=flip(pBR),pWB,pOB,flip(pYB)
+pBR G:212 LG rubik.b[686] qWB,qOB,qYB,qBR:=pOB,pYB,flip(pBR),flip(pWB)
+pBR G:212 LG rubik.b[697] qWB,qOB,qYB,qBR:=pWB,pOB,pYB,pBR
+pBR G:212 LG rubik.b[706] qWB,qOB,qYB,qBR:=pWB,pOB,pYB,pBR
+pBR G:212 LG rubik.b[713] qBR,qOB,qGO,qRG:=pBR,pOB,pGO,pRG
+pBR G:212 LG rubik.b[818] c:=c+edgecostv!pBR!eBR
+pBR G:212 SG rubik.b[721] pBR,pOB,pGO,pRG:=qBR,qOB,qGO,qRG
+pGO G:214 DEF rubik.b[122] pGO=
+pGO G:214 LG rubik.b[606] qBR,qOB,qGO,qRG:=pBR,pOB,pGO,pRG
+pGO G:214 LG rubik.b[615] qBR,qOB,qGO,qRG:=pBR,pOB,pGO,pRG
+pGO G:214 LG rubik.b[624] qBR,qOB,qGO,qRG:=pBR,pOB,pGO,pRG
+pGO G:214 LG rubik.b[633] qBR,qOB,qGO,qRG:=pBR,pOB,pGO,pRG
+pGO G:214 LG rubik.b[643] qWO,qOB,qYO,qGO:=pWO,pOB,pYO,pGO
+pGO G:214 LG rubik.b[652] qWO,qOB,qYO,qGO:=pWO,pOB,pYO,pGO
+pGO G:214 LG rubik.b[659] qWO,qGO,qYO,qOB:=flip(pOB),pWO,pGO,flip(pYO)
+pGO G:214 LG rubik.b[668] qWO,qGO,qYO,qOB:=pGO,pYO,flip(pOB),flip(pWO)
+pGO G:214 LG rubik.b[679] qWG,qRG,qYG,qGO:=pWG,pRG,pYG,pGO
+pGO G:214 LG rubik.b[688] qWG,qRG,qYG,qGO:=pWG,pRG,pYG,pGO
+pGO G:214 LG rubik.b[695] qWG,qRG,qYG,qGO:=flip(pGO),pWG,pRG,flip(pYG)
+pGO G:214 LG rubik.b[704] qWG,qRG,qYG,qGO:=pRG,pYG,flip(pGO),flip(pWG)
+pGO G:214 LG rubik.b[713] qBR,qOB,qGO,qRG:=pBR,pOB,pGO,pRG
+pGO G:214 LG rubik.b[820] c:=c+edgecostv!pGO!eGO
+pGO G:214 SG rubik.b[721] pBR,pOB,pGO,pRG:=qBR,qOB,qGO,qRG
+pOB G:213 DEF rubik.b[122] pOB=
+pOB G:213 LG rubik.b[606] qBR,qOB,qGO,qRG:=pBR,pOB,pGO,pRG
+pOB G:213 LG rubik.b[615] qBR,qOB,qGO,qRG:=pBR,pOB,pGO,pRG
+pOB G:213 LG rubik.b[624] qBR,qOB,qGO,qRG:=pBR,pOB,pGO,pRG
+pOB G:213 LG rubik.b[633] qBR,qOB,qGO,qRG:=pBR,pOB,pGO,pRG
+pOB G:213 LG rubik.b[643] qWO,qOB,qYO,qGO:=pWO,pOB,pYO,pGO
+pOB G:213 LG rubik.b[652] qWO,qOB,qYO,qGO:=pWO,pOB,pYO,pGO
+pOB G:213 LG rubik.b[659] qWO,qGO,qYO,qOB:=flip(pOB),pWO,pGO,flip(pYO)
+pOB G:213 LG rubik.b[668] qWO,qGO,qYO,qOB:=pGO,pYO,flip(pOB),flip(pWO)
+pOB G:213 LG rubik.b[677] qWB,qOB,qYB,qBR:=flip(pBR),pWB,pOB,flip(pYB)
+pOB G:213 LG rubik.b[686] qWB,qOB,qYB,qBR:=pOB,pYB,flip(pBR),flip(pWB)
+pOB G:213 LG rubik.b[697] qWB,qOB,qYB,qBR:=pWB,pOB,pYB,pBR
+pOB G:213 LG rubik.b[706] qWB,qOB,qYB,qBR:=pWB,pOB,pYB,pBR
+pOB G:213 LG rubik.b[713] qBR,qOB,qGO,qRG:=pBR,pOB,pGO,pRG
+pOB G:213 LG rubik.b[819] c:=c+edgecostv!pOB!eOB
+pOB G:213 SG rubik.b[721] pBR,pOB,pGO,pRG:=qBR,qOB,qGO,qRG
+pRG G:215 DEF rubik.b[122] pRG=
+pRG G:215 LG rubik.b[606] qBR,qOB,qGO,qRG:=pBR,pOB,pGO,pRG
+pRG G:215 LG rubik.b[615] qBR,qOB,qGO,qRG:=pBR,pOB,pGO,pRG
+pRG G:215 LG rubik.b[624] qBR,qOB,qGO,qRG:=pBR,pOB,pGO,pRG
+pRG G:215 LG rubik.b[633] qBR,qOB,qGO,qRG:=pBR,pOB,pGO,pRG
+pRG G:215 LG rubik.b[641] qWR,qBR,qYR,qRG:=flip(pRG),pWR,pBR,flip(pYR)
+pRG G:215 LG rubik.b[650] qWR,qBR,qYR,qRG:=pBR,pYR,flip(pRG),flip(pWR)
+pRG G:215 LG rubik.b[661] qWR,qRG,qYR,qBR:=pWR,pRG,pYR,pBR
+pRG G:215 LG rubik.b[670] qWR,qRG,qYR,qBR:=pWR,pRG,pYR,pBR
+pRG G:215 LG rubik.b[679] qWG,qRG,qYG,qGO:=pWG,pRG,pYG,pGO
+pRG G:215 LG rubik.b[688] qWG,qRG,qYG,qGO:=pWG,pRG,pYG,pGO
+pRG G:215 LG rubik.b[695] qWG,qRG,qYG,qGO:=flip(pGO),pWG,pRG,flip(pYG)
+pRG G:215 LG rubik.b[704] qWG,qRG,qYG,qGO:=pRG,pYG,flip(pGO),flip(pWG)
+pRG G:215 LG rubik.b[713] qBR,qOB,qGO,qRG:=pBR,pOB,pGO,pRG
+pRG G:215 LG rubik.b[821] c:=c+edgecostv!pRG!eRG
+pRG G:215 SG rubik.b[721] pBR,pOB,pGO,pRG:=qBR,qOB,qGO,qRG
+pWB G:209 DEF rubik.b[121] pWB=
+pWB G:209 LG rubik.b[605] qWR,qWB,qWO,qWG:=pWB,pWO,pWG,pWR
+pWB G:209 LG rubik.b[614] qWR,qWB,qWO,qWG:=pWG,pWR,pWB,pWO
+pWB G:209 LG rubik.b[623] qWR,qWB,qWO,qWG:=pWR,pWB,pWO,pWG
+pWB G:209 LG rubik.b[632] qWR,qWB,qWO,qWG:=pWR,pWB,pWO,pWG
+pWB G:209 LG rubik.b[642] qWB,qYB,qYG,qWG:=pWB,pYB,pYG,pWG
+pWB G:209 LG rubik.b[651] qWB,qYB,qYG,qWG:=pWB,pYB,pYG,pWG
+pWB G:209 LG rubik.b[660] qWB,qWG,qYG,qYB:=pWB,pWG,pYG,pYB
+pWB G:209 LG rubik.b[669] qWB,qWG,qYG,qYB:=pWB,pWG,pYG,pYB
+pWB G:209 LG rubik.b[677] qWB,qOB,qYB,qBR:=flip(pBR),pWB,pOB,flip(pYB)
+pWB G:209 LG rubik.b[686] qWB,qOB,qYB,qBR:=pOB,pYB,flip(pBR),flip(pWB)
+pWB G:209 LG rubik.b[697] qWB,qOB,qYB,qBR:=pWB,pOB,pYB,pBR
+pWB G:209 LG rubik.b[706] qWB,qOB,qYB,qBR:=pWB,pOB,pYB,pBR
+pWB G:209 LG rubik.b[712] qWR,qWB,qWO,qWG:=pWR,pWB,pWO,pWG
+pWB G:209 LG rubik.b[814] c:=c+edgecostv!pWB!eWB
+pWB G:209 SG rubik.b[720] pWR,pWB,pWO,pWG:=qWR,qWB,qWO,qWG
+pWBO G:201 DEF rubik.b[119] pWBO=
+pWBO G:201 LG rubik.b[603] qWRB,qWBO,qWOG,qWGR:=pWBO,pWOG,pWGR,pWRB
+pWBO G:201 LG rubik.b[612] qWRB,qWBO,qWOG,qWGR:=pWGR,pWRB,pWBO,pWOG
+pWBO G:201 LG rubik.b[621] qWRB,qWBO,qWOG,qWGR:=pWRB,pWBO,pWOG,pWGR
+pWBO G:201 LG rubik.b[630] qWRB,qWBO,qWOG,qWGR:=pWRB,pWBO,pWOG,pWGR
+pWBO G:201 LG rubik.b[640] qWBO,qYOB,qYGO,qWOG:=pWBO,pYOB,pYGO,pWOG
+pWBO G:201 LG rubik.b[649] qWBO,qYOB,qYGO,qWOG:=pWBO,pYOB,pYGO,pWOG
+pWBO G:201 LG rubik.b[657] qWBO,qWOG,qYGO,qYOB:=rota(pYOB),rotc(pWBO),rota(pWOG),rotc(pYGO)
+pWBO G:201 LG rubik.b[666] qWBO,qWOG,qYGO,qYOB:=rota(pWOG),rotc(pYGO),rota(pYOB),rotc(pWBO)
+pWBO G:201 LG rubik.b[675] qWRB,qWBO,qYOB,qYBR:=rota(pYBR),rotc(pWRB),rota(pWBO),rotc(pYOB)
+pWBO G:201 LG rubik.b[684] qWRB,qWBO,qYOB,qYBR:=rota(pWBO),rotc(pYOB),rota(pYBR),rotc(pWRB)
+pWBO G:201 LG rubik.b[694] qWBO,qYOB,qYBR,qWRB:=pWBO,pYOB,pYBR,pWRB
+pWBO G:201 LG rubik.b[703] qWBO,qYOB,qYBR,qWRB:=pWBO,pYOB,pYBR,pWRB
+pWBO G:201 LG rubik.b[710] qWRB,qWBO,qWOG,qWGR:=pWRB,pWBO,pWOG,pWGR
+pWBO G:201 LG rubik.b[805] c:=c+corncostv!pWBO!cWBO
+pWBO G:201 SG rubik.b[718] pWRB,pWBO,pWOG,pWGR:=qWRB,qWBO,qWOG,qWGR
+pWG G:211 DEF rubik.b[121] pWG=
+pWG G:211 LG rubik.b[605] qWR,qWB,qWO,qWG:=pWB,pWO,pWG,pWR
+pWG G:211 LG rubik.b[614] qWR,qWB,qWO,qWG:=pWG,pWR,pWB,pWO
+pWG G:211 LG rubik.b[623] qWR,qWB,qWO,qWG:=pWR,pWB,pWO,pWG
+pWG G:211 LG rubik.b[632] qWR,qWB,qWO,qWG:=pWR,pWB,pWO,pWG
+pWG G:211 LG rubik.b[642] qWB,qYB,qYG,qWG:=pWB,pYB,pYG,pWG
+pWG G:211 LG rubik.b[651] qWB,qYB,qYG,qWG:=pWB,pYB,pYG,pWG
+pWG G:211 LG rubik.b[660] qWB,qWG,qYG,qYB:=pWB,pWG,pYG,pYB
+pWG G:211 LG rubik.b[669] qWB,qWG,qYG,qYB:=pWB,pWG,pYG,pYB
+pWG G:211 LG rubik.b[679] qWG,qRG,qYG,qGO:=pWG,pRG,pYG,pGO
+pWG G:211 LG rubik.b[688] qWG,qRG,qYG,qGO:=pWG,pRG,pYG,pGO
+pWG G:211 LG rubik.b[695] qWG,qRG,qYG,qGO:=flip(pGO),pWG,pRG,flip(pYG)
+pWG G:211 LG rubik.b[704] qWG,qRG,qYG,qGO:=pRG,pYG,flip(pGO),flip(pWG)
+pWG G:211 LG rubik.b[712] qWR,qWB,qWO,qWG:=pWR,pWB,pWO,pWG
+pWG G:211 LG rubik.b[816] c:=c+edgecostv!pWG!eWG
+pWG G:211 SG rubik.b[720] pWR,pWB,pWO,pWG:=qWR,qWB,qWO,qWG
+pWGR G:203 DEF rubik.b[119] pWGR=
+pWGR G:203 LG rubik.b[603] qWRB,qWBO,qWOG,qWGR:=pWBO,pWOG,pWGR,pWRB
+pWGR G:203 LG rubik.b[612] qWRB,qWBO,qWOG,qWGR:=pWGR,pWRB,pWBO,pWOG
+pWGR G:203 LG rubik.b[621] qWRB,qWBO,qWOG,qWGR:=pWRB,pWBO,pWOG,pWGR
+pWGR G:203 LG rubik.b[630] qWRB,qWBO,qWOG,qWGR:=pWRB,pWBO,pWOG,pWGR
+pWGR G:203 LG rubik.b[639] qWRB,qYBR,qYRG,qWGR:=rotc(pWGR),rota(pWRB),rotc(pYBR),rota(pYRG)
+pWGR G:203 LG rubik.b[648] qWRB,qYBR,qYRG,qWGR:=rotc(pYBR),rota(pYRG),rotc(pWGR),rota(pWRB)
+pWGR G:203 LG rubik.b[658] qWRB,qWGR,qYRG,qYBR:=pWRB,pWGR,pYRG,pYBR
+pWGR G:203 LG rubik.b[667] qWRB,qWGR,qYRG,qYBR:=pWRB,pWGR,pYRG,pYBR
+pWGR G:203 LG rubik.b[676] qWGR,qYRG,qYGO,qWOG:=pWGR,pYRG,pYGO,pWOG
+pWGR G:203 LG rubik.b[685] qWGR,qYRG,qYGO,qWOG:=pWGR,pYRG,pYGO,pWOG
+pWGR G:203 LG rubik.b[693] qWGR,qYRG,qYGO,qWOG:=rotc(pWOG),rota(pWGR),rotc(pYRG),rota(pYGO)
+pWGR G:203 LG rubik.b[702] qWGR,qYRG,qYGO,qWOG:=rotc(pYRG),rota(pYGO),rotc(pWOG),rota(pWGR)
+pWGR G:203 LG rubik.b[710] qWRB,qWBO,qWOG,qWGR:=pWRB,pWBO,pWOG,pWGR
+pWGR G:203 LG rubik.b[807] c:=c+corncostv!pWGR!cWGR
+pWGR G:203 SG rubik.b[718] pWRB,pWBO,pWOG,pWGR:=qWRB,qWBO,qWOG,qWGR
+pWO G:210 DEF rubik.b[121] pWO=
+pWO G:210 LG rubik.b[605] qWR,qWB,qWO,qWG:=pWB,pWO,pWG,pWR
+pWO G:210 LG rubik.b[614] qWR,qWB,qWO,qWG:=pWG,pWR,pWB,pWO
+pWO G:210 LG rubik.b[623] qWR,qWB,qWO,qWG:=pWR,pWB,pWO,pWG
+pWO G:210 LG rubik.b[632] qWR,qWB,qWO,qWG:=pWR,pWB,pWO,pWG
+pWO G:210 LG rubik.b[643] qWO,qOB,qYO,qGO:=pWO,pOB,pYO,pGO
+pWO G:210 LG rubik.b[652] qWO,qOB,qYO,qGO:=pWO,pOB,pYO,pGO
+pWO G:210 LG rubik.b[659] qWO,qGO,qYO,qOB:=flip(pOB),pWO,pGO,flip(pYO)
+pWO G:210 LG rubik.b[668] qWO,qGO,qYO,qOB:=pGO,pYO,flip(pOB),flip(pWO)
+pWO G:210 LG rubik.b[678] qWR,qWO,qYO,qYR:=pWR,pWO,pYO,pYR
+pWO G:210 LG rubik.b[687] qWR,qWO,qYO,qYR:=pWR,pWO,pYO,pYR
+pWO G:210 LG rubik.b[696] qWR,qYR,qYO,qWO:=pWR,pYR,pYO,pWO
+pWO G:210 LG rubik.b[705] qWR,qYR,qYO,qWO:=pWR,pYR,pYO,pWO
+pWO G:210 LG rubik.b[712] qWR,qWB,qWO,qWG:=pWR,pWB,pWO,pWG
+pWO G:210 LG rubik.b[815] c:=c+edgecostv!pWO!eWO
+pWO G:210 SG rubik.b[720] pWR,pWB,pWO,pWG:=qWR,qWB,qWO,qWG
+pWOG G:202 DEF rubik.b[119] pWOG=
+pWOG G:202 LG rubik.b[603] qWRB,qWBO,qWOG,qWGR:=pWBO,pWOG,pWGR,pWRB
+pWOG G:202 LG rubik.b[612] qWRB,qWBO,qWOG,qWGR:=pWGR,pWRB,pWBO,pWOG
+pWOG G:202 LG rubik.b[621] qWRB,qWBO,qWOG,qWGR:=pWRB,pWBO,pWOG,pWGR
+pWOG G:202 LG rubik.b[630] qWRB,qWBO,qWOG,qWGR:=pWRB,pWBO,pWOG,pWGR
+pWOG G:202 LG rubik.b[640] qWBO,qYOB,qYGO,qWOG:=pWBO,pYOB,pYGO,pWOG
+pWOG G:202 LG rubik.b[649] qWBO,qYOB,qYGO,qWOG:=pWBO,pYOB,pYGO,pWOG
+pWOG G:202 LG rubik.b[657] qWBO,qWOG,qYGO,qYOB:=rota(pYOB),rotc(pWBO),rota(pWOG),rotc(pYGO)
+pWOG G:202 LG rubik.b[666] qWBO,qWOG,qYGO,qYOB:=rota(pWOG),rotc(pYGO),rota(pYOB),rotc(pWBO)
+pWOG G:202 LG rubik.b[676] qWGR,qYRG,qYGO,qWOG:=pWGR,pYRG,pYGO,pWOG
+pWOG G:202 LG rubik.b[685] qWGR,qYRG,qYGO,qWOG:=pWGR,pYRG,pYGO,pWOG
+pWOG G:202 LG rubik.b[693] qWGR,qYRG,qYGO,qWOG:=rotc(pWOG),rota(pWGR),rotc(pYRG),rota(pYGO)
+pWOG G:202 LG rubik.b[702] qWGR,qYRG,qYGO,qWOG:=rotc(pYRG),rota(pYGO),rotc(pWOG),rota(pWGR)
+pWOG G:202 LG rubik.b[710] qWRB,qWBO,qWOG,qWGR:=pWRB,pWBO,pWOG,pWGR
+pWOG G:202 LG rubik.b[806] c:=c+corncostv!pWOG!cWOG
+pWOG G:202 SG rubik.b[718] pWRB,pWBO,pWOG,pWGR:=qWRB,qWBO,qWOG,qWGR
+pWR G:208 DEF rubik.b[121] pWR=
+pWR G:208 LG rubik.b[605] qWR,qWB,qWO,qWG:=pWB,pWO,pWG,pWR
+pWR G:208 LG rubik.b[614] qWR,qWB,qWO,qWG:=pWG,pWR,pWB,pWO
+pWR G:208 LG rubik.b[623] qWR,qWB,qWO,qWG:=pWR,pWB,pWO,pWG
+pWR G:208 LG rubik.b[632] qWR,qWB,qWO,qWG:=pWR,pWB,pWO,pWG
+pWR G:208 LG rubik.b[641] qWR,qBR,qYR,qRG:=flip(pRG),pWR,pBR,flip(pYR)
+pWR G:208 LG rubik.b[650] qWR,qBR,qYR,qRG:=pBR,pYR,flip(pRG),flip(pWR)
+pWR G:208 LG rubik.b[661] qWR,qRG,qYR,qBR:=pWR,pRG,pYR,pBR
+pWR G:208 LG rubik.b[670] qWR,qRG,qYR,qBR:=pWR,pRG,pYR,pBR
+pWR G:208 LG rubik.b[678] qWR,qWO,qYO,qYR:=pWR,pWO,pYO,pYR
+pWR G:208 LG rubik.b[687] qWR,qWO,qYO,qYR:=pWR,pWO,pYO,pYR
+pWR G:208 LG rubik.b[696] qWR,qYR,qYO,qWO:=pWR,pYR,pYO,pWO
+pWR G:208 LG rubik.b[705] qWR,qYR,qYO,qWO:=pWR,pYR,pYO,pWO
+pWR G:208 LG rubik.b[712] qWR,qWB,qWO,qWG:=pWR,pWB,pWO,pWG
+pWR G:208 LG rubik.b[813] c:=c+edgecostv!pWR!eWR
+pWR G:208 SG rubik.b[720] pWR,pWB,pWO,pWG:=qWR,qWB,qWO,qWG
+pWRB G:200 DEF rubik.b[119] pWRB=ug
+pWRB G:200 LG rubik.b[603] qWRB,qWBO,qWOG,qWGR:=pWBO,pWOG,pWGR,pWRB
+pWRB G:200 LG rubik.b[612] qWRB,qWBO,qWOG,qWGR:=pWGR,pWRB,pWBO,pWOG
+pWRB G:200 LG rubik.b[621] qWRB,qWBO,qWOG,qWGR:=pWRB,pWBO,pWOG,pWGR
+pWRB G:200 LG rubik.b[630] qWRB,qWBO,qWOG,qWGR:=pWRB,pWBO,pWOG,pWGR
+pWRB G:200 LG rubik.b[639] qWRB,qYBR,qYRG,qWGR:=rotc(pWGR),rota(pWRB),rotc(pYBR),rota(pYRG)
+pWRB G:200 LG rubik.b[648] qWRB,qYBR,qYRG,qWGR:=rotc(pYBR),rota(pYRG),rotc(pWGR),rota(pWRB)
+pWRB G:200 LG rubik.b[658] qWRB,qWGR,qYRG,qYBR:=pWRB,pWGR,pYRG,pYBR
+pWRB G:200 LG rubik.b[667] qWRB,qWGR,qYRG,qYBR:=pWRB,pWGR,pYRG,pYBR
+pWRB G:200 LG rubik.b[675] qWRB,qWBO,qYOB,qYBR:=rota(pYBR),rotc(pWRB),rota(pWBO),rotc(pYOB)
+pWRB G:200 LG rubik.b[684] qWRB,qWBO,qYOB,qYBR:=rota(pWBO),rotc(pYOB),rota(pYBR),rotc(pWRB)
+pWRB G:200 LG rubik.b[694] qWBO,qYOB,qYBR,qWRB:=pWBO,pYOB,pYBR,pWRB
+pWRB G:200 LG rubik.b[703] qWBO,qYOB,qYBR,qWRB:=pWBO,pYOB,pYBR,pWRB
+pWRB G:200 LG rubik.b[710] qWRB,qWBO,qWOG,qWGR:=pWRB,pWBO,pWOG,pWGR
+pWRB G:200 LG rubik.b[804] c:=corncostv!pWRB!cWRB
+pWRB G:200 LLG rubik.b[306] cube2pieces(cube,@pWRB)
+pWRB G:200 LLG rubik.b[355] pieces2cube(@pWRB,cube)
+pWRB G:200 LLG rubik.b[470] cube2pieces(node,@pWRB)
+pWRB G:200 SG rubik.b[718] pWRB,pWBO,pWOG,pWGR:=qWRB,qWBO,qWOG,qWGR
+pYB G:217 DEF rubik.b[123] pYB=
+pYB G:217 LG rubik.b[607] qYR,qYB,qYO,qYG:=pYR,pYB,pYO,pYG
+pYB G:217 LG rubik.b[616] qYR,qYB,qYO,qYG:=pYR,pYB,pYO,pYG
+pYB G:217 LG rubik.b[625] qYR,qYB,qYO,qYG:=pYG,pYR,pYB,pYO
+pYB G:217 LG rubik.b[634] qYR,qYB,qYO,qYG:=pYB,pYO,pYG,pYR
+pYB G:217 LG rubik.b[642] qWB,qYB,qYG,qWG:=pWB,pYB,pYG,pWG
+pYB G:217 LG rubik.b[651] qWB,qYB,qYG,qWG:=pWB,pYB,pYG,pWG
+pYB G:217 LG rubik.b[660] qWB,qWG,qYG,qYB:=pWB,pWG,pYG,pYB
+pYB G:217 LG rubik.b[669] qWB,qWG,qYG,qYB:=pWB,pWG,pYG,pYB
+pYB G:217 LG rubik.b[677] qWB,qOB,qYB,qBR:=flip(pBR),pWB,pOB,flip(pYB)
+pYB G:217 LG rubik.b[686] qWB,qOB,qYB,qBR:=pOB,pYB,flip(pBR),flip(pWB)
+pYB G:217 LG rubik.b[697] qWB,qOB,qYB,qBR:=pWB,pOB,pYB,pBR
+pYB G:217 LG rubik.b[706] qWB,qOB,qYB,qBR:=pWB,pOB,pYB,pBR
+pYB G:217 LG rubik.b[714] qYR,qYB,qYO,qYG:=pYR,pYB,pYO,pYG
+pYB G:217 LG rubik.b[824] c:=c+edgecostv!pYB!eYB
+pYB G:217 SG rubik.b[722] pYR,pYB,pYO,pYG:=qYR,qYB,qYO,qYG
+pYBR G:204 DEF rubik.b[120] pYBR=
+pYBR G:204 LG rubik.b[604] qYBR,qYOB,qYGO,qYRG:=pYBR,pYOB,pYGO,pYRG
+pYBR G:204 LG rubik.b[613] qYBR,qYOB,qYGO,qYRG:=pYBR,pYOB,pYGO,pYRG
+pYBR G:204 LG rubik.b[622] qYBR,qYOB,qYGO,qYRG:=pYRG,pYBR,pYOB,pYGO
+pYBR G:204 LG rubik.b[631] qYBR,qYOB,qYGO,qYRG:=pYOB,pYGO,pYRG,pYBR
+pYBR G:204 LG rubik.b[639] qWRB,qYBR,qYRG,qWGR:=rotc(pWGR),rota(pWRB),rotc(pYBR),rota(pYRG)
+pYBR G:204 LG rubik.b[648] qWRB,qYBR,qYRG,qWGR:=rotc(pYBR),rota(pYRG),rotc(pWGR),rota(pWRB)
+pYBR G:204 LG rubik.b[658] qWRB,qWGR,qYRG,qYBR:=pWRB,pWGR,pYRG,pYBR
+pYBR G:204 LG rubik.b[667] qWRB,qWGR,qYRG,qYBR:=pWRB,pWGR,pYRG,pYBR
+pYBR G:204 LG rubik.b[675] qWRB,qWBO,qYOB,qYBR:=rota(pYBR),rotc(pWRB),rota(pWBO),rotc(pYOB)
+pYBR G:204 LG rubik.b[684] qWRB,qWBO,qYOB,qYBR:=rota(pWBO),rotc(pYOB),rota(pYBR),rotc(pWRB)
+pYBR G:204 LG rubik.b[694] qWBO,qYOB,qYBR,qWRB:=pWBO,pYOB,pYBR,pWRB
+pYBR G:204 LG rubik.b[703] qWBO,qYOB,qYBR,qWRB:=pWBO,pYOB,pYBR,pWRB
+pYBR G:204 LG rubik.b[711] qYBR,qYOB,qYGO,qYRG:=pYBR,pYOB,pYGO,pYRG
+pYBR G:204 LG rubik.b[808] c:=c+corncostv!pYBR!cYBR
+pYBR G:204 SG rubik.b[719] pYBR,pYOB,pYGO,pYRG:=qYBR,qYOB,qYGO,qYRG
+pYG G:219 DEF rubik.b[123] pYG=
+pYG G:219 LG rubik.b[607] qYR,qYB,qYO,qYG:=pYR,pYB,pYO,pYG
+pYG G:219 LG rubik.b[616] qYR,qYB,qYO,qYG:=pYR,pYB,pYO,pYG
+pYG G:219 LG rubik.b[625] qYR,qYB,qYO,qYG:=pYG,pYR,pYB,pYO
+pYG G:219 LG rubik.b[634] qYR,qYB,qYO,qYG:=pYB,pYO,pYG,pYR
+pYG G:219 LG rubik.b[642] qWB,qYB,qYG,qWG:=pWB,pYB,pYG,pWG
+pYG G:219 LG rubik.b[651] qWB,qYB,qYG,qWG:=pWB,pYB,pYG,pWG
+pYG G:219 LG rubik.b[660] qWB,qWG,qYG,qYB:=pWB,pWG,pYG,pYB
+pYG G:219 LG rubik.b[669] qWB,qWG,qYG,qYB:=pWB,pWG,pYG,pYB
+pYG G:219 LG rubik.b[679] qWG,qRG,qYG,qGO:=pWG,pRG,pYG,pGO
+pYG G:219 LG rubik.b[688] qWG,qRG,qYG,qGO:=pWG,pRG,pYG,pGO
+pYG G:219 LG rubik.b[695] qWG,qRG,qYG,qGO:=flip(pGO),pWG,pRG,flip(pYG)
+pYG G:219 LG rubik.b[704] qWG,qRG,qYG,qGO:=pRG,pYG,flip(pGO),flip(pWG)
+pYG G:219 LG rubik.b[714] qYR,qYB,qYO,qYG:=pYR,pYB,pYO,pYG
+pYG G:219 LG rubik.b[826] c:=c+edgecostv!pYG!eYG
+pYG G:219 SG rubik.b[722] pYR,pYB,pYO,pYG:=qYR,qYB,qYO,qYG
+pYGO G:206 DEF rubik.b[120] pYGO=
+pYGO G:206 LG rubik.b[604] qYBR,qYOB,qYGO,qYRG:=pYBR,pYOB,pYGO,pYRG
+pYGO G:206 LG rubik.b[613] qYBR,qYOB,qYGO,qYRG:=pYBR,pYOB,pYGO,pYRG
+pYGO G:206 LG rubik.b[622] qYBR,qYOB,qYGO,qYRG:=pYRG,pYBR,pYOB,pYGO
+pYGO G:206 LG rubik.b[631] qYBR,qYOB,qYGO,qYRG:=pYOB,pYGO,pYRG,pYBR
+pYGO G:206 LG rubik.b[640] qWBO,qYOB,qYGO,qWOG:=pWBO,pYOB,pYGO,pWOG
+pYGO G:206 LG rubik.b[649] qWBO,qYOB,qYGO,qWOG:=pWBO,pYOB,pYGO,pWOG
+pYGO G:206 LG rubik.b[657] qWBO,qWOG,qYGO,qYOB:=rota(pYOB),rotc(pWBO),rota(pWOG),rotc(pYGO)
+pYGO G:206 LG rubik.b[666] qWBO,qWOG,qYGO,qYOB:=rota(pWOG),rotc(pYGO),rota(pYOB),rotc(pWBO)
+pYGO G:206 LG rubik.b[676] qWGR,qYRG,qYGO,qWOG:=pWGR,pYRG,pYGO,pWOG
+pYGO G:206 LG rubik.b[685] qWGR,qYRG,qYGO,qWOG:=pWGR,pYRG,pYGO,pWOG
+pYGO G:206 LG rubik.b[693] qWGR,qYRG,qYGO,qWOG:=rotc(pWOG),rota(pWGR),rotc(pYRG),rota(pYGO)
+pYGO G:206 LG rubik.b[702] qWGR,qYRG,qYGO,qWOG:=rotc(pYRG),rota(pYGO),rotc(pWOG),rota(pWGR)
+pYGO G:206 LG rubik.b[711] qYBR,qYOB,qYGO,qYRG:=pYBR,pYOB,pYGO,pYRG
+pYGO G:206 LG rubik.b[810] c:=c+corncostv!pYGO!cYGO
+pYGO G:206 SG rubik.b[719] pYBR,pYOB,pYGO,pYRG:=qYBR,qYOB,qYGO,qYRG
+pYO G:218 DEF rubik.b[123] pYO=
+pYO G:218 LG rubik.b[607] qYR,qYB,qYO,qYG:=pYR,pYB,pYO,pYG
+pYO G:218 LG rubik.b[616] qYR,qYB,qYO,qYG:=pYR,pYB,pYO,pYG
+pYO G:218 LG rubik.b[625] qYR,qYB,qYO,qYG:=pYG,pYR,pYB,pYO
+pYO G:218 LG rubik.b[634] qYR,qYB,qYO,qYG:=pYB,pYO,pYG,pYR
+pYO G:218 LG rubik.b[643] qWO,qOB,qYO,qGO:=pWO,pOB,pYO,pGO
+pYO G:218 LG rubik.b[652] qWO,qOB,qYO,qGO:=pWO,pOB,pYO,pGO
+pYO G:218 LG rubik.b[659] qWO,qGO,qYO,qOB:=flip(pOB),pWO,pGO,flip(pYO)
+pYO G:218 LG rubik.b[668] qWO,qGO,qYO,qOB:=pGO,pYO,flip(pOB),flip(pWO)
+pYO G:218 LG rubik.b[678] qWR,qWO,qYO,qYR:=pWR,pWO,pYO,pYR
+pYO G:218 LG rubik.b[687] qWR,qWO,qYO,qYR:=pWR,pWO,pYO,pYR
+pYO G:218 LG rubik.b[696] qWR,qYR,qYO,qWO:=pWR,pYR,pYO,pWO
+pYO G:218 LG rubik.b[705] qWR,qYR,qYO,qWO:=pWR,pYR,pYO,pWO
+pYO G:218 LG rubik.b[714] qYR,qYB,qYO,qYG:=pYR,pYB,pYO,pYG
+pYO G:218 LG rubik.b[825] c:=c+edgecostv!pYO!eYO
+pYO G:218 SG rubik.b[722] pYR,pYB,pYO,pYG:=qYR,qYB,qYO,qYG
+pYOB G:205 DEF rubik.b[120] pYOB=
+pYOB G:205 LG rubik.b[604] qYBR,qYOB,qYGO,qYRG:=pYBR,pYOB,pYGO,pYRG
+pYOB G:205 LG rubik.b[613] qYBR,qYOB,qYGO,qYRG:=pYBR,pYOB,pYGO,pYRG
+pYOB G:205 LG rubik.b[622] qYBR,qYOB,qYGO,qYRG:=pYRG,pYBR,pYOB,pYGO
+pYOB G:205 LG rubik.b[631] qYBR,qYOB,qYGO,qYRG:=pYOB,pYGO,pYRG,pYBR
+pYOB G:205 LG rubik.b[640] qWBO,qYOB,qYGO,qWOG:=pWBO,pYOB,pYGO,pWOG
+pYOB G:205 LG rubik.b[649] qWBO,qYOB,qYGO,qWOG:=pWBO,pYOB,pYGO,pWOG
+pYOB G:205 LG rubik.b[657] qWBO,qWOG,qYGO,qYOB:=rota(pYOB),rotc(pWBO),rota(pWOG),rotc(pYGO)
+pYOB G:205 LG rubik.b[666] qWBO,qWOG,qYGO,qYOB:=rota(pWOG),rotc(pYGO),rota(pYOB),rotc(pWBO)
+pYOB G:205 LG rubik.b[675] qWRB,qWBO,qYOB,qYBR:=rota(pYBR),rotc(pWRB),rota(pWBO),rotc(pYOB)
+pYOB G:205 LG rubik.b[684] qWRB,qWBO,qYOB,qYBR:=rota(pWBO),rotc(pYOB),rota(pYBR),rotc(pWRB)
+pYOB G:205 LG rubik.b[694] qWBO,qYOB,qYBR,qWRB:=pWBO,pYOB,pYBR,pWRB
+pYOB G:205 LG rubik.b[703] qWBO,qYOB,qYBR,qWRB:=pWBO,pYOB,pYBR,pWRB
+pYOB G:205 LG rubik.b[711] qYBR,qYOB,qYGO,qYRG:=pYBR,pYOB,pYGO,pYRG
+pYOB G:205 LG rubik.b[809] c:=c+corncostv!pYOB!cYOB
+pYOB G:205 SG rubik.b[719] pYBR,pYOB,pYGO,pYRG:=qYBR,qYOB,qYGO,qYRG
+pYR G:216 DEF rubik.b[123] pYR=
+pYR G:216 LG rubik.b[607] qYR,qYB,qYO,qYG:=pYR,pYB,pYO,pYG
+pYR G:216 LG rubik.b[616] qYR,qYB,qYO,qYG:=pYR,pYB,pYO,pYG
+pYR G:216 LG rubik.b[625] qYR,qYB,qYO,qYG:=pYG,pYR,pYB,pYO
+pYR G:216 LG rubik.b[634] qYR,qYB,qYO,qYG:=pYB,pYO,pYG,pYR
+pYR G:216 LG rubik.b[641] qWR,qBR,qYR,qRG:=flip(pRG),pWR,pBR,flip(pYR)
+pYR G:216 LG rubik.b[650] qWR,qBR,qYR,qRG:=pBR,pYR,flip(pRG),flip(pWR)
+pYR G:216 LG rubik.b[661] qWR,qRG,qYR,qBR:=pWR,pRG,pYR,pBR
+pYR G:216 LG rubik.b[670] qWR,qRG,qYR,qBR:=pWR,pRG,pYR,pBR
+pYR G:216 LG rubik.b[678] qWR,qWO,qYO,qYR:=pWR,pWO,pYO,pYR
+pYR G:216 LG rubik.b[687] qWR,qWO,qYO,qYR:=pWR,pWO,pYO,pYR
+pYR G:216 LG rubik.b[696] qWR,qYR,qYO,qWO:=pWR,pYR,pYO,pWO
+pYR G:216 LG rubik.b[705] qWR,qYR,qYO,qWO:=pWR,pYR,pYO,pWO
+pYR G:216 LG rubik.b[714] qYR,qYB,qYO,qYG:=pYR,pYB,pYO,pYG
+pYR G:216 LG rubik.b[823] c:=c+edgecostv!pYR!eYR
+pYR G:216 SG rubik.b[722] pYR,pYB,pYO,pYG:=qYR,qYB,qYO,qYG
+pYRG G:207 DEF rubik.b[120] pYRG=
+pYRG G:207 LG rubik.b[604] qYBR,qYOB,qYGO,qYRG:=pYBR,pYOB,pYGO,pYRG
+pYRG G:207 LG rubik.b[613] qYBR,qYOB,qYGO,qYRG:=pYBR,pYOB,pYGO,pYRG
+pYRG G:207 LG rubik.b[622] qYBR,qYOB,qYGO,qYRG:=pYRG,pYBR,pYOB,pYGO
+pYRG G:207 LG rubik.b[631] qYBR,qYOB,qYGO,qYRG:=pYOB,pYGO,pYRG,pYBR
+pYRG G:207 LG rubik.b[639] qWRB,qYBR,qYRG,qWGR:=rotc(pWGR),rota(pWRB),rotc(pYBR),rota(pYRG)
+pYRG G:207 LG rubik.b[648] qWRB,qYBR,qYRG,qWGR:=rotc(pYBR),rota(pYRG),rotc(pWGR),rota(pWRB)
+pYRG G:207 LG rubik.b[658] qWRB,qWGR,qYRG,qYBR:=pWRB,pWGR,pYRG,pYBR
+pYRG G:207 LG rubik.b[667] qWRB,qWGR,qYRG,qYBR:=pWRB,pWGR,pYRG,pYBR
+pYRG G:207 LG rubik.b[676] qWGR,qYRG,qYGO,qWOG:=pWGR,pYRG,pYGO,pWOG
+pYRG G:207 LG rubik.b[685] qWGR,qYRG,qYGO,qWOG:=pWGR,pYRG,pYGO,pWOG
+pYRG G:207 LG rubik.b[693] qWGR,qYRG,qYGO,qWOG:=rotc(pWOG),rota(pWGR),rotc(pYRG),rota(pYGO)
+pYRG G:207 LG rubik.b[702] qWGR,qYRG,qYGO,qWOG:=rotc(pYRG),rota(pYGO),rotc(pWOG),rota(pWGR)
+pYRG G:207 LG rubik.b[711] qYBR,qYOB,qYGO,qYRG:=pYBR,pYOB,pYGO,pYRG
+pYRG G:207 LG rubik.b[811] c:=c+corncostv!pYRG!cYRG
+pYRG G:207 SG rubik.b[719] pYBR,pYOB,pYGO,pYRG:=qYBR,qYOB,qYGO,qYRG
+packstring G:30 DEF libhdr.h[56] packstring=30
+pathfindinput G:53 DEF libhdr.h[79] pathfindinput=53
+peercom G:179 DEF libhdr.h[207] peercom=179
+pieces2cube F:17 LF rubik.b[355] pieces2cube(@pWRB,cube)
+pieces2cube F:17 LF rubik.b[498] pieces2cube(@qWRB,cube)
+pieces2cube F:17 LF rubik.b[850] pieces2cube(pieces,c)
+pieces2cube F:17 RT rubik.b[512] LET pieces2cube(pieces,cube)BE..
+pkt_a1 M:5 DEF libhdr.h[549] pkt_a1=5
+pkt_a2 M:6 DEF libhdr.h[550] pkt_a2=6
+pkt_a3 M:7 DEF libhdr.h[551] pkt_a3=7
+pkt_a4 M:8 DEF libhdr.h[552] pkt_a4=8
+pkt_a5 M:9 DEF libhdr.h[553] pkt_a5=9
+pkt_a6 M:10 DEF libhdr.h[554] pkt_a6=10
+pkt_arg1 M:5 DEF libhdr.h[549] pkt_arg1=5
+pkt_arg2 M:6 DEF libhdr.h[550] pkt_arg2=6
+pkt_arg3 M:7 DEF libhdr.h[551] pkt_arg3=7
+pkt_arg4 M:8 DEF libhdr.h[552] pkt_arg4=8
+pkt_arg5 M:9 DEF libhdr.h[553] pkt_arg5=9
+pkt_arg6 M:10 DEF libhdr.h[554] pkt_arg6=10
+pkt_devid M:1 DEF libhdr.h[545] pkt_devid=1
+pkt_devtaskid M:1 DEF libhdr.h[545] pkt_devtaskid=1
+pkt_id M:1 DEF libhdr.h[545] pkt_id=1
+pkt_link M:0 DEF libhdr.h[544] pkt_link=0
+pkt_op M:2 DEF libhdr.h[546] pkt_op=2
+pkt_r1 M:3 DEF libhdr.h[547] pkt_r1=3
+pkt_r2 M:4 DEF libhdr.h[548] pkt_r2=4
+pkt_res1 M:3 DEF libhdr.h[547] pkt_res1=3
+pkt_res2 M:4 DEF libhdr.h[548] pkt_res2=4
+pkt_taskid M:1 DEF libhdr.h[545] pkt_taskid=1
+pkt_type M:2 DEF libhdr.h[546] pkt_type=2
+point G:64 DEF libhdr.h[90] point=64
+pollingch M:-3 DEF libhdr.h[227] pollingch=-3
+prcube F:42 LF rubik.b[845] prcube(node)
+prcube F:42 LF rubik.b[873] prcube(c)
+prcube F:42 LF rubik.b[879] prcube(node)
+prcube F:42 RT rubik.b[882] LET prcube(cube)BE..
+prnode G:256 DEF rubik.b[152] prnode=
+prnode G:256 LG rubik.b[163] prnode(node)
+prnode G:256 LG rubik.b[228] prnode(node)
+prnode G:256 LG rubik.b[359] prnode(cube)
+prnode G:256 LG rubik.b[435] prnode(root)
+prnode G:256 LG rubik.b[835] prnode(node)
+prnode G:256 RT rubik.b[876] LET prnode(node)BE..
+prnodelist F:38 RT rubik.b[831] LET prnodelist(n)BE..
+prpieces F:40 RT rubik.b[848] LET prpieces(pieces)BE..
+prsolution F:39 LF rubik.b[412] prsolution(root)
+prsolution F:39 LF rubik.b[842] prsolution(s_prev!node)
+prsolution F:39 RT rubik.b[840] LET prsolution(node)BE..
+put_index_record G:74 DEF libhdr.h[100] put_index_record=74
+put_record G:72 DEF libhdr.h[98] put_record=72
+putword G:33 DEF libhdr.h[59] putword=33
+qBR G:232 DEF rubik.b[129] qBR=
+qBR G:232 LG rubik.b[721] pBR,pOB,pGO,pRG:=qBR,qOB,qGO,qRG
+qBR G:232 SG rubik.b[606] qBR,qOB,qGO,qRG:=pBR,pOB,pGO,pRG
+qBR G:232 SG rubik.b[615] qBR,qOB,qGO,qRG:=pBR,pOB,pGO,pRG
+qBR G:232 SG rubik.b[624] qBR,qOB,qGO,qRG:=pBR,pOB,pGO,pRG
+qBR G:232 SG rubik.b[633] qBR,qOB,qGO,qRG:=pBR,pOB,pGO,pRG
+qBR G:232 SG rubik.b[641] qWR,qBR,qYR,qRG:=flip(pRG),pWR,pBR,flip(pYR)
+qBR G:232 SG rubik.b[650] qWR,qBR,qYR,qRG:=pBR,pYR,flip(pRG),flip(pWR)
+qBR G:232 SG rubik.b[661] qWR,qRG,qYR,qBR:=pWR,pRG,pYR,pBR
+qBR G:232 SG rubik.b[670] qWR,qRG,qYR,qBR:=pWR,pRG,pYR,pBR
+qBR G:232 SG rubik.b[677] qWB,qOB,qYB,qBR:=flip(pBR),pWB,pOB,flip(pYB)
+qBR G:232 SG rubik.b[686] qWB,qOB,qYB,qBR:=pOB,pYB,flip(pBR),flip(pWB)
+qBR G:232 SG rubik.b[697] qWB,qOB,qYB,qBR:=pWB,pOB,pYB,pBR
+qBR G:232 SG rubik.b[706] qWB,qOB,qYB,qBR:=pWB,pOB,pYB,pBR
+qBR G:232 SG rubik.b[713] qBR,qOB,qGO,qRG:=pBR,pOB,pGO,pRG
+qGO G:234 DEF rubik.b[129] qGO=
+qGO G:234 LG rubik.b[721] pBR,pOB,pGO,pRG:=qBR,qOB,qGO,qRG
+qGO G:234 SG rubik.b[606] qBR,qOB,qGO,qRG:=pBR,pOB,pGO,pRG
+qGO G:234 SG rubik.b[615] qBR,qOB,qGO,qRG:=pBR,pOB,pGO,pRG
+qGO G:234 SG rubik.b[624] qBR,qOB,qGO,qRG:=pBR,pOB,pGO,pRG
+qGO G:234 SG rubik.b[633] qBR,qOB,qGO,qRG:=pBR,pOB,pGO,pRG
+qGO G:234 SG rubik.b[643] qWO,qOB,qYO,qGO:=pWO,pOB,pYO,pGO
+qGO G:234 SG rubik.b[652] qWO,qOB,qYO,qGO:=pWO,pOB,pYO,pGO
+qGO G:234 SG rubik.b[659] qWO,qGO,qYO,qOB:=flip(pOB),pWO,pGO,flip(pYO)
+qGO G:234 SG rubik.b[668] qWO,qGO,qYO,qOB:=pGO,pYO,flip(pOB),flip(pWO)
+qGO G:234 SG rubik.b[679] qWG,qRG,qYG,qGO:=pWG,pRG,pYG,pGO
+qGO G:234 SG rubik.b[688] qWG,qRG,qYG,qGO:=pWG,pRG,pYG,pGO
+qGO G:234 SG rubik.b[695] qWG,qRG,qYG,qGO:=flip(pGO),pWG,pRG,flip(pYG)
+qGO G:234 SG rubik.b[704] qWG,qRG,qYG,qGO:=pRG,pYG,flip(pGO),flip(pWG)
+qGO G:234 SG rubik.b[713] qBR,qOB,qGO,qRG:=pBR,pOB,pGO,pRG
+qOB G:233 DEF rubik.b[129] qOB=
+qOB G:233 LG rubik.b[721] pBR,pOB,pGO,pRG:=qBR,qOB,qGO,qRG
+qOB G:233 SG rubik.b[606] qBR,qOB,qGO,qRG:=pBR,pOB,pGO,pRG
+qOB G:233 SG rubik.b[615] qBR,qOB,qGO,qRG:=pBR,pOB,pGO,pRG
+qOB G:233 SG rubik.b[624] qBR,qOB,qGO,qRG:=pBR,pOB,pGO,pRG
+qOB G:233 SG rubik.b[633] qBR,qOB,qGO,qRG:=pBR,pOB,pGO,pRG
+qOB G:233 SG rubik.b[643] qWO,qOB,qYO,qGO:=pWO,pOB,pYO,pGO
+qOB G:233 SG rubik.b[652] qWO,qOB,qYO,qGO:=pWO,pOB,pYO,pGO
+qOB G:233 SG rubik.b[659] qWO,qGO,qYO,qOB:=flip(pOB),pWO,pGO,flip(pYO)
+qOB G:233 SG rubik.b[668] qWO,qGO,qYO,qOB:=pGO,pYO,flip(pOB),flip(pWO)
+qOB G:233 SG rubik.b[677] qWB,qOB,qYB,qBR:=flip(pBR),pWB,pOB,flip(pYB)
+qOB G:233 SG rubik.b[686] qWB,qOB,qYB,qBR:=pOB,pYB,flip(pBR),flip(pWB)
+qOB G:233 SG rubik.b[697] qWB,qOB,qYB,qBR:=pWB,pOB,pYB,pBR
+qOB G:233 SG rubik.b[706] qWB,qOB,qYB,qBR:=pWB,pOB,pYB,pBR
+qOB G:233 SG rubik.b[713] qBR,qOB,qGO,qRG:=pBR,pOB,pGO,pRG
+qRG G:235 DEF rubik.b[129] qRG=
+qRG G:235 LG rubik.b[721] pBR,pOB,pGO,pRG:=qBR,qOB,qGO,qRG
+qRG G:235 SG rubik.b[606] qBR,qOB,qGO,qRG:=pBR,pOB,pGO,pRG
+qRG G:235 SG rubik.b[615] qBR,qOB,qGO,qRG:=pBR,pOB,pGO,pRG
+qRG G:235 SG rubik.b[624] qBR,qOB,qGO,qRG:=pBR,pOB,pGO,pRG
+qRG G:235 SG rubik.b[633] qBR,qOB,qGO,qRG:=pBR,pOB,pGO,pRG
+qRG G:235 SG rubik.b[641] qWR,qBR,qYR,qRG:=flip(pRG),pWR,pBR,flip(pYR)
+qRG G:235 SG rubik.b[650] qWR,qBR,qYR,qRG:=pBR,pYR,flip(pRG),flip(pWR)
+qRG G:235 SG rubik.b[661] qWR,qRG,qYR,qBR:=pWR,pRG,pYR,pBR
+qRG G:235 SG rubik.b[670] qWR,qRG,qYR,qBR:=pWR,pRG,pYR,pBR
+qRG G:235 SG rubik.b[679] qWG,qRG,qYG,qGO:=pWG,pRG,pYG,pGO
+qRG G:235 SG rubik.b[688] qWG,qRG,qYG,qGO:=pWG,pRG,pYG,pGO
+qRG G:235 SG rubik.b[695] qWG,qRG,qYG,qGO:=flip(pGO),pWG,pRG,flip(pYG)
+qRG G:235 SG rubik.b[704] qWG,qRG,qYG,qGO:=pRG,pYG,flip(pGO),flip(pWG)
+qRG G:235 SG rubik.b[713] qBR,qOB,qGO,qRG:=pBR,pOB,pGO,pRG
+qWB G:229 DEF rubik.b[128] qWB=
+qWB G:229 LG rubik.b[720] pWR,pWB,pWO,pWG:=qWR,qWB,qWO,qWG
+qWB G:229 SG rubik.b[605] qWR,qWB,qWO,qWG:=pWB,pWO,pWG,pWR
+qWB G:229 SG rubik.b[614] qWR,qWB,qWO,qWG:=pWG,pWR,pWB,pWO
+qWB G:229 SG rubik.b[623] qWR,qWB,qWO,qWG:=pWR,pWB,pWO,pWG
+qWB G:229 SG rubik.b[632] qWR,qWB,qWO,qWG:=pWR,pWB,pWO,pWG
+qWB G:229 SG rubik.b[642] qWB,qYB,qYG,qWG:=pWB,pYB,pYG,pWG
+qWB G:229 SG rubik.b[651] qWB,qYB,qYG,qWG:=pWB,pYB,pYG,pWG
+qWB G:229 SG rubik.b[660] qWB,qWG,qYG,qYB:=pWB,pWG,pYG,pYB
+qWB G:229 SG rubik.b[669] qWB,qWG,qYG,qYB:=pWB,pWG,pYG,pYB
+qWB G:229 SG rubik.b[677] qWB,qOB,qYB,qBR:=flip(pBR),pWB,pOB,flip(pYB)
+qWB G:229 SG rubik.b[686] qWB,qOB,qYB,qBR:=pOB,pYB,flip(pBR),flip(pWB)
+qWB G:229 SG rubik.b[697] qWB,qOB,qYB,qBR:=pWB,pOB,pYB,pBR
+qWB G:229 SG rubik.b[706] qWB,qOB,qYB,qBR:=pWB,pOB,pYB,pBR
+qWB G:229 SG rubik.b[712] qWR,qWB,qWO,qWG:=pWR,pWB,pWO,pWG
+qWBO G:221 DEF rubik.b[126] qWBO=
+qWBO G:221 LG rubik.b[718] pWRB,pWBO,pWOG,pWGR:=qWRB,qWBO,qWOG,qWGR
+qWBO G:221 SG rubik.b[603] qWRB,qWBO,qWOG,qWGR:=pWBO,pWOG,pWGR,pWRB
+qWBO G:221 SG rubik.b[612] qWRB,qWBO,qWOG,qWGR:=pWGR,pWRB,pWBO,pWOG
+qWBO G:221 SG rubik.b[621] qWRB,qWBO,qWOG,qWGR:=pWRB,pWBO,pWOG,pWGR
+qWBO G:221 SG rubik.b[630] qWRB,qWBO,qWOG,qWGR:=pWRB,pWBO,pWOG,pWGR
+qWBO G:221 SG rubik.b[640] qWBO,qYOB,qYGO,qWOG:=pWBO,pYOB,pYGO,pWOG
+qWBO G:221 SG rubik.b[649] qWBO,qYOB,qYGO,qWOG:=pWBO,pYOB,pYGO,pWOG
+qWBO G:221 SG rubik.b[657] qWBO,qWOG,qYGO,qYOB:=rota(pYOB),rotc(pWBO),rota(pWOG),rotc(pYGO)
+qWBO G:221 SG rubik.b[666] qWBO,qWOG,qYGO,qYOB:=rota(pWOG),rotc(pYGO),rota(pYOB),rotc(pWBO)
+qWBO G:221 SG rubik.b[675] qWRB,qWBO,qYOB,qYBR:=rota(pYBR),rotc(pWRB),rota(pWBO),rotc(pYOB)
+qWBO G:221 SG rubik.b[684] qWRB,qWBO,qYOB,qYBR:=rota(pWBO),rotc(pYOB),rota(pYBR),rotc(pWRB)
+qWBO G:221 SG rubik.b[694] qWBO,qYOB,qYBR,qWRB:=pWBO,pYOB,pYBR,pWRB
+qWBO G:221 SG rubik.b[703] qWBO,qYOB,qYBR,qWRB:=pWBO,pYOB,pYBR,pWRB
+qWBO G:221 SG rubik.b[710] qWRB,qWBO,qWOG,qWGR:=pWRB,pWBO,pWOG,pWGR
+qWG G:231 DEF rubik.b[128] qWG=
+qWG G:231 LG rubik.b[720] pWR,pWB,pWO,pWG:=qWR,qWB,qWO,qWG
+qWG G:231 SG rubik.b[605] qWR,qWB,qWO,qWG:=pWB,pWO,pWG,pWR
+qWG G:231 SG rubik.b[614] qWR,qWB,qWO,qWG:=pWG,pWR,pWB,pWO
+qWG G:231 SG rubik.b[623] qWR,qWB,qWO,qWG:=pWR,pWB,pWO,pWG
+qWG G:231 SG rubik.b[632] qWR,qWB,qWO,qWG:=pWR,pWB,pWO,pWG
+qWG G:231 SG rubik.b[642] qWB,qYB,qYG,qWG:=pWB,pYB,pYG,pWG
+qWG G:231 SG rubik.b[651] qWB,qYB,qYG,qWG:=pWB,pYB,pYG,pWG
+qWG G:231 SG rubik.b[660] qWB,qWG,qYG,qYB:=pWB,pWG,pYG,pYB
+qWG G:231 SG rubik.b[669] qWB,qWG,qYG,qYB:=pWB,pWG,pYG,pYB
+qWG G:231 SG rubik.b[679] qWG,qRG,qYG,qGO:=pWG,pRG,pYG,pGO
+qWG G:231 SG rubik.b[688] qWG,qRG,qYG,qGO:=pWG,pRG,pYG,pGO
+qWG G:231 SG rubik.b[695] qWG,qRG,qYG,qGO:=flip(pGO),pWG,pRG,flip(pYG)
+qWG G:231 SG rubik.b[704] qWG,qRG,qYG,qGO:=pRG,pYG,flip(pGO),flip(pWG)
+qWG G:231 SG rubik.b[712] qWR,qWB,qWO,qWG:=pWR,pWB,pWO,pWG
+qWGR G:223 DEF rubik.b[126] qWGR=
+qWGR G:223 LG rubik.b[718] pWRB,pWBO,pWOG,pWGR:=qWRB,qWBO,qWOG,qWGR
+qWGR G:223 SG rubik.b[603] qWRB,qWBO,qWOG,qWGR:=pWBO,pWOG,pWGR,pWRB
+qWGR G:223 SG rubik.b[612] qWRB,qWBO,qWOG,qWGR:=pWGR,pWRB,pWBO,pWOG
+qWGR G:223 SG rubik.b[621] qWRB,qWBO,qWOG,qWGR:=pWRB,pWBO,pWOG,pWGR
+qWGR G:223 SG rubik.b[630] qWRB,qWBO,qWOG,qWGR:=pWRB,pWBO,pWOG,pWGR
+qWGR G:223 SG rubik.b[639] qWRB,qYBR,qYRG,qWGR:=rotc(pWGR),rota(pWRB),rotc(pYBR),rota(pYRG)
+qWGR G:223 SG rubik.b[648] qWRB,qYBR,qYRG,qWGR:=rotc(pYBR),rota(pYRG),rotc(pWGR),rota(pWRB)
+qWGR G:223 SG rubik.b[658] qWRB,qWGR,qYRG,qYBR:=pWRB,pWGR,pYRG,pYBR
+qWGR G:223 SG rubik.b[667] qWRB,qWGR,qYRG,qYBR:=pWRB,pWGR,pYRG,pYBR
+qWGR G:223 SG rubik.b[676] qWGR,qYRG,qYGO,qWOG:=pWGR,pYRG,pYGO,pWOG
+qWGR G:223 SG rubik.b[685] qWGR,qYRG,qYGO,qWOG:=pWGR,pYRG,pYGO,pWOG
+qWGR G:223 SG rubik.b[693] qWGR,qYRG,qYGO,qWOG:=rotc(pWOG),rota(pWGR),rotc(pYRG),rota(pYGO)
+qWGR G:223 SG rubik.b[702] qWGR,qYRG,qYGO,qWOG:=rotc(pYRG),rota(pYGO),rotc(pWOG),rota(pWGR)
+qWGR G:223 SG rubik.b[710] qWRB,qWBO,qWOG,qWGR:=pWRB,pWBO,pWOG,pWGR
+qWO G:230 DEF rubik.b[128] qWO=
+qWO G:230 LG rubik.b[720] pWR,pWB,pWO,pWG:=qWR,qWB,qWO,qWG
+qWO G:230 SG rubik.b[605] qWR,qWB,qWO,qWG:=pWB,pWO,pWG,pWR
+qWO G:230 SG rubik.b[614] qWR,qWB,qWO,qWG:=pWG,pWR,pWB,pWO
+qWO G:230 SG rubik.b[623] qWR,qWB,qWO,qWG:=pWR,pWB,pWO,pWG
+qWO G:230 SG rubik.b[632] qWR,qWB,qWO,qWG:=pWR,pWB,pWO,pWG
+qWO G:230 SG rubik.b[643] qWO,qOB,qYO,qGO:=pWO,pOB,pYO,pGO
+qWO G:230 SG rubik.b[652] qWO,qOB,qYO,qGO:=pWO,pOB,pYO,pGO
+qWO G:230 SG rubik.b[659] qWO,qGO,qYO,qOB:=flip(pOB),pWO,pGO,flip(pYO)
+qWO G:230 SG rubik.b[668] qWO,qGO,qYO,qOB:=pGO,pYO,flip(pOB),flip(pWO)
+qWO G:230 SG rubik.b[678] qWR,qWO,qYO,qYR:=pWR,pWO,pYO,pYR
+qWO G:230 SG rubik.b[687] qWR,qWO,qYO,qYR:=pWR,pWO,pYO,pYR
+qWO G:230 SG rubik.b[696] qWR,qYR,qYO,qWO:=pWR,pYR,pYO,pWO
+qWO G:230 SG rubik.b[705] qWR,qYR,qYO,qWO:=pWR,pYR,pYO,pWO
+qWO G:230 SG rubik.b[712] qWR,qWB,qWO,qWG:=pWR,pWB,pWO,pWG
+qWOG G:222 DEF rubik.b[126] qWOG=
+qWOG G:222 LG rubik.b[718] pWRB,pWBO,pWOG,pWGR:=qWRB,qWBO,qWOG,qWGR
+qWOG G:222 SG rubik.b[603] qWRB,qWBO,qWOG,qWGR:=pWBO,pWOG,pWGR,pWRB
+qWOG G:222 SG rubik.b[612] qWRB,qWBO,qWOG,qWGR:=pWGR,pWRB,pWBO,pWOG
+qWOG G:222 SG rubik.b[621] qWRB,qWBO,qWOG,qWGR:=pWRB,pWBO,pWOG,pWGR
+qWOG G:222 SG rubik.b[630] qWRB,qWBO,qWOG,qWGR:=pWRB,pWBO,pWOG,pWGR
+qWOG G:222 SG rubik.b[640] qWBO,qYOB,qYGO,qWOG:=pWBO,pYOB,pYGO,pWOG
+qWOG G:222 SG rubik.b[649] qWBO,qYOB,qYGO,qWOG:=pWBO,pYOB,pYGO,pWOG
+qWOG G:222 SG rubik.b[657] qWBO,qWOG,qYGO,qYOB:=rota(pYOB),rotc(pWBO),rota(pWOG),rotc(pYGO)
+qWOG G:222 SG rubik.b[666] qWBO,qWOG,qYGO,qYOB:=rota(pWOG),rotc(pYGO),rota(pYOB),rotc(pWBO)
+qWOG G:222 SG rubik.b[676] qWGR,qYRG,qYGO,qWOG:=pWGR,pYRG,pYGO,pWOG
+qWOG G:222 SG rubik.b[685] qWGR,qYRG,qYGO,qWOG:=pWGR,pYRG,pYGO,pWOG
+qWOG G:222 SG rubik.b[693] qWGR,qYRG,qYGO,qWOG:=rotc(pWOG),rota(pWGR),rotc(pYRG),rota(pYGO)
+qWOG G:222 SG rubik.b[702] qWGR,qYRG,qYGO,qWOG:=rotc(pYRG),rota(pYGO),rotc(pWOG),rota(pWGR)
+qWOG G:222 SG rubik.b[710] qWRB,qWBO,qWOG,qWGR:=pWRB,pWBO,pWOG,pWGR
+qWR G:228 DEF rubik.b[128] qWR=
+qWR G:228 LG rubik.b[720] pWR,pWB,pWO,pWG:=qWR,qWB,qWO,qWG
+qWR G:228 SG rubik.b[605] qWR,qWB,qWO,qWG:=pWB,pWO,pWG,pWR
+qWR G:228 SG rubik.b[614] qWR,qWB,qWO,qWG:=pWG,pWR,pWB,pWO
+qWR G:228 SG rubik.b[623] qWR,qWB,qWO,qWG:=pWR,pWB,pWO,pWG
+qWR G:228 SG rubik.b[632] qWR,qWB,qWO,qWG:=pWR,pWB,pWO,pWG
+qWR G:228 SG rubik.b[641] qWR,qBR,qYR,qRG:=flip(pRG),pWR,pBR,flip(pYR)
+qWR G:228 SG rubik.b[650] qWR,qBR,qYR,qRG:=pBR,pYR,flip(pRG),flip(pWR)
+qWR G:228 SG rubik.b[661] qWR,qRG,qYR,qBR:=pWR,pRG,pYR,pBR
+qWR G:228 SG rubik.b[670] qWR,qRG,qYR,qBR:=pWR,pRG,pYR,pBR
+qWR G:228 SG rubik.b[678] qWR,qWO,qYO,qYR:=pWR,pWO,pYO,pYR
+qWR G:228 SG rubik.b[687] qWR,qWO,qYO,qYR:=pWR,pWO,pYO,pYR
+qWR G:228 SG rubik.b[696] qWR,qYR,qYO,qWO:=pWR,pYR,pYO,pWO
+qWR G:228 SG rubik.b[705] qWR,qYR,qYO,qWO:=pWR,pYR,pYO,pWO
+qWR G:228 SG rubik.b[712] qWR,qWB,qWO,qWG:=pWR,pWB,pWO,pWG
+qWRB G:220 DEF rubik.b[126] qWRB=
+qWRB G:220 LG rubik.b[718] pWRB,pWBO,pWOG,pWGR:=qWRB,qWBO,qWOG,qWGR
+qWRB G:220 LLG rubik.b[498] pieces2cube(@qWRB,cube)
+qWRB G:220 SG rubik.b[603] qWRB,qWBO,qWOG,qWGR:=pWBO,pWOG,pWGR,pWRB
+qWRB G:220 SG rubik.b[612] qWRB,qWBO,qWOG,qWGR:=pWGR,pWRB,pWBO,pWOG
+qWRB G:220 SG rubik.b[621] qWRB,qWBO,qWOG,qWGR:=pWRB,pWBO,pWOG,pWGR
+qWRB G:220 SG rubik.b[630] qWRB,qWBO,qWOG,qWGR:=pWRB,pWBO,pWOG,pWGR
+qWRB G:220 SG rubik.b[639] qWRB,qYBR,qYRG,qWGR:=rotc(pWGR),rota(pWRB),rotc(pYBR),rota(pYRG)
+qWRB G:220 SG rubik.b[648] qWRB,qYBR,qYRG,qWGR:=rotc(pYBR),rota(pYRG),rotc(pWGR),rota(pWRB)
+qWRB G:220 SG rubik.b[658] qWRB,qWGR,qYRG,qYBR:=pWRB,pWGR,pYRG,pYBR
+qWRB G:220 SG rubik.b[667] qWRB,qWGR,qYRG,qYBR:=pWRB,pWGR,pYRG,pYBR
+qWRB G:220 SG rubik.b[675] qWRB,qWBO,qYOB,qYBR:=rota(pYBR),rotc(pWRB),rota(pWBO),rotc(pYOB)
+qWRB G:220 SG rubik.b[684] qWRB,qWBO,qYOB,qYBR:=rota(pWBO),rotc(pYOB),rota(pYBR),rotc(pWRB)
+qWRB G:220 SG rubik.b[694] qWBO,qYOB,qYBR,qWRB:=pWBO,pYOB,pYBR,pWRB
+qWRB G:220 SG rubik.b[703] qWBO,qYOB,qYBR,qWRB:=pWBO,pYOB,pYBR,pWRB
+qWRB G:220 SG rubik.b[710] qWRB,qWBO,qWOG,qWGR:=pWRB,pWBO,pWOG,pWGR
+qYB G:237 DEF rubik.b[130] qYB=
+qYB G:237 LG rubik.b[722] pYR,pYB,pYO,pYG:=qYR,qYB,qYO,qYG
+qYB G:237 SG rubik.b[607] qYR,qYB,qYO,qYG:=pYR,pYB,pYO,pYG
+qYB G:237 SG rubik.b[616] qYR,qYB,qYO,qYG:=pYR,pYB,pYO,pYG
+qYB G:237 SG rubik.b[625] qYR,qYB,qYO,qYG:=pYG,pYR,pYB,pYO
+qYB G:237 SG rubik.b[634] qYR,qYB,qYO,qYG:=pYB,pYO,pYG,pYR
+qYB G:237 SG rubik.b[642] qWB,qYB,qYG,qWG:=pWB,pYB,pYG,pWG
+qYB G:237 SG rubik.b[651] qWB,qYB,qYG,qWG:=pWB,pYB,pYG,pWG
+qYB G:237 SG rubik.b[660] qWB,qWG,qYG,qYB:=pWB,pWG,pYG,pYB
+qYB G:237 SG rubik.b[669] qWB,qWG,qYG,qYB:=pWB,pWG,pYG,pYB
+qYB G:237 SG rubik.b[677] qWB,qOB,qYB,qBR:=flip(pBR),pWB,pOB,flip(pYB)
+qYB G:237 SG rubik.b[686] qWB,qOB,qYB,qBR:=pOB,pYB,flip(pBR),flip(pWB)
+qYB G:237 SG rubik.b[697] qWB,qOB,qYB,qBR:=pWB,pOB,pYB,pBR
+qYB G:237 SG rubik.b[706] qWB,qOB,qYB,qBR:=pWB,pOB,pYB,pBR
+qYB G:237 SG rubik.b[714] qYR,qYB,qYO,qYG:=pYR,pYB,pYO,pYG
+qYBR G:224 DEF rubik.b[127] qYBR=
+qYBR G:224 LG rubik.b[719] pYBR,pYOB,pYGO,pYRG:=qYBR,qYOB,qYGO,qYRG
+qYBR G:224 SG rubik.b[604] qYBR,qYOB,qYGO,qYRG:=pYBR,pYOB,pYGO,pYRG
+qYBR G:224 SG rubik.b[613] qYBR,qYOB,qYGO,qYRG:=pYBR,pYOB,pYGO,pYRG
+qYBR G:224 SG rubik.b[622] qYBR,qYOB,qYGO,qYRG:=pYRG,pYBR,pYOB,pYGO
+qYBR G:224 SG rubik.b[631] qYBR,qYOB,qYGO,qYRG:=pYOB,pYGO,pYRG,pYBR
+qYBR G:224 SG rubik.b[639] qWRB,qYBR,qYRG,qWGR:=rotc(pWGR),rota(pWRB),rotc(pYBR),rota(pYRG)
+qYBR G:224 SG rubik.b[648] qWRB,qYBR,qYRG,qWGR:=rotc(pYBR),rota(pYRG),rotc(pWGR),rota(pWRB)
+qYBR G:224 SG rubik.b[658] qWRB,qWGR,qYRG,qYBR:=pWRB,pWGR,pYRG,pYBR
+qYBR G:224 SG rubik.b[667] qWRB,qWGR,qYRG,qYBR:=pWRB,pWGR,pYRG,pYBR
+qYBR G:224 SG rubik.b[675] qWRB,qWBO,qYOB,qYBR:=rota(pYBR),rotc(pWRB),rota(pWBO),rotc(pYOB)
+qYBR G:224 SG rubik.b[684] qWRB,qWBO,qYOB,qYBR:=rota(pWBO),rotc(pYOB),rota(pYBR),rotc(pWRB)
+qYBR G:224 SG rubik.b[694] qWBO,qYOB,qYBR,qWRB:=pWBO,pYOB,pYBR,pWRB
+qYBR G:224 SG rubik.b[703] qWBO,qYOB,qYBR,qWRB:=pWBO,pYOB,pYBR,pWRB
+qYBR G:224 SG rubik.b[711] qYBR,qYOB,qYGO,qYRG:=pYBR,pYOB,pYGO,pYRG
+qYG G:239 DEF rubik.b[130] qYG=
+qYG G:239 LG rubik.b[722] pYR,pYB,pYO,pYG:=qYR,qYB,qYO,qYG
+qYG G:239 SG rubik.b[607] qYR,qYB,qYO,qYG:=pYR,pYB,pYO,pYG
+qYG G:239 SG rubik.b[616] qYR,qYB,qYO,qYG:=pYR,pYB,pYO,pYG
+qYG G:239 SG rubik.b[625] qYR,qYB,qYO,qYG:=pYG,pYR,pYB,pYO
+qYG G:239 SG rubik.b[634] qYR,qYB,qYO,qYG:=pYB,pYO,pYG,pYR
+qYG G:239 SG rubik.b[642] qWB,qYB,qYG,qWG:=pWB,pYB,pYG,pWG
+qYG G:239 SG rubik.b[651] qWB,qYB,qYG,qWG:=pWB,pYB,pYG,pWG
+qYG G:239 SG rubik.b[660] qWB,qWG,qYG,qYB:=pWB,pWG,pYG,pYB
+qYG G:239 SG rubik.b[669] qWB,qWG,qYG,qYB:=pWB,pWG,pYG,pYB
+qYG G:239 SG rubik.b[679] qWG,qRG,qYG,qGO:=pWG,pRG,pYG,pGO
+qYG G:239 SG rubik.b[688] qWG,qRG,qYG,qGO:=pWG,pRG,pYG,pGO
+qYG G:239 SG rubik.b[695] qWG,qRG,qYG,qGO:=flip(pGO),pWG,pRG,flip(pYG)
+qYG G:239 SG rubik.b[704] qWG,qRG,qYG,qGO:=pRG,pYG,flip(pGO),flip(pWG)
+qYG G:239 SG rubik.b[714] qYR,qYB,qYO,qYG:=pYR,pYB,pYO,pYG
+qYGO G:226 DEF rubik.b[127] qYGO=
+qYGO G:226 LG rubik.b[719] pYBR,pYOB,pYGO,pYRG:=qYBR,qYOB,qYGO,qYRG
+qYGO G:226 SG rubik.b[604] qYBR,qYOB,qYGO,qYRG:=pYBR,pYOB,pYGO,pYRG
+qYGO G:226 SG rubik.b[613] qYBR,qYOB,qYGO,qYRG:=pYBR,pYOB,pYGO,pYRG
+qYGO G:226 SG rubik.b[622] qYBR,qYOB,qYGO,qYRG:=pYRG,pYBR,pYOB,pYGO
+qYGO G:226 SG rubik.b[631] qYBR,qYOB,qYGO,qYRG:=pYOB,pYGO,pYRG,pYBR
+qYGO G:226 SG rubik.b[640] qWBO,qYOB,qYGO,qWOG:=pWBO,pYOB,pYGO,pWOG
+qYGO G:226 SG rubik.b[649] qWBO,qYOB,qYGO,qWOG:=pWBO,pYOB,pYGO,pWOG
+qYGO G:226 SG rubik.b[657] qWBO,qWOG,qYGO,qYOB:=rota(pYOB),rotc(pWBO),rota(pWOG),rotc(pYGO)
+qYGO G:226 SG rubik.b[666] qWBO,qWOG,qYGO,qYOB:=rota(pWOG),rotc(pYGO),rota(pYOB),rotc(pWBO)
+qYGO G:226 SG rubik.b[676] qWGR,qYRG,qYGO,qWOG:=pWGR,pYRG,pYGO,pWOG
+qYGO G:226 SG rubik.b[685] qWGR,qYRG,qYGO,qWOG:=pWGR,pYRG,pYGO,pWOG
+qYGO G:226 SG rubik.b[693] qWGR,qYRG,qYGO,qWOG:=rotc(pWOG),rota(pWGR),rotc(pYRG),rota(pYGO)
+qYGO G:226 SG rubik.b[702] qWGR,qYRG,qYGO,qWOG:=rotc(pYRG),rota(pYGO),rotc(pWOG),rota(pWGR)
+qYGO G:226 SG rubik.b[711] qYBR,qYOB,qYGO,qYRG:=pYBR,pYOB,pYGO,pYRG
+qYO G:238 DEF rubik.b[130] qYO=
+qYO G:238 LG rubik.b[722] pYR,pYB,pYO,pYG:=qYR,qYB,qYO,qYG
+qYO G:238 SG rubik.b[607] qYR,qYB,qYO,qYG:=pYR,pYB,pYO,pYG
+qYO G:238 SG rubik.b[616] qYR,qYB,qYO,qYG:=pYR,pYB,pYO,pYG
+qYO G:238 SG rubik.b[625] qYR,qYB,qYO,qYG:=pYG,pYR,pYB,pYO
+qYO G:238 SG rubik.b[634] qYR,qYB,qYO,qYG:=pYB,pYO,pYG,pYR
+qYO G:238 SG rubik.b[643] qWO,qOB,qYO,qGO:=pWO,pOB,pYO,pGO
+qYO G:238 SG rubik.b[652] qWO,qOB,qYO,qGO:=pWO,pOB,pYO,pGO
+qYO G:238 SG rubik.b[659] qWO,qGO,qYO,qOB:=flip(pOB),pWO,pGO,flip(pYO)
+qYO G:238 SG rubik.b[668] qWO,qGO,qYO,qOB:=pGO,pYO,flip(pOB),flip(pWO)
+qYO G:238 SG rubik.b[678] qWR,qWO,qYO,qYR:=pWR,pWO,pYO,pYR
+qYO G:238 SG rubik.b[687] qWR,qWO,qYO,qYR:=pWR,pWO,pYO,pYR
+qYO G:238 SG rubik.b[696] qWR,qYR,qYO,qWO:=pWR,pYR,pYO,pWO
+qYO G:238 SG rubik.b[705] qWR,qYR,qYO,qWO:=pWR,pYR,pYO,pWO
+qYO G:238 SG rubik.b[714] qYR,qYB,qYO,qYG:=pYR,pYB,pYO,pYG
+qYOB G:225 DEF rubik.b[127] qYOB=
+qYOB G:225 LG rubik.b[719] pYBR,pYOB,pYGO,pYRG:=qYBR,qYOB,qYGO,qYRG
+qYOB G:225 SG rubik.b[604] qYBR,qYOB,qYGO,qYRG:=pYBR,pYOB,pYGO,pYRG
+qYOB G:225 SG rubik.b[613] qYBR,qYOB,qYGO,qYRG:=pYBR,pYOB,pYGO,pYRG
+qYOB G:225 SG rubik.b[622] qYBR,qYOB,qYGO,qYRG:=pYRG,pYBR,pYOB,pYGO
+qYOB G:225 SG rubik.b[631] qYBR,qYOB,qYGO,qYRG:=pYOB,pYGO,pYRG,pYBR
+qYOB G:225 SG rubik.b[640] qWBO,qYOB,qYGO,qWOG:=pWBO,pYOB,pYGO,pWOG
+qYOB G:225 SG rubik.b[649] qWBO,qYOB,qYGO,qWOG:=pWBO,pYOB,pYGO,pWOG
+qYOB G:225 SG rubik.b[657] qWBO,qWOG,qYGO,qYOB:=rota(pYOB),rotc(pWBO),rota(pWOG),rotc(pYGO)
+qYOB G:225 SG rubik.b[666] qWBO,qWOG,qYGO,qYOB:=rota(pWOG),rotc(pYGO),rota(pYOB),rotc(pWBO)
+qYOB G:225 SG rubik.b[675] qWRB,qWBO,qYOB,qYBR:=rota(pYBR),rotc(pWRB),rota(pWBO),rotc(pYOB)
+qYOB G:225 SG rubik.b[684] qWRB,qWBO,qYOB,qYBR:=rota(pWBO),rotc(pYOB),rota(pYBR),rotc(pWRB)
+qYOB G:225 SG rubik.b[694] qWBO,qYOB,qYBR,qWRB:=pWBO,pYOB,pYBR,pWRB
+qYOB G:225 SG rubik.b[703] qWBO,qYOB,qYBR,qWRB:=pWBO,pYOB,pYBR,pWRB
+qYOB G:225 SG rubik.b[711] qYBR,qYOB,qYGO,qYRG:=pYBR,pYOB,pYGO,pYRG
+qYR G:236 DEF rubik.b[130] qYR=
+qYR G:236 LG rubik.b[722] pYR,pYB,pYO,pYG:=qYR,qYB,qYO,qYG
+qYR G:236 SG rubik.b[607] qYR,qYB,qYO,qYG:=pYR,pYB,pYO,pYG
+qYR G:236 SG rubik.b[616] qYR,qYB,qYO,qYG:=pYR,pYB,pYO,pYG
+qYR G:236 SG rubik.b[625] qYR,qYB,qYO,qYG:=pYG,pYR,pYB,pYO
+qYR G:236 SG rubik.b[634] qYR,qYB,qYO,qYG:=pYB,pYO,pYG,pYR
+qYR G:236 SG rubik.b[641] qWR,qBR,qYR,qRG:=flip(pRG),pWR,pBR,flip(pYR)
+qYR G:236 SG rubik.b[650] qWR,qBR,qYR,qRG:=pBR,pYR,flip(pRG),flip(pWR)
+qYR G:236 SG rubik.b[661] qWR,qRG,qYR,qBR:=pWR,pRG,pYR,pBR
+qYR G:236 SG rubik.b[670] qWR,qRG,qYR,qBR:=pWR,pRG,pYR,pBR
+qYR G:236 SG rubik.b[678] qWR,qWO,qYO,qYR:=pWR,pWO,pYO,pYR
+qYR G:236 SG rubik.b[687] qWR,qWO,qYO,qYR:=pWR,pWO,pYO,pYR
+qYR G:236 SG rubik.b[696] qWR,qYR,qYO,qWO:=pWR,pYR,pYO,pWO
+qYR G:236 SG rubik.b[705] qWR,qYR,qYO,qWO:=pWR,pYR,pYO,pWO
+qYR G:236 SG rubik.b[714] qYR,qYB,qYO,qYG:=pYR,pYB,pYO,pYG
+qYRG G:227 DEF rubik.b[127] qYRG=
+qYRG G:227 LG rubik.b[719] pYBR,pYOB,pYGO,pYRG:=qYBR,qYOB,qYGO,qYRG
+qYRG G:227 SG rubik.b[604] qYBR,qYOB,qYGO,qYRG:=pYBR,pYOB,pYGO,pYRG
+qYRG G:227 SG rubik.b[613] qYBR,qYOB,qYGO,qYRG:=pYBR,pYOB,pYGO,pYRG
+qYRG G:227 SG rubik.b[622] qYBR,qYOB,qYGO,qYRG:=pYRG,pYBR,pYOB,pYGO
+qYRG G:227 SG rubik.b[631] qYBR,qYOB,qYGO,qYRG:=pYOB,pYGO,pYRG,pYBR
+qYRG G:227 SG rubik.b[639] qWRB,qYBR,qYRG,qWGR:=rotc(pWGR),rota(pWRB),rotc(pYBR),rota(pYRG)
+qYRG G:227 SG rubik.b[648] qWRB,qYBR,qYRG,qWGR:=rotc(pYBR),rota(pYRG),rotc(pWGR),rota(pWRB)
+qYRG G:227 SG rubik.b[658] qWRB,qWGR,qYRG,qYBR:=pWRB,pWGR,pYRG,pYBR
+qYRG G:227 SG rubik.b[667] qWRB,qWGR,qYRG,qYBR:=pWRB,pWGR,pYRG,pYBR
+qYRG G:227 SG rubik.b[676] qWGR,qYRG,qYGO,qWOG:=pWGR,pYRG,pYGO,pWOG
+qYRG G:227 SG rubik.b[685] qWGR,qYRG,qYGO,qWOG:=pWGR,pYRG,pYGO,pWOG
+qYRG G:227 SG rubik.b[693] qWGR,qYRG,qYGO,qWOG:=rotc(pWOG),rota(pWGR),rotc(pYRG),rota(pYGO)
+qYRG G:227 SG rubik.b[702] qWGR,qYRG,qYGO,qWOG:=rotc(pYRG),rota(pYGO),rotc(pWOG),rota(pWGR)
+qYRG G:227 SG rubik.b[711] qYBR,qYOB,qYGO,qYRG:=pYBR,pYOB,pYGO,pYRG
+qpkt G:161 DEF libhdr.h[194] qpkt=161
+randno G:34 DEF libhdr.h[60] randno=34
+randno G:34 LG rubik.b[333] SWITCHON randno(15) INTO..
+randomise G:259 DEF rubik.b[155] randomise=
+randomise G:259 LG rubik.b[332] IF randomise DO ..
+randomise G:259 SG rubik.b[294] randomise:=FALSE
+randomise G:259 SG rubik.b[299] randomise:=TRUE
+randomise G:259 SG rubik.b[301] randomise:=TRUE
+randseed G:127 DEF libhdr.h[154] randseed=127
+rdargs G:102 DEF libhdr.h[129] rdargs=102
+rdargs G:102 LG rubik.b[271] UNLESS rdargs("W,R,B't/S,-c/S",argv,50) DO ..
+rdargs2 G:26 DEF libhdr.h[52] rdargs2=26
+rdch G:38 DEF libhdr.h[64] rdch=38
+rditem G:103 DEF libhdr.h[130] rditem=103
+readn G:83 DEF libhdr.h[109] readn=83
+readwords G:44 DEF libhdr.h[70] readwords=44
+recordnote G:70 DEF libhdr.h[96] recordnote=70
+recordpoint G:69 DEF libhdr.h[95] recordpoint=69
+release G:159 DEF libhdr.h[192] release=159
+renamefile G:77 DEF libhdr.h[103] renamefile=77
+result2 G:10 DEF libhdr.h[36] result2=10
+result2 G:10 LG rubik.b[441] RESULTIS result2
+result2 G:10 SG rubik.b[458] result2:=node
+result2 G:10 SG rubik.b[506] result2:=node
+resumeco G:21 DEF libhdr.h[47] resumeco=21
+return_hard M:10 DEF libhdr.h[521] return_hard=10
+return_hard M:10 MAN libhdr.h[526] cli_initialfaillevel=return_hard
+return_ok M:0 DEF libhdr.h[523] return_ok=0
+return_severe M:20 DEF libhdr.h[520] return_severe=20
+return_soft M:5 DEF libhdr.h[522] return_soft=5
+returncode G:11 DEF libhdr.h[37] returncode=11
+returnpkt G:169 DEF libhdr.h[199] returnpkt=169
+rewindstream G:65 DEF libhdr.h[91] rewindstream=65
+rootnode G:9 DEF libhdr.h[35] rootnode=9
+rootnodeaddr M:100 DEF libhdr.h[271] rootnodeaddr=100
+rota F:20 FN rubik.b[581] LET rota(piece)=..
+rota F:20 LF rubik.b[639] qWRB,qYBR,qYRG,qWGR:=rotc(pWGR),rota(pWRB),rotc(pYBR),rota(pYRG)
+rota F:20 LF rubik.b[648] qWRB,qYBR,qYRG,qWGR:=rotc(pYBR),rota(pYRG),rotc(pWGR),rota(pWRB)
+rota F:20 LF rubik.b[657] qWBO,qWOG,qYGO,qYOB:=rota(pYOB),rotc(pWBO),rota(pWOG),rotc(pYGO)
+rota F:20 LF rubik.b[666] qWBO,qWOG,qYGO,qYOB:=rota(pWOG),rotc(pYGO),rota(pYOB),rotc(pWBO)
+rota F:20 LF rubik.b[675] qWRB,qWBO,qYOB,qYBR:=rota(pYBR),rotc(pWRB),rota(pWBO),rotc(pYOB)
+rota F:20 LF rubik.b[684] qWRB,qWBO,qYOB,qYBR:=rota(pWBO),rotc(pYOB),rota(pYBR),rotc(pWRB)
+rota F:20 LF rubik.b[693] qWGR,qYRG,qYGO,qWOG:=rotc(pWOG),rota(pWGR),rotc(pYRG),rota(pYGO)
+rota F:20 LF rubik.b[702] qWGR,qYRG,qYGO,qWOG:=rotc(pYRG),rota(pYGO),rotc(pWOG),rota(pWGR)
+rotateBa F:29 LF rubik.b[322] rotateBa()
+rotateBa F:29 LF rubik.b[343] rotateBa()
+rotateBa F:29 LF rubik.b[479] IF try(rotateBa,node,mBa,goal) DO ..
+rotateBa F:29 RT rubik.b[664] LET rotateBa()BE..
+rotateBc F:28 LF rubik.b[321] rotateBc()
+rotateBc F:28 LF rubik.b[342] rotateBc()
+rotateBc F:28 LF rubik.b[478] IF try(rotateBc,node,mBc,goal) DO ..
+rotateBc F:28 RT rubik.b[655] LET rotateBc()BE..
+rotateDa F:25 LF rubik.b[326] rotateDa()
+rotateDa F:25 LF rubik.b[347] rotateDa()
+rotateDa F:25 LF rubik.b[483] IF try(rotateDa,node,mDa,goal) DO ..
+rotateDa F:25 RT rubik.b[628] LET rotateDa()BE..
+rotateDc F:24 LF rubik.b[325] rotateDc()
+rotateDc F:24 LF rubik.b[346] rotateDc()
+rotateDc F:24 LF rubik.b[482] IF try(rotateDc,node,mDc,goal) DO ..
+rotateDc F:24 RT rubik.b[619] LET rotateDc()BE..
+rotateFa F:27 LF rubik.b[318] rotateFa()
+rotateFa F:27 LF rubik.b[339] rotateFa()
+rotateFa F:27 LF rubik.b[475] IF try(rotateFa,node,mFa,goal) DO ..
+rotateFa F:27 RT rubik.b[646] LET rotateFa()BE..
+rotateFc F:26 LF rubik.b[317] rotateFc()
+rotateFc F:26 LF rubik.b[338] rotateFc()
+rotateFc F:26 LF rubik.b[474] IF try(rotateFc,node,mFc,goal) DO ..
+rotateFc F:26 RT rubik.b[637] LET rotateFc()BE..
+rotateLa F:33 LF rubik.b[324] rotateLa()
+rotateLa F:33 LF rubik.b[345] rotateLa()
+rotateLa F:33 LF rubik.b[481] IF try(rotateLa,node,mLa,goal) DO ..
+rotateLa F:33 RT rubik.b[700] LET rotateLa()BE..
+rotateLc F:32 LF rubik.b[323] rotateLc()
+rotateLc F:32 LF rubik.b[344] rotateLc()
+rotateLc F:32 LF rubik.b[480] IF try(rotateLc,node,mLc,goal) DO ..
+rotateLc F:32 RT rubik.b[691] LET rotateLc()BE..
+rotateRa F:31 LF rubik.b[320] rotateRa()
+rotateRa F:31 LF rubik.b[341] rotateRa()
+rotateRa F:31 LF rubik.b[477] IF try(rotateRa,node,mRa,goal) DO ..
+rotateRa F:31 RT rubik.b[682] LET rotateRa()BE..
+rotateRc F:30 LF rubik.b[319] rotateRc()
+rotateRc F:30 LF rubik.b[340] rotateRc()
+rotateRc F:30 LF rubik.b[476] IF try(rotateRc,node,mRc,goal) DO ..
+rotateRc F:30 RT rubik.b[673] LET rotateRc()BE..
+rotateUa F:23 LF rubik.b[316] rotateUa()
+rotateUa F:23 LF rubik.b[337] rotateUa()
+rotateUa F:23 LF rubik.b[473] IF try(rotateUa,node,mUa,goal) DO ..
+rotateUa F:23 RT rubik.b[610] LET rotateUa()BE..
+rotateUc F:22 LF rubik.b[315] rotateUc()
+rotateUc F:22 LF rubik.b[336] rotateUc()
+rotateUc F:22 LF rubik.b[472] IF try(rotateUc,node,mUc,goal) DO ..
+rotateUc F:22 RT rubik.b[601] LET rotateUc()BE..
+rotc F:19 FN rubik.b[564] LET rotc(piece)=..
+rotc F:19 LF rubik.b[639] qWRB,qYBR,qYRG,qWGR:=rotc(pWGR),rota(pWRB),rotc(pYBR),rota(pYRG)
+rotc F:19 LF rubik.b[648] qWRB,qYBR,qYRG,qWGR:=rotc(pYBR),rota(pYRG),rotc(pWGR),rota(pWRB)
+rotc F:19 LF rubik.b[657] qWBO,qWOG,qYGO,qYOB:=rota(pYOB),rotc(pWBO),rota(pWOG),rotc(pYGO)
+rotc F:19 LF rubik.b[666] qWBO,qWOG,qYGO,qYOB:=rota(pWOG),rotc(pYGO),rota(pYOB),rotc(pWBO)
+rotc F:19 LF rubik.b[675] qWRB,qWBO,qYOB,qYBR:=rota(pYBR),rotc(pWRB),rota(pWBO),rotc(pYOB)
+rotc F:19 LF rubik.b[684] qWRB,qWBO,qYOB,qYBR:=rota(pWBO),rotc(pYOB),rota(pYBR),rotc(pWRB)
+rotc F:19 LF rubik.b[693] qWGR,qYRG,qYGO,qWOG:=rotc(pWOG),rota(pWGR),rotc(pYRG),rota(pYGO)
+rotc F:19 LF rubik.b[702] qWGR,qYRG,qYGO,qWOG:=rotc(pYRG),rota(pYGO),rotc(pWOG),rota(pWGR)
+rtn_abortcode M:27 DEF libhdr.h[307] rtn_abortcode=
+rtn_adjclock M:33 DEF libhdr.h[325] rtn_adjclock=
+rtn_blib M:19 DEF libhdr.h[296] rtn_blib=
+rtn_blklist M:4 DEF libhdr.h[278] rtn_blklist=
+rtn_boot M:17 DEF libhdr.h[294] rtn_boot=
+rtn_boottrace M:39 DEF libhdr.h[340] rtn_boottrace=
+rtn_bptaddr M:9 DEF libhdr.h[285] rtn_bptaddr=
+rtn_bptinstr M:10 DEF libhdr.h[286] rtn_bptinstr=
+rtn_clkintson M:6 DEF libhdr.h[281] rtn_clkintson=
+rtn_clwkq M:12 DEF libhdr.h[289] rtn_clwkq=
+rtn_context M:28 DEF libhdr.h[308] rtn_context=
+rtn_crntask M:3 DEF libhdr.h[277] rtn_crntask=
+rtn_days M:40 DEF libhdr.h[343] rtn_days=
+rtn_dbgvars M:11 DEF libhdr.h[287] rtn_dbgvars=
+rtn_dcountv M:34 DEF libhdr.h[327] rtn_dcountv=
+rtn_devtab M:1 DEF libhdr.h[275] rtn_devtab=
+rtn_dumpflag M:25 DEF libhdr.h[304] rtn_dumpflag=
+rtn_envlist M:26 DEF libhdr.h[305] rtn_envlist=
+rtn_hdrsvar M:37 DEF libhdr.h[336] rtn_hdrsvar=
+rtn_idletcb M:32 DEF libhdr.h[324] rtn_idletcb=
+rtn_info M:15 DEF libhdr.h[292] rtn_info=
+rtn_insadebug M:8 DEF libhdr.h[283] rtn_insadebug=
+rtn_intflag M:24 DEF libhdr.h[303] rtn_intflag=
+rtn_keyboard M:20 DEF libhdr.h[297] rtn_keyboard=
+rtn_klib M:18 DEF libhdr.h[295] rtn_klib=
+rtn_lastch M:7 DEF libhdr.h[282] rtn_lastch=
+rtn_lastg M:30 DEF libhdr.h[317] rtn_lastg=
+rtn_lastp M:29 DEF libhdr.h[316] rtn_lastp=
+rtn_lastst M:31 DEF libhdr.h[318] rtn_lastst=
+rtn_mc0 M:43 DEF libhdr.h[348] rtn_mc0=
+rtn_mc1 M:44 DEF libhdr.h[350] rtn_mc1=
+rtn_mc2 M:45 DEF libhdr.h[351] rtn_mc2=
+rtn_mc3 M:46 DEF libhdr.h[352] rtn_mc3=
+rtn_membase M:13 DEF libhdr.h[290] rtn_membase=
+rtn_memsize M:14 DEF libhdr.h[291] rtn_memsize=
+rtn_mins M:41 DEF libhdr.h[345] rtn_mins=rtn_msecs
+rtn_msecs M:41 DEF libhdr.h[344] rtn_msecs=
+rtn_msecs M:41 MAN libhdr.h[345] rtn_mins=rtn_msecs
+rtn_pathvar M:36 DEF libhdr.h[334] rtn_pathvar=
+rtn_rootvar M:35 DEF libhdr.h[332] rtn_rootvar=
+rtn_screen M:21 DEF libhdr.h[298] rtn_screen=
+rtn_scriptsvar M:38 DEF libhdr.h[338] rtn_scriptsvar=
+rtn_sys M:16 DEF libhdr.h[293] rtn_sys=
+rtn_tallyv M:5 DEF libhdr.h[279] rtn_tallyv=
+rtn_tasktab M:0 DEF libhdr.h[274] rtn_tasktab=0
+rtn_tcblist M:2 DEF libhdr.h[276] rtn_tcblist=
+rtn_ticks M:42 DEF libhdr.h[346] rtn_ticks=
+rtn_upb M:50 DEF libhdr.h[354] rtn_upb=50
+rtn_vecstatsv M:22 DEF libhdr.h[300] rtn_vecstatsv=
+rtn_vecstatsvupb M:23 DEF libhdr.h[301] rtn_vecstatsvupb=
+s_chain M:5 DEF rubik.b[93] s_chain=iYG/bytesperword+1
+s_chain M:5 MAN rubik.b[191] node:=s_chain!node
+s_chain M:5 MAN rubik.b[219] s_chain!node:=hashtab!hashval
+s_dist M:7 DEF rubik.b[95] s_dist=
+s_dist M:7 MAN rubik.b[211] s_dist!node:=dist
+s_dist M:7 MAN rubik.b[431] dist:=s_dist!node
+s_dist M:7 MAN rubik.b[499] node:=newnode(cube,prev,...,move)
+s_link M:6 DEF rubik.b[94] s_link=
+s_link M:6 MAN rubik.b[215] s_link!node:=listv!dist
+s_link M:6 MAN rubik.b[438] s_link!root:=0
+s_link M:6 MAN rubik.b[485] node:=s_link!node
+s_link M:6 MAN rubik.b[836] node:=s_link!node
+s_move M:9 DEF rubik.b[97] s_move=
+s_move M:9 MAN rubik.b[213] s_move!node:=move
+s_move M:9 MAN rubik.b[843] writef("move %c*n",s_move!node)
+s_move M:9 MAN rubik.b[98] nodeupb=s_move
+s_prev M:8 DEF rubik.b[96] s_prev=
+s_prev M:8 MAN rubik.b[212] s_prev!node:=prev
+s_prev M:8 MAN rubik.b[841] IF s_prev!node DO ..
+s_prev M:8 MAN rubik.b[842] prsolution(s_prev!node)
+sardch G:36 DEF libhdr.h[62] sardch=36
+saveregs M:31 DEF libhdr.h[429] saveregs=31
+sawrch G:37 DEF libhdr.h[63] sawrch=37
+sawritef G:95 DEF libhdr.h[122] sawritef=95
+scb_blength M:14 DEF libhdr.h[460] scb_blength=
+scb_block M:9 DEF libhdr.h[455] scb_block=
+scb_buf M:3 DEF libhdr.h[449] scb_buf=
+scb_bufend M:11 DEF libhdr.h[457] scb_bufend=
+scb_encoding M:19 DEF libhdr.h[470] scb_encoding=
+scb_end M:5 DEF libhdr.h[451] scb_end=
+scb_endfn M:8 DEF libhdr.h[454] scb_endfn=
+scb_fd M:16 DEF libhdr.h[462] scb_fd=
+scb_id M:0 DEF libhdr.h[446] scb_id=0
+scb_lblock M:12 DEF libhdr.h[458] scb_lblock=
+scb_ldata M:13 DEF libhdr.h[459] scb_ldata=
+scb_maxnamelen M:31 DEF libhdr.h[444] scb_maxnamelen=31
+scb_maxnamelen M:31 MAN libhdr.h[474] scb_nameeend=scb_name+scb_maxnamelen/bytesperword
+scb_name M:20 DEF libhdr.h[472] scb_name=
+scb_name M:20 MAN libhdr.h[474] scb_nameeend=scb_name+scb_maxnamelen/bytesperword
+scb_nameeend M:27 DEF libhdr.h[474] scb_nameeend=scb_name+scb_maxnamelen/bytesperword
+scb_pos M:4 DEF libhdr.h[450] scb_pos=
+scb_rdfn M:6 DEF libhdr.h[452] scb_rdfn=
+scb_reclen M:15 DEF libhdr.h[461] scb_reclen=
+scb_size M:28 DEF libhdr.h[477] scb_size=
+scb_size M:28 MAN libhdr.h[478] scb_upb=scb_size-1
+scb_task M:2 DEF libhdr.h[448] scb_task=
+scb_timeout M:17 DEF libhdr.h[463] scb_timeout=
+scb_timeoutact M:18 DEF libhdr.h[466] scb_timeoutact=
+scb_type M:1 DEF libhdr.h[447] scb_type=
+scb_upb M:27 DEF libhdr.h[478] scb_upb=scb_size-1
+scb_wrfn M:7 DEF libhdr.h[453] scb_wrfn=
+scb_write M:10 DEF libhdr.h[456] scb_write=
+scbt_console M:-1 DEF libhdr.h[440] scbt_console=-1
+scbt_file M:1 DEF libhdr.h[438] scbt_file=1
+scbt_mbx M:-2 DEF libhdr.h[441] scbt_mbx=-2
+scbt_net M:2 DEF libhdr.h[437] scbt_net=2
+scbt_ram M:0 DEF libhdr.h[439] scbt_ram=0
+scbt_tcp M:-3 DEF libhdr.h[442] scbt_tcp=-3
+sectword M:64991 DEF libhdr.h[243] sectword=64991
+selectinput G:56 DEF libhdr.h[82] selectinput=56
+selectoutput G:57 DEF libhdr.h[83] selectoutput=57
+sendpkt G:165 DEF libhdr.h[197] sendpkt=165
+set_process_name G:175 DEF libhdr.h[205] set_process_name=175
+setbit G:112 DEF libhdr.h[139] setbit=112
+setbulk G:122 DEF libhdr.h[149] setbulk=122
+setcornercols F:48 LF rubik.b[1093] setcornercols(cv,cube%iWRB,8,...)
+setcornercols F:48 LF rubik.b[1094] setcornercols(cv,cube%iWBO,2,...)
+setcornercols F:48 LF rubik.b[1095] setcornercols(cv,cube%iWOG,0,...)
+setcornercols F:48 LF rubik.b[1096] setcornercols(cv,cube%iWGR,6,...)
+setcornercols F:48 LF rubik.b[1097] setcornercols(cv,cube%iYBR,47,...)
+setcornercols F:48 LF rubik.b[1098] setcornercols(cv,cube%iYOB,53,...)
+setcornercols F:48 LF rubik.b[1099] setcornercols(cv,cube%iYGO,51,...)
+setcornercols F:48 LF rubik.b[1100] setcornercols(cv,cube%iYRG,45,...)
+setcornercols F:48 RT rubik.b[1118] LET setcornercols(cv,piece,i,j,k)BE..
+setedgecols F:49 LF rubik.b[1102] setedgecols(cv,cube%iWR,7,10)
+setedgecols F:49 LF rubik.b[1103] setedgecols(cv,cube%iWB,5,19)
+setedgecols F:49 LF rubik.b[1104] setedgecols(cv,cube%iWO,1,28)
+setedgecols F:49 LF rubik.b[1105] setedgecols(cv,cube%iWG,3,37)
+setedgecols F:49 LF rubik.b[1107] setedgecols(cv,cube%iBR,21,14)
+setedgecols F:49 LF rubik.b[1108] setedgecols(cv,cube%iOB,30,23)
+setedgecols F:49 LF rubik.b[1109] setedgecols(cv,cube%iGO,39,32)
+setedgecols F:49 LF rubik.b[1110] setedgecols(cv,cube%iRG,12,41)
+setedgecols F:49 LF rubik.b[1112] setedgecols(cv,cube%iYR,46,16)
+setedgecols F:49 LF rubik.b[1113] setedgecols(cv,cube%iYB,50,25)
+setedgecols F:49 LF rubik.b[1114] setedgecols(cv,cube%iYO,52,34)
+setedgecols F:49 LF rubik.b[1115] setedgecols(cv,cube%iYG,48,43)
+setedgecols F:49 RT rubik.b[1152] LET setedgecols(cv,piece,i,j)BE..
+setface F:43 LF rubik.b[285] setface(0,87,argv!0)
+setface F:43 LF rubik.b[286] setface(1,82,argv!1)
+setface F:43 LF rubik.b[287] setface(2,66,argv!2)
+setface F:43 LF rubik.b[288] setface(3,79,argv!3)
+setface F:43 LF rubik.b[289] setface(4,71,argv!4)
+setface F:43 LF rubik.b[290] setface(5,89,argv!5)
+setface F:43 RT rubik.b[955] LET setface(n,ch,str)BE..
+setflags G:156 DEF libhdr.h[189] setflags=156
+setlogname G:117 DEF libhdr.h[144] setlogname=117
+setrecordlength G:68 DEF libhdr.h[94] setrecordlength=68
+setseed G:35 DEF libhdr.h[61] setseed=35
+setseed G:35 LG rubik.b[298] setseed(!argv!7)
+settimeout G:55 DEF libhdr.h[81] settimeout=55
+settimeoutact G:124 DEF libhdr.h[151] settimeoutact=124
+spacep G:243 DEF rubik.b[140] spacep=
+spacep G:243 LG rubik.b[235] spacep
+spacep G:243 LG rubik.b[236] spacep:=spacep+upb+1
+spacep G:243 LG rubik.b[237] IF spacep>spacet DO ..
+spacep G:243 LG rubik.b[415] writef("space't of %n*n",spacep-spacev,spacet-spacev)
+spacep G:243 LG rubik.b[433] writef("explo'ed = %n*n",goal,dist,...)
+spacep G:243 SG rubik.b[236] spacep:=spacep+upb+1
+spacep G:243 SG rubik.b[256] spacep,spacet:=spacev,spacev+spacevupb
+spacet G:244 DEF rubik.b[140] spacet=
+spacet G:244 LG rubik.b[237] IF spacep>spacet DO ..
+spacet G:244 LG rubik.b[415] writef("space't of %n*n",spacep-spacev,spacet-spacev)
+spacet G:244 SG rubik.b[256] spacep,spacet:=spacev,spacev+spacevupb
+spacev G:242 DEF rubik.b[140] spacev=
+spacev G:242 LG rubik.b[251] UNLESS spacev DO ..
+spacev G:242 LG rubik.b[256] spacep,spacet:=spacev,spacev+spacevupb
+spacev G:242 LG rubik.b[415] writef("space't of %n*n",spacep-spacev,spacet-spacev)
+spacev G:242 LG rubik.b[418] IF spacev DO ..
+spacev G:242 LG rubik.b[418] freevec(spacev)
+spacev G:242 LG rubik.b[433] writef("explo'ed = %n*n",goal,dist,...)
+spacev G:242 SG rubik.b[249] spacev:=getvec(spacevupb)
+spacevupb M:1000000 DEF rubik.b[100] spacevupb=1000000
+spacevupb M:1000000 MAN rubik.b[249] spacev:=getvec(spacevupb)
+spacevupb M:1000000 MAN rubik.b[256] spacep,spacet:=spacev,spacev+spacevupb
+splitname G:47 DEF libhdr.h[73] splitname=47
+srchwk G:150 DEF libhdr.h[183] srchwk=150
+stackword M:#xABCD1234 DEF libhdr.h[241] stackword=#xABCD1234
+start G:1 DEF libhdr.h[27] start=1
+start G:1 FN rubik.b[245] LET start()=..
+startco G:23 DEF libhdr.h[49] startco=23
+stepstream G:67 DEF libhdr.h[93] stepstream=67
+stop G:2 DEF libhdr.h[28] stop=2
+str2numb G:101 DEF libhdr.h[128] str2numb=101
+string_to_dat G:111 DEF libhdr.h[138] string_to_dat=111
+string_to_number G:100 DEF libhdr.h[127] string_to_number=100
+sys G:3 DEF libhdr.h[29] sys=3
+sysabort G:29 DEF libhdr.h[55] sysabort=29
+t_bhunk M:3000 DEF libhdr.h[237] t_bhunk=3000
+t_bhunk64 M:4000 DEF libhdr.h[238] t_bhunk64=4000
+t_end M:1002 DEF libhdr.h[233] t_end=1002
+t_end64 M:2002 DEF libhdr.h[236] t_end64=2002
+t_hunk M:1000 DEF libhdr.h[231] t_hunk=1000
+t_hunk64 M:2000 DEF libhdr.h[234] t_hunk64=2000
+t_reloc M:1001 DEF libhdr.h[232] t_reloc=1001
+t_reloc64 M:2001 DEF libhdr.h[235] t_reloc64=2001
+taskid G:152 DEF libhdr.h[185] taskid=152
+taskwait G:160 DEF libhdr.h[193] taskwait=160
+tcb G:151 DEF libhdr.h[184] tcb=151
+tcb_a M:11 DEF libhdr.h[571] tcb_a=tcb_regs
+tcb_active M:10 DEF libhdr.h[568] tcb_active=10
+tcb_b M:12 DEF libhdr.h[572] tcb_b=12
+tcb_c M:13 DEF libhdr.h[573] tcb_c=13
+tcb_count M:18 DEF libhdr.h[578] tcb_count=18
+tcb_flags M:5 DEF libhdr.h[563] tcb_flags=5
+tcb_g M:15 DEF libhdr.h[575] tcb_g=15
+tcb_gbase M:8 DEF libhdr.h[566] tcb_gbase=8
+tcb_link M:0 DEF libhdr.h[558] tcb_link=0
+tcb_namebase M:19 DEF libhdr.h[580] tcb_namebase=19
+tcb_namebase M:19 MAN libhdr.h[582] tcb_upb=tcb_namebase+15/bytesperword+1
+tcb_p M:14 DEF libhdr.h[574] tcb_p=14
+tcb_pc M:17 DEF libhdr.h[577] tcb_pc=17
+tcb_pri M:2 DEF libhdr.h[560] tcb_pri=2
+tcb_regs M:11 DEF libhdr.h[570] tcb_regs=11
+tcb_regs M:11 MAN libhdr.h[571] tcb_a=tcb_regs
+tcb_sbase M:9 DEF libhdr.h[567] tcb_sbase=9
+tcb_seglist M:7 DEF libhdr.h[565] tcb_seglist=7
+tcb_st M:16 DEF libhdr.h[576] tcb_st=16
+tcb_state M:4 DEF libhdr.h[562] tcb_state=4
+tcb_stsiz M:6 DEF libhdr.h[564] tcb_stsiz=6
+tcb_taskid M:1 DEF libhdr.h[559] tcb_taskid=1
+tcb_upb M:23 DEF libhdr.h[582] tcb_upb=tcb_namebase+15/bytesperword+1
+tcb_wkq M:3 DEF libhdr.h[561] tcb_wkq=3
+testbit G:113 DEF libhdr.h[140] testbit=113
+testflags G:157 DEF libhdr.h[190] testflags=157
+tg M:190 DEF libhdr.h[215] tg=190
+timeoutch M:-2 DEF libhdr.h[226] timeoutch=-2
+tracing G:257 DEF rubik.b[153] tracing=
+tracing G:257 LG rubik.b[225] IF tracing DO ..
+tracing G:257 SG rubik.b[302] tracing:=argv!9
+try F:16 FN rubik.b[489] LET try(rotfn,prev,move,goal)=..
+try F:16 LF rubik.b[472] IF try(rotateUc,node,mUc,goal) DO ..
+try F:16 LF rubik.b[473] IF try(rotateUa,node,mUa,goal) DO ..
+try F:16 LF rubik.b[474] IF try(rotateFc,node,mFc,goal) DO ..
+try F:16 LF rubik.b[475] IF try(rotateFa,node,mFa,goal) DO ..
+try F:16 LF rubik.b[476] IF try(rotateRc,node,mRc,goal) DO ..
+try F:16 LF rubik.b[477] IF try(rotateRa,node,mRa,goal) DO ..
+try F:16 LF rubik.b[478] IF try(rotateBc,node,mBc,goal) DO ..
+try F:16 LF rubik.b[479] IF try(rotateBa,node,mBa,goal) DO ..
+try F:16 LF rubik.b[480] IF try(rotateLc,node,mLc,goal) DO ..
+try F:16 LF rubik.b[481] IF try(rotateLa,node,mLa,goal) DO ..
+try F:16 LF rubik.b[482] IF try(rotateDc,node,mDc,goal) DO ..
+try F:16 LF rubik.b[483] IF try(rotateDa,node,mDa,goal) DO ..
+ug M:200 DEF libhdr.h[216] ug=200
+ug M:200 MAN rubik.b[119] pWRB=ug
+unhold G:159 DEF libhdr.h[192] unhold=159
+unloadseg G:106 DEF libhdr.h[133] unloadseg=106
+unpackstring G:31 DEF libhdr.h[57] unpackstring=31
+unrdch G:40 DEF libhdr.h[66] unrdch=40
+wrch G:41 DEF libhdr.h[67] wrch=41
+writed G:85 DEF libhdr.h[111] writed=85
+writef G:94 DEF libhdr.h[121] writef=94
+writef G:94 LG rubik.b[1003] writef("*nBad 'e: %c%c*n",a,b)
+writef G:94 LG rubik.b[1122] writef("Syste'iece=%n*n",piece)
+writef G:94 LG rubik.b[1155] writef("Syste'iece=%n*n",piece)
+writef G:94 LG rubik.b[164] writef("%x8 %'%x8 %x8*n",node!0,...,...)
+writef G:94 LG rubik.b[166] writef("w = %'al = %n*n",w,h)
+writef G:94 LG rubik.b[199] writef("Mode ' needed*n")
+writef G:94 LG rubik.b[226] writef("Inser'ount=%n*n",node,dist,nodecount)
+writef G:94 LG rubik.b[238] writef("Insuf't space*n")
+writef G:94 LG rubik.b[252] writef("Insuf'ailable*n")
+writef G:94 LG rubik.b[265] writef("Insuf'ailable*n")
+writef G:94 LG rubik.b[272] writef("Bad a'r Rubik*n")
+writef G:94 LG rubik.b[297] writef("calli'eed(%n)*n",!argv!7)
+writef G:94 LG rubik.b[311] writef("Bad i'oves %s*n",moves)
+writef G:94 LG rubik.b[357] writef("*nThe 'on is:*n*n")
+writef G:94 LG rubik.b[376] writef("Creat'osition*n")
+writef G:94 LG rubik.b[411] writef("*nSolution*n*n")
+writef G:94 LG rubik.b[414] writef("*nnode'nt = %n*n",nodecount)
+writef G:94 LG rubik.b[415] writef("space't of %n*n",spacep-spacev,spacet-spacev)
+writef G:94 LG rubik.b[433] writef("explo'ed = %n*n",goal,dist,...)
+writef G:94 LG rubik.b[456] writef("explo'goal %n*n",goal)
+writef G:94 LG rubik.b[566] writef("rotc:'iece=%n*n",piece)
+writef G:94 LG rubik.b[583] writef("rot1:'iece=%n*n",piece)
+writef G:94 LG rubik.b[833] writef("Node list %n*n",n)
+writef G:94 LG rubik.b[843] writef("move %c*n",s_move!node)
+writef G:94 LG rubik.b[851] writef(" WRB:%n/%n",...>>2,...&3)
+writef G:94 LG rubik.b[852] writef(" WBO:%n/%n",...>>2,...&3)
+writef G:94 LG rubik.b[853] writef(" WOG:%n/%n",...>>2,...&3)
+writef G:94 LG rubik.b[854] writef(" WGR:%n/%n",...>>2,...&3)
+writef G:94 LG rubik.b[855] writef(" YBR:%n/%n",...>>2,...&3)
+writef G:94 LG rubik.b[856] writef(" YOB:%n/%n",...>>2,...&3)
+writef G:94 LG rubik.b[857] writef(" YGO:%n/%n",...>>2,...&3)
+writef G:94 LG rubik.b[858] writef(" YRG:%n/%n",...>>2,...&3)
+writef G:94 LG rubik.b[860] writef(" WR:%i2/%n",...>>1,...&1)
+writef G:94 LG rubik.b[861] writef(" WB:%i2/%n",...>>1,...&1)
+writef G:94 LG rubik.b[862] writef(" WO:%i2/%n",...>>1,...&1)
+writef G:94 LG rubik.b[863] writef(" WG:%i2/%n",...>>1,...&1)
+writef G:94 LG rubik.b[864] writef(" BR:%i2/%n",...>>1,...&1)
+writef G:94 LG rubik.b[865] writef(" OB:%i2/%n",...>>1,...&1)
+writef G:94 LG rubik.b[866] writef(" GO:%i2/%n",...>>1,...&1)
+writef G:94 LG rubik.b[867] writef(" RG:%i2/%n",...>>1,...&1)
+writef G:94 LG rubik.b[868] writef(" YR:%i2/%n",...>>1,...&1)
+writef G:94 LG rubik.b[869] writef(" YB:%i2/%n",...>>1,...&1)
+writef G:94 LG rubik.b[870] writef(" YO:%i2/%n",...>>1,...&1)
+writef G:94 LG rubik.b[871] writef(" YG:%i2/%n",...>>1,...&1)
+writef G:94 LG rubik.b[903] writef("%c%c%'c%c%c%c ",colour!0,...,...)
+writef G:94 LG rubik.b[907] writef("%c%c%'c%c%c%c ",colour!36,...,...)
+writef G:94 LG rubik.b[911] writef("%c%c%'c%c%c%c ",colour!9,...,...)
+writef G:94 LG rubik.b[915] writef("%c%c%'c%c%c%c ",colour!18,...,...)
+writef G:94 LG rubik.b[919] writef("%c%c%'c%c%c%c ",colour!27,...,...)
+writef G:94 LG rubik.b[923] writef("%c%c%'c%c%c%c*n",colour!45,...,...)
+writef G:94 LG rubik.b[930] writef("     'c %c %c*n",colour!0,...,...)
+writef G:94 LG rubik.b[931] writef("     'c %c %c*n",colour!3,...,...)
+writef G:94 LG rubik.b[932] writef("     'c %c %c*n",colour!6,...,...)
+writef G:94 LG rubik.b[934] writef(" %c %c %c  ",colour!36,...,...)
+writef G:94 LG rubik.b[935] writef(" %c %c %c  ",colour!9,...,...)
+writef G:94 LG rubik.b[936] writef(" %c %c %c  ",colour!18,...,...)
+writef G:94 LG rubik.b[937] writef(" %c %c %c*n",colour!27,...,...)
+writef G:94 LG rubik.b[939] writef(" %c %c %c  ",colour!39,...,...)
+writef G:94 LG rubik.b[940] writef(" %c %c %c  ",colour!12,...,...)
+writef G:94 LG rubik.b[941] writef(" %c %c %c  ",colour!21,...,...)
+writef G:94 LG rubik.b[942] writef(" %c %c %c*n",colour!30,...,...)
+writef G:94 LG rubik.b[944] writef(" %c %c %c  ",colour!42,...,...)
+writef G:94 LG rubik.b[945] writef(" %c %c %c  ",colour!15,...,...)
+writef G:94 LG rubik.b[946] writef(" %c %c %c  ",colour!24,...,...)
+writef G:94 LG rubik.b[947] writef(" %c %c %c*n",colour!33,...,...)
+writef G:94 LG rubik.b[949] writef("     'c %c %c*n",colour!45,...,...)
+writef G:94 LG rubik.b[950] writef("     'c %c %c*n",colour!48,...,...)
+writef G:94 LG rubik.b[951] writef("     'c %c %c*n",colour!51,...,...)
+writef G:94 LG rubik.b[958] writef("Bad f's %c %s*n",ch,str)
+writef G:94 LG rubik.b[965] writef("*nBad ' %c%c%c*n",a,b,c)
+writehex G:87 DEF libhdr.h[113] writehex=87
+writen G:86 DEF libhdr.h[112] writen=86
+writeoct G:88 DEF libhdr.h[114] writeoct=88
+writes G:89 DEF libhdr.h[115] writes=89
+writet G:90 DEF libhdr.h[116] writet=90
+writeu G:91 DEF libhdr.h[117] writeu=91
+writewords G:45 DEF libhdr.h[71] writewords=45
+writez G:92 DEF libhdr.h[118] writez=92
+x M:-1 DEF rubik.b[726] x=-1
+x M:-1 MAN rubik.b[728] corncostv!WRB0:=TABLE 0,1,2,...
+x M:-1 MAN rubik.b[729] corncostv!WRB1:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[730] corncostv!WRB2:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[732] corncostv!WBO0:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[733] corncostv!WBO1:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[734] corncostv!WBO2:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[736] corncostv!WOG0:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[737] corncostv!WOG1:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[738] corncostv!WOG2:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[740] corncostv!WGR0:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[741] corncostv!WGR1:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[742] corncostv!WGR2:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[744] corncostv!YBR0:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[745] corncostv!YBR1:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[746] corncostv!YBR2:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[748] corncostv!YOB0:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[749] corncostv!YOB1:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[750] corncostv!YOB2:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[752] corncostv!YGO0:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[753] corncostv!YGO1:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[754] corncostv!YGO2:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[756] corncostv!YRG0:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[757] corncostv!YRG1:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[758] corncostv!YRG2:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[761] edgecostv!WR0:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[762] edgecostv!WR1:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[764] edgecostv!WB0:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[765] edgecostv!WB1:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[767] edgecostv!WO0:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[768] edgecostv!WO1:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[770] edgecostv!WG0:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[771] edgecostv!WG1:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[773] edgecostv!BR0:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[774] edgecostv!BR1:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[776] edgecostv!OB0:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[777] edgecostv!OB1:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[779] edgecostv!GO0:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[780] edgecostv!GO1:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[782] edgecostv!RG0:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[783] edgecostv!RG1:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[785] edgecostv!YR0:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[786] edgecostv!YR1:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[788] edgecostv!YB0:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[789] edgecostv!YB1:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[791] edgecostv!YO0:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[792] edgecostv!YO1:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[794] edgecostv!YG0:=TABLE x,x,x,...
+x M:-1 MAN rubik.b[795] edgecostv!YG1:=TABLE x,x,x,...

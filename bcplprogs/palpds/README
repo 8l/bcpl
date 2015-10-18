@@ -1,0 +1,24 @@
+This directory contains files relating to an early version of PAL
+preserved by Ed Feustal as the dump of an IBM 370 Partitioned Data
+Set.
+
+The aim is to systematically edit these files so that they can run
+under the current version of Cintcode BCPL. This will involve
+stylistic changes, reformatting, and slight modifications to BCPL to
+deal with features not in the current version of Cintcode BCPL. These
+include <> the more binding version of semicolon (;) and implementaion
+of floating point (but probably not manifest floating point constants.
+
+The current idea is that floating point numbers have a mantissa of 8
+decimal digits and a signed integer exponent. The compiler will not
+know the hardware representation of floating point values.
+
+The main utilities used to help this transformation will be a new
+version of casech to change the case of reserved words and
+identifiers, cvbcpl to deal with section brackets and string and
+format characters, and indentbcpl to layout the programs in a
+consistent fashion.
+
+
+Martin Richards
+7 July 2010

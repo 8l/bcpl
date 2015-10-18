@@ -1,0 +1,3 @@
+.k file/a
+echo "compiling :sys:<file>.b to :OENDER:<file>"
+bcpl :sys:<file>.b to :OENDER:<file> oender

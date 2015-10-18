@@ -1,0 +1,43 @@
+MODSTART
+
+//Entry to: start
+ENTRY   K5 C115 C116 C97 C114 C116
+LAB     L1
+L       K1
+SP      P3
+LAB     L4
+LP      P3
+ATB
+LF      L2
+K       P9
+SP      P9
+LP      P3
+SP      P8
+LSTR    M9001
+KPG     P4 G94
+IKP     K1 P3
+ATBL    K5
+JLE     L4
+L       K0
+RTN
+STRING  M9001 K15 C102 C97 C99 C116 C40 C37 C110 C41 C32 C61 C32 C37 C105 C52 C10
+
+//Entry to: fact
+ENTRY   K4 C102 C97 C99 C116
+LAB     L2
+JNE0    L5
+L       K1
+RTN
+LAB     L5
+LM      K1
+AP      P3
+ATB
+LF      L2
+K       P4
+ATBLP   P3
+MUL
+RTN
+GLOBAL K1
+G1 L1
+G94
+MODEND

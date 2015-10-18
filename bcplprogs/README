@@ -1,0 +1,4 @@
+This directory holds programs that can be compiled and run using
+either 32-bit or 64-bit BCPL systems. Programs that require a 64-bit
+BCPL system are in directory BCPL/bcplprogs64.
+

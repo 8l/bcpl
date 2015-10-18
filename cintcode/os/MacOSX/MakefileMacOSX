@@ -1,0 +1,393 @@
+
+# The is the make file to (re-)build the BCPL Cintcode System
+# Written by Martin Richards (c) December 2010
+
+# Last modified 14 January 2011
+
+# Added sys(Sys_sound, fno, a1, a2, a3) to provide alsa sound
+# facilities when running under Linux.
+# ----- Under development ------------
+
+# Moved the executables cintsys and rastsys into $BCPLROOT/bin
+# from $BCPLROOT. This will require a change in the setting of
+# then environment variable PATH.
+
+# (Renamed most file names to lowercase letters to simplify running on
+# Windows machines.)
+# Modified the Makefile to allow compilation of the system for the
+# GP2X handheld machine when running under Cygwin.
+
+# Before running this makefile check that the environment variables
+# BCPLROOT, BCPLHDR, BCPLCIN and PATH are correctly defined as
+# described in docs/README
+
+# Location of Assembly language source code (architecture dependent)
+# SYSM = sysasm/LINUX, for example.
+
+# Select the appropriate definition of CC, LIBS and SYSM
+# SYSM gives the location of machine specific code (eg cintasm.s)
+
+# To build the system for freeBSD use the Linux option and possibly
+# change dosys to _dosys in sys/LINUX/cintasm.s.  See the comment in
+# that file.
+
+# To build the system for Windows 95/98/NT/2000/XP using the 
+# GNU Cygnus compiler edit the file cintcode\Makefile to select
+# "forCYGWIN32" then use (under Windows) run the commands:
+#        make clean
+#        make
+
+# This will generate a lot of output ending with something like:
+
+#        BCPL Cintcode System (8 Dec 2010)
+#        0.000> 
+
+# At this prompt type:
+
+#        0.000> c compall
+
+# This will recompile all the standard commands.
+
+
+# To build the system for Windows 95/98/NT using Microsoft Visual C
+# edit the file sys\Win32\makefile then use the command: make Win32
+# This version does not yet use cintasm.asm
+# ***** This version is out of date *****
+
+# First define the default settings.
+
+AS = as
+FASTERP = obj/fasterp.o
+
+# Assume a little ender machine unless otherwise specified
+ENDER = litender
+
+# The following line is for cross compilation to the GP2X
+# for use when running under Cygwin. The location of the
+# ARM development kit may need changing for your machine.
+
+GP2XCC = /cygdrive/c/devkitGP2X/bin/arm-linux-gcc -O9 -static -DforGP2X
+
+# There are typically three versions of the interpreter
+
+# Two are derived from sysc/cinterp.c. A fast version is generated
+# by #defining FASTyes to produce obj/fasterp.o. Without FASTyes defined
+# a version with all debugging aids is generated in obj/cinterp.o
+# The fast version is implemented in assembly language for some
+# architectures eg sysasm/LINUX/cintasm.s gives obj/cintasm.o
+
+# On a 1GHz Mobile Pentium III the times for running the benchmark
+# bench100 in bcplprogs/tests/bench100.b are:
+
+# cinterp                   18.76 secs
+# fasterp                   14.93 secs
+# cintasm                   12.37 secs
+
+# So hand written assembly language is hardly worth the effort!
+
+# Now define/redefine the variable for a particular architecture.
+
+#####################################################################
+# add FASTERP = obj/cintasm.o for architectures having a hand written
+# assembly language fast interpreter. This will override the
+# default setting of: FASTERP = obj/fasterp.o
+#####################################################################
+
+#CC = gcc -O9 -DforMAC
+#ENDER = bigender
+
+#CC = gcc -O9 -DforMIPS
+#SYSM = ../cintcode/sysasm/mips
+#FASTERP = obj/cintasm.o
+
+#CC = gcc -O9 -DforSGI
+#SYSM = ../cintcode/sysasm/sgi
+#ENDER = bigender
+
+#CC = gcc -O2 -DforARM
+#SYSM = ../cintcode/sysasm/arm
+
+#CC = gcc -O9 -DforLINUX -DSOUND -DCALLC
+#SYSM = ../cintcode/sysasm/linux
+#FASTERP = obj/cintasm.o
+
+#CC = gcc -O9 -DforLINUX64
+#SYSM = ../cintcode/sysasm/linux64
+#FASTERP = obj/cintasm.o
+
+# The following works under Cygwin on Pentiums and AMD 64 Athlon machines.
+# make gp2x will cross compile the system for the GP2x handheld machine,
+# and make gp2xinstall will install the BCPL Cintcode system on the SD memory
+# card of the GP2X assuming it is on drive G:.
+#CC = gcc -O9 -DforCYGWIN32
+#SYSM = ../cintcode/sysasm/cygwin32
+#FASTERP = obj/cintasm.o
+
+# Version for the Power PC running Mac OS 10.3.9 -- added 26/7/05
+#CC = gcc -O9 -DforMacOSPPC
+#SYSM = ../cintcode/sysasm/macosppc
+#ENDER = bigender
+
+# Version for the Macmini running Intel Mac OS-X 32 bit version -- added 12/01/11
+CC = gcc -O9 -m32 -DforMacOSX
+ENDER = litender
+
+# The following is under development for AMD 64 Athlon machines
+#CC = gcc -O9 -DforLINUXAMD64
+#SYSM = ../cintcode/sysasm/linuxamd64
+
+# Version for the PowerMac G4 running Debian Linux was
+# kindly provided by Chris Emerson
+#CC = gcc -O9 -DforLINUXPPC
+#SYSM = ../cintcode/sysasm/linuxppc
+#ENDER = bigender
+
+#CC = gcc -O9 -DforSUN4
+#SYSM = ../cintcode/sysasm/sun4
+#ENDER = bigender
+
+#CC = gcc -O9 -DforSPARC
+#SYSM = ../cintcode/sysasm/sparc
+#ENDER = bigender
+
+#CC = gcc -O9 -DforALPHA
+#SYSM = ../cintcode/sysasm/alpha
+
+#CC = gcc -O9 -DforMSDOS
+#SYSM = ../cintcode/sysasm/msdos
+
+#CC = gcc -O9 -DforOS2
+#SYSM = ../cintcode/sysasm/os2
+
+
+run:	bcplready
+	bin/cintsys
+
+sys:	bin/cintsys $(ENDER)
+	echo "bin/cintsys is up to date"
+
+bcplready:	bin/cintsys bin/rastsys $(ENDER) allcompiled
+	echo touch >bcplready
+
+allcompiled:
+	cintsys -c c compall
+	echo touch >allcompiled
+
+sane:	bcplready
+	stty sane
+	./bin/cintsys
+
+xref1:
+	cintsys -c c compall xref |\
+	egrep " [MSFG]:" |\
+        tr -d "\015" |\
+	sed -e "s/\./<dot>/g" |\
+	sort -u |\
+	sed -e "s/<dot>/\./g" > xrefdata
+
+xref:	allcompiled rawxref
+	cintsys -c sortxref rawxref to xrefdata
+	rm rawxref
+
+rawxref:
+	cintsys -c c compall xref >rawxref
+
+xbmake:	allcompiled
+	cintsys -c c bc bmake xref >rawxref
+	cintsys -c sortxref rawxref to xrefbmake
+	rm rawxref
+
+xplaymus:	allcompiled
+	cintsys -c c bc playmus xref >rawxref
+	cintsys -c sortxref rawxref to xplaymus
+	rm rawxref
+
+xrefxbcpl:	allcompiled com/xbcpl.b com/xbcplfe.b com/xbcplcgcin.b \
+	g/xbcplfecg.h
+	cintsys -c c bc xbcpl xref >rawxref
+	cintsys -c sortxref rawxref to xrefxbcpl
+	rm rawxref
+
+pal70:	allcompiled
+	cintsys -c c bc pal70
+
+xrefpal70:	allcompiled com/pal70.b
+	cintsys -c c bc pal70 xref >rawxrefpal70
+	cintsys -c sortxref rawxrefpal70 to xrefpal70
+	rm rawxrefpal70
+
+xrefxpal70:	allcompiled com/xpal70.b
+	cintsys -c c bc xpal70 xref >rawxrefxpal70
+	cintsys -c sortxref rawxrefxpal70 to xrefxpal70
+	rm rawxrefxpal70
+
+pal75:	allcompiled g/pal75hdr.h com/pal75.b
+	cintsys -c c xbc pal75
+
+xrefpal75:	allcompiled g/pal75hdr.h com/pal75.b
+	cintsys -c c xbc pal75 xref >rawxrefpal75
+	cintsys -c sortxref rawxrefpal75 to xrefpal75
+	rm rawxrefpal75
+
+Win32:
+	copy sys\cintsys.h
+	nmake /f sys\Win32\makefile
+
+bigender:
+	cp enderbig/syslib cin/syscin
+	cp enderbig/boot cin/syscin
+	cp enderbig/blib cin/syscin
+	cp enderbig/dlib cin/syscin
+	cp enderbig/cli cin/syscin
+	cp enderbig/bcpl cin
+	cp enderbig/c cin
+	cp enderbig/echo cin
+	cp enderbig/logout cin
+	cp enderbig/cmpltest cin
+	cp enderbig/map cin
+	cp enderbig/abort cin
+	cp -p enderbig/bcb .
+	cp -p enderbig/bcl .
+	cp -p enderbig/bsb .
+	cp -p enderbig/bsl .
+	echo touch >bigender
+
+litender:
+	cp enderlit/syslib cin/syscin
+	cp enderlit/boot cin/syscin
+	cp enderlit/blib cin/syscin
+	cp enderlit/dlib cin/syscin
+	cp enderlit/cli cin/syscin
+	cp enderlit/bcpl cin
+	cp enderlit/c cin
+	cp enderlit/echo cin
+	cp enderlit/logout cin
+	cp enderlit/cmpltest cin
+	cp enderlit/map cin
+	cp enderlit/abort cin
+	cp -p enderlit/bcb .
+	cp -p enderlit/bcl .
+	cp -p enderlit/bsb .
+	cp -p enderlit/bsl .
+	echo touch >litender
+
+debug:	bin/cintsys
+	stty sane
+	dbx bin/cintsys
+
+sysc/INT.h:	sysc/mkint-h.c
+	$(CC) -o mkint-h sysc/mkint-h.c
+	mkint-h >sysc/INT.h
+	rm -f mkint-h
+
+obj/cintsys.o:	sysc/cintsys.c sysc/cintsys.h sysc/INT.h sysc/soundfn.c
+	$(CC) -o obj/cintsys.o -c sysc/cintsys.c
+
+obj/cinterp.o:	sysc/cinterp.c sysc/cintsys.h sysc/INT.h
+	$(CC) -o obj/cinterp.o -c sysc/cinterp.c
+
+obj/fasterp.o:	sysc/cinterp.c sysc/cintsys.h sysc/INT.h
+	$(CC) -DFASTyes -o obj/fasterp.o -c sysc/cinterp.c
+
+obj/cintasm.o:	$(SYSM)/cintasm.s
+	gcc -c -o obj/cintasm.o $(SYSM)/cintasm.S
+
+obj/rasterp.o:	sysc/rasterp.c sysc/cintsys.h sysc/INT.h
+	$(CC) -o obj/rasterp.o -c sysc/rasterp.c
+
+obj/nrastlib.o:	sysc/nrastlib.c sysc/cintsys.h sysc/INT.h
+	$(CC) -o obj/nrastlib.o -c sysc/nrastlib.c
+
+obj/rastlib.o:	sysc/rastlib.c sysc/cintsys.h sysc/INT.h
+	$(CC) -o obj/rastlib.o -c sysc/rastlib.c
+
+obj/kblib.o:	sysc/kblib.c sysc/cintsys.h sysc/INT.h
+	$(CC) -o obj/kblib.o -c sysc/kblib.c
+
+obj/cfuncs.o:	sysc/cfuncs.c sysc/cintsys.h sysc/INT.h
+	$(CC) -o obj/cfuncs.o -c sysc/cfuncs.c
+
+bin/cintsys:	obj/cintsys.o obj/cinterp.o obj/kblib.o obj/cfuncs.o \
+	$(FASTERP) obj/nrastlib.o
+	$(CC) -lm -o bin/cintsys obj/cintsys.o obj/cinterp.o \
+	obj/kblib.o obj/cfuncs.o $(FASTERP)  obj/nrastlib.o
+
+bin/rastsys:	obj/cintsys.o obj/cinterp.o obj/kblib.o obj/cfuncs.o \
+	obj/rasterp.o obj/rastlib.o
+	$(CC) -lm -o bin/rastsys obj/cintsys.o obj/cinterp.o \
+	obj/kblib.o obj/cfuncs.o obj/rasterp.o obj/rastlib.o
+
+
+
+
+# The following lines are used to build cintsys.gpu and rastsys.gpu
+# that can be transferred and run on the GP2X machine.
+# The gp2x sd memory card is assumed to be mounted on drive G:
+
+gp2x:	cintsys.gpu rastsys.gpu
+
+gp2xinstall:	cintsys.gpu
+	rm -rf G:/bcpl
+	cp -rp ../../BCPL G:/bcpl
+	rm -f G:/Bin/cintsys.gpu
+	cp -r cintsys.gpu G:/Bin/cintsys
+	rm -f G:/Bin/bcpl.gpe
+	cp -r ../../GP2X/gp2x/bcpl.gpe G:/Bin/bcpl.gpe
+
+obj/gp2xcintsys.o:	sysc/cintsys.c sysc/cintsys.h sysc/INT.h
+	$(GP2XCC) -o obj/gp2xcintsys.o -c sysc/cintsys.c
+
+obj/gp2xcinterp.o:	sysc/cinterp.c sysc/cintsys.h sysc/INT.h
+	$(GP2XCC) -o obj/gp2xcinterp.o -c sysc/cinterp.c
+
+obj/gp2xfasterp.o:	sysc/cinterp.c sysc/cintsys.h sysc/INT.h
+	$(GP2XCC) -DFASTyes -o obj/gp2xfasterp.o -c sysc/cinterp.c
+
+obj/gp2xcintasm.o:	$(SYSM)/cintasm.s
+	$(GP2XCC) -c -o obj/gp2xcintasm.o $(SYSM)/cintasm.S
+
+obj/gp2xrasterp.o:	sysc/rasterp.c sysc/cintsys.h sysc/INT.h
+	$(GP2XCC) -o obj/gp2xrasterp.o -c sysc/rasterp.c
+
+obj/gp2xnrastlib.o:	sysc/nrastlib.c sysc/cintsys.h sysc/INT.h
+	$(GP2XCC) -o obj/gp2xnrastlib.o -c sysc/nrastlib.c
+
+obj/gp2xrastlib.o:	sysc/rastlib.c sysc/cintsys.h sysc/INT.h
+	$(GP2XCC) -o obj/gp2xrastlib.o -c sysc/rastlib.c
+
+obj/gp2xkblib.o:	sysc/kblib.c sysc/cintsys.h sysc/INT.h
+	$(GP2XCC) -o obj/gp2xkblib.o -c sysc/kblib.c
+
+cintsys.gpu:	obj/gp2xcintsys.o obj/gp2xcinterp.o obj/gp2xkblib.o \
+	obj/gp2xfasterp.o obj/gp2xnrastlib.o
+	$(GP2XCC) -o cintsys.gpu obj/gp2xcintsys.o obj/gp2xcinterp.o \
+	obj/gp2xkblib.o obj/gp2xfasterp.o  obj/gp2xnrastlib.o
+
+rastsys.gpu:	obj/gp2xcintsys.o obj/gp2xcinterp.o obj/gp2xkblib.o \
+	obj/gp2xrasterp.o obj/gp2xrastlib.o
+	$(GP2XCC) -o rastsys.gpu obj/gp2xcintsys.o obj/gp2xcinterp.o \
+	obj/gp2xkblib.o obj/gp2xrasterp.o obj/gp2xrastlib.o
+
+
+env:
+	@echo
+	@echo "To set the Cintpos environment variables"
+	@echo "read, edit and run the script ./setbcplenv, which is:"
+	@echo 
+	cat ./setbcplenv
+	@echo
+# Alternatively put some equivalent code in your .profile file.
+
+clean:
+	rm -f ocode mcode comfile core all rawxref
+	rm -f sial mial mintcode
+	rm -f *~ sysc/*~ sysb/*~ sysasm/*/*~ com/*~ doc/*~
+	rm -f litender bigender built
+	rm -f obj/* junk*
+	rm -f bin/cintsys bin/rastsys
+	rm -f bin/rastsys.exe
+	rm -f cintsys.gpu rastsys.gpu
+	rm -f raster raster.ps stats analysis profile
+	rm -rf cin
+	rm -rf allcompiled bcplready
+	mkdir cin cin/syscin
