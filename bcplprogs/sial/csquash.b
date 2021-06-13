@@ -1,5 +1,5 @@
 // This program reads a file of integers and compresses them. It
-// is an experimantal program to try out possible techniques for
+// is an experimental program to try out possible techniques for
 // use in the compression of SIAL code. This version is for the 
 // C stream.
 
