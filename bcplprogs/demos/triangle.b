@@ -10,7 +10,7 @@ LET start() = VALOF
   }
   FOR i = 0 TO 2 DO len!i := str2numb(argv!i)
   writes("*nTriangle given: ")
-  FOR i = 0 TO 2 DO writef("%n ", len!i)
+  FOR i = 0 TO 2 DO writef("*n%n ", len!i)
   writef("*nThis is %s triangle*n",
             sort_of_triangle(len!0, len!1, len!2))
   RESULTIS 0
@@ -22,6 +22,6 @@ AND sort_of_triangle(a, b, c) =
     // At this point we know that a <= b <= c
     c>a+b       -> "not a",
     a=c         -> "an equilateral",
-    a=b | b=c   -> "an isoscelese",
+    a=b | b=c   -> "an isosceles",
     c*c=a*a+b*b -> "a right angled",
                    "a scalene"
