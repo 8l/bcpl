@@ -1,0 +1,36 @@
+Boot tracing level is set to 1
+
+cintsys 06 Sep 2014  13:49
+
+bytestr=ABCD1234 word 0 = 44434241
+BIGENDER is not defined but the host machine is a big ender
+sizeof(int)        = 4
+sizeof(long)       = 8
+sizeof(BCPLWORD)   = 4
+sizeof(BCPLWORD *) = 8
+FormD is "d"
+FormX is "X"
+Cintcode memory (upb=4000000) allocated
+Environment variable BCPLROOT = (null)
+Environment variable BCPLPATH = (null)
+Environment variable BCPLHDRS = (null)
+Environment variable BCPLSCRIPTS = (null)
+Boot's stack allocated at 821
+Boot's global vector allocated at 1337
+Rootnode allocated at 100
+Loading all resident programs and libraries
+osfname: syscin/boot => syscin/boot
+Trying: syscin/boot in the current directory - not found
+pathinput: attempting to open syscin/boot using
+  BCPLPATH = (null)
+osfname: syscin/boot => syscin/boot
+Trying: syscin/boot in the current directory - not found
+
+Unable to find syscin/boot
+This is probably caused by incorrect settings of
+environment variables such as BCPLROOT and BCPLPATH
+Try entering cintsys using the command
+
+cintsys -f -v
+
+to see what is happening

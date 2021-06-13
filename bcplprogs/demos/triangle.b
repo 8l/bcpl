@@ -5,7 +5,7 @@ LET start() = VALOF
   LET len = VEC 2
 
   IF rdargs("A/A,B/A,C/A", argv, 50) = 0
-  { writes("Bad arguments: triangle need three numbers*n")
+  { writes("Bad arguments: triangles need three numbers*n")
     RESULTIS 20
   }
   FOR i = 0 TO 2 DO len!i := str2numb(argv!i)
