@@ -1,6 +1,6 @@
 #!/bin/bash
 # was export BCPLROOT=$HOME/distribution/BCPL/cintcode
-export BCPLROOT=$HOME/BCPL/cintcode
+export BCPLROOT=$HOME/bcpl/cintcode
 export BCPLPATH=$BCPLROOT/cin
 export BCPLHDRS=$BCPLROOT/g
 export BCPLSCRIPTS=$BCPLROOT/s
