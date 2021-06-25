@@ -16,6 +16,7 @@ MANIFEST { Upb=999 }
 LET start() = VALOF
 { LET argv = VEC 50
   LET len  = VEC 2
+/*  
   IF rdargs("A/A,B/A,C/A", argv, 50) = 0
   { writes("Bad arguments: triangles need three numbers*n")
     RESULTIS 20
@@ -24,6 +25,15 @@ LET start() = VALOF
   // now print the input args
   FOR i = 0 TO 2 DO writef("*n%n ", len!i)
   writef("*n")
+*/  
+  
+  FOR i = 0 TO 20 DO
+  {
+    writehex(i,3)
+    writes(" ")
+  }
+    writef("*n")  writef("*n")
+    
 /*  LET oldout = output()
     writef("*nThis is %s triangle*n"
             )
