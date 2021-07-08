@@ -15,7 +15,7 @@ GET "libhdr"
 //Memory:
 
 // 512 35-bit words with even addresses, split into two 17-bit halves
-// with one seperator bit.
+// with one separator bit.
 
 //         | 17 bits | 1 bit gap | 17 bits |
 //            2n+1                   2n          S access, 17 bits

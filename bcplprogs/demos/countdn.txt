@@ -1,0 +1,114 @@
+Boot tracing level is set to 1
+
+cintsys 06 Sep 2014  13:49
+
+bytestr=ABCD1234 word 0 = 44434241
+BIGENDER is not defined but the host machine is a big ender
+sizeof(int)        = 4
+sizeof(long)       = 8
+sizeof(BCPLWORD)   = 4
+sizeof(BCPLWORD *) = 8
+FormD is "d"
+FormX is "X"
+Cintcode memory (upb=4000000) allocated
+Environment variable BCPLROOT = /home/mikeh/bcpl/cintcode
+Environment variable BCPLPATH = /home/mikeh/bcpl/cintcode/cin
+Environment variable BCPLHDRS = /home/mikeh/bcpl/cintcode/g
+Environment variable BCPLSCRIPTS = (null)
+Boot's stack allocated at 821
+Boot's global vector allocated at 1337
+Rootnode allocated at 100
+Loading all resident programs and libraries
+osfname: syscin/boot => syscin/boot
+Trying: syscin/boot in the current directory - not found
+pathinput: attempting to open syscin/boot using
+  BCPLPATH = /home/mikeh/bcpl/cintcode/cin
+osfname: /home/mikeh/bcpl/cintcode/cin/syscin/boot => /home/mikeh/bcpl/cintcode/cin/syscin/boot
+Trying: /home/mikeh/bcpl/cintcode/cin/syscin/boot - found
+syscin/boot loaded successfully
+osfname: syscin/blib => syscin/blib
+Trying: syscin/blib in the current directory - not found
+pathinput: attempting to open syscin/blib using
+  BCPLPATH = /home/mikeh/bcpl/cintcode/cin
+osfname: /home/mikeh/bcpl/cintcode/cin/syscin/blib => /home/mikeh/bcpl/cintcode/cin/syscin/blib
+Trying: /home/mikeh/bcpl/cintcode/cin/syscin/blib - found
+syscin/blib loaded successfully
+osfname: syscin/syslib => syscin/syslib
+Trying: syscin/syslib in the current directory - not found
+pathinput: attempting to open syscin/syslib using
+  BCPLPATH = /home/mikeh/bcpl/cintcode/cin
+osfname: /home/mikeh/bcpl/cintcode/cin/syscin/syslib => /home/mikeh/bcpl/cintcode/cin/syscin/syslib
+Trying: /home/mikeh/bcpl/cintcode/cin/syscin/syslib - found
+syscin/syslib loaded successfully
+osfname: syscin/dlib => syscin/dlib
+Trying: syscin/dlib in the current directory - not found
+pathinput: attempting to open syscin/dlib using
+  BCPLPATH = /home/mikeh/bcpl/cintcode/cin
+osfname: /home/mikeh/bcpl/cintcode/cin/syscin/dlib => /home/mikeh/bcpl/cintcode/cin/syscin/dlib
+Trying: /home/mikeh/bcpl/cintcode/cin/syscin/dlib - found
+syscin/dlib loaded successfully
+Calling the interpreter
+BOOT stack is at 821
+BOOT global vector is at 1337
+CLI stack allocated at 8339
+CLI global vector allocated at 8855
+
+BCPL 32-bit Cintcode System (30 May 2013)
+boot about to call the interpreter recursively
+It should start executing the boot function: startroot
+boot: about to call sys(Sys_interpret,...)
+startroot: can now use normal stream i/o
+startroot: trying to load syscin/cli
+osfname: syscin/cli => syscin/cli
+Trying: syscin/cli in the current directory - not found
+pathinput: attempting to open syscin/cli using
+  BCPLPATH = /home/mikeh/bcpl/cintcode/cin
+osfname: /home/mikeh/bcpl/cintcode/cin/syscin/cli => /home/mikeh/bcpl/cintcode/cin/syscin/cli
+Trying: /home/mikeh/bcpl/cintcode/cin/syscin/cli - found
+startroot: loaded syscin/cli successfully
+startroot: now entering the cli
+cli: now entering the main CLI loop
+0.000> countdn 3 1 10
+osfname: countdn => countdn
+Trying: countdn in the current directory - found
+adding    3 to set 000001   num 3 0
+adding    1 to set 000010   num 1 0
+adding   10 to set 000100   num 10 0
+
+The given numbers are:
+
+    1    3   10
+
+Doing closure
+adding    4 to set 000011   add 3 1
+adding    2 to set 000011   sub 3 1
+adding   13 to set 000101   add 3 10
+adding    7 to set 000101   sub 10 3
+adding   30 to set 000101   mul 10 3
+adding   11 to set 000110   add 1 10
+adding    9 to set 000110   sub 10 1
+adding    8 to set 000111   add 1 7
+adding    6 to set 000111   sub 7 1
+adding   14 to set 000111   add 1 13
+adding   12 to set 000111   sub 13 1
+adding   31 to set 000111   add 1 30
+adding   29 to set 000111   sub 30 1
+adding   20 to set 000111   mul 10 2
+adding    5 to set 000111   div 10 2
+adding   40 to set 000111   mul 10 4
+adding   27 to set 000111   mul 9 3
+adding   33 to set 000111   mul 11 3
+The following numbers can be computed:
+
+    1    2    3    4    5    6    7    8    9   10
+   11   12   13   14   20   27   29   30   31   33
+   40
+0.077> logout
+osfname: logout => logout
+Trying: logout in the current directory - not found
+pathinput: attempting to open logout using
+  BCPLPATH = /home/mikeh/bcpl/cintcode/cin
+osfname: /home/mikeh/bcpl/cintcode/cin/logout => /home/mikeh/bcpl/cintcode/cin/logout
+Trying: /home/mikeh/bcpl/cintcode/cin/logout - found
+interpreter returned control to cintsys, res=0
+

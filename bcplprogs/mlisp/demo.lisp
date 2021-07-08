@@ -16,7 +16,7 @@
    )
 )
 
-(de ap (xs ys)
+(de ap (xs ys)    ; use as append - see e.g. below
    (cond ((atom xs) ys)
          (T (cons (car xs) (ap (cdr xs) ys)))
    )
@@ -68,4 +68,6 @@
 
 (map 1+ '(10 20 30 40 50))
  
-(quit)
+;(quit)
+;
+

@@ -1,0 +1,4 @@
+export BCPLROOT=$HOME/bcpl/cintcode
+export PATH="$PATH:$BCPLROOT/bin"
+
+
