@@ -11,9 +11,9 @@ LET start() = VALOF
   FOR i = 0 TO 2 DO len!i := str2numb(argv!i)
   writes("*nTriangle given: ")
   FOR i = 0 TO 2 DO writef("*n%n ", len!i)
-  writef("%n   ")
+  writef("*n   ")
     writef("*nThis is %s triangle*n",
             sort_of_triangle(len!0, len!1, len!2))
 }
 
-AND sort_of_triangle(a, b, c) =  "test triangle"
+AND sort_of_triangle(a, b, c) =  "test"

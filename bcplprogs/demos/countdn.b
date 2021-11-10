@@ -128,8 +128,11 @@ AND setbit(bits, n) BE
   IF new=old RETURN
   bitv!p, change := new, TRUE
   UNLESS resv!n DO
-    writef("adding %i4 to set %b6   %s %n %n*n",
+/*   changed order of last 3 to ease reverse engineering [MJH] 
+   writef("adding %i4 to set %b6   %s %n %n*n",
                n, bits, opstr, vala, valb)
+*/    writef("adding %i4 to set %b6   %n %s %n*n",
+               n, bits, vala, opstr, valb)
     
   resv!n := TRUE
 }
