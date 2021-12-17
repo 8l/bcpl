@@ -158,6 +158,7 @@ LET start() BE
   update(@root,'C', 'c')
   update(@root,'D', 'd')
   update(@root,'E', 'e')
+//  update(@root,'A', 'a')
   printree(root)
 
   update(@root,'F', 'f')

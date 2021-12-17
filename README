@@ -277,7 +277,7 @@ Notes:
 
 1) The times are real times (including I/O) and they are in seconds.
 
-2) The self compilation test is the time to compiler an early version
+2) The self compilation test is the time to compile an early version
    of the BCPL compiler, typically using the commands:
 
       bcpl com/origbcpl.b to origbcpl

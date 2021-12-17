@@ -50,9 +50,9 @@ LET start() = VALOF
   }
 
   n, e, initseed := 5, 2, 1
-  IF argv!0 & string.to.number(argv!0) DO n        := result2
-  IF argv!1 & string.to.number(argv!1) DO e        := result2
-  IF argv!2 & string.to.number(argv!2) DO initseed := result2
+  IF argv!0 & str2numb(argv!0) DO n        := result2
+  IF argv!1 & str2numb(argv!1) DO e        := result2
+  IF argv!2 & str2numb(argv!2) DO initseed := result2
 
   IF n<2 DO n := 2
   IF e>n DO e := n

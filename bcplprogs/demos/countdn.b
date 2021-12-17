@@ -6,6 +6,10 @@ and intermediate results must be integral and in the range 0 to 999.
 
 Written in BCPL by Martin Richards (c) February 2000
 */
+/* TODO MJH
+to make useful in 2021 : supply the target number and highlight in the output stream 
+Also try to document this source : useful exercise in relearning the language
+*/
 
 GET "libhdr"
 
@@ -40,7 +44,7 @@ LET start() = VALOF
     FOR j = 0 TO Upb DO p!j := 0
     v!i := p
   }
-
+/* work on the outstream lines separately   */
   outstream := 0
   IF argv!6 DO outstream := findoutput(argv!6)
   IF outstream DO selectoutput(outstream)
@@ -128,8 +132,14 @@ AND setbit(bits, n) BE
   IF new=old RETURN
   bitv!p, change := new, TRUE
   UNLESS resv!n DO
-    writef("adding %i4 to set %b6   %s %n %n*n",
+/*   changed order of last 3 to ease reverse engineering [MJH] 
+   writef("adding %i4 to set %b6   %s %n %n*n",
                n, bits, opstr, vala, valb)
+*/ 
+/* suggest adding a test here for the target number : if eq then chnage string adding 
+*/ IF n=162 writef("->>")
+    writef("adding %i4 to set %b6   %n %s %n*n",
+               n, bits, vala, opstr, valb)
     
   resv!n := TRUE
 }
